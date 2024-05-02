@@ -1,21 +1,19 @@
-part of '../../app/application.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nomad_taxi/src/features/example/presentation/pages/example.dart';
 
-GoRouter router(AppType type) {
+part 'route_list.dart';
+part 'route_transitions.dart';
+part 'router_names.dart';
+part 'router_paths.dart';
+
+GoRouter routerProvider() {
   return GoRouter(
-    redirect: (BuildContext context, GoRouterState goRouterState) {
-      if (context.watch<AuthBloc>().state == const AuthState.authenticated()) {
-        return AppRoutes.main.path;
-        //return AppRoutes.spectrogramWindow.path;
-      } else {
-        return AppRoutes.onboarding.path;
-      }
+    initialLocation: RoutePaths.main,
+    debugLogDiagnostics: true,
+    routes: _routes(),
+    redirect: (context, state) {
+      return RoutePaths.main;
     },
-    errorBuilder: (BuildContext context, GoRouterState state) {
-      return RouteErrorPage(
-        errorMessage: state.error.toString(),
-        key: state.pageKey,
-      );
-    },
-    routes: type == AppType.analytics ? analyticsRoutes : controlRoutes,
   );
 }

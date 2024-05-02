@@ -1,7 +1,4 @@
-// part of 'router_provider.dart';
-
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+part of 'router.dart';
 
 class PageTransitions {
   static CustomTransitionPage defaultTransition<T>({
