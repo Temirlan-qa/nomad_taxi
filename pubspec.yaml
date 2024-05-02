@@ -58,7 +58,6 @@ dependencies:
 
   # * Development Utilities
   # Logging
-  logger: ^2.0.2
   l: ^4.0.0
   stack_trace: ^1.11.0
   # Crash Reporting
@@ -108,9 +107,6 @@ dependencies:
   # Svg Images
   flutter_svg: ^2.0.5
   pull_to_refresh: ^2.0.0
-
-  # ??? Notifications
-  awesome_notifications: ^0.7.5-dev.3
   # Isolate manager
   worker_manager: ^6.1.1
   # Asynchronous computations

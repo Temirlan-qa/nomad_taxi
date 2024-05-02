@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
@@ -25,13 +24,16 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GoRouter router = routerProvider();
-
-    return MultiBlocProvider(
-      providers: const [],
-      child: _buildApp(
-        flavor: flavor,
-        router: router,
-      ),
+    return _buildApp(
+      flavor: flavor,
+      router: router,
     );
+    // return MultiBlocProvider(
+    //   providers: const [],
+    //   child: _buildApp(
+    //     flavor: flavor,
+    //     router: router,
+    //   ),
+    // );
   }
 }

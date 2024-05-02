@@ -24,6 +24,7 @@ class $AssetsIconsGen {
 
   $AssetsIconsRegularGen get regular => const $AssetsIconsRegularGen();
   $AssetsIconsSolidGen get solid => const $AssetsIconsSolidGen();
+  $AssetsIconsToggleGen get toggle => const $AssetsIconsToggleGen();
 
   /// File path: assets/icons/user.svg
   SvgGenImage get user => const SvgGenImage('assets/icons/user.svg');
@@ -375,6 +376,19 @@ class $AssetsIconsSolidGen {
         taxiBranding,
         taxi
       ];
+}
+
+class $AssetsIconsToggleGen {
+  const $AssetsIconsToggleGen();
+
+  /// File path: assets/icons/toggle/off.svg
+  SvgGenImage get off => const SvgGenImage('assets/icons/toggle/off.svg');
+
+  /// File path: assets/icons/toggle/on.svg
+  SvgGenImage get on => const SvgGenImage('assets/icons/toggle/on.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [off, on];
 }
 
 class Assets {
