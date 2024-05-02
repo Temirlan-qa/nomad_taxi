@@ -113,7 +113,8 @@ dependencies:
   async: ^2.11.0
   # Scroll Controller Group
   sync_scroll_controller: ^1.0.1
-  
+  # Flutter Icon Generator
+  icons_launcher: ^2.1.7
   # Shimmer loading effect
   shimmer: ^3.0.0
 
@@ -213,14 +214,21 @@ flutter_gen:
 
 # * Flutter Icon Generator Configurations
 
-flutter_icons:
-  image_path: "assets/icons/prod.png"
-  # Android Icon
-  android: true
-  adaptive_icon_background: "#1E1E1E"
-  # iOS Icon
-  ios: true
-  remove_alpha_ios: true
+icons_launcher:
+  image_path: 'assets/icons/prod.png'
+  platforms:
+    android:
+      enable: true
+      image_path: 'assets/icons/prod.png'
+      adaptive_foreground_image: 'assets/icons/prod.png'
+      adaptive_background_color: '#ff004d'
+      
+      # adaptive_background_image: 'assets/ic_background.png'
+      # adaptive_round_image: 'assets/ic_logo_round.png'
+      # adaptive_monochrome_image: 'assets/ic_logo_monochrome.png'
+    ios:
+      enable: true
+      image_path: 'assets/icons/prod.png'
 
 
 # * Flutter Splash Screen Generator Configurations
@@ -233,8 +241,6 @@ flutter_native_splash:
   image: assets/splash/splash.png
   image_dark: assets/splash/splash.png
   fullscreen: true
-  android_gravity: center
-  ios_gravity: center
   android_12:
     image: assets/splash/splash.png
     image_dark: assets/splash/splash.png
