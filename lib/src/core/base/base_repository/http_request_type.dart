@@ -1,7 +1,7 @@
 enum HttpRequestType {
-  post,
   get,
-  delete,
+  post,
   put,
+  delete,
   patch,
 }

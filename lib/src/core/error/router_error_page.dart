@@ -10,7 +10,6 @@ class RouteErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO(Aldiyar): do layout of RouteErrorPage
     return const Scaffold();
   }
 }
