@@ -5,8 +5,18 @@ const double _fadeTransitionEnd = 1.0;
 
 List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
-        name: RouteNames.main,
-        path: RoutePaths.main,
-        builder: (_, __) => const ExamplePage(),
+        name: RouteNames.auth,
+        path: RoutePaths.auth,
+        builder: (_, __) => const AuthPage(),
+      ),
+      GoRoute(
+        name: RouteNames.codeConfirm,
+        path: RoutePaths.codeConfirm,
+        builder: (_, __) => const ConfirmCodePage(),
+      ),
+      GoRoute(
+        name: RouteNames.policy,
+        path: RoutePaths.policy,
+        builder: (_, __) => const PolicyPage(),
       ),
     ];

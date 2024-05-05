@@ -21,5 +21,20 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "agree_wit_privacy_policy": MessageLookupByLibrary.simpleMessage(
+            "Согласен с политикой конфиденцальности"),
+        "change": MessageLookupByLibrary.simpleMessage("изменить"),
+        "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
+        "kz_with_flag": MessageLookupByLibrary.simpleMessage("🇰🇿 Казахстан"),
+        "next": MessageLookupByLibrary.simpleMessage("Далее"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
+        "send_code_again":
+            MessageLookupByLibrary.simpleMessage("Отправить код повторно"),
+        "sms_confirmation":
+            MessageLookupByLibrary.simpleMessage("СМС подтверждение"),
+        "your_phone": MessageLookupByLibrary.simpleMessage("Ваш телефон"),
+        "your_region": MessageLookupByLibrary.simpleMessage("Ваш регион")
+      };
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
-import 'package:nomad_taxi/src/core/utils/helpers/ui_helpers.dart';
+// import 'package:nomad_taxi/src/core/utils/helpers/ui_helpers.dart';
 
 import 'application.dart';
 
@@ -11,7 +11,7 @@ class Runner {
   }) async {
     WidgetsFlutterBinding.ensureInitialized();
     await configureDependencies();
-    UIHelpers.statusBarTheme();
+    // UIHelpers.statusBarTheme();
 
     MainApp(flavor: flavor).run();
   }

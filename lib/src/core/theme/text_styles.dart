@@ -56,6 +56,11 @@ class TextStyles {
     fontSize: 12,
     color: Colors.black,
   );
+
+  static const extraTitle = TextStyle(fontSize: 28, fontWeight: FontWeight.w700, height: 30 / 28);
+  static const titleMain = TextStyle(fontSize: 24, fontWeight: FontWeight.w600, height: 26 / 24, letterSpacing: -0.2);
+  static const headLine = TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 18 / 16, letterSpacing: -0.2);
+  static const body = TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 18 / 14);
 }
 
 class AppTextStyles {
@@ -70,6 +75,11 @@ class AppTextStyles {
   TextStyle get regular => TextStyles.regular;
   TextStyle get description => TextStyles.description;
   TextStyle get smallTips => TextStyles.smallTips;
+
+  TextStyle get extraTitle => TextStyles.extraTitle;
+  TextStyle get titleMain => TextStyles.titleMain;
+  TextStyle get headLine => TextStyles.headLine;
+  TextStyle get body => TextStyles.body;
 }
 
 extension TextStyleThemeDataExtension on ThemeData {

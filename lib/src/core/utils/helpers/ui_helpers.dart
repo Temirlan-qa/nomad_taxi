@@ -7,7 +7,7 @@ class UIHelpers {
   static void statusBarTheme() {
     if (Platform.isIOS) {
       SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Colors.white),
+        const SystemUiOverlayStyle(statusBarColor: Colors.black),
       );
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.white),

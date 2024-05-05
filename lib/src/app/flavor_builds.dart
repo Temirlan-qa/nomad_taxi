@@ -30,19 +30,20 @@ MaterialApp _buildMaterialApp({
       title: title,
       localizationsDelegates: const [
         S.delegate,
-        RefreshLocalizations.delegate,
+        // RefreshLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
+      locale: S.delegate.supportedLocales.last,
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,
       routeInformationProvider: router.routeInformationProvider,
       theme: MaterialAppTheme.theme,
       darkTheme: MaterialAppTheme.dark,
       themeMode: ThemeMode.system,
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
     );
 
 enum AppFlavor {
