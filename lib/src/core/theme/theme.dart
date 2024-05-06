@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 
 part 'colors.dart';
 part 'text_styles.dart';
@@ -12,20 +13,29 @@ class MaterialAppTheme {
       side: AlwaysActiveBorderSide(),
     ),
     brightness: Brightness.light,
+    fontFamily: 'Inter',
     scaffoldBackgroundColor: _white,
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        elevation: MaterialStateProperty.all(0),
-        fixedSize: MaterialStateProperty.all(const Size.fromHeight(52)),
-        backgroundColor: MaterialStateProperty.all(_primary),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        ),
-      ),
+    splashFactory: InkSparkle.splashFactory,
+    bottomSheetTheme: const BottomSheetThemeData(
+        modalBackgroundColor: _white,
+        backgroundColor: _white,
+        surfaceTintColor: _white,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(UIConstants.defaultGap3)))),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+          elevation: 0,
+          fixedSize: const Size.fromHeight(44),
+          maximumSize: const Size.fromHeight(44),
+          backgroundColor: _red,
+          foregroundColor: _white,
+          disabledBackgroundColor: _background,
+          disabledForegroundColor: _secondary,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIConstants.defaultRadius))),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: Colors.white,
+      fillColor: _white,
       contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
       errorStyle: const TextStyle(height: 0),
       enabledBorder: OutlineInputBorder(

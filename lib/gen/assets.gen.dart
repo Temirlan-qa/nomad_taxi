@@ -11,6 +11,50 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// File path: assets/fonts/Inter-Black.ttf
+  String get interBlack => 'assets/fonts/Inter-Black.ttf';
+
+  /// File path: assets/fonts/Inter-Bold.ttf
+  String get interBold => 'assets/fonts/Inter-Bold.ttf';
+
+  /// File path: assets/fonts/Inter-ExtraBold.ttf
+  String get interExtraBold => 'assets/fonts/Inter-ExtraBold.ttf';
+
+  /// File path: assets/fonts/Inter-ExtraLight.ttf
+  String get interExtraLight => 'assets/fonts/Inter-ExtraLight.ttf';
+
+  /// File path: assets/fonts/Inter-Light.ttf
+  String get interLight => 'assets/fonts/Inter-Light.ttf';
+
+  /// File path: assets/fonts/Inter-Medium.ttf
+  String get interMedium => 'assets/fonts/Inter-Medium.ttf';
+
+  /// File path: assets/fonts/Inter-Regular.ttf
+  String get interRegular => 'assets/fonts/Inter-Regular.ttf';
+
+  /// File path: assets/fonts/Inter-SemiBold.ttf
+  String get interSemiBold => 'assets/fonts/Inter-SemiBold.ttf';
+
+  /// File path: assets/fonts/Inter-Thin.ttf
+  String get interThin => 'assets/fonts/Inter-Thin.ttf';
+
+  /// List of all assets
+  List<String> get values => [
+        interBlack,
+        interBold,
+        interExtraBold,
+        interExtraLight,
+        interLight,
+        interMedium,
+        interRegular,
+        interSemiBold,
+        interThin
+      ];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -31,10 +75,6 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [prod, user];
-}
-
-class $AssetsImagesGen {
-  const $AssetsImagesGen();
 }
 
 class $AssetsSplashGen {
@@ -394,8 +434,8 @@ class $AssetsIconsToggleGen {
 class Assets {
   Assets._();
 
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
-  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
 }
 
