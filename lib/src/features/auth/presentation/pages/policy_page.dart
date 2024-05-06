@@ -31,7 +31,8 @@ class _PolicyPageState extends State<PolicyPage> {
         padding: const EdgeInsets.all(UIConstants.defaultPadding2),
         physics: const BouncingScrollPhysics(),
         children: [
-          Text(S.current.privacy_policy, style: context.theme.textStyles.extraTitle),
+          Text(S.current.privacy_policy,
+              style: context.theme.textStyles.extraTitle),
           const Gap(UIConstants.defaultGap3),
           Text(temp * 20, style: context.theme.textStyles.body),
         ],
@@ -45,19 +46,24 @@ class _PolicyPageState extends State<PolicyPage> {
               Container(
                 padding: const EdgeInsets.all(UIConstants.defaultPadding),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(UIConstants.defaultRadius),
+                    borderRadius:
+                        BorderRadius.circular(UIConstants.defaultRadius),
                     color: context.theme.background,
                     border: Border.all(color: context.theme.stroke)),
                 child: Row(
                   children: [
-                    Expanded(child: Text(S.current.agree_wit_privacy_policy, style: context.theme.textStyles.headLine)),
+                    Expanded(
+                        child: Text(S.current.agree_wit_privacy_policy,
+                            style: context.theme.textStyles.headLine)),
                     IconButton(
                         onPressed: () {
                           setState(() {
                             isAgreeWithPolicy = !isAgreeWithPolicy;
                           });
                         },
-                        icon: isAgreeWithPolicy ? Assets.icons.checkOut.on.svg() : Assets.icons.checkOut.off.svg())
+                        icon: isAgreeWithPolicy
+                            ? Assets.icons.checkOut.on.svg()
+                            : Assets.icons.checkOut.off.svg())
                   ],
                 ),
               ),

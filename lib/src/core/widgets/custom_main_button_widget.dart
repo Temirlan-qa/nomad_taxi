@@ -4,6 +4,8 @@ import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
+part 'main_button_widgets.dart';
+
 class CustomMainButtonWidget extends StatelessWidget {
   const CustomMainButtonWidget(
       {super.key,
@@ -14,7 +16,7 @@ class CustomMainButtonWidget extends StatelessWidget {
       this.isMain = true,
       this.color});
 
-  final Function()? onPressed;
+  final VoidCallback? onPressed;
   final String title;
   final SvgGenImage? prefixIcon;
   final SvgGenImage? suffixIcon;
@@ -33,23 +35,17 @@ class CustomMainButtonWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildButtonIcon(prefixIcon, context),
-            buildButtonGap(),
-            buildButtonTitle(context),
-            buildButtonGap(),
-            buildButtonIcon(suffixIcon, context),
+            MainButtonIconWidget(
+              icon: prefixIcon,
+              color: color,
+            ),
+            const Gap(UIConstants.defaultGap2),
+            MainButtonTextWidget(title: title),
+            const Gap(UIConstants.defaultGap2),
+            MainButtonIconWidget(icon: suffixIcon, color: color)
           ],
         ),
       ),
     );
   }
-
-  buildButtonTitle(BuildContext context) =>
-      Text(title, style: context.theme.textStyles.headLine, maxLines: 1, overflow: TextOverflow.ellipsis);
-
-  Gap buildButtonGap() => const Gap(UIConstants.defaultGap2);
-
-  buildButtonIcon(SvgGenImage? icon, BuildContext context) =>
-      icon?.svg(width: 18, height: 18, colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null) ??
-      const Offstage();
 }

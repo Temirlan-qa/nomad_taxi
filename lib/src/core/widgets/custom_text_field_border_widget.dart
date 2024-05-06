@@ -15,17 +15,18 @@ class CustomTextFieldBorderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextFieldHelper textFieldHelper = TextFieldHelper();
     return Column(
       children: [
         AnimatedContainer(
           duration: Durations.short3,
           height: 1,
-          color: TextFieldHelper().getThinBorderColor(context, textFieldFocusState, textFieldValidationState),
+          color: textFieldHelper.getThinBorderColor(context, textFieldFocusState, textFieldValidationState),
         ),
         AnimatedContainer(
           duration: Durations.short3,
           height: 4,
-          color: TextFieldHelper().getBoldBorderColor(context, textFieldFocusState, textFieldValidationState),
+          color: textFieldHelper.getBoldBorderColor(context, textFieldFocusState, textFieldValidationState),
         )
       ],
     );

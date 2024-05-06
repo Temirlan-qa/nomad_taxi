@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/enums/enums.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
@@ -16,32 +15,37 @@ class CustomMainTextFieldWidget extends StatefulWidget {
   final String hintText;
 
   @override
-  State<CustomMainTextFieldWidget> createState() => _CustomMainTextFieldWidgetState();
+  State<CustomMainTextFieldWidget> createState() =>
+      _CustomMainTextFieldWidgetState();
 }
 
 class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
   final FocusNode focusNode = FocusNode();
 
   TextFieldFocusState textFieldFocusState = TextFieldFocusState.unfocused;
-  TextFieldValidationState textFieldValidationState = TextFieldValidationState.none;
+  TextFieldValidationState textFieldValidationState =
+      TextFieldValidationState.none;
   @override
   Widget build(BuildContext context) {
+    final headLine = context.theme.textStyles.headLine;
     return Column(
       children: [
         Focus(
           onFocusChange: (value) {
             setState(() {
-              value ? textFieldFocusState = TextFieldFocusState.focused : TextFieldFocusState.unfocused;
+              value
+                  ? textFieldFocusState = TextFieldFocusState.focused
+                  : TextFieldFocusState.unfocused;
             });
           },
           child: TextFormField(
             focusNode: focusNode,
             controller: widget.controller,
             cursorColor: context.theme.primary,
-            style: context.theme.textStyles.headLine.copyWith(color: context.theme.primary),
+            style: headLine.copyWith(color: context.theme.primary),
             decoration: InputDecoration(
               hintText: widget.hintText,
-              hintStyle: context.theme.textStyles.headLine.copyWith(color: context.theme.secondary),
+              hintStyle: headLine.copyWith(color: context.theme.secondary),
               contentPadding: EdgeInsets.zero,
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
@@ -53,15 +57,19 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
           ),
         ),
         CustomTextFieldBorderWidget(
-            textFieldFocusState: textFieldFocusState, textFieldValidationState: textFieldValidationState),
+            textFieldFocusState: textFieldFocusState,
+            textFieldValidationState: textFieldValidationState),
         const Gap(UIConstants.defaultGap2),
         textFieldValidationState == TextFieldValidationState.none
             ? const Offstage()
             : Center(
                 child: Text(
-                  textFieldFocusState.toString(),
-                  style: context.theme.textStyles.body
-                      .copyWith(color: focusNode.hasFocus ? context.theme.blue : context.theme.red),
+                  //TODO: temp
+                  '$textFieldFocusState',
+                  style: context.theme.textStyles.body.copyWith(
+                      color: focusNode.hasFocus
+                          ? context.theme.blue
+                          : context.theme.red),
                 ),
               )
       ],

@@ -21,6 +21,7 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final headLine = context.theme.textStyles.headLine;
     return Scaffold(
       body: SafeArea(
           child: Form(
@@ -40,14 +41,13 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('+7 (777) 777-77-77', style: context.theme.textStyles.headLine),
+                        Text('+7 (777) 777-77-77', style: headLine),
                         const Gap(UIConstants.defaultGap2),
                         InkWell(
                             onTap: () {
                               context.pop();
                             },
-                            child: Text(S.current.change,
-                                style: context.theme.textStyles.headLine.copyWith(color: context.theme.blue))),
+                            child: Text(S.current.change, style: headLine.copyWith(color: context.theme.blue))),
                       ],
                     ),
                     const Gap(UIConstants.defaultGap2),
