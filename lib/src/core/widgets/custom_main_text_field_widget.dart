@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/enums/enums.dart';
@@ -10,9 +11,13 @@ class CustomMainTextFieldWidget extends StatefulWidget {
     super.key,
     required this.controller,
     required this.hintText,
+    this.keyboardType,
+    this.inputFormatters,
   });
   final TextEditingController controller;
   final String hintText;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<CustomMainTextFieldWidget> createState() =>
@@ -39,10 +44,12 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
             });
           },
           child: TextFormField(
+            inputFormatters: widget.inputFormatters,
             focusNode: focusNode,
             controller: widget.controller,
             cursorColor: context.theme.primary,
             style: headLine.copyWith(color: context.theme.primary),
+            keyboardType: widget.keyboardType,
             decoration: InputDecoration(
               hintText: widget.hintText,
               hintStyle: headLine.copyWith(color: context.theme.secondary),

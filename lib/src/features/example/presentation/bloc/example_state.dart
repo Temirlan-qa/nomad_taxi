@@ -1,9 +1,17 @@
 part of 'example_bloc.dart';
 
-abstract class ExampleState extends Equatable {
-  const ExampleState();  
-
-  @override
-  List<Object> get props => [];
+@freezed
+class ExampleState with _$ExampleState {
+  const factory ExampleState.initial() = _Initial;
+  const factory ExampleState.loading() = _Loading;
+  const factory ExampleState.loaded({
+    required ExampleStateViewModel viewModel,
+  }) = _Loaded;
 }
-class ExampleInitial extends ExampleState {}
+
+@freezed
+class ExampleStateViewModel with _$ExampleStateViewModel {
+  factory ExampleStateViewModel({
+    @Default([]) List selecteds,
+  }) = _ExampleStateViewModel;
+}

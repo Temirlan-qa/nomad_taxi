@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
@@ -18,9 +17,15 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final TextEditingController phoneController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String selectedRegionCode = '+7';
+  @override
+  void dispose() {
+    phoneController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,21 +42,26 @@ class _AuthPageState extends State<AuthPage> {
                 flex: 6,
                 child: Column(
                   children: [
-                    Text(S.current.your_phone, style: context.theme.textStyles.titleMain),
+                    Text(S.current.your_phone,
+                        style: context.theme.textStyles.titleMain),
                     const Gap(UIConstants.defaultGap2),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: UIConstants.defaultPadding2),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: UIConstants.defaultPadding2),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 15, 10, 0),
-                            child: Text(selectedRegionCode, style: context.theme.textStyles.headLine),
+                            child: Text(selectedRegionCode,
+                                style: context.theme.textStyles.headLine),
                           ),
+                          //TODO: add formatter
                           Expanded(
                             child: CustomMainTextFieldWidget(
                               controller: phoneController,
                               hintText: S.current.your_phone,
+                              keyboardType: TextInputType.number,
                             ),
                           ),
                         ],
@@ -71,7 +81,8 @@ class _AuthPageState extends State<AuthPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(S.current.your_region,
-                  style: context.theme.textStyles.body.copyWith(color: context.theme.secondary)),
+                  style: context.theme.textStyles.body
+                      .copyWith(color: context.theme.secondary)),
               const Gap(UIConstants.defaultGap1),
               CustomMainButtonWidget(
                 title: S.current.kz_with_flag,

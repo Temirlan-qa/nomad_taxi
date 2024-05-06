@@ -19,4 +19,19 @@ List<RouteBase> _routes() => <RouteBase>[
         path: RoutePaths.policy,
         builder: (_, __) => const PolicyPage(),
       ),
+      GoRoute(
+        name: RouteNames.error,
+        path: RoutePaths.error,
+        builder: (_, __) => const RouteErrorPage(),
+      ),
+      GoRoute(
+        name: RouteNames.main,
+        path: RoutePaths.main,
+        builder: (_, __) => const MainPage(),
+      ),
+      GoRoute(
+        name: RouteNames.aboutApp,
+        path: RoutePaths.aboutApp,
+        builder: (_, __) => const AboutAppPage(),
+      ),
     ];

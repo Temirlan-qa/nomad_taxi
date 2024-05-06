@@ -77,6 +77,16 @@ class $AssetsIconsGen {
   List<dynamic> get values => [prod, user];
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/card.png
+  AssetGenImage get card => const AssetGenImage('assets/images/card.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [card];
+}
+
 class $AssetsSplashGen {
   const $AssetsSplashGen();
 
@@ -436,6 +446,7 @@ class Assets {
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
 }
 
