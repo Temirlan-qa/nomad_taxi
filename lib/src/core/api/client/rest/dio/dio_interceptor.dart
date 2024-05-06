@@ -1,5 +1,6 @@
 part of 'dio_rest_client.dart';
 
+//TODO(tima): add full function of Interceptor
 class DioInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {

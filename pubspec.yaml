@@ -55,6 +55,14 @@ dependencies:
   # * Network and API
   # Http client
   dio: ^5.2.1+1
+  # Internet Connection Checker
+  internet_connection_checker: ^1.0.0+1
+  # Connectivity Checker
+  connectivity_plus: ^5.0.2
+  # Check Internet connection
+  check_vpn_connection: ^0.0.2
+  # Ping to server
+  dart_ping: ^9.0.1
 
   # * Development Utilities
   # Logging
@@ -62,14 +70,9 @@ dependencies:
   stack_trace: ^1.11.0
   # Crash Reporting
   sentry_flutter: ^7.10.1
-  # Helpers
-  pure: 0.2.0
-  collection: ^1.17.1
-
   # * Data Management
   path_provider: ^2.0.0
   path: ^1.8.2
-
 
   # * State Management
   # BLoC pattern
@@ -96,14 +99,8 @@ dependencies:
   equatable: ^2.0.5
   # UUID Generator
   uuid: ^3.0.4
-  # Internet Connection Checker
-  internet_connection_checker: ^1.0.0+1
-  # Connectivity Checker
-  connectivity_plus: ^5.0.2
-  # Check Internet connection
-  check_vpn_connection: ^0.0.2
-  # Ping to server
-  dart_ping: ^9.0.1
+
+  
   # Svg Images
   flutter_svg: ^2.0.5
   # pull_to_refresh: ^2.0.0
@@ -144,8 +141,6 @@ dev_dependencies:
   flutter_gen_runner: ^5.3.0
   # Injecting Dependencies
   injectable_generator: ^2.1.6
-  # Generate Drift Files
-  drift_dev: ^2.11.2
   # FFI gen
   ffigen: ^9.0.0
 
