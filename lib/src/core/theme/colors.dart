@@ -20,6 +20,7 @@ const _grey = Color.fromARGB(255, 117, 117, 117);
 const _lightGrey = Color.fromARGB(255, 240, 238, 238);
 const _semiLightGrey = Color.fromARGB(255, 185, 185, 185);
 const _transparent = Colors.transparent;
+const _kzColor = Color(0xFF00AEBD);
 
 extension ColorThemeDataExtension on ThemeData {
   Color get primary => _primary;
@@ -42,4 +43,5 @@ extension ColorThemeDataExtension on ThemeData {
   Color get lightGrey => _lightGrey;
   Color get semiLightGrey => _semiLightGrey;
   Color get transparent => _transparent;
+  Color get kzColor => _kzColor;
 }

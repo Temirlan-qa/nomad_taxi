@@ -14,7 +14,8 @@ class CustomMainButtonWidget extends StatelessWidget {
       this.prefixIcon,
       this.suffixIcon,
       this.isMain = true,
-      this.color});
+      this.color,
+      this.iconColor});
 
   final VoidCallback? onPressed;
   final String title;
@@ -22,29 +23,26 @@ class CustomMainButtonWidget extends StatelessWidget {
   final SvgGenImage? suffixIcon;
   final bool isMain;
   final Color? color;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: FilledButton(
-        style: isMain
-            ? null
-            : FilledButton.styleFrom(
-                foregroundColor: color ?? context.theme.primary, backgroundColor: context.theme.background),
-        onPressed: onPressed,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            MainButtonIconWidget(
-              icon: prefixIcon,
-              color: color,
-            ),
-            const Gap(UIConstants.defaultGap2),
-            MainButtonTextWidget(title: title),
-            const Gap(UIConstants.defaultGap2),
-            MainButtonIconWidget(icon: suffixIcon, color: color)
-          ],
-        ),
+    return FilledButton(
+      style: isMain
+          ? null
+          : FilledButton.styleFrom(
+              foregroundColor: color ?? context.theme.primary,
+              backgroundColor: context.theme.background),
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MainButtonIconWidget(icon: prefixIcon, color: iconColor),
+          const Gap(UIConstants.defaultGap2),
+          MainButtonTextWidget(title: title),
+          const Gap(UIConstants.defaultGap2),
+          MainButtonIconWidget(icon: suffixIcon, color: iconColor)
+        ],
       ),
     );
   }

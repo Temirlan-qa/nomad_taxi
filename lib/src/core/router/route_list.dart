@@ -34,4 +34,29 @@ List<RouteBase> _routes() => <RouteBase>[
         path: RoutePaths.aboutApp,
         builder: (_, __) => const AboutAppPage(),
       ),
+      GoRoute(
+        name: RouteNames.settings,
+        path: RoutePaths.settings,
+        builder: (_, __) => const SettingsPage(),
+      ),
+      GoRoute(
+        name: RouteNames.promoCode,
+        path: RoutePaths.promoCode,
+        builder: (_, __) => const PromoCodePage(),
+      ),
+      GoRoute(
+        name: RouteNames.promoCodeAdded,
+        path: RoutePaths.promoCodeAdded,
+        builder: (_, __) => const PromoCodeAddedPage(),
+      ),
+      GoRoute(
+        name: RouteNames.help,
+        path: RoutePaths.help,
+        builder: (_, __) => const HelpPage(),
+      ),
+      GoRoute(
+        name: RouteNames.myProfile,
+        path: RoutePaths.myProfile,
+        builder: (_, __) => const MyProfilePage(),
+      ),
     ];

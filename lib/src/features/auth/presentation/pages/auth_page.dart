@@ -7,6 +7,7 @@ import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_main_text_field_widget.dart';
+import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_select_country_modal_widget.dart';
 
 class AuthPage extends StatefulWidget {
@@ -74,32 +75,29 @@ class _AuthPageState extends State<AuthPage> {
           ),
         )),
       )),
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(UIConstants.defaultPadding),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(S.current.your_region,
-                  style: context.theme.textStyles.body
-                      .copyWith(color: context.theme.secondary)),
-              const Gap(UIConstants.defaultGap1),
-              CustomMainButtonWidget(
-                title: S.current.kz_with_flag,
-                onPressed: () {
-                  showRegionModal(context);
-                },
-                isMain: false,
-              ),
-              const Gap(UIConstants.defaultGap1),
-              CustomMainButtonWidget(
-                title: S.current.next,
-                onPressed: () {
-                  context.push(RoutePaths.codeConfirm);
-                },
-              ),
-            ],
-          ),
+      bottomNavigationBar: CustomMainBottomWidgets(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(S.current.your_region,
+                style: context.theme.textStyles.bodyMain
+                    .copyWith(color: context.theme.secondary)),
+            const Gap(UIConstants.defaultGap1),
+            CustomMainButtonWidget(
+              title: S.current.kz_with_flag,
+              onPressed: () {
+                showRegionModal(context);
+              },
+              isMain: false,
+            ),
+            const Gap(UIConstants.defaultGap1),
+            CustomMainButtonWidget(
+              title: S.current.next,
+              onPressed: () {
+                context.push(RoutePaths.codeConfirm);
+              },
+            ),
+          ],
         ),
       ),
     );

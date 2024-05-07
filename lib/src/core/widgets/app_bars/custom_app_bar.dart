@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String appBarText;
+  final String? appBarText;
   final TextStyle? textStyle;
   final Widget? leading;
   final double height;
   final Color? backgroundColor;
   final bool? centerTitle;
+  final List<Widget>? actions;
 
   const CustomAppBar({
     super.key,
-    required this.appBarText,
+    this.appBarText,
     this.backgroundColor,
     this.centerTitle,
+    this.actions,
     this.leading,
     this.textStyle,
     this.height = kToolbarHeight,
@@ -27,12 +29,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: backgroundColor ?? context.theme.white,
       leading: leading,
+      leadingWidth: 110,
       elevation: 0,
-      title: Text(
-        appBarText,
-        style: textStyle ?? TextStyle(color: context.theme.primary),
-      ),
+      title: appBarText != null
+          ? Text(
+              appBarText!,
+              style: textStyle ?? TextStyle(color: context.theme.primary),
+            )
+          : null,
       centerTitle: centerTitle ?? true,
+      actions: actions,
     );
   }
 }

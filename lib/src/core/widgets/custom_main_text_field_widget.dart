@@ -7,17 +7,20 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_text_field_border_widget.dart';
 
 class CustomMainTextFieldWidget extends StatefulWidget {
-  const CustomMainTextFieldWidget({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    this.keyboardType,
-    this.inputFormatters,
-  });
+  const CustomMainTextFieldWidget(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      this.keyboardType,
+      this.inputFormatters,
+      this.textFieldValidationState = TextFieldValidationState.none,
+      this.onChanged});
   final TextEditingController controller;
   final String hintText;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final TextFieldValidationState textFieldValidationState;
+  final ValueChanged? onChanged;
 
   @override
   State<CustomMainTextFieldWidget> createState() =>
@@ -28,8 +31,6 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
   final FocusNode focusNode = FocusNode();
 
   TextFieldFocusState textFieldFocusState = TextFieldFocusState.unfocused;
-  TextFieldValidationState textFieldValidationState =
-      TextFieldValidationState.none;
   @override
   Widget build(BuildContext context) {
     final headLine = context.theme.textStyles.headLine;
@@ -50,6 +51,7 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
             cursorColor: context.theme.primary,
             style: headLine.copyWith(color: context.theme.primary),
             keyboardType: widget.keyboardType,
+            onChanged: widget.onChanged,
             decoration: InputDecoration(
               hintText: widget.hintText,
               hintStyle: headLine.copyWith(color: context.theme.secondary),
@@ -65,18 +67,19 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
         ),
         CustomTextFieldBorderWidget(
             textFieldFocusState: textFieldFocusState,
-            textFieldValidationState: textFieldValidationState),
+            textFieldValidationState: widget.textFieldValidationState),
         const Gap(UIConstants.defaultGap2),
-        textFieldValidationState == TextFieldValidationState.none
+        widget.textFieldValidationState == TextFieldValidationState.none
             ? const Offstage()
             : Center(
                 child: Text(
                   //TODO: temp
                   '$textFieldFocusState',
-                  style: context.theme.textStyles.body.copyWith(
-                      color: focusNode.hasFocus
-                          ? context.theme.blue
-                          : context.theme.red),
+                  style: context.theme.textStyles.bodyMain.copyWith(
+                      color: widget.textFieldValidationState ==
+                              TextFieldValidationState.error
+                          ? context.theme.red
+                          : context.theme.green),
                 ),
               )
       ],

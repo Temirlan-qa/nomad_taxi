@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:maplibre_gl/maplibre_gl.dart';
-import 'package:nomad_taxi/gen/assets.gen.dart';
-import 'package:nomad_taxi/src/core/constants/api_constants.dart';
-import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/app_bars/transparent_app_bar.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer.dart';
+import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
+import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_widget.dart';
+import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_open_drawer_bottom_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -21,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+    // _getCurrentLocation();
   }
 
   _getCurrentLocation() async {
@@ -45,35 +42,46 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       key: _scaffoldKey,
-      drawer: const DrawerWidget(),
-      appBar: TransparentAppBar(
-        leading: GestureDetector(
-          onTap: () {
-            _scaffoldKey.currentState!.openDrawer();
-          },
-          child: Assets.icons.regular.barsSolid.svg(
-            color: context.theme.black,
-            width: 24,
-            height: 24,
-          ),
-        ),
-      ),
-      body: SizedBox(
-        child: Center(
-          child: MaplibreMap(
-            styleString:
-                "${ApiConstants.mapStyleUrl}?api_key=${ApiConstants.apiKey}",
-            myLocationEnabled: true,
-            initialCameraPosition: CameraPosition(
-              target: _currentPosition != null
-                  ? LatLng(
-                      _currentPosition!.latitude, _currentPosition!.longitude)
-                  : const LatLng(0.0, 0.0),
+      drawer: const CustomDrawerWidget(),
+      // appBar: TransparentAppBar(
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       _scaffoldKey.currentState!.openDrawer();
+      //     },
+      //     icon: Assets.icons.regular.barsSolid.svg(
+      //       colorFilter:
+      //           ColorFilter.mode(context.theme.primary, BlendMode.srcIn),
+      //       width: 24,
+      //       height: 24,
+      //     ),
+      //   ),
+      // ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              left: UIConstants.defaultPadding,
+              top: UIConstants.defaultPadding,
+              child: CustomOpenDrawerButtonWidget(scaffoldKey: _scaffoldKey),
             ),
-            trackCameraPosition: true,
-            attributionButtonPosition: AttributionButtonPosition.TopLeft,
-            annotationOrder: const [],
-          ),
+            const Center(
+                // child:
+                // MaplibreMap(
+                //   styleString:
+                //       "${ApiConstants.mapStyleUrl}?api_key=${ApiConstants.apiKey}",
+                //   myLocationEnabled: true,
+                //   initialCameraPosition: CameraPosition(
+                //     target: _currentPosition != null
+                //         ? LatLng(
+                //             _currentPosition!.latitude, _currentPosition!.longitude)
+                //         : const LatLng(0.0, 0.0),
+                //   ),
+                //   trackCameraPosition: true,
+                //   attributionButtonPosition: AttributionButtonPosition.TopLeft,
+                //   annotationOrder: const [],
+                // ),
+                ),
+          ],
         ),
       ),
     );
