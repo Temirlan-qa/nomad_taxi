@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_back_button_wrapper_widget.dart';
@@ -34,7 +35,11 @@ class _MyProfilePageState extends State<MyProfilePage> {
         actions: [
           TextButton.icon(
               onPressed: () {
-                showDeleteAccountModal(context);
+                //TODO: refactor auth route logic
+                while (context.canPop()) {
+                  context.pop();
+                }
+                context.pushReplacementNamed(RouteNames.auth);
               },
               style: TextButton.styleFrom(
                   foregroundColor: context.theme.red,
@@ -105,7 +110,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
           title: S.current.delete_account,
           isMain: false,
           color: context.theme.red,
-          onPressed: () {},
+          onPressed: () {
+            showDeleteAccountModal(context);
+          },
         ),
       ),
     );
