@@ -48,7 +48,7 @@ class CustomDrawerBottomWidgets extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Gap(UIConstants.defaultPadding),
+                  const Gap(UIConstants.defaultGap1),
                   Text(
                     '${S.current.version} 1.0',
                     style: context.theme.textStyles.bodySecondary

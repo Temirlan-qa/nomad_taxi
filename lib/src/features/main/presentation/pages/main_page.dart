@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:nomad_taxi/src/core/constants/api_constants.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_open_drawer_bottom_widget.dart';
@@ -64,23 +66,22 @@ class _MainPageState extends State<MainPage> {
               top: UIConstants.defaultPadding,
               child: CustomOpenDrawerButtonWidget(scaffoldKey: _scaffoldKey),
             ),
-            const Center(
-                // child:
-                // MaplibreMap(
-                //   styleString:
-                //       "${ApiConstants.mapStyleUrl}?api_key=${ApiConstants.apiKey}",
-                //   myLocationEnabled: true,
-                //   initialCameraPosition: CameraPosition(
-                //     target: _currentPosition != null
-                //         ? LatLng(
-                //             _currentPosition!.latitude, _currentPosition!.longitude)
-                //         : const LatLng(0.0, 0.0),
-                //   ),
-                //   trackCameraPosition: true,
-                //   attributionButtonPosition: AttributionButtonPosition.TopLeft,
-                //   annotationOrder: const [],
-                // ),
+            Center(
+              child: MaplibreMap(
+                styleString:
+                    "${ApiConstants.mapStyleUrl}?api_key=${ApiConstants.apiKey}",
+                myLocationEnabled: true,
+                initialCameraPosition: CameraPosition(
+                  target: _currentPosition != null
+                      ? LatLng(_currentPosition!.latitude,
+                          _currentPosition!.longitude)
+                      : const LatLng(0.0, 0.0),
                 ),
+                trackCameraPosition: true,
+                attributionButtonPosition: AttributionButtonPosition.TopLeft,
+                annotationOrder: const [],
+              ),
+            ),
           ],
         ),
       ),
