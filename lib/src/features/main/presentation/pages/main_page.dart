@@ -20,7 +20,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    // _getCurrentLocation();
+    _getCurrentLocation();
   }
 
   _getCurrentLocation() async {
@@ -33,14 +33,6 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Offline Map
-    // final bounds = LatLngBounds(
-    //   southwest: const LatLng(40.69, -74.03),
-    //   northeast: const LatLng(40.84, -73.86),
-    // );
-    // final regionDefinition = OfflineRegionDefinition(
-    //     bounds: bounds, mapStyleUrl: ApiConstants.mapStyleUrl, minZoom: 6, maxZoom: 14);
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       key: _scaffoldKey,
@@ -68,18 +60,18 @@ class _MainPageState extends State<MainPage> {
             ),
             Center(
               child: MaplibreMap(
-                styleString:
-                    "${ApiConstants.mapStyleUrl}?api_key=${ApiConstants.apiKey}",
+                styleString: ApiConstants.mapStyle,
                 myLocationEnabled: true,
                 initialCameraPosition: CameraPosition(
+                  zoom: 10,
                   target: _currentPosition != null
                       ? LatLng(_currentPosition!.latitude,
                           _currentPosition!.longitude)
-                      : const LatLng(0.0, 0.0),
+                      : const LatLng(43.238949, 76.889709),
                 ),
                 trackCameraPosition: true,
                 attributionButtonPosition: AttributionButtonPosition.TopLeft,
-                annotationOrder: const [],
+                //annotationOrder: const [],
               ),
             ),
           ],
