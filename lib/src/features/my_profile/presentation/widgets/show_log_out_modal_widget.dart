@@ -3,12 +3,13 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_modal_drag_widget.dart';
 
-class CustomDeleteAccountModalWidget extends StatelessWidget {
-  const CustomDeleteAccountModalWidget({
+class CustomLogOutModalWidget extends StatelessWidget {
+  const CustomLogOutModalWidget({
     super.key,
   });
 
@@ -23,29 +24,33 @@ class CustomDeleteAccountModalWidget extends StatelessWidget {
           children: [
             const CustomModalDragWidget(),
             const Gap(48),
-            Text(S.current.delete_account,
+            Text(S.current.you_want_exit,
                 style: context.theme.textStyles.titleMain),
             const Gap(UIConstants.defaultGap2),
             Flexible(
               child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
-                  child: Text(S.current.delete_account_desc,
+                  child: Text(S.current.you_want_exit_desc,
                       textAlign: TextAlign.center,
                       style: context.theme.textStyles.bodyMain
                           .copyWith(color: context.theme.secondary))),
             ),
             const Gap(48),
             CustomMainButtonWidget(
-              title: S.current.close,
+              title: S.current.stay,
               onPressed: () {
                 context.pop();
               },
             ),
             const Gap(UIConstants.defaultGap1),
             CustomMainButtonWidget(
-              title: S.current.delete_account,
+              title: S.current.log_out_account,
               onPressed: () {
-                context.pop();
+                // //TODO: refactor auth route logic
+                while (context.canPop()) {
+                  context.pop();
+                }
+                context.pushReplacementNamed(RouteNames.auth);
               },
               color: context.theme.red,
               isMain: false,

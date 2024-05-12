@@ -47,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "current_locale": MessageLookupByLibrary.simpleMessage("ru"),
         "delete_account":
             MessageLookupByLibrary.simpleMessage("Удалить аккаунт"),
+        "delete_account_desc": MessageLookupByLibrary.simpleMessage(
+            "Удаление не обратимо, все ваши данные будут потеряны"),
         "development_by":
             MessageLookupByLibrary.simpleMessage("Разработка компании"),
         "driver_canceled_order":
@@ -72,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Реферальная программа"),
         "refill_bonuses":
             MessageLookupByLibrary.simpleMessage("Пополнение бонусов"),
+        "save_changes":
+            MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "select_language": MessageLookupByLibrary.simpleMessage("Выбор языка"),
         "send_code_again":
             MessageLookupByLibrary.simpleMessage("Отправить код повторно"),
@@ -80,16 +84,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
         "sms_confirmation":
             MessageLookupByLibrary.simpleMessage("СМС подтверждение"),
+        "stay": MessageLookupByLibrary.simpleMessage("Остаться"),
         "support_service":
             MessageLookupByLibrary.simpleMessage("Служба поддержки"),
         "top_up_account":
             MessageLookupByLibrary.simpleMessage("Пополнить счет"),
+        "unsaved_changes": MessageLookupByLibrary.simpleMessage(
+            "Есть не сохраненные изменения"),
         "using_bonuses":
             MessageLookupByLibrary.simpleMessage("Использование бонусов"),
         "version": MessageLookupByLibrary.simpleMessage("Версия"),
         "write_appeal":
             MessageLookupByLibrary.simpleMessage("Написать обращение"),
         "you_get_bonus": m0,
+        "you_want_exit":
+            MessageLookupByLibrary.simpleMessage("Вы хотите выйти?"),
+        "you_want_exit_desc": MessageLookupByLibrary.simpleMessage(
+            "После выхода вы можете вернуться в свой аккаунт в любое время. Все ваши данные будут сохранены"),
         "your_account": MessageLookupByLibrary.simpleMessage("Ваш счет"),
         "your_name": MessageLookupByLibrary.simpleMessage("Ваше имя"),
         "your_phone": MessageLookupByLibrary.simpleMessage("Ваш телефон"),

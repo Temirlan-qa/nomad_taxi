@@ -549,6 +549,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Вы хотите выйти?`
+  String get you_want_exit {
+    return Intl.message(
+      'Вы хотите выйти?',
+      name: 'you_want_exit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `После выхода вы можете вернуться в свой аккаунт в любое время. Все ваши данные будут сохранены`
+  String get you_want_exit_desc {
+    return Intl.message(
+      'После выхода вы можете вернуться в свой аккаунт в любое время. Все ваши данные будут сохранены',
+      name: 'you_want_exit_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Остаться`
+  String get stay {
+    return Intl.message(
+      'Остаться',
+      name: 'stay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Удаление не обратимо, все ваши данные будут потеряны`
+  String get delete_account_desc {
+    return Intl.message(
+      'Удаление не обратимо, все ваши данные будут потеряны',
+      name: 'delete_account_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Есть не сохраненные изменения`
+  String get unsaved_changes {
+    return Intl.message(
+      'Есть не сохраненные изменения',
+      name: 'unsaved_changes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сохранить изменения`
+  String get save_changes {
+    return Intl.message(
+      'Сохранить изменения',
+      name: 'save_changes',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

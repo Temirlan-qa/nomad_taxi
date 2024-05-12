@@ -45,6 +45,12 @@ class _CustomPinCodeFieldWidgetState extends State<CustomPinCodeFieldWidget> {
   }
 
   @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Focus(
       onFocusChange: (value) => setState(() {}),

@@ -14,6 +14,7 @@ class CustomSelectLanguageModalWidget extends StatelessWidget {
     super.key,
   });
 
+//TODO: select languange finish
   getLanguage(String languageCode) {
     if ('ru' == languageCode) {
       return 'Русский';

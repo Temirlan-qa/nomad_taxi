@@ -32,6 +32,12 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
 
   TextFieldFocusState textFieldFocusState = TextFieldFocusState.unfocused;
   @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final headLine = context.theme.textStyles.headLine;
     return Column(
@@ -41,7 +47,7 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
             setState(() {
               value
                   ? textFieldFocusState = TextFieldFocusState.focused
-                  : TextFieldFocusState.unfocused;
+                  : textFieldFocusState = TextFieldFocusState.unfocused;
             });
           },
           child: TextFormField(
@@ -52,6 +58,18 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
             style: headLine.copyWith(color: context.theme.primary),
             keyboardType: widget.keyboardType,
             onChanged: widget.onChanged,
+            onTapOutside: (event) {
+              setState(() {
+                focusNode.unfocus();
+                textFieldFocusState = TextFieldFocusState.unfocused;
+              });
+            },
+            onEditingComplete: () {
+              setState(() {
+                focusNode.unfocus();
+                textFieldFocusState = TextFieldFocusState.unfocused;
+              });
+            },
             decoration: InputDecoration(
               hintText: widget.hintText,
               hintStyle: headLine.copyWith(color: context.theme.secondary),
