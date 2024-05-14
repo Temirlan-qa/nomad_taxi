@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
+import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_pin_code_text_field_widget.dart';
 
 class ConfirmCodePage extends StatefulWidget {
@@ -36,7 +36,8 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                 flex: 6,
                 child: Column(
                   children: [
-                    Text(S.current.sms_confirmation, style: context.theme.textStyles.titleMain),
+                    Text(S.current.sms_confirmation,
+                        style: context.theme.textStyles.titleMain),
                     const Gap(UIConstants.defaultGap2),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +48,9 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                             onTap: () {
                               context.pop();
                             },
-                            child: Text(S.current.change, style: headLine.copyWith(color: context.theme.blue))),
+                            child: Text(S.current.change,
+                                style: headLine.copyWith(
+                                    color: context.theme.blue))),
                       ],
                     ),
                     const Gap(UIConstants.defaultGap2),
@@ -59,26 +62,23 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
           ),
         )),
       )),
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(UIConstants.defaultPadding),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CustomMainButtonWidget(
-                title: S.current.send_code_again,
-                onPressed: () {},
-                isMain: false,
-              ),
-              const Gap(UIConstants.defaultGap1),
-              CustomMainButtonWidget(
-                title: S.current.next,
-                onPressed: () {
-                  context.pushNamed(RouteNames.policy);
-                },
-              ),
-            ],
-          ),
+      bottomNavigationBar: CustomMainBottomWidgets(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomMainButtonWidget(
+              title: S.current.send_code_again,
+              onPressed: () {},
+              isMain: false,
+            ),
+            const Gap(UIConstants.defaultGap1),
+            CustomMainButtonWidget(
+              title: S.current.next,
+              onPressed: () {
+                context.pushNamed(RouteNames.policy);
+              },
+            ),
+          ],
         ),
       ),
     );
