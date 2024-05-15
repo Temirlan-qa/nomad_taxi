@@ -28,6 +28,7 @@ class CustomDrawerProfileWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //TODO: temp
                   Text('Вася Пупкин',
                       style: context.theme.textStyles.titleSecondary),
                   const Gap(UIConstants.defaultGap1),

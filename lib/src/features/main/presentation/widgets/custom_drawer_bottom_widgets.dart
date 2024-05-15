@@ -36,9 +36,11 @@ class CustomDrawerBottomWidgets extends StatelessWidget {
                     children: [
                       Text(
                         'KZ',
-                        style: context.theme.textStyles.extraTitle.copyWith(
+                        style: context.theme.textStyles.titleMain.copyWith(
                             color: context.theme.kzColor,
-                            fontWeight: FontWeight.w800),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 24,
+                            height: 0.6),
                       ),
                       const Gap(4),
                       Text(
@@ -48,7 +50,7 @@ class CustomDrawerBottomWidgets extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Gap(UIConstants.defaultGap1),
+                  const Gap(UIConstants.defaultPadding),
                   Text(
                     '${S.current.version} 1.0',
                     style: context.theme.textStyles.bodySecondary

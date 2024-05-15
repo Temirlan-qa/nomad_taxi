@@ -28,8 +28,7 @@ class _HelpPageState extends State<HelpPage> {
               CustomBackButtonWrapperWidget(onPressed: () => context.pop())),
       body: SafeArea(
         child: ListView(
-          padding:
-              const EdgeInsets.only(top: 24, right: 36, left: 36, bottom: 24),
+          padding: const EdgeInsets.all(UIConstants.defaultPadding),
           physics: const BouncingScrollPhysics(),
           children: [
             Text(

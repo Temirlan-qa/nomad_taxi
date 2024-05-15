@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "current_locale": MessageLookupByLibrary.simpleMessage("kk"),
         "delete_account":
             MessageLookupByLibrary.simpleMessage("Есептік жазбаны жою"),
+        "delete_account_desc": MessageLookupByLibrary.simpleMessage(
+            "Жою қайтымсыз, сіздің барлық деректеріңіз жоғалады"),
         "development_by":
             MessageLookupByLibrary.simpleMessage("Компанияның дамуы"),
         "driver_canceled_order": MessageLookupByLibrary.simpleMessage(
@@ -74,20 +76,29 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Жолдама бағдарламасы"),
         "refill_bonuses":
             MessageLookupByLibrary.simpleMessage("Бонустарды толтыру"),
+        "save_changes":
+            MessageLookupByLibrary.simpleMessage("Өзгерістерді сақтау"),
         "select_language": MessageLookupByLibrary.simpleMessage("Тілді таңдау"),
         "send_code_again":
             MessageLookupByLibrary.simpleMessage("Кодты қайта жіберіңіз"),
         "settings": MessageLookupByLibrary.simpleMessage("Параметрлер"),
         "share_app": MessageLookupByLibrary.simpleMessage("Қолданбаны бөлісу"),
         "sms_confirmation": MessageLookupByLibrary.simpleMessage("SMS растау"),
+        "stay": MessageLookupByLibrary.simpleMessage("Қалу"),
         "support_service":
             MessageLookupByLibrary.simpleMessage("Қолдау қызметі"),
         "top_up_account": MessageLookupByLibrary.simpleMessage("Шотты толтыру"),
+        "unsaved_changes":
+            MessageLookupByLibrary.simpleMessage("Сақталмаған өзгерістер бар"),
         "using_bonuses":
             MessageLookupByLibrary.simpleMessage("Бонустарды пайдалану"),
         "version": MessageLookupByLibrary.simpleMessage("Нұсқа"),
         "write_appeal": MessageLookupByLibrary.simpleMessage("Өтініш жазу"),
         "you_get_bonus": m0,
+        "you_want_exit":
+            MessageLookupByLibrary.simpleMessage("Сіз шыққыңыз келе ме?"),
+        "you_want_exit_desc": MessageLookupByLibrary.simpleMessage(
+            "Шыққаннан кейін кез келген уақытта есептік жазбаңызға оралуға болады. Сіздің барлық деректеріңіз сақталады"),
         "your_account": MessageLookupByLibrary.simpleMessage("Сіздің шотыңыз"),
         "your_name": MessageLookupByLibrary.simpleMessage("Сіздің атыңыз"),
         "your_phone":

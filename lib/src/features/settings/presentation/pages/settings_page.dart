@@ -25,9 +25,7 @@ class _SettingsPageState extends State<SettingsPage> {
               CustomBackButtonWrapperWidget(onPressed: () => context.pop())),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.symmetric(
-              vertical: UIConstants.defaultGap3,
-              horizontal: UIConstants.defaultPadding2),
+          padding: const EdgeInsets.all(UIConstants.defaultPadding),
           physics: const BouncingScrollPhysics(),
           children: [
             Text(
@@ -42,12 +40,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     onTap: () {
                       showLanguageModal(context);
                     }),
-                CustomMainTileWidget(
-                  title: S.current.city,
-                  subTitle: 'Байконур',
-                  onTap: () {},
-                  showUnderline: false,
-                ),
+                //TODO: city is temp
+                // CustomMainTileWidget(
+                //   title: S.current.city,
+                //   subTitle: 'Байконур',
+                //   onTap: () {},
+                //   showUnderline: false,
+                // ),
               ],
             )
           ],

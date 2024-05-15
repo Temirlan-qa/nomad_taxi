@@ -33,8 +33,7 @@ class _PromoCodePageState extends State<PromoCodePage> {
         child: Form(
           key: formKey,
           child: ListView(
-            padding:
-                const EdgeInsets.only(top: 24, right: 36, left: 36, bottom: 24),
+            padding: const EdgeInsets.all(UIConstants.defaultPadding),
             physics: const BouncingScrollPhysics(),
             children: [
               Text(
@@ -61,7 +60,7 @@ class _PromoCodePageState extends State<PromoCodePage> {
           onPressed: !promoCodeController.text.contains(promo)
               ? null
               : () {
-                  context.push(RoutePaths.promoCodeAdded);
+                  context.pushReplacementNamed(RoutePaths.promoCodeAdded);
                 },
         ),
       ),
