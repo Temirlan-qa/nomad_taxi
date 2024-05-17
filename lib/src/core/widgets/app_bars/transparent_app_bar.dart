@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nomad_taxi/src/core/theme/theme.dart';
 
 class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
@@ -13,17 +12,9 @@ class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   AppBar build(BuildContext context) {
     return AppBar(
-      elevation: 0,
-      leading: Container(
-        padding: const EdgeInsets.all(6),
-        margin: const EdgeInsets.symmetric(horizontal: 6),
-        width: 48,
-        height: 48,
-        decoration:
-            BoxDecoration(shape: BoxShape.circle, color: context.theme.white),
-        child: leading,
-      ),
-      backgroundColor: context.theme.transparent,
+      elevation: 0.0,
+      leading: leading,
+      backgroundColor: Colors.transparent,
     );
   }
 
