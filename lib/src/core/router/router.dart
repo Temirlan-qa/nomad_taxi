@@ -6,7 +6,7 @@ import 'package:nomad_taxi/src/features/auth/presentation/pages/confirm_code_pag
 import 'package:nomad_taxi/src/features/auth/presentation/pages/policy_page.dart';
 import 'package:nomad_taxi/src/features/help/presentation/pages/help_page.dart';
 import 'package:nomad_taxi/src/features/main/presentation/pages/main_page.dart';
-import 'package:nomad_taxi/src/features/my_profile/presentation/pages/my_profile_page.dart';
+import 'package:nomad_taxi/src/features/profile/presentation/pages/my_profile_page.dart';
 import 'package:nomad_taxi/src/features/promo_code/presentation/pages/promo_code_added_page.dart';
 import 'package:nomad_taxi/src/features/promo_code/presentation/pages/promo_code_page.dart';
 import 'package:nomad_taxi/src/features/settings/presentation/pages/settings_page.dart';
