@@ -7,7 +7,7 @@ import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_back_button_wrapper_widget.dart';
-import 'package:nomad_taxi/src/features/driver_orders%20copy/presentation/widgets/show_info_bonus_modal_widget.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/show_info_bonus_modal_widget.dart';
 import 'package:nomad_taxi/src/features/driver_orders/presentation/widgets/check_mark_indicator.dart';
 import 'package:nomad_taxi/src/features/driver_orders/presentation/widgets/show_order_modal_widget.dart';
 
