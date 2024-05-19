@@ -1,8 +1,8 @@
-// ignore_for_file: constant_pattern_never_matches_value_type
-
 import 'package:dio/dio.dart';
 
 class DioExceptions implements Exception {
+  late String message;
+
   DioExceptions.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.cancel:
@@ -21,44 +21,43 @@ class DioExceptions implements Exception {
         );
         break;
       case DioExceptionType.sendTimeout:
-        message = 'sendTimeout';
+        message = 'receiveTimeout';
         break;
       case DioExceptionType.unknown:
         if (dioError.message == null) {
-          message = 'unexpected Error';
+          message = 'unexpectedError';
           break;
         }
 
         if (dioError.message!.contains('SocketException')) {
-          message = 'no Internet Connection';
+          message = 'noInternetConnection';
           break;
         }
 
-        message = 'unexpected Error';
+        message = 'unexpectedError';
         break;
       default:
-        message = 'unexpected Error';
+        message = 'unexpectedError';
         break;
     }
   }
-  late String message;
 
-  String _handleError(int? statusCode, Error error) {
+  String _handleError(int? statusCode, error) {
     switch (statusCode) {
       case 400:
-        return '$statusCode badRequest';
+        return 'badRequest';
       case 401:
-        return '$statusCode unauthorized';
+        return 'unauthorized';
       case 403:
-        return '$statusCode forbidden';
+        return 'forbidden';
       case 404:
-        return '$statusCode $error';
+        return error['message'];
       case 500:
-        return '$statusCode internal Server Error';
+        return 'internalServerError';
       case 502:
-        return '$statusCode badGateway';
+        return 'badGateway';
       default:
-        return '$statusCode unexpected Error';
+        return 'unexpectedError';
     }
   }
 

@@ -80,11 +80,14 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/car.png
+  AssetGenImage get car => const AssetGenImage('assets/images/car.png');
+
   /// File path: assets/images/card.png
   AssetGenImage get card => const AssetGenImage('assets/images/card.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [card];
+  List<AssetGenImage> get values => [car, card];
 }
 
 class $AssetsSplashGen {

@@ -55,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_the_order":
             MessageLookupByLibrary.simpleMessage("Тапсырыстан бас тарту"),
         "car_data": MessageLookupByLibrary.simpleMessage("Машина деректері"),
+        "car_info_hint_text": MessageLookupByLibrary.simpleMessage(
+            "Үтір арқылы келесі ретпен теріңіз:\nТүсі, маркасы, моделі (кузовы)"),
         "change": MessageLookupByLibrary.simpleMessage("өзгерту"),
         "change_language":
             MessageLookupByLibrary.simpleMessage("Тілді өзгерту"),
@@ -81,6 +83,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "driver_canceled_order": MessageLookupByLibrary.simpleMessage(
             "Жүргізуші тапсырыстан бас тартты"),
         "driver_mode": MessageLookupByLibrary.simpleMessage("Жүргізуші режимі"),
+        "driver_mode_intro_header1": MessageLookupByLibrary.simpleMessage(
+            "Жүргізуші режиміне қош келдіңіз 👋"),
+        "driver_mode_intro_header2": MessageLookupByLibrary.simpleMessage(
+            "Адамдарды тасымалдаңыз, қала ішінде пакеттерді жеткізу тапсырыстарын орындаңыз және ақша табыңыз"),
+        "driver_mode_intro_header3": MessageLookupByLibrary.simpleMessage(
+            "Бірақ жұмысты бастамас бұрын клиенттер сізді анықтай алатындай етіп сіздің машинаңыздың мәліметтерін енгізуіңізді сұраймыз."),
+        "driver_mode_intro_header4":
+            MessageLookupByLibrary.simpleMessage("Сапарыңыз сәтті өтсін =)"),
+        "enter_car_number":
+            MessageLookupByLibrary.simpleMessage("Нөмірді енгізіңіз"),
+        "enter_driver_info":
+            MessageLookupByLibrary.simpleMessage("Жүргізуші деректерін енгізу"),
+        "enter_info":
+            MessageLookupByLibrary.simpleMessage("Ақпаратты енгізіңіз"),
         "enter_promoCode":
             MessageLookupByLibrary.simpleMessage("Жарнамалық кодты енгізіңіз"),
         "exit_mode": MessageLookupByLibrary.simpleMessage("Режимнен шығу"),

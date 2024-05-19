@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_driver_button_widget.dart';
 
@@ -22,7 +24,9 @@ class CustomDrawerBottomWidgets extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             CustomDriverButtonWidget(
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed(RouteNames.driverModeIntro);
+              },
               isDriverMode: false,
             ),
             const Gap(UIConstants.defaultGap3),

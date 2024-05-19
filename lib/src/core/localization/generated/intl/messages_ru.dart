@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_the_order":
             MessageLookupByLibrary.simpleMessage("Отменить заказ"),
         "car_data": MessageLookupByLibrary.simpleMessage("Данные машины"),
+        "car_info_hint_text": MessageLookupByLibrary.simpleMessage(
+            "Введите в следующем порядке через запятую:\nЦвет, Марка, Модель (кузов)"),
         "change": MessageLookupByLibrary.simpleMessage("изменить"),
         "change_language": MessageLookupByLibrary.simpleMessage("Смена языка"),
         "city": MessageLookupByLibrary.simpleMessage("Город"),
@@ -78,6 +80,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "driver_canceled_order":
             MessageLookupByLibrary.simpleMessage("Водитель отменил заказ"),
         "driver_mode": MessageLookupByLibrary.simpleMessage("Режим водителя"),
+        "driver_mode_intro_header1": MessageLookupByLibrary.simpleMessage(
+            "Добро пожаловать в режим водителя 👋"),
+        "driver_mode_intro_header2": MessageLookupByLibrary.simpleMessage(
+            "Возите людей, выполняйте заказы на доставки посылок внутри города и зарабатывайте деньги"),
+        "driver_mode_intro_header3": MessageLookupByLibrary.simpleMessage(
+            "Но перед началом работы просим вас внесити данные вашей машины, чтобы клиенты могли определить вас."),
+        "driver_mode_intro_header4":
+            MessageLookupByLibrary.simpleMessage("Удачной поездки =)"),
+        "enter_car_number":
+            MessageLookupByLibrary.simpleMessage("Введите номер"),
+        "enter_driver_info":
+            MessageLookupByLibrary.simpleMessage("Внести данные водителя"),
+        "enter_info":
+            MessageLookupByLibrary.simpleMessage("Введите информацию"),
         "enter_promoCode":
             MessageLookupByLibrary.simpleMessage("Введите промокод"),
         "exit_mode": MessageLookupByLibrary.simpleMessage("Выйти из режима"),

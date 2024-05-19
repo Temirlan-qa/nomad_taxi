@@ -15,7 +15,7 @@ class CustomDrawerProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed(RouteNames.myProfile);
+        context.pushNamed(RouteNames.profile);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: UIConstants.defaultGap2),

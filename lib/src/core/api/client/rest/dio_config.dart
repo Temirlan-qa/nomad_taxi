@@ -1,4 +1,4 @@
-part of 'dio_rest_client.dart';
+part of 'dio_client.dart';
 
 class DioConfigurations {
   // * dio default configurations

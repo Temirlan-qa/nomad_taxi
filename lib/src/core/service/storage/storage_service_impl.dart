@@ -1,21 +1,9 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-abstract class StorageService {
-  Future<void> setToken(String? token);
-  Future<void> setLanguageCode(String token);
-  String? getToken();
-  String? getRefreshToken();
-  String? getLanguageCode();
-  Future<void> clear();
-  Future<void> init();
-  Future<void> openBox();
-  bool checkLoggedIn();
-  bool get isLoggedIn;
-
-  set isLoggedIn(bool status);
-}
+import 'storage_service.dart';
 
 class StorageServiceImpl implements StorageService {
+  // TODO: add singolton to this service
   static const String _tokenKey = 'TOKEN';
   static const String _refreshTokenKey = 'REFRESH_TOKEN';
   static const String _languageCode = 'LANGUAGE_CODE';
@@ -36,6 +24,11 @@ class StorageServiceImpl implements StorageService {
   @override
   String? getToken() {
     return hiveBox.get(_tokenKey);
+  }
+
+  @override
+  Future<void> deleteToken() {
+    return hiveBox.delete(_tokenKey);
   }
 
   @override

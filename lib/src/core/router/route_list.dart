@@ -55,9 +55,9 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, __) => const HelpPage(),
       ),
       GoRoute(
-        name: RouteNames.myProfile,
-        path: RoutePaths.myProfile,
-        builder: (_, __) => const MyProfilePage(),
+        name: RouteNames.profile,
+        path: RoutePaths.profile,
+        builder: (_, __) => const ProfilePage(),
       ),
       GoRoute(
         name: RouteNames.driverOrders,
@@ -74,4 +74,14 @@ List<RouteBase> _routes() => <RouteBase>[
         path: RoutePaths.orderFinished,
         builder: (_, __) => const OrderFinishedPage(),
       ),
+      GoRoute(
+        name: RouteNames.driverModeIntro,
+        path: RoutePaths.driverModeIntro,
+        builder: (_, __) => const DriverModeIntroPage(),
+      ),
+      GoRoute(
+        name: RouteNames.enterDriverInfo,
+        path: RoutePaths.enterDriverInfo,
+        builder: (_, __) => const EnterDriverInfoPage(),
+      )
     ];
