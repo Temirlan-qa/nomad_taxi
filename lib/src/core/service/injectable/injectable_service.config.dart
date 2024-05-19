@@ -16,9 +16,19 @@ import '../../../features/profile/data/datasources/remote/i_profile_remote.dart'
     as _i5;
 import '../../../features/profile/data/datasources/remote/radionets_remote_impl.dart'
     as _i6;
+import '../../../features/profile/data/repositories/profile_repository_impl.dart'
+    as _i8;
+import '../../../features/profile/domain/repositories/i_profile_remote.dart'
+    as _i7;
+import '../../../features/profile/domain/usecases/delete_account_use_case.dart'
+    as _i12;
+import '../../../features/profile/domain/usecases/log_out_use_case.dart'
+    as _i10;
+import '../../../features/profile/domain/usecases/update_user_info_use_case.dart'
+    as _i11;
 import '../../api/client/rest/dio_client.dart' as _i4;
 import '../../utils/helpers/connectivity_helper.dart' as _i3;
-import '../../utils/helpers/isolate_manager.dart' as _i7;
+import '../../utils/helpers/isolate_manager.dart' as _i9;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -43,7 +53,19 @@ extension GetItInjectableX on _i1.GetIt {
       () => _i6.ProfileRemoteImpl(gh<_i4.DioRestClient>()),
       instanceName: 'ProfileRemoteImpl',
     );
-    gh.singleton<_i7.IsolateManager>(_i7.IsolateManager());
+    gh.lazySingleton<_i7.IProfileRepository>(
+      () => _i8.ProfileRepositoryImpl(
+          gh<_i5.IProfileRemote>(instanceName: 'ProfileRemoteImpl')),
+      instanceName: 'ProfileRepositoryImpl',
+    );
+    gh.singleton<_i9.IsolateManager>(_i9.IsolateManager());
+    gh.lazySingleton<_i10.LogOutUseCase>(() => _i10.LogOutUseCase(
+        gh<_i7.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
+    gh.lazySingleton<_i11.UpdateUserInfoUseCase>(() =>
+        _i11.UpdateUserInfoUseCase(
+            gh<_i7.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
+    gh.lazySingleton<_i12.DeleteAccountUseCase>(() => _i12.DeleteAccountUseCase(
+        gh<_i7.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
     return this;
   }
 }

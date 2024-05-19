@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
+import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
+import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/delete_account_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/log_out_use_case.dart';
@@ -67,5 +69,11 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
       phone: event.phone,
     );
     final result = await _updateUserInfoUseCase.call(request);
+  }
+
+  @override
+  Future<void> close() {
+    getIt.resetBloc(this);
+    return super.close();
   }
 }
