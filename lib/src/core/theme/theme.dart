@@ -20,8 +20,9 @@ class MaterialAppTheme {
         modalBackgroundColor: _white,
         backgroundColor: _white,
         surfaceTintColor: _white,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(UIConstants.defaultGap3)))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+                top: Radius.circular(UIConstants.defaultGap3)))),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
           elevation: 0,
@@ -31,7 +32,8 @@ class MaterialAppTheme {
           foregroundColor: _white,
           disabledBackgroundColor: _background,
           disabledForegroundColor: _secondary,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIConstants.defaultRadius))),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(UIConstants.defaultRadius))),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
