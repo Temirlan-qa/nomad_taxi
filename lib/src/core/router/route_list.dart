@@ -55,8 +55,8 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, __) => const HelpPage(),
       ),
       GoRoute(
-        name: RouteNames.myProfile,
-        path: RoutePaths.myProfile,
-        builder: (_, __) => const MyProfilePage(),
+        name: RouteNames.profile,
+        path: RoutePaths.profile,
+        builder: (_, __) => const ProfilePage(),
       ),
     ];

@@ -12,5 +12,5 @@ class RouteNames {
   static const String promoCode = 'promoCode';
   static const String promoCodeAdded = 'promoCodeAdded';
   static const String help = 'help';
-  static const String myProfile = 'myProfile';
+  static const String profile = 'profile';
 }
