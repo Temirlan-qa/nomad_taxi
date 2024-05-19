@@ -34,7 +34,7 @@ class CustomInfoModalWidget extends StatelessWidget {
             Text(S.current.answer_dev,
                 style: context.theme.textStyles.bodySecondary
                     .copyWith(color: context.theme.secondary)),
-            const Gap(4),
+            const Gap(UIConstants.defaultGap5),
             Text('от 17 марта 2024 г.',
                 style: context.theme.textStyles.headLine
                     .copyWith(color: context.theme.secondary)),

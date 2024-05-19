@@ -101,7 +101,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     isValChanged = true;
                   }),
                 ),
-                const Gap(6),
+                const Gap(UIConstants.defaultGap7),
                 Text(
                   S.current.your_surname,
                   style: context.theme.textStyles.bodyMain
@@ -114,7 +114,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     isValChanged = true;
                   }),
                 ),
-                const Gap(6),
+                const Gap(UIConstants.defaultGap7),
                 Text(
                   S.current.phone_number,
                   style: context.theme.textStyles.bodyMain

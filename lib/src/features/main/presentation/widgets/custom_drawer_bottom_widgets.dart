@@ -42,7 +42,7 @@ class CustomDrawerBottomWidgets extends StatelessWidget {
                             fontSize: 24,
                             height: 0.6),
                       ),
-                      const Gap(4),
+                      const Gap(UIConstants.defaultGap5),
                       Text(
                         S.current.made_kazakhstan,
                         style: context.theme.textStyles.bodySecondary

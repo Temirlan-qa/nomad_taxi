@@ -23,7 +23,7 @@ class CustomLogOutModalWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const CustomModalDragWidget(),
-            const Gap(48),
+            const Gap(UIConstants.defaultGap6),
             Text(S.current.you_want_exit,
                 style: context.theme.textStyles.titleMain),
             const Gap(UIConstants.defaultGap2),
@@ -35,7 +35,7 @@ class CustomLogOutModalWidget extends StatelessWidget {
                       style: context.theme.textStyles.bodyMain
                           .copyWith(color: context.theme.secondary))),
             ),
-            const Gap(48),
+            const Gap(UIConstants.defaultGap6),
             CustomMainButtonWidget(
               title: S.current.stay,
               onPressed: () {

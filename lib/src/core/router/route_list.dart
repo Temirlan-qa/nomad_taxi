@@ -59,4 +59,19 @@ List<RouteBase> _routes() => <RouteBase>[
         path: RoutePaths.myProfile,
         builder: (_, __) => const MyProfilePage(),
       ),
+      GoRoute(
+        name: RouteNames.driverOrders,
+        path: RoutePaths.driverOrders,
+        builder: (_, __) => const DriverOrdersPage(),
+      ),
+      GoRoute(
+        name: RouteNames.order,
+        path: RoutePaths.order,
+        builder: (_, __) => const OrderPage(),
+      ),
+      GoRoute(
+        name: RouteNames.orderFinished,
+        path: RoutePaths.orderFinished,
+        builder: (_, __) => const OrderFinishedPage(),
+      ),
     ];

@@ -39,7 +39,11 @@ class CustomMainButtonWidget extends StatelessWidget {
         children: [
           MainButtonIconWidget(icon: prefixIcon, color: iconColor),
           const Gap(UIConstants.defaultGap2),
-          MainButtonTextWidget(title: title),
+          MainButtonTextWidget(
+            title: title,
+            color:
+                isMain ? context.theme.white : color ?? context.theme.primary,
+          ),
           const Gap(UIConstants.defaultGap2),
           MainButtonIconWidget(icon: suffixIcon, color: iconColor)
         ],

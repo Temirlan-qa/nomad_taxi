@@ -22,7 +22,7 @@ class CustomDeleteAccountModalWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const CustomModalDragWidget(),
-            const Gap(48),
+            const Gap(UIConstants.defaultGap6),
             Text(S.current.delete_account,
                 style: context.theme.textStyles.titleMain),
             const Gap(UIConstants.defaultGap2),
@@ -34,7 +34,7 @@ class CustomDeleteAccountModalWidget extends StatelessWidget {
                       style: context.theme.textStyles.bodyMain
                           .copyWith(color: context.theme.secondary))),
             ),
-            const Gap(48),
+            const Gap(UIConstants.defaultGap6),
             CustomMainButtonWidget(
               title: S.current.close,
               onPressed: () {
