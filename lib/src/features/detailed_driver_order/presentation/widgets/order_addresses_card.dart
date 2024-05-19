@@ -7,11 +7,11 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 class OrderAddressesCard extends StatelessWidget {
   const OrderAddressesCard({
     super.key,
-    required this.lableStyle,
+    required this.labelStyle,
     required this.titleStyle,
   });
 
-  final TextStyle lableStyle;
+  final TextStyle labelStyle;
   final TextStyle titleStyle;
 
   @override
@@ -28,15 +28,15 @@ class OrderAddressesCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(S.current.where_from, style: lableStyle),
+              Text(S.current.where_from, style: labelStyle),
               const Gap(UIConstants.defaultGap5),
               Text('Титова 14', style: titleStyle),
               const Gap(UIConstants.defaultGap2),
-              Text(S.current.where, style: lableStyle),
+              Text(S.current.where, style: labelStyle),
               const Gap(UIConstants.defaultGap5),
               Text('Королева 12', style: titleStyle),
               const Gap(UIConstants.defaultGap2),
-              Text(S.current.comments, style: lableStyle),
+              Text(S.current.comments, style: labelStyle),
               const Gap(UIConstants.defaultGap5),
               Text('2 подъезд, 28 квартира', style: titleStyle),
             ],

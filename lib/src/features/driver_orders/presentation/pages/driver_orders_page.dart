@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_back_button_wrapper_widget.dart';
@@ -50,7 +51,9 @@ class DriverOrdersPage extends StatelessWidget {
             },
             itemBuilder: (ctx, index) {
               return InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.push(RoutePaths.order);
+                },
                 borderRadius: BorderRadius.circular(UIConstants.defaultRadius),
                 child: Ink(
                   padding: const EdgeInsets.all(UIConstants.defaultPadding),

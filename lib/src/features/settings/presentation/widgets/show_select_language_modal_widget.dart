@@ -50,6 +50,7 @@ class CustomSelectLanguageModalWidget extends StatelessWidget {
                     title: getLanguage(languageCode),
                     onTap: () async {
                       await st.setLanguageCode(languageCode);
+
                       await S
                           .load(Locale.fromSubtags(languageCode: languageCode))
                           .then((value) => context.pop());

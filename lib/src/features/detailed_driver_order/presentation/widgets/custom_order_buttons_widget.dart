@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
 
@@ -27,7 +29,9 @@ class CustomOrderButtonsWidget extends StatelessWidget {
         const Gap(UIConstants.defaultGap2),
         CustomMainButtonWidget(
           title: S.current.arrived_call_point,
-          onPressed: () {},
+          onPressed: () {
+            context.push(RoutePaths.orderFinished);
+          },
         ),
         const Gap(UIConstants.defaultGap1),
         CustomMainButtonWidget(
