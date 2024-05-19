@@ -73,7 +73,7 @@ class DriverModeIntroPage extends StatelessWidget {
         child: CustomMainButtonWidget(
           title: S.current.enter_driver_info,
           onPressed: () {
-            context.go(RoutePaths.enterDriverInfo);
+            context.push(RoutePaths.enterDriverInfo);
           },
         ),
       ),

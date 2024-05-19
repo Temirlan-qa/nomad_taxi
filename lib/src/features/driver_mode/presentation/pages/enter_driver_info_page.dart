@@ -15,6 +15,7 @@ class EnterDriverInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController carNumber = TextEditingController();
+    TextEditingController carInfo = TextEditingController();
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -85,7 +86,7 @@ class EnterDriverInfoPage extends StatelessWidget {
             ),
             child: TextField(
               textAlign: TextAlign.left,
-              controller: carNumber,
+              controller: carInfo,
               style: context.theme.textStyles.headLine.copyWith(
                 color: context.theme.primary,
               ),
