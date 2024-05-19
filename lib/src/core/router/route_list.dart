@@ -59,4 +59,14 @@ List<RouteBase> _routes() => <RouteBase>[
         path: RoutePaths.profile,
         builder: (_, __) => const ProfilePage(),
       ),
+      GoRoute(
+        name: RouteNames.driverModeIntro,
+        path: RoutePaths.driverModeIntro,
+        builder: (_, __) => const DriverModeIntroPage(),
+      ),
+      GoRoute(
+        name: RouteNames.enterDriverInfo,
+        path: RoutePaths.enterDriverInfo,
+        builder: (_, __) => const EnterDriverInfoPage(),
+      )
     ];
