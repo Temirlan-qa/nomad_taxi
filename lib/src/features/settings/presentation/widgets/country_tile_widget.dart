@@ -25,10 +25,13 @@ class CountryTileWidget extends StatelessWidget {
         decoration: showUnderline
             ? BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(
-                        strokeAlign: BorderSide.strokeAlignInside,
-                        width: 1,
-                        color: context.theme.stroke)))
+                  bottom: BorderSide(
+                    strokeAlign: BorderSide.strokeAlignInside,
+                    width: 1,
+                    color: context.theme.stroke,
+                  ),
+                ),
+              )
             : null,
         child: Row(
           children: [

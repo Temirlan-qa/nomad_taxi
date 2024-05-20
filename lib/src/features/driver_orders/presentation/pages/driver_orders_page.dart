@@ -22,10 +22,11 @@ class DriverOrdersPage extends StatelessWidget {
         leading: BackButtonWrapper(onPressed: () => context.pop()),
         actions: [
           Assets.icons.solid.clockSolid.svg(
-              height: 18,
-              width: 18,
-              colorFilter:
-                  ColorFilter.mode(context.theme.secondary, BlendMode.srcIn)),
+            height: 18,
+            width: 18,
+            colorFilter:
+                ColorFilter.mode(context.theme.secondary, BlendMode.srcIn),
+          ),
           const Gap(UIConstants.defaultGap7),
           Text(
             '${S.current.on_line} 18:00',
@@ -140,7 +141,7 @@ class DriverOrdersPage extends StatelessWidget {
     );
   }
 
-  void showInfoBounsModal(BuildContext context) {
+  void showInfoBonusModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
