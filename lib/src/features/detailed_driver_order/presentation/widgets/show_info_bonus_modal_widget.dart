@@ -5,8 +5,8 @@ import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_modal_drag_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/modal_drag_widget.dart';
 
 class CustomInfoBonusModalWidget extends StatelessWidget {
   const CustomInfoBonusModalWidget({super.key});
@@ -20,7 +20,7 @@ class CustomInfoBonusModalWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CustomModalDragWidget(),
+            const ModalDragWidget(),
             const Gap(UIConstants.defaultGap3),
             Assets.icons.brand.main.svg(),
             const Gap(UIConstants.defaultPadding),

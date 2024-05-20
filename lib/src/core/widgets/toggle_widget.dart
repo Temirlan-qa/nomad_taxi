@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 
-class CustomMainCheckWidget extends StatelessWidget {
-  const CustomMainCheckWidget(
-      {super.key, required this.value, required this.onPressed});
+class ToggleWidget extends StatelessWidget {
+  const ToggleWidget({super.key, required this.value, required this.onPressed});
 
   final bool value;
   final VoidCallback onPressed;

@@ -11,9 +11,9 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_back_button_wrapper_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_text_field_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
 import '../widgets/show_modal_widget.dart';
@@ -57,8 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
       builder: (context, state, bloc) {
         return Scaffold(
           appBar: CustomAppBar(
-            leading:
-                CustomBackButtonWrapperWidget(onPressed: () => context.pop()),
+            leading: BackButtonWrapper(onPressed: () => context.pop()),
             actions: [
               TextButton.icon(
                   onPressed: () {
@@ -119,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: context.theme.textStyles.bodyMain
                           .copyWith(color: context.theme.secondary),
                     ),
-                    CustomMainTextFieldWidget(
+                    TextFieldWidget(
                       controller: nameController,
                       hintText: S.current.your_name,
                       onChanged: (value) => setState(() {
@@ -132,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: context.theme.textStyles.bodyMain
                           .copyWith(color: context.theme.secondary),
                     ),
-                    CustomMainTextFieldWidget(
+                    TextFieldWidget(
                       controller: surnameController,
                       hintText: S.current.your_surname,
                       onChanged: (value) => setState(() {
@@ -145,7 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: context.theme.textStyles.bodyMain
                           .copyWith(color: context.theme.secondary),
                     ),
-                    CustomMainTextFieldWidget(
+                    TextFieldWidget(
                       controller: phoneController,
                       hintText: S.current.phone_number,
                       onChanged: (value) => setState(() {

@@ -5,8 +5,8 @@ import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_check_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/toggle_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
 class PolicyPage extends StatefulWidget {
@@ -56,7 +56,7 @@ class _PolicyPageState extends State<PolicyPage> {
                   Expanded(
                       child: Text(S.current.agree_wit_privacy_policy,
                           style: context.theme.textStyles.headLine)),
-                  CustomMainCheckWidget(
+                  ToggleWidget(
                     value: isAgreeWithPolicy,
                     onPressed: () {
                       setState(() {

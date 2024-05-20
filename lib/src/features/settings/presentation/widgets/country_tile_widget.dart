@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_check_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/toggle_widget.dart';
 
 class CountryTileWidget extends StatelessWidget {
   final String title;
@@ -32,7 +32,7 @@ class CountryTileWidget extends StatelessWidget {
             : null,
         child: Row(
           children: [
-            CustomMainCheckWidget(value: isSelected, onPressed: onTap),
+            ToggleWidget(value: isSelected, onPressed: onTap),
             Text(title, style: context.theme.textStyles.headLine)
           ],
         ),

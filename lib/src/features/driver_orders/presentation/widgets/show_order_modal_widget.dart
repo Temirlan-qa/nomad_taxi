@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_modal_drag_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/modal_drag_widget.dart';
 
 class CustomOrderModalWidget extends StatelessWidget {
   const CustomOrderModalWidget({super.key});
@@ -19,7 +19,7 @@ class CustomOrderModalWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomModalDragWidget(),
+            const ModalDragWidget(),
             const Gap(UIConstants.defaultGap3),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

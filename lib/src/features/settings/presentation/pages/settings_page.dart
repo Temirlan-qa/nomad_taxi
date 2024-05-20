@@ -5,8 +5,8 @@ import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_back_button_wrapper_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_tile_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
+import 'package:nomad_taxi/src/core/widgets/main_tile_widget.dart';
 import 'package:nomad_taxi/src/features/settings/presentation/widgets/show_select_language_modal_widget.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -21,8 +21,8 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          leading:
-              CustomBackButtonWrapperWidget(onPressed: () => context.pop())),
+        leading: BackButtonWrapper(onPressed: () => context.pop()),
+      ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(UIConstants.defaultPadding),
@@ -35,7 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const Gap(UIConstants.defaultGap3),
             Column(
               children: [
-                CustomMainTileWidget(
+                MainTileWidget(
                     title: S.current.change_language,
                     onTap: () {
                       showLanguageModal(context);
