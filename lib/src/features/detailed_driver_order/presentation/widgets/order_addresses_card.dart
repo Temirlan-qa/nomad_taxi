@@ -9,10 +9,16 @@ class OrderAddressesCard extends StatelessWidget {
     super.key,
     required this.labelStyle,
     required this.titleStyle,
+    required this.addressFrom,
+    required this.addressTo,
+    required this.description,
   });
 
   final TextStyle labelStyle;
   final TextStyle titleStyle;
+  final String addressFrom;
+  final String addressTo;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +36,15 @@ class OrderAddressesCard extends StatelessWidget {
             children: [
               Text(S.current.where_from, style: labelStyle),
               const Gap(UIConstants.defaultGap5),
-              Text('Титова 14', style: titleStyle),
+              Text(addressFrom, style: titleStyle),
               const Gap(UIConstants.defaultGap2),
               Text(S.current.where, style: labelStyle),
               const Gap(UIConstants.defaultGap5),
-              Text('Королева 12', style: titleStyle),
+              Text(addressTo, style: titleStyle),
               const Gap(UIConstants.defaultGap2),
               Text(S.current.comments, style: labelStyle),
               const Gap(UIConstants.defaultGap5),
-              Text('2 подъезд, 28 квартира', style: titleStyle),
+              Text(description, style: titleStyle),
             ],
           ),
         ],

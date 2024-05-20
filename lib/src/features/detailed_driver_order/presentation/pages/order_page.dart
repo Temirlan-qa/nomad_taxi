@@ -27,21 +27,33 @@ class OrderPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   OrderAddressesCard(
-                      labelStyle: labelStyle, titleStyle: titleStyle),
+                    labelStyle: labelStyle,
+                    titleStyle: titleStyle,
+                    addressFrom: "Титова 14",
+                    addressTo: "Королева 12",
+                    description: "2 подъезд, 28 квартира",
+                  ),
                   const Gap(UIConstants.defaultGap3),
                   CustomOrderButtonsWidget(
-                      lableStyle: labelStyle, headLine: headLine),
+                      labelStyle: labelStyle, headLine: headLine),
                 ],
               )
             : Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   OrderAddressesCard(
-                      labelStyle: labelStyle, titleStyle: titleStyle),
+                    labelStyle: labelStyle,
+                    titleStyle: titleStyle,
+                    addressFrom: "Титова 14",
+                    addressTo: "Королева 12",
+                    description: "2 подъезд, 28 квартира",
+                  ),
                   const Gap(UIConstants.defaultGap3),
                   Expanded(
                     child: CustomOrderButtonsWidget(
-                        lableStyle: labelStyle, headLine: headLine),
+                      labelStyle: labelStyle,
+                      headLine: headLine,
+                    ),
                   ),
                 ],
               ),
@@ -50,8 +62,10 @@ class OrderPage extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(UIConstants.defaultGap1),
           children: [
-            Text(S.current.details,
-                style: headLine.copyWith(color: context.theme.secondary)),
+            Text(
+              S.current.details,
+              style: headLine.copyWith(color: context.theme.secondary),
+            ),
             const Gap(UIConstants.defaultGap5),
             Row(
               children: [
@@ -61,9 +75,11 @@ class OrderPage extends StatelessWidget {
                     colorFilter:
                         ColorFilter.mode(context.theme.red, BlendMode.srcIn)),
                 const Gap(UIConstants.defaultGap1),
-                Text(S.current.taxi,
-                    style: context.theme.textStyles.extraTitle
-                        .copyWith(color: context.theme.red)),
+                Text(
+                  S.current.taxi,
+                  style: context.theme.textStyles.extraTitle
+                      .copyWith(color: context.theme.red),
+                ),
               ],
             ),
             const Gap(UIConstants.defaultGap7),
@@ -71,8 +87,10 @@ class OrderPage extends StatelessWidget {
               children: [
                 Text(S.current.order_status, style: labelStyle),
                 const Gap(UIConstants.defaultGap2),
-                Text(S.current.in_progress,
-                    style: labelStyle.copyWith(color: context.theme.blue)),
+                Text(
+                  S.current.in_progress,
+                  style: labelStyle.copyWith(color: context.theme.blue),
+                ),
               ],
             ),
             const Divider(height: UIConstants.defaultGap3),
@@ -88,9 +106,10 @@ class OrderPage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                      color: context.theme.red,
-                      borderRadius:
-                          BorderRadius.circular(UIConstants.defaultRadius)),
+                    color: context.theme.red,
+                    borderRadius:
+                        BorderRadius.circular(UIConstants.defaultRadius),
+                  ),
                   child: Center(
                     child: Text('500 ₸',
                         style: context.theme.textStyles.titleSecondary

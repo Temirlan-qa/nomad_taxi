@@ -10,11 +10,11 @@ import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 class CustomOrderButtonsWidget extends StatelessWidget {
   const CustomOrderButtonsWidget({
     super.key,
-    required this.lableStyle,
+    required this.labelStyle,
     required this.headLine,
   });
 
-  final TextStyle lableStyle;
+  final TextStyle labelStyle;
   final TextStyle headLine;
 
   @override
@@ -22,9 +22,9 @@ class CustomOrderButtonsWidget extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(S.current.can_cancel_via, style: lableStyle),
+        Text(S.current.can_cancel_via, style: labelStyle),
         const Gap(UIConstants.defaultGap5),
-        Text('5:00 ${S.current.minutes}}',
+        Text('5:00 ${S.current.minutes}',
             style: headLine.copyWith(color: context.theme.red)),
         const Gap(UIConstants.defaultGap2),
         CustomMainButtonWidget(

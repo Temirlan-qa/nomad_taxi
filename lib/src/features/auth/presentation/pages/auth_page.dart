@@ -82,9 +82,11 @@ class _AuthPageState extends State<AuthPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(S.current.your_region,
-                style: context.theme.textStyles.bodyMain
-                    .copyWith(color: context.theme.secondary)),
+            Text(
+              S.current.your_region,
+              style: context.theme.textStyles.bodyMain
+                  .copyWith(color: context.theme.secondary),
+            ),
             const Gap(UIConstants.defaultGap1),
             CustomMainButtonWidget(
               title: S.current.kz_with_flag,
