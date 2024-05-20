@@ -610,6 +610,316 @@ class S {
     );
   }
 
+  /// `Доставка`
+  String get delivery {
+    return Intl.message(
+      'Доставка',
+      name: 'delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Откуда`
+  String get where_from {
+    return Intl.message(
+      'Откуда',
+      name: 'where_from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Куда`
+  String get where {
+    return Intl.message(
+      'Куда',
+      name: 'where',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Коментарии`
+  String get comments {
+    return Intl.message(
+      'Коментарии',
+      name: 'comments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Принять заказ`
+  String get accept_order {
+    return Intl.message(
+      'Принять заказ',
+      name: 'accept_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вернутся назад`
+  String get go_back {
+    return Intl.message(
+      'Вернутся назад',
+      name: 'go_back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Адрес прибытия`
+  String get arrival_address {
+    return Intl.message(
+      'Адрес прибытия',
+      name: 'arrival_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Бонусы тоже деньги`
+  String get bonuses_also_money {
+    return Intl.message(
+      'Бонусы тоже деньги',
+      name: 'bonuses_also_money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Бонусы поступают вам на счет, вы можете на них покупать пакеты времени, оплачивать комиссию такси или выводить на свою карту`
+  String get bonuses_desc {
+    return Intl.message(
+      'Бонусы поступают вам на счет, вы можете на них покупать пакеты времени, оплачивать комиссию такси или выводить на свою карту',
+      name: 'bonuses_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поздравляем с выполненным заказом!`
+  String get congrats_completed_order {
+    return Intl.message(
+      'Поздравляем с выполненным заказом!',
+      name: 'congrats_completed_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вы можете отменить через`
+  String get can_cancel_via {
+    return Intl.message(
+      'Вы можете отменить через',
+      name: 'can_cancel_via',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Приехал на точку вызова`
+  String get arrived_call_point {
+    return Intl.message(
+      'Приехал на точку вызова',
+      name: 'arrived_call_point',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отменить заказ`
+  String get cancel_the_order {
+    return Intl.message(
+      'Отменить заказ',
+      name: 'cancel_the_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `минуты`
+  String get minutes {
+    return Intl.message(
+      'минуты',
+      name: 'minutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Позвонить`
+  String get call {
+    return Intl.message(
+      'Позвонить',
+      name: 'call',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Маршрут`
+  String get route {
+    return Intl.message(
+      'Маршрут',
+      name: 'route',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Клиент`
+  String get client {
+    return Intl.message(
+      'Клиент',
+      name: 'client',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Подробнее`
+  String get more_detailed {
+    return Intl.message(
+      'Подробнее',
+      name: 'more_detailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На ваш счет`
+  String get to_your_account {
+    return Intl.message(
+      'На ваш счет',
+      name: 'to_your_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Наличными`
+  String get by_cash {
+    return Intl.message(
+      'Наличными',
+      name: 'by_cash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `В процессе`
+  String get in_progress {
+    return Intl.message(
+      'В процессе',
+      name: 'in_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Такси`
+  String get taxi {
+    return Intl.message(
+      'Такси',
+      name: 'taxi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Детали`
+  String get details {
+    return Intl.message(
+      'Детали',
+      name: 'details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На линии`
+  String get on_line {
+    return Intl.message(
+      'На линии',
+      name: 'on_line',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выполненно`
+  String get done {
+    return Intl.message(
+      'Выполненно',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Забрал доствку`
+  String get took_delivery {
+    return Intl.message(
+      'Забрал доствку',
+      name: 'took_delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Начать поездку`
+  String get start_trip {
+    return Intl.message(
+      'Начать поездку',
+      name: 'start_trip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Осталось`
+  String get left {
+    return Intl.message(
+      'Осталось',
+      name: 'left',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Обновить`
+  String get update {
+    return Intl.message(
+      'Обновить',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Статус заказа`
+  String get order_status {
+    return Intl.message(
+      'Статус заказа',
+      name: 'order_status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Если клиент не выходит, и не возможно с ним связаться, то вы можете отменить заказ`
+  String get client_not_come_out_desc {
+    return Intl.message(
+      'Если клиент не выходит, и не возможно с ним связаться, то вы можете отменить заказ',
+      name: 'client_not_come_out_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Добро пожаловать в режим водителя 👋`
   String get driver_mode_intro_header1 {
     return Intl.message(

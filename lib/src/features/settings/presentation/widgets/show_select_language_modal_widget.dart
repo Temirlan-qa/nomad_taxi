@@ -5,8 +5,8 @@ import 'package:nomad_taxi/src/app/runner.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_modal_drag_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/modal_drag_widget.dart';
 import 'package:nomad_taxi/src/features/settings/presentation/widgets/country_tile_widget.dart';
 
 class CustomSelectLanguageModalWidget extends StatelessWidget {
@@ -31,7 +31,7 @@ class CustomSelectLanguageModalWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomModalDragWidget(),
+            const ModalDragWidget(),
             const Gap(UIConstants.defaultGap3),
             Text(S.current.select_language,
                 style: context.theme.textStyles.titleMain),
@@ -50,6 +50,7 @@ class CustomSelectLanguageModalWidget extends StatelessWidget {
                     title: getLanguage(languageCode),
                     onTap: () async {
                       await st.setLanguageCode(languageCode);
+
                       await S
                           .load(Locale.fromSubtags(languageCode: languageCode))
                           .then((value) => context.pop());

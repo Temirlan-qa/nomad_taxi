@@ -28,7 +28,7 @@ MaterialApp _buildMaterialApp({
 }) =>
     MaterialApp.router(
       title: title,
-      localizationsDelegates: const [
+      localizationsDelegates: const <LocalizationsDelegate<Object>>[
         S.delegate,
         // RefreshLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

@@ -3,10 +3,11 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_back_button_wrapper_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
 class EnterDriverInfoPage extends StatelessWidget {
@@ -15,11 +16,12 @@ class EnterDriverInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController carNumber = TextEditingController();
+    TextEditingController carInfo = TextEditingController();
 
     return Scaffold(
       appBar: CustomAppBar(
-          leading:
-              CustomBackButtonWrapperWidget(onPressed: () => context.pop())),
+        leading: BackButtonWrapper(onPressed: () => context.pop()),
+      ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -85,7 +87,7 @@ class EnterDriverInfoPage extends StatelessWidget {
             ),
             child: TextField(
               textAlign: TextAlign.left,
-              controller: carNumber,
+              controller: carInfo,
               style: context.theme.textStyles.headLine.copyWith(
                 color: context.theme.primary,
               ),
@@ -135,7 +137,9 @@ class EnterDriverInfoPage extends StatelessWidget {
       bottomNavigationBar: CustomMainBottomWidgets(
         child: CustomMainButtonWidget(
           title: S.current.enter_driver_info,
-          onPressed: () {},
+          onPressed: () {
+            context.push(RoutePaths.driverOrders);
+          },
         ),
       ),
     );

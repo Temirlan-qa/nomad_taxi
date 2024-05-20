@@ -60,6 +60,21 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, __) => const ProfilePage(),
       ),
       GoRoute(
+        name: RouteNames.driverOrders,
+        path: RoutePaths.driverOrders,
+        builder: (_, __) => const DriverOrdersPage(),
+      ),
+      GoRoute(
+        name: RouteNames.order,
+        path: RoutePaths.order,
+        builder: (_, __) => const OrderPage(),
+      ),
+      GoRoute(
+        name: RouteNames.orderFinished,
+        path: RoutePaths.orderFinished,
+        builder: (_, __) => const OrderFinishedPage(),
+      ),
+      GoRoute(
         name: RouteNames.driverModeIntro,
         path: RoutePaths.driverModeIntro,
         builder: (_, __) => const DriverModeIntroPage(),
