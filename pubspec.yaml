@@ -6,13 +6,13 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '3.4.0'
+  sdk: '>=3.4.0 <4.0.0'
 
 
 # * Flutter Packages overrides for conflict resolution
-dependency_overrides:
-  intl: ^0.18.1
-  file: ^7.0.0
+# dependency_overrides:
+#   intl: ^0.18.1
+#   file: ^7.0.0
 
 
 dependencies:
@@ -29,23 +29,25 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # Localization package
-  intl: ^0.18.0
-  intl_utils: ^2.8.1
+  intl: ^0.19.0
+  intl_utils: ^2.8.7
   # Flavoring
-  flutter_flavorizr: ^2.1.5
+  flutter_flavorizr: ^2.2.3
   # Icon Generator
-  flutter_launcher_icons: ^0.13.0
+  flutter_launcher_icons: ^0.13.1
   # Native Splash Screen
-  flutter_native_splash: ^2.2.15
+  flutter_native_splash: ^2.4.0
   # Multiple Search Selection
-  search_choices: ^2.2.5
+  search_choices: ^2.2.7
+
+  file: ^7.0.0
 
 
   # * Navigation and routing
   # Main Application Router
-  go_router: ^14.0.2
+  go_router: ^14.1.2
   # URL Launcher
-  url_launcher: ^6.1.8
+  url_launcher: ^6.2.6
 
 
   # * Functional programming
@@ -54,17 +56,17 @@ dependencies:
 
   # * Network and API
   # Http client
-  dio: ^5.2.1+1
+  dio: ^5.4.3+1
   # Internet Connection Checker
   internet_connection_checker: ^1.0.0+1
   # Connectivity Checker
-  connectivity_plus: ^5.0.2
+  connectivity_plus: ^6.0.3
   # Check Internet connection
   check_vpn_connection: ^0.0.2
   # Ping to server
   dart_ping: ^9.0.1
   # Map
-  geolocator: ^11.0.0
+  geolocator: ^12.0.0
   maplibre_gl:
     git:
       url: https://github.com/maplibre/flutter-maplibre-gl.git
@@ -72,46 +74,47 @@ dependencies:
 
   # * Development Utilities
   # Logging
-  l: ^4.0.0
-  stack_trace: ^1.11.0
+  l: ^4.0.2
+  stack_trace: ^1.11.1
   # Crash Reporting
-  sentry_flutter: ^7.10.1
+  sentry: ^8.2.0
+  sentry_flutter: ^8.2.0
   # * Data Management
-  path_provider: ^2.0.0
-  path: ^1.8.2
+  path_provider: ^2.1.3
+  path: ^1.9.0
 
   # * State Management
   # BLoC pattern
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.5
   # Package that exposes custom event transformers
-  bloc_concurrency: ^0.2.2
+  bloc_concurrency: ^0.2.5
   # Reactive Programming
   rxdart: ^0.27.7
 
   # * Dependency Injection
   # Dependency Injection
-  injectable: <2.1.2
+  injectable: ^2.4.2
   # Service Locator
-  get_it: ">=7.2.0 <7.3.0"
+  get_it: ^7.7.0
 
   # * File and Path Management
   # File Picker
-  file_picker: ^5.2.5
+  file_picker: ^8.0.3
   # Image Manipulation
-  image: ^4.0.17
+  image: ^4.1.7
 
   # * General Utilities
   # Object Comparison
   equatable: ^2.0.5
   # UUID Generator
-  uuid: ^3.0.4
+  uuid: ^4.4.0
 
   
   # Svg Images
-  flutter_svg: ^2.0.5
+  flutter_svg: ^2.0.10+1
   # pull_to_refresh: ^2.0.0
   # Isolate manager
-  worker_manager: ^6.1.1
+  worker_manager: ^7.0.2
   # Asynchronous computations
   async: ^2.11.0
   # Scroll Controller Group
@@ -133,20 +136,20 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
   # * Code Generators
   # Generating Files
-  build_runner: ^2.4.6
+  build_runner: ^2.4.10
   # Generating Serialization of JSON
-  json_serializable: ^6.7.0
+  json_serializable: ^6.8.0
   # Code Generation for Models and Union Types
-  freezed: ^2.3.5
+  freezed: ^2.5.2
   # Generating Asset Files
-  flutter_gen_runner: ^5.3.0
+  flutter_gen_runner: ^5.5.0+1
   # Injecting Dependencies
-  injectable_generator: ^2.1.6
+  injectable_generator: ^2.6.1
   # FFI gen
-  ffigen: ^9.0.0
+  ffigen: ^12.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
