@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../exception/domain_exception.dart';
+import '../../../../exceptions/domain_exception.dart';
 import '../../../../utils/loggers/logger.dart';
 import '../rest_client.dart';
 import 'dio_exception.dart';

@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../exception/domain_exception.dart';
+import '../../exceptions/domain_exception.dart';
 import '../../service/injectable/injectable_service.dart';
 import '../../utils/helpers/isolate_manager.dart';
 import '../../utils/loggers/logger.dart';

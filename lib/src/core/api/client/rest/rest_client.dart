@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../exception/domain_exception.dart';
+import '../../../exceptions/domain_exception.dart';
 
 abstract interface class RestClient {
   void setBaseUrl({
