@@ -19,19 +19,19 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() retrieve,
-    required TResult Function(Settings data) update,
+    required TResult Function(String languageCode) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? retrieve,
-    TResult? Function(Settings data)? update,
+    TResult? Function(String languageCode)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? retrieve,
-    TResult Function(Settings data)? update,
+    TResult Function(String languageCode)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,7 +115,7 @@ class _$RetrieveSettingsEventImpl implements _RetrieveSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() retrieve,
-    required TResult Function(Settings data) update,
+    required TResult Function(String languageCode) update,
   }) {
     return retrieve();
   }
@@ -124,7 +124,7 @@ class _$RetrieveSettingsEventImpl implements _RetrieveSettingsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? retrieve,
-    TResult? Function(Settings data)? update,
+    TResult? Function(String languageCode)? update,
   }) {
     return retrieve?.call();
   }
@@ -133,7 +133,7 @@ class _$RetrieveSettingsEventImpl implements _RetrieveSettingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? retrieve,
-    TResult Function(Settings data)? update,
+    TResult Function(String languageCode)? update,
     required TResult orElse(),
   }) {
     if (retrieve != null) {
@@ -184,9 +184,7 @@ abstract class _$$UpdateSettingsEventImplCopyWith<$Res> {
           $Res Function(_$UpdateSettingsEventImpl) then) =
       __$$UpdateSettingsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Settings data});
-
-  $SettingsCopyWith<$Res> get data;
+  $Res call({String languageCode});
 }
 
 /// @nodoc
@@ -200,36 +198,28 @@ class __$$UpdateSettingsEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? languageCode = null,
   }) {
     return _then(_$UpdateSettingsEventImpl(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Settings,
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SettingsCopyWith<$Res> get data {
-    return $SettingsCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
-  const _$UpdateSettingsEventImpl({required this.data});
+  const _$UpdateSettingsEventImpl({required this.languageCode});
 
   @override
-  final Settings data;
+  final String languageCode;
 
   @override
   String toString() {
-    return 'SettingsEvent.update(data: $data)';
+    return 'SettingsEvent.update(languageCode: $languageCode)';
   }
 
   @override
@@ -237,11 +227,12 @@ class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateSettingsEventImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, languageCode);
 
   @JsonKey(ignore: true)
   @override
@@ -254,29 +245,29 @@ class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() retrieve,
-    required TResult Function(Settings data) update,
+    required TResult Function(String languageCode) update,
   }) {
-    return update(data);
+    return update(languageCode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? retrieve,
-    TResult? Function(Settings data)? update,
+    TResult? Function(String languageCode)? update,
   }) {
-    return update?.call(data);
+    return update?.call(languageCode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? retrieve,
-    TResult Function(Settings data)? update,
+    TResult Function(String languageCode)? update,
     required TResult orElse(),
   }) {
     if (update != null) {
-      return update(data);
+      return update(languageCode);
     }
     return orElse();
   }
@@ -314,10 +305,10 @@ class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
 }
 
 abstract class _UpdateSettingsEvent implements SettingsEvent {
-  const factory _UpdateSettingsEvent({required final Settings data}) =
+  const factory _UpdateSettingsEvent({required final String languageCode}) =
       _$UpdateSettingsEventImpl;
 
-  Settings get data;
+  String get languageCode;
   @JsonKey(ignore: true)
   _$$UpdateSettingsEventImplCopyWith<_$UpdateSettingsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -329,7 +320,7 @@ mixin _$SettingsState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() inProgress,
-    required TResult Function(Settings data) done,
+    required TResult Function(String languageCode) done,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -337,7 +328,7 @@ mixin _$SettingsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? inProgress,
-    TResult? Function(Settings data)? done,
+    TResult? Function(String languageCode)? done,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -345,7 +336,7 @@ mixin _$SettingsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? inProgress,
-    TResult Function(Settings data)? done,
+    TResult Function(String languageCode)? done,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -435,7 +426,7 @@ class _$EmptySettingsStateImpl implements _EmptySettingsState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() inProgress,
-    required TResult Function(Settings data) done,
+    required TResult Function(String languageCode) done,
     required TResult Function() error,
   }) {
     return empty();
@@ -446,7 +437,7 @@ class _$EmptySettingsStateImpl implements _EmptySettingsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? inProgress,
-    TResult? Function(Settings data)? done,
+    TResult? Function(String languageCode)? done,
     TResult? Function()? error,
   }) {
     return empty?.call();
@@ -457,7 +448,7 @@ class _$EmptySettingsStateImpl implements _EmptySettingsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? inProgress,
-    TResult Function(Settings data)? done,
+    TResult Function(String languageCode)? done,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -552,7 +543,7 @@ class _$InProgressSettingsStateImpl implements _InProgressSettingsState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() inProgress,
-    required TResult Function(Settings data) done,
+    required TResult Function(String languageCode) done,
     required TResult Function() error,
   }) {
     return inProgress();
@@ -563,7 +554,7 @@ class _$InProgressSettingsStateImpl implements _InProgressSettingsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? inProgress,
-    TResult? Function(Settings data)? done,
+    TResult? Function(String languageCode)? done,
     TResult? Function()? error,
   }) {
     return inProgress?.call();
@@ -574,7 +565,7 @@ class _$InProgressSettingsStateImpl implements _InProgressSettingsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? inProgress,
-    TResult Function(Settings data)? done,
+    TResult Function(String languageCode)? done,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -632,9 +623,7 @@ abstract class _$$DoneSettingsStateImplCopyWith<$Res> {
           $Res Function(_$DoneSettingsStateImpl) then) =
       __$$DoneSettingsStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Settings data});
-
-  $SettingsCopyWith<$Res> get data;
+  $Res call({String languageCode});
 }
 
 /// @nodoc
@@ -648,36 +637,28 @@ class __$$DoneSettingsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? languageCode = null,
   }) {
     return _then(_$DoneSettingsStateImpl(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Settings,
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SettingsCopyWith<$Res> get data {
-    return $SettingsCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$DoneSettingsStateImpl implements _DoneSettingsState {
-  const _$DoneSettingsStateImpl({required this.data});
+  const _$DoneSettingsStateImpl({required this.languageCode});
 
   @override
-  final Settings data;
+  final String languageCode;
 
   @override
   String toString() {
-    return 'SettingsState.done(data: $data)';
+    return 'SettingsState.done(languageCode: $languageCode)';
   }
 
   @override
@@ -685,11 +666,12 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DoneSettingsStateImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, languageCode);
 
   @JsonKey(ignore: true)
   @override
@@ -703,10 +685,10 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() inProgress,
-    required TResult Function(Settings data) done,
+    required TResult Function(String languageCode) done,
     required TResult Function() error,
   }) {
-    return done(data);
+    return done(languageCode);
   }
 
   @override
@@ -714,10 +696,10 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? inProgress,
-    TResult? Function(Settings data)? done,
+    TResult? Function(String languageCode)? done,
     TResult? Function()? error,
   }) {
-    return done?.call(data);
+    return done?.call(languageCode);
   }
 
   @override
@@ -725,12 +707,12 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? inProgress,
-    TResult Function(Settings data)? done,
+    TResult Function(String languageCode)? done,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (done != null) {
-      return done(data);
+      return done(languageCode);
     }
     return orElse();
   }
@@ -774,10 +756,10 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
 }
 
 abstract class _DoneSettingsState implements SettingsState {
-  const factory _DoneSettingsState({required final Settings data}) =
+  const factory _DoneSettingsState({required final String languageCode}) =
       _$DoneSettingsStateImpl;
 
-  Settings get data;
+  String get languageCode;
   @JsonKey(ignore: true)
   _$$DoneSettingsStateImplCopyWith<_$DoneSettingsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -823,7 +805,7 @@ class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() inProgress,
-    required TResult Function(Settings data) done,
+    required TResult Function(String languageCode) done,
     required TResult Function() error,
   }) {
     return error();
@@ -834,7 +816,7 @@ class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? inProgress,
-    TResult? Function(Settings data)? done,
+    TResult? Function(String languageCode)? done,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -845,7 +827,7 @@ class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? inProgress,
-    TResult Function(Settings data)? done,
+    TResult Function(String languageCode)? done,
     TResult Function()? error,
     required TResult orElse(),
   }) {

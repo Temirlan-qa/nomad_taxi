@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
@@ -27,23 +27,51 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GoRouter router = routerProvider();
-    // return _buildApp(
-    //   flavor: flavor,
-    //   router: router,
-    // );
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => getIt<SettingsBloc>()
-            ..add(
-              const SettingsEvent.retrieve(),
-            ),
-        ),
-      ],
-      child: _buildApp(
-        flavor: flavor,
-        router: router,
-      ),
+    return BaseBlocWidget<SettingsBloc, SettingsEvent, SettingsState>(
+      bloc: getIt<SettingsBloc>(),
+      starterEvent: const SettingsEvent.retrieve(),
+      builder: (context, state, bloc) {
+        return state.when(
+          empty: () => const SizedBox(),
+          inProgress: () => const SizedBox(),
+          error: () => const SizedBox(),
+          done: (languageCode) {
+            return _buildApp(
+              flavor: flavor,
+              router: router,
+              languageCode: languageCode,
+            );
+          },
+        );
+      },
     );
+
+    // return MultiBlocProvider(
+    //   providers: [
+    //     BlocProvider(
+    //       create: (_) => context.read<SettingsBloc>()
+    //         ..add(
+    //           const SettingsEvent.retrieve(),
+    //         ),
+    //     ),
+    //   ],
+    //   child: BlocProvider(
+    //     create: (context) => context.read<SettingsBloc>()
+    //       ..add(
+    //         const SettingsEvent.retrieve(),
+    //       ),
+    //     child: BlocBuilder<SettingsBloc, SettingsState>(
+    //       bloc: context.read<SettingsBloc>(),
+    //       builder: (context, state) {
+    //         return _buildApp(
+    //           flavor: flavor,
+    //           router: router,
+    //           languageCode:
+    //               state.mapOrNull(done: (state) => state.languageCode) ?? 'ru',
+    //         );
+    //       },
+    //     ),
+    //   ),
+    // );
   }
 }

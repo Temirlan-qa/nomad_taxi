@@ -17,8 +17,8 @@ class StorageServiceImpl implements StorageService {
   }
 
   @override
-  Future<void> setLanguageCode(String token) async {
-    await hiveBox.put(_languageCode, token);
+  Future<void> setLanguageCode(String code) async {
+    await hiveBox.put(_languageCode, code);
   }
 
   @override
