@@ -4,19 +4,19 @@ import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
-class CustomMainTileWidget extends StatelessWidget {
+class MainTileWidget extends StatelessWidget {
   final String title;
   final String? subTitle;
   final VoidCallback? onTap;
   final bool showUnderline;
 
-  const CustomMainTileWidget(
-      {Key? key,
-      required this.title,
-      this.subTitle,
-      required this.onTap,
-      this.showUnderline = true})
-      : super(key: key);
+  const MainTileWidget({
+    Key? key,
+    required this.title,
+    this.subTitle,
+    required this.onTap,
+    this.showUnderline = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,13 @@ class CustomMainTileWidget extends StatelessWidget {
         decoration: showUnderline
             ? BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(
-                        strokeAlign: BorderSide.strokeAlignInside,
-                        width: 1,
-                        color: context.theme.stroke)))
+                  bottom: BorderSide(
+                    strokeAlign: BorderSide.strokeAlignInside,
+                    width: 1,
+                    color: context.theme.stroke,
+                  ),
+                ),
+              )
             : null,
         child: Row(
           children: [

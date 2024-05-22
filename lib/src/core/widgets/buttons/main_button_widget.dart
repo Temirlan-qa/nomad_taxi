@@ -4,18 +4,19 @@ import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
-part 'main_button_widgets.dart';
+part 'text_button_widgets.dart';
 
 class CustomMainButtonWidget extends StatelessWidget {
-  const CustomMainButtonWidget(
-      {super.key,
-      required this.title,
-      this.onPressed,
-      this.prefixIcon,
-      this.suffixIcon,
-      this.isMain = true,
-      this.color,
-      this.iconColor});
+  const CustomMainButtonWidget({
+    super.key,
+    required this.title,
+    this.onPressed,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.isMain = true,
+    this.color,
+    this.iconColor,
+  });
 
   final VoidCallback? onPressed;
   final String title;
@@ -37,11 +38,19 @@ class CustomMainButtonWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MainButtonIconWidget(icon: prefixIcon, color: iconColor),
+          prefixIcon != null
+              ? prefixIcon!.svg(color: iconColor)
+              : const Offstage(),
           const Gap(UIConstants.defaultGap2),
-          MainButtonTextWidget(title: title),
+          TextButtonWidget(
+            title: title,
+            color:
+                isMain ? context.theme.white : color ?? context.theme.primary,
+          ),
           const Gap(UIConstants.defaultGap2),
-          MainButtonIconWidget(icon: suffixIcon, color: iconColor)
+          prefixIcon != null
+              ? prefixIcon!.svg(color: iconColor)
+              : const Offstage(),
         ],
       ),
     );

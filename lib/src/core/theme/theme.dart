@@ -7,15 +7,12 @@ part 'theme_context_extension.dart';
 
 class MaterialAppTheme {
   static final theme = ThemeData(
-    checkboxTheme: CheckboxThemeData(
-      checkColor: MaterialStateProperty.resolveWith((_) => _black),
-      fillColor: MaterialStateProperty.resolveWith((_) => _transparent),
-      side: AlwaysActiveBorderSide(),
-    ),
     brightness: Brightness.light,
     fontFamily: 'Inter',
     scaffoldBackgroundColor: _white,
     splashFactory: InkSparkle.splashFactory,
+    dividerTheme:
+        const DividerThemeData(color: _stroke, thickness: 1, space: 36),
     bottomSheetTheme: const BottomSheetThemeData(
         modalBackgroundColor: _white,
         backgroundColor: _white,
@@ -65,9 +62,4 @@ class MaterialAppTheme {
   static final dark = theme.copyWith(
     brightness: Brightness.dark,
   );
-}
-
-class AlwaysActiveBorderSide extends MaterialStateBorderSide {
-  @override
-  BorderSide? resolve(_) => const BorderSide(color: _black);
 }

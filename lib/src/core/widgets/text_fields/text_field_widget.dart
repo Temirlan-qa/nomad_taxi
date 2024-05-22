@@ -4,10 +4,11 @@ import 'package:gap/gap.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/enums/enums.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_text_field_border_widget.dart';
 
-class CustomMainTextFieldWidget extends StatefulWidget {
-  const CustomMainTextFieldWidget(
+import 'text_field_border_widget.dart';
+
+class TextFieldWidget extends StatefulWidget {
+  const TextFieldWidget(
       {super.key,
       required this.controller,
       required this.hintText,
@@ -23,11 +24,10 @@ class CustomMainTextFieldWidget extends StatefulWidget {
   final ValueChanged? onChanged;
 
   @override
-  State<CustomMainTextFieldWidget> createState() =>
-      _CustomMainTextFieldWidgetState();
+  State<TextFieldWidget> createState() => _TextFieldWidgetState();
 }
 
-class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
+class _TextFieldWidgetState extends State<TextFieldWidget> {
   final FocusNode focusNode = FocusNode();
 
   TextFieldFocusState textFieldFocusState = TextFieldFocusState.unfocused;
@@ -83,9 +83,10 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
             ),
           ),
         ),
-        CustomTextFieldBorderWidget(
-            textFieldFocusState: textFieldFocusState,
-            textFieldValidationState: widget.textFieldValidationState),
+        TextFieldBorderWidget(
+          textFieldFocusState: textFieldFocusState,
+          textFieldValidationState: widget.textFieldValidationState,
+        ),
         const Gap(UIConstants.defaultGap2),
         widget.textFieldValidationState == TextFieldValidationState.none
             ? const Offstage()
@@ -94,12 +95,13 @@ class _CustomMainTextFieldWidgetState extends State<CustomMainTextFieldWidget> {
                   //TODO: temp
                   '$textFieldFocusState',
                   style: context.theme.textStyles.bodyMain.copyWith(
-                      color: widget.textFieldValidationState ==
-                              TextFieldValidationState.error
-                          ? context.theme.red
-                          : context.theme.green),
+                    color: widget.textFieldValidationState ==
+                            TextFieldValidationState.error
+                        ? context.theme.red
+                        : context.theme.green,
+                  ),
                 ),
-              )
+              ),
       ],
     );
   }

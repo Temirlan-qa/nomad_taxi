@@ -125,6 +125,7 @@ dependencies:
   shimmer: ^3.0.0
   gap: ^3.0.1
   hive_flutter: ^1.1.0
+  custom_refresh_indicator: ^3.1.0
   
 
 dev_dependencies:
