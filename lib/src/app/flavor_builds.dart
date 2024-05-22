@@ -35,7 +35,9 @@ MaterialApp _buildMaterialApp({
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      locale: Locale(st.getLanguageCode() ?? 'ru'),
+      locale: getIt<SettingsBloc>().state.mapOrNull(
+            done: (state) => state.data.locale,
+          ),
       supportedLocales: S.delegate.supportedLocales,
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,

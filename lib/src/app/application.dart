@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nomad_taxi/src/app/runner.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/features/settings/presentation/bloc/settings/settings_bloc.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -25,16 +27,23 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GoRouter router = routerProvider();
-    return _buildApp(
-      flavor: flavor,
-      router: router,
-    );
-    // return MultiBlocProvider(
-    //   providers: const [],
-    //   child: _buildApp(
-    //     flavor: flavor,
-    //     router: router,
-    //   ),
+    // return _buildApp(
+    //   flavor: flavor,
+    //   router: router,
     // );
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => getIt<SettingsBloc>()
+            ..add(
+              const SettingsEvent.retrieve(),
+            ),
+        ),
+      ],
+      child: _buildApp(
+        flavor: flavor,
+        router: router,
+      ),
+    );
   }
 }
