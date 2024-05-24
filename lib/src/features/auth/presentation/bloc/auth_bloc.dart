@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/data_response.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/login_use_case.dart';
 
 import '../../../../core/base/base_bloc/bloc/base_bloc.dart';
@@ -52,7 +53,9 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
         AuthState.loaded(
           SignInResponse(
             status: result.data!.status,
-            userId: result.data!.userId,
+            data: DataResponse(
+              userId: result.data!.data.userId,
+            ),
           ),
         ),
       );

@@ -25,8 +25,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       return requests.fold(
         (error) => Left(error),
         (response) {
-          final SignInResponse result = response;
-          return Right(result);
+          return Right(response);
         },
       );
     } catch (e) {

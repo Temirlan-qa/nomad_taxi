@@ -1,22 +1,18 @@
-class SignInResponse {
-  final String status;
-  final int userId;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/data_response.dart';
 
-  SignInResponse({required this.status, required this.userId});
+import '../../../../core/base/base_models/base_entity.dart';
 
-  factory SignInResponse.fromMap(Map<String, dynamic> map) {
-    return SignInResponse(
-      status: map['status'],
-      userId: map['data']['user_id'],
-    );
-  }
+part 'sign_in_response.freezed.dart';
+part 'sign_in_response.g.dart';
 
-  Map<String, dynamic> toMap() {
-    return {
-      'status': status,
-      'data': {
-        'user_id': userId,
-      },
-    };
-  }
+@freezed
+class SignInResponse extends BaseEntity with _$SignInResponse {
+  const factory SignInResponse({
+    required String status,
+    required DataResponse data,
+  }) = _SignInResponse;
+
+  factory SignInResponse.fromJson(Map<String, dynamic> json) =>
+      _$SignInResponseFromJson(json);
 }

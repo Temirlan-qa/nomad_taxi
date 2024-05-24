@@ -29,7 +29,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
 
   @override
   Future<void> onEventHandler(ProfileEvent event, Emitter emit) async {
-    event.when(
+    await event.when(
       init: () => _init(event as _Init, emit),
       logOut: () => _logOut(event as _LogOut, emit),
       deleteAccount: () => _deleteAccount(event as _DeleteAccount, emit),

@@ -35,12 +35,13 @@ class ConnectivityHelper {
   }
 
   Future<bool> checkInternetConnection() async {
-    final ConnectivityResult result = await _connectivity.checkConnectivity();
+    final List<ConnectivityResult> result =
+        await _connectivity.checkConnectivity();
 
-    if (result == ConnectivityResult.ethernet) {
+    if (result.contains(ConnectivityResult.mobile)) {
       return true;
     }
-    if (result == ConnectivityResult.wifi) {
+    if (result.contains(ConnectivityResult.wifi)) {
       return true;
     }
 
