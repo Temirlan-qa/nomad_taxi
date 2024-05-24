@@ -6,9 +6,9 @@ import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_back_button_wrapper_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_tile_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/main_tile_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/help/presentation/widgets/show_info_modal_widget.dart';
 
@@ -24,8 +24,7 @@ class _HelpPageState extends State<HelpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          leading:
-              CustomBackButtonWrapperWidget(onPressed: () => context.pop())),
+          leading: BackButtonWrapper(onPressed: () => context.pop())),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(UIConstants.defaultPadding),
@@ -44,27 +43,27 @@ class _HelpPageState extends State<HelpPage> {
             const Gap(UIConstants.defaultGap3),
             Column(
               children: [
-                CustomMainTileWidget(
+                MainTileWidget(
                     title: S.current.cancel_order,
                     onTap: () {
                       showInfoModal(context, S.current.cancel_order);
                     }),
-                CustomMainTileWidget(
+                MainTileWidget(
                     title: S.current.refill_bonuses,
                     onTap: () {
                       showInfoModal(context, S.current.refill_bonuses);
                     }),
-                CustomMainTileWidget(
+                MainTileWidget(
                     title: S.current.using_bonuses,
                     onTap: () {
                       showInfoModal(context, S.current.using_bonuses);
                     }),
-                CustomMainTileWidget(
+                MainTileWidget(
                     title: S.current.forgot_stuff,
                     onTap: () {
                       showInfoModal(context, S.current.forgot_stuff);
                     }),
-                CustomMainTileWidget(
+                MainTileWidget(
                     title: S.current.driver_canceled_order,
                     onTap: () {
                       showInfoModal(context, S.current.driver_canceled_order);

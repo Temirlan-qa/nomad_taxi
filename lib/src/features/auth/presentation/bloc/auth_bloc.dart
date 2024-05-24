@@ -1,66 +1,75 @@
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:injectable/injectable.dart';
-// import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
-// import 'package:nomad_taxi/src/features/auth/data/repositories/i_auth_repository.dart';
+import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:nomad_taxi/src/features/auth/domain/usecases/login_use_case.dart';
 
-// import '../../../../core/exceptions/domain_exception.dart';
+import '../../../../core/base/base_bloc/bloc/base_bloc.dart';
+import '../../../../core/service/auth/models/sign_in_request.dart';
+import '../../../../core/service/auth/models/sign_in_response.dart';
 
-// part 'auth_bloc.freezed.dart';
-// part 'auth_event.dart';
-// part 'auth_state.dart';
+part 'auth_bloc.freezed.dart';
+part 'auth_event.dart';
+part 'auth_state.dart';
 
-// @singleton
-// @injectable
-// class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
-//   final IAuthRepository repository;
+@injectable
+class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
+  AuthBloc(
+    this._loginUseCase,
+  ) : super(const _Initial());
 
-//   AuthBloc({
-//     required this.repository,
-//   }) : super(const AuthState._()) {
-//     on<Login>(onLogin);
-//     on<Verify>(onVerify);
-//   }
+  final LoginUseCase _loginUseCase;
 
-//   void onVerify(
-//     Verify event,
-//     Emitter<AuthState> emit,
-//   ) {
-//     // emit(state.copyWith(
-//     //   signInBody: state.signInBody ?? SignInBody.empty(),
-//     // ));
+  @override
+  Future<void> onEventHandler(AuthEvent event, Emitter emit) async {
+    event.when(
+      // started: () => _started(event as _Started, emit),
+      login: (signInBody) => _login(
+        event as _Login,
+        emit as Emitter<AuthState>,
+      ),
+      verify: () => _verify(
+        event as _Verify,
+        emit as Emitter<AuthState>,
+      ),
+    );
+  }
 
-//     // emit(state.copyWith(
-//     //   signInBody: switch (event.field) {
-//     //     AuthField.email => state.signInBody?.copyWith(
-//     //         email: event.value,
-//     //       ),
-//     //     AuthField.password => state.signInBody?.copyWith(
-//     //         password: event.value,
-//     //       ),
-//     //   },
-//     // ));
-//   }
+  // Future<void> _started(
+  //   _Started event,
+  //   Emitter emit,
+  // ) async {
 
-//   Future<void> onLogin(
-//     Login event,
-//     Emitter<AuthState> emit,
-//   ) async {
-//     // if (state.signInBody == null) return;
+  //   emit(const _Initial());
 
-//     // emit(state.copyWith(status: LoadStatus.loading));
+  // }
 
-//     // final result = await repository.signIn(body: state.signInBody!);
+  Future<void> _login(_Login event, Emitter<AuthState> emit) async {
+    emit(const AuthState.loading());
+    final result = await _loginUseCase.call(event.signInBody);
 
-//     // result.fold(
-//     //   (l) => emit(state.copyWith(status: LoadStatus.failed)),
-//     //   (r) => emit(state.copyWith(
-//     //     status: LoadStatus.success,
-//     //     isUserSignedIn: true,
-//     //     toCreateProfile: r.isProfileCreated == false,
-//     //   )),
-//     // );
-//   }
+    if (result.isSuccessful) {
+      emit(
+        AuthState.loaded(
+          SignInResponse(
+            status: result.data!.status,
+            userId: result.data!.userId,
+          ),
+        ),
+      );
+    }
+    // result.isSuccessful
+    //     ? emit(AuthState.loaded(SignInResponse(
+    //         status: result.data!.status,
+    //         userId: result.data!.userId,
+    //       )))
+    //     : emit(const AuthState.error('cant login'));
+  }
 
-//   @override
-//   void onEventHandler(AuthEvent event, Emitter emit) {}
-// }
+  void _verify(_Verify event, Emitter<AuthState> emit) async {
+    // final result = await repository.verifyUser(body: event);
+    // result.fold(
+    //   (failure) => add(AuthEvent.login(signInBody: SignInBody())),
+    //   (response) => add(AuthEvent.login(signInBody: SignInBody())),
+    // );
+  }
+}

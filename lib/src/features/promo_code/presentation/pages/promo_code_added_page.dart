@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/promo_code/presentation/widgets/custom_bonus_amount_widget.dart';
 

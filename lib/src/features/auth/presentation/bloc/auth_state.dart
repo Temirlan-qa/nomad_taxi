@@ -1,23 +1,17 @@
-// part of 'auth_bloc.dart';
+part of 'auth_bloc.dart';
+
+@freezed
+@freezed
+class AuthState with _$AuthState {
+  const factory AuthState.initial() = _Initial;
+  const factory AuthState.loading() = _Loading;
+  const factory AuthState.loaded(SignInResponse response) = _Loaded;
+  const factory AuthState.error(String error) = _Error;
+}
 
 // @freezed
-// class AuthState with _$AuthState {
-//   const factory AuthState.initial() = _Initial;
-//   factory AuthState.loaded(
-//       //   {
-//       //   required AuthStateViewModel viewModel,
-//       // }
+// class AuthStateViewModel with _$AuthStateViewModel {
+//   factory AuthStateViewModel({
 
-//       ) = _Loaded;
-//   factory AuthState.loading() = _Loading;
-//   factory AuthState.error({required DomainException exception}) = _Error;
-
-//   const AuthState._();
+//   }) = _AuthStateViewModel;
 // }
-
-// // @freezed
-// // class AuthStateViewModel with _$AuthStateViewModel {
-// //   factory AuthStateViewModel({
-
-// //   }) = _AuthStateViewModel;
-// // }

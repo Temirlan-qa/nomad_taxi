@@ -1,9 +1,15 @@
-part of 'dio_rest_client.dart';
+part of 'dio_client.dart';
 
-//TODO(tima): add full function of Interceptor
 class DioInterceptor extends Interceptor {
+  final StorageServiceImpl st = StorageServiceImpl();
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    final String? accessToken = st.getToken();
+    if (accessToken != null) {
+      options.headers['Authorization'] = accessToken;
+    }
+
     Log.i(
       'onRequest: ${options.method} ${options.path}',
       name: 'DioInterceptor',
@@ -17,11 +23,14 @@ class DioInterceptor extends Interceptor {
       'onResponse: ${response.statusCode} ${response.statusMessage}',
       name: 'DioInterceptor',
     );
+    if (response.statusCode == 401 || response.statusCode == 403) {
+      st.deleteToken();
+    }
     super.onResponse(response, handler);
   }
 
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
     Log.e(
       'onError: ${err.response?.statusCode} ${err.response?.statusMessage}',
       name: 'DioInterceptor',

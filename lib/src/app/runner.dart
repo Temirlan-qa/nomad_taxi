@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
-import 'package:nomad_taxi/src/core/service/storage_service.dart';
+import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 
 // import 'package:nomad_taxi/src/core/utils/helpers/ui_helpers.dart';
 
 import 'application.dart';
 
-StorageService st = StorageServiceImpl();
+final StorageServiceImpl st = StorageServiceImpl();
 
 class Runner {
   Future<void> initializeAndRun({

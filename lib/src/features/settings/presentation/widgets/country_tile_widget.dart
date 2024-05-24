@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_check_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/toggle_widget.dart';
 
 class CountryTileWidget extends StatelessWidget {
   final String title;
@@ -25,14 +25,17 @@ class CountryTileWidget extends StatelessWidget {
         decoration: showUnderline
             ? BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(
-                        strokeAlign: BorderSide.strokeAlignInside,
-                        width: 1,
-                        color: context.theme.stroke)))
+                  bottom: BorderSide(
+                    strokeAlign: BorderSide.strokeAlignInside,
+                    width: 1,
+                    color: context.theme.stroke,
+                  ),
+                ),
+              )
             : null,
         child: Row(
           children: [
-            CustomMainCheckWidget(value: isSelected, onPressed: onTap),
+            ToggleWidget(value: isSelected, onPressed: onTap),
             Text(title, style: context.theme.textStyles.headLine)
           ],
         ),

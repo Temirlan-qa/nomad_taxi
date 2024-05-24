@@ -1,7 +1,7 @@
-// part of 'auth_bloc.dart';
+part of 'auth_bloc.dart';
 
-// @freezed
-// class AuthEvent with _$AuthEvent {
-//   const factory AuthEvent.login() = Login;
-//   const factory AuthEvent.verify() = Verify;
-// }
+@freezed
+class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.login({required SignInRequest signInBody}) = _Login;
+  const factory AuthEvent.verify() = _Verify;
+}

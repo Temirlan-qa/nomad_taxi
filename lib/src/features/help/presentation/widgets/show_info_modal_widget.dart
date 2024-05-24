@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_main_button_widget.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_modal_drag_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/modal_drag_widget.dart';
 
 class CustomInfoModalWidget extends StatelessWidget {
   const CustomInfoModalWidget({super.key, required this.title});
@@ -20,7 +20,7 @@ class CustomInfoModalWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomModalDragWidget(),
+            const ModalDragWidget(),
             const Gap(UIConstants.defaultGap3),
             Text(title, style: context.theme.textStyles.titleMain),
             const Gap(UIConstants.defaultGap2),
@@ -34,7 +34,7 @@ class CustomInfoModalWidget extends StatelessWidget {
             Text(S.current.answer_dev,
                 style: context.theme.textStyles.bodySecondary
                     .copyWith(color: context.theme.secondary)),
-            const Gap(4),
+            const Gap(UIConstants.defaultGap5),
             Text('от 17 марта 2024 г.',
                 style: context.theme.textStyles.headLine
                     .copyWith(color: context.theme.secondary)),

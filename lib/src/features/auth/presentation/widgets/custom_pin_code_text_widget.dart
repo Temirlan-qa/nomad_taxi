@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/enums/enums.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/core/widgets/custom_text_field_border_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_border_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_cursor_widget.dart';
 
 class CustomPinCodeTextWidget extends StatefulWidget {
@@ -19,7 +18,8 @@ class CustomPinCodeTextWidget extends StatefulWidget {
   final TextFieldValidationState textFieldValidationState;
 
   @override
-  State<CustomPinCodeTextWidget> createState() => _CustomPinCodeTextWidgetState();
+  State<CustomPinCodeTextWidget> createState() =>
+      _CustomPinCodeTextWidgetState();
 }
 
 class _CustomPinCodeTextWidgetState extends State<CustomPinCodeTextWidget> {
@@ -28,24 +28,30 @@ class _CustomPinCodeTextWidgetState extends State<CustomPinCodeTextWidget> {
     return AnimatedContainer(
       duration: Durations.short3,
       width: 42.5,
-      margin: EdgeInsets.only(top: widget.textFieldFocusState == TextFieldFocusState.focused ? 4 : 0),
+      margin: EdgeInsets.only(
+          top: widget.textFieldFocusState == TextFieldFocusState.focused
+              ? 4
+              : 0),
       child: Column(
         children: [
           AnimatedCrossFade(
             firstChild: Text(
               widget.title ?? '',
-              style: context.theme.textStyles.extraTitle.copyWith(color: context.theme.primary),
+              style: context.theme.textStyles.extraTitle
+                  .copyWith(color: context.theme.primary),
             ),
             secondChild: const CustomCursorWidget(),
-            crossFadeState: widget.title == null && widget.textFieldFocusState == TextFieldFocusState.focused
+            crossFadeState: widget.title == null &&
+                    widget.textFieldFocusState == TextFieldFocusState.focused
                 ? CrossFadeState.showSecond
                 : CrossFadeState.showFirst,
             duration: Durations.short3,
           ),
           const Gap(UIConstants.defaultGap2),
-          CustomTextFieldBorderWidget(
-              textFieldFocusState: widget.textFieldFocusState,
-              textFieldValidationState: widget.textFieldValidationState),
+          TextFieldBorderWidget(
+            textFieldFocusState: widget.textFieldFocusState,
+            textFieldValidationState: widget.textFieldValidationState,
+          ),
         ],
       ),
     );
