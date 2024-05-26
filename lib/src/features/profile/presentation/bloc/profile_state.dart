@@ -10,5 +10,9 @@ class ProfileState with _$ProfileState {
 
 @freezed
 class ProfileViewModel with _$ProfileViewModel {
-  const factory ProfileViewModel() = _ProfileViewModel;
+  const factory ProfileViewModel({
+    @Default('') String firstName,
+    @Default('') String lastName,
+    @Default('') String phone,
+  }) = _ProfileViewModel;
 }

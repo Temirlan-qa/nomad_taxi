@@ -919,13 +919,23 @@ abstract class _Loaded implements ProfileState {
 }
 
 /// @nodoc
-mixin _$ProfileViewModel {}
+mixin _$ProfileViewModel {
+  String get firstName => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ProfileViewModelCopyWith<ProfileViewModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $ProfileViewModelCopyWith<$Res> {
   factory $ProfileViewModelCopyWith(
           ProfileViewModel value, $Res Function(ProfileViewModel) then) =
       _$ProfileViewModelCopyWithImpl<$Res, ProfileViewModel>;
+  @useResult
+  $Res call({String firstName, String lastName, String phone});
 }
 
 /// @nodoc
@@ -937,13 +947,40 @@ class _$ProfileViewModelCopyWithImpl<$Res, $Val extends ProfileViewModel>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? phone = null,
+  }) {
+    return _then(_value.copyWith(
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$ProfileViewModelImplCopyWith<$Res> {
+abstract class _$$ProfileViewModelImplCopyWith<$Res>
+    implements $ProfileViewModelCopyWith<$Res> {
   factory _$$ProfileViewModelImplCopyWith(_$ProfileViewModelImpl value,
           $Res Function(_$ProfileViewModelImpl) then) =
       __$$ProfileViewModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String firstName, String lastName, String phone});
 }
 
 /// @nodoc
@@ -953,28 +990,89 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
   __$$ProfileViewModelImplCopyWithImpl(_$ProfileViewModelImpl _value,
       $Res Function(_$ProfileViewModelImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? phone = null,
+  }) {
+    return _then(_$ProfileViewModelImpl(
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ProfileViewModelImpl implements _ProfileViewModel {
-  const _$ProfileViewModelImpl();
+  const _$ProfileViewModelImpl(
+      {this.firstName = '', this.lastName = '', this.phone = ''});
+
+  @override
+  @JsonKey()
+  final String firstName;
+  @override
+  @JsonKey()
+  final String lastName;
+  @override
+  @JsonKey()
+  final String phone;
 
   @override
   String toString() {
-    return 'ProfileViewModel()';
+    return 'ProfileViewModel(firstName: $firstName, lastName: $lastName, phone: $phone)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ProfileViewModelImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ProfileViewModelImpl &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.phone, phone) || other.phone == phone));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, phone);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProfileViewModelImplCopyWith<_$ProfileViewModelImpl> get copyWith =>
+      __$$ProfileViewModelImplCopyWithImpl<_$ProfileViewModelImpl>(
+          this, _$identity);
 }
 
 abstract class _ProfileViewModel implements ProfileViewModel {
-  const factory _ProfileViewModel() = _$ProfileViewModelImpl;
+  const factory _ProfileViewModel(
+      {final String firstName,
+      final String lastName,
+      final String phone}) = _$ProfileViewModelImpl;
+
+  @override
+  String get firstName;
+  @override
+  String get lastName;
+  @override
+  String get phone;
+  @override
+  @JsonKey(ignore: true)
+  _$$ProfileViewModelImplCopyWith<_$ProfileViewModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

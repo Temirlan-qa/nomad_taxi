@@ -5,6 +5,7 @@ class EndPoints {
   static const login = "/auth/login";
   static const verify = "/auth/verify";
   static const resendCode = "/auth/resend-code";
+  static const getUserData = "/auth/user";
 
   // User
   static const updateUserData = "/user";
