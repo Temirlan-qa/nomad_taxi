@@ -5,9 +5,11 @@ import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info
 import '../../../../../core/exception/domain_exception.dart';
 
 abstract class IProfileRemote {
-  Future<Either<DomainException, ProfileDto>> logOut();
+  Future<Either<DomainException, String>> logOut();
 
-  Future<Either<DomainException, ProfileDto>> deleteAccount();
+  Future<Either<DomainException, ProfileDto>> getUserData();
+
+  Future<Either<DomainException, void>> deleteAccount();
 
   Future<Either<DomainException, ProfileDto>> updateUserInfo(
     UpdateUserInfoRequest request,
