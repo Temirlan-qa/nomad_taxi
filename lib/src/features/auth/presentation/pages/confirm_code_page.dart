@@ -4,13 +4,21 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
+import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_pin_code_text_field_widget.dart';
 
+import '../../../../core/service/auth/models/verify_request.dart';
+import '../../../../core/service/storage/storage_service_impl.dart';
+import '../../../../core/utils/formatters/phone_number_formatter.dart';
+import '../bloc/auth_bloc.dart';
+
 class ConfirmCodePage extends StatefulWidget {
-  const ConfirmCodePage({super.key});
+  const ConfirmCodePage({super.key, required this.phone});
+
+  final String? phone;
 
   @override
   State<ConfirmCodePage> createState() => _ConfirmCodePageState();
@@ -42,7 +50,8 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('+7 (777) 777-77-77', style: headLine),
+                        Text(PhoneNumberFormatter().format(widget.phone!),
+                            style: headLine),
                         const Gap(UIConstants.defaultGap2),
                         InkWell(
                             onTap: () {
@@ -75,6 +84,14 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
             CustomMainButtonWidget(
               title: S.current.next,
               onPressed: () {
+                StorageServiceImpl st = StorageServiceImpl();
+
+                getIt.call<AuthBloc>().add(AuthEvent.verify(
+                      verifyRequest: VerifyRequest(
+                        userId: st.getToken()!,
+                        code: codeController.text,
+                      ),
+                    ));
                 context.pushNamed(RouteNames.policy);
               },
             ),

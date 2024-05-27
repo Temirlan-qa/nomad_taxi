@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/sign_in_request.dart';
@@ -11,9 +12,8 @@ import 'package:nomad_taxi/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_select_country_modal_widget.dart';
 
-import '../../../../core/service/auth/models/verify_request.dart';
+import '../../../../core/router/router.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
-import '../../../../core/service/storage/storage_service_impl.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -68,7 +68,6 @@ class _AuthPageState extends State<AuthPage> {
                                   child: Text(selectedRegionCode,
                                       style: context.theme.textStyles.headLine),
                                 ),
-                                //TODO: add formatter
                                 Expanded(
                                   child: TextFieldWidget(
                                     controller: phoneController,
@@ -110,23 +109,13 @@ class _AuthPageState extends State<AuthPage> {
                 title: S.current.next,
                 onPressed: () async {
                   authBloc.add(
-                    const AuthEvent.login(
-                      signInBody: SignInRequest(
-                        phone: '77476133356',
-                      ),
+                    AuthEvent.login(
+                      signInBody: SignInRequest(phone: phoneController.text),
                     ),
                   );
 
-                  StorageServiceImpl st = StorageServiceImpl();
-
-                  authBloc.add(AuthEvent.verify(
-                    verifyRequest: VerifyRequest(
-                      userId: st.getToken()!,
-                      code: '7777',
-                    ),
-                  ));
-
-                  // context.push(RoutePaths.codeConfirm);
+                  context.push(RoutePaths.codeConfirm,
+                      extra: phoneController.text);
                 },
               )
             ],
