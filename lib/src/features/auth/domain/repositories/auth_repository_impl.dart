@@ -1,11 +1,13 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/auth/auth_service_impl.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/verify_request.dart';
 
 import '../../../../core/exceptions/domain_exception.dart';
 import '../../../../core/service/auth/i_auth_service.dart';
 import '../../../../core/service/auth/models/sign_in_request.dart';
 import '../../../../core/service/auth/models/sign_in_response.dart';
+import '../../../../core/service/auth/models/verify_response.dart';
 import '../../../../core/utils/loggers/logger.dart';
 import '../../data/repositories/i_auth_repository.dart';
 
@@ -36,14 +38,14 @@ class AuthRepositoryImpl implements IAuthRepository {
   }
 
   @override
-  Future<Either<DomainException, SignInResponse>> verifyUser(
-      SignInRequest body) async {
+  Future<Either<DomainException, VerifyResponse>> verifyUser(
+      VerifyRequest body) async {
     try {
       final requests = await _authService.verifyUser(body);
       return requests.fold(
         (error) => Left(error),
         (response) {
-          final SignInResponse result = response;
+          final VerifyResponse result = response;
           return Right(result);
         },
       );

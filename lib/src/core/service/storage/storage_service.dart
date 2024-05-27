@@ -1,8 +1,8 @@
 abstract class StorageService {
   Future<void> setToken(String? token);
-  Future<void> deleteToken();
-  Future<void> setLanguageCode(String token);
+  Future<void> setLanguageCode(String code);
   String? getToken();
+  Future<void> deleteToken();
   String? getRefreshToken();
   String? getLanguageCode();
   Future<void> clear();
@@ -10,6 +10,4 @@ abstract class StorageService {
   Future<void> openBox();
   bool checkLoggedIn();
   bool get isLoggedIn;
-
-  set isLoggedIn(bool status);
 }

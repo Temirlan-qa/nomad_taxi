@@ -10,6 +10,10 @@ import 'package:nomad_taxi/src/core/exceptions/domain_exception.dart';
 import 'package:nomad_taxi/src/core/service/auth/i_auth_service.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/sign_in_request.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/sign_in_response.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/verify_request.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/verify_response.dart';
+
+import '../storage/storage_service_impl.dart';
 
 @named
 @LazySingleton(as: IAuthService)
@@ -22,8 +26,9 @@ class AuthServiceImpl implements IAuthService {
   Future<Either<DomainException, SignInResponse>> loginUser(
       SignInRequest request) async {
     var headers = {'Content-Type': 'application/json'};
-    var data = json.encode({"phone": "77476133356"});
+    var data = json.encode({"phone": request.phone.toString()});
     var dio = Dio();
+
     var response = await dio.request(
       'https://auyltaxi.kz/api/v1/auth/login',
       options: Options(
@@ -33,87 +38,58 @@ class AuthServiceImpl implements IAuthService {
       data: data,
     );
 
+    var st = StorageServiceImpl();
+
     if (response.statusCode == 200) {
       print(json.encode(response.data));
+      st.setToken(
+          SignInResponse.fromJson(response.data).data.userId.toString());
+      log('XXX');
+      log(SignInResponse.fromJson(response.data).data.userId.toString());
+      log(st.getToken()!);
+      log('YYY');
       return Right(SignInResponse.fromJson(response.data));
     } else {
       print(response.statusMessage);
       return Left(UnknownException(message: response.statusMessage));
     }
-    // log('Login request: ${request.phone}');
-    // try {
-    //   final Either<DomainException, Response> response = await client.post(
-    //     'https://auyltaxi.kz/api/v1/auth/login',
-    //     data: {"phone": request.phone},
-    //   );
-
-    //   log('Login response: $response');
-
-    //   return response.fold(
-    //     (error) {
-    //       log('Login error: $error');
-    //       return Left(error);
-    //     },
-    //     (result) {
-    //       log('Login result: ${result.data}');
-    //       if (result.statusCode == 200) {
-    //         try {
-    //           final signInResponse = SignInResponse.fromJson(result.data);
-    //           return Right(signInResponse);
-    //         } catch (e) {
-    //           log('Parsing error: $e');
-    //           return Left(
-    //               UnknownException(message: 'Failed to parse response'));
-    //         }
-    //       } else {
-    //         log('Unexpected status code: ${result.statusCode}');
-    //         return Left(UnknownException(
-    //             message: 'Unexpected status code: ${result.statusCode}'));
-    //       }
-    //     },
-    //   );
-    // } catch (e) {
-    //   log('Exception caught during login: $e');
-    //   return Left(
-    //       e is DomainException ? e : UnknownException(message: e.toString()));
-    // }
   }
 
   @override
-  Future<Either<DomainException, SignInResponse>> verifyUser(
-      SignInRequest request) async {
-    log('Verify request: ${request.phone}');
+  Future<Either<DomainException, VerifyResponse>> verifyUser(
+      VerifyRequest request) async {
     try {
-      final Either<DomainException, Response> response = await client.post(
+      var dio = Dio();
+
+      var response = await dio.request(
         '${EndPoints.baseUrl}/v1/auth/verify',
-        data: request.toJson(),
+        options: Options(
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+        data: VerifyRequest(
+          userId: request.userId,
+          code: request.code,
+        ),
       );
+
+      var st = StorageServiceImpl();
 
       log('Verify response: $response');
 
-      return response.fold(
-        (error) {
-          log('Verify error: $error');
-          return Left(error);
-        },
-        (result) {
-          log('Verify result: ${result.data}');
-          if (result.statusCode == 200) {
-            try {
-              final signInResponse = SignInResponse.fromJson(result.data);
-              return Right(signInResponse);
-            } catch (e) {
-              log('Parsing error: $e');
-              return Left(
-                  UnknownException(message: 'Failed to parse response'));
-            }
-          } else {
-            log('Unexpected status code: ${result.statusCode}');
-            return Left(UnknownException(
-                message: 'Unexpected status code: ${result.statusCode}'));
-          }
-        },
-      );
+      if (response.statusCode == 200) {
+        st.deleteToken();
+        st.setToken(VerifyResponse.fromJson(response.data).data.accessToken);
+        log('XXX');
+        log(VerifyResponse.fromJson(response.data).data.accessToken);
+        log(st.getToken()!);
+        log('YYY');
+        return Right(VerifyResponse.fromJson(response.data));
+      } else {
+        return Left(UnknownException(message: response.statusMessage));
+      }
     } catch (e) {
       log('Exception caught during verification: $e');
       return Left(

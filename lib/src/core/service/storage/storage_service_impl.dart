@@ -3,7 +3,17 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'storage_service.dart';
 
 class StorageServiceImpl implements StorageService {
-  // TODO: add singolton to this service
+  // Singleton instance
+  static final StorageServiceImpl _instance = StorageServiceImpl._internal();
+
+  // Factory constructor to return the same instance
+  factory StorageServiceImpl() {
+    return _instance;
+  }
+
+  // Private constructor
+  StorageServiceImpl._internal();
+
   static const String _tokenKey = 'TOKEN';
   static const String _refreshTokenKey = 'REFRESH_TOKEN';
   static const String _languageCode = 'LANGUAGE_CODE';
@@ -13,7 +23,6 @@ class StorageServiceImpl implements StorageService {
   @override
   Future<void> setToken(String? token) async {
     await hiveBox.put(_tokenKey, token);
-    // await hiveBox.put(_refreshTokenKey, refreshToken);
   }
 
   @override
@@ -27,8 +36,8 @@ class StorageServiceImpl implements StorageService {
   }
 
   @override
-  Future<void> deleteToken() {
-    return hiveBox.delete(_tokenKey);
+  Future<void> deleteToken() async {
+    await hiveBox.delete(_tokenKey);
   }
 
   @override
@@ -43,7 +52,9 @@ class StorageServiceImpl implements StorageService {
 
   @override
   Future<void> clear() async {
-    hiveBox.isOpen ? await hiveBox.clear() : null;
+    if (hiveBox.isOpen) {
+      await hiveBox.clear();
+    }
   }
 
   @override
@@ -63,5 +74,5 @@ class StorageServiceImpl implements StorageService {
   }
 
   @override
-  bool isLoggedIn = false;
+  bool get isLoggedIn => checkLoggedIn();
 }

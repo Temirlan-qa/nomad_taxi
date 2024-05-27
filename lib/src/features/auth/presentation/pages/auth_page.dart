@@ -11,7 +11,9 @@ import 'package:nomad_taxi/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_select_country_modal_widget.dart';
 
+import '../../../../core/service/auth/models/verify_request.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
+import '../../../../core/service/storage/storage_service_impl.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -24,6 +26,9 @@ class _AuthPageState extends State<AuthPage> {
   TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String selectedRegionCode = '+7';
+
+  AuthBloc authBloc = getIt<AuthBloc>();
+
   @override
   void dispose() {
     phoneController.dispose();
@@ -103,12 +108,27 @@ class _AuthPageState extends State<AuthPage> {
               const Gap(UIConstants.defaultGap1),
               CustomMainButtonWidget(
                 title: S.current.next,
-                onPressed: () {
-                  getIt<AuthBloc>().add(const AuthEvent.login(
-                      signInBody: SignInRequest(phone: '77476133356')));
+                onPressed: () async {
+                  authBloc.add(
+                    const AuthEvent.login(
+                      signInBody: SignInRequest(
+                        phone: '77476133356',
+                      ),
+                    ),
+                  );
+
+                  StorageServiceImpl st = StorageServiceImpl();
+
+                  authBloc.add(AuthEvent.verify(
+                    verifyRequest: VerifyRequest(
+                      userId: st.getToken()!,
+                      code: '7777',
+                    ),
+                  ));
+
                   // context.push(RoutePaths.codeConfirm);
                 },
-              ),
+              )
             ],
           ),
         ),

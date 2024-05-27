@@ -23,10 +23,34 @@ class ProfileRemoteImpl implements IProfileRemote {
   }
 
   @override
-  Future<Either<DomainException, ProfileDto>> logOut() async {
+  Future<Either<DomainException, String>> logOut() async {
     try {
       final Either<DomainException, Response> response =
           await client.post(EndPoints.logout);
+
+      response.fold(
+        (error) => Left(error),
+        (result) {
+          if (result.statusCode == 200) {
+            return Right(result);
+          }
+          return Left(UnknownException());
+        },
+      );
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<DomainException, ProfileDto>> updateUserInfo(
+      UpdateUserInfoRequest request) async {
+    try {
+      final Either<DomainException, Response> response =
+          await client.post(EndPoints.updateUserData, data: request.toJson());
 
       response.fold(
         (error) => Left(error),
@@ -48,11 +72,10 @@ class ProfileRemoteImpl implements IProfileRemote {
   }
 
   @override
-  Future<Either<DomainException, ProfileDto>> updateUserInfo(
-      UpdateUserInfoRequest request) async {
+  Future<Either<DomainException, ProfileDto>> getUserData() async {
     try {
       final Either<DomainException, Response> response =
-          await client.post(EndPoints.updateUserData, data: request.toJson());
+          await client.get(EndPoints.getUserData);
 
       response.fold(
         (error) => Left(error),

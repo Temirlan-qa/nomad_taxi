@@ -20,9 +20,18 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProfileDto {
-  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'first_name')
+  String get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'language_code')
+  String get languageCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_blocked')
+  int get isBlocked => throw _privateConstructorUsedError;
+  int get bonus => throw _privateConstructorUsedError;
+  PartnerDto get partner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +45,17 @@ abstract class $ProfileDtoCopyWith<$Res> {
           ProfileDto value, $Res Function(ProfileDto) then) =
       _$ProfileDtoCopyWithImpl<$Res, ProfileDto>;
   @useResult
-  $Res call({String name, String lastName, String phone});
+  $Res call(
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      String phone,
+      int id,
+      @JsonKey(name: 'language_code') String languageCode,
+      @JsonKey(name: 'is_blocked') int isBlocked,
+      int bonus,
+      PartnerDto partner});
+
+  $PartnerDtoCopyWith<$Res> get partner;
 }
 
 /// @nodoc
@@ -52,14 +71,19 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? firstName = null,
     Object? lastName = null,
     Object? phone = null,
+    Object? id = null,
+    Object? languageCode = null,
+    Object? isBlocked = null,
+    Object? bonus = null,
+    Object? partner = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
               as String,
       lastName: null == lastName
           ? _value.lastName
@@ -69,7 +93,35 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      isBlocked: null == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as int,
+      bonus: null == bonus
+          ? _value.bonus
+          : bonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      partner: null == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as PartnerDto,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartnerDtoCopyWith<$Res> get partner {
+    return $PartnerDtoCopyWith<$Res>(_value.partner, (value) {
+      return _then(_value.copyWith(partner: value) as $Val);
+    });
   }
 }
 
@@ -81,7 +133,18 @@ abstract class _$$ProfileDtoImplCopyWith<$Res>
       __$$ProfileDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String lastName, String phone});
+  $Res call(
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      String phone,
+      int id,
+      @JsonKey(name: 'language_code') String languageCode,
+      @JsonKey(name: 'is_blocked') int isBlocked,
+      int bonus,
+      PartnerDto partner});
+
+  @override
+  $PartnerDtoCopyWith<$Res> get partner;
 }
 
 /// @nodoc
@@ -95,14 +158,19 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? firstName = null,
     Object? lastName = null,
     Object? phone = null,
+    Object? id = null,
+    Object? languageCode = null,
+    Object? isBlocked = null,
+    Object? bonus = null,
+    Object? partner = null,
   }) {
     return _then(_$ProfileDtoImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
               as String,
       lastName: null == lastName
           ? _value.lastName
@@ -112,6 +180,26 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      isBlocked: null == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as int,
+      bonus: null == bonus
+          ? _value.bonus
+          : bonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      partner: null == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as PartnerDto,
     ));
   }
 }
@@ -120,21 +208,42 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProfileDtoImpl implements _ProfileDto {
   const _$ProfileDtoImpl(
-      {required this.name, required this.lastName, required this.phone});
+      {@JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'last_name') required this.lastName,
+      required this.phone,
+      required this.id,
+      @JsonKey(name: 'language_code') required this.languageCode,
+      @JsonKey(name: 'is_blocked') required this.isBlocked,
+      required this.bonus,
+      required this.partner});
 
   factory _$ProfileDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileDtoImplFromJson(json);
 
   @override
-  final String name;
+  @JsonKey(name: 'first_name')
+  final String firstName;
   @override
+  @JsonKey(name: 'last_name')
   final String lastName;
   @override
   final String phone;
+  @override
+  final int id;
+  @override
+  @JsonKey(name: 'language_code')
+  final String languageCode;
+  @override
+  @JsonKey(name: 'is_blocked')
+  final int isBlocked;
+  @override
+  final int bonus;
+  @override
+  final PartnerDto partner;
 
   @override
   String toString() {
-    return 'ProfileDto(name: $name, lastName: $lastName, phone: $phone)';
+    return 'ProfileDto(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, languageCode: $languageCode, isBlocked: $isBlocked, bonus: $bonus, partner: $partner)';
   }
 
   @override
@@ -142,15 +251,24 @@ class _$ProfileDtoImpl implements _ProfileDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileDtoImpl &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode) &&
+            (identical(other.isBlocked, isBlocked) ||
+                other.isBlocked == isBlocked) &&
+            (identical(other.bonus, bonus) || other.bonus == bonus) &&
+            (identical(other.partner, partner) || other.partner == partner));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, lastName, phone);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, phone, id,
+      languageCode, isBlocked, bonus, partner);
 
   @JsonKey(ignore: true)
   @override
@@ -168,19 +286,38 @@ class _$ProfileDtoImpl implements _ProfileDto {
 
 abstract class _ProfileDto implements ProfileDto {
   const factory _ProfileDto(
-      {required final String name,
-      required final String lastName,
-      required final String phone}) = _$ProfileDtoImpl;
+      {@JsonKey(name: 'first_name') required final String firstName,
+      @JsonKey(name: 'last_name') required final String lastName,
+      required final String phone,
+      required final int id,
+      @JsonKey(name: 'language_code') required final String languageCode,
+      @JsonKey(name: 'is_blocked') required final int isBlocked,
+      required final int bonus,
+      required final PartnerDto partner}) = _$ProfileDtoImpl;
 
   factory _ProfileDto.fromJson(Map<String, dynamic> json) =
       _$ProfileDtoImpl.fromJson;
 
   @override
-  String get name;
+  @JsonKey(name: 'first_name')
+  String get firstName;
   @override
+  @JsonKey(name: 'last_name')
   String get lastName;
   @override
   String get phone;
+  @override
+  int get id;
+  @override
+  @JsonKey(name: 'language_code')
+  String get languageCode;
+  @override
+  @JsonKey(name: 'is_blocked')
+  int get isBlocked;
+  @override
+  int get bonus;
+  @override
+  PartnerDto get partner;
   @override
   @JsonKey(ignore: true)
   _$$ProfileDtoImplCopyWith<_$ProfileDtoImpl> get copyWith =>
