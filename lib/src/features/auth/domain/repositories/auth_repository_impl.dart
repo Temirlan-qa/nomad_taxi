@@ -25,11 +25,12 @@ class AuthRepositoryImpl implements IAuthRepository {
       return requests.fold(
         (error) => Left(error),
         (response) {
-          return Right(response);
+          final SignInResponse result = response;
+
+          return Right(result);
         },
       );
     } catch (e) {
-      Log.e(e, name: 'AuthRepositoryImpl');
       return Left(UnknownException(message: e.toString()));
     }
   }

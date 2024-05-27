@@ -8,7 +8,7 @@ part 'data_response.g.dart';
 @freezed
 class DataResponse extends BaseEntity with _$DataResponse {
   const factory DataResponse({
-    @JsonKey(name: 'user_id') required String userId,
+    @JsonKey(name: 'user_id') required dynamic userId,
   }) = _DataResponse;
 
   factory DataResponse.fromJson(Map<String, dynamic> json) =>

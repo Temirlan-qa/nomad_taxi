@@ -21,7 +21,7 @@ DataResponse _$DataResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DataResponse {
   @JsonKey(name: 'user_id')
-  String get userId => throw _privateConstructorUsedError;
+  dynamic get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $DataResponseCopyWith<$Res> {
           DataResponse value, $Res Function(DataResponse) then) =
       _$DataResponseCopyWithImpl<$Res, DataResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'user_id') String userId});
+  $Res call({@JsonKey(name: 'user_id') dynamic userId});
 }
 
 /// @nodoc
@@ -51,13 +51,13 @@ class _$DataResponseCopyWithImpl<$Res, $Val extends DataResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$DataResponseImplCopyWith<$Res>
       __$$DataResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'user_id') String userId});
+  $Res call({@JsonKey(name: 'user_id') dynamic userId});
 }
 
 /// @nodoc
@@ -84,13 +84,13 @@ class __$$DataResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? userId = freezed,
   }) {
     return _then(_$DataResponseImpl(
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
     ));
   }
 }
@@ -105,7 +105,7 @@ class _$DataResponseImpl implements _DataResponse {
 
   @override
   @JsonKey(name: 'user_id')
-  final String userId;
+  final dynamic userId;
 
   @override
   String toString() {
@@ -117,12 +117,13 @@ class _$DataResponseImpl implements _DataResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataResponseImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+            const DeepCollectionEquality().equals(other.userId, userId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userId));
 
   @JsonKey(ignore: true)
   @override
@@ -140,7 +141,7 @@ class _$DataResponseImpl implements _DataResponse {
 
 abstract class _DataResponse implements DataResponse {
   const factory _DataResponse(
-          {@JsonKey(name: 'user_id') required final String userId}) =
+          {@JsonKey(name: 'user_id') required final dynamic userId}) =
       _$DataResponseImpl;
 
   factory _DataResponse.fromJson(Map<String, dynamic> json) =
@@ -148,7 +149,7 @@ abstract class _DataResponse implements DataResponse {
 
   @override
   @JsonKey(name: 'user_id')
-  String get userId;
+  dynamic get userId;
   @override
   @JsonKey(ignore: true)
   _$$DataResponseImplCopyWith<_$DataResponseImpl> get copyWith =>

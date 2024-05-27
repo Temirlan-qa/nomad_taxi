@@ -14,16 +14,14 @@ sealed class DomainException implements Exception {
 }
 
 class UnknownException extends DomainException {
-  UnknownException({String? message, StackTrace? stackTrace})
+  UnknownException({String? message, super.stackTrace})
       : super(
           message: message ?? 'unknown Exception',
-          stackTrace: stackTrace,
         );
 }
 
 class BadRequest extends DomainException {
-  BadRequest({StackTrace? stackTrace})
-      : super(message: 'bad Request', stackTrace: stackTrace);
+  BadRequest({super.stackTrace}) : super(message: 'bad Request');
 }
 
 class UnknownError extends DomainException {
@@ -40,6 +38,5 @@ class MapperException extends DomainException {
 }
 
 class NetworkException extends DomainException {
-  NetworkException({required String message, StackTrace? stackTrace})
-      : super(message: message, stackTrace: stackTrace);
+  NetworkException({required super.message, super.stackTrace});
 }

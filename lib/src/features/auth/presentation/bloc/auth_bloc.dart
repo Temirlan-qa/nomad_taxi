@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nomad_taxi/src/core/exceptions/domain_exception.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/data_response.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/login_use_case.dart';
 
 import '../../../../core/base/base_bloc/bloc/base_bloc.dart';
+import '../../../../core/base/base_usecase/result.dart';
 import '../../../../core/service/auth/models/sign_in_request.dart';
 import '../../../../core/service/auth/models/sign_in_response.dart';
 
@@ -46,7 +48,10 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
 
   Future<void> _login(_Login event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
-    final result = await _loginUseCase.call(event.signInBody);
+    final Result<SignInResponse, DomainException> result =
+        await _loginUseCase.call(event.signInBody);
+
+    if (emit.isDone) return; // Check if the event handler has already completed
 
     if (result.isSuccessful) {
       emit(
@@ -59,13 +64,9 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
           ),
         ),
       );
+    } else {
+      emit(const AuthState.error("Login failed"));
     }
-    // result.isSuccessful
-    //     ? emit(AuthState.loaded(SignInResponse(
-    //         status: result.data!.status,
-    //         userId: result.data!.userId,
-    //       )))
-    //     : emit(const AuthState.error('cant login'));
   }
 
   void _verify(_Verify event, Emitter<AuthState> emit) async {

@@ -625,6 +625,8 @@ abstract class _$$LoadedImplCopyWith<$Res> {
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SignInResponse response});
+
+  $SignInResponseCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -646,6 +648,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
           : response // ignore: cast_nullable_to_non_nullable
               as SignInResponse,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SignInResponseCopyWith<$Res> get response {
+    return $SignInResponseCopyWith<$Res>(_value.response, (value) {
+      return _then(_value.copyWith(response: value));
+    });
   }
 }
 
