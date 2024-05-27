@@ -1,7 +1,7 @@
 import 'package:fixnum/fixnum.dart';
 import 'package:intl/intl.dart';
 
-import '../../exception/domain_exception.dart';
+import '../../exceptions/domain_exception.dart';
 
 class DateTimeHelper {
   static DateFormat fullTime = DateFormat('HH:mm:ss');

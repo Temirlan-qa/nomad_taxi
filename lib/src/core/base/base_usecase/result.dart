@@ -1,5 +1,4 @@
 class Result<Data, Failure extends Exception> {
-
   const Result.success(Data data)
       : _data = data,
         _failure = null;
@@ -17,4 +16,7 @@ class Result<Data, Failure extends Exception> {
   Data? get data => _data;
 
   Failure? get failure => _failure;
+
+  void fold(void Function(dynamic failure) param0,
+      void Function(dynamic response) param1) {}
 }

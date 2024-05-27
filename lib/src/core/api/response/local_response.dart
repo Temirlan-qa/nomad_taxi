@@ -1,4 +1,4 @@
-import '../../exception/domain_exception.dart';
+import '../../exceptions/domain_exception.dart';
 
 class LocalResponse<T> {
   LocalResponse({this.data, this.error});

@@ -5,7 +5,7 @@ import 'package:nomad_taxi/src/features/profile/domain/entities/profile_entity.d
 import 'package:nomad_taxi/src/features/profile/domain/repositories/i_profile_repository.dart';
 
 import '../../../../core/base/base_usecase/use_case.dart';
-import '../../../../core/exception/domain_exception.dart';
+import '../../../../core/exceptions/domain_exception.dart';
 
 @lazySingleton
 class GetUserDataUseCase extends NoneInputBoundaryUseCase<ProfileEntity> {

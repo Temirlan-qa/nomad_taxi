@@ -8,7 +8,7 @@ import 'package:nomad_taxi/src/features/profile/domain/entities/profile_entity.d
 import 'package:nomad_taxi/src/features/profile/domain/repositories/i_profile_repository.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 
-import '../../../../core/exception/domain_exception.dart';
+import '../../../../core/exceptions/domain_exception.dart';
 
 @named
 @LazySingleton(as: IProfileRepository)

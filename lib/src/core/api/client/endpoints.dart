@@ -1,4 +1,5 @@
 class EndPoints {
+  static const String baseUrl = 'https://auyltaxi.kz/api';
   // Auth
   static const refreshToken = "/auth/refresh";
   static const logout = "/auth/logout";

@@ -25,7 +25,7 @@ part 'router_paths.dart';
 
 GoRouter routerProvider() {
   return GoRouter(
-    initialLocation: RoutePaths.main,
+    initialLocation: RoutePaths.auth,
     debugLogDiagnostics: true,
     routes: _routes(),
     // redirect: (context, state) {

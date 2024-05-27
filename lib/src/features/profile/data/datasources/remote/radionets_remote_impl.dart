@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:nomad_taxi/src/core/api/client/rest/dio_client.dart';
+import 'package:nomad_taxi/src/core/api/client/rest/dio/dio_client.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/profile_dto.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 
 import '../../../../../core/api/client/endpoints.dart';
-import '../../../../../core/exception/domain_exception.dart';
+import '../../../../../core/exceptions/domain_exception.dart';
 import 'i_profile_remote.dart';
 
 @named
