@@ -14,6 +14,7 @@ _$ProfileDtoImpl _$$ProfileDtoImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       languageCode: json['language_code'] as String?,
       isBlocked: (json['is_blocked'] as num?)?.toInt(),
+      fcmToken: json['fcm_token'] as String?,
       bonus: (json['bonus'] as num?)?.toInt(),
       partner: json['partner'] == null
           ? null
@@ -28,6 +29,7 @@ Map<String, dynamic> _$$ProfileDtoImplToJson(_$ProfileDtoImpl instance) =>
       'id': instance.id,
       'language_code': instance.languageCode,
       'is_blocked': instance.isBlocked,
+      'fcm_token': instance.fcmToken,
       'bonus': instance.bonus,
       'partner': instance.partner,
     };

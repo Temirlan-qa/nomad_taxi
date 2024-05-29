@@ -35,6 +35,7 @@ class ProfileDtoMapper {
       isBlocked: dto.isBlocked,
       bonus: dto.bonus,
       partner: partner,
+      fcmToken: dto.fcmToken,
     );
   }
 }

@@ -15,6 +15,7 @@ class ProfileDto extends BaseDto with _$ProfileDto {
     required int id,
     @JsonKey(name: 'language_code') String? languageCode,
     @JsonKey(name: 'is_blocked') int? isBlocked,
+    @JsonKey(name: 'fcm_token') String? fcmToken,
     int? bonus,
     PartnerDto? partner,
   }) = _ProfileDto;

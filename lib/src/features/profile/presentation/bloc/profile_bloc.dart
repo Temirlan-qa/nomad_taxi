@@ -7,7 +7,6 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/delete_account_use_case.dart';
-import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/log_out_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_user_info_use_case.dart';
 
@@ -20,13 +19,11 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     this._updateUserInfoUseCase,
     this._logOutUseCase,
     this._deleteAccountUseCase,
-    this._getUserDataUseCase,
   ) : super(const _Initial());
 
   final UpdateUserInfoUseCase _updateUserInfoUseCase;
   final LogOutUseCase _logOutUseCase;
   final DeleteAccountUseCase _deleteAccountUseCase;
-  final GetUserDataUseCase _getUserDataUseCase;
 
   final ProfileViewModel _viewModel = const ProfileViewModel();
 
@@ -46,20 +43,6 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     Emitter emit,
   ) async {
     emit(const _Initial());
-    final result = await _getUserDataUseCase.call();
-    final data = result.data;
-
-    if (result.isSuccessful && data != null) {
-      emit(
-        _Loaded(
-          viewModel: _viewModel.copyWith(
-            firstName: data.firstName,
-            lastName: data.lastName,
-            phone: data.phone,
-          ),
-        ),
-      );
-    }
   }
 
   Future<void> _logOut(
