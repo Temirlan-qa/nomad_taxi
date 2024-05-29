@@ -36,15 +36,15 @@ class ProfileRemoteImpl implements IProfileRemote {
       };
       var dio = Dio();
       var response = await dio.request(
-        'https://auyltaxi.kz/api/v1/auth/user',
+        'https://auyltaxi.kz/api/v1/auth/logout',
         options: Options(
-          method: 'GET',
+          method: 'POST',
           headers: headers,
         ),
       );
 
       if (response.statusCode == 200) {
-        return Right(response.data);
+        return Right(response.data['status']);
       } else {
         return Left(UnknownException());
       }
@@ -90,7 +90,7 @@ class ProfileRemoteImpl implements IProfileRemote {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-
+      var data = {'first_name': request.name, 'last_name': request.lastName};
       var dio = Dio();
       var response = await dio.request(
         'https://auyltaxi.kz/api/v1/user',
@@ -98,13 +98,11 @@ class ProfileRemoteImpl implements IProfileRemote {
           method: 'PUT',
           headers: headers,
         ),
-        data: request.toJson(),
+        data: data,
       );
 
       if (response.statusCode == 200) {
-        return Right(
-          ProfileDto.fromJson(response.data),
-        );
+        return Right(ProfileDto.fromJson(response.data['data']));
       } else {
         return Left(UnknownException());
       }

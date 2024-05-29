@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
-import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
@@ -32,6 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController surnameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   bool isValChanged = false;
+  final bloc = getIt<ProfileBloc>();
 
   @override
   void dispose() {
@@ -44,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(
-      bloc: getIt<ProfileBloc>(),
+      bloc: bloc,
       builder: (context, state) {
         return Scaffold(
           appBar: CustomAppBar(
@@ -234,13 +234,12 @@ class _ProfilePageState extends State<ProfilePage> {
             context.pop();
           },
           accept: () async {
-            //TODO: uncomment this part of code after impl of login
             //st.deleteToken();
-            //bloc.add(const ProfileEvent.logOut());
-            while (context.canPop()) {
-              context.pop();
-            }
-            context.pushReplacementNamed(RouteNames.auth);
+            bloc.add(const ProfileEvent.logOut());
+            // while (context.canPop()) {
+            //   context.pop();
+            // }
+            // context.pushReplacementNamed(RouteNames.auth);
           },
         );
       },
