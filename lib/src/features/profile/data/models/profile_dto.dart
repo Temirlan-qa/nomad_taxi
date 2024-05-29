@@ -13,10 +13,10 @@ class ProfileDto extends BaseDto with _$ProfileDto {
     @JsonKey(name: 'last_name') required String lastName,
     required String phone,
     required int id,
-    @JsonKey(name: 'language_code') required String languageCode,
-    @JsonKey(name: 'is_blocked') required int isBlocked,
-    required int bonus,
-    required PartnerDto partner,
+    @JsonKey(name: 'language_code') String? languageCode,
+    @JsonKey(name: 'is_blocked') int? isBlocked,
+    int? bonus,
+    PartnerDto? partner,
   }) = _ProfileDto;
 
   factory ProfileDto.fromJson(Map<String, dynamic> json) =>

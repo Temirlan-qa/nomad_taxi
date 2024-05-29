@@ -9,14 +9,14 @@ part 'partner.g.dart';
 @freezed
 class Partner extends BaseEntity with _$Partner {
   const factory Partner({
-    required int id,
-    @JsonKey(name: 'first_name') required String firstName,
-    @JsonKey(name: 'last_name') required String lastName,
-    @JsonKey(name: 'car_model') required String carModel,
-    @JsonKey(name: 'car_number') required String carNumber,
-    @JsonKey(name: 'town_id') required int townId,
-    required String status,
-    required Finance finance,
+    int? id,
+    @JsonKey(name: 'first_name') String? firstName,
+    @JsonKey(name: 'last_name') String? lastName,
+    @JsonKey(name: 'car_model') String? carModel,
+    @JsonKey(name: 'car_number') String? carNumber,
+    @JsonKey(name: 'town_id') int? townId,
+    String? status,
+    Finance? finance,
   }) = _Partner;
 
   factory Partner.fromJson(Map<String, dynamic> json) =>

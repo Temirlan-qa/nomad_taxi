@@ -8,8 +8,8 @@ part 'finance.g.dart';
 @freezed
 class Finance extends BaseEntity with _$Finance {
   const factory Finance({
-    required int balance,
-    required int bonus,
+    int? balance,
+    int? bonus,
   }) = _Finance;
 
   factory Finance.fromJson(Map<String, dynamic> json) =>

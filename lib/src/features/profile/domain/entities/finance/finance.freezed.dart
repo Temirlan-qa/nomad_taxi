@@ -20,8 +20,8 @@ Finance _$FinanceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Finance {
-  int get balance => throw _privateConstructorUsedError;
-  int get bonus => throw _privateConstructorUsedError;
+  int? get balance => throw _privateConstructorUsedError;
+  int? get bonus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $FinanceCopyWith<$Res> {
   factory $FinanceCopyWith(Finance value, $Res Function(Finance) then) =
       _$FinanceCopyWithImpl<$Res, Finance>;
   @useResult
-  $Res call({int balance, int bonus});
+  $Res call({int? balance, int? bonus});
 }
 
 /// @nodoc
@@ -49,18 +49,18 @@ class _$FinanceCopyWithImpl<$Res, $Val extends Finance>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? balance = null,
-    Object? bonus = null,
+    Object? balance = freezed,
+    Object? bonus = freezed,
   }) {
     return _then(_value.copyWith(
-      balance: null == balance
+      balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as int,
-      bonus: null == bonus
+              as int?,
+      bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -72,7 +72,7 @@ abstract class _$$FinanceImplCopyWith<$Res> implements $FinanceCopyWith<$Res> {
       __$$FinanceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int balance, int bonus});
+  $Res call({int? balance, int? bonus});
 }
 
 /// @nodoc
@@ -86,18 +86,18 @@ class __$$FinanceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? balance = null,
-    Object? bonus = null,
+    Object? balance = freezed,
+    Object? bonus = freezed,
   }) {
     return _then(_$FinanceImpl(
-      balance: null == balance
+      balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as int,
-      bonus: null == bonus
+              as int?,
+      bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -105,15 +105,15 @@ class __$$FinanceImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FinanceImpl implements _Finance {
-  const _$FinanceImpl({required this.balance, required this.bonus});
+  const _$FinanceImpl({this.balance, this.bonus});
 
   factory _$FinanceImpl.fromJson(Map<String, dynamic> json) =>
       _$$FinanceImplFromJson(json);
 
   @override
-  final int balance;
+  final int? balance;
   @override
-  final int bonus;
+  final int? bonus;
 
   @override
   String toString() {
@@ -148,15 +148,15 @@ class _$FinanceImpl implements _Finance {
 }
 
 abstract class _Finance implements Finance {
-  const factory _Finance(
-      {required final int balance, required final int bonus}) = _$FinanceImpl;
+  const factory _Finance({final int? balance, final int? bonus}) =
+      _$FinanceImpl;
 
   factory _Finance.fromJson(Map<String, dynamic> json) = _$FinanceImpl.fromJson;
 
   @override
-  int get balance;
+  int? get balance;
   @override
-  int get bonus;
+  int? get bonus;
   @override
   @JsonKey(ignore: true)
   _$$FinanceImplCopyWith<_$FinanceImpl> get copyWith =>

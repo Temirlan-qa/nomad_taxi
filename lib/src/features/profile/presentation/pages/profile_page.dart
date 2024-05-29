@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
-import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
@@ -34,14 +34,6 @@ class _ProfilePageState extends State<ProfilePage> {
   bool isValChanged = false;
 
   @override
-  void initState() {
-    nameController.text = 'Вася';
-    surnameController.text = 'Пупкин';
-    phoneController.text = '+7 (705) 123 45 67';
-    super.initState();
-  }
-
-  @override
   void dispose() {
     nameController.dispose();
     surnameController.dispose();
@@ -51,109 +43,118 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BaseBlocWidget<ProfileBloc, ProfileEvent, ProfileState>(
+    return BlocBuilder<ProfileBloc, ProfileState>(
       bloc: getIt<ProfileBloc>(),
-      starterEvent: const ProfileEvent.init(),
-      builder: (context, state, bloc) {
+      builder: (context, state) {
         return Scaffold(
           appBar: CustomAppBar(
             leading: BackButtonWrapper(onPressed: () => context.pop()),
             actions: [
               TextButton.icon(
-                  onPressed: () {
-                    showLogOutModal(context);
-                  },
-                  style: TextButton.styleFrom(
-                      foregroundColor: context.theme.red,
-                      textStyle: context.theme.textStyles.headLine.copyWith(),
-                      padding: const EdgeInsets.fromLTRB(10, 14, 10, 14),
-                      shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(UIConstants.defaultRadius)),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                  icon: Assets.icons.regular.exit.svg(
-                      width: 18,
-                      height: 18,
-                      colorFilter:
-                          ColorFilter.mode(context.theme.red, BlendMode.srcIn)),
-                  label: Text(
-                    S.current.log_out_account.toLowerCase(),
-                  )),
+                onPressed: () {
+                  showLogOutModal(context);
+                },
+                style: TextButton.styleFrom(
+                    foregroundColor: context.theme.red,
+                    textStyle: context.theme.textStyles.headLine.copyWith(),
+                    padding: const EdgeInsets.fromLTRB(10, 14, 10, 14),
+                    shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(UIConstants.defaultRadius)),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                icon: Assets.icons.regular.exit.svg(
+                    width: 18,
+                    height: 18,
+                    colorFilter:
+                        ColorFilter.mode(context.theme.red, BlendMode.srcIn)),
+                label: Text(
+                  S.current.log_out_account.toLowerCase(),
+                ),
+              ),
               const Gap(14),
             ],
           ),
           body: SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(UIConstants.defaultPadding),
-              physics: const BouncingScrollPhysics(),
-              children: [
-                Text(
-                  S.current.your_profile,
-                  style: context.theme.textStyles.titleMain,
-                ),
-                const Gap(UIConstants.defaultGap3),
-                AnimatedCrossFade(
-                  duration: Durations.short3,
-                  secondChild: const Offstage(),
-                  firstChild: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        S.current.unsaved_changes,
-                        style: context.theme.textStyles.bodySecondary
-                            .copyWith(color: context.theme.green),
-                      ),
-                      const Gap(UIConstants.defaultGap3),
-                    ],
-                  ),
-                  crossFadeState: isValChanged
-                      ? CrossFadeState.showFirst
-                      : CrossFadeState.showSecond,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            child: state.when(
+              initial: () =>
+                  const Center(child: CircularProgressIndicator.adaptive()),
+              loaded: (viewModel) {
+                nameController.text = viewModel.firstName;
+                surnameController.text = viewModel.lastName;
+                phoneController.text = viewModel.phone;
+                return ListView(
+                  padding: const EdgeInsets.all(UIConstants.defaultPadding),
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     Text(
-                      S.current.your_name,
-                      style: context.theme.textStyles.bodyMain
-                          .copyWith(color: context.theme.secondary),
+                      S.current.your_profile,
+                      style: context.theme.textStyles.titleMain,
                     ),
-                    TextFieldWidget(
-                      controller: nameController,
-                      hintText: S.current.your_name,
-                      onChanged: (value) => setState(() {
-                        isValChanged = true;
-                      }),
+                    const Gap(UIConstants.defaultGap3),
+                    AnimatedCrossFade(
+                      duration: Durations.short3,
+                      secondChild: const Offstage(),
+                      firstChild: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            S.current.unsaved_changes,
+                            style: context.theme.textStyles.bodySecondary
+                                .copyWith(color: context.theme.green),
+                          ),
+                          const Gap(UIConstants.defaultGap3),
+                        ],
+                      ),
+                      crossFadeState: isValChanged
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
                     ),
-                    const Gap(6),
-                    Text(
-                      S.current.your_surname,
-                      style: context.theme.textStyles.bodyMain
-                          .copyWith(color: context.theme.secondary),
-                    ),
-                    TextFieldWidget(
-                      controller: surnameController,
-                      hintText: S.current.your_surname,
-                      onChanged: (value) => setState(() {
-                        isValChanged = true;
-                      }),
-                    ),
-                    const Gap(6),
-                    Text(
-                      S.current.phone_number,
-                      style: context.theme.textStyles.bodyMain
-                          .copyWith(color: context.theme.secondary),
-                    ),
-                    TextFieldWidget(
-                      controller: phoneController,
-                      hintText: S.current.phone_number,
-                      onChanged: (value) => setState(() {
-                        isValChanged = true;
-                      }),
-                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.current.your_name,
+                          style: context.theme.textStyles.bodyMain
+                              .copyWith(color: context.theme.secondary),
+                        ),
+                        TextFieldWidget(
+                          controller: nameController,
+                          hintText: S.current.your_name,
+                          onChanged: (value) => setState(() {
+                            isValChanged = true;
+                          }),
+                        ),
+                        const Gap(6),
+                        Text(
+                          S.current.your_surname,
+                          style: context.theme.textStyles.bodyMain
+                              .copyWith(color: context.theme.secondary),
+                        ),
+                        TextFieldWidget(
+                          controller: surnameController,
+                          hintText: S.current.your_surname,
+                          onChanged: (value) => setState(() {
+                            isValChanged = true;
+                          }),
+                        ),
+                        const Gap(6),
+                        Text(
+                          S.current.phone_number,
+                          style: context.theme.textStyles.bodyMain
+                              .copyWith(color: context.theme.secondary),
+                        ),
+                        TextFieldWidget(
+                          controller: phoneController,
+                          hintText: S.current.phone_number,
+                          onChanged: (value) => setState(() {
+                            isValChanged = true;
+                          }),
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
+                );
+              },
             ),
           ),
           bottomNavigationBar: CustomMainBottomWidgets(
