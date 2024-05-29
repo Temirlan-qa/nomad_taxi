@@ -11,6 +11,7 @@ import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_pin_code_text_field_widget.dart';
 
+import '../../../../core/router/router.dart';
 import '../../../../core/service/auth/models/verify_request.dart';
 import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../../../core/utils/formatters/phone_number_formatter.dart';
@@ -85,30 +86,18 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
             const Gap(UIConstants.defaultGap1),
             BaseBlocWidget<AuthBloc, AuthEvent, AuthState>(
               bloc: getIt<AuthBloc>(),
-
-              // listener: (context, state) {
-              //   state.maybeWhen(
-              //     orElse: () {},
-              //     verified: () => context.pushNamed(RouteNames.policy),
-              //   );
-              // },
+              listener: (context, state) {
+                state.maybeWhen(
+                  orElse: () {},
+                  verified: () => context.pushNamed(RouteNames.policy),
+                );
+              },
               builder: (context, state, bloc) {
                 return state.maybeWhen(
                   orElse: () {
                     return CustomMainButtonWidget(
                       title: S.current.next,
-                      onPressed: () {
-                        StorageServiceImpl st = StorageServiceImpl();
-
-                        bloc.add(
-                          AuthEvent.verify(
-                            verifyRequest: VerifyRequest(
-                              userId: st.getToken()!,
-                              code: codeController.text,
-                            ),
-                          ),
-                        );
-                      },
+                      onPressed: () {},
                     );
                   },
                   loading: () => const LoadingMainButton(),

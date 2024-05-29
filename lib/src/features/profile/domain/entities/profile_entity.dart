@@ -13,10 +13,10 @@ class ProfileEntity extends BaseEntity with _$ProfileEntity {
     required String lastName,
     required String phone,
     required int id,
-    required String languageCode,
-    required int isBlocked,
-    required int bonus,
-    required Partner partner,
+    String? languageCode,
+    int? isBlocked,
+    int? bonus,
+    Partner? partner,
   }) = _ProfileEntity;
 
   factory ProfileEntity.fromJson(Map<String, dynamic> json) =>

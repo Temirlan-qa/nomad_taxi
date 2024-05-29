@@ -19,7 +19,7 @@ import '../../../features/auth/domain/usecases/login_use_case.dart' as _i18;
 import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i19;
 import '../../../features/profile/data/datasources/remote/i_profile_remote.dart'
     as _i6;
-import '../../../features/profile/data/datasources/remote/radionets_remote_impl.dart'
+import '../../../features/profile/data/datasources/remote/profile_remote_impl.dart'
     as _i7;
 import '../../../features/profile/data/repositories/profile_repository_impl.dart'
     as _i11;
@@ -60,7 +60,7 @@ extension GetItInjectableX on _i1.GetIt {
       preResolve: true,
     );
     gh.lazySingleton<_i6.IProfileRemote>(
-      () => _i7.ProfileRemoteImpl(gh<_i5.DioRestClient>()),
+      () => _i7.ProfileRemoteImpl(),
       instanceName: 'ProfileRemoteImpl',
     );
     gh.lazySingleton<_i8.IAuthService>(

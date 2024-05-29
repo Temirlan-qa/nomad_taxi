@@ -27,11 +27,11 @@ mixin _$ProfileDto {
   String get phone => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'language_code')
-  String get languageCode => throw _privateConstructorUsedError;
+  String? get languageCode => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_blocked')
-  int get isBlocked => throw _privateConstructorUsedError;
-  int get bonus => throw _privateConstructorUsedError;
-  PartnerDto get partner => throw _privateConstructorUsedError;
+  int? get isBlocked => throw _privateConstructorUsedError;
+  int? get bonus => throw _privateConstructorUsedError;
+  PartnerDto? get partner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,12 +50,12 @@ abstract class $ProfileDtoCopyWith<$Res> {
       @JsonKey(name: 'last_name') String lastName,
       String phone,
       int id,
-      @JsonKey(name: 'language_code') String languageCode,
-      @JsonKey(name: 'is_blocked') int isBlocked,
-      int bonus,
-      PartnerDto partner});
+      @JsonKey(name: 'language_code') String? languageCode,
+      @JsonKey(name: 'is_blocked') int? isBlocked,
+      int? bonus,
+      PartnerDto? partner});
 
-  $PartnerDtoCopyWith<$Res> get partner;
+  $PartnerDtoCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -75,10 +75,10 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
     Object? lastName = null,
     Object? phone = null,
     Object? id = null,
-    Object? languageCode = null,
-    Object? isBlocked = null,
-    Object? bonus = null,
-    Object? partner = null,
+    Object? languageCode = freezed,
+    Object? isBlocked = freezed,
+    Object? bonus = freezed,
+    Object? partner = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -97,29 +97,33 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      languageCode: null == languageCode
+      languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlocked: null == isBlocked
+              as String?,
+      isBlocked: freezed == isBlocked
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
-              as int,
-      bonus: null == bonus
+              as int?,
+      bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
-              as int,
-      partner: null == partner
+              as int?,
+      partner: freezed == partner
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
-              as PartnerDto,
+              as PartnerDto?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PartnerDtoCopyWith<$Res> get partner {
-    return $PartnerDtoCopyWith<$Res>(_value.partner, (value) {
+  $PartnerDtoCopyWith<$Res>? get partner {
+    if (_value.partner == null) {
+      return null;
+    }
+
+    return $PartnerDtoCopyWith<$Res>(_value.partner!, (value) {
       return _then(_value.copyWith(partner: value) as $Val);
     });
   }
@@ -138,13 +142,13 @@ abstract class _$$ProfileDtoImplCopyWith<$Res>
       @JsonKey(name: 'last_name') String lastName,
       String phone,
       int id,
-      @JsonKey(name: 'language_code') String languageCode,
-      @JsonKey(name: 'is_blocked') int isBlocked,
-      int bonus,
-      PartnerDto partner});
+      @JsonKey(name: 'language_code') String? languageCode,
+      @JsonKey(name: 'is_blocked') int? isBlocked,
+      int? bonus,
+      PartnerDto? partner});
 
   @override
-  $PartnerDtoCopyWith<$Res> get partner;
+  $PartnerDtoCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -162,10 +166,10 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
     Object? lastName = null,
     Object? phone = null,
     Object? id = null,
-    Object? languageCode = null,
-    Object? isBlocked = null,
-    Object? bonus = null,
-    Object? partner = null,
+    Object? languageCode = freezed,
+    Object? isBlocked = freezed,
+    Object? bonus = freezed,
+    Object? partner = freezed,
   }) {
     return _then(_$ProfileDtoImpl(
       firstName: null == firstName
@@ -184,22 +188,22 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      languageCode: null == languageCode
+      languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlocked: null == isBlocked
+              as String?,
+      isBlocked: freezed == isBlocked
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
-              as int,
-      bonus: null == bonus
+              as int?,
+      bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
-              as int,
-      partner: null == partner
+              as int?,
+      partner: freezed == partner
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
-              as PartnerDto,
+              as PartnerDto?,
     ));
   }
 }
@@ -212,10 +216,10 @@ class _$ProfileDtoImpl implements _ProfileDto {
       @JsonKey(name: 'last_name') required this.lastName,
       required this.phone,
       required this.id,
-      @JsonKey(name: 'language_code') required this.languageCode,
-      @JsonKey(name: 'is_blocked') required this.isBlocked,
-      required this.bonus,
-      required this.partner});
+      @JsonKey(name: 'language_code') this.languageCode,
+      @JsonKey(name: 'is_blocked') this.isBlocked,
+      this.bonus,
+      this.partner});
 
   factory _$ProfileDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileDtoImplFromJson(json);
@@ -232,14 +236,14 @@ class _$ProfileDtoImpl implements _ProfileDto {
   final int id;
   @override
   @JsonKey(name: 'language_code')
-  final String languageCode;
+  final String? languageCode;
   @override
   @JsonKey(name: 'is_blocked')
-  final int isBlocked;
+  final int? isBlocked;
   @override
-  final int bonus;
+  final int? bonus;
   @override
-  final PartnerDto partner;
+  final PartnerDto? partner;
 
   @override
   String toString() {
@@ -290,10 +294,10 @@ abstract class _ProfileDto implements ProfileDto {
       @JsonKey(name: 'last_name') required final String lastName,
       required final String phone,
       required final int id,
-      @JsonKey(name: 'language_code') required final String languageCode,
-      @JsonKey(name: 'is_blocked') required final int isBlocked,
-      required final int bonus,
-      required final PartnerDto partner}) = _$ProfileDtoImpl;
+      @JsonKey(name: 'language_code') final String? languageCode,
+      @JsonKey(name: 'is_blocked') final int? isBlocked,
+      final int? bonus,
+      final PartnerDto? partner}) = _$ProfileDtoImpl;
 
   factory _ProfileDto.fromJson(Map<String, dynamic> json) =
       _$ProfileDtoImpl.fromJson;
@@ -310,14 +314,14 @@ abstract class _ProfileDto implements ProfileDto {
   int get id;
   @override
   @JsonKey(name: 'language_code')
-  String get languageCode;
+  String? get languageCode;
   @override
   @JsonKey(name: 'is_blocked')
-  int get isBlocked;
+  int? get isBlocked;
   @override
-  int get bonus;
+  int? get bonus;
   @override
-  PartnerDto get partner;
+  PartnerDto? get partner;
   @override
   @JsonKey(ignore: true)
   _$$ProfileDtoImplCopyWith<_$ProfileDtoImpl> get copyWith =>
