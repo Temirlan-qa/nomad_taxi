@@ -4,11 +4,6 @@ import 'package:fpdart/fpdart.dart';
 import '../../../exceptions/domain_exception.dart';
 
 abstract interface class RestClient {
-  void setBaseUrl({
-    required String ipAddress,
-    required int port,
-  });
-
   // Get:-----------------------------------------------------------------------
   Future<Either<DomainException, Response>> get(
     String url, {

@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
 import 'package:nomad_taxi/src/features/profile/data/datasources/remote/i_profile_remote.dart';
-import 'package:nomad_taxi/src/features/profile/data/datasources/remote/radionets_remote_impl.dart';
+import 'package:nomad_taxi/src/features/profile/data/datasources/remote/profile_remote_impl.dart';
 import 'package:nomad_taxi/src/features/profile/data/mappers/country_code_dto_to_entity_mapper.dart';
 import 'package:nomad_taxi/src/features/profile/domain/entities/profile_entity.dart';
 import 'package:nomad_taxi/src/features/profile/domain/repositories/i_profile_repository.dart';

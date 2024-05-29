@@ -8,8 +8,8 @@ part 'finance_dto.g.dart';
 @freezed
 class FinanceDto extends BaseDto with _$FinanceDto {
   const factory FinanceDto({
-    required int balance,
-    required int bonus,
+    int? balance,
+    int? bonus,
   }) = _FinanceDto;
 
   factory FinanceDto.fromJson(Map<String, dynamic> json) =>

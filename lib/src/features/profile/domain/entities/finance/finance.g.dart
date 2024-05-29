@@ -8,8 +8,8 @@ part of 'finance.dart';
 
 _$FinanceImpl _$$FinanceImplFromJson(Map<String, dynamic> json) =>
     _$FinanceImpl(
-      balance: (json['balance'] as num).toInt(),
-      bonus: (json['bonus'] as num).toInt(),
+      balance: (json['balance'] as num?)?.toInt(),
+      bonus: (json['bonus'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$FinanceImplToJson(_$FinanceImpl instance) =>

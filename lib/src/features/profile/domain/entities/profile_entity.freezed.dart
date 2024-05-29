@@ -24,10 +24,10 @@ mixin _$ProfileEntity {
   String get lastName => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
-  String get languageCode => throw _privateConstructorUsedError;
-  int get isBlocked => throw _privateConstructorUsedError;
-  int get bonus => throw _privateConstructorUsedError;
-  Partner get partner => throw _privateConstructorUsedError;
+  String? get languageCode => throw _privateConstructorUsedError;
+  int? get isBlocked => throw _privateConstructorUsedError;
+  int? get bonus => throw _privateConstructorUsedError;
+  Partner? get partner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,12 +46,12 @@ abstract class $ProfileEntityCopyWith<$Res> {
       String lastName,
       String phone,
       int id,
-      String languageCode,
-      int isBlocked,
-      int bonus,
-      Partner partner});
+      String? languageCode,
+      int? isBlocked,
+      int? bonus,
+      Partner? partner});
 
-  $PartnerCopyWith<$Res> get partner;
+  $PartnerCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -71,10 +71,10 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
     Object? lastName = null,
     Object? phone = null,
     Object? id = null,
-    Object? languageCode = null,
-    Object? isBlocked = null,
-    Object? bonus = null,
-    Object? partner = null,
+    Object? languageCode = freezed,
+    Object? isBlocked = freezed,
+    Object? bonus = freezed,
+    Object? partner = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -93,29 +93,33 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      languageCode: null == languageCode
+      languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlocked: null == isBlocked
+              as String?,
+      isBlocked: freezed == isBlocked
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
-              as int,
-      bonus: null == bonus
+              as int?,
+      bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
-              as int,
-      partner: null == partner
+              as int?,
+      partner: freezed == partner
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
-              as Partner,
+              as Partner?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PartnerCopyWith<$Res> get partner {
-    return $PartnerCopyWith<$Res>(_value.partner, (value) {
+  $PartnerCopyWith<$Res>? get partner {
+    if (_value.partner == null) {
+      return null;
+    }
+
+    return $PartnerCopyWith<$Res>(_value.partner!, (value) {
       return _then(_value.copyWith(partner: value) as $Val);
     });
   }
@@ -134,13 +138,13 @@ abstract class _$$ProfileEntityImplCopyWith<$Res>
       String lastName,
       String phone,
       int id,
-      String languageCode,
-      int isBlocked,
-      int bonus,
-      Partner partner});
+      String? languageCode,
+      int? isBlocked,
+      int? bonus,
+      Partner? partner});
 
   @override
-  $PartnerCopyWith<$Res> get partner;
+  $PartnerCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -158,10 +162,10 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
     Object? lastName = null,
     Object? phone = null,
     Object? id = null,
-    Object? languageCode = null,
-    Object? isBlocked = null,
-    Object? bonus = null,
-    Object? partner = null,
+    Object? languageCode = freezed,
+    Object? isBlocked = freezed,
+    Object? bonus = freezed,
+    Object? partner = freezed,
   }) {
     return _then(_$ProfileEntityImpl(
       firstName: null == firstName
@@ -180,22 +184,22 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      languageCode: null == languageCode
+      languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      isBlocked: null == isBlocked
+              as String?,
+      isBlocked: freezed == isBlocked
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
-              as int,
-      bonus: null == bonus
+              as int?,
+      bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
-              as int,
-      partner: null == partner
+              as int?,
+      partner: freezed == partner
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
-              as Partner,
+              as Partner?,
     ));
   }
 }
@@ -208,10 +212,10 @@ class _$ProfileEntityImpl implements _ProfileEntity {
       required this.lastName,
       required this.phone,
       required this.id,
-      required this.languageCode,
-      required this.isBlocked,
-      required this.bonus,
-      required this.partner});
+      this.languageCode,
+      this.isBlocked,
+      this.bonus,
+      this.partner});
 
   factory _$ProfileEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileEntityImplFromJson(json);
@@ -225,13 +229,13 @@ class _$ProfileEntityImpl implements _ProfileEntity {
   @override
   final int id;
   @override
-  final String languageCode;
+  final String? languageCode;
   @override
-  final int isBlocked;
+  final int? isBlocked;
   @override
-  final int bonus;
+  final int? bonus;
   @override
-  final Partner partner;
+  final Partner? partner;
 
   @override
   String toString() {
@@ -282,10 +286,10 @@ abstract class _ProfileEntity implements ProfileEntity {
       required final String lastName,
       required final String phone,
       required final int id,
-      required final String languageCode,
-      required final int isBlocked,
-      required final int bonus,
-      required final Partner partner}) = _$ProfileEntityImpl;
+      final String? languageCode,
+      final int? isBlocked,
+      final int? bonus,
+      final Partner? partner}) = _$ProfileEntityImpl;
 
   factory _ProfileEntity.fromJson(Map<String, dynamic> json) =
       _$ProfileEntityImpl.fromJson;
@@ -299,13 +303,13 @@ abstract class _ProfileEntity implements ProfileEntity {
   @override
   int get id;
   @override
-  String get languageCode;
+  String? get languageCode;
   @override
-  int get isBlocked;
+  int? get isBlocked;
   @override
-  int get bonus;
+  int? get bonus;
   @override
-  Partner get partner;
+  Partner? get partner;
   @override
   @JsonKey(ignore: true)
   _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith =>

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/exceptions/domain_exception.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/data_response.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/verify_data_response.dart';
@@ -18,7 +17,6 @@ part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
-@injectable
 class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   AuthBloc(
     this._loginUseCase,
