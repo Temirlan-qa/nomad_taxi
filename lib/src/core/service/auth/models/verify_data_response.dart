@@ -13,6 +13,12 @@ class VerifyDataResponse extends BaseEntity with _$VerifyDataResponse {
     @JsonKey(name: 'expires_in') required int expiresIn,
   }) = _VerifyDataResponse;
 
+  factory VerifyDataResponse.empty() => const VerifyDataResponse(
+        accessToken: '',
+        tokenType: '',
+        expiresIn: 0,
+      );
+
   factory VerifyDataResponse.fromJson(Map<String, dynamic> json) =>
       _$VerifyDataResponseFromJson(json);
 }

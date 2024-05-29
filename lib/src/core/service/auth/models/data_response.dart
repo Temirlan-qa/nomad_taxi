@@ -11,6 +11,8 @@ class DataResponse extends BaseEntity with _$DataResponse {
     @JsonKey(name: 'user_id') required dynamic userId,
   }) = _DataResponse;
 
+  factory DataResponse.empty() => const DataResponse(userId: '');
+
   factory DataResponse.fromJson(Map<String, dynamic> json) =>
       _$DataResponseFromJson(json);
 }

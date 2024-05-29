@@ -369,6 +369,7 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AuthStateViewModel viewModel) loaded,
+    required TResult Function() verified,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -377,6 +378,7 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AuthStateViewModel viewModel)? loaded,
+    TResult? Function()? verified,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -385,6 +387,7 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AuthStateViewModel viewModel)? loaded,
+    TResult Function()? verified,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -394,6 +397,7 @@ mixin _$AuthState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Verified value) verified,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -402,6 +406,7 @@ mixin _$AuthState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Verified value)? verified,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -410,6 +415,7 @@ mixin _$AuthState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Verified value)? verified,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -474,6 +480,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AuthStateViewModel viewModel) loaded,
+    required TResult Function() verified,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -485,6 +492,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AuthStateViewModel viewModel)? loaded,
+    TResult? Function()? verified,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -496,6 +504,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AuthStateViewModel viewModel)? loaded,
+    TResult Function()? verified,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -511,6 +520,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Verified value) verified,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -522,6 +532,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Verified value)? verified,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -533,6 +544,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Verified value)? verified,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -588,6 +600,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AuthStateViewModel viewModel) loaded,
+    required TResult Function() verified,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -599,6 +612,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AuthStateViewModel viewModel)? loaded,
+    TResult? Function()? verified,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -610,6 +624,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AuthStateViewModel viewModel)? loaded,
+    TResult Function()? verified,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -625,6 +640,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Verified value) verified,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -636,6 +652,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Verified value)? verified,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -647,6 +664,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Verified value)? verified,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -739,6 +757,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AuthStateViewModel viewModel) loaded,
+    required TResult Function() verified,
     required TResult Function(String error) error,
   }) {
     return loaded(viewModel);
@@ -750,6 +769,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AuthStateViewModel viewModel)? loaded,
+    TResult? Function()? verified,
     TResult? Function(String error)? error,
   }) {
     return loaded?.call(viewModel);
@@ -761,6 +781,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AuthStateViewModel viewModel)? loaded,
+    TResult Function()? verified,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -776,6 +797,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Verified value) verified,
     required TResult Function(_Error value) error,
   }) {
     return loaded(this);
@@ -787,6 +809,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Verified value)? verified,
     TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
@@ -798,6 +821,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Verified value)? verified,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -816,6 +840,126 @@ abstract class _Loaded implements AuthState {
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VerifiedImplCopyWith<$Res> {
+  factory _$$VerifiedImplCopyWith(
+          _$VerifiedImpl value, $Res Function(_$VerifiedImpl) then) =
+      __$$VerifiedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$VerifiedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$VerifiedImpl>
+    implements _$$VerifiedImplCopyWith<$Res> {
+  __$$VerifiedImplCopyWithImpl(
+      _$VerifiedImpl _value, $Res Function(_$VerifiedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$VerifiedImpl implements _Verified {
+  const _$VerifiedImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.verified()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$VerifiedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AuthStateViewModel viewModel) loaded,
+    required TResult Function() verified,
+    required TResult Function(String error) error,
+  }) {
+    return verified();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AuthStateViewModel viewModel)? loaded,
+    TResult? Function()? verified,
+    TResult? Function(String error)? error,
+  }) {
+    return verified?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AuthStateViewModel viewModel)? loaded,
+    TResult Function()? verified,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (verified != null) {
+      return verified();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Verified value) verified,
+    required TResult Function(_Error value) error,
+  }) {
+    return verified(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Verified value)? verified,
+    TResult? Function(_Error value)? error,
+  }) {
+    return verified?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Verified value)? verified,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (verified != null) {
+      return verified(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Verified implements AuthState {
+  const factory _Verified() = _$VerifiedImpl;
 }
 
 /// @nodoc
@@ -885,6 +1029,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AuthStateViewModel viewModel) loaded,
+    required TResult Function() verified,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -896,6 +1041,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AuthStateViewModel viewModel)? loaded,
+    TResult? Function()? verified,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -907,6 +1053,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AuthStateViewModel viewModel)? loaded,
+    TResult Function()? verified,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -922,6 +1069,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Verified value) verified,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -933,6 +1081,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Verified value)? verified,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -944,6 +1093,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Verified value)? verified,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -965,8 +1115,8 @@ abstract class _Error implements AuthState {
 
 /// @nodoc
 mixin _$AuthStateViewModel {
-  SignInResponse? get loginResponse => throw _privateConstructorUsedError;
-  VerifyResponse? get verifyResponse => throw _privateConstructorUsedError;
+  SignInResponse get loginResponse => throw _privateConstructorUsedError;
+  VerifyResponse get verifyResponse => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateViewModelCopyWith<AuthStateViewModel> get copyWith =>
@@ -979,10 +1129,10 @@ abstract class $AuthStateViewModelCopyWith<$Res> {
           AuthStateViewModel value, $Res Function(AuthStateViewModel) then) =
       _$AuthStateViewModelCopyWithImpl<$Res, AuthStateViewModel>;
   @useResult
-  $Res call({SignInResponse? loginResponse, VerifyResponse? verifyResponse});
+  $Res call({SignInResponse loginResponse, VerifyResponse verifyResponse});
 
-  $SignInResponseCopyWith<$Res>? get loginResponse;
-  $VerifyResponseCopyWith<$Res>? get verifyResponse;
+  $SignInResponseCopyWith<$Res> get loginResponse;
+  $VerifyResponseCopyWith<$Res> get verifyResponse;
 }
 
 /// @nodoc
@@ -998,41 +1148,33 @@ class _$AuthStateViewModelCopyWithImpl<$Res, $Val extends AuthStateViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginResponse = freezed,
-    Object? verifyResponse = freezed,
+    Object? loginResponse = null,
+    Object? verifyResponse = null,
   }) {
     return _then(_value.copyWith(
-      loginResponse: freezed == loginResponse
+      loginResponse: null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
-              as SignInResponse?,
-      verifyResponse: freezed == verifyResponse
+              as SignInResponse,
+      verifyResponse: null == verifyResponse
           ? _value.verifyResponse
           : verifyResponse // ignore: cast_nullable_to_non_nullable
-              as VerifyResponse?,
+              as VerifyResponse,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $SignInResponseCopyWith<$Res>? get loginResponse {
-    if (_value.loginResponse == null) {
-      return null;
-    }
-
-    return $SignInResponseCopyWith<$Res>(_value.loginResponse!, (value) {
+  $SignInResponseCopyWith<$Res> get loginResponse {
+    return $SignInResponseCopyWith<$Res>(_value.loginResponse, (value) {
       return _then(_value.copyWith(loginResponse: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $VerifyResponseCopyWith<$Res>? get verifyResponse {
-    if (_value.verifyResponse == null) {
-      return null;
-    }
-
-    return $VerifyResponseCopyWith<$Res>(_value.verifyResponse!, (value) {
+  $VerifyResponseCopyWith<$Res> get verifyResponse {
+    return $VerifyResponseCopyWith<$Res>(_value.verifyResponse, (value) {
       return _then(_value.copyWith(verifyResponse: value) as $Val);
     });
   }
@@ -1046,12 +1188,12 @@ abstract class _$$AuthStateViewModelImplCopyWith<$Res>
       __$$AuthStateViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SignInResponse? loginResponse, VerifyResponse? verifyResponse});
+  $Res call({SignInResponse loginResponse, VerifyResponse verifyResponse});
 
   @override
-  $SignInResponseCopyWith<$Res>? get loginResponse;
+  $SignInResponseCopyWith<$Res> get loginResponse;
   @override
-  $VerifyResponseCopyWith<$Res>? get verifyResponse;
+  $VerifyResponseCopyWith<$Res> get verifyResponse;
 }
 
 /// @nodoc
@@ -1065,18 +1207,18 @@ class __$$AuthStateViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginResponse = freezed,
-    Object? verifyResponse = freezed,
+    Object? loginResponse = null,
+    Object? verifyResponse = null,
   }) {
     return _then(_$AuthStateViewModelImpl(
-      freezed == loginResponse
+      null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
-              as SignInResponse?,
-      freezed == verifyResponse
+              as SignInResponse,
+      null == verifyResponse
           ? _value.verifyResponse
           : verifyResponse // ignore: cast_nullable_to_non_nullable
-              as VerifyResponse?,
+              as VerifyResponse,
     ));
   }
 }
@@ -1087,9 +1229,9 @@ class _$AuthStateViewModelImpl implements _AuthStateViewModel {
   _$AuthStateViewModelImpl(this.loginResponse, this.verifyResponse);
 
   @override
-  final SignInResponse? loginResponse;
+  final SignInResponse loginResponse;
   @override
-  final VerifyResponse? verifyResponse;
+  final VerifyResponse verifyResponse;
 
   @override
   String toString() {
@@ -1119,13 +1261,13 @@ class _$AuthStateViewModelImpl implements _AuthStateViewModel {
 }
 
 abstract class _AuthStateViewModel implements AuthStateViewModel {
-  factory _AuthStateViewModel(final SignInResponse? loginResponse,
-      final VerifyResponse? verifyResponse) = _$AuthStateViewModelImpl;
+  factory _AuthStateViewModel(final SignInResponse loginResponse,
+      final VerifyResponse verifyResponse) = _$AuthStateViewModelImpl;
 
   @override
-  SignInResponse? get loginResponse;
+  SignInResponse get loginResponse;
   @override
-  VerifyResponse? get verifyResponse;
+  VerifyResponse get verifyResponse;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateViewModelImplCopyWith<_$AuthStateViewModelImpl> get copyWith =>

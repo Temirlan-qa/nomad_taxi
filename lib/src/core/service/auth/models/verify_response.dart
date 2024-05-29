@@ -13,6 +13,11 @@ class VerifyResponse extends BaseEntity with _$VerifyResponse {
     required VerifyDataResponse data,
   }) = _VerifyResponse;
 
+  factory VerifyResponse.empty() => VerifyResponse(
+        status: '',
+        data: VerifyDataResponse.empty(),
+      );
+
   factory VerifyResponse.fromJson(Map<String, dynamic> json) =>
       _$VerifyResponseFromJson(json);
 }

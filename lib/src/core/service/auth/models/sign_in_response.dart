@@ -13,6 +13,11 @@ class SignInResponse extends BaseEntity with _$SignInResponse {
     required DataResponse data,
   }) = _SignInResponse;
 
+  factory SignInResponse.empty() => SignInResponse(
+        status: '',
+        data: DataResponse.empty(),
+      );
+
   factory SignInResponse.fromJson(Map<String, dynamic> json) =>
       _$SignInResponseFromJson(json);
 }

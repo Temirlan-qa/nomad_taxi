@@ -22,7 +22,6 @@ void manualRegisterServices() {
       getIt<LoginUseCase>(),
       getIt<VerifyUseCase>(),
     ),
-    factory: true,
   );
 
   getIt.registerBloc<SettingsBloc>(

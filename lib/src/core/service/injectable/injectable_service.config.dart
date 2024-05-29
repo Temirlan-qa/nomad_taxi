@@ -17,7 +17,6 @@ import '../../../features/auth/domain/repositories/auth_repository_impl.dart'
     as _i17;
 import '../../../features/auth/domain/usecases/login_use_case.dart' as _i18;
 import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i19;
-import '../../../features/auth/presentation/bloc/auth_bloc.dart' as _i20;
 import '../../../features/profile/data/datasources/remote/i_profile_remote.dart'
     as _i6;
 import '../../../features/profile/data/datasources/remote/radionets_remote_impl.dart'
@@ -91,10 +90,6 @@ extension GetItInjectableX on _i1.GetIt {
         gh<_i16.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
     gh.lazySingleton<_i19.VerifyUseCase>(() => _i19.VerifyUseCase(
         gh<_i16.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.factory<_i20.AuthBloc>(() => _i20.AuthBloc(
-          gh<_i18.LoginUseCase>(),
-          gh<_i19.VerifyUseCase>(),
-        ));
     return this;
   }
 }

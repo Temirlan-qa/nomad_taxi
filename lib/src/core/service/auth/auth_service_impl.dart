@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
@@ -26,11 +25,13 @@ class AuthServiceImpl implements IAuthService {
   Future<Either<DomainException, SignInResponse>> loginUser(
       SignInRequest request) async {
     var headers = {'Content-Type': 'application/json'};
+
     var data = json.encode({"phone": request.phone.toString()});
+
     var dio = Dio();
 
     var response = await dio.request(
-      'https://auyltaxi.kz/api/v1/auth/login',
+      '${EndPoints.baseUrl}/v1/auth/login',
       options: Options(
         method: 'POST',
         headers: headers,
@@ -41,17 +42,15 @@ class AuthServiceImpl implements IAuthService {
     var st = StorageServiceImpl();
 
     if (response.statusCode == 200) {
-      print(json.encode(response.data));
       st.setToken(
-          SignInResponse.fromJson(response.data).data.userId.toString());
-      log('XXX');
-      log(SignInResponse.fromJson(response.data).data.userId.toString());
-      log(st.getToken()!);
-      log('YYY');
+        SignInResponse.fromJson(response.data).data.userId.toString(),
+      );
       return Right(SignInResponse.fromJson(response.data));
     } else {
-      print(response.statusMessage);
-      return Left(UnknownException(message: response.statusMessage));
+      return Left(NetworkException(
+        message: response.statusMessage!,
+        stackTrace: StackTrace.current,
+      ));
     }
   }
 
@@ -77,23 +76,19 @@ class AuthServiceImpl implements IAuthService {
 
       var st = StorageServiceImpl();
 
-      log('Verify response: $response');
-
       if (response.statusCode == 200) {
         st.deleteToken();
+
         st.setToken(VerifyResponse.fromJson(response.data).data.accessToken);
-        log('XXX');
-        log(VerifyResponse.fromJson(response.data).data.accessToken);
-        log(st.getToken()!);
-        log('YYY');
+
         return Right(VerifyResponse.fromJson(response.data));
       } else {
-        return Left(UnknownException(message: response.statusMessage));
+        return Left(BadRequest(stackTrace: StackTrace.current));
       }
     } catch (e) {
-      log('Exception caught during verification: $e');
       return Left(
-          e is DomainException ? e : UnknownException(message: e.toString()));
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
     }
   }
 }

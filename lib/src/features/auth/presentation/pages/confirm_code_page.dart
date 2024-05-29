@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
-import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/core/utils/helpers/pop_up_helper.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_pin_code_text_field_widget.dart';
@@ -13,6 +14,7 @@ import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_pin_cod
 import '../../../../core/service/auth/models/verify_request.dart';
 import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../../../core/utils/formatters/phone_number_formatter.dart';
+import '../../../../core/widgets/buttons/loading_main_button.dart';
 import '../bloc/auth_bloc.dart';
 
 class ConfirmCodePage extends StatefulWidget {
@@ -81,18 +83,61 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
               isMain: false,
             ),
             const Gap(UIConstants.defaultGap1),
-            CustomMainButtonWidget(
-              title: S.current.next,
-              onPressed: () {
-                StorageServiceImpl st = StorageServiceImpl();
+            BaseBlocWidget<AuthBloc, AuthEvent, AuthState>(
+              bloc: getIt<AuthBloc>(),
 
-                getIt.call<AuthBloc>().add(AuthEvent.verify(
-                      verifyRequest: VerifyRequest(
-                        userId: st.getToken()!,
-                        code: codeController.text,
-                      ),
-                    ));
-                context.pushNamed(RouteNames.policy);
+              // listener: (context, state) {
+              //   state.maybeWhen(
+              //     orElse: () {},
+              //     verified: () => context.pushNamed(RouteNames.policy),
+              //   );
+              // },
+              builder: (context, state, bloc) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return CustomMainButtonWidget(
+                      title: S.current.next,
+                      onPressed: () {
+                        StorageServiceImpl st = StorageServiceImpl();
+
+                        bloc.add(
+                          AuthEvent.verify(
+                            verifyRequest: VerifyRequest(
+                              userId: st.getToken()!,
+                              code: codeController.text,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  loading: () => const LoadingMainButton(),
+                  error: (error) {
+                    PopupHelper().authRequiredPopup(context);
+                    return CustomMainButtonWidget(
+                      title: S.current.next,
+                      onPressed: () {},
+                    );
+                  },
+                  loaded: (viewModel) {
+                    PopupHelper().authRequiredPopup(context);
+                    return CustomMainButtonWidget(
+                      title: S.current.next,
+                      onPressed: () {
+                        StorageServiceImpl st = StorageServiceImpl();
+
+                        bloc.add(
+                          AuthEvent.verify(
+                            verifyRequest: VerifyRequest(
+                              userId: st.getToken()!,
+                              code: codeController.text,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                );
               },
             ),
           ],
