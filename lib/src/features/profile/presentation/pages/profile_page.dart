@@ -12,6 +12,7 @@ import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
+import 'package:nomad_taxi/src/core/widgets/buttons/custom_text_icon_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
@@ -59,26 +60,14 @@ class _ProfilePageState extends State<ProfilePage> {
           appBar: CustomAppBar(
             leading: BackButtonWrapper(onPressed: () => context.pop()),
             actions: [
-              TextButton.icon(
-                  onPressed: () {
-                    showLogOutModal(context);
-                  },
-                  style: TextButton.styleFrom(
-                      foregroundColor: context.theme.red,
-                      textStyle: context.theme.textStyles.headLine.copyWith(),
-                      padding: const EdgeInsets.fromLTRB(10, 14, 10, 14),
-                      shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(UIConstants.defaultRadius)),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                  icon: Assets.icons.regular.exit.svg(
-                      width: 18,
-                      height: 18,
-                      colorFilter:
-                          ColorFilter.mode(context.theme.red, BlendMode.srcIn)),
-                  label: Text(
-                    S.current.log_out_account.toLowerCase(),
-                  )),
+              CustomTextIconButtonWidget(
+                icon: Assets.icons.solid.circleUpSolid,
+                color: context.theme.red,
+                title: S.current.withdraw_money,
+                onPressed: () {
+                  showLogOutModal(context);
+                },
+              ),
               const Gap(14),
             ],
           ),

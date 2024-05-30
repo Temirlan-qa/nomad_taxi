@@ -2,144 +2,84 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
+import 'package:nomad_taxi/src/core/enums/enums.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
-class EnterDriverInfoPage extends StatelessWidget {
+class EnterDriverInfoPage extends StatefulWidget {
   const EnterDriverInfoPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController carNumber = TextEditingController();
-    TextEditingController carInfo = TextEditingController();
+  State<EnterDriverInfoPage> createState() => _EnterDriverInfoPageState();
+}
 
+class _EnterDriverInfoPageState extends State<EnterDriverInfoPage> {
+  final TextEditingController carNumberController = TextEditingController();
+  final TextEditingController carInfoController = TextEditingController();
+  final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         leading: BackButtonWrapper(onPressed: () => context.pop()),
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(
-                UIConstants.defaultGap3,
-              ),
-              child: Text(
+      body: SafeArea(
+        child: Form(
+          key: formKey1,
+          child: ListView(
+            padding: const EdgeInsets.all(UIConstants.defaultPadding),
+            physics: const BouncingScrollPhysics(),
+            children: [
+              Text(
                 S.current.car_data,
-                style: context.theme.textStyles.titleMain.copyWith(
-                  color: context.theme.primary,
-                ),
+                style: context.theme.textStyles.titleMain,
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: UIConstants.defaultGap3,
-            ),
-            child: TextField(
-              textAlign: TextAlign.left,
-              controller: carNumber,
-              style: context.theme.textStyles.headLine.copyWith(
-                color: context.theme.primary,
-              ),
-              decoration: InputDecoration(
-                hintStyle: context.theme.textStyles.headLine.copyWith(
-                  color: context.theme.primary,
-                ),
-                contentPadding: const EdgeInsets.all(0),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.secondary,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.secondary,
-                  ),
-                ),
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.secondary,
-                  ),
-                ),
-                errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.red,
-                  ),
-                ),
+              const Gap(UIConstants.defaultGap3),
+              TextFieldWidget(
+                controller: carNumberController,
                 hintText: S.current.enter_car_number,
+                textFieldValidationState:
+                    carNumberController.text.contains('promo')
+                        ? TextFieldValidationState.success
+                        : TextFieldValidationState.none,
+                onChanged: (value) {
+                  setState(() {});
+                },
               ),
-              keyboardType: TextInputType.number,
-            ),
+              TextFieldWidget(
+                controller: carInfoController,
+                hintText: S.current.enter_driver_info,
+                textFieldValidationState:
+                    carInfoController.text.contains('promo')
+                        ? TextFieldValidationState.success
+                        : TextFieldValidationState.none,
+                onChanged: (value) {
+                  setState(() {});
+                },
+              ),
+              Text(
+                S.current.car_info_hint_text,
+                style: context.theme.textStyles.bodyMain
+                    .copyWith(color: context.theme.secondary),
+              ),
+            ],
           ),
-
-          const Gap(UIConstants.defaultPadding),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: UIConstants.defaultGap3,
-            ),
-            child: TextField(
-              textAlign: TextAlign.left,
-              controller: carInfo,
-              style: context.theme.textStyles.headLine.copyWith(
-                color: context.theme.primary,
-              ),
-              decoration: InputDecoration(
-                hintStyle: context.theme.textStyles.headLine.copyWith(
-                  color: context.theme.primary,
-                ),
-                contentPadding: const EdgeInsets.all(0),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.secondary,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.secondary,
-                  ),
-                ),
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.secondary,
-                  ),
-                ),
-                errorBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: context.theme.red,
-                  ),
-                ),
-                hintText: S.current.enter_info,
-              ),
-              keyboardType: TextInputType.number,
-            ),
-          ),
-          // CustomMainTextFieldWidget(
-          //   controller: carNumber,
-          //   hintText: S.current.enter_info,
-          //   keyboardType: TextInputType.number,
-          // ),
-          // CustomMainTextFieldWidget(
-          //   controller: carNumber,
-          //   hintText: S.current.car_info_hint_text,
-          //   keyboardType: TextInputType.number,
-          // ),
-          const Gap(UIConstants.defaultGap3),
-        ],
+        ),
       ),
       bottomNavigationBar: CustomMainBottomWidgets(
         child: CustomMainButtonWidget(
-          title: S.current.enter_driver_info,
-          onPressed: () {
-            context.push(RoutePaths.driverOrders);
-          },
+          title: S.current.save,
+          onPressed: carNumberController.text.contains('promo')
+              ? () {
+                  context.push(RoutePaths.driverOrders);
+                }
+              : null,
         ),
       ),
     );

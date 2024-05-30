@@ -18,4 +18,7 @@ class RouteNames {
   static const String profile = 'profile';
   static const String driverModeIntro = 'driverModeIntro';
   static const String enterDriverInfo = 'enterDriverInfo';
+  static const String driverMode = 'driverMode';
+  static const String transferMoney = 'transferMoney';
+  static const String chooseTariff = 'chooseTariff';
 }

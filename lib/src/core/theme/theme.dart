@@ -9,14 +9,16 @@ class MaterialAppTheme {
   static final theme = ThemeData(
     brightness: Brightness.light,
     fontFamily: 'Inter',
-    scaffoldBackgroundColor: _white,
+    scaffoldBackgroundColor: StaticColors.white,
     splashFactory: InkSparkle.splashFactory,
-    dividerTheme:
-        const DividerThemeData(color: _stroke, thickness: 1, space: 36),
+    splashColor: StaticColors.secondary.withOpacity(0.3),
+    highlightColor: StaticColors.secondary.withOpacity(0.2),
+    dividerTheme: const DividerThemeData(
+        color: StaticColors.stroke, thickness: 1, space: 36),
     bottomSheetTheme: const BottomSheetThemeData(
-        modalBackgroundColor: _white,
-        backgroundColor: _white,
-        surfaceTintColor: _white,
+        modalBackgroundColor: StaticColors.white,
+        backgroundColor: StaticColors.white,
+        surfaceTintColor: StaticColors.white,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
                 top: Radius.circular(UIConstants.defaultGap3)))),
@@ -25,31 +27,31 @@ class MaterialAppTheme {
           elevation: 0,
           fixedSize: const Size.fromHeight(44),
           maximumSize: const Size.fromHeight(44),
-          backgroundColor: _red,
-          foregroundColor: _white,
-          disabledBackgroundColor: _background,
-          disabledForegroundColor: _secondary,
+          backgroundColor: StaticColors.red,
+          foregroundColor: StaticColors.white,
+          disabledBackgroundColor: StaticColors.background,
+          disabledForegroundColor: StaticColors.secondary,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(UIConstants.defaultRadius))),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: _white,
+      fillColor: StaticColors.white,
       contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
       errorStyle: const TextStyle(height: 0),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: _primary),
+        borderSide: const BorderSide(color: StaticColors.primary),
         borderRadius: BorderRadius.circular(10),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: _red),
+        borderSide: const BorderSide(color: StaticColors.red),
         borderRadius: BorderRadius.circular(10),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: _red),
+        borderSide: const BorderSide(color: StaticColors.red),
         borderRadius: BorderRadius.circular(10),
       ),
     ),

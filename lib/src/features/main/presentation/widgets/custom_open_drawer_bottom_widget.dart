@@ -13,17 +13,25 @@ class CustomOpenDrawerButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      style: IconButton.styleFrom(
-          backgroundColor: context.theme.white,
-          padding: const EdgeInsets.all(UIConstants.defaultGap2)),
-      onPressed: () {
-        _scaffoldKey.currentState!.openDrawer();
-      },
-      icon: Assets.icons.regular.barsSolid.svg(
-        colorFilter: ColorFilter.mode(context.theme.primary, BlendMode.srcIn),
-        width: 24,
-        height: 24,
+    return SizedBox(
+      height: 48,
+      width: 48,
+      child: IconButton(
+        style: IconButton.styleFrom(
+            maximumSize: const Size.fromHeight(48),
+            fixedSize: const Size.fromHeight(48),
+            minimumSize: const Size.fromHeight(48),
+            iconSize: 24,
+            backgroundColor: context.theme.white,
+            padding: const EdgeInsets.all(UIConstants.defaultGap2)),
+        onPressed: () {
+          _scaffoldKey.currentState!.openDrawer();
+        },
+        icon: Assets.icons.regular.barsSolid.svg(
+          colorFilter: ColorFilter.mode(context.theme.primary, BlendMode.srcIn),
+          // width: 24,
+          // height: 24,
+        ),
       ),
     );
   }

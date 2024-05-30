@@ -999,6 +999,276 @@ class S {
       args: [],
     );
   }
+
+  /// `Сохранить`
+  String get save {
+    return Intl.message(
+      'Сохранить',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Нажмите чтобы скопировать`
+  String get tap_to_copy {
+    return Intl.message(
+      'Нажмите чтобы скопировать',
+      name: 'tap_to_copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отправить чек`
+  String get send_receipt {
+    return Intl.message(
+      'Отправить чек',
+      name: 'send_receipt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите нужную сумму и деньги пуступять на ваш счет в приложении Nomad Taxi`
+  String get enter_amount {
+    return Intl.message(
+      'Введите нужную сумму и деньги пуступять на ваш счет в приложении Nomad Taxi',
+      name: 'enter_amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Далее введите свой ID номер`
+  String get enter_ID {
+    return Intl.message(
+      'Далее введите свой ID номер',
+      name: 'enter_ID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Откройте приложение Kaspi.kz и перейдите в раздел платежи, в пойск введите Nomad Taxi`
+  String get open_kaspi_app {
+    return Intl.message(
+      'Откройте приложение Kaspi.kz и перейдите в раздел платежи, в пойск введите Nomad Taxi',
+      name: 'open_kaspi_app',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `шаг`
+  String get step {
+    return Intl.message(
+      'шаг',
+      name: 'step',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Инструкция`
+  String get instruction {
+    return Intl.message(
+      'Инструкция',
+      name: 'instruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш баланс`
+  String get your_balance {
+    return Intl.message(
+      'Ваш баланс',
+      name: 'your_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш ID`
+  String get your_ID {
+    return Intl.message(
+      'Ваш ID',
+      name: 'your_ID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пополнить счет\nв приложении Kaspi.kz`
+  String get recharge_kaspi {
+    return Intl.message(
+      'Пополнить счет\nв приложении Kaspi.kz',
+      name: 'recharge_kaspi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вывести деньги`
+  String get withdraw_money {
+    return Intl.message(
+      'Вывести деньги',
+      name: 'withdraw_money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пополнить счет`
+  String get recharge_account {
+    return Intl.message(
+      'Пополнить счет',
+      name: 'recharge_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваши бонусы`
+  String get your_bonuses {
+    return Intl.message(
+      'Ваши бонусы',
+      name: 'your_bonuses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш тариф`
+  String get your_tariff {
+    return Intl.message(
+      'Ваш тариф',
+      name: 'your_tariff',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Бесплатный`
+  String get free {
+    return Intl.message(
+      'Бесплатный',
+      name: 'free',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите тариф до начала работы`
+  String get select_tariff {
+    return Intl.message(
+      'Выберите тариф до начала работы',
+      name: 'select_tariff',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выйти на линию`
+  String get go_online {
+    return Intl.message(
+      'Выйти на линию',
+      name: 'go_online',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Активен`
+  String get active {
+    return Intl.message(
+      'Активен',
+      name: 'active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Заказы`
+  String get orders {
+    return Intl.message(
+      'Заказы',
+      name: 'orders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выйдете на линию`
+  String get go_offline {
+    return Intl.message(
+      'Выйдете на линию',
+      name: 'go_offline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вывести деньги`
+  String get withdraw_funds {
+    return Intl.message(
+      'Вывести деньги',
+      name: 'withdraw_funds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выбор тарифа`
+  String get tariff_selection {
+    return Intl.message(
+      'Выбор тарифа',
+      name: 'tariff_selection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Баланс водителя`
+  String get driver_balance {
+    return Intl.message(
+      'Баланс водителя',
+      name: 'driver_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Основные`
+  String get basic {
+    return Intl.message(
+      'Основные',
+      name: 'basic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выбранный тариф`
+  String get selected_tariff {
+    return Intl.message(
+      'Выбранный тариф',
+      name: 'selected_tariff',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пакеты времени`
+  String get time_packages {
+    return Intl.message(
+      'Пакеты времени',
+      name: 'time_packages',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
