@@ -9,7 +9,8 @@ import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/custom_text_icon_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
-import 'package:nomad_taxi/src/features/transfer_money%20copy/presentation/pages/transfer_money.dart';
+
+import '../widgets/custom_copy_button_widget.dart';
 
 class TransferMoneyPage extends StatelessWidget {
   const TransferMoneyPage({super.key});
