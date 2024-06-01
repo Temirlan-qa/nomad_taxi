@@ -1,10 +1,6 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:nomad_taxi/src/core/api/client/endpoints.dart';
-import 'package:nomad_taxi/src/core/api/client/rest/dio/dio_client.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/profile_dto.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
@@ -17,10 +13,10 @@ import 'i_profile_remote.dart';
 @named
 @LazySingleton(as: IProfileRemote)
 class ProfileRemoteImpl implements IProfileRemote {
-  ProfileRemoteImpl(this.client);
-  final DioRestClient client;
+  //ProfileRemoteImpl(this.client);
 
-  // var client = Dio();
+  // final DioRestClient client;
+  var client = Dio();
   var st = StorageServiceImpl();
 
   @override
@@ -32,44 +28,38 @@ class ProfileRemoteImpl implements IProfileRemote {
   @override
   Future<Either<DomainException, String>> logOut() async {
     try {
+      // final Either<DomainException, Response> response =
+      //     await client.post(EndPoints.logout);
+
       var headers = {
         'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-
-      client.init();
-
-      Either<DomainException, Response<dynamic>> response = await client.post(
-        '${EndPoints.baseUrl}/v1/auth/logout',
-        options: Options(headers: headers),
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/auth/logout',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
       );
 
-      return response.fold(
-        (l) => Left(l),
-        (r) {
-          if (r.statusCode == 200) {
-            log('logged out');
-            return Right(r.data['status']);
-          } else {
-            return Left(UnknownException());
-          }
-        },
-      );
+      if (response.statusCode == 200) {
+        return Right(response.data['status']);
+      } else {
+        return Left(UnknownException());
+      }
 
-      // var response = await dio.request(
-      //   '${EndPoints.baseUrl}/v1/auth/logout',
-      //   options: Options(
-      //     method: 'POST',
-      //     headers: headers,
-      //   ),
+      // response.fold(
+      //   (error) => Left(error),
+      //   (result) {
+      //     if (result.statusCode == 200) {
+      //       return Right(result);
+      //     }
+      //     return Left(UnknownException());
+      //   },
       // );
-
-      // if (response.statusCode == 200) {
-      //   return Right(response.data['status']);
-      // } else {
-      //   return Left(UnknownException());
-      // }
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -81,20 +71,36 @@ class ProfileRemoteImpl implements IProfileRemote {
   Future<Either<DomainException, ProfileDto>> updateUserInfo(
       UpdateUserInfoRequest request) async {
     try {
+      // final Either<DomainException, Response> response =
+      //     await client.post(EndPoints.updateUserData, data: request.toJson());
+
+      // response.fold(
+      //   (error) => Left(error),
+      //   (result) {
+      //     if (result.statusCode == 200) {
+      // return Right(
+      //   ProfileDto.fromJson(result.data),
+      // );
+      //     }
+      //     return Left(UnknownException());
+      //   },
+      // );
+
       var headers = {
         'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
+      var data = {'first_name': request.name, 'last_name': request.lastName};
       var dio = Dio();
       var response = await dio.request(
-        '${EndPoints.baseUrl}/v1/user',
+        'https://auyltaxi.kz/api/v1/user',
         options: Options(
           method: 'PUT',
           headers: headers,
         ),
-        data: request,
+        data: data,
       );
 
       if (response.statusCode == 200) {
@@ -112,6 +118,9 @@ class ProfileRemoteImpl implements IProfileRemote {
   @override
   Future<Either<DomainException, ProfileDto>> getUserData() async {
     try {
+      // final Either<DomainException, Response> response =
+      //     await client.post(EndPoints.logout);
+
       var headers = {
         'Accept-Language': 'ru',
         'Accept': 'application/json',
@@ -119,7 +128,7 @@ class ProfileRemoteImpl implements IProfileRemote {
       };
       var dio = Dio();
       var response = await dio.request(
-        '${EndPoints.baseUrl}/v1/auth/user',
+        'https://auyltaxi.kz/api/v1/auth/user',
         options: Options(
           method: 'GET',
           headers: headers,
@@ -131,6 +140,16 @@ class ProfileRemoteImpl implements IProfileRemote {
       } else {
         return Left(UnknownException());
       }
+
+      // response.fold(
+      //   (error) => Left(error),
+      //   (result) {
+      //     if (result.statusCode == 200) {
+      //       return Right(result);
+      //     }
+      //     return Left(UnknownException());
+      //   },
+      // );
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -140,64 +159,15 @@ class ProfileRemoteImpl implements IProfileRemote {
 
   @override
   Future<Either<DomainException, ProfileDto>> updateFcmToken(
-      UpdateFcmTokenRequest request) async {
-    try {
-      var headers = {
-        'Accept-Language': 'ru',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${st.getToken()!}'
-      };
-      var dio = Dio();
-      var response = await dio.request(
-        '${EndPoints.baseUrl}/v1/user/fcm-token',
-        options: Options(
-          method: 'PUT',
-          headers: headers,
-        ),
-        data: request,
-      );
-
-      if (response.statusCode == 200) {
-        return Right(ProfileDto.fromJson(response.data['data']));
-      } else {
-        return Left(UnknownException());
-      }
-    } catch (e) {
-      return Left(
-        e is DomainException ? e : UnknownException(message: e.toString()),
-      );
-    }
+      UpdateFcmTokenRequest request) {
+    // TODO: implement updateFcmToken
+    throw UnimplementedError();
   }
 
   @override
   Future<Either<DomainException, ProfileDto>> updateLanguage(
-      UpdateLanguageRequest request) async {
-    try {
-      var headers = {
-        'Accept-Language': 'ru',
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer ${st.getToken()!}'
-      };
-      var dio = Dio();
-      var response = await dio.request(
-        '${EndPoints.baseUrl}/v1/user/language',
-        options: Options(
-          method: 'PUT',
-          headers: headers,
-        ),
-        data: request,
-      );
-
-      if (response.statusCode == 200) {
-        return Right(ProfileDto.fromJson(response.data['data']));
-      } else {
-        return Left(UnknownException());
-      }
-    } catch (e) {
-      return Left(
-        e is DomainException ? e : UnknownException(message: e.toString()),
-      );
-    }
+      UpdateLanguageRequest request) {
+    // TODO: implement updateLanguage
+    throw UnimplementedError();
   }
 }

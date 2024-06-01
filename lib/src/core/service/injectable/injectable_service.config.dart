@@ -64,7 +64,7 @@ extension GetItInjectableX on _i1.GetIt {
       preResolve: true,
     );
     gh.lazySingleton<_i6.IProfileRemote>(
-      () => _i7.ProfileRemoteImpl(gh<_i5.DioRestClient>()),
+      () => _i7.ProfileRemoteImpl(),
       instanceName: 'ProfileRemoteImpl',
     );
     gh.lazySingleton<_i8.IAuthService>(
