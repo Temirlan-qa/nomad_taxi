@@ -80,12 +80,10 @@ class AuthServiceImpl implements IAuthService {
       log('Verify response: $response');
 
       if (response.statusCode == 200) {
-        st.deleteToken();
         st.setToken(VerifyResponse.fromJson(response.data).data.accessToken);
-        log('XXX');
+        log('token set');
         log(VerifyResponse.fromJson(response.data).data.accessToken);
         log(st.getToken()!);
-        log('YYY');
         return Right(VerifyResponse.fromJson(response.data));
       } else {
         return Left(UnknownException(message: response.statusMessage));

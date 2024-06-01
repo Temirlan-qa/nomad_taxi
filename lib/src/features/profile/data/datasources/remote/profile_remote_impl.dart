@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/api/client/endpoints.dart';
+import 'package:nomad_taxi/src/core/api/client/rest/dio/dio_client.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/profile_dto.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
@@ -14,7 +17,10 @@ import 'i_profile_remote.dart';
 @named
 @LazySingleton(as: IProfileRemote)
 class ProfileRemoteImpl implements IProfileRemote {
-  var client = Dio();
+  ProfileRemoteImpl(this.client);
+  final DioRestClient client;
+
+  // var client = Dio();
   var st = StorageServiceImpl();
 
   @override
@@ -31,20 +37,39 @@ class ProfileRemoteImpl implements IProfileRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var dio = Dio();
-      var response = await dio.request(
+
+      client.init();
+
+      Either<DomainException, Response<dynamic>> response = await client.post(
         '${EndPoints.baseUrl}/v1/auth/logout',
-        options: Options(
-          method: 'POST',
-          headers: headers,
-        ),
+        options: Options(headers: headers),
       );
 
-      if (response.statusCode == 200) {
-        return Right(response.data['status']);
-      } else {
-        return Left(UnknownException());
-      }
+      return response.fold(
+        (l) => Left(l),
+        (r) {
+          if (r.statusCode == 200) {
+            log('logged out');
+            return Right(r.data['status']);
+          } else {
+            return Left(UnknownException());
+          }
+        },
+      );
+
+      // var response = await dio.request(
+      //   '${EndPoints.baseUrl}/v1/auth/logout',
+      //   options: Options(
+      //     method: 'POST',
+      //     headers: headers,
+      //   ),
+      // );
+
+      // if (response.statusCode == 200) {
+      //   return Right(response.data['status']);
+      // } else {
+      //   return Left(UnknownException());
+      // }
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
