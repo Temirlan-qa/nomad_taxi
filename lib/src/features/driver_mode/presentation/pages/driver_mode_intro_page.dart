@@ -16,6 +16,7 @@ class DriverModeIntroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bodyMain = context.theme.textStyles.bodyMain;
     return Scaffold(
       appBar: CustomAppBar(
         leading: BackButtonWrapper(onPressed: () => context.pop()),
@@ -41,17 +42,17 @@ class DriverModeIntroPage extends StatelessWidget {
               children: [
                 Text(
                   S.current.driver_mode_intro_header2,
-                  style: context.theme.textStyles.bodyMain,
+                  style: bodyMain,
                 ),
                 const Gap(UIConstants.defaultGap2),
                 Text(
                   S.current.driver_mode_intro_header3,
-                  style: context.theme.textStyles.bodyMain,
+                  style: bodyMain,
                 ),
                 const Gap(UIConstants.defaultGap2),
                 Text(
                   S.current.driver_mode_intro_header4,
-                  style: context.theme.textStyles.bodyMain.copyWith(
+                  style: bodyMain.copyWith(
                     color: context.theme.red,
                   ),
                 ),
@@ -61,10 +62,7 @@ class DriverModeIntroPage extends StatelessWidget {
           const Spacer(),
           Align(
             alignment: Alignment.centerRight,
-            child: Image.asset(
-              Assets.images.car.path,
-              scale: 1.25,
-            ),
+            child: Image.asset(Assets.images.car.path),
           ),
           const Gap(UIConstants.defaultGap3),
         ],

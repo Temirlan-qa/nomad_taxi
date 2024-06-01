@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool? centerTitle;
   final List<Widget>? actions;
   final double? elevation;
+  final bool isDrawer;
 
   const CustomAppBar({
     super.key,
@@ -21,6 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.textStyle,
     this.elevation,
     this.height = kToolbarHeight,
+    this.isDrawer = false,
   });
 
   @override
@@ -31,13 +33,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: backgroundColor ?? context.theme.white,
       leading: leading,
-      leadingWidth: 110,
+      automaticallyImplyLeading: false,
+      leadingWidth: isDrawer ? kToolbarHeight : 110,
       elevation: elevation ?? 0,
       title: appBarText != null
-          ? Text(
-              appBarText!,
-              style: textStyle ?? TextStyle(color: context.theme.primary),
-            )
+          ? Text(appBarText!,
+              style: textStyle ?? context.theme.textStyles.titleSecondary)
           : null,
       centerTitle: centerTitle ?? true,
       actions: actions,

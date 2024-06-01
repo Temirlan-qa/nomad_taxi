@@ -6,6 +6,7 @@ import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/toggle_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
@@ -44,26 +45,18 @@ class _PolicyPageState extends State<PolicyPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              padding: const EdgeInsets.all(UIConstants.defaultPadding),
-              decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(UIConstants.defaultRadius),
-                  color: context.theme.background,
-                  border: Border.all(color: context.theme.stroke)),
+            CustomContainerWidget(
+              onTap: () {
+                setState(() {
+                  isAgreeWithPolicy = !isAgreeWithPolicy;
+                });
+              },
               child: Row(
                 children: [
                   Expanded(
                       child: Text(S.current.agree_wit_privacy_policy,
                           style: context.theme.textStyles.headLine)),
-                  ToggleWidget(
-                    value: isAgreeWithPolicy,
-                    onPressed: () {
-                      setState(() {
-                        isAgreeWithPolicy = !isAgreeWithPolicy;
-                      });
-                    },
-                  )
+                  ToggleWidget(value: isAgreeWithPolicy)
                 ],
               ),
             ),
