@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -21,73 +20,67 @@ class AuthServiceImpl implements IAuthService {
   AuthServiceImpl(this.client);
 
   final DioRestClient client;
+  final StorageServiceImpl st = StorageServiceImpl();
+  final Map<String, String> headers = {'Content-Type': 'application/json'};
 
   @override
   Future<Either<DomainException, SignInResponse>> loginUser(
       SignInRequest request) async {
-    var headers = {'Content-Type': 'application/json'};
-    var data = json.encode({"phone": request.phone.toString()});
-    var dio = Dio();
-
-    var response = await dio.request(
-      'https://auyltaxi.kz/api/v1/auth/login',
+    final Either<DomainException, Response<dynamic>> response =
+        await client.post(
+      EndPoints.login,
+      data: request.toJson(),
       options: Options(
         method: 'POST',
         headers: headers,
       ),
-      data: data,
     );
 
-    var st = StorageServiceImpl();
-
-    if (response.statusCode == 200) {
-      print(json.encode(response.data));
-      st.setToken(
-          SignInResponse.fromJson(response.data).data.userId.toString());
-      log('XXX');
-      log(SignInResponse.fromJson(response.data).data.userId.toString());
-      log(st.getToken()!);
-      log('YYY');
-      return Right(SignInResponse.fromJson(response.data));
-    } else {
-      print(response.statusMessage);
-      return Left(UnknownException(message: response.statusMessage));
-    }
+    return response.fold(
+      (error) => Left(error),
+      (response) async {
+        if (response.statusCode == 200) {
+          await st.setToken(
+              '${SignInResponse.fromJson(response.data).data.userId}');
+          return Right(SignInResponse.fromJson(response.data));
+        } else {
+          return Left(UnknownException(message: response.statusMessage));
+        }
+      },
+    );
   }
 
   @override
   Future<Either<DomainException, VerifyResponse>> verifyUser(
       VerifyRequest request) async {
     try {
-      var dio = Dio();
-
-      var response = await dio.request(
-        '${EndPoints.baseUrl}/v1/auth/verify',
-        options: Options(
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        ),
+      final Either<DomainException, Response<dynamic>> response =
+          await client.post(
+        EndPoints.verify,
         data: VerifyRequest(
           userId: request.userId,
           code: request.code,
         ),
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
       );
 
-      var st = StorageServiceImpl();
-
-      log('Verify response: $response');
-
-      if (response.statusCode == 200) {
-        st.setToken(VerifyResponse.fromJson(response.data).data.accessToken);
-        log('token set');
-        log(VerifyResponse.fromJson(response.data).data.accessToken);
-        log(st.getToken()!);
-        return Right(VerifyResponse.fromJson(response.data));
-      } else {
-        return Left(UnknownException(message: response.statusMessage));
-      }
+      return response.fold(
+        (error) => Left(error),
+        (response) async {
+          if (response.statusCode == 200) {
+            await st.deleteToken();
+            final String token =
+                VerifyResponse.fromJson(response.data).data.accessToken;
+            await st.setToken(token);
+            return Right(VerifyResponse.fromJson(response.data));
+          } else {
+            return Left(UnknownException(message: response.statusMessage));
+          }
+        },
+      );
     } catch (e) {
       log('Exception caught during verification: $e');
       return Left(

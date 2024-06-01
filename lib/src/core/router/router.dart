@@ -32,7 +32,12 @@ GoRouter routerProvider() {
     debugLogDiagnostics: true,
     routes: _routes(),
     // redirect: (context, state) {
-    //   return RoutePaths.main;
+    //   final StorageServiceImpl st = StorageServiceImpl();
+    //   final String? token = st.getToken();
+    //   if (token != null) {
+    //     return RoutePaths.main;
+    //   }
+    //   return RoutePaths.auth;
     // },
   );
 }

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:nomad_taxi/src/core/constants/api_constants.dart';
+import 'package:nomad_taxi/src/core/api/client/endpoints.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
 
@@ -24,7 +24,7 @@ class DioRestClient {
   @PostConstruct(preResolve: true)
   Future<void> init() async {
     BaseOptions options = BaseOptions(
-      baseUrl: ApiConstants.baseUrl,
+      baseUrl: EndPoints.baseUrl,
       connectTimeout: DioConfigurations.connectTimeout,
       receiveTimeout: DioConfigurations.receiveTimeout,
     );
