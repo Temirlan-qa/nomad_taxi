@@ -10,4 +10,12 @@ class ProfileEvent with _$ProfileEvent {
     required String lastName,
     required String phone,
   }) = _UpdateUserInfo;
+
+  const factory ProfileEvent.updateFcmToken({
+    required UpdateFcmTokenRequest fcmToken,
+  }) = _UpdateFcmToken;
+
+  const factory ProfileEvent.updateLanguage({
+    required UpdateLanguageRequest language,
+  }) = _UpdateLanguage;
 }

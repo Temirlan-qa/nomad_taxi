@@ -3,8 +3,11 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
+import 'package:nomad_taxi/src/core/service/injectable/exports/profile_exports.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
+import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
+import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
@@ -43,6 +46,10 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
       deleteAccount: () => _deleteAccount(event as _DeleteAccount, emit),
       updateUserInfo: (_, __, ___) =>
           _updateUserInfo(event as _UpdateUserInfo, emit),
+      updateFcmToken: (fcmToken) =>
+          _updateFcmToken(event as _UpdateFcmToken, emit),
+      updateLanguage: (language) =>
+          _updateLanguage(event as _UpdateLanguage, emit),
     );
   }
 
@@ -72,6 +79,14 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     Emitter emit,
   ) async {
     final result = await _logOutUseCase.call();
+
+    if (result.isSuccessful) {
+      emit(
+        _Loaded(
+          viewModel: _viewModel,
+        ),
+      );
+    }
   }
 
   Future<void> _deleteAccount(
@@ -91,6 +106,22 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
       phone: event.phone,
     );
     final result = await _updateUserInfoUseCase.call(request);
+  }
+
+  Future<void> _updateFcmToken(
+    _UpdateFcmToken event,
+    Emitter emit,
+  ) async {
+    final UpdateFcmTokenRequest request = event.fcmToken;
+    final result = await _updateFcmTokenUseCase.call(request);
+  }
+
+  Future<void> _updateLanguage(
+    _UpdateLanguage event,
+    Emitter emit,
+  ) async {
+    final UpdateLanguageRequest request = event.language;
+    final result = await _updateLanguageUseCase.call(request);
   }
 
   @override

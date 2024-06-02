@@ -16,6 +16,7 @@ import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
+import '../../../../core/router/router.dart';
 import '../widgets/show_modal_widget.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -222,12 +223,12 @@ class _ProfilePageState extends State<ProfilePage> {
             context.pop();
           },
           accept: () async {
-            //st.deleteToken();
             bloc.add(const ProfileEvent.logOut());
-            // while (context.canPop()) {
-            //   context.pop();
-            // }
-            // context.pushReplacementNamed(RouteNames.auth);
+            st.clear();
+            while (context.canPop()) {
+              context.pop();
+            }
+            context.pushReplacementNamed(RouteNames.auth);
           },
         );
       },

@@ -19,19 +19,19 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() retrieve,
-    required TResult Function(String languageCode) update,
+    required TResult Function(UpdateLanguageRequest request) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? retrieve,
-    TResult? Function(String languageCode)? update,
+    TResult? Function(UpdateLanguageRequest request)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? retrieve,
-    TResult Function(String languageCode)? update,
+    TResult Function(UpdateLanguageRequest request)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,7 +115,7 @@ class _$RetrieveSettingsEventImpl implements _RetrieveSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() retrieve,
-    required TResult Function(String languageCode) update,
+    required TResult Function(UpdateLanguageRequest request) update,
   }) {
     return retrieve();
   }
@@ -124,7 +124,7 @@ class _$RetrieveSettingsEventImpl implements _RetrieveSettingsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? retrieve,
-    TResult? Function(String languageCode)? update,
+    TResult? Function(UpdateLanguageRequest request)? update,
   }) {
     return retrieve?.call();
   }
@@ -133,7 +133,7 @@ class _$RetrieveSettingsEventImpl implements _RetrieveSettingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? retrieve,
-    TResult Function(String languageCode)? update,
+    TResult Function(UpdateLanguageRequest request)? update,
     required TResult orElse(),
   }) {
     if (retrieve != null) {
@@ -184,7 +184,9 @@ abstract class _$$UpdateSettingsEventImplCopyWith<$Res> {
           $Res Function(_$UpdateSettingsEventImpl) then) =
       __$$UpdateSettingsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String languageCode});
+  $Res call({UpdateLanguageRequest request});
+
+  $UpdateLanguageRequestCopyWith<$Res> get request;
 }
 
 /// @nodoc
@@ -198,28 +200,36 @@ class __$$UpdateSettingsEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? languageCode = null,
+    Object? request = null,
   }) {
     return _then(_$UpdateSettingsEventImpl(
-      languageCode: null == languageCode
-          ? _value.languageCode
-          : languageCode // ignore: cast_nullable_to_non_nullable
-              as String,
+      request: null == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as UpdateLanguageRequest,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UpdateLanguageRequestCopyWith<$Res> get request {
+    return $UpdateLanguageRequestCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
-  const _$UpdateSettingsEventImpl({required this.languageCode});
+  const _$UpdateSettingsEventImpl({required this.request});
 
   @override
-  final String languageCode;
+  final UpdateLanguageRequest request;
 
   @override
   String toString() {
-    return 'SettingsEvent.update(languageCode: $languageCode)';
+    return 'SettingsEvent.update(request: $request)';
   }
 
   @override
@@ -227,12 +237,11 @@ class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateSettingsEventImpl &&
-            (identical(other.languageCode, languageCode) ||
-                other.languageCode == languageCode));
+            (identical(other.request, request) || other.request == request));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, languageCode);
+  int get hashCode => Object.hash(runtimeType, request);
 
   @JsonKey(ignore: true)
   @override
@@ -245,29 +254,29 @@ class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() retrieve,
-    required TResult Function(String languageCode) update,
+    required TResult Function(UpdateLanguageRequest request) update,
   }) {
-    return update(languageCode);
+    return update(request);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? retrieve,
-    TResult? Function(String languageCode)? update,
+    TResult? Function(UpdateLanguageRequest request)? update,
   }) {
-    return update?.call(languageCode);
+    return update?.call(request);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? retrieve,
-    TResult Function(String languageCode)? update,
+    TResult Function(UpdateLanguageRequest request)? update,
     required TResult orElse(),
   }) {
     if (update != null) {
-      return update(languageCode);
+      return update(request);
     }
     return orElse();
   }
@@ -305,10 +314,11 @@ class _$UpdateSettingsEventImpl implements _UpdateSettingsEvent {
 }
 
 abstract class _UpdateSettingsEvent implements SettingsEvent {
-  const factory _UpdateSettingsEvent({required final String languageCode}) =
+  const factory _UpdateSettingsEvent(
+          {required final UpdateLanguageRequest request}) =
       _$UpdateSettingsEventImpl;
 
-  String get languageCode;
+  UpdateLanguageRequest get request;
   @JsonKey(ignore: true)
   _$$UpdateSettingsEventImplCopyWith<_$UpdateSettingsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;

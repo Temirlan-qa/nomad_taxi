@@ -8,7 +8,7 @@ import '../models/partner/partner_dto.dart';
 
 class ProfileDtoMapper {
   ProfileEntity map(ProfileDto dto) {
-    final FinanceDto? financeDto = dto.partner?.finance;
+    final FinanceDto? financeDto = dto.partner!.finance;
     final Finance finance = Finance(
       balance: financeDto?.balance,
       bonus: financeDto?.bonus,
@@ -16,13 +16,13 @@ class ProfileDtoMapper {
 
     final PartnerDto? partnerDto = dto.partner;
     final Partner partner = Partner(
-      id: partnerDto?.id,
-      firstName: partnerDto?.firstName,
-      carModel: partnerDto?.carModel,
-      townId: partnerDto?.townId,
-      carNumber: partnerDto?.carNumber,
-      lastName: partnerDto?.lastName,
-      status: partnerDto?.status,
+      id: partnerDto!.id,
+      firstName: partnerDto.firstName,
+      carModel: partnerDto.carModel,
+      townId: partnerDto.townId,
+      carNumber: partnerDto.carNumber,
+      lastName: partnerDto.lastName,
+      status: partnerDto.status,
       finance: finance,
     );
 

@@ -20,7 +20,7 @@ abstract class IProfileRemote {
     UpdateFcmTokenRequest request,
   );
 
-  Future<Either<DomainException, ProfileDto>> updateLanguage(
+  Future<Either<DomainException, String>> updateLanguage(
     UpdateLanguageRequest request,
   );
 }

@@ -23,6 +23,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       SignInRequest body) async {
     try {
       Log.e(body.phone);
+
       final requests = await _authService.loginUser(body);
       return requests.fold(
         (error) => Left(error),

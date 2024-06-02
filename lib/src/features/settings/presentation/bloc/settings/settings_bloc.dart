@@ -4,13 +4,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
+import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
+import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
+import 'package:nomad_taxi/src/features/profile/domain/usecases/update_language_use_case.dart';
 
 part 'settings_bloc.freezed.dart';
 part 'settings_event.dart';
 part 'settings_state.dart';
 
 class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
-  SettingsBloc() : super(const _InProgressSettingsState());
+  SettingsBloc(this._updateLanguageUseCase, this._getUserDataUseCase)
+      : super(const _InProgressSettingsState());
+
+  final UpdateLanguageUseCase _updateLanguageUseCase;
+
+  final GetUserDataUseCase _getUserDataUseCase;
 
   //final SettingsViewModel _viewModel = const SettingsViewModel();
 
@@ -29,21 +37,26 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
     emit(const SettingsState.inProgress());
     try {
       final StorageServiceImpl st = StorageServiceImpl();
-      await st.init();
-      await st.openBox();
       final String? getLanguageCode = st.getLanguageCode();
-      if (getLanguageCode == null) {
+
+      final result = await _getUserDataUseCase.call();
+
+      if (result.isSuccessful) {
+        st.setLanguageCode(result.data!.languageCode!);
+
+        emit(
+          SettingsState.done(
+            languageCode: result.data!.languageCode!,
+          ),
+        );
+        return;
+      } else if (getLanguageCode == null) {
         return emit(
-          const _DoneSettingsState(
+          const SettingsState.done(
             languageCode: 'ru',
           ),
         );
       }
-      emit(
-        _DoneSettingsState(
-          languageCode: getLanguageCode,
-        ),
-      );
     } catch (e) {
       emit(const SettingsState.error());
       rethrow;
@@ -54,13 +67,22 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
     _UpdateSettingsEvent event,
     Emitter emit,
   ) async {
+    emit(const SettingsState.inProgress());
     try {
-      final StorageServiceImpl st = StorageServiceImpl();
-      await st.init();
-      await st.openBox();
+      StorageServiceImpl st = StorageServiceImpl();
 
-      await st.setLanguageCode(event.languageCode);
-      emit(SettingsState.done(languageCode: event.languageCode));
+      final UpdateLanguageRequest request = UpdateLanguageRequest(
+        languageCode: event.request.languageCode,
+      );
+
+      final result = await _updateLanguageUseCase.call(request);
+
+      if (result.isSuccessful) {
+        await st.setLanguageCode(request.languageCode);
+        emit(SettingsState.done(languageCode: request.languageCode));
+      } else {
+        emit(const SettingsState.error());
+      }
     } catch (e) {
       emit(const SettingsState.error());
       rethrow;

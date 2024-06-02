@@ -110,7 +110,8 @@ class _AuthPageState extends State<AuthPage> {
                 onPressed: () async {
                   authBloc.add(
                     AuthEvent.login(
-                      signInBody: SignInRequest(phone: phoneController.text),
+                      signInBody:
+                          SignInRequest(phone: '7${phoneController.text}'),
                     ),
                   );
 

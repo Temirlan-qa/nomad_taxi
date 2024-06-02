@@ -29,6 +29,9 @@ void manualRegisterServices() {
   );
 
   getIt.registerBloc<SettingsBloc>(
-    () => SettingsBloc(),
+    () => SettingsBloc(
+      getIt<UpdateLanguageUseCase>(),
+      getIt<GetUserDataUseCase>(),
+    ),
   );
 }

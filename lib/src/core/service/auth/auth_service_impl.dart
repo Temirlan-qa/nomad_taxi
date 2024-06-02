@@ -26,10 +26,11 @@ class AuthServiceImpl implements IAuthService {
   @override
   Future<Either<DomainException, SignInResponse>> loginUser(
       SignInRequest request) async {
+    st.deleteToken();
     final Either<DomainException, Response<dynamic>> response =
         await client.post(
       EndPoints.login,
-      data: request.toJson(),
+      data: request,
       options: Options(
         method: 'POST',
         headers: headers,

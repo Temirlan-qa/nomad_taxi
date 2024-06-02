@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
@@ -28,9 +30,6 @@ class ProfileRemoteImpl implements IProfileRemote {
   @override
   Future<Either<DomainException, String>> logOut() async {
     try {
-      // final Either<DomainException, Response> response =
-      //     await client.post(EndPoints.logout);
-
       var headers = {
         'Accept-Language': 'ru',
         'Accept': 'application/json',
@@ -50,16 +49,6 @@ class ProfileRemoteImpl implements IProfileRemote {
       } else {
         return Left(UnknownException());
       }
-
-      // response.fold(
-      //   (error) => Left(error),
-      //   (result) {
-      //     if (result.statusCode == 200) {
-      //       return Right(result);
-      //     }
-      //     return Left(UnknownException());
-      //   },
-      // );
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -71,23 +60,7 @@ class ProfileRemoteImpl implements IProfileRemote {
   Future<Either<DomainException, ProfileDto>> updateUserInfo(
       UpdateUserInfoRequest request) async {
     try {
-      // final Either<DomainException, Response> response =
-      //     await client.post(EndPoints.updateUserData, data: request.toJson());
-
-      // response.fold(
-      //   (error) => Left(error),
-      //   (result) {
-      //     if (result.statusCode == 200) {
-      // return Right(
-      //   ProfileDto.fromJson(result.data),
-      // );
-      //     }
-      //     return Left(UnknownException());
-      //   },
-      // );
-
       var headers = {
-        'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ${st.getToken()!}'
@@ -118,11 +91,7 @@ class ProfileRemoteImpl implements IProfileRemote {
   @override
   Future<Either<DomainException, ProfileDto>> getUserData() async {
     try {
-      // final Either<DomainException, Response> response =
-      //     await client.post(EndPoints.logout);
-
       var headers = {
-        'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
@@ -135,21 +104,13 @@ class ProfileRemoteImpl implements IProfileRemote {
         ),
       );
 
+      log(response.toString());
+
       if (response.statusCode == 200) {
         return Right(ProfileDto.fromJson(response.data['data']));
       } else {
         return Left(UnknownException());
       }
-
-      // response.fold(
-      //   (error) => Left(error),
-      //   (result) {
-      //     if (result.statusCode == 200) {
-      //       return Right(result);
-      //     }
-      //     return Left(UnknownException());
-      //   },
-      // );
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -165,9 +126,33 @@ class ProfileRemoteImpl implements IProfileRemote {
   }
 
   @override
-  Future<Either<DomainException, ProfileDto>> updateLanguage(
-      UpdateLanguageRequest request) {
-    // TODO: implement updateLanguage
-    throw UnimplementedError();
+  Future<Either<DomainException, String>> updateLanguage(
+      UpdateLanguageRequest request) async {
+    try {
+      var headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/user/language',
+        options: Options(
+          method: 'PUT',
+          headers: headers,
+        ),
+        data: request.toJson(),
+      );
+
+      if (response.statusCode == 200) {
+        return Right(response.data['status']);
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
   }
 }

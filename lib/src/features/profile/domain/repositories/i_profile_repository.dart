@@ -21,7 +21,7 @@ abstract class IProfileRepository {
     UpdateFcmTokenRequest request,
   );
 
-  Future<Either<DomainException, ProfileEntity>> updateLanguage(
+  Future<Either<DomainException, String>> updateLanguage(
     UpdateLanguageRequest request,
   );
 }
