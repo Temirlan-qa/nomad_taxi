@@ -20,5 +20,6 @@ class RoutePaths {
   static const String enterDriverInfo = '/enterDriverInfo';
   static const String driverMode = '/driverMode';
   static const String transferMoney = '/transferMoney';
+  static const String transferMoneyInstruction = '/transferMoneyInstruction';
   static const String chooseTariff = '/chooseTariff';
 }

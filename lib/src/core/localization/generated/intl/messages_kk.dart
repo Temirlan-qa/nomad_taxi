@@ -71,6 +71,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "congrats_completed_order": MessageLookupByLibrary.simpleMessage(
             "Орындалған тапсырыспен құттықтаймыз!"),
         "congratulate": MessageLookupByLibrary.simpleMessage("Құттықтаймыз!"),
+        "copy_your_id":
+            MessageLookupByLibrary.simpleMessage("Идентификаторды көшіріңіз"),
         "current_language": MessageLookupByLibrary.simpleMessage("Қазақша"),
         "current_locale": MessageLookupByLibrary.simpleMessage("kk"),
         "delete_account":
@@ -115,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "help": MessageLookupByLibrary.simpleMessage("Көмек"),
         "in_progress": MessageLookupByLibrary.simpleMessage("Процесінде"),
         "instruction": MessageLookupByLibrary.simpleMessage("Нұсқаулық"),
+        "instruction_to_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Ақшаны қалай алуға болатындығы туралы нұсқаулық"),
         "kz_with_flag": MessageLookupByLibrary.simpleMessage("🇰🇿 Қазақстан"),
         "left": MessageLookupByLibrary.simpleMessage("Қалды"),
         "log_out_account":
@@ -179,8 +183,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "where": MessageLookupByLibrary.simpleMessage("Қайда"),
         "where_from": MessageLookupByLibrary.simpleMessage("Қайдан"),
         "withdraw_funds": MessageLookupByLibrary.simpleMessage("Ақша алу"),
+        "withdraw_infinite": MessageLookupByLibrary.simpleMessage(
+            "Сіз баланстан шексіз соманы ала аласыз"),
         "withdraw_money": MessageLookupByLibrary.simpleMessage("Ақша алу"),
         "write_appeal": MessageLookupByLibrary.simpleMessage("Өтініш жазу"),
+        "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Бізге ватсапқа ақша алу туралы сұраныс пен жауап жіберіңіз сіздің ID нөміріңіз және сіздің Kaspi Gold картаңыздың нөмірі, және біздің менеджерлер сіздің шотыңызға ақша аударады"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Сіз шыққыңыз келе ме?"),

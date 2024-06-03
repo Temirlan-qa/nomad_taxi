@@ -95,6 +95,11 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, __) => const TransferMoneyPage(),
       ),
       GoRoute(
+        name: RouteNames.transferMoneyInstruction,
+        path: RoutePaths.transferMoneyInstruction,
+        builder: (_, __) => const TransferMoneyInstructionPage(),
+      ),
+      GoRoute(
         name: RouteNames.chooseTariff,
         path: RoutePaths.chooseTariff,
         builder: (_, __) => const ChooseTariffPage(),

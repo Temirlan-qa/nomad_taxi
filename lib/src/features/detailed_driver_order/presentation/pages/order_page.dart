@@ -60,7 +60,7 @@ class OrderPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(UIConstants.defaultGap1),
+          padding: const EdgeInsets.all(UIConstants.defaultPadding),
           children: [
             Text(
               S.current.details,

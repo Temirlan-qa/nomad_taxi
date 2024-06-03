@@ -4,12 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/custom_text_icon_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
-import 'package:nomad_taxi/src/features/transfer_money%20copy/presentation/pages/transfer_money.dart';
+import 'package:nomad_taxi/src/features/transfer_money/presentation/widgets/custom_copy_button_widget.dart';
 
 class TransferMoneyPage extends StatelessWidget {
   const TransferMoneyPage({super.key});
@@ -23,9 +24,13 @@ class TransferMoneyPage extends StatelessWidget {
         leading: BackButtonWrapper(onPressed: () => context.pop()),
         actions: [
           CustomTextIconButtonWidget(
-              icon: Assets.icons.solid.circleUpSolid,
-              color: context.theme.red,
-              title: S.current.withdraw_money),
+            icon: Assets.icons.solid.circleUpSolid,
+            color: context.theme.red,
+            title: S.current.withdraw_money,
+            onPressed: () {
+              context.pushNamed(RouteNames.transferMoneyInstruction);
+            },
+          ),
           const Gap(14),
         ],
       ),
@@ -100,6 +105,7 @@ class TransferMoneyPage extends StatelessWidget {
             ),
             const Gap(UIConstants.defaultGap2),
             Text(S.current.enter_amount, style: bodyMain),
+            const Gap(UIConstants.defaultGap2),
             CustomMainButtonWidget(
               title: S.current.send_receipt,
               isMain: false,

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
-import 'package:nomad_taxi/src/core/widgets/buttons/custom_text_icon_button_widget.dart';
 import 'package:nomad_taxi/src/features/choose_tariff/presentation/widgets/custom_select_button_widget.dart';
 
 class ChooseTariffPage extends StatelessWidget {
@@ -20,15 +18,7 @@ class ChooseTariffPage extends StatelessWidget {
     final titleSecondary = context.theme.textStyles.titleSecondary;
     return Scaffold(
       appBar: CustomAppBar(
-        leading: BackButtonWrapper(onPressed: () => context.pop()),
-        actions: [
-          CustomTextIconButtonWidget(
-              icon: Assets.icons.solid.circleUpSolid,
-              title: S.current.withdraw_money,
-              color: context.theme.red),
-          const Gap(14),
-        ],
-      ),
+          leading: BackButtonWrapper(onPressed: () => context.pop())),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(UIConstants.defaultPadding),

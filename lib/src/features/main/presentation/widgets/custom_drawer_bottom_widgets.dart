@@ -25,7 +25,7 @@ class CustomDrawerBottomWidgets extends StatelessWidget {
           children: [
             CustomDriverButtonWidget(
               onPressed: () {
-                context.pushNamed(RouteNames.driverModeIntro);
+                context.pushNamed(RouteNames.driverMode);
               },
               isDriverMode: false,
             ),

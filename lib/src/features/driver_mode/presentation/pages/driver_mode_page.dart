@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
@@ -37,33 +39,39 @@ class _DriverModePageState extends State<DriverModePage> {
           padding: const EdgeInsets.all(UIConstants.defaultPadding),
           physics: const BouncingScrollPhysics(),
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomContainerWidget(
-                    onTap: () {},
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S.current.your_account,
-                          style: bodyMain.copyWith(color: secondary),
-                        ),
-                        const Gap(UIConstants.defaultGap7),
-                        Text(
-                          '500 ₸',
-                          style: context.theme.textStyles.titleMain,
-                        ),
-                        const Gap(UIConstants.defaultGap2),
-                        Text(
-                          S.current.recharge_account,
-                          style: bodyMain.copyWith(color: context.theme.red),
-                        ),
-                      ],
-                    )),
-                const Gap(UIConstants.defaultGap1),
-                Expanded(
-                  child: CustomContainerWidget(
+            IntrinsicHeight(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: CustomContainerWidget(
+                        onTap: () {
+                          context.pushNamed(RouteNames.transferMoney);
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              S.current.your_account,
+                              style: bodyMain.copyWith(color: secondary),
+                            ),
+                            const Gap(UIConstants.defaultGap7),
+                            Text(
+                              '500 ₸',
+                              style: context.theme.textStyles.titleMain,
+                            ),
+                            const Gap(UIConstants.defaultGap2),
+                            Text(
+                              S.current.recharge_account,
+                              style: context.theme.textStyles.headLine
+                                  .copyWith(color: context.theme.red),
+                            ),
+                          ],
+                        )),
+                  ),
+                  const Gap(UIConstants.defaultGap1),
+                  CustomContainerWidget(
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -78,44 +86,43 @@ class _DriverModePageState extends State<DriverModePage> {
                       ),
                     ],
                   )),
-                ),
-              ],
+                ],
+              ),
             ),
             const Gap(UIConstants.defaultGap3),
-            InkWell(
-              onTap: () {},
-              borderRadius: BorderRadius.circular(UIConstants.defaultRadius),
-              child: CustomContainerWidget(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    S.current.your_tariff,
-                    style: bodyMain.copyWith(color: secondary),
-                  ),
-                  const Gap(UIConstants.defaultGap7),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        S.current.free,
-                        style: context.theme.textStyles.titleSecondary,
-                      ),
-                      Assets.icons.regular.chevronRightSolid.svg(
-                          width: 18,
-                          height: 18,
-                          colorFilter:
-                              ColorFilter.mode(secondary, BlendMode.srcIn))
-                    ],
-                  ),
-                  const Gap(UIConstants.defaultGap7),
-                  Text(
-                    S.current.select_tariff,
-                    style: bodyMain.copyWith(color: secondary),
-                  ),
-                ],
-              )),
-            ),
+            CustomContainerWidget(
+                onTap: () {
+                  context.pushNamed(RouteNames.chooseTariff);
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      S.current.your_tariff,
+                      style: bodyMain.copyWith(color: secondary),
+                    ),
+                    const Gap(UIConstants.defaultGap7),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          S.current.free,
+                          style: context.theme.textStyles.titleSecondary,
+                        ),
+                        Assets.icons.regular.chevronRightSolid.svg(
+                            width: 18,
+                            height: 18,
+                            colorFilter:
+                                ColorFilter.mode(secondary, BlendMode.srcIn))
+                      ],
+                    ),
+                    const Gap(UIConstants.defaultGap7),
+                    Text(
+                      S.current.select_tariff,
+                      style: bodyMain.copyWith(color: secondary),
+                    ),
+                  ],
+                )),
             const Gap(UIConstants.defaultGap1),
             CustomContainerWidget(
                 onTap: () {
@@ -155,7 +162,11 @@ class _DriverModePageState extends State<DriverModePage> {
                 )),
             const Gap(UIConstants.defaultGap3),
             CustomContainerWidget(
-                onTap: () {},
+                onTap: !switchState
+                    ? null
+                    : () {
+                        context.pushNamed(RouteNames.driverOrders);
+                      },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -165,7 +176,10 @@ class _DriverModePageState extends State<DriverModePage> {
                         Text(
                           S.current.orders,
                           style: context.theme.textStyles.titleSecondary
-                              .copyWith(color: secondary),
+                              .copyWith(
+                                  color: switchState
+                                      ? context.theme.primary
+                                      : secondary),
                         ),
                         const Gap(UIConstants.defaultGap7),
                         Text(
