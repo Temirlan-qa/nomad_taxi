@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accept_order": MessageLookupByLibrary.simpleMessage("Принять заказ"),
         "activate_promoCode":
             MessageLookupByLibrary.simpleMessage("Активировать промокод"),
+        "active": MessageLookupByLibrary.simpleMessage("Активен"),
         "agree_wit_privacy_policy": MessageLookupByLibrary.simpleMessage(
             "Согласен с политикой конфиденцальности"),
         "answer_dev":
@@ -39,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "arrived_call_point":
             MessageLookupByLibrary.simpleMessage("Приехал на точку вызова"),
         "back": MessageLookupByLibrary.simpleMessage("Назад"),
+        "basic": MessageLookupByLibrary.simpleMessage("Основные"),
         "bonuses_also_money":
             MessageLookupByLibrary.simpleMessage("Бонусы тоже деньги"),
         "bonuses_desc": MessageLookupByLibrary.simpleMessage(
@@ -66,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "congrats_completed_order": MessageLookupByLibrary.simpleMessage(
             "Поздравляем с выполненным заказом!"),
         "congratulate": MessageLookupByLibrary.simpleMessage("Поздравляем!"),
+        "copy_your_id":
+            MessageLookupByLibrary.simpleMessage("Скопируйте ваш ID"),
         "current_language": MessageLookupByLibrary.simpleMessage("Русский"),
         "current_locale": MessageLookupByLibrary.simpleMessage("ru"),
         "delete_account":
@@ -77,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "development_by":
             MessageLookupByLibrary.simpleMessage("Разработка компании"),
         "done": MessageLookupByLibrary.simpleMessage("Выполненно"),
+        "driver_balance":
+            MessageLookupByLibrary.simpleMessage("Баланс водителя"),
         "driver_canceled_order":
             MessageLookupByLibrary.simpleMessage("Водитель отменил заказ"),
         "driver_mode": MessageLookupByLibrary.simpleMessage("Режим водителя"),
@@ -88,6 +94,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Но перед началом работы просим вас внесити данные вашей машины, чтобы клиенты могли определить вас."),
         "driver_mode_intro_header4":
             MessageLookupByLibrary.simpleMessage("Удачной поездки =)"),
+        "enter_ID":
+            MessageLookupByLibrary.simpleMessage("Далее введите свой ID номер"),
+        "enter_amount": MessageLookupByLibrary.simpleMessage(
+            "Введите нужную сумму и деньги пуступять на ваш счет в приложении Nomad Taxi"),
         "enter_car_number":
             MessageLookupByLibrary.simpleMessage("Введите номер"),
         "enter_driver_info":
@@ -99,9 +109,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "exit_mode": MessageLookupByLibrary.simpleMessage("Выйти из режима"),
         "forgot_stuff":
             MessageLookupByLibrary.simpleMessage("Забыли вещи в такси"),
+        "free": MessageLookupByLibrary.simpleMessage("Бесплатный"),
         "go_back": MessageLookupByLibrary.simpleMessage("Вернутся назад"),
+        "go_offline": MessageLookupByLibrary.simpleMessage("Выйдете на линию"),
+        "go_online": MessageLookupByLibrary.simpleMessage("Выйти на линию"),
         "help": MessageLookupByLibrary.simpleMessage("Помощь"),
         "in_progress": MessageLookupByLibrary.simpleMessage("В процессе"),
+        "instruction": MessageLookupByLibrary.simpleMessage("Инструкция"),
+        "instruction_to_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Инструкция как вывести деньги"),
         "kz_with_flag": MessageLookupByLibrary.simpleMessage("🇰🇿 Казахстан"),
         "left": MessageLookupByLibrary.simpleMessage("Осталось"),
         "log_out_account":
@@ -113,20 +129,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "more_detailed": MessageLookupByLibrary.simpleMessage("Подробнее"),
         "next": MessageLookupByLibrary.simpleMessage("Далее"),
         "on_line": MessageLookupByLibrary.simpleMessage("На линии"),
+        "open_kaspi_app": MessageLookupByLibrary.simpleMessage(
+            "Откройте приложение Kaspi.kz и перейдите в раздел платежи, в пойск введите Nomad Taxi"),
         "order_status": MessageLookupByLibrary.simpleMessage("Статус заказа"),
+        "orders": MessageLookupByLibrary.simpleMessage("Заказы"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Номер телефона"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
+        "recharge_account":
+            MessageLookupByLibrary.simpleMessage("Пополнить счет"),
+        "recharge_kaspi": MessageLookupByLibrary.simpleMessage(
+            "Пополнить счет\nв приложении Kaspi.kz"),
         "referral_program":
             MessageLookupByLibrary.simpleMessage("Реферальная программа"),
         "refill_bonuses":
             MessageLookupByLibrary.simpleMessage("Пополнение бонусов"),
         "route": MessageLookupByLibrary.simpleMessage("Маршрут"),
+        "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "save_changes":
             MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
         "select_language": MessageLookupByLibrary.simpleMessage("Выбор языка"),
+        "select_tariff": MessageLookupByLibrary.simpleMessage(
+            "Выберите тариф до начала работы"),
+        "selected_tariff":
+            MessageLookupByLibrary.simpleMessage("Выбранный тариф"),
         "send_code_again":
             MessageLookupByLibrary.simpleMessage("Отправить код повторно"),
+        "send_receipt": MessageLookupByLibrary.simpleMessage("Отправить чек"),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "share_app":
             MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
@@ -134,9 +163,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("СМС подтверждение"),
         "start_trip": MessageLookupByLibrary.simpleMessage("Начать поездку"),
         "stay": MessageLookupByLibrary.simpleMessage("Остаться"),
+        "step": MessageLookupByLibrary.simpleMessage("шаг"),
         "support_service":
             MessageLookupByLibrary.simpleMessage("Служба поддержки"),
+        "tap_to_copy":
+            MessageLookupByLibrary.simpleMessage("Нажмите чтобы скопировать"),
+        "tariff_selection":
+            MessageLookupByLibrary.simpleMessage("Выбор тарифа"),
         "taxi": MessageLookupByLibrary.simpleMessage("Такси"),
+        "time_packages": MessageLookupByLibrary.simpleMessage("Пакеты времени"),
         "to_your_account": MessageLookupByLibrary.simpleMessage("На ваш счет"),
         "took_delivery": MessageLookupByLibrary.simpleMessage("Забрал доствку"),
         "top_up_account":
@@ -149,18 +184,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "version": MessageLookupByLibrary.simpleMessage("Версия"),
         "where": MessageLookupByLibrary.simpleMessage("Куда"),
         "where_from": MessageLookupByLibrary.simpleMessage("Откуда"),
+        "withdraw_funds":
+            MessageLookupByLibrary.simpleMessage("Вывести деньги"),
+        "withdraw_infinite": MessageLookupByLibrary.simpleMessage(
+            "Вы можете вывести не ограниченную сумму с вашего баланса"),
+        "withdraw_money":
+            MessageLookupByLibrary.simpleMessage("Вывести деньги"),
         "write_appeal":
             MessageLookupByLibrary.simpleMessage("Написать обращение"),
+        "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Напишите нам в ватсап запрос на вывод средств и отвте номер вашего ID и номер вашей карты Kaspi GOLD, и наши менеджеры переведут деньги вам на счет"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Вы хотите выйти?"),
         "you_want_exit_desc": MessageLookupByLibrary.simpleMessage(
             "После выхода вы можете вернуться в свой аккаунт в любое время. Все ваши данные будут сохранены"),
+        "your_ID": MessageLookupByLibrary.simpleMessage("Ваш ID"),
         "your_account": MessageLookupByLibrary.simpleMessage("Ваш счет"),
+        "your_balance": MessageLookupByLibrary.simpleMessage("Ваш баланс"),
+        "your_bonuses": MessageLookupByLibrary.simpleMessage("Ваши бонусы"),
         "your_name": MessageLookupByLibrary.simpleMessage("Ваше имя"),
         "your_phone": MessageLookupByLibrary.simpleMessage("Ваш телефон"),
         "your_profile": MessageLookupByLibrary.simpleMessage("Ваш профиль"),
         "your_region": MessageLookupByLibrary.simpleMessage("Ваш регион"),
-        "your_surname": MessageLookupByLibrary.simpleMessage("Ваша фамилия")
+        "your_surname": MessageLookupByLibrary.simpleMessage("Ваша фамилия"),
+        "your_tariff": MessageLookupByLibrary.simpleMessage("Ваш тариф")
       };
 }

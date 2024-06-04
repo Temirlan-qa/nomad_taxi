@@ -59,14 +59,16 @@ class _ProfilePageState extends State<ProfilePage> {
                     textStyle: context.theme.textStyles.headLine.copyWith(),
                     padding: const EdgeInsets.fromLTRB(10, 14, 10, 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(UIConstants.defaultRadius)),
+                      borderRadius:
+                          BorderRadius.circular(UIConstants.defaultRadius),
+                    ),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                 icon: Assets.icons.regular.exit.svg(
-                    width: 18,
-                    height: 18,
-                    colorFilter:
-                        ColorFilter.mode(context.theme.red, BlendMode.srcIn)),
+                  width: 18,
+                  height: 18,
+                  colorFilter:
+                      ColorFilter.mode(context.theme.red, BlendMode.srcIn),
+                ),
                 label: Text(
                   S.current.log_out_account.toLowerCase(),
                 ),

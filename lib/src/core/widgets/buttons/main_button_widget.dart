@@ -39,7 +39,11 @@ class CustomMainButtonWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           prefixIcon != null
-              ? prefixIcon!.svg(color: iconColor)
+              ? prefixIcon!.svg(
+                  height: 18,
+                  width: 18,
+                  colorFilter: ColorFilter.mode(
+                      iconColor ?? context.theme.primary, BlendMode.srcIn))
               : const Offstage(),
           const Gap(UIConstants.defaultGap2),
           TextButtonWidget(
@@ -48,8 +52,12 @@ class CustomMainButtonWidget extends StatelessWidget {
                 isMain ? context.theme.white : color ?? context.theme.primary,
           ),
           const Gap(UIConstants.defaultGap2),
-          prefixIcon != null
-              ? prefixIcon!.svg(color: iconColor)
+          suffixIcon != null
+              ? suffixIcon!.svg(
+                  height: 18,
+                  width: 18,
+                  colorFilter: ColorFilter.mode(
+                      iconColor ?? context.theme.primary, BlendMode.srcIn))
               : const Offstage(),
         ],
       ),
