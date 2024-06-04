@@ -8,14 +8,26 @@ part of 'profile_dto.dart';
 
 _$ProfileDtoImpl _$$ProfileDtoImplFromJson(Map<String, dynamic> json) =>
     _$ProfileDtoImpl(
-      name: json['name'] as String,
-      lastName: json['lastName'] as String,
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
       phone: json['phone'] as String,
+      id: (json['id'] as num).toInt(),
+      languageCode: json['language_code'] as String?,
+      isBlocked: (json['is_blocked'] as num?)?.toInt(),
+      bonus: (json['bonus'] as num?)?.toInt(),
+      partner: json['partner'] == null
+          ? null
+          : PartnerDto.fromJson(json['partner'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ProfileDtoImplToJson(_$ProfileDtoImpl instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'lastName': instance.lastName,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
       'phone': instance.phone,
+      'id': instance.id,
+      'language_code': instance.languageCode,
+      'is_blocked': instance.isBlocked,
+      'bonus': instance.bonus,
+      'partner': instance.partner,
     };

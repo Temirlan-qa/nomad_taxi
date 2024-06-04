@@ -12,7 +12,9 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.codeConfirm,
         path: RoutePaths.codeConfirm,
-        builder: (_, __) => const ConfirmCodePage(),
+        builder: (context, state) => ConfirmCodePage(
+          phone: state.extra.toString(),
+        ),
       ),
       GoRoute(
         name: RouteNames.policy,

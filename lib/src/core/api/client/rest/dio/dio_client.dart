@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/constants/api_constants.dart';
-import 'package:nomad_taxi/src/core/exception/domain_exception.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
 
+import '../../../../exceptions/domain_exception.dart';
 import 'dio_exceptions.dart';
 
 part 'dio_config.dart';

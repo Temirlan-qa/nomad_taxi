@@ -24,6 +24,29 @@ class _MainPageState extends State<MainPage> {
   }
 
   _getCurrentLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return;
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, handle accordingly (e.g., show an alert)
+        return;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle accordingly (e.g., show an alert)
+      return;
+    }
+
+    // If permissions are granted, get the current position
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     setState(() {
@@ -58,7 +81,6 @@ class _MainPageState extends State<MainPage> {
               ),
               trackCameraPosition: true,
               attributionButtonPosition: AttributionButtonPosition.BottomRight,
-              //annotationOrder: const [],
             ),
           ),
         ],

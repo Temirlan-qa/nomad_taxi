@@ -3,7 +3,9 @@
 <plist version="1.0">
 	<dict>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>This app needs access to location when open.</string>
+		<string>Your location is needed to provide map features.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Your location is needed to provide map features.</string>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
