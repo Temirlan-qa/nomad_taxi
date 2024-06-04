@@ -18,7 +18,7 @@ import '../bloc/auth_bloc.dart';
 class ConfirmCodePage extends StatefulWidget {
   const ConfirmCodePage({super.key, required this.phone});
 
-  final String? phone;
+  final String phone;
 
   @override
   State<ConfirmCodePage> createState() => _ConfirmCodePageState();
@@ -27,50 +27,58 @@ class ConfirmCodePage extends StatefulWidget {
 class _ConfirmCodePageState extends State<ConfirmCodePage> {
   final TextEditingController codeController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  AuthBloc authBloc = getIt<AuthBloc>();
   @override
   Widget build(BuildContext context) {
     final headLine = context.theme.textStyles.headLine;
     return Scaffold(
       body: SafeArea(
-          child: Form(
-        key: formKey,
-        child: Center(
-            child: Padding(
-          padding: const EdgeInsets.all(UIConstants.defaultPadding),
-          child: Column(
-            children: [
-              const Expanded(flex: 4, child: Offstage()),
-              Expanded(
-                flex: 6,
-                child: Column(
-                  children: [
-                    Text(S.current.sms_confirmation,
-                        style: context.theme.textStyles.titleMain),
-                    const Gap(UIConstants.defaultGap2),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(PhoneNumberFormatter().format(widget.phone!),
-                            style: headLine),
-                        const Gap(UIConstants.defaultGap2),
-                        InkWell(
+        child: Form(
+          key: formKey,
+          child: Center(
+              child: Padding(
+            padding: const EdgeInsets.all(UIConstants.defaultPadding),
+            child: Column(
+              children: [
+                const Expanded(flex: 4, child: Offstage()),
+                Expanded(
+                  flex: 6,
+                  child: Column(
+                    children: [
+                      Text(S.current.sms_confirmation,
+                          style: context.theme.textStyles.titleMain),
+                      const Gap(UIConstants.defaultGap2),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            PhoneNumberFormatter().format(widget.phone),
+                            style: headLine,
+                          ),
+                          const Gap(UIConstants.defaultGap2),
+                          InkWell(
                             onTap: () {
                               context.pop();
                             },
-                            child: Text(S.current.change,
-                                style: headLine.copyWith(
-                                    color: context.theme.blue))),
-                      ],
-                    ),
-                    const Gap(UIConstants.defaultGap2),
-                    CustomPinCodeFieldWidget(codeController: codeController)
-                  ],
-                ),
-              )
-            ],
-          ),
-        )),
-      )),
+                            child: Text(
+                              S.current.change,
+                              style:
+                                  headLine.copyWith(color: context.theme.blue),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Gap(UIConstants.defaultGap2),
+                      CustomPinCodeFieldWidget(codeController: codeController)
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )),
+        ),
+      ),
       bottomNavigationBar: CustomMainBottomWidgets(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -86,12 +94,15 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
               onPressed: () {
                 StorageServiceImpl st = StorageServiceImpl();
 
-                getIt.call<AuthBloc>().add(AuthEvent.verify(
-                      verifyRequest: VerifyRequest(
-                        userId: st.getToken()!,
-                        code: codeController.text,
-                      ),
-                    ));
+                authBloc.add(
+                  AuthEvent.verify(
+                    verifyRequest: VerifyRequest(
+                      userId: st.getToken()!,
+                      code: codeController.text,
+                    ),
+                  ),
+                );
+
                 context.pushNamed(RouteNames.policy);
               },
             ),

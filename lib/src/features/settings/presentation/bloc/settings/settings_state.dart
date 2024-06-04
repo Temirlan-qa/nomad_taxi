@@ -7,7 +7,9 @@ class SettingsState with _$SettingsState {
   const factory SettingsState.done({
     required String languageCode,
   }) = _DoneSettingsState;
-  const factory SettingsState.error() = _ErrorSettingsState;
+  const factory SettingsState.error({
+    required String errorMessage,
+  }) = _ErrorSettingsState;
 }
 
 // @freezed

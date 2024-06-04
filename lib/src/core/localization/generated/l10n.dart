@@ -900,6 +900,16 @@ class S {
     );
   }
 
+  /// `Указанные данные недействительны.`
+  String get invalidInfoError {
+    return Intl.message(
+      'Указанные данные недействительны.',
+      name: 'invalidInfoError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Статус заказа`
   String get order_status {
     return Intl.message(

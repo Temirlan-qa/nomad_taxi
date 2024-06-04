@@ -29,6 +29,7 @@
   "help": "Көмек",
   "congratulate": "Құттықтаймыз!",
   "you_get_bonus": "Сіз {amount} теңге бонус алдыңыз",
+  "invalidInfoError":"Берілген деректер жарамсыз болды.",
   "@you_get_bonus": {
     "placeholders": {
       "amount": {

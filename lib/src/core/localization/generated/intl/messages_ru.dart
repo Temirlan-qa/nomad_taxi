@@ -102,6 +102,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "go_back": MessageLookupByLibrary.simpleMessage("Вернутся назад"),
         "help": MessageLookupByLibrary.simpleMessage("Помощь"),
         "in_progress": MessageLookupByLibrary.simpleMessage("В процессе"),
+        "invalidInfoError": MessageLookupByLibrary.simpleMessage(
+            "Указанные данные недействительны."),
         "kz_with_flag": MessageLookupByLibrary.simpleMessage("🇰🇿 Казахстан"),
         "left": MessageLookupByLibrary.simpleMessage("Осталось"),
         "log_out_account":

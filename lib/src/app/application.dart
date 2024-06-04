@@ -34,7 +34,7 @@ class MainApp extends StatelessWidget {
         return state.when(
           empty: () => const SizedBox(),
           inProgress: () => const SizedBox(),
-          error: () => const SizedBox(),
+          error: (message) => const SizedBox(),
           done: (languageCode) {
             return _buildApp(
               flavor: flavor,

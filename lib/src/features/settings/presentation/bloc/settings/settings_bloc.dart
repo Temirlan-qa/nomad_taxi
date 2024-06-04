@@ -45,7 +45,7 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
         ),
       );
     } catch (e) {
-      emit(const SettingsState.error());
+      emit(SettingsState.error(errorMessage: '$e'));
       rethrow;
     }
   }
@@ -62,7 +62,7 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
       await st.setLanguageCode(event.languageCode);
       emit(SettingsState.done(languageCode: event.languageCode));
     } catch (e) {
-      emit(const SettingsState.error());
+      emit(SettingsState.error(errorMessage: '$e'));
       rethrow;
     }
   }
