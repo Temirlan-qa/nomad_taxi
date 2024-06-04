@@ -85,5 +85,25 @@ List<RouteBase> _routes() => <RouteBase>[
         name: RouteNames.enterDriverInfo,
         path: RoutePaths.enterDriverInfo,
         builder: (_, __) => const EnterDriverInfoPage(),
+      ),
+      GoRoute(
+        name: RouteNames.driverMode,
+        path: RoutePaths.driverMode,
+        builder: (_, __) => const DriverModePage(),
+      ),
+      GoRoute(
+        name: RouteNames.transferMoney,
+        path: RoutePaths.transferMoney,
+        builder: (_, __) => const TransferMoneyPage(),
+      ),
+      GoRoute(
+        name: RouteNames.transferMoneyInstruction,
+        path: RoutePaths.transferMoneyInstruction,
+        builder: (_, __) => const TransferMoneyInstructionPage(),
+      ),
+      GoRoute(
+        name: RouteNames.chooseTariff,
+        path: RoutePaths.chooseTariff,
+        builder: (_, __) => const ChooseTariffPage(),
       )
     ];

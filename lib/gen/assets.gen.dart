@@ -155,8 +155,12 @@ class $AssetsIconsCheckOutGen {
   /// File path: assets/icons/check_out/on.svg
   SvgGenImage get on => const SvgGenImage('assets/icons/check_out/on.svg');
 
+  /// File path: assets/icons/check_out/on_red.svg
+  SvgGenImage get onRed =>
+      const SvgGenImage('assets/icons/check_out/on_red.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [off, on];
+  List<SvgGenImage> get values => [off, on, onRed];
 }
 
 class $AssetsIconsLocationGen {

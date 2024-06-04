@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Тапсырысты қабылдау"),
         "activate_promoCode":
             MessageLookupByLibrary.simpleMessage("Жарнамалық кодты іске қосу"),
+        "active": MessageLookupByLibrary.simpleMessage("Белсенді"),
         "agree_wit_privacy_policy": MessageLookupByLibrary.simpleMessage(
             "Құпиялылық саясатымен келісемін"),
         "answer_dev":
@@ -40,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "arrived_call_point":
             MessageLookupByLibrary.simpleMessage("Шақыру нүктесіне келді"),
         "back": MessageLookupByLibrary.simpleMessage("Артқа"),
+        "basic": MessageLookupByLibrary.simpleMessage("Негізгі"),
         "bonuses_also_money":
             MessageLookupByLibrary.simpleMessage("Бонустар да ақша"),
         "bonuses_desc": MessageLookupByLibrary.simpleMessage(
@@ -69,6 +71,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "congrats_completed_order": MessageLookupByLibrary.simpleMessage(
             "Орындалған тапсырыспен құттықтаймыз!"),
         "congratulate": MessageLookupByLibrary.simpleMessage("Құттықтаймыз!"),
+        "copy_your_id":
+            MessageLookupByLibrary.simpleMessage("Идентификаторды көшіріңіз"),
         "current_language": MessageLookupByLibrary.simpleMessage("Қазақша"),
         "current_locale": MessageLookupByLibrary.simpleMessage("kk"),
         "delete_account":
@@ -80,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "development_by":
             MessageLookupByLibrary.simpleMessage("Компанияның дамуы"),
         "done": MessageLookupByLibrary.simpleMessage("Орындалды"),
+        "driver_balance":
+            MessageLookupByLibrary.simpleMessage("Жүргізуші балансы"),
         "driver_canceled_order": MessageLookupByLibrary.simpleMessage(
             "Жүргізуші тапсырыстан бас тартты"),
         "driver_mode": MessageLookupByLibrary.simpleMessage("Жүргізуші режимі"),
@@ -91,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Бірақ жұмысты бастамас бұрын клиенттер сізді анықтай алатындай етіп сіздің машинаңыздың мәліметтерін енгізуіңізді сұраймыз."),
         "driver_mode_intro_header4":
             MessageLookupByLibrary.simpleMessage("Сапарыңыз сәтті өтсін =)"),
+        "enter_amount": MessageLookupByLibrary.simpleMessage(
+            "Қажетті соманы енгізіңіз және NOMAD taxi қолданбасында шотыңызға ақша түседі"),
         "enter_car_number":
             MessageLookupByLibrary.simpleMessage("Нөмірді енгізіңіз"),
         "enter_driver_info":
@@ -102,9 +110,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "exit_mode": MessageLookupByLibrary.simpleMessage("Режимнен шығу"),
         "forgot_stuff": MessageLookupByLibrary.simpleMessage(
             "Таксидегі заттарды ұмыттыңыз ба"),
+        "free": MessageLookupByLibrary.simpleMessage("Тегін"),
         "go_back": MessageLookupByLibrary.simpleMessage("Артқа қайту"),
+        "go_offline": MessageLookupByLibrary.simpleMessage("Сызыққа шығыңыз"),
+        "go_online": MessageLookupByLibrary.simpleMessage("Сызыққа шығу"),
         "help": MessageLookupByLibrary.simpleMessage("Көмек"),
         "in_progress": MessageLookupByLibrary.simpleMessage("Процесінде"),
+        "instruction": MessageLookupByLibrary.simpleMessage("Нұсқаулық"),
+        "instruction_to_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Ақшаны қалай алуға болатындығы туралы нұсқаулық"),
         "invalidInfoError": MessageLookupByLibrary.simpleMessage(
             "Берілген деректер жарамсыз болды."),
         "kz_with_flag": MessageLookupByLibrary.simpleMessage("🇰🇿 Қазақстан"),
@@ -118,28 +132,46 @@ class MessageLookup extends MessageLookupByLibrary {
         "more_detailed": MessageLookupByLibrary.simpleMessage("Толығырақ"),
         "next": MessageLookupByLibrary.simpleMessage("Келесі"),
         "on_line": MessageLookupByLibrary.simpleMessage("Сызықта"),
+        "open_kaspi_app": MessageLookupByLibrary.simpleMessage(
+            "Қолданбаны ашыңыз Kaspi.kz және бөлімге өтіңіз төлемдер, іздеуде енгізіңіз Nomad Taxi"),
         "order_status": MessageLookupByLibrary.simpleMessage("Тапсырыс күйі"),
+        "orders": MessageLookupByLibrary.simpleMessage("Тапсырыстар"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Телефон нөмірі"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Құпиялылық саясаты"),
+        "recharge_kaspi": MessageLookupByLibrary.simpleMessage(
+            "Қосымшада Kaspi.kz\n шотын толтыру"),
         "referral_program":
             MessageLookupByLibrary.simpleMessage("Жолдама бағдарламасы"),
         "refill_bonuses":
             MessageLookupByLibrary.simpleMessage("Бонустарды толтыру"),
         "route": MessageLookupByLibrary.simpleMessage("Бағыт"),
+        "save": MessageLookupByLibrary.simpleMessage("Сақтау"),
         "save_changes":
             MessageLookupByLibrary.simpleMessage("Өзгерістерді сақтау"),
         "select_language": MessageLookupByLibrary.simpleMessage("Тілді таңдау"),
+        "select_tariff": MessageLookupByLibrary.simpleMessage(
+            "Жұмысты бастамас бұрын тарифті таңдаңыз"),
+        "selected_tariff":
+            MessageLookupByLibrary.simpleMessage("Таңдалған тариф"),
         "send_code_again":
             MessageLookupByLibrary.simpleMessage("Кодты қайта жіберіңіз"),
+        "send_receipt": MessageLookupByLibrary.simpleMessage("Чек жіберу"),
         "settings": MessageLookupByLibrary.simpleMessage("Параметрлер"),
         "share_app": MessageLookupByLibrary.simpleMessage("Қолданбаны бөлісу"),
         "sms_confirmation": MessageLookupByLibrary.simpleMessage("SMS растау"),
         "start_trip": MessageLookupByLibrary.simpleMessage("Сапарды бастаңыз"),
         "stay": MessageLookupByLibrary.simpleMessage("Қалу"),
+        "step": MessageLookupByLibrary.simpleMessage("қадам"),
         "support_service":
             MessageLookupByLibrary.simpleMessage("Қолдау қызметі"),
+        "tap_to_copy":
+            MessageLookupByLibrary.simpleMessage("Көшіру үшін басыңыз"),
+        "tariff_selection":
+            MessageLookupByLibrary.simpleMessage("Тарифті таңдау"),
         "taxi": MessageLookupByLibrary.simpleMessage("Такси"),
+        "time_packages":
+            MessageLookupByLibrary.simpleMessage("Уақыт пакеттері"),
         "to_your_account":
             MessageLookupByLibrary.simpleMessage("Сіздің шотыңызға"),
         "took_delivery": MessageLookupByLibrary.simpleMessage("Жеткізуді алды"),
@@ -152,19 +184,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "version": MessageLookupByLibrary.simpleMessage("Нұсқа"),
         "where": MessageLookupByLibrary.simpleMessage("Қайда"),
         "where_from": MessageLookupByLibrary.simpleMessage("Қайдан"),
+        "withdraw_funds": MessageLookupByLibrary.simpleMessage("Ақша алу"),
+        "withdraw_infinite": MessageLookupByLibrary.simpleMessage(
+            "Сіз баланстан шексіз соманы ала аласыз"),
+        "withdraw_money": MessageLookupByLibrary.simpleMessage("Ақша алу"),
         "write_appeal": MessageLookupByLibrary.simpleMessage("Өтініш жазу"),
+        "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Бізге ватсапқа ақша алу туралы сұраныс пен жауап жіберіңіз сіздің ID нөміріңіз және сіздің Kaspi Gold картаңыздың нөмірі, және біздің менеджерлер сіздің шотыңызға ақша аударады"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Сіз шыққыңыз келе ме?"),
         "you_want_exit_desc": MessageLookupByLibrary.simpleMessage(
             "Шыққаннан кейін кез келген уақытта есептік жазбаңызға оралуға болады. Сіздің барлық деректеріңіз сақталады"),
         "your_account": MessageLookupByLibrary.simpleMessage("Сіздің шотыңыз"),
+        "your_balance":
+            MessageLookupByLibrary.simpleMessage("Сіздің балансыңыз"),
+        "your_bonuses":
+            MessageLookupByLibrary.simpleMessage("Сіздің бонустарыңыз"),
         "your_name": MessageLookupByLibrary.simpleMessage("Сіздің атыңыз"),
         "your_phone":
             MessageLookupByLibrary.simpleMessage("Сіздің телефоныңыз"),
         "your_profile":
             MessageLookupByLibrary.simpleMessage("Сіздің профиліңіз"),
         "your_region": MessageLookupByLibrary.simpleMessage("Сіздің аймақ"),
-        "your_surname": MessageLookupByLibrary.simpleMessage("Сіздің тегіңіз")
+        "your_surname": MessageLookupByLibrary.simpleMessage("Сіздің тегіңіз"),
+        "your_tariff": MessageLookupByLibrary.simpleMessage("Сіздің тарифіңіз")
       };
 }

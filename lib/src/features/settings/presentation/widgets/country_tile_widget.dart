@@ -9,12 +9,11 @@ class CountryTileWidget extends StatelessWidget {
   final bool isSelected;
 
   const CountryTileWidget(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.onTap,
       required this.isSelected,
-      this.showUnderline = true})
-      : super(key: key);
+      this.showUnderline = true});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class CountryTileWidget extends StatelessWidget {
             : null,
         child: Row(
           children: [
-            ToggleWidget(value: isSelected, onPressed: onTap),
+            ToggleWidget(value: isSelected),
             Text(title, style: context.theme.textStyles.headLine)
           ],
         ),
