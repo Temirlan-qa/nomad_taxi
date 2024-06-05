@@ -5,6 +5,7 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/core/utils/helpers/formatter_helper.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/bloc/auth_bloc.dart';
@@ -75,7 +76,11 @@ class _AuthPageState extends State<AuthPage> {
                                     child: TextFieldWidget(
                                       controller: phoneController,
                                       hintText: S.current.your_phone,
-                                      keyboardType: TextInputType.number,
+                                      inputFormatters: [
+                                        FormatterHelper
+                                            .phoneNumberSeparatorHelperFormatter
+                                      ],
+                                      keyboardType: TextInputType.phone,
                                     ),
                                   ),
                                 ],
