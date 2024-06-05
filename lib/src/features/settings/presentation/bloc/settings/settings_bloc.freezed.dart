@@ -321,7 +321,7 @@ mixin _$SettingsState {
     required TResult Function() empty,
     required TResult Function() inProgress,
     required TResult Function(String languageCode) done,
-    required TResult Function() error,
+    required TResult Function(String errorMessage) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -329,7 +329,7 @@ mixin _$SettingsState {
     TResult? Function()? empty,
     TResult? Function()? inProgress,
     TResult? Function(String languageCode)? done,
-    TResult? Function()? error,
+    TResult? Function(String errorMessage)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -337,7 +337,7 @@ mixin _$SettingsState {
     TResult Function()? empty,
     TResult Function()? inProgress,
     TResult Function(String languageCode)? done,
-    TResult Function()? error,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -427,7 +427,7 @@ class _$EmptySettingsStateImpl implements _EmptySettingsState {
     required TResult Function() empty,
     required TResult Function() inProgress,
     required TResult Function(String languageCode) done,
-    required TResult Function() error,
+    required TResult Function(String errorMessage) error,
   }) {
     return empty();
   }
@@ -438,7 +438,7 @@ class _$EmptySettingsStateImpl implements _EmptySettingsState {
     TResult? Function()? empty,
     TResult? Function()? inProgress,
     TResult? Function(String languageCode)? done,
-    TResult? Function()? error,
+    TResult? Function(String errorMessage)? error,
   }) {
     return empty?.call();
   }
@@ -449,7 +449,7 @@ class _$EmptySettingsStateImpl implements _EmptySettingsState {
     TResult Function()? empty,
     TResult Function()? inProgress,
     TResult Function(String languageCode)? done,
-    TResult Function()? error,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -544,7 +544,7 @@ class _$InProgressSettingsStateImpl implements _InProgressSettingsState {
     required TResult Function() empty,
     required TResult Function() inProgress,
     required TResult Function(String languageCode) done,
-    required TResult Function() error,
+    required TResult Function(String errorMessage) error,
   }) {
     return inProgress();
   }
@@ -555,7 +555,7 @@ class _$InProgressSettingsStateImpl implements _InProgressSettingsState {
     TResult? Function()? empty,
     TResult? Function()? inProgress,
     TResult? Function(String languageCode)? done,
-    TResult? Function()? error,
+    TResult? Function(String errorMessage)? error,
   }) {
     return inProgress?.call();
   }
@@ -566,7 +566,7 @@ class _$InProgressSettingsStateImpl implements _InProgressSettingsState {
     TResult Function()? empty,
     TResult Function()? inProgress,
     TResult Function(String languageCode)? done,
-    TResult Function()? error,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -686,7 +686,7 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
     required TResult Function() empty,
     required TResult Function() inProgress,
     required TResult Function(String languageCode) done,
-    required TResult Function() error,
+    required TResult Function(String errorMessage) error,
   }) {
     return done(languageCode);
   }
@@ -697,7 +697,7 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
     TResult? Function()? empty,
     TResult? Function()? inProgress,
     TResult? Function(String languageCode)? done,
-    TResult? Function()? error,
+    TResult? Function(String errorMessage)? error,
   }) {
     return done?.call(languageCode);
   }
@@ -708,7 +708,7 @@ class _$DoneSettingsStateImpl implements _DoneSettingsState {
     TResult Function()? empty,
     TResult Function()? inProgress,
     TResult Function(String languageCode)? done,
-    TResult Function()? error,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
     if (done != null) {
@@ -770,6 +770,8 @@ abstract class _$$ErrorSettingsStateImplCopyWith<$Res> {
   factory _$$ErrorSettingsStateImplCopyWith(_$ErrorSettingsStateImpl value,
           $Res Function(_$ErrorSettingsStateImpl) then) =
       __$$ErrorSettingsStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
 }
 
 /// @nodoc
@@ -779,26 +781,52 @@ class __$$ErrorSettingsStateImplCopyWithImpl<$Res>
   __$$ErrorSettingsStateImplCopyWithImpl(_$ErrorSettingsStateImpl _value,
       $Res Function(_$ErrorSettingsStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorSettingsStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
-  const _$ErrorSettingsStateImpl();
+  const _$ErrorSettingsStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'SettingsState.error()';
+    return 'SettingsState.error(errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorSettingsStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorSettingsStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorSettingsStateImplCopyWith<_$ErrorSettingsStateImpl> get copyWith =>
+      __$$ErrorSettingsStateImplCopyWithImpl<_$ErrorSettingsStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -806,9 +834,9 @@ class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
     required TResult Function() empty,
     required TResult Function() inProgress,
     required TResult Function(String languageCode) done,
-    required TResult Function() error,
+    required TResult Function(String errorMessage) error,
   }) {
-    return error();
+    return error(errorMessage);
   }
 
   @override
@@ -817,9 +845,9 @@ class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
     TResult? Function()? empty,
     TResult? Function()? inProgress,
     TResult? Function(String languageCode)? done,
-    TResult? Function()? error,
+    TResult? Function(String errorMessage)? error,
   }) {
-    return error?.call();
+    return error?.call(errorMessage);
   }
 
   @override
@@ -828,11 +856,11 @@ class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
     TResult Function()? empty,
     TResult Function()? inProgress,
     TResult Function(String languageCode)? done,
-    TResult Function()? error,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(errorMessage);
     }
     return orElse();
   }
@@ -876,5 +904,11 @@ class _$ErrorSettingsStateImpl implements _ErrorSettingsState {
 }
 
 abstract class _ErrorSettingsState implements SettingsState {
-  const factory _ErrorSettingsState() = _$ErrorSettingsStateImpl;
+  const factory _ErrorSettingsState({required final String errorMessage}) =
+      _$ErrorSettingsStateImpl;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$ErrorSettingsStateImplCopyWith<_$ErrorSettingsStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "instruction": MessageLookupByLibrary.simpleMessage("Инструкция"),
         "instruction_to_withdraw": MessageLookupByLibrary.simpleMessage(
             "Инструкция как вывести деньги"),
+        "invalidInfoError": MessageLookupByLibrary.simpleMessage(
+            "Указанные данные недействительны."),
         "kz_with_flag": MessageLookupByLibrary.simpleMessage("🇰🇿 Казахстан"),
         "left": MessageLookupByLibrary.simpleMessage("Осталось"),
         "log_out_account":

@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SignInRequest signInBody) login,
+    required TResult Function(String phone) login,
     required TResult Function(VerifyRequest verifyRequest) verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SignInRequest signInBody)? login,
+    TResult? Function(String phone)? login,
     TResult? Function(VerifyRequest verifyRequest)? verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SignInRequest signInBody)? login,
+    TResult Function(String phone)? login,
     TResult Function(VerifyRequest verifyRequest)? verify,
     required TResult orElse(),
   }) =>
@@ -79,9 +79,7 @@ abstract class _$$LoginImplCopyWith<$Res> {
           _$LoginImpl value, $Res Function(_$LoginImpl) then) =
       __$$LoginImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SignInRequest signInBody});
-
-  $SignInRequestCopyWith<$Res> get signInBody;
+  $Res call({String phone});
 }
 
 /// @nodoc
@@ -95,36 +93,28 @@ class __$$LoginImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? signInBody = null,
+    Object? phone = null,
   }) {
     return _then(_$LoginImpl(
-      signInBody: null == signInBody
-          ? _value.signInBody
-          : signInBody // ignore: cast_nullable_to_non_nullable
-              as SignInRequest,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SignInRequestCopyWith<$Res> get signInBody {
-    return $SignInRequestCopyWith<$Res>(_value.signInBody, (value) {
-      return _then(_value.copyWith(signInBody: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$LoginImpl implements _Login {
-  const _$LoginImpl({required this.signInBody});
+  const _$LoginImpl({required this.phone});
 
   @override
-  final SignInRequest signInBody;
+  final String phone;
 
   @override
   String toString() {
-    return 'AuthEvent.login(signInBody: $signInBody)';
+    return 'AuthEvent.login(phone: $phone)';
   }
 
   @override
@@ -132,12 +122,11 @@ class _$LoginImpl implements _Login {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginImpl &&
-            (identical(other.signInBody, signInBody) ||
-                other.signInBody == signInBody));
+            (identical(other.phone, phone) || other.phone == phone));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, signInBody);
+  int get hashCode => Object.hash(runtimeType, phone);
 
   @JsonKey(ignore: true)
   @override
@@ -148,30 +137,30 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SignInRequest signInBody) login,
+    required TResult Function(String phone) login,
     required TResult Function(VerifyRequest verifyRequest) verify,
   }) {
-    return login(signInBody);
+    return login(phone);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SignInRequest signInBody)? login,
+    TResult? Function(String phone)? login,
     TResult? Function(VerifyRequest verifyRequest)? verify,
   }) {
-    return login?.call(signInBody);
+    return login?.call(phone);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SignInRequest signInBody)? login,
+    TResult Function(String phone)? login,
     TResult Function(VerifyRequest verifyRequest)? verify,
     required TResult orElse(),
   }) {
     if (login != null) {
-      return login(signInBody);
+      return login(phone);
     }
     return orElse();
   }
@@ -209,9 +198,9 @@ class _$LoginImpl implements _Login {
 }
 
 abstract class _Login implements AuthEvent {
-  const factory _Login({required final SignInRequest signInBody}) = _$LoginImpl;
+  const factory _Login({required final String phone}) = _$LoginImpl;
 
-  SignInRequest get signInBody;
+  String get phone;
   @JsonKey(ignore: true)
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -292,7 +281,7 @@ class _$VerifyImpl implements _Verify {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SignInRequest signInBody) login,
+    required TResult Function(String phone) login,
     required TResult Function(VerifyRequest verifyRequest) verify,
   }) {
     return verify(verifyRequest);
@@ -301,7 +290,7 @@ class _$VerifyImpl implements _Verify {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SignInRequest signInBody)? login,
+    TResult? Function(String phone)? login,
     TResult? Function(VerifyRequest verifyRequest)? verify,
   }) {
     return verify?.call(verifyRequest);
@@ -310,7 +299,7 @@ class _$VerifyImpl implements _Verify {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SignInRequest signInBody)? login,
+    TResult Function(String phone)? login,
     TResult Function(VerifyRequest verifyRequest)? verify,
     required TResult orElse(),
   }) {
@@ -965,8 +954,8 @@ abstract class _Error implements AuthState {
 
 /// @nodoc
 mixin _$AuthStateViewModel {
-  SignInResponse? get loginResponse => throw _privateConstructorUsedError;
-  VerifyResponse? get verifyResponse => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
+  String get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateViewModelCopyWith<AuthStateViewModel> get copyWith =>
@@ -979,10 +968,7 @@ abstract class $AuthStateViewModelCopyWith<$Res> {
           AuthStateViewModel value, $Res Function(AuthStateViewModel) then) =
       _$AuthStateViewModelCopyWithImpl<$Res, AuthStateViewModel>;
   @useResult
-  $Res call({SignInResponse? loginResponse, VerifyResponse? verifyResponse});
-
-  $SignInResponseCopyWith<$Res>? get loginResponse;
-  $VerifyResponseCopyWith<$Res>? get verifyResponse;
+  $Res call({int userId, String token});
 }
 
 /// @nodoc
@@ -998,43 +984,19 @@ class _$AuthStateViewModelCopyWithImpl<$Res, $Val extends AuthStateViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginResponse = freezed,
-    Object? verifyResponse = freezed,
+    Object? userId = null,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
-      loginResponse: freezed == loginResponse
-          ? _value.loginResponse
-          : loginResponse // ignore: cast_nullable_to_non_nullable
-              as SignInResponse?,
-      verifyResponse: freezed == verifyResponse
-          ? _value.verifyResponse
-          : verifyResponse // ignore: cast_nullable_to_non_nullable
-              as VerifyResponse?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SignInResponseCopyWith<$Res>? get loginResponse {
-    if (_value.loginResponse == null) {
-      return null;
-    }
-
-    return $SignInResponseCopyWith<$Res>(_value.loginResponse!, (value) {
-      return _then(_value.copyWith(loginResponse: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $VerifyResponseCopyWith<$Res>? get verifyResponse {
-    if (_value.verifyResponse == null) {
-      return null;
-    }
-
-    return $VerifyResponseCopyWith<$Res>(_value.verifyResponse!, (value) {
-      return _then(_value.copyWith(verifyResponse: value) as $Val);
-    });
   }
 }
 
@@ -1046,12 +1008,7 @@ abstract class _$$AuthStateViewModelImplCopyWith<$Res>
       __$$AuthStateViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SignInResponse? loginResponse, VerifyResponse? verifyResponse});
-
-  @override
-  $SignInResponseCopyWith<$Res>? get loginResponse;
-  @override
-  $VerifyResponseCopyWith<$Res>? get verifyResponse;
+  $Res call({int userId, String token});
 }
 
 /// @nodoc
@@ -1065,18 +1022,18 @@ class __$$AuthStateViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginResponse = freezed,
-    Object? verifyResponse = freezed,
+    Object? userId = null,
+    Object? token = null,
   }) {
     return _then(_$AuthStateViewModelImpl(
-      freezed == loginResponse
-          ? _value.loginResponse
-          : loginResponse // ignore: cast_nullable_to_non_nullable
-              as SignInResponse?,
-      freezed == verifyResponse
-          ? _value.verifyResponse
-          : verifyResponse // ignore: cast_nullable_to_non_nullable
-              as VerifyResponse?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1084,16 +1041,18 @@ class __$$AuthStateViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthStateViewModelImpl implements _AuthStateViewModel {
-  _$AuthStateViewModelImpl(this.loginResponse, this.verifyResponse);
+  const _$AuthStateViewModelImpl({this.userId = 0, this.token = ''});
 
   @override
-  final SignInResponse? loginResponse;
+  @JsonKey()
+  final int userId;
   @override
-  final VerifyResponse? verifyResponse;
+  @JsonKey()
+  final String token;
 
   @override
   String toString() {
-    return 'AuthStateViewModel(loginResponse: $loginResponse, verifyResponse: $verifyResponse)';
+    return 'AuthStateViewModel(userId: $userId, token: $token)';
   }
 
   @override
@@ -1101,14 +1060,12 @@ class _$AuthStateViewModelImpl implements _AuthStateViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthStateViewModelImpl &&
-            (identical(other.loginResponse, loginResponse) ||
-                other.loginResponse == loginResponse) &&
-            (identical(other.verifyResponse, verifyResponse) ||
-                other.verifyResponse == verifyResponse));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginResponse, verifyResponse);
+  int get hashCode => Object.hash(runtimeType, userId, token);
 
   @JsonKey(ignore: true)
   @override
@@ -1119,13 +1076,13 @@ class _$AuthStateViewModelImpl implements _AuthStateViewModel {
 }
 
 abstract class _AuthStateViewModel implements AuthStateViewModel {
-  factory _AuthStateViewModel(final SignInResponse? loginResponse,
-      final VerifyResponse? verifyResponse) = _$AuthStateViewModelImpl;
+  const factory _AuthStateViewModel({final int userId, final String token}) =
+      _$AuthStateViewModelImpl;
 
   @override
-  SignInResponse? get loginResponse;
+  int get userId;
   @override
-  VerifyResponse? get verifyResponse;
+  String get token;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateViewModelImplCopyWith<_$AuthStateViewModelImpl> get copyWith =>

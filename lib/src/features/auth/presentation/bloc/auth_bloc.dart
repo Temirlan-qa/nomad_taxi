@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/exceptions/domain_exception.dart';
-import 'package:nomad_taxi/src/core/service/auth/models/data_response.dart';
-import 'package:nomad_taxi/src/core/service/auth/models/verify_data_response.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/verify_request.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/login_use_case.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/verify_user_case.dart';
@@ -26,94 +24,75 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   final LoginUseCase _loginUseCase;
   final VerifyUseCase _verifyUseCase;
 
-  final AuthStateViewModel _viewModel = AuthStateViewModel(
-    const SignInResponse(
-      status: '',
-      data: DataResponse(
-        userId: "",
-      ),
-    ),
-    const VerifyResponse(
-      status: '',
-      data: VerifyDataResponse(
-        accessToken: "",
-        tokenType: "",
-        expiresIn: 0,
-      ),
-    ),
-  );
+  final AuthStateViewModel _viewModel = const AuthStateViewModel();
 
   @override
   Future<void> onEventHandler(AuthEvent event, Emitter emit) async {
-    event.when(
-      // started: () => _started(event as _Started, emit),
-      login: (signInBody) => _login(
+    await event.when(
+      login: (_) => _login(
         event as _Login,
         emit as Emitter<AuthState>,
       ),
-      verify: (verifyRequest) => _verify(
+      verify: (_) => _verify(
         event as _Verify,
         emit as Emitter<AuthState>,
       ),
     );
   }
 
-  // Future<void> _started(
-  //   _Started event,
-  //   Emitter emit,
-  // ) async {
-
-  //   emit(const _Initial());
-
-  // }
-
   Future<void> _login(_Login event, Emitter<AuthState> emit) async {
-    emit(const AuthState.loading());
+    emit(const _Initial());
+    final SignInRequest request = SignInRequest(phone: event.phone);
     final Result<SignInResponse, DomainException> result =
-        await _loginUseCase.call(event.signInBody);
+        await _loginUseCase.call(request);
 
-    if (emit.isDone) return; // Check if the event handler has already completed
+    final data = result.data;
 
-    if (result.isSuccessful) {
-      emit(
-        AuthState.loaded(
-            viewModel: _viewModel.copyWith(
-          loginResponse: SignInResponse(
-            status: result.data!.status,
-            data: DataResponse(
-              userId: result.data!.data.userId,
-            ),
-          ),
-        )),
-      );
-    } else {
-      emit(const AuthState.error("Login failed"));
+    if (data == null) {
+      return emit(const _Error("Login failed"));
     }
+    if (result.isSuccessful) {
+      return emit(
+        _Loaded(
+          viewModel: _viewModel.copyWith(
+            userId: data.data.userId,
+          ),
+        ),
+      );
+    }
+    return emit(const _Error("Login failed"));
   }
 
   Future<void> _verify(_Verify event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
+
     final Result<VerifyResponse, DomainException> result =
         await _verifyUseCase.call(event.verifyRequest);
 
-    if (emit.isDone) return;
+    final data = result.data;
+
+    if (data == null) {
+      return emit(const _Error("Login failed"));
+    }
 
     if (result.isSuccessful) {
-      emit(
+      return emit(
         AuthState.loaded(
-            viewModel: _viewModel.copyWith(
-          verifyResponse: VerifyResponse(
-            status: result.data!.status,
-            data: VerifyDataResponse(
-              accessToken: result.data!.data.accessToken,
-              tokenType: result.data!.data.tokenType,
-              expiresIn: result.data!.data.expiresIn,
-            ),
+          viewModel: _viewModel.copyWith(
+            token: data.data.accessToken,
+            // verifyResponse: VerifyResponse(
+            //   status: data.status,
+            //   data: VerifyDataResponse(
+            //     accessToken: ,
+            //     tokenType: data.data.tokenType,
+            //     expiresIn: data.data.expiresIn,
+            //   ),
+            // ),
           ),
-        )),
+        ),
       );
     } else {
-      emit(const AuthState.error("Login failed"));
+      return emit(const AuthState.error("Login failed"));
     }
   }
 }
