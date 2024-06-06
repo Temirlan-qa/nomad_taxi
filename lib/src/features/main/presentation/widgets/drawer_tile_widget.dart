@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
-class CustomDrawerTileWidget extends StatelessWidget {
+class DrawerTileWidget extends StatelessWidget {
   final String title;
   final VoidCallback? onTap;
   final bool showUnderline;
   final bool isSelected;
 
-  const CustomDrawerTileWidget(
-      {Key? key,
+  const DrawerTileWidget(
+      {super.key,
       required this.title,
       required this.onTap,
       this.showUnderline = true,
-      required this.isSelected})
-      : super(key: key);
+      required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +34,12 @@ class CustomDrawerTileWidget extends StatelessWidget {
                 decoration: showUnderline
                     ? BoxDecoration(
                         border: Border(
-                            bottom: BorderSide(
-                                strokeAlign: BorderSide.strokeAlignInside,
-                                width: 1,
-                                color: context.theme.stroke)))
+                          bottom: BorderSide(
+                              strokeAlign: BorderSide.strokeAlignInside,
+                              width: 1,
+                              color: context.theme.stroke),
+                        ),
+                      )
                     : null,
                 child: Row(
                   children: [
@@ -61,9 +62,11 @@ class CustomDrawerTileWidget extends StatelessWidget {
                   height: 24,
                   width: 6,
                   decoration: BoxDecoration(
-                      color: isSelected ? context.theme.red : null,
-                      borderRadius: const BorderRadius.horizontal(
-                          right: Radius.circular(6))),
+                    color: isSelected ? context.theme.red : null,
+                    borderRadius: const BorderRadius.horizontal(
+                      right: Radius.circular(6),
+                    ),
+                  ),
                 ),
               )
             ],
