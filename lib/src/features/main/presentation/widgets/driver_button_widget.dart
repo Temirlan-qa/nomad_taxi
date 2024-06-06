@@ -3,8 +3,8 @@ import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
-class CustomDriverButtonWidget extends StatelessWidget {
-  const CustomDriverButtonWidget(
+class DriverButtonWidget extends StatelessWidget {
+  const DriverButtonWidget(
       {super.key, this.onPressed, this.isDriverMode = false});
 
   final VoidCallback? onPressed;
@@ -16,7 +16,8 @@ class CustomDriverButtonWidget extends StatelessWidget {
       style: isDriverMode
           ? FilledButton.styleFrom(
               foregroundColor: context.theme.red,
-              backgroundColor: context.theme.background)
+              backgroundColor: context.theme.background,
+            )
           : null,
       onPressed: onPressed,
       child: Row(
@@ -25,14 +26,16 @@ class CustomDriverButtonWidget extends StatelessWidget {
             child: Text(
               isDriverMode ? S.current.exit_mode : S.current.driver_mode,
               style: context.theme.textStyles.headLine.copyWith(
-                  color:
-                      isDriverMode ? context.theme.red : context.theme.white),
+                color: isDriverMode ? context.theme.red : context.theme.white,
+              ),
             ),
           ),
           Assets.icons.solid.taxiBranding.svg(
-              colorFilter: ColorFilter.mode(
-                  isDriverMode ? context.theme.red : context.theme.white,
-                  BlendMode.srcIn))
+            colorFilter: ColorFilter.mode(
+              isDriverMode ? context.theme.red : context.theme.white,
+              BlendMode.srcIn,
+            ),
+          ),
         ],
       ),
     );

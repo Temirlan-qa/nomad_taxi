@@ -9,7 +9,7 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_widget.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_open_drawer_bottom_widget.dart';
+import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_bottom_widget.dart';
 
 class DriverModePage extends StatefulWidget {
   const DriverModePage({super.key});
@@ -29,11 +29,17 @@ class _DriverModePageState extends State<DriverModePage> {
 
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const CustomDrawerWidget(),
+      drawer: CustomDrawerWidget(
+        onSwitchMode: () {
+          context.pushNamed(RouteNames.main);
+        },
+        isDriverMode: true,
+      ),
       appBar: CustomAppBar(
-          appBarText: S.current.driver_mode,
-          isDrawer: true,
-          leading: CustomOpenDrawerButtonWidget(scaffoldKey: _scaffoldKey)),
+        appBarText: S.current.driver_mode,
+        isDrawer: true,
+        leading: DrawerButtonWidget(scaffoldKey: _scaffoldKey),
+      ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(UIConstants.defaultPadding),

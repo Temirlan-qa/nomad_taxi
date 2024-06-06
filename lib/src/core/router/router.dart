@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/error/router_error_page.dart';
+import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/pages/auth_page.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/pages/confirm_code_page.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/pages/policy_page.dart';
@@ -28,17 +29,12 @@ part 'router_names.dart';
 part 'router_paths.dart';
 
 GoRouter routerProvider() {
+  final StorageServiceImpl st = StorageServiceImpl();
+  final String? token = st.getToken();
+
   return GoRouter(
-    initialLocation: RoutePaths.auth,
+    initialLocation: token == null ? RoutePaths.auth : RoutePaths.main,
     debugLogDiagnostics: true,
     routes: _routes(),
-    // redirect: (context, state) {
-    //   final StorageServiceImpl st = StorageServiceImpl();
-    //   final String? token = st.getToken();
-    //   if (token != null) {
-    //     return RoutePaths.main;
-    //   }
-    //   return RoutePaths.auth;
-    // },
   );
 }

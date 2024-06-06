@@ -5,6 +5,7 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/core/utils/helpers/formatter_helper.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/bloc/auth_bloc.dart';
@@ -38,6 +39,17 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return BaseBlocWidget<AuthBloc, AuthEvent, AuthState>(
       bloc: authBloc,
+      listener: (context, state) {
+        state.whenOrNull(
+          loaded: (viewModel) => context.push(
+            RoutePaths.codeConfirm,
+            extra: {
+              "phone": phoneController.text,
+              "userId": '${viewModel.userId}',
+            },
+          ),
+        );
+      },
       builder: (context, state, bloc) {
         return Scaffold(
           body: SafeArea(
@@ -75,7 +87,11 @@ class _AuthPageState extends State<AuthPage> {
                                     child: TextFieldWidget(
                                       controller: phoneController,
                                       hintText: S.current.your_phone,
-                                      keyboardType: TextInputType.number,
+                                      inputFormatters: [
+                                        FormatterHelper
+                                            .phoneNumberSeparatorHelperFormatter
+                                      ],
+                                      keyboardType: TextInputType.phone,
                                     ),
                                   ),
                                 ],
@@ -127,11 +143,17 @@ class _AuthPageState extends State<AuthPage> {
                 CustomMainButtonWidget(
                   title: S.current.next,
                   onPressed: () async {
-                    authBloc.add(AuthEvent.login(phone: phoneController.text));
+                    authBloc.add(
+                      AuthEvent.login(
+                          phone: phoneController.text.replaceAll('-', '')),
+                    );
                     state.whenOrNull(
-                      loaded: (_) => context.push(
+                      loaded: (viewModel) => context.push(
                         RoutePaths.codeConfirm,
-                        extra: phoneController.text,
+                        extra: {
+                          "phone": phoneController.text,
+                          "userId": '${viewModel.userId}',
+                        },
                       ),
                     );
                   },

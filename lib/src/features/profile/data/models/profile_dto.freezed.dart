@@ -212,8 +212,8 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProfileDtoImpl implements _ProfileDto {
   const _$ProfileDtoImpl(
-      {@JsonKey(name: 'first_name') required this.firstName,
-      @JsonKey(name: 'last_name') required this.lastName,
+      {@JsonKey(name: 'first_name') this.firstName = '',
+      @JsonKey(name: 'last_name') this.lastName = '',
       required this.phone,
       required this.id,
       @JsonKey(name: 'language_code') this.languageCode,
@@ -290,8 +290,8 @@ class _$ProfileDtoImpl implements _ProfileDto {
 
 abstract class _ProfileDto implements ProfileDto {
   const factory _ProfileDto(
-      {@JsonKey(name: 'first_name') required final String firstName,
-      @JsonKey(name: 'last_name') required final String lastName,
+      {@JsonKey(name: 'first_name') final String firstName,
+      @JsonKey(name: 'last_name') final String lastName,
       required final String phone,
       required final int id,
       @JsonKey(name: 'language_code') final String? languageCode,

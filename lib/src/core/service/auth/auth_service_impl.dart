@@ -40,8 +40,6 @@ class AuthServiceImpl implements IAuthService {
       (error) => Left(error),
       (response) async {
         if (response.statusCode == 200) {
-          await st.setToken(
-              '${SignInResponse.fromJson(response.data).data.userId}');
           return Right(SignInResponse.fromJson(response.data));
         } else {
           return Left(UnknownException(message: response.statusMessage));

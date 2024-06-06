@@ -1,5 +1,4 @@
 class PhoneNumberFormatter {
-  @override
   String format(
     String oldValue,
   ) {
