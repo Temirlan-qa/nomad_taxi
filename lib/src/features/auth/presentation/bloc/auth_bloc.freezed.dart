@@ -19,19 +19,19 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) login,
-    required TResult Function(VerifyRequest verifyRequest) verify,
+    required TResult Function(String code) verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? login,
-    TResult? Function(VerifyRequest verifyRequest)? verify,
+    TResult? Function(String code)? verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? login,
-    TResult Function(VerifyRequest verifyRequest)? verify,
+    TResult Function(String code)? verify,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,7 +138,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) login,
-    required TResult Function(VerifyRequest verifyRequest) verify,
+    required TResult Function(String code) verify,
   }) {
     return login(phone);
   }
@@ -147,7 +147,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? login,
-    TResult? Function(VerifyRequest verifyRequest)? verify,
+    TResult? Function(String code)? verify,
   }) {
     return login?.call(phone);
   }
@@ -156,7 +156,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? login,
-    TResult Function(VerifyRequest verifyRequest)? verify,
+    TResult Function(String code)? verify,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -212,9 +212,7 @@ abstract class _$$VerifyImplCopyWith<$Res> {
           _$VerifyImpl value, $Res Function(_$VerifyImpl) then) =
       __$$VerifyImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({VerifyRequest verifyRequest});
-
-  $VerifyRequestCopyWith<$Res> get verifyRequest;
+  $Res call({String code});
 }
 
 /// @nodoc
@@ -228,36 +226,28 @@ class __$$VerifyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? verifyRequest = null,
+    Object? code = null,
   }) {
     return _then(_$VerifyImpl(
-      verifyRequest: null == verifyRequest
-          ? _value.verifyRequest
-          : verifyRequest // ignore: cast_nullable_to_non_nullable
-              as VerifyRequest,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $VerifyRequestCopyWith<$Res> get verifyRequest {
-    return $VerifyRequestCopyWith<$Res>(_value.verifyRequest, (value) {
-      return _then(_value.copyWith(verifyRequest: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$VerifyImpl implements _Verify {
-  const _$VerifyImpl({required this.verifyRequest});
+  const _$VerifyImpl({required this.code});
 
   @override
-  final VerifyRequest verifyRequest;
+  final String code;
 
   @override
   String toString() {
-    return 'AuthEvent.verify(verifyRequest: $verifyRequest)';
+    return 'AuthEvent.verify(code: $code)';
   }
 
   @override
@@ -265,12 +255,11 @@ class _$VerifyImpl implements _Verify {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerifyImpl &&
-            (identical(other.verifyRequest, verifyRequest) ||
-                other.verifyRequest == verifyRequest));
+            (identical(other.code, code) || other.code == code));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, verifyRequest);
+  int get hashCode => Object.hash(runtimeType, code);
 
   @JsonKey(ignore: true)
   @override
@@ -282,29 +271,29 @@ class _$VerifyImpl implements _Verify {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) login,
-    required TResult Function(VerifyRequest verifyRequest) verify,
+    required TResult Function(String code) verify,
   }) {
-    return verify(verifyRequest);
+    return verify(code);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? login,
-    TResult? Function(VerifyRequest verifyRequest)? verify,
+    TResult? Function(String code)? verify,
   }) {
-    return verify?.call(verifyRequest);
+    return verify?.call(code);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? login,
-    TResult Function(VerifyRequest verifyRequest)? verify,
+    TResult Function(String code)? verify,
     required TResult orElse(),
   }) {
     if (verify != null) {
-      return verify(verifyRequest);
+      return verify(code);
     }
     return orElse();
   }
@@ -342,10 +331,9 @@ class _$VerifyImpl implements _Verify {
 }
 
 abstract class _Verify implements AuthEvent {
-  const factory _Verify({required final VerifyRequest verifyRequest}) =
-      _$VerifyImpl;
+  const factory _Verify({required final String code}) = _$VerifyImpl;
 
-  VerifyRequest get verifyRequest;
+  String get code;
   @JsonKey(ignore: true)
   _$$VerifyImplCopyWith<_$VerifyImpl> get copyWith =>
       throw _privateConstructorUsedError;

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/exceptions/domain_exception.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/verify_request.dart';
+import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/login_use_case.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/verify_user_case.dart';
 
@@ -25,6 +26,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   final VerifyUseCase _verifyUseCase;
 
   final AuthStateViewModel _viewModel = const AuthStateViewModel();
+  final StorageServiceImpl st = StorageServiceImpl();
 
   @override
   Future<void> onEventHandler(AuthEvent event, Emitter emit) async {
@@ -64,10 +66,13 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   }
 
   Future<void> _verify(_Verify event, Emitter<AuthState> emit) async {
-    emit(const AuthState.loading());
+    final VerifyRequest request = VerifyRequest(
+      userId: st.getToken()!,
+      code: event.code,
+    );
 
     final Result<VerifyResponse, DomainException> result =
-        await _verifyUseCase.call(event.verifyRequest);
+        await _verifyUseCase.call(request);
 
     final data = result.data;
 

@@ -39,6 +39,17 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return BaseBlocWidget<AuthBloc, AuthEvent, AuthState>(
       bloc: authBloc,
+      listener: (context, state) {
+        state.whenOrNull(
+          loaded: (viewModel) => context.push(
+            RoutePaths.codeConfirm,
+            extra: {
+              "phone": phoneController.text,
+              "userId": '${viewModel.userId}',
+            },
+          ),
+        );
+      },
       builder: (context, state, bloc) {
         return Scaffold(
           body: SafeArea(
@@ -134,9 +145,12 @@ class _AuthPageState extends State<AuthPage> {
                   onPressed: () async {
                     authBloc.add(AuthEvent.login(phone: phoneController.text));
                     state.whenOrNull(
-                      loaded: (_) => context.push(
+                      loaded: (viewModel) => context.push(
                         RoutePaths.codeConfirm,
-                        extra: phoneController.text,
+                        extra: {
+                          "phone": phoneController.text,
+                          "userId": '${viewModel.userId}',
+                        },
                       ),
                     );
                   },

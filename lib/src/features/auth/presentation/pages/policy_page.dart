@@ -35,8 +35,10 @@ class _PolicyPageState extends State<PolicyPage> {
         padding: const EdgeInsets.all(UIConstants.defaultPadding2),
         physics: const BouncingScrollPhysics(),
         children: [
-          Text(S.current.privacy_policy,
-              style: context.theme.textStyles.extraTitle),
+          Text(
+            S.current.privacy_policy,
+            style: context.theme.textStyles.extraTitle,
+          ),
           const Gap(UIConstants.defaultGap3),
           Text(temp * 20, style: context.theme.textStyles.bodyMain),
         ],
@@ -54,8 +56,9 @@ class _PolicyPageState extends State<PolicyPage> {
               child: Row(
                 children: [
                   Expanded(
-                      child: Text(S.current.agree_wit_privacy_policy,
-                          style: context.theme.textStyles.headLine)),
+                    child: Text(S.current.agree_wit_privacy_policy,
+                        style: context.theme.textStyles.headLine),
+                  ),
                   ToggleWidget(value: isAgreeWithPolicy)
                 ],
               ),

@@ -10,12 +10,15 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, __) => const AuthPage(),
       ),
       GoRoute(
-        name: RouteNames.codeConfirm,
-        path: RoutePaths.codeConfirm,
-        builder: (context, state) => ConfirmCodePage(
-          phone: state.extra.toString(),
-        ),
-      ),
+          name: RouteNames.codeConfirm,
+          path: RoutePaths.codeConfirm,
+          builder: (context, state) {
+            final map = state.extra as Map<String, String>;
+            return ConfirmCodePage(
+              phone: map["phone"]!,
+              userId: map["userId"]!,
+            );
+          }),
       GoRoute(
         name: RouteNames.policy,
         path: RoutePaths.policy,
