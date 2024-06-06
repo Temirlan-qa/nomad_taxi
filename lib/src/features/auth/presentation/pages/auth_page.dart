@@ -143,7 +143,10 @@ class _AuthPageState extends State<AuthPage> {
                 CustomMainButtonWidget(
                   title: S.current.next,
                   onPressed: () async {
-                    authBloc.add(AuthEvent.login(phone: phoneController.text));
+                    authBloc.add(
+                      AuthEvent.login(
+                          phone: phoneController.text.replaceAll('-', '')),
+                    );
                     state.whenOrNull(
                       loaded: (viewModel) => context.push(
                         RoutePaths.codeConfirm,

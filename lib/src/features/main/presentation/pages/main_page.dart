@@ -64,15 +64,25 @@ class _MainPageState extends State<MainPage> {
       key: _scaffoldKey,
       drawer: const CustomDrawerWidget(),
       appBar: CustomAppBar(
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () {
             _scaffoldKey.currentState!.openDrawer();
           },
-          icon: Assets.icons.regular.barsSolid.svg(
-            colorFilter:
-                ColorFilter.mode(context.theme.primary, BlendMode.srcIn),
-            width: 24,
-            height: 24,
+          icon: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Assets.icons.regular.barsSolid.svg(
+                colorFilter:
+                    ColorFilter.mode(context.theme.primary, BlendMode.srcIn),
+                width: 24,
+                height: 24,
+              ),
+            ),
           ),
         ),
       ),

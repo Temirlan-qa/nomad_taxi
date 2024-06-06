@@ -7,8 +7,8 @@ import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_driver_button_widget.dart';
 
-class CustomDrawerBottomWidgets extends StatelessWidget {
-  const CustomDrawerBottomWidgets({
+class DrawerBottomWidgets extends StatelessWidget {
+  const DrawerBottomWidgets({
     super.key,
   });
 

@@ -34,8 +34,8 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
     return BlocListener<AuthBloc, AuthState>(
       bloc: authBloc,
       listener: (context, state) {
-        authBloc.state.whenOrNull(
-          loaded: (viewModel) {
+        state.whenOrNull(
+          verified: (viewModel) {
             if (viewModel.token.isNotEmpty || viewModel.token != '') {
               context.pushNamed(RouteNames.policy);
             }
@@ -105,7 +105,10 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                 title: S.current.next,
                 onPressed: () {
                   authBloc.add(
-                    AuthEvent.verify(code: codeController.text),
+                    AuthEvent.verify(
+                      code: codeController.text,
+                      userId: widget.userId,
+                    ),
                   );
                 },
               ),

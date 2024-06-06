@@ -85,7 +85,7 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
                   const Gap(UIConstants.defaultGap3),
                   MediaQuery.orientationOf(context).index == 0
                       ? const Offstage()
-                      : const CustomDrawerBottomWidgets(),
+                      : const DrawerBottomWidgets(),
                 ],
               ),
             ),
@@ -93,7 +93,7 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
               flex: MediaQuery.orientationOf(context).index == 1 ? 0 : 3,
               child: MediaQuery.orientationOf(context).index == 1
                   ? const Offstage()
-                  : const CustomDrawerBottomWidgets(),
+                  : const DrawerBottomWidgets(),
             )
           ],
         ),
