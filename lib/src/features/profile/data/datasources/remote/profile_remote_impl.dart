@@ -126,7 +126,7 @@ class ProfileRemoteImpl implements IProfileRemote {
   }
 
   @override
-  Future<Either<DomainException, String>> updateLanguage(
+  Future<Either<DomainException, ProfileDto>> updateLanguage(
       UpdateLanguageRequest request) async {
     try {
       var headers = {

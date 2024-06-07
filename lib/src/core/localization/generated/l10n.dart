@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -900,6 +901,16 @@ class S {
     );
   }
 
+  /// `Указанные данные недействительны.`
+  String get invalidInfoError {
+    return Intl.message(
+      'Указанные данные недействительны.',
+      name: 'invalidInfoError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Статус заказа`
   String get order_status {
     return Intl.message(
@@ -1265,6 +1276,46 @@ class S {
     return Intl.message(
       'Пакеты времени',
       name: 'time_packages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Инструкция как вывести деньги`
+  String get instruction_to_withdraw {
+    return Intl.message(
+      'Инструкция как вывести деньги',
+      name: 'instruction_to_withdraw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вы можете вывести не ограниченную сумму с вашего баланса`
+  String get withdraw_infinite {
+    return Intl.message(
+      'Вы можете вывести не ограниченную сумму с вашего баланса',
+      name: 'withdraw_infinite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Скопируйте ваш ID`
+  String get copy_your_id {
+    return Intl.message(
+      'Скопируйте ваш ID',
+      name: 'copy_your_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Напишите нам в ватсап запрос на вывод средств и отвте номер вашего ID и номер вашей карты Kaspi GOLD, и наши менеджеры переведут деньги вам на счет`
+  String get write_to_whatsapp_about_withdraw {
+    return Intl.message(
+      'Напишите нам в ватсап запрос на вывод средств и отвте номер вашего ID и номер вашей карты Kaspi GOLD, и наши менеджеры переведут деньги вам на счет',
+      name: 'write_to_whatsapp_about_withdraw',
       desc: '',
       args: [],
     );

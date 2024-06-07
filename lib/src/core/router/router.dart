@@ -17,7 +17,8 @@ import 'package:nomad_taxi/src/features/profile/presentation/pages/profile_page.
 import 'package:nomad_taxi/src/features/promo_code/presentation/pages/promo_code_added_page.dart';
 import 'package:nomad_taxi/src/features/promo_code/presentation/pages/promo_code_page.dart';
 import 'package:nomad_taxi/src/features/settings/presentation/pages/settings_page.dart';
-import 'package:nomad_taxi/src/features/transfer_money/presentation/pages/transfer_money.dart';
+import 'package:nomad_taxi/src/features/transfer_money/presentation/pages/transfer_money_instruction_page.dart';
+import 'package:nomad_taxi/src/features/transfer_money/presentation/pages/transfer_money_page.dart';
 
 import '../../features/main/presentation/pages/about_app_page.dart';
 

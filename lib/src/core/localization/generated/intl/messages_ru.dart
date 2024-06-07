@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "congrats_completed_order": MessageLookupByLibrary.simpleMessage(
             "Поздравляем с выполненным заказом!"),
         "congratulate": MessageLookupByLibrary.simpleMessage("Поздравляем!"),
+        "copy_your_id":
+            MessageLookupByLibrary.simpleMessage("Скопируйте ваш ID"),
         "current_language": MessageLookupByLibrary.simpleMessage("Русский"),
         "current_locale": MessageLookupByLibrary.simpleMessage("ru"),
         "delete_account":
@@ -114,6 +116,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "help": MessageLookupByLibrary.simpleMessage("Помощь"),
         "in_progress": MessageLookupByLibrary.simpleMessage("В процессе"),
         "instruction": MessageLookupByLibrary.simpleMessage("Инструкция"),
+        "instruction_to_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Инструкция как вывести деньги"),
+        "invalidInfoError": MessageLookupByLibrary.simpleMessage(
+            "Указанные данные недействительны."),
         "kz_with_flag": MessageLookupByLibrary.simpleMessage("🇰🇿 Казахстан"),
         "left": MessageLookupByLibrary.simpleMessage("Осталось"),
         "log_out_account":
@@ -182,10 +188,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "where_from": MessageLookupByLibrary.simpleMessage("Откуда"),
         "withdraw_funds":
             MessageLookupByLibrary.simpleMessage("Вывести деньги"),
+        "withdraw_infinite": MessageLookupByLibrary.simpleMessage(
+            "Вы можете вывести не ограниченную сумму с вашего баланса"),
         "withdraw_money":
             MessageLookupByLibrary.simpleMessage("Вывести деньги"),
         "write_appeal":
             MessageLookupByLibrary.simpleMessage("Написать обращение"),
+        "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
+            "Напишите нам в ватсап запрос на вывод средств и отвте номер вашего ID и номер вашей карты Kaspi GOLD, и наши менеджеры переведут деньги вам на счет"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Вы хотите выйти?"),

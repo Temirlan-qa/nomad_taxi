@@ -12,8 +12,8 @@ class AuthState with _$AuthState {
 
 @freezed
 class AuthStateViewModel with _$AuthStateViewModel {
-  factory AuthStateViewModel(
-    SignInResponse? loginResponse,
-    VerifyResponse? verifyResponse,
-  ) = _AuthStateViewModel;
+  const factory AuthStateViewModel({
+    @Default(0) int userId,
+    @Default('') String token,
+  }) = _AuthStateViewModel;
 }

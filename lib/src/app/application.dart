@@ -28,13 +28,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final GoRouter router = routerProvider();
     return BaseBlocWidget<SettingsBloc, SettingsEvent, SettingsState>(
-      bloc: getIt<SettingsBloc>(),
+      bloc: getIt<SettingsBloc>()..add(const SettingsEvent.retrieve()),
       starterEvent: const SettingsEvent.retrieve(),
       builder: (context, state, bloc) {
         return state.when(
           empty: () => const SizedBox(),
           inProgress: () => const SizedBox(),
-          error: () => const SizedBox(),
+          error: (message) => const SizedBox(),
           done: (languageCode) {
             return _buildApp(
               flavor: flavor,

@@ -45,22 +45,18 @@ class _CustomSelectButtonWidgetState extends State<CustomSelectButtonWidget> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AnimatedCrossFade(
-                        duration: Durations.medium1,
-                        firstChild: AnimatedPadding(
-                          duration: Durations.medium1,
-                          padding: const EdgeInsets.only(
-                              bottom: UIConstants.defaultGap7),
-                          child: Text(
-                            S.current.selected_tariff,
-                            style: context.theme.textStyles.bodyMain
-                                .copyWith(color: context.theme.red),
-                          ),
+                      AnimatedContainer(
+                        duration: Durations.short3,
+                        padding: EdgeInsets.only(
+                            bottom: toggleState ? UIConstants.defaultGap7 : 0),
+                        height: toggleState ? UIConstants.defaultGap3 : 0,
+                        child: AnimatedOpacity(
+                          opacity: toggleState ? 1.0 : 0.0,
+                          duration: Durations.medium3,
+                          child: Text(S.current.selected_tariff,
+                              style: context.theme.textStyles.bodyMain
+                                  .copyWith(color: context.theme.red)),
                         ),
-                        secondChild: const Offstage(),
-                        crossFadeState: toggleState
-                            ? CrossFadeState.showFirst
-                            : CrossFadeState.showSecond,
                       ),
                       widget.child
                     ],
@@ -69,7 +65,10 @@ class _CustomSelectButtonWidgetState extends State<CustomSelectButtonWidget> {
                 SizedBox(
                   width: 24,
                   height: 24,
-                  child: ToggleWidget(value: toggleState),
+                  child: ToggleWidget(
+                    value: toggleState,
+                    isRed: true,
+                  ),
                 )
               ],
             )),

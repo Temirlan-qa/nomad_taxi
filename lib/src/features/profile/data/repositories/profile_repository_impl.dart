@@ -94,14 +94,15 @@ class ProfileRepositoryImpl implements IProfileRepository {
   }
 
   @override
-  Future<Either<DomainException, String>> updateLanguage(
+  Future<Either<DomainException, ProfileEntity>> updateLanguage(
       UpdateLanguageRequest request) async {
     try {
-      final requests = await _profileImpl.updateLanguage(request);
-      return requests.fold(
+      final result = await _profileImpl.updateLanguage(request);
+      return result.fold(
         (error) => Left(error),
         (dto) {
-          return const Right('');
+          final ProfileEntity entity = ProfileDtoMapper().map(dto);
+          return Right(entity);
         },
       );
     } catch (e) {

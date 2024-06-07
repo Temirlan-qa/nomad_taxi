@@ -13,8 +13,10 @@ part 'settings_event.dart';
 part 'settings_state.dart';
 
 class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
-  SettingsBloc(this._updateLanguageUseCase, this._getUserDataUseCase)
-      : super(const _InProgressSettingsState());
+  SettingsBloc(
+    this._updateLanguageUseCase,
+    this._getUserDataUseCase,
+  ) : super(const _InProgressSettingsState());
 
   final UpdateLanguageUseCase _updateLanguageUseCase;
 
@@ -37,54 +39,74 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
     emit(const SettingsState.inProgress());
     try {
       final StorageServiceImpl st = StorageServiceImpl();
-      final String? getLanguageCode = st.getLanguageCode();
 
-      final result = await _getUserDataUseCase.call();
-
-      if (result.isSuccessful) {
-        st.setLanguageCode(result.data!.languageCode!);
-
+      if (st.isLoggedIn == false) {
         emit(
-          SettingsState.done(
-            languageCode: result.data!.languageCode!,
-          ),
-        );
-        return;
-      } else if (getLanguageCode == null) {
-        return emit(
           const SettingsState.done(
             languageCode: 'ru',
           ),
         );
+        return;
+      } else {
+        final result = await _getUserDataUseCase.call();
+
+        if (result.isSuccessful) {
+          st.setLanguageCode(result.data!.languageCode!);
+
+          emit(
+            SettingsState.done(
+              languageCode: result.data!.languageCode!,
+            ),
+          );
+          return;
+        }
       }
     } catch (e) {
-      emit(const SettingsState.error());
+      emit(SettingsState.error(errorMessage: '$e'));
       rethrow;
     }
   }
+
+  // Future<void> _update(
+  //   _UpdateSettingsEvent event,
+  //   Emitter emit,
+  // ) async {
+  //   try {
+  //     final StorageServiceImpl st = StorageServiceImpl();
+
+  //     final UpdateLanguageRequest request = UpdateLanguageRequest(
+  //       languageCode: event.request.languageCode,
+  //     );
+
+  //     final result = await _updateLanguageUseCase.call(request);
+
+  //     if (result.isSuccessful) {
+  //       st.setLanguageCode(request.languageCode);
+  //       emit(SettingsState.done(languageCode: request.languageCode));
+  //     } else {
+  //       emit(const SettingsState.error(
+  //         errorMessage: 'Failed to update language',
+  //       ));
+  //     }
+  //   } catch (e) {
+  //     emit(SettingsState.error(errorMessage: '$e'));
+  //     rethrow;
+  //   }
+  // }
 
   Future<void> _update(
     _UpdateSettingsEvent event,
     Emitter emit,
   ) async {
-    emit(const SettingsState.inProgress());
     try {
-      StorageServiceImpl st = StorageServiceImpl();
+      final StorageServiceImpl st = StorageServiceImpl();
 
-      final UpdateLanguageRequest request = UpdateLanguageRequest(
-        languageCode: event.request.languageCode,
-      );
+      _updateLanguageUseCase.call(event.request);
 
-      final result = await _updateLanguageUseCase.call(request);
-
-      if (result.isSuccessful) {
-        await st.setLanguageCode(request.languageCode);
-        emit(SettingsState.done(languageCode: request.languageCode));
-      } else {
-        emit(const SettingsState.error());
-      }
+      await st.setLanguageCode(event.request.languageCode);
+      emit(SettingsState.done(languageCode: event.request.languageCode));
     } catch (e) {
-      emit(const SettingsState.error());
+      emit(SettingsState.error(errorMessage: '$e'));
       rethrow;
     }
   }

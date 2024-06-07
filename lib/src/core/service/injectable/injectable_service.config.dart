@@ -15,8 +15,8 @@ import '../../../features/auth/data/repositories/i_auth_repository.dart'
     as _i18;
 import '../../../features/auth/domain/repositories/auth_repository_impl.dart'
     as _i19;
-import '../../../features/auth/domain/usecases/login_use_case.dart' as _i20;
-import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i21;
+import '../../../features/auth/domain/usecases/login_use_case.dart' as _i21;
+import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i20;
 import '../../../features/profile/data/datasources/remote/i_profile_remote.dart'
     as _i6;
 import '../../../features/profile/data/datasources/remote/profile_remote_impl.dart'
@@ -26,17 +26,17 @@ import '../../../features/profile/data/repositories/profile_repository_impl.dart
 import '../../../features/profile/domain/repositories/i_profile_repository.dart'
     as _i10;
 import '../../../features/profile/domain/usecases/delete_account_use_case.dart'
-    as _i14;
-import '../../../features/profile/domain/usecases/get_user_data_use_case.dart'
     as _i15;
-import '../../../features/profile/domain/usecases/log_out_use_case.dart'
+import '../../../features/profile/domain/usecases/get_user_data_use_case.dart'
     as _i12;
+import '../../../features/profile/domain/usecases/log_out_use_case.dart'
+    as _i13;
 import '../../../features/profile/domain/usecases/update_fcm_token_use_case.dart'
     as _i16;
 import '../../../features/profile/domain/usecases/update_language_use_case.dart'
     as _i17;
 import '../../../features/profile/domain/usecases/update_user_info_use_case.dart'
-    as _i13;
+    as _i14;
 import '../../api/client/rest/dio/dio_client.dart' as _i5;
 import '../../utils/helpers/connectivity_helper.dart' as _i3;
 import '../../utils/helpers/isolate_manager.dart' as _i4;
@@ -76,14 +76,14 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i6.IProfileRemote>(instanceName: 'ProfileRemoteImpl')),
       instanceName: 'ProfileRepositoryImpl',
     );
-    gh.lazySingleton<_i12.LogOutUseCase>(() => _i12.LogOutUseCase(
+    gh.lazySingleton<_i12.GetUserDataUseCase>(() => _i12.GetUserDataUseCase(
         gh<_i10.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i13.UpdateUserInfoUseCase>(() =>
-        _i13.UpdateUserInfoUseCase(gh<_i10.IProfileRepository>(
+    gh.lazySingleton<_i13.LogOutUseCase>(() => _i13.LogOutUseCase(
+        gh<_i10.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
+    gh.lazySingleton<_i14.UpdateUserInfoUseCase>(() =>
+        _i14.UpdateUserInfoUseCase(gh<_i10.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i14.DeleteAccountUseCase>(() => _i14.DeleteAccountUseCase(
-        gh<_i10.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i15.GetUserDataUseCase>(() => _i15.GetUserDataUseCase(
+    gh.lazySingleton<_i15.DeleteAccountUseCase>(() => _i15.DeleteAccountUseCase(
         gh<_i10.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
     gh.lazySingleton<_i16.UpdateFcmTokenUseCase>(() =>
         _i16.UpdateFcmTokenUseCase(gh<_i10.IProfileRepository>(
@@ -96,9 +96,9 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i8.IAuthService>(instanceName: 'AuthServiceImpl')),
       instanceName: 'AuthRepositoryImpl',
     );
-    gh.lazySingleton<_i20.LoginUseCase>(() => _i20.LoginUseCase(
+    gh.lazySingleton<_i20.VerifyUseCase>(() => _i20.VerifyUseCase(
         gh<_i18.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i21.VerifyUseCase>(() => _i21.VerifyUseCase(
+    gh.lazySingleton<_i21.LoginUseCase>(() => _i21.LoginUseCase(
         gh<_i18.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
     return this;
   }
