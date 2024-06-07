@@ -9,8 +9,8 @@ import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
-class CustomDrawerProfileWidget extends StatelessWidget {
-  const CustomDrawerProfileWidget({
+class DrawerProfileCard extends StatelessWidget {
+  const DrawerProfileCard({
     super.key,
   });
 

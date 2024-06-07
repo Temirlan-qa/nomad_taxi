@@ -33,7 +33,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
         event as _Login,
         emit as Emitter<AuthState>,
       ),
-      verify: (_) => _verify(
+      verify: (_, __) => _verify(
         event as _Verify,
         emit as Emitter<AuthState>,
       ),
@@ -64,10 +64,13 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   }
 
   Future<void> _verify(_Verify event, Emitter<AuthState> emit) async {
-    emit(const AuthState.loading());
+    final VerifyRequest request = VerifyRequest(
+      userId: event.userId,
+      code: event.code,
+    );
 
     final Result<VerifyResponse, DomainException> result =
-        await _verifyUseCase.call(event.verifyRequest);
+        await _verifyUseCase.call(request);
 
     final data = result.data;
 
@@ -77,17 +80,9 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
 
     if (result.isSuccessful) {
       return emit(
-        AuthState.loaded(
+        _Verified(
           viewModel: _viewModel.copyWith(
             token: data.data.accessToken,
-            // verifyResponse: VerifyResponse(
-            //   status: data.status,
-            //   data: VerifyDataResponse(
-            //     accessToken: ,
-            //     tokenType: data.data.tokenType,
-            //     expiresIn: data.data.expiresIn,
-            //   ),
-            // ),
           ),
         ),
       );

@@ -8,8 +8,8 @@ part of 'profile_dto.dart';
 
 _$ProfileDtoImpl _$$ProfileDtoImplFromJson(Map<String, dynamic> json) =>
     _$ProfileDtoImpl(
-      firstName: json['first_name'] as String,
-      lastName: json['last_name'] as String,
+      firstName: json['first_name'] as String? ?? '',
+      lastName: json['last_name'] as String? ?? '',
       phone: json['phone'] as String,
       id: (json['id'] as num).toInt(),
       languageCode: json['language_code'] as String?,

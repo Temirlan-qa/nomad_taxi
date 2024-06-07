@@ -7,6 +7,9 @@ class AuthState with _$AuthState {
   const factory AuthState.loaded({
     required AuthStateViewModel viewModel,
   }) = _Loaded;
+  const factory AuthState.verified({
+    required AuthStateViewModel viewModel,
+  }) = _Verified;
   const factory AuthState.error(String error) = _Error;
 }
 

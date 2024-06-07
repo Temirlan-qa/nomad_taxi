@@ -1,6 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/auth/auth_service_impl.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/resend_code_request.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/resend_code_response.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/verify_request.dart';
 
 import '../../../../core/exceptions/domain_exception.dart';
@@ -43,6 +45,41 @@ class AuthRepositoryImpl implements IAuthRepository {
       VerifyRequest body) async {
     try {
       final requests = await _authService.verifyUser(body);
+      return requests.fold(
+        (error) => Left(error),
+        (response) {
+          final VerifyResponse result = response;
+          return Right(result);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DomainException, ResendCodeResponse>> resendCode(
+      ResendCodeRequest body) async {
+    try {
+      final requests = await _authService.resendCode(body);
+      return requests.fold(
+        (error) => Left(error),
+        (response) {
+          final ResendCodeResponse result = response;
+          return Right(result);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DomainException, VerifyResponse>> refreshToken() async {
+    try {
+      final requests = await _authService.refreshToken();
       return requests.fold(
         (error) => Left(error),
         (response) {

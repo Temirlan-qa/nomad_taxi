@@ -4,9 +4,8 @@ part of 'settings_bloc.dart';
 class SettingsState with _$SettingsState {
   const factory SettingsState.empty() = _EmptySettingsState;
   const factory SettingsState.inProgress() = _InProgressSettingsState;
-  const factory SettingsState.done({
-    required String languageCode,
-  }) = _DoneSettingsState;
+  const factory SettingsState.done({required String languageCode}) =
+      _DoneSettingsState;
   const factory SettingsState.error({
     required String errorMessage,
   }) = _ErrorSettingsState;

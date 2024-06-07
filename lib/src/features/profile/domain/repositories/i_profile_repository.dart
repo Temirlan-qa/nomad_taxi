@@ -5,6 +5,7 @@ import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 
 import '../../../../core/exceptions/domain_exception.dart';
+import '../requests/update_partner_data_request.dart';
 
 abstract class IProfileRepository {
   Future<Either<DomainException, String>> logOut();
@@ -24,4 +25,14 @@ abstract class IProfileRepository {
   Future<Either<DomainException, ProfileEntity>> updateLanguage(
     UpdateLanguageRequest request,
   );
+
+  Future<Either<DomainException, ProfileEntity>> togglePartnerStatus();
+
+  Future<Either<DomainException, ProfileEntity>> updatePartnerData(
+    UpdatePartnerDataRequest request,
+  );
+
+  Future<Either<DomainException, dynamic>> withdrawInfo();
+
+  Future<Either<DomainException, dynamic>> payInfo();
 }

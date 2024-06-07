@@ -11,6 +11,7 @@ import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 
 import '../../../../core/exceptions/domain_exception.dart';
+import '../../domain/requests/update_partner_data_request.dart';
 
 @named
 @LazySingleton(as: IProfileRepository)
@@ -103,6 +104,73 @@ class ProfileRepositoryImpl implements IProfileRepository {
         (dto) {
           final ProfileEntity entity = ProfileDtoMapper().map(dto);
           return Right(entity);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DomainException, ProfileEntity>> togglePartnerStatus() async {
+    try {
+      final result = await _profileImpl.togglePartnerStatus();
+      return result.fold(
+        (error) => Left(error),
+        (dto) {
+          final ProfileEntity entity = ProfileDtoMapper().map(dto);
+          return Right(entity);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DomainException, ProfileEntity>> updatePartnerData(
+      UpdatePartnerDataRequest request) async {
+    try {
+      final requests = await _profileImpl.updatePartnerData(request);
+      return requests.fold(
+        (error) => Left(error),
+        (signUpDto) {
+          final ProfileEntity result = ProfileDtoMapper().map(signUpDto);
+          return Right(result);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DomainException, dynamic>> withdrawInfo() async {
+    try {
+      final result = await _profileImpl.withdrawInfo();
+      return result.fold(
+        (error) => Left(error),
+        (dto) {
+          return Right(dto);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DomainException, dynamic>> payInfo() async {
+    try {
+      final result = await _profileImpl.payInfo();
+      return result.fold(
+        (error) => Left(error),
+        (dto) {
+          return Right(dto);
         },
       );
     } catch (e) {

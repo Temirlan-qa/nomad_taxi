@@ -16,7 +16,7 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
   SettingsBloc(
     this._updateLanguageUseCase,
     this._getUserDataUseCase,
-  ) : super(const _InProgressSettingsState());
+  ) : super(const SettingsState.empty());
 
   final UpdateLanguageUseCase _updateLanguageUseCase;
 
@@ -36,7 +36,6 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
     _RetrieveSettingsEvent event,
     Emitter emit,
   ) async {
-    emit(const SettingsState.inProgress());
     try {
       final StorageServiceImpl st = StorageServiceImpl();
 
@@ -48,17 +47,27 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
         );
         return;
       } else {
-        final result = await _getUserDataUseCase.call();
+        final languageCode = st.getLanguageCode();
 
-        if (result.isSuccessful) {
-          st.setLanguageCode(result.data!.languageCode!);
-
+        if (languageCode != null) {
           emit(
             SettingsState.done(
-              languageCode: result.data!.languageCode!,
+              languageCode: languageCode,
             ),
           );
           return;
+        } else {
+          final result = await _getUserDataUseCase.call();
+          if (result.isSuccessful) {
+            st.setLanguageCode(result.data!.languageCode!);
+
+            emit(
+              SettingsState.done(
+                languageCode: result.data!.languageCode!,
+              ),
+            );
+            return;
+          }
         }
       }
     } catch (e) {
@@ -98,6 +107,7 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
     _UpdateSettingsEvent event,
     Emitter emit,
   ) async {
+    emit(const SettingsState.inProgress());
     try {
       final StorageServiceImpl st = StorageServiceImpl();
 

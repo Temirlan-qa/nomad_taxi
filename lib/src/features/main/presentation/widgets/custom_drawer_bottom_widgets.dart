@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
-import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_driver_button_widget.dart';
+import 'package:nomad_taxi/src/features/main/presentation/widgets/driver_button_widget.dart';
 
-class CustomDrawerBottomWidgets extends StatelessWidget {
-  const CustomDrawerBottomWidgets({
+class DrawerBottomWidgets extends StatelessWidget {
+  const DrawerBottomWidgets({
     super.key,
+    required this.onSwitchMode,
+    required this.isDriverMode,
   });
+  final VoidCallback? onSwitchMode;
+  final bool isDriverMode;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,9 @@ class CustomDrawerBottomWidgets extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CustomDriverButtonWidget(
-              onPressed: () {
-                context.pushNamed(RouteNames.driverMode);
-              },
-              isDriverMode: false,
+            DriverButtonWidget(
+              onPressed: onSwitchMode,
+              isDriverMode: isDriverMode,
             ),
             const Gap(UIConstants.defaultGap3),
             Padding(
