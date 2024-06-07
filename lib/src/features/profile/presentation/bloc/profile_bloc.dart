@@ -36,7 +36,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
       init: () => _init(event as _Init, emit),
       logOut: () => _logOut(event as _LogOut, emit),
       deleteAccount: () => _deleteAccount(event as _DeleteAccount, emit),
-      updateUserInfo: (_, __, ___) =>
+      updateUserInfo: (_, __) =>
           _updateUserInfo(event as _UpdateUserInfo, emit),
     );
   }
@@ -66,7 +66,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     _LogOut event,
     Emitter emit,
   ) async {
-    final result = await _logOutUseCase.call();
+    await _logOutUseCase.call();
   }
 
   Future<void> _deleteAccount(
@@ -83,9 +83,21 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     final UpdateUserInfoRequest request = UpdateUserInfoRequest(
       name: event.name,
       lastName: event.lastName,
-      phone: event.phone,
     );
     final result = await _updateUserInfoUseCase.call(request);
+    final data = result.data;
+
+    if (result.isSuccessful && data != null) {
+      emit(
+        _Loaded(
+          viewModel: _viewModel.copyWith(
+            firstName: data.firstName,
+            lastName: data.lastName,
+            phone: data.phone,
+          ),
+        ),
+      );
+    }
   }
 
   @override

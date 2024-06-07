@@ -12,32 +12,44 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../../features/auth/data/repositories/i_auth_repository.dart'
-    as _i16;
+    as _i22;
 import '../../../features/auth/domain/repositories/auth_repository_impl.dart'
-    as _i17;
-import '../../../features/auth/domain/usecases/login_use_case.dart' as _i19;
-import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i18;
+    as _i23;
+import '../../../features/auth/domain/usecases/login_use_case.dart' as _i25;
+import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i24;
 import '../../../features/profile/data/datasources/remote/i_profile_remote.dart'
     as _i6;
 import '../../../features/profile/data/datasources/remote/profile_remote_impl.dart'
     as _i7;
 import '../../../features/profile/data/repositories/profile_repository_impl.dart'
-    as _i11;
+    as _i17;
 import '../../../features/profile/domain/repositories/i_profile_repository.dart'
-    as _i10;
+    as _i16;
 import '../../../features/profile/domain/usecases/delete_account_use_case.dart'
-    as _i15;
+    as _i21;
 import '../../../features/profile/domain/usecases/get_user_data_use_case.dart'
-    as _i12;
+    as _i18;
 import '../../../features/profile/domain/usecases/log_out_use_case.dart'
-    as _i13;
+    as _i19;
 import '../../../features/profile/domain/usecases/update_user_info_use_case.dart'
+    as _i20;
+import '../../../features/transfer_money/data/datasources/remote/balance_remote_impl.dart'
+    as _i9;
+import '../../../features/transfer_money/data/datasources/remote/i_balance_remote.dart'
+    as _i8;
+import '../../../features/transfer_money/data/repositories/balance_repository_impl.dart'
+    as _i13;
+import '../../../features/transfer_money/domain/repositories/i_balance_repository.dart'
+    as _i12;
+import '../../../features/transfer_money/domain/usecases/pay_info_use_case.dart'
+    as _i15;
+import '../../../features/transfer_money/domain/usecases/withdraw_info_use_case.dart'
     as _i14;
 import '../../api/client/rest/dio/dio_client.dart' as _i5;
 import '../../utils/helpers/connectivity_helper.dart' as _i3;
 import '../../utils/helpers/isolate_manager.dart' as _i4;
-import '../auth/auth_service_impl.dart' as _i9;
-import '../auth/i_auth_service.dart' as _i8;
+import '../auth/auth_service_impl.dart' as _i11;
+import '../auth/i_auth_service.dart' as _i10;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -63,33 +75,46 @@ extension GetItInjectableX on _i1.GetIt {
       () => _i7.ProfileRemoteImpl(),
       instanceName: 'ProfileRemoteImpl',
     );
-    gh.lazySingleton<_i8.IAuthService>(
-      () => _i9.AuthServiceImpl(gh<_i5.DioRestClient>()),
+    gh.lazySingleton<_i8.IBalanceRemote>(
+      () => _i9.BalanceRemoteImpl(),
+      instanceName: 'BalanceRemoteImpl',
+    );
+    gh.lazySingleton<_i10.IAuthService>(
+      () => _i11.AuthServiceImpl(gh<_i5.DioRestClient>()),
       instanceName: 'AuthServiceImpl',
     );
-    gh.lazySingleton<_i10.IProfileRepository>(
-      () => _i11.ProfileRepositoryImpl(
+    gh.lazySingleton<_i12.IBalanceRepository>(
+      () => _i13.BalanceRepositoryImpl(
+          gh<_i8.IBalanceRemote>(instanceName: 'BalanceRemoteImpl')),
+      instanceName: 'BalanceRepositoryImpl',
+    );
+    gh.lazySingleton<_i14.WithdrawInfoUseCase>(() => _i14.WithdrawInfoUseCase(
+        gh<_i12.IBalanceRepository>(instanceName: 'BalanceRepositoryImpl')));
+    gh.lazySingleton<_i15.PayInfoUseCase>(() => _i15.PayInfoUseCase(
+        gh<_i12.IBalanceRepository>(instanceName: 'BalanceRepositoryImpl')));
+    gh.lazySingleton<_i16.IProfileRepository>(
+      () => _i17.ProfileRepositoryImpl(
           gh<_i6.IProfileRemote>(instanceName: 'ProfileRemoteImpl')),
       instanceName: 'ProfileRepositoryImpl',
     );
-    gh.lazySingleton<_i12.GetUserDataUseCase>(() => _i12.GetUserDataUseCase(
-        gh<_i10.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i13.LogOutUseCase>(() => _i13.LogOutUseCase(
-        gh<_i10.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i14.UpdateUserInfoUseCase>(() =>
-        _i14.UpdateUserInfoUseCase(gh<_i10.IProfileRepository>(
+    gh.lazySingleton<_i18.GetUserDataUseCase>(() => _i18.GetUserDataUseCase(
+        gh<_i16.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
+    gh.lazySingleton<_i19.LogOutUseCase>(() => _i19.LogOutUseCase(
+        gh<_i16.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
+    gh.lazySingleton<_i20.UpdateUserInfoUseCase>(() =>
+        _i20.UpdateUserInfoUseCase(gh<_i16.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i15.DeleteAccountUseCase>(() => _i15.DeleteAccountUseCase(
-        gh<_i10.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i16.IAuthRepository>(
-      () => _i17.AuthRepositoryImpl(
-          gh<_i8.IAuthService>(instanceName: 'AuthServiceImpl')),
+    gh.lazySingleton<_i21.DeleteAccountUseCase>(() => _i21.DeleteAccountUseCase(
+        gh<_i16.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
+    gh.lazySingleton<_i22.IAuthRepository>(
+      () => _i23.AuthRepositoryImpl(
+          gh<_i10.IAuthService>(instanceName: 'AuthServiceImpl')),
       instanceName: 'AuthRepositoryImpl',
     );
-    gh.lazySingleton<_i18.VerifyUseCase>(() => _i18.VerifyUseCase(
-        gh<_i16.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i19.LoginUseCase>(() => _i19.LoginUseCase(
-        gh<_i16.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
+    gh.lazySingleton<_i24.VerifyUseCase>(() => _i24.VerifyUseCase(
+        gh<_i22.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
+    gh.lazySingleton<_i25.LoginUseCase>(() => _i25.LoginUseCase(
+        gh<_i22.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
     return this;
   }
 }
