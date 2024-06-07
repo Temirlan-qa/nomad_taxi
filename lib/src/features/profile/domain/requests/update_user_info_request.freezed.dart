@@ -23,7 +23,6 @@ UpdateUserInfoRequest _$UpdateUserInfoRequestFromJson(
 mixin _$UpdateUserInfoRequest {
   String get name => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +36,7 @@ abstract class $UpdateUserInfoRequestCopyWith<$Res> {
           $Res Function(UpdateUserInfoRequest) then) =
       _$UpdateUserInfoRequestCopyWithImpl<$Res, UpdateUserInfoRequest>;
   @useResult
-  $Res call({String name, String lastName, String phone});
+  $Res call({String name, String lastName});
 }
 
 /// @nodoc
@@ -56,7 +55,6 @@ class _$UpdateUserInfoRequestCopyWithImpl<$Res,
   $Res call({
     Object? name = null,
     Object? lastName = null,
-    Object? phone = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -66,10 +64,6 @@ class _$UpdateUserInfoRequestCopyWithImpl<$Res,
       lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -84,7 +78,7 @@ abstract class _$$UpdateUserInfoRequestImplCopyWith<$Res>
       __$$UpdateUserInfoRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String lastName, String phone});
+  $Res call({String name, String lastName});
 }
 
 /// @nodoc
@@ -101,7 +95,6 @@ class __$$UpdateUserInfoRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? lastName = null,
-    Object? phone = null,
   }) {
     return _then(_$UpdateUserInfoRequestImpl(
       name: null == name
@@ -112,10 +105,6 @@ class __$$UpdateUserInfoRequestImplCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -124,7 +113,7 @@ class __$$UpdateUserInfoRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UpdateUserInfoRequestImpl implements _UpdateUserInfoRequest {
   const _$UpdateUserInfoRequestImpl(
-      {required this.name, required this.lastName, required this.phone});
+      {required this.name, required this.lastName});
 
   factory _$UpdateUserInfoRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdateUserInfoRequestImplFromJson(json);
@@ -133,12 +122,10 @@ class _$UpdateUserInfoRequestImpl implements _UpdateUserInfoRequest {
   final String name;
   @override
   final String lastName;
-  @override
-  final String phone;
 
   @override
   String toString() {
-    return 'UpdateUserInfoRequest(name: $name, lastName: $lastName, phone: $phone)';
+    return 'UpdateUserInfoRequest(name: $name, lastName: $lastName)';
   }
 
   @override
@@ -148,13 +135,12 @@ class _$UpdateUserInfoRequestImpl implements _UpdateUserInfoRequest {
             other is _$UpdateUserInfoRequestImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.phone, phone) || other.phone == phone));
+                other.lastName == lastName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, lastName, phone);
+  int get hashCode => Object.hash(runtimeType, name, lastName);
 
   @JsonKey(ignore: true)
   @override
@@ -174,8 +160,7 @@ class _$UpdateUserInfoRequestImpl implements _UpdateUserInfoRequest {
 abstract class _UpdateUserInfoRequest implements UpdateUserInfoRequest {
   const factory _UpdateUserInfoRequest(
       {required final String name,
-      required final String lastName,
-      required final String phone}) = _$UpdateUserInfoRequestImpl;
+      required final String lastName}) = _$UpdateUserInfoRequestImpl;
 
   factory _UpdateUserInfoRequest.fromJson(Map<String, dynamic> json) =
       _$UpdateUserInfoRequestImpl.fromJson;
@@ -184,8 +169,6 @@ abstract class _UpdateUserInfoRequest implements UpdateUserInfoRequest {
   String get name;
   @override
   String get lastName;
-  @override
-  String get phone;
   @override
   @JsonKey(ignore: true)
   _$$UpdateUserInfoRequestImplCopyWith<_$UpdateUserInfoRequestImpl>

@@ -19,6 +19,10 @@ class EndPoints {
   static const updatePartnerData = "/v1/partner";
   static const partnerStatus = "/v1/partner/toggle";
 
+  // Balance
+  static const payInfo = "/v1/partner/balance/pay-info";
+  static const withdrawInfo = "/v1/partner/balance/withdraw-info";
+
   // Order
   static const createOrder = "/v1/order";
   static String updateOrder(String id) => '/v1/order/$id';

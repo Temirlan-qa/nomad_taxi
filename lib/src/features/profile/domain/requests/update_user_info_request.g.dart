@@ -11,7 +11,6 @@ _$UpdateUserInfoRequestImpl _$$UpdateUserInfoRequestImplFromJson(
     _$UpdateUserInfoRequestImpl(
       name: json['name'] as String,
       lastName: json['lastName'] as String,
-      phone: json['phone'] as String,
     );
 
 Map<String, dynamic> _$$UpdateUserInfoRequestImplToJson(
@@ -19,5 +18,4 @@ Map<String, dynamic> _$$UpdateUserInfoRequestImplToJson(
     <String, dynamic>{
       'name': instance.name,
       'lastName': instance.lastName,
-      'phone': instance.phone,
     };

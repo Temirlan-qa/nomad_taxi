@@ -10,7 +10,6 @@ class UpdateUserInfoRequest extends BaseRequest with _$UpdateUserInfoRequest {
   const factory UpdateUserInfoRequest({
     required String name,
     required String lastName,
-    required String phone,
   }) = _UpdateUserInfoRequest;
 
   factory UpdateUserInfoRequest.fromJson(Map<String, dynamic> json) =>

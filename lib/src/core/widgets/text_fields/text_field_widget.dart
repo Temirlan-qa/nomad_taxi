@@ -15,13 +15,15 @@ class TextFieldWidget extends StatefulWidget {
       this.keyboardType,
       this.inputFormatters,
       this.textFieldValidationState = TextFieldValidationState.none,
-      this.onChanged});
+      this.onChanged,
+      this.isReadOnly});
   final TextEditingController controller;
   final String hintText;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final TextFieldValidationState textFieldValidationState;
   final ValueChanged? onChanged;
+  final bool? isReadOnly;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -58,6 +60,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             style: headLine.copyWith(color: context.theme.primary),
             keyboardType: widget.keyboardType,
             onChanged: widget.onChanged,
+            readOnly: widget.isReadOnly ?? false,
             onTapOutside: (event) {
               setState(() {
                 focusNode.unfocus();

@@ -1,6 +1,9 @@
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/settings/presentation/bloc/settings/settings_bloc.dart';
+import 'package:nomad_taxi/src/features/transfer_money/domain/usecases/pay_info_use_case.dart';
+import 'package:nomad_taxi/src/features/transfer_money/domain/usecases/withdraw_info_use_case.dart';
+import 'package:nomad_taxi/src/features/transfer_money/presentation/bloc/balance_bloc.dart';
 
 import '../../../features/auth/domain/usecases/login_use_case.dart';
 import '../../../features/auth/domain/usecases/verify_user_case.dart';
@@ -27,5 +30,12 @@ void manualRegisterServices() {
 
   getIt.registerBloc<SettingsBloc>(
     () => SettingsBloc(),
+  );
+
+  getIt.registerBloc<BalanceBloc>(
+    () => BalanceBloc(
+      getIt<PayInfoUseCase>(),
+      getIt<WithdrawInfoUseCase>(),
+    ),
   );
 }
