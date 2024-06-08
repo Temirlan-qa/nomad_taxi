@@ -58,13 +58,13 @@ class SettingsBloc extends BaseBloc<SettingsEvent, SettingsState> {
           return;
         } else {
           final result = await _getUserDataUseCase.call();
+
           if (result.isSuccessful) {
-            st.setLanguageCode(result.data!.languageCode!);
+            final String lanCode = result.data!.languageCode ?? 'ru';
+            st.setLanguageCode(lanCode);
 
             emit(
-              SettingsState.done(
-                languageCode: result.data!.languageCode!,
-              ),
+              SettingsState.done(languageCode: lanCode),
             );
             return;
           }

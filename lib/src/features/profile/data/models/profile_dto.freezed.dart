@@ -21,9 +21,9 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProfileDto {
   @JsonKey(name: 'first_name')
-  String get firstName => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
-  String get lastName => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'language_code')
@@ -48,8 +48,8 @@ abstract class $ProfileDtoCopyWith<$Res> {
       _$ProfileDtoCopyWithImpl<$Res, ProfileDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name') String firstName,
-      @JsonKey(name: 'last_name') String lastName,
+      {@JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'last_name') String? lastName,
       String phone,
       int id,
       @JsonKey(name: 'language_code') String? languageCode,
@@ -74,8 +74,8 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
     Object? phone = null,
     Object? id = null,
     Object? languageCode = freezed,
@@ -85,14 +85,14 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
     Object? partner = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: null == firstName
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
+              as String?,
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -146,8 +146,8 @@ abstract class _$$ProfileDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name') String firstName,
-      @JsonKey(name: 'last_name') String lastName,
+      {@JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'last_name') String? lastName,
       String phone,
       int id,
       @JsonKey(name: 'language_code') String? languageCode,
@@ -171,8 +171,8 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
     Object? phone = null,
     Object? id = null,
     Object? languageCode = freezed,
@@ -182,14 +182,14 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
     Object? partner = freezed,
   }) {
     return _then(_$ProfileDtoImpl(
-      firstName: null == firstName
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
+              as String?,
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -230,7 +230,7 @@ class _$ProfileDtoImpl implements _ProfileDto {
       @JsonKey(name: 'last_name') this.lastName = '',
       required this.phone,
       required this.id,
-      @JsonKey(name: 'language_code') this.languageCode,
+      @JsonKey(name: 'language_code') this.languageCode = '',
       @JsonKey(name: 'is_blocked') this.isBlocked,
       @JsonKey(name: 'fcm_token') this.fcmToken,
       this.bonus,
@@ -241,10 +241,10 @@ class _$ProfileDtoImpl implements _ProfileDto {
 
   @override
   @JsonKey(name: 'first_name')
-  final String firstName;
+  final String? firstName;
   @override
   @JsonKey(name: 'last_name')
-  final String lastName;
+  final String? lastName;
   @override
   final String phone;
   @override
@@ -310,8 +310,8 @@ class _$ProfileDtoImpl implements _ProfileDto {
 
 abstract class _ProfileDto implements ProfileDto {
   const factory _ProfileDto(
-      {@JsonKey(name: 'first_name') final String firstName,
-      @JsonKey(name: 'last_name') final String lastName,
+      {@JsonKey(name: 'first_name') final String? firstName,
+      @JsonKey(name: 'last_name') final String? lastName,
       required final String phone,
       required final int id,
       @JsonKey(name: 'language_code') final String? languageCode,
@@ -325,10 +325,10 @@ abstract class _ProfileDto implements ProfileDto {
 
   @override
   @JsonKey(name: 'first_name')
-  String get firstName;
+  String? get firstName;
   @override
   @JsonKey(name: 'last_name')
-  String get lastName;
+  String? get lastName;
   @override
   String get phone;
   @override

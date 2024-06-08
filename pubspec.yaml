@@ -1,5 +1,4 @@
 name: nomad_taxi
-#TODO(tima): write description
 description: "Nomad Taxi"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -68,10 +67,10 @@ dependencies:
   dart_ping: ^9.0.1
   # Map
   geolocator: ^12.0.0
-  maplibre_gl_workspace:
-      git:
-        url: https://github.com/maplibre/flutter-maplibre-gl.git
-        ref: main
+  # maplibre_gl_workspace:
+  #     git:
+  #       url: https://github.com/maplibre/flutter-maplibre-gl.git
+  #       ref: main
 
   # * Development Utilities
   # Logging
