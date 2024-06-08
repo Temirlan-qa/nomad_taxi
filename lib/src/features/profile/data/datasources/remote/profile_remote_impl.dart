@@ -16,9 +16,6 @@ import 'i_profile_remote.dart';
 @named
 @LazySingleton(as: IProfileRemote)
 class ProfileRemoteImpl implements IProfileRemote {
-  //ProfileRemoteImpl(this.client);
-
-  // final DioRestClient client;
   var client = Dio();
   var st = StorageServiceImpl();
 
@@ -46,6 +43,7 @@ class ProfileRemoteImpl implements IProfileRemote {
       );
 
       if (response.statusCode == 200) {
+        await st.deleteToken();
         return Right(response.data['status']);
       } else {
         return Left(UnknownException());

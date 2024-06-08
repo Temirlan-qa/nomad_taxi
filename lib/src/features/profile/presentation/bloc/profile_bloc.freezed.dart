@@ -21,8 +21,7 @@ mixin _$ProfileEvent {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
-    required TResult Function(String name, String lastName, String phone)
-        updateUserInfo,
+    required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
   }) =>
@@ -32,8 +31,7 @@ mixin _$ProfileEvent {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
-    TResult? Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
   }) =>
@@ -43,8 +41,7 @@ mixin _$ProfileEvent {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
-    TResult Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     required TResult orElse(),
@@ -141,8 +138,7 @@ class _$InitImpl implements _Init {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
-    required TResult Function(String name, String lastName, String phone)
-        updateUserInfo,
+    required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
   }) {
@@ -155,8 +151,7 @@ class _$InitImpl implements _Init {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
-    TResult? Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
   }) {
@@ -169,8 +164,7 @@ class _$InitImpl implements _Init {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
-    TResult Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     required TResult orElse(),
@@ -270,8 +264,7 @@ class _$LogOutImpl implements _LogOut {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
-    required TResult Function(String name, String lastName, String phone)
-        updateUserInfo,
+    required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
   }) {
@@ -284,8 +277,7 @@ class _$LogOutImpl implements _LogOut {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
-    TResult? Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
   }) {
@@ -298,8 +290,7 @@ class _$LogOutImpl implements _LogOut {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
-    TResult Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     required TResult orElse(),
@@ -399,8 +390,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
-    required TResult Function(String name, String lastName, String phone)
-        updateUserInfo,
+    required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
   }) {
@@ -413,8 +403,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
-    TResult? Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
   }) {
@@ -427,8 +416,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
-    TResult Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     required TResult orElse(),
@@ -493,7 +481,7 @@ abstract class _$$UpdateUserInfoImplCopyWith<$Res> {
           $Res Function(_$UpdateUserInfoImpl) then) =
       __$$UpdateUserInfoImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name, String lastName, String phone});
+  $Res call({String name, String lastName});
 }
 
 /// @nodoc
@@ -509,7 +497,6 @@ class __$$UpdateUserInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? lastName = null,
-    Object? phone = null,
   }) {
     return _then(_$UpdateUserInfoImpl(
       name: null == name
@@ -520,10 +507,6 @@ class __$$UpdateUserInfoImplCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -531,19 +514,16 @@ class __$$UpdateUserInfoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateUserInfoImpl implements _UpdateUserInfo {
-  const _$UpdateUserInfoImpl(
-      {required this.name, required this.lastName, required this.phone});
+  const _$UpdateUserInfoImpl({required this.name, required this.lastName});
 
   @override
   final String name;
   @override
   final String lastName;
-  @override
-  final String phone;
 
   @override
   String toString() {
-    return 'ProfileEvent.updateUserInfo(name: $name, lastName: $lastName, phone: $phone)';
+    return 'ProfileEvent.updateUserInfo(name: $name, lastName: $lastName)';
   }
 
   @override
@@ -553,12 +533,11 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
             other is _$UpdateUserInfoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.phone, phone) || other.phone == phone));
+                other.lastName == lastName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, lastName, phone);
+  int get hashCode => Object.hash(runtimeType, name, lastName);
 
   @JsonKey(ignore: true)
   @override
@@ -573,12 +552,11 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
-    required TResult Function(String name, String lastName, String phone)
-        updateUserInfo,
+    required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
   }) {
-    return updateUserInfo(name, lastName, phone);
+    return updateUserInfo(name, lastName);
   }
 
   @override
@@ -587,12 +565,11 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
-    TResult? Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
   }) {
-    return updateUserInfo?.call(name, lastName, phone);
+    return updateUserInfo?.call(name, lastName);
   }
 
   @override
@@ -601,14 +578,13 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
-    TResult Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     required TResult orElse(),
   }) {
     if (updateUserInfo != null) {
-      return updateUserInfo(name, lastName, phone);
+      return updateUserInfo(name, lastName);
     }
     return orElse();
   }
@@ -660,12 +636,10 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
 abstract class _UpdateUserInfo implements ProfileEvent {
   const factory _UpdateUserInfo(
       {required final String name,
-      required final String lastName,
-      required final String phone}) = _$UpdateUserInfoImpl;
+      required final String lastName}) = _$UpdateUserInfoImpl;
 
   String get name;
   String get lastName;
-  String get phone;
   @JsonKey(ignore: true)
   _$$UpdateUserInfoImplCopyWith<_$UpdateUserInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -750,8 +724,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
-    required TResult Function(String name, String lastName, String phone)
-        updateUserInfo,
+    required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
   }) {
@@ -764,8 +737,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
-    TResult? Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
   }) {
@@ -778,8 +750,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
-    TResult Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     required TResult orElse(),
@@ -923,8 +894,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
-    required TResult Function(String name, String lastName, String phone)
-        updateUserInfo,
+    required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
   }) {
@@ -937,8 +907,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
-    TResult? Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
   }) {
@@ -951,8 +920,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
-    TResult Function(String name, String lastName, String phone)?
-        updateUserInfo,
+    TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     required TResult orElse(),

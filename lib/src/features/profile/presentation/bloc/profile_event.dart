@@ -8,7 +8,6 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.updateUserInfo({
     required String name,
     required String lastName,
-    required String phone,
   }) = _UpdateUserInfo;
 
   const factory ProfileEvent.updateFcmToken({

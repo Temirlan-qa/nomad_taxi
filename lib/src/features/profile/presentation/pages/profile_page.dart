@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
@@ -15,7 +16,6 @@ import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/text_fields/text_field_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
-import '../../../../core/router/router.dart';
 import '../widgets/show_modal_widget.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -82,8 +82,13 @@ class _ProfilePageState extends State<ProfilePage> {
               initial: () =>
                   const Center(child: CircularProgressIndicator.adaptive()),
               loaded: (viewModel) {
-                nameController.text = viewModel.firstName;
-                surnameController.text = viewModel.lastName;
+                if (nameController.text == '') {
+                  nameController.text = viewModel.firstName;
+                }
+                if (surnameController.text == '') {
+                  surnameController.text = viewModel.lastName;
+                }
+
                 phoneController.text = viewModel.phone;
                 return ListView(
                   padding: const EdgeInsets.all(UIConstants.defaultPadding),
@@ -149,9 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         TextFieldWidget(
                           controller: phoneController,
                           hintText: S.current.phone_number,
-                          onChanged: (value) => setState(() {
-                            isValChanged = true;
-                          }),
+                          isReadOnly: true,
                         ),
                       ],
                     )
@@ -175,6 +178,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: () {
                           setState(() {
                             isValChanged = false;
+                            bloc.add(
+                              ProfileEvent.updateUserInfo(
+                                name: nameController.text,
+                                lastName: surnameController.text,
+                              ),
+                            );
                           });
                         },
                       ),
@@ -205,7 +214,6 @@ class _ProfilePageState extends State<ProfilePage> {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        //final ProfileBloc bloc = context.read<ProfileBloc>();
         return ShowModalWidget(
           text: S.current.delete_account,
           desc: S.current.delete_account_desc,
@@ -227,7 +235,6 @@ class _ProfilePageState extends State<ProfilePage> {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        //final ProfileBloc bloc = context.read<ProfileBloc>();
         return ShowModalWidget(
           text: S.current.you_want_exit,
           desc: S.current.you_want_exit_desc,
