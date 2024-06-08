@@ -60,6 +60,7 @@ class StorageServiceImpl implements StorageService {
   @override
   Future<void> init() async {
     await Hive.initFlutter();
+
     hiveBox = await Hive.openBox('isLoggedIn');
   }
 

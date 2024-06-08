@@ -30,6 +30,8 @@ mixin _$ProfileDto {
   String? get languageCode => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_blocked')
   int? get isBlocked => throw _privateConstructorUsedError;
+  @JsonKey(name: 'fcm_token')
+  String? get fcmToken => throw _privateConstructorUsedError;
   int? get bonus => throw _privateConstructorUsedError;
   PartnerDto? get partner => throw _privateConstructorUsedError;
 
@@ -52,6 +54,7 @@ abstract class $ProfileDtoCopyWith<$Res> {
       int id,
       @JsonKey(name: 'language_code') String? languageCode,
       @JsonKey(name: 'is_blocked') int? isBlocked,
+      @JsonKey(name: 'fcm_token') String? fcmToken,
       int? bonus,
       PartnerDto? partner});
 
@@ -77,6 +80,7 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
     Object? id = null,
     Object? languageCode = freezed,
     Object? isBlocked = freezed,
+    Object? fcmToken = freezed,
     Object? bonus = freezed,
     Object? partner = freezed,
   }) {
@@ -105,6 +109,10 @@ class _$ProfileDtoCopyWithImpl<$Res, $Val extends ProfileDto>
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
               as int?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
       bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
@@ -144,6 +152,7 @@ abstract class _$$ProfileDtoImplCopyWith<$Res>
       int id,
       @JsonKey(name: 'language_code') String? languageCode,
       @JsonKey(name: 'is_blocked') int? isBlocked,
+      @JsonKey(name: 'fcm_token') String? fcmToken,
       int? bonus,
       PartnerDto? partner});
 
@@ -168,6 +177,7 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? languageCode = freezed,
     Object? isBlocked = freezed,
+    Object? fcmToken = freezed,
     Object? bonus = freezed,
     Object? partner = freezed,
   }) {
@@ -196,6 +206,10 @@ class __$$ProfileDtoImplCopyWithImpl<$Res>
           ? _value.isBlocked
           : isBlocked // ignore: cast_nullable_to_non_nullable
               as int?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
       bonus: freezed == bonus
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
@@ -218,6 +232,7 @@ class _$ProfileDtoImpl implements _ProfileDto {
       required this.id,
       @JsonKey(name: 'language_code') this.languageCode,
       @JsonKey(name: 'is_blocked') this.isBlocked,
+      @JsonKey(name: 'fcm_token') this.fcmToken,
       this.bonus,
       this.partner});
 
@@ -241,13 +256,16 @@ class _$ProfileDtoImpl implements _ProfileDto {
   @JsonKey(name: 'is_blocked')
   final int? isBlocked;
   @override
+  @JsonKey(name: 'fcm_token')
+  final String? fcmToken;
+  @override
   final int? bonus;
   @override
   final PartnerDto? partner;
 
   @override
   String toString() {
-    return 'ProfileDto(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, languageCode: $languageCode, isBlocked: $isBlocked, bonus: $bonus, partner: $partner)';
+    return 'ProfileDto(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, languageCode: $languageCode, isBlocked: $isBlocked, fcmToken: $fcmToken, bonus: $bonus, partner: $partner)';
   }
 
   @override
@@ -265,6 +283,8 @@ class _$ProfileDtoImpl implements _ProfileDto {
                 other.languageCode == languageCode) &&
             (identical(other.isBlocked, isBlocked) ||
                 other.isBlocked == isBlocked) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
             (identical(other.bonus, bonus) || other.bonus == bonus) &&
             (identical(other.partner, partner) || other.partner == partner));
   }
@@ -272,7 +292,7 @@ class _$ProfileDtoImpl implements _ProfileDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, phone, id,
-      languageCode, isBlocked, bonus, partner);
+      languageCode, isBlocked, fcmToken, bonus, partner);
 
   @JsonKey(ignore: true)
   @override
@@ -296,6 +316,7 @@ abstract class _ProfileDto implements ProfileDto {
       required final int id,
       @JsonKey(name: 'language_code') final String? languageCode,
       @JsonKey(name: 'is_blocked') final int? isBlocked,
+      @JsonKey(name: 'fcm_token') final String? fcmToken,
       final int? bonus,
       final PartnerDto? partner}) = _$ProfileDtoImpl;
 
@@ -318,6 +339,9 @@ abstract class _ProfileDto implements ProfileDto {
   @override
   @JsonKey(name: 'is_blocked')
   int? get isBlocked;
+  @override
+  @JsonKey(name: 'fcm_token')
+  String? get fcmToken;
   @override
   int? get bonus;
   @override

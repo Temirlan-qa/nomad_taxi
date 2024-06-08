@@ -28,6 +28,7 @@ mixin _$ProfileEntity {
   int? get isBlocked => throw _privateConstructorUsedError;
   int? get bonus => throw _privateConstructorUsedError;
   Partner? get partner => throw _privateConstructorUsedError;
+  String? get fcmToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $ProfileEntityCopyWith<$Res> {
       String? languageCode,
       int? isBlocked,
       int? bonus,
-      Partner? partner});
+      Partner? partner,
+      String? fcmToken});
 
   $PartnerCopyWith<$Res>? get partner;
 }
@@ -75,6 +77,7 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
     Object? isBlocked = freezed,
     Object? bonus = freezed,
     Object? partner = freezed,
+    Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -109,6 +112,10 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
               as Partner?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -141,7 +148,8 @@ abstract class _$$ProfileEntityImplCopyWith<$Res>
       String? languageCode,
       int? isBlocked,
       int? bonus,
-      Partner? partner});
+      Partner? partner,
+      String? fcmToken});
 
   @override
   $PartnerCopyWith<$Res>? get partner;
@@ -166,6 +174,7 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
     Object? isBlocked = freezed,
     Object? bonus = freezed,
     Object? partner = freezed,
+    Object? fcmToken = freezed,
   }) {
     return _then(_$ProfileEntityImpl(
       firstName: null == firstName
@@ -200,6 +209,10 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
           ? _value.partner
           : partner // ignore: cast_nullable_to_non_nullable
               as Partner?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -215,7 +228,8 @@ class _$ProfileEntityImpl implements _ProfileEntity {
       this.languageCode,
       this.isBlocked,
       this.bonus,
-      this.partner});
+      this.partner,
+      this.fcmToken});
 
   factory _$ProfileEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileEntityImplFromJson(json);
@@ -236,10 +250,12 @@ class _$ProfileEntityImpl implements _ProfileEntity {
   final int? bonus;
   @override
   final Partner? partner;
+  @override
+  final String? fcmToken;
 
   @override
   String toString() {
-    return 'ProfileEntity(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, languageCode: $languageCode, isBlocked: $isBlocked, bonus: $bonus, partner: $partner)';
+    return 'ProfileEntity(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, languageCode: $languageCode, isBlocked: $isBlocked, bonus: $bonus, partner: $partner, fcmToken: $fcmToken)';
   }
 
   @override
@@ -258,13 +274,15 @@ class _$ProfileEntityImpl implements _ProfileEntity {
             (identical(other.isBlocked, isBlocked) ||
                 other.isBlocked == isBlocked) &&
             (identical(other.bonus, bonus) || other.bonus == bonus) &&
-            (identical(other.partner, partner) || other.partner == partner));
+            (identical(other.partner, partner) || other.partner == partner) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, phone, id,
-      languageCode, isBlocked, bonus, partner);
+      languageCode, isBlocked, bonus, partner, fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -289,7 +307,8 @@ abstract class _ProfileEntity implements ProfileEntity {
       final String? languageCode,
       final int? isBlocked,
       final int? bonus,
-      final Partner? partner}) = _$ProfileEntityImpl;
+      final Partner? partner,
+      final String? fcmToken}) = _$ProfileEntityImpl;
 
   factory _ProfileEntity.fromJson(Map<String, dynamic> json) =
       _$ProfileEntityImpl.fromJson;
@@ -310,6 +329,8 @@ abstract class _ProfileEntity implements ProfileEntity {
   int? get bonus;
   @override
   Partner? get partner;
+  @override
+  String? get fcmToken;
   @override
   @JsonKey(ignore: true)
   _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith =>

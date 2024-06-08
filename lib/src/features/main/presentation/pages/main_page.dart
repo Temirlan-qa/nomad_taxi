@@ -103,7 +103,7 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           Center(
-            child: MaplibreMap(
+            child: MapLibreMap(
               styleString: ApiConstants.mapStyle,
               myLocationEnabled: true,
               initialCameraPosition: CameraPosition(
@@ -114,7 +114,6 @@ class _MainPageState extends State<MainPage> {
                     : const LatLng(43.238949, 76.889709),
               ),
               trackCameraPosition: true,
-              attributionButtonPosition: AttributionButtonPosition.BottomRight,
             ),
           ),
         ],

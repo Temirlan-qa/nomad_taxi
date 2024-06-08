@@ -68,7 +68,7 @@ dependencies:
   dart_ping: ^9.0.1
   # Map
   geolocator: ^12.0.0
-  maplibre_gl:
+  maplibre_gl_workspace:
       git:
         url: https://github.com/maplibre/flutter-maplibre-gl.git
         ref: main
@@ -129,6 +129,7 @@ dependencies:
   freezed: ^2.5.2
   custom_refresh_indicator: ^3.1.0
   json_annotation: ^4.9.0
+  maplibre_gl: ^0.20.0
 
 
   
@@ -149,7 +150,7 @@ dev_dependencies:
   # Generating Serialization of JSON
   json_serializable: ^6.8.0
   # Code Generation for Models and Union Types
-  freezed: ^2.5.2
+  freezed_annotation: ^2.4.1
   # Generating Asset Files
   flutter_gen_runner: ^5.5.0+1
   # Injecting Dependencies

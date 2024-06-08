@@ -245,6 +245,7 @@ class _ProfilePageState extends State<ProfilePage> {
           },
           accept: () async {
             bloc.add(const ProfileEvent.logOut());
+            st.clear();
             while (context.canPop()) {
               context.pop();
             }

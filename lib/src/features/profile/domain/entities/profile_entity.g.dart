@@ -18,6 +18,7 @@ _$ProfileEntityImpl _$$ProfileEntityImplFromJson(Map<String, dynamic> json) =>
       partner: json['partner'] == null
           ? null
           : Partner.fromJson(json['partner'] as Map<String, dynamic>),
+      fcmToken: json['fcmToken'] as String?,
     );
 
 Map<String, dynamic> _$$ProfileEntityImplToJson(_$ProfileEntityImpl instance) =>
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$ProfileEntityImplToJson(_$ProfileEntityImpl instance) =>
       'isBlocked': instance.isBlocked,
       'bonus': instance.bonus,
       'partner': instance.partner,
+      'fcmToken': instance.fcmToken,
     };

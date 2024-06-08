@@ -1,11 +1,16 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/profile_dto.dart';
+import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
+import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
+import '../../../domain/requests/update_partner_data_request.dart';
 import 'i_profile_remote.dart';
 
 @named
@@ -55,7 +60,6 @@ class ProfileRemoteImpl implements IProfileRemote {
       UpdateUserInfoRequest request) async {
     try {
       var headers = {
-        'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ${st.getToken()!}'
@@ -87,7 +91,6 @@ class ProfileRemoteImpl implements IProfileRemote {
   Future<Either<DomainException, ProfileDto>> getUserData() async {
     try {
       var headers = {
-        'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
@@ -100,8 +103,168 @@ class ProfileRemoteImpl implements IProfileRemote {
         ),
       );
 
+      log(response.toString());
+
       if (response.statusCode == 200) {
         return Right(ProfileDto.fromJson(response.data['data']));
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, ProfileDto>> updateFcmToken(
+      UpdateFcmTokenRequest request) {
+    // TODO: implement updateFcmToken
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<DomainException, ProfileDto>> updateLanguage(
+      UpdateLanguageRequest request) async {
+    try {
+      var headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/user/language',
+        options: Options(
+          method: 'PUT',
+          headers: headers,
+        ),
+        data: request.toJson(),
+      );
+
+      if (response.statusCode == 200) {
+        return Right(response.data['status']);
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, ProfileDto>> togglePartnerStatus() async {
+    try {
+      var headers = {
+        'Accept-Language': 'ru',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/partner/toggle',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        return Right(ProfileDto.fromJson(response.data['data']));
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, ProfileDto>> updatePartnerData(
+      UpdatePartnerDataRequest request) async {
+    try {
+      var headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/partner',
+        options: Options(
+          method: 'PUT',
+          headers: headers,
+        ),
+        data: request,
+      );
+
+      if (response.statusCode == 200) {
+        return Right(ProfileDto.fromJson(response.data['data']));
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, dynamic>> withdrawInfo() async {
+    try {
+      var headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/partner/balance/withdraw-info',
+        options: Options(
+          method: 'GET',
+          headers: headers,
+        ),
+      );
+
+      log(response.toString());
+
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, dynamic>> payInfo() async {
+    try {
+      var headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/partner/balance/pay-info',
+        options: Options(
+          method: 'GET',
+          headers: headers,
+        ),
+      );
+
+      log(response.toString());
+
+      if (response.statusCode == 200) {
+        return Right(response);
       } else {
         return Left(UnknownException());
       }
