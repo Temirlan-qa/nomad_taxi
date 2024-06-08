@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -15,12 +17,34 @@ import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/check_mark_indicator.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/show_order_modal_widget.dart';
 
-class DriverOrdersPage extends StatelessWidget {
+class DriverOrdersPage extends StatefulWidget {
   const DriverOrdersPage({super.key});
 
   @override
+  State<DriverOrdersPage> createState() => _DriverOrdersPageState();
+}
+
+class _DriverOrdersPageState extends State<DriverOrdersPage> {
+  Duration duration = const Duration();
+  Timer? timer;
+  final orderBloc = getIt<OrderBloc>();
+
+  @override
+  void initState() {
+    startTimer();
+    super.initState();
+  }
+
+  void startTimer() {
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (_) => _addTime(),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final orderBloc = getIt<OrderBloc>();
+    String time = _formattedTime(timeInSecond: duration.inSeconds);
     return Scaffold(
       appBar: CustomAppBar(
         leading: BackButtonWrapper(onPressed: () => context.pop()),
@@ -33,7 +57,7 @@ class DriverOrdersPage extends StatelessWidget {
           ),
           const Gap(UIConstants.defaultGap7),
           Text(
-            '${S.current.on_line} 18:00',
+            '${S.current.on_line} $time',
             style: context.theme.textStyles.titleTag
                 .copyWith(color: context.theme.secondary),
           ),
@@ -170,5 +194,25 @@ class DriverOrdersPage extends StatelessWidget {
         return const CustomInfoBonusModalWidget();
       },
     );
+  }
+
+  void _addTime() {
+    const addSeconds = 1;
+    setState(() {
+      final seconds = duration.inSeconds + addSeconds;
+      if (seconds < 0) {
+        timer?.cancel();
+      } else {
+        duration = Duration(seconds: seconds);
+      }
+    });
+  }
+
+  _formattedTime({required int timeInSecond}) {
+    int sec = timeInSecond % 60;
+    int min = (timeInSecond / 60).floor();
+    String minute = min.toString().length <= 1 ? "0$min" : "$min";
+    String second = sec.toString().length <= 1 ? "0$sec" : "$sec";
+    return "$minute : $second";
   }
 }
