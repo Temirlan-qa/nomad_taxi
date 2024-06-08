@@ -230,7 +230,7 @@ class _$ProfileDtoImpl implements _ProfileDto {
       @JsonKey(name: 'last_name') this.lastName = '',
       required this.phone,
       required this.id,
-      @JsonKey(name: 'language_code') this.languageCode = '',
+      @JsonKey(name: 'language_code') this.languageCode = 'ru',
       @JsonKey(name: 'is_blocked') this.isBlocked,
       @JsonKey(name: 'fcm_token') this.fcmToken,
       this.bonus,

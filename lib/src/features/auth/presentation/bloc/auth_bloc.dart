@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/exceptions/domain_exception.dart';
+import 'package:nomad_taxi/src/core/service/auth/models/resend_code_request.dart';
 import 'package:nomad_taxi/src/core/service/auth/models/verify_request.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/login_use_case.dart';
+import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_case.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/verify_user_case.dart';
 
 import '../../../../core/base/base_bloc/bloc/base_bloc.dart';
@@ -19,16 +21,22 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
   AuthBloc(
     this._loginUseCase,
     this._verifyUseCase,
+    this._resendCodeUseCase,
   ) : super(const _Initial());
 
   final LoginUseCase _loginUseCase;
   final VerifyUseCase _verifyUseCase;
+  final ResendCodeUseCase _resendCodeUseCase;
 
   final AuthStateViewModel _viewModel = const AuthStateViewModel();
 
   @override
   Future<void> onEventHandler(AuthEvent event, Emitter emit) async {
     await event.when(
+      reSendCode: (_) => _reSendCode(
+        event as _ReSendCode,
+        emit as Emitter<AuthState>,
+      ),
       login: (_) => _login(
         event as _Login,
         emit as Emitter<AuthState>,
@@ -38,6 +46,13 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
         emit as Emitter<AuthState>,
       ),
     );
+  }
+
+  Future<void> _reSendCode(_ReSendCode event, Emitter<AuthState> emit) async {
+    final requestModel = ResendCodeRequest(
+      userId: event.userId,
+    );
+    await _resendCodeUseCase.call(requestModel);
   }
 
   Future<void> _login(_Login event, Emitter<AuthState> emit) async {
