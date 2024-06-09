@@ -19,18 +19,21 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) login,
+    required TResult Function(String userId) reSendCode,
     required TResult Function(String code, String userId) verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? login,
+    TResult? Function(String userId)? reSendCode,
     TResult? Function(String code, String userId)? verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? login,
+    TResult Function(String userId)? reSendCode,
     TResult Function(String code, String userId)? verify,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_ReSendCode value) reSendCode,
     required TResult Function(_Verify value) verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
+    TResult? Function(_ReSendCode value)? reSendCode,
     TResult? Function(_Verify value)? verify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_ReSendCode value)? reSendCode,
     TResult Function(_Verify value)? verify,
     required TResult orElse(),
   }) =>
@@ -138,6 +144,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) login,
+    required TResult Function(String userId) reSendCode,
     required TResult Function(String code, String userId) verify,
   }) {
     return login(phone);
@@ -147,6 +154,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? login,
+    TResult? Function(String userId)? reSendCode,
     TResult? Function(String code, String userId)? verify,
   }) {
     return login?.call(phone);
@@ -156,6 +164,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? login,
+    TResult Function(String userId)? reSendCode,
     TResult Function(String code, String userId)? verify,
     required TResult orElse(),
   }) {
@@ -169,6 +178,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_ReSendCode value) reSendCode,
     required TResult Function(_Verify value) verify,
   }) {
     return login(this);
@@ -178,6 +188,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
+    TResult? Function(_ReSendCode value)? reSendCode,
     TResult? Function(_Verify value)? verify,
   }) {
     return login?.call(this);
@@ -187,6 +198,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_ReSendCode value)? reSendCode,
     TResult Function(_Verify value)? verify,
     required TResult orElse(),
   }) {
@@ -203,6 +215,145 @@ abstract class _Login implements AuthEvent {
   String get phone;
   @JsonKey(ignore: true)
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReSendCodeImplCopyWith<$Res> {
+  factory _$$ReSendCodeImplCopyWith(
+          _$ReSendCodeImpl value, $Res Function(_$ReSendCodeImpl) then) =
+      __$$ReSendCodeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId});
+}
+
+/// @nodoc
+class __$$ReSendCodeImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ReSendCodeImpl>
+    implements _$$ReSendCodeImplCopyWith<$Res> {
+  __$$ReSendCodeImplCopyWithImpl(
+      _$ReSendCodeImpl _value, $Res Function(_$ReSendCodeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$ReSendCodeImpl(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReSendCodeImpl implements _ReSendCode {
+  const _$ReSendCodeImpl({required this.userId});
+
+  @override
+  final String userId;
+
+  @override
+  String toString() {
+    return 'AuthEvent.reSendCode(userId: $userId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReSendCodeImpl &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReSendCodeImplCopyWith<_$ReSendCodeImpl> get copyWith =>
+      __$$ReSendCodeImplCopyWithImpl<_$ReSendCodeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phone) login,
+    required TResult Function(String userId) reSendCode,
+    required TResult Function(String code, String userId) verify,
+  }) {
+    return reSendCode(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phone)? login,
+    TResult? Function(String userId)? reSendCode,
+    TResult? Function(String code, String userId)? verify,
+  }) {
+    return reSendCode?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phone)? login,
+    TResult Function(String userId)? reSendCode,
+    TResult Function(String code, String userId)? verify,
+    required TResult orElse(),
+  }) {
+    if (reSendCode != null) {
+      return reSendCode(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_ReSendCode value) reSendCode,
+    required TResult Function(_Verify value) verify,
+  }) {
+    return reSendCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_ReSendCode value)? reSendCode,
+    TResult? Function(_Verify value)? verify,
+  }) {
+    return reSendCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_ReSendCode value)? reSendCode,
+    TResult Function(_Verify value)? verify,
+    required TResult orElse(),
+  }) {
+    if (reSendCode != null) {
+      return reSendCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReSendCode implements AuthEvent {
+  const factory _ReSendCode({required final String userId}) = _$ReSendCodeImpl;
+
+  String get userId;
+  @JsonKey(ignore: true)
+  _$$ReSendCodeImplCopyWith<_$ReSendCodeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -279,6 +430,7 @@ class _$VerifyImpl implements _Verify {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phone) login,
+    required TResult Function(String userId) reSendCode,
     required TResult Function(String code, String userId) verify,
   }) {
     return verify(code, userId);
@@ -288,6 +440,7 @@ class _$VerifyImpl implements _Verify {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phone)? login,
+    TResult? Function(String userId)? reSendCode,
     TResult? Function(String code, String userId)? verify,
   }) {
     return verify?.call(code, userId);
@@ -297,6 +450,7 @@ class _$VerifyImpl implements _Verify {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phone)? login,
+    TResult Function(String userId)? reSendCode,
     TResult Function(String code, String userId)? verify,
     required TResult orElse(),
   }) {
@@ -310,6 +464,7 @@ class _$VerifyImpl implements _Verify {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_ReSendCode value) reSendCode,
     required TResult Function(_Verify value) verify,
   }) {
     return verify(this);
@@ -319,6 +474,7 @@ class _$VerifyImpl implements _Verify {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
+    TResult? Function(_ReSendCode value)? reSendCode,
     TResult? Function(_Verify value)? verify,
   }) {
     return verify?.call(this);
@@ -328,6 +484,7 @@ class _$VerifyImpl implements _Verify {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_ReSendCode value)? reSendCode,
     TResult Function(_Verify value)? verify,
     required TResult orElse(),
   }) {
