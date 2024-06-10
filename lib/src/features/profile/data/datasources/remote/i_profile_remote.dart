@@ -33,9 +33,9 @@ abstract class IProfileRemote {
     UpdatePartnerDataRequest request,
   );
 
-  Future<Either<DomainException, dynamic>> withdrawInfo();
+  Future<Either<DomainException, String>> withdrawInfo();
 
-  Future<Either<DomainException, dynamic>> payInfo();
+  Future<Either<DomainException, String>> payInfo();
 
   Future<Either<DomainException, AvailableLanguagesResponseDto>>
       getAvailableLanguages();

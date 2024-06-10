@@ -12,7 +12,7 @@ _$ProfileDtoImpl _$$ProfileDtoImplFromJson(Map<String, dynamic> json) =>
       lastName: json['last_name'] as String? ?? '',
       phone: json['phone'] as String,
       id: (json['id'] as num).toInt(),
-      languageCode: json['language_code'] as String?,
+      languageCode: json['language_code'] as String? ?? 'ru',
       isBlocked: (json['is_blocked'] as num?)?.toInt(),
       fcmToken: json['fcm_token'] as String?,
       bonus: (json['bonus'] as num?)?.toInt(),

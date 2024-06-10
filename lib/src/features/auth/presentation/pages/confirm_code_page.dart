@@ -97,7 +97,13 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
             children: [
               CustomMainButtonWidget(
                 title: S.current.send_code_again,
-                onPressed: () {},
+                onPressed: () {
+                  authBloc.add(
+                    AuthEvent.reSendCode(
+                      userId: widget.userId,
+                    ),
+                  );
+                },
                 isMain: false,
               ),
               const Gap(UIConstants.defaultGap1),

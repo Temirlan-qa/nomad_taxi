@@ -44,7 +44,7 @@ class MainApp extends StatelessWidget {
             return _buildApp(
               flavor: flavor,
               router: router,
-              languageCode: languageCode,
+              languageCode: languageCode == "" ? "ru" : languageCode,
             );
           },
         );

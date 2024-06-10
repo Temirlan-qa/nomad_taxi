@@ -217,7 +217,7 @@ class ProfileRemoteImpl implements IProfileRemote {
   }
 
   @override
-  Future<Either<DomainException, dynamic>> withdrawInfo() async {
+  Future<Either<DomainException, String>> withdrawInfo() async {
     try {
       var headers = {
         'Accept': 'application/json',
@@ -235,7 +235,7 @@ class ProfileRemoteImpl implements IProfileRemote {
       log(response.toString());
 
       if (response.statusCode == 200) {
-        return Right(response);
+        return Right('${response.data}');
       } else {
         return Left(UnknownException());
       }
@@ -247,7 +247,7 @@ class ProfileRemoteImpl implements IProfileRemote {
   }
 
   @override
-  Future<Either<DomainException, dynamic>> payInfo() async {
+  Future<Either<DomainException, String>> payInfo() async {
     try {
       var headers = {
         'Accept': 'application/json',
@@ -262,10 +262,10 @@ class ProfileRemoteImpl implements IProfileRemote {
         ),
       );
 
-      log(response.toString());
-
+      log('Tima$response');
+      log("Status: ${response.statusCode}");
       if (response.statusCode == 200) {
-        return Right(response);
+        return Right('${response.data}');
       } else {
         return Left(UnknownException());
       }

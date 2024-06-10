@@ -12,6 +12,7 @@ import 'package:nomad_taxi/src/features/orders/data/models/response/order_respon
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
+import '../../../../../core/utils/loggers/logger.dart';
 import '../../../domain/entities/create_order/create_order_entity.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
 import 'i_orders_remote.dart';
@@ -19,9 +20,6 @@ import 'i_orders_remote.dart';
 @named
 @LazySingleton(as: IOrdersRemote)
 class OrdersRemoteImpl implements IOrdersRemote {
-  OrdersRemoteImpl(this.client);
-
-  // final DioRestClient client;
   var client = Dio();
   var st = StorageServiceImpl();
 
@@ -34,8 +32,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var dio = Dio();
-      var response = await dio.request(
+      var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
         options: Options(
           method: 'POST',
@@ -64,8 +61,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var dio = Dio();
-      var response = await dio.request(
+      var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order/$orderId/cancel',
         options: Options(
           method: 'POST',
@@ -94,8 +90,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var dio = Dio();
-      var response = await dio.request(
+      var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order/$orderId/complete',
         options: Options(
           method: 'POST',
@@ -122,8 +117,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var dio = Dio();
-      var response = await dio.request(
+      var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order',
         options: Options(
           method: 'GET',
@@ -131,7 +125,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         ),
       );
 
-      log(response.toString());
+      Log.i(response.toString());
 
       if (response.statusCode == 200) {
         return Right(GetOrdersResponseDto.fromJson(response.data));
@@ -154,8 +148,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var dio = Dio();
-      var response = await dio.request(
+      var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order/$orderId/start-route',
         options: Options(
           method: 'POST',
@@ -184,8 +177,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var dio = Dio();
-      var response = await dio.request(
+      var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order/$orderId/await',
         options: Options(
           method: 'POST',

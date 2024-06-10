@@ -67,7 +67,7 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverOrders,
         path: RoutePaths.driverOrders,
-        builder: (_, __) => const DriverOrdersPage(),
+        builder: (_, __) => DriverOrdersPage(),
       ),
       GoRoute(
         name: RouteNames.order,
