@@ -151,8 +151,9 @@ SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_native_splash: edf599c81f74d093a4daf8e17bd7a018854bc778
   geolocator_apple: 6cbaf322953988e009e5ecb481f07efece75c450
-  MapLibre: 620fc933c1d6029b33738c905c1490d024e5d4ef
-  maplibre_gl: a2efec727dd340e4c65e26d2b03b584f14881fd9
+  just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
+  MapLibre: 0ebfa9329d313cec8bf0a5ba5a336a1dc903785e
+  maplibre_gl: 943a491fffb3337c1b9de57fd377206d18c16e34
   package_info_plus: 58f0028419748fad15bf008b270aaa8e54380b1c
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
