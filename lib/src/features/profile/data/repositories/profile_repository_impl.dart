@@ -4,6 +4,7 @@ import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
 import 'package:nomad_taxi/src/features/profile/data/datasources/remote/i_profile_remote.dart';
 import 'package:nomad_taxi/src/features/profile/data/datasources/remote/profile_remote_impl.dart';
 import 'package:nomad_taxi/src/features/profile/data/mappers/profile_dto_mapper.dart';
+import 'package:nomad_taxi/src/features/profile/domain/entities/available_languages_response/available_languages_response.dart';
 import 'package:nomad_taxi/src/features/profile/domain/entities/profile_entity.dart';
 import 'package:nomad_taxi/src/features/profile/domain/repositories/i_profile_repository.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
@@ -171,6 +172,23 @@ class ProfileRepositoryImpl implements IProfileRepository {
         (error) => Left(error),
         (dto) {
           return Right(dto);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<DomainException, AvailableLanguagesResponse>>
+      getAvailableLanguages() async {
+    try {
+      final result = await _profileImpl.getAvailableLanguages();
+      return result.fold(
+        (error) => Left(error),
+        (dto) {
+          return Right(AvailableLanguagesResponse.fromJson(dto.toJson()));
         },
       );
     } catch (e) {

@@ -19,8 +19,14 @@ _$OrderEntityImpl _$$OrderEntityImplFromJson(Map<String, dynamic> json) =>
       payMethod:
           PayMethodEntity.fromJson(json['payMethod'] as Map<String, dynamic>),
       phone: json['phone'] as String,
+      partner: json['partner'] == null
+          ? null
+          : Partner.fromJson(json['partner'] as Map<String, dynamic>),
+      waitingTime: (json['waitingTime'] as num?)?.toInt(),
       townId: (json['townId'] as num).toInt(),
-      points: json['points'] as List<dynamic>,
+      points: (json['points'] as List<dynamic>)
+          .map((e) => PointEntity.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$OrderEntityImplToJson(_$OrderEntityImpl instance) =>
@@ -35,6 +41,8 @@ Map<String, dynamic> _$$OrderEntityImplToJson(_$OrderEntityImpl instance) =>
       'createdAt': instance.createdAt,
       'payMethod': instance.payMethod,
       'phone': instance.phone,
+      'partner': instance.partner,
+      'waitingTime': instance.waitingTime,
       'townId': instance.townId,
       'points': instance.points,
     };

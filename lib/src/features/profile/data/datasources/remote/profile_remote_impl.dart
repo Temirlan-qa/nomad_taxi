@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
+import 'package:nomad_taxi/src/features/profile/data/models/available_languages_response/available_languages_response_dto.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/profile_dto.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
@@ -265,6 +266,37 @@ class ProfileRemoteImpl implements IProfileRemote {
       log("Status: ${response.statusCode}");
       if (response.statusCode == 200) {
         return Right('${response.data}');
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, AvailableLanguagesResponseDto>>
+      getAvailableLanguages() async {
+    try {
+      var headers = {
+        'Accept': 'application/json',
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/language',
+        options: Options(
+          method: 'GET',
+          headers: headers,
+        ),
+      );
+
+      log(response.toString());
+
+      if (response.statusCode == 200) {
+        return Right(
+            AvailableLanguagesResponseDto.fromJson(response.data['data']));
       } else {
         return Left(UnknownException());
       }

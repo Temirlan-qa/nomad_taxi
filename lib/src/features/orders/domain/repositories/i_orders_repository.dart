@@ -1,8 +1,14 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/find_town_by_location_response/find_town_by_location_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/get_orders_response/get_orders_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/update_order_response.dart/update_order_response.dart';
 
 import '../../../../core/exceptions/domain_exception.dart';
+import '../entities/delete_order_response/delete_order_response.dart';
+import '../entities/update_order/update_order_entity.dart';
 
 abstract class IOrdersRepository {
   Future<Either<DomainException, GetOrdersResponse>> getOrders();
@@ -25,5 +31,28 @@ abstract class IOrdersRepository {
 
   Future<Either<DomainException, OrderResponse>> completeOrder(
     String orderId,
+  );
+
+  Future<Either<DomainException, CreateOrderResponse>> createOrder(
+    CreateOrderEntity request,
+  );
+
+  Future<Either<DomainException, CreateOrderResponse>> getOrder(
+    String orderId,
+  );
+
+  Future<Either<DomainException, UpdateOrderResponse>> updateOrder(
+    UpdateOrderEntity request,
+    String orderId,
+  );
+
+  Future<Either<DomainException, DeleteOrderResponse>> deleteOrder(
+    String orderId,
+  );
+
+  Future<Either<DomainException, FindTownByLocationResponse>>
+      findTownByLocation(
+    double latitude,
+    double longitude,
   );
 }
