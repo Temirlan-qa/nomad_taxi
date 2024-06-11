@@ -41,11 +41,11 @@ class AuthServiceImpl implements IAuthService {
 
     return response.fold(
       (error) => Left(error),
-      (response) async {
-        if (response.statusCode == 200) {
-          return Right(SignInResponse.fromJson(response.data));
+      (result) async {
+        if (result.statusCode == 200) {
+          return Right(SignInResponse.fromJson(result.data));
         } else {
-          return Left(UnknownException(message: response.statusMessage));
+          return Left(UnknownException(message: result.statusMessage));
         }
       },
     );
