@@ -19,44 +19,38 @@ mixin _$BalanceEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() payInfo,
-    required TResult Function() withdrawInfo,
+    required TResult Function() getInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? payInfo,
-    TResult? Function()? withdrawInfo,
+    TResult? Function()? getInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? payInfo,
-    TResult Function()? withdrawInfo,
+    TResult Function()? getInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
-    required TResult Function(_PayInfo value) payInfo,
-    required TResult Function(_WithdrawInfo value) withdrawInfo,
+    required TResult Function(_GetInfo value) getInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
-    TResult? Function(_PayInfo value)? payInfo,
-    TResult? Function(_WithdrawInfo value)? withdrawInfo,
+    TResult? Function(_GetInfo value)? getInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
-    TResult Function(_PayInfo value)? payInfo,
-    TResult Function(_WithdrawInfo value)? withdrawInfo,
+    TResult Function(_GetInfo value)? getInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,8 +112,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() payInfo,
-    required TResult Function() withdrawInfo,
+    required TResult Function() getInfo,
   }) {
     return init();
   }
@@ -128,8 +121,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? payInfo,
-    TResult? Function()? withdrawInfo,
+    TResult? Function()? getInfo,
   }) {
     return init?.call();
   }
@@ -138,8 +130,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? payInfo,
-    TResult Function()? withdrawInfo,
+    TResult Function()? getInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -152,8 +143,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
-    required TResult Function(_PayInfo value) payInfo,
-    required TResult Function(_WithdrawInfo value) withdrawInfo,
+    required TResult Function(_GetInfo value) getInfo,
   }) {
     return init(this);
   }
@@ -162,8 +152,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
-    TResult? Function(_PayInfo value)? payInfo,
-    TResult? Function(_WithdrawInfo value)? withdrawInfo,
+    TResult? Function(_GetInfo value)? getInfo,
   }) {
     return init?.call(this);
   }
@@ -172,8 +161,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
-    TResult Function(_PayInfo value)? payInfo,
-    TResult Function(_WithdrawInfo value)? withdrawInfo,
+    TResult Function(_GetInfo value)? getInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -188,35 +176,35 @@ abstract class _Init implements BalanceEvent {
 }
 
 /// @nodoc
-abstract class _$$PayInfoImplCopyWith<$Res> {
-  factory _$$PayInfoImplCopyWith(
-          _$PayInfoImpl value, $Res Function(_$PayInfoImpl) then) =
-      __$$PayInfoImplCopyWithImpl<$Res>;
+abstract class _$$GetInfoImplCopyWith<$Res> {
+  factory _$$GetInfoImplCopyWith(
+          _$GetInfoImpl value, $Res Function(_$GetInfoImpl) then) =
+      __$$GetInfoImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PayInfoImplCopyWithImpl<$Res>
-    extends _$BalanceEventCopyWithImpl<$Res, _$PayInfoImpl>
-    implements _$$PayInfoImplCopyWith<$Res> {
-  __$$PayInfoImplCopyWithImpl(
-      _$PayInfoImpl _value, $Res Function(_$PayInfoImpl) _then)
+class __$$GetInfoImplCopyWithImpl<$Res>
+    extends _$BalanceEventCopyWithImpl<$Res, _$GetInfoImpl>
+    implements _$$GetInfoImplCopyWith<$Res> {
+  __$$GetInfoImplCopyWithImpl(
+      _$GetInfoImpl _value, $Res Function(_$GetInfoImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PayInfoImpl implements _PayInfo {
-  const _$PayInfoImpl();
+class _$GetInfoImpl implements _GetInfo {
+  const _$GetInfoImpl();
 
   @override
   String toString() {
-    return 'BalanceEvent.payInfo()';
+    return 'BalanceEvent.getInfo()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PayInfoImpl);
+        (other.runtimeType == runtimeType && other is _$GetInfoImpl);
   }
 
   @override
@@ -226,32 +214,29 @@ class _$PayInfoImpl implements _PayInfo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() payInfo,
-    required TResult Function() withdrawInfo,
+    required TResult Function() getInfo,
   }) {
-    return payInfo();
+    return getInfo();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? payInfo,
-    TResult? Function()? withdrawInfo,
+    TResult? Function()? getInfo,
   }) {
-    return payInfo?.call();
+    return getInfo?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? payInfo,
-    TResult Function()? withdrawInfo,
+    TResult Function()? getInfo,
     required TResult orElse(),
   }) {
-    if (payInfo != null) {
-      return payInfo();
+    if (getInfo != null) {
+      return getInfo();
     }
     return orElse();
   }
@@ -260,147 +245,36 @@ class _$PayInfoImpl implements _PayInfo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
-    required TResult Function(_PayInfo value) payInfo,
-    required TResult Function(_WithdrawInfo value) withdrawInfo,
+    required TResult Function(_GetInfo value) getInfo,
   }) {
-    return payInfo(this);
+    return getInfo(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
-    TResult? Function(_PayInfo value)? payInfo,
-    TResult? Function(_WithdrawInfo value)? withdrawInfo,
+    TResult? Function(_GetInfo value)? getInfo,
   }) {
-    return payInfo?.call(this);
+    return getInfo?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
-    TResult Function(_PayInfo value)? payInfo,
-    TResult Function(_WithdrawInfo value)? withdrawInfo,
+    TResult Function(_GetInfo value)? getInfo,
     required TResult orElse(),
   }) {
-    if (payInfo != null) {
-      return payInfo(this);
+    if (getInfo != null) {
+      return getInfo(this);
     }
     return orElse();
   }
 }
 
-abstract class _PayInfo implements BalanceEvent {
-  const factory _PayInfo() = _$PayInfoImpl;
-}
-
-/// @nodoc
-abstract class _$$WithdrawInfoImplCopyWith<$Res> {
-  factory _$$WithdrawInfoImplCopyWith(
-          _$WithdrawInfoImpl value, $Res Function(_$WithdrawInfoImpl) then) =
-      __$$WithdrawInfoImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$WithdrawInfoImplCopyWithImpl<$Res>
-    extends _$BalanceEventCopyWithImpl<$Res, _$WithdrawInfoImpl>
-    implements _$$WithdrawInfoImplCopyWith<$Res> {
-  __$$WithdrawInfoImplCopyWithImpl(
-      _$WithdrawInfoImpl _value, $Res Function(_$WithdrawInfoImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$WithdrawInfoImpl implements _WithdrawInfo {
-  const _$WithdrawInfoImpl();
-
-  @override
-  String toString() {
-    return 'BalanceEvent.withdrawInfo()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WithdrawInfoImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function() payInfo,
-    required TResult Function() withdrawInfo,
-  }) {
-    return withdrawInfo();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function()? payInfo,
-    TResult? Function()? withdrawInfo,
-  }) {
-    return withdrawInfo?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? payInfo,
-    TResult Function()? withdrawInfo,
-    required TResult orElse(),
-  }) {
-    if (withdrawInfo != null) {
-      return withdrawInfo();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Init value) init,
-    required TResult Function(_PayInfo value) payInfo,
-    required TResult Function(_WithdrawInfo value) withdrawInfo,
-  }) {
-    return withdrawInfo(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Init value)? init,
-    TResult? Function(_PayInfo value)? payInfo,
-    TResult? Function(_WithdrawInfo value)? withdrawInfo,
-  }) {
-    return withdrawInfo?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Init value)? init,
-    TResult Function(_PayInfo value)? payInfo,
-    TResult Function(_WithdrawInfo value)? withdrawInfo,
-    required TResult orElse(),
-  }) {
-    if (withdrawInfo != null) {
-      return withdrawInfo(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WithdrawInfo implements BalanceEvent {
-  const factory _WithdrawInfo() = _$WithdrawInfoImpl;
+abstract class _GetInfo implements BalanceEvent {
+  const factory _GetInfo() = _$GetInfoImpl;
 }
 
 /// @nodoc
@@ -956,7 +830,7 @@ class __$$BalanceViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BalanceViewModelImpl implements _BalanceViewModel {
-  const _$BalanceViewModelImpl({this.payInfo = '', this.withdrawInfo = ''});
+  _$BalanceViewModelImpl({this.payInfo = '', this.withdrawInfo = ''});
 
   @override
   @JsonKey()
@@ -992,9 +866,8 @@ class _$BalanceViewModelImpl implements _BalanceViewModel {
 }
 
 abstract class _BalanceViewModel implements BalanceViewModel {
-  const factory _BalanceViewModel(
-      {final String payInfo,
-      final String withdrawInfo}) = _$BalanceViewModelImpl;
+  factory _BalanceViewModel({final String payInfo, final String withdrawInfo}) =
+      _$BalanceViewModelImpl;
 
   @override
   String get payInfo;
