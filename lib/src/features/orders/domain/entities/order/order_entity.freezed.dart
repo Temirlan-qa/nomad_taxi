@@ -30,8 +30,10 @@ mixin _$OrderEntity {
   String get createdAt => throw _privateConstructorUsedError;
   PayMethodEntity get payMethod => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  Partner? get partner => throw _privateConstructorUsedError;
+  int? get waitingTime => throw _privateConstructorUsedError;
   int get townId => throw _privateConstructorUsedError;
-  List<dynamic> get points => throw _privateConstructorUsedError;
+  List<PointEntity> get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,10 +58,13 @@ abstract class $OrderEntityCopyWith<$Res> {
       String createdAt,
       PayMethodEntity payMethod,
       String phone,
+      Partner? partner,
+      int? waitingTime,
       int townId,
-      List<dynamic> points});
+      List<PointEntity> points});
 
   $PayMethodEntityCopyWith<$Res> get payMethod;
+  $PartnerCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -85,6 +90,8 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
     Object? createdAt = null,
     Object? payMethod = null,
     Object? phone = null,
+    Object? partner = freezed,
+    Object? waitingTime = freezed,
     Object? townId = null,
     Object? points = null,
   }) {
@@ -129,6 +136,14 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      partner: freezed == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as Partner?,
+      waitingTime: freezed == waitingTime
+          ? _value.waitingTime
+          : waitingTime // ignore: cast_nullable_to_non_nullable
+              as int?,
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
@@ -136,7 +151,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<PointEntity>,
     ) as $Val);
   }
 
@@ -145,6 +160,18 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
   $PayMethodEntityCopyWith<$Res> get payMethod {
     return $PayMethodEntityCopyWith<$Res>(_value.payMethod, (value) {
       return _then(_value.copyWith(payMethod: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartnerCopyWith<$Res>? get partner {
+    if (_value.partner == null) {
+      return null;
+    }
+
+    return $PartnerCopyWith<$Res>(_value.partner!, (value) {
+      return _then(_value.copyWith(partner: value) as $Val);
     });
   }
 }
@@ -168,11 +195,15 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
       String createdAt,
       PayMethodEntity payMethod,
       String phone,
+      Partner? partner,
+      int? waitingTime,
       int townId,
-      List<dynamic> points});
+      List<PointEntity> points});
 
   @override
   $PayMethodEntityCopyWith<$Res> get payMethod;
+  @override
+  $PartnerCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -196,6 +227,8 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? payMethod = null,
     Object? phone = null,
+    Object? partner = freezed,
+    Object? waitingTime = freezed,
     Object? townId = null,
     Object? points = null,
   }) {
@@ -240,6 +273,14 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      partner: freezed == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as Partner?,
+      waitingTime: freezed == waitingTime
+          ? _value.waitingTime
+          : waitingTime // ignore: cast_nullable_to_non_nullable
+              as int?,
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
@@ -247,7 +288,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
       points: null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<PointEntity>,
     ));
   }
 }
@@ -266,8 +307,10 @@ class _$OrderEntityImpl implements _OrderEntity {
       required this.createdAt,
       required this.payMethod,
       required this.phone,
+      this.partner,
+      this.waitingTime,
       required this.townId,
-      required final List<dynamic> points})
+      required final List<PointEntity> points})
       : _points = points;
 
   factory _$OrderEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -294,10 +337,14 @@ class _$OrderEntityImpl implements _OrderEntity {
   @override
   final String phone;
   @override
-  final int townId;
-  final List<dynamic> _points;
+  final Partner? partner;
   @override
-  List<dynamic> get points {
+  final int? waitingTime;
+  @override
+  final int townId;
+  final List<PointEntity> _points;
+  @override
+  List<PointEntity> get points {
     if (_points is EqualUnmodifiableListView) return _points;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_points);
@@ -305,7 +352,7 @@ class _$OrderEntityImpl implements _OrderEntity {
 
   @override
   String toString() {
-    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, createdAt: $createdAt, payMethod: $payMethod, phone: $phone, townId: $townId, points: $points)';
+    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, createdAt: $createdAt, payMethod: $payMethod, phone: $phone, partner: $partner, waitingTime: $waitingTime, townId: $townId, points: $points)';
   }
 
   @override
@@ -328,6 +375,9 @@ class _$OrderEntityImpl implements _OrderEntity {
             (identical(other.payMethod, payMethod) ||
                 other.payMethod == payMethod) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.partner, partner) || other.partner == partner) &&
+            (identical(other.waitingTime, waitingTime) ||
+                other.waitingTime == waitingTime) &&
             (identical(other.townId, townId) || other.townId == townId) &&
             const DeepCollectionEquality().equals(other._points, _points));
   }
@@ -346,6 +396,8 @@ class _$OrderEntityImpl implements _OrderEntity {
       createdAt,
       payMethod,
       phone,
+      partner,
+      waitingTime,
       townId,
       const DeepCollectionEquality().hash(_points));
 
@@ -375,8 +427,10 @@ abstract class _OrderEntity implements OrderEntity {
       required final String createdAt,
       required final PayMethodEntity payMethod,
       required final String phone,
+      final Partner? partner,
+      final int? waitingTime,
       required final int townId,
-      required final List<dynamic> points}) = _$OrderEntityImpl;
+      required final List<PointEntity> points}) = _$OrderEntityImpl;
 
   factory _OrderEntity.fromJson(Map<String, dynamic> json) =
       _$OrderEntityImpl.fromJson;
@@ -402,9 +456,13 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   String get phone;
   @override
+  Partner? get partner;
+  @override
+  int? get waitingTime;
+  @override
   int get townId;
   @override
-  List<dynamic> get points;
+  List<PointEntity> get points;
   @override
   @JsonKey(ignore: true)
   _$$OrderEntityImplCopyWith<_$OrderEntityImpl> get copyWith =>
