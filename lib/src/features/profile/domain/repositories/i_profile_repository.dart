@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:nomad_taxi/src/features/profile/domain/entities/available_languages_response/available_languages_response.dart';
 import 'package:nomad_taxi/src/features/profile/domain/entities/profile_entity.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
@@ -35,4 +36,7 @@ abstract class IProfileRepository {
   Future<Either<DomainException, dynamic>> withdrawInfo();
 
   Future<Either<DomainException, dynamic>> payInfo();
+
+  Future<Either<DomainException, AvailableLanguagesResponse>>
+      getAvailableLanguages();
 }
