@@ -38,7 +38,7 @@ dependencies:
   flutter_native_splash: ^2.4.0
   # Multiple Search Selection
   search_choices: ^2.2.7
-  flutter_widget_from_html: ^0.15.0
+  flutter_super_html_viewer: ^0.1.0
 
   file: ^7.0.0
 
