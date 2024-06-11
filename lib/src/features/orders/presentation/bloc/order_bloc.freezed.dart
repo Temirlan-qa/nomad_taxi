@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() getOrders,
     required TResult Function(String orderId) acceptOrder,
     required TResult Function(String orderId) cancelOrder,
@@ -25,6 +26,7 @@ mixin _$OrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
     TResult? Function()? getOrders,
     TResult? Function(String orderId)? acceptOrder,
     TResult? Function(String orderId)? cancelOrder,
@@ -32,6 +34,7 @@ mixin _$OrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? getOrders,
     TResult Function(String orderId)? acceptOrder,
     TResult Function(String orderId)? cancelOrder,
@@ -40,6 +43,7 @@ mixin _$OrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
@@ -47,6 +51,7 @@ mixin _$OrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
@@ -54,6 +59,7 @@ mixin _$OrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
@@ -78,6 +84,120 @@ class _$OrderEventCopyWithImpl<$Res, $Val extends OrderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
+
+  @override
+  String toString() {
+    return 'OrderEvent.started()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOrders,
+    required TResult Function(String orderId) acceptOrder,
+    required TResult Function(String orderId) cancelOrder,
+  }) {
+    return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOrders,
+    TResult? Function(String orderId)? acceptOrder,
+    TResult? Function(String orderId)? cancelOrder,
+  }) {
+    return started?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOrders,
+    TResult Function(String orderId)? acceptOrder,
+    TResult Function(String orderId)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+  }) {
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+  }) {
+    return started?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Started implements OrderEvent {
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -118,6 +238,7 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() getOrders,
     required TResult Function(String orderId) acceptOrder,
     required TResult Function(String orderId) cancelOrder,
@@ -128,6 +249,7 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
     TResult? Function()? getOrders,
     TResult? Function(String orderId)? acceptOrder,
     TResult? Function(String orderId)? cancelOrder,
@@ -138,6 +260,7 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? getOrders,
     TResult Function(String orderId)? acceptOrder,
     TResult Function(String orderId)? cancelOrder,
@@ -152,6 +275,7 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
@@ -162,6 +286,7 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
@@ -172,6 +297,7 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
@@ -252,6 +378,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() getOrders,
     required TResult Function(String orderId) acceptOrder,
     required TResult Function(String orderId) cancelOrder,
@@ -262,6 +389,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
     TResult? Function()? getOrders,
     TResult? Function(String orderId)? acceptOrder,
     TResult? Function(String orderId)? cancelOrder,
@@ -272,6 +400,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? getOrders,
     TResult Function(String orderId)? acceptOrder,
     TResult Function(String orderId)? cancelOrder,
@@ -286,6 +415,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
@@ -296,6 +426,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
@@ -306,6 +437,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
@@ -392,6 +524,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() started,
     required TResult Function() getOrders,
     required TResult Function(String orderId) acceptOrder,
     required TResult Function(String orderId) cancelOrder,
@@ -402,6 +535,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
     TResult? Function()? getOrders,
     TResult? Function(String orderId)? acceptOrder,
     TResult? Function(String orderId)? cancelOrder,
@@ -412,6 +546,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
     TResult Function()? getOrders,
     TResult Function(String orderId)? acceptOrder,
     TResult Function(String orderId)? cancelOrder,
@@ -426,6 +561,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
@@ -436,6 +572,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
@@ -446,6 +583,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,

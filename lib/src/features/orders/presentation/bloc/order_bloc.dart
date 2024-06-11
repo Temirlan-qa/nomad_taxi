@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
@@ -18,13 +21,20 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
   final OrderViewModel _viewModel = const OrderViewModel();
 
+  StreamSubscription? _orderStatusSubscription;
+
   @override
   Future<void> onEventHandler(OrderEvent event, Emitter emit) async {
     await event.when(
+      started: () => _started(),
       getOrders: () => _getOrders(event as _GetOrders, emit),
       acceptOrder: (_) => _acceptOrder(event as _AcceptOrder, emit),
       cancelOrder: (_) => _cancelOrder(event as _CancelOrder, emit),
     );
+  }
+
+  Future<void> _started() async {
+    add(const _GetOrders());
   }
 
   Future<void> _getOrders(
@@ -62,6 +72,8 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
   @override
   Future<void> close() {
+    _orderStatusSubscription?.cancel();
+    _orderStatusSubscription == null;
     getIt.resetBloc(this);
     return super.close();
   }

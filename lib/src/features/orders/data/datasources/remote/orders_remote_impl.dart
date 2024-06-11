@@ -8,12 +8,12 @@ import 'package:nomad_taxi/src/features/orders/data/models/create_order_response
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/get_orders_response/get_orders_response_dto.dart';
-import 'package:nomad_taxi/src/features/orders/data/models/response/order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
 import '../../../../../core/utils/loggers/logger.dart';
 import '../../../domain/entities/create_order/create_order_entity.dart';
+import '../../models/order/order_dto.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
 import 'i_orders_remote.dart';
 
@@ -24,8 +24,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   var st = StorageServiceImpl();
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> acceptOrder(
-      String orderId) async {
+  Future<Either<DomainException, OrderDto>> acceptOrder(String orderId) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -41,7 +40,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -53,8 +52,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> cancelOrder(
-      String orderId) async {
+  Future<Either<DomainException, OrderDto>> cancelOrder(String orderId) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -70,7 +68,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -82,7 +80,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> completeOrder(
+  Future<Either<DomainException, OrderDto>> completeOrder(
       String orderId) async {
     try {
       var headers = {
@@ -99,7 +97,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -140,8 +138,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> startRoute(
-      String orderId) async {
+  Future<Either<DomainException, OrderDto>> startRoute(String orderId) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -157,7 +154,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -169,7 +166,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> waitingForClient(
+  Future<Either<DomainException, OrderDto>> waitingForClient(
       String orderId) async {
     try {
       var headers = {
@@ -186,7 +183,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }

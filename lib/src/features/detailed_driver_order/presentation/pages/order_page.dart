@@ -2,24 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
+import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/custom_order_buttons_widget.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/order_addresses_card.dart';
+
+import '../../../../core/service/injectable/injectable_service.dart';
+import '../../domain/entities/get_order_status_response.dart';
 
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final labelStyle = context.theme.textStyles.bodyMain
-        .copyWith(color: context.theme.secondary);
-    final titleStyle = context.theme.textStyles.titleSecondary;
-    final headLine = context.theme.textStyles.headLine;
+  Widget _buildOrderPage({
+    required BuildContext context,
+    required TextStyle labelStyle,
+    required TextStyle titleStyle,
+    required TextStyle headLine,
+  }) {
     return Scaffold(
       bottomNavigationBar: CustomMainBottomWidgets(
         child: MediaQuery.orientationOf(context).index == 0
@@ -87,6 +92,13 @@ class OrderPage extends StatelessWidget {
               children: [
                 Text(S.current.order_status, style: labelStyle),
                 const Gap(UIConstants.defaultGap2),
+                // if(updatedOrderStatus != null)...[
+                //  Text(
+                //   updatedOrderStatus.status,
+                //   style:
+                //       labelStyle.copyWith(color: context.theme.green),
+                // ),
+                // ],
                 Text(
                   S.current.in_progress,
                   style: labelStyle.copyWith(color: context.theme.blue),
@@ -157,6 +169,37 @@ class OrderPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final labelStyle = context.theme.textStyles.bodyMain
+        .copyWith(color: context.theme.secondary);
+    final titleStyle = context.theme.textStyles.titleSecondary;
+    final headLine = context.theme.textStyles.headLine;
+    return BaseBlocWidget<DriverOrderBloc, DriverOrderEvent, DriverOrderState>(
+      bloc: getIt<DriverOrderBloc>(),
+      starterEvent: const DriverOrderEvent.started(),
+      builder: (context, state, bloc) {
+        return state.when(initial: () {
+          return _buildOrderPage(
+            context: context,
+            labelStyle: labelStyle,
+            titleStyle: titleStyle,
+            headLine: headLine,
+          );
+        }, loaded: (viewModel) {
+          GetOrderStatusResponse? updatedOrderStatus =
+              viewModel.updatedOrderStatus;
+          return _buildOrderPage(
+            context: context,
+            labelStyle: labelStyle,
+            titleStyle: titleStyle,
+            headLine: headLine,
+          );
+        });
+      },
     );
   }
 }
