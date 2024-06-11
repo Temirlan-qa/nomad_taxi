@@ -11,7 +11,7 @@ class BalanceState with _$BalanceState {
 
 @freezed
 class BalanceViewModel with _$BalanceViewModel {
-  const factory BalanceViewModel({
+  factory BalanceViewModel({
     @Default('') String payInfo,
     @Default('') String withdrawInfo,
   }) = _BalanceViewModel;

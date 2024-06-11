@@ -20,14 +20,13 @@ class BalanceBloc extends BaseBloc<BalanceEvent, BalanceState> {
   final WithdrawInfoUseCase withdrawInfoUseCase;
   final PayInfoUseCase payInfoUseCase;
 
-  final BalanceViewModel _viewModel = const BalanceViewModel();
+  final BalanceViewModel _viewModel = BalanceViewModel();
 
   @override
   Future<void> onEventHandler(BalanceEvent event, Emitter emit) async {
     await event.when(
       init: () => _init(event as _Init, emit),
-      payInfo: () => _payInfo(event as _PayInfo, emit),
-      withdrawInfo: () => _withdrawInfo(event as _WithdrawInfo, emit),
+      getInfo: () => _getInfo(event as _GetInfo, emit),
     );
   }
 
@@ -38,30 +37,23 @@ class BalanceBloc extends BaseBloc<BalanceEvent, BalanceState> {
     emit(const _Initial());
   }
 
-  Future<void> _payInfo(
-    _PayInfo event,
+  Future<void> _getInfo(
+    _GetInfo event,
     Emitter emit,
   ) async {
-    emit(const _Initial());
-    final result = await payInfoUseCase.call();
-    final String? data = result.data;
+    final resultPay = await payInfoUseCase.call();
+    final resultWithdraw = await withdrawInfoUseCase.call();
 
-    if (data != null) {
-      return emit(_Loaded(viewModel: _viewModel.copyWith(payInfo: data)));
-    }
-    emit(const _Error('Error'));
-  }
+    final String? dataPay = resultPay.data;
+    final String? dataWithdraw = resultWithdraw.data;
 
-  Future<void> _withdrawInfo(
-    _WithdrawInfo event,
-    Emitter emit,
-  ) async {
-    emit(const _Initial());
-    final result = await withdrawInfoUseCase.call();
-    final String? data = result.data;
-
-    if (data != null) {
-      return emit(_Loaded(viewModel: _viewModel.copyWith(withdrawInfo: data)));
+    if (dataPay != null && dataWithdraw != null) {
+      return emit(
+        _Loaded(
+          viewModel:
+              _viewModel.copyWith(payInfo: dataPay, withdrawInfo: dataWithdraw),
+        ),
+      );
     }
     emit(const _Error('Error'));
   }

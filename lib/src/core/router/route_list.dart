@@ -67,7 +67,7 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverOrders,
         path: RoutePaths.driverOrders,
-        builder: (_, __) => DriverOrdersPage(),
+        builder: (_, __) => const DriverOrdersPage(),
       ),
       GoRoute(
         name: RouteNames.order,
@@ -102,7 +102,12 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.transferMoneyInstruction,
         path: RoutePaths.transferMoneyInstruction,
-        builder: (_, __) => const TransferMoneyInstructionPage(),
+        builder: (_, state) {
+          final withdrawInfo = state.extra as String;
+          return TransferMoneyInstructionPage(
+            withdrawInfo: withdrawInfo,
+          );
+        },
       ),
       GoRoute(
         name: RouteNames.chooseTariff,
