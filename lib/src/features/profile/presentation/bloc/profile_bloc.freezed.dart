@@ -1296,7 +1296,12 @@ abstract class _Loaded implements ProfileState {
 mixin _$ProfileViewModel {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError; // optional
+  int get id => throw _privateConstructorUsedError;
+  int get isBlocked => throw _privateConstructorUsedError;
+  int get bonus => throw _privateConstructorUsedError;
+  Partner get partner => throw _privateConstructorUsedError;
+  String get fcmToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileViewModelCopyWith<ProfileViewModel> get copyWith =>
@@ -1309,7 +1314,17 @@ abstract class $ProfileViewModelCopyWith<$Res> {
           ProfileViewModel value, $Res Function(ProfileViewModel) then) =
       _$ProfileViewModelCopyWithImpl<$Res, ProfileViewModel>;
   @useResult
-  $Res call({String firstName, String lastName, String phone});
+  $Res call(
+      {String firstName,
+      String lastName,
+      String phone,
+      int id,
+      int isBlocked,
+      int bonus,
+      Partner partner,
+      String fcmToken});
+
+  $PartnerCopyWith<$Res> get partner;
 }
 
 /// @nodoc
@@ -1328,6 +1343,11 @@ class _$ProfileViewModelCopyWithImpl<$Res, $Val extends ProfileViewModel>
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = null,
+    Object? id = null,
+    Object? isBlocked = null,
+    Object? bonus = null,
+    Object? partner = null,
+    Object? fcmToken = null,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -1342,7 +1362,35 @@ class _$ProfileViewModelCopyWithImpl<$Res, $Val extends ProfileViewModel>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      isBlocked: null == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as int,
+      bonus: null == bonus
+          ? _value.bonus
+          : bonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      partner: null == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as Partner,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartnerCopyWith<$Res> get partner {
+    return $PartnerCopyWith<$Res>(_value.partner, (value) {
+      return _then(_value.copyWith(partner: value) as $Val);
+    });
   }
 }
 
@@ -1354,7 +1402,18 @@ abstract class _$$ProfileViewModelImplCopyWith<$Res>
       __$$ProfileViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String firstName, String lastName, String phone});
+  $Res call(
+      {String firstName,
+      String lastName,
+      String phone,
+      int id,
+      int isBlocked,
+      int bonus,
+      Partner partner,
+      String fcmToken});
+
+  @override
+  $PartnerCopyWith<$Res> get partner;
 }
 
 /// @nodoc
@@ -1371,6 +1430,11 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = null,
+    Object? id = null,
+    Object? isBlocked = null,
+    Object? bonus = null,
+    Object? partner = null,
+    Object? fcmToken = null,
   }) {
     return _then(_$ProfileViewModelImpl(
       firstName: null == firstName
@@ -1385,6 +1449,26 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      isBlocked: null == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as int,
+      bonus: null == bonus
+          ? _value.bonus
+          : bonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      partner: null == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as Partner,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1392,8 +1476,15 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProfileViewModelImpl implements _ProfileViewModel {
-  const _$ProfileViewModelImpl(
-      {this.firstName = '', this.lastName = '', this.phone = ''});
+  _$ProfileViewModelImpl(
+      {this.firstName = '',
+      this.lastName = '',
+      this.phone = '',
+      this.id = 0,
+      this.isBlocked = 0,
+      this.bonus = 0,
+      this.partner = const Partner.empty(),
+      this.fcmToken = ''});
 
   @override
   @JsonKey()
@@ -1404,10 +1495,26 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
   @override
   @JsonKey()
   final String phone;
+// optional
+  @override
+  @JsonKey()
+  final int id;
+  @override
+  @JsonKey()
+  final int isBlocked;
+  @override
+  @JsonKey()
+  final int bonus;
+  @override
+  @JsonKey()
+  final Partner partner;
+  @override
+  @JsonKey()
+  final String fcmToken;
 
   @override
   String toString() {
-    return 'ProfileViewModel(firstName: $firstName, lastName: $lastName, phone: $phone)';
+    return 'ProfileViewModel(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, isBlocked: $isBlocked, bonus: $bonus, partner: $partner, fcmToken: $fcmToken)';
   }
 
   @override
@@ -1419,11 +1526,19 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isBlocked, isBlocked) ||
+                other.isBlocked == isBlocked) &&
+            (identical(other.bonus, bonus) || other.bonus == bonus) &&
+            (identical(other.partner, partner) || other.partner == partner) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, phone);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, phone, id,
+      isBlocked, bonus, partner, fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -1434,10 +1549,15 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
 }
 
 abstract class _ProfileViewModel implements ProfileViewModel {
-  const factory _ProfileViewModel(
+  factory _ProfileViewModel(
       {final String firstName,
       final String lastName,
-      final String phone}) = _$ProfileViewModelImpl;
+      final String phone,
+      final int id,
+      final int isBlocked,
+      final int bonus,
+      final Partner partner,
+      final String fcmToken}) = _$ProfileViewModelImpl;
 
   @override
   String get firstName;
@@ -1445,6 +1565,16 @@ abstract class _ProfileViewModel implements ProfileViewModel {
   String get lastName;
   @override
   String get phone;
+  @override // optional
+  int get id;
+  @override
+  int get isBlocked;
+  @override
+  int get bonus;
+  @override
+  Partner get partner;
+  @override
+  String get fcmToken;
   @override
   @JsonKey(ignore: true)
   _$$ProfileViewModelImplCopyWith<_$ProfileViewModelImpl> get copyWith =>

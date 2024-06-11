@@ -5,21 +5,21 @@ import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/core/widgets/drawer/drawer_tile.dart';
+import 'package:nomad_taxi/src/core/widgets/drawer/profile_card.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_bottom_widgets.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_profile_card.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_tile_widget.dart';
 
-class CustomDrawerWidget extends StatefulWidget {
-  const CustomDrawerWidget(
+class DrawerWidget extends StatefulWidget {
+  const DrawerWidget(
       {super.key, required this.onSwitchMode, required this.isDriverMode});
 
   final VoidCallback? onSwitchMode;
   final bool isDriverMode;
   @override
-  State<CustomDrawerWidget> createState() => _CustomDrawerWidgetState();
+  State<DrawerWidget> createState() => _DrawerWidgetState();
 }
 
-class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
+class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -37,48 +37,48 @@ class _CustomDrawerWidgetState extends State<CustomDrawerWidget> {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   const Gap(UIConstants.defaultGap2),
-                  const DrawerProfileCard(),
+                  const ProfileCard(),
                   const Gap(UIConstants.defaultGap2),
                   //
-                  DrawerTileWidget(
+                  DrawerTile(
                     title: S.current.main,
                     onTap: () {
                       context.pop();
                     },
                     isSelected: true,
                   ),
-                  DrawerTileWidget(
+                  DrawerTile(
                     title: S.current.help,
                     onTap: () {
                       context.pushNamed(RouteNames.help);
                     },
                     isSelected: false,
                   ),
-                  DrawerTileWidget(
+                  DrawerTile(
                     title: S.current.settings,
                     onTap: () {
                       context.pushNamed(RouteNames.settings);
                     },
                     isSelected: false,
                   ),
-                  DrawerTileWidget(
+                  DrawerTile(
                     title: S.current.referral_program,
                     onTap: () {},
                     isSelected: false,
                   ),
-                  DrawerTileWidget(
+                  DrawerTile(
                     title: S.current.activate_promoCode,
                     onTap: () {
                       context.pushNamed(RouteNames.promoCode);
                     },
                     isSelected: false,
                   ),
-                  DrawerTileWidget(
+                  DrawerTile(
                     title: S.current.buy_franchise,
                     onTap: () {},
                     isSelected: false,
                   ),
-                  DrawerTileWidget(
+                  DrawerTile(
                     showUnderline: false,
                     title: S.current.about_app,
                     onTap: () {
