@@ -36,10 +36,11 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
   }
 
   Future<void> _started() async {
-   _timer = Timer.periodic(const Duration(seconds: 3), (_) {
-      log('call', name: 'TimerPeriodic');
-      add(const _GetOrderStatus());
-    });
+    //TODO Later, this should be replaced with ping logic
+  //  _timer = Timer.periodic(const Duration(seconds: 3), (_) {
+  //     log('call', name: 'TimerPeriodic');
+  //     add(const _GetOrderStatus());
+  //   });
   }
 
   Future<void> _getOrderStatus() async {
