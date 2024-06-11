@@ -1,12 +1,14 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/get_orders_response/get_orders_response_dto.dart';
-import 'package:nomad_taxi/src/features/orders/data/models/response/order_response_dto.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
+import '../../models/order/order_dto.dart';
 import 'i_orders_remote.dart';
 
 @named
@@ -16,8 +18,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   var st = StorageServiceImpl();
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> acceptOrder(
-      String orderId) async {
+  Future<Either<DomainException, OrderDto>> acceptOrder(String orderId) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -33,7 +34,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -45,8 +46,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> cancelOrder(
-      String orderId) async {
+  Future<Either<DomainException, OrderDto>> cancelOrder(String orderId) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -62,7 +62,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -74,7 +74,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> completeOrder(
+  Future<Either<DomainException, OrderDto>> completeOrder(
       String orderId) async {
     try {
       var headers = {
@@ -91,7 +91,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -132,8 +132,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> startRoute(
-      String orderId) async {
+  Future<Either<DomainException, OrderDto>> startRoute(String orderId) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -149,7 +148,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }
@@ -161,7 +160,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderResponseDto>> waitingForClient(
+  Future<Either<DomainException, OrderDto>> waitingForClient(
       String orderId) async {
     try {
       var headers = {
@@ -178,7 +177,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }

@@ -12,6 +12,9 @@ import 'package:nomad_taxi/src/features/transfer_money/presentation/bloc/balance
 import '../../../features/auth/domain/usecases/login_use_case.dart';
 import '../../../features/auth/domain/usecases/verify_user_case.dart';
 import '../../../features/auth/presentation/bloc/auth_bloc.dart';
+import '../../../features/detailed_driver_order/data/client/order_web_socket_client.dart';
+import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
+import '../../../features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import '../../../features/profile/domain/usecases/update_language_use_case.dart';
 import 'exports/all.dart';
 import 'injectable_service.dart';
@@ -52,6 +55,15 @@ void manualRegisterServices() {
   getIt.registerBloc<OrderBloc>(
     () => OrderBloc(
       getIt<GetOrderUseCase>(),
+      // getIt<GetOrderStatusUseCase>(),
     ),
   );
+
+  getIt.registerBloc<DriverOrderBloc>(
+    () => DriverOrderBloc(
+      getIt<GetOrderStatusUseCase>(),
+    ),
+  );
+
+  getIt.registerSingleton<OrderWebSocketClient>(OrderWebSocketClient());
 }
