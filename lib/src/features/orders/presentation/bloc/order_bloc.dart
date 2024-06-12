@@ -6,8 +6,9 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/get_orders_response/get_orders_response.dart';
-import 'package:nomad_taxi/src/features/orders/domain/usecases/get_order_use_case.dart';
+import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
 
 part 'order_bloc.freezed.dart';
 part 'order_event.dart';
@@ -23,6 +24,8 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
   StreamSubscription? _orderStatusSubscription;
 
+  final DriverOrderBloc _driverOrderBloc = getIt<DriverOrderBloc>();
+
   @override
   Future<void> onEventHandler(OrderEvent event, Emitter emit) async {
     await event.when(
@@ -34,6 +37,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   }
 
   Future<void> _started() async {
+    _driverOrderBloc.add(const DriverOrderEvent.started());
     add(const _GetOrders());
   }
 
@@ -45,7 +49,8 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
     final result = await _getOrderUseCase.call();
 
     if (result.isSuccessful) {
-      return emit(
+      log('success', name: 'GetOrders');
+      emit(
         _Loaded(
           viewModel: _viewModel.copyWith(
             orders: result.data,

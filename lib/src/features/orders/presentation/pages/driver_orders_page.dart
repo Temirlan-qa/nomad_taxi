@@ -26,7 +26,9 @@ class DriverOrdersPage extends StatefulWidget {
 
 class _DriverOrdersPageState extends State<DriverOrdersPage> {
   Duration duration = const Duration();
-  Timer? timer;
+
+  late Timer _timer;
+
   final orderBloc = getIt<OrderBloc>();
 
   @override
@@ -36,10 +38,16 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
   }
 
   void startTimer() {
-    timer = Timer.periodic(
+    _timer = Timer.periodic(
       const Duration(seconds: 1),
       (_) => _addTime(),
     );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
@@ -67,7 +75,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
       body: SafeArea(
         child: BaseBlocWidget<OrderBloc, OrderEvent, OrderState>(
           bloc: orderBloc,
-          starterEvent: const OrderEvent.getOrders(),
+          starterEvent: const OrderEvent.started(),
           builder: (context, state, bloc) {
             return state.when(
               initial: () =>
@@ -201,7 +209,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
     setState(() {
       final seconds = duration.inSeconds + addSeconds;
       if (seconds < 0) {
-        timer?.cancel();
+        _timer?.cancel();
       } else {
         duration = Duration(seconds: seconds);
       }
