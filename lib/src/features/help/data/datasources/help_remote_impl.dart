@@ -19,10 +19,7 @@ class HelpRemoteImpl implements IHelpRemote {
   @override
   Future<Either<DomainException, QuestionsDto>> getQuestions() async {
     try {
-      var headers = {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${st.getToken()!}'
-      };
+      var headers = {'Accept': 'application/json'};
 
       var response = await client.request(
         '${EndPoints.baseUrl}${EndPoints.getFaq}',

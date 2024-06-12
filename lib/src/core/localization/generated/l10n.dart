@@ -620,6 +620,16 @@ class S {
     );
   }
 
+  /// `Ответ разработчика`
+  String get developerAnswer {
+    return Intl.message(
+      'Ответ разработчика',
+      name: 'developerAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Откуда`
   String get where_from {
     return Intl.message(
