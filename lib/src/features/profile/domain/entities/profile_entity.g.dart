@@ -15,10 +15,16 @@ _$ProfileEntityImpl _$$ProfileEntityImplFromJson(Map<String, dynamic> json) =>
       languageCode: json['languageCode'] as String?,
       isBlocked: (json['isBlocked'] as num?)?.toInt(),
       bonus: (json['bonus'] as num?)?.toInt(),
-      partner: json['partner'] == null
-          ? null
-          : Partner.fromJson(json['partner'] as Map<String, dynamic>),
       fcmToken: json['fcmToken'] as String?,
+      pId: (json['pId'] as num?)?.toInt(),
+      pFirstName: json['pFirstName'] as String?,
+      pLastName: json['pLastName'] as String?,
+      pCarModel: json['pCarModel'] as String?,
+      pCarNumber: json['pCarNumber'] as String?,
+      pTownId: (json['pTownId'] as num?)?.toInt(),
+      pStatus: json['pStatus'] as String?,
+      pBalance: (json['pBalance'] as num?)?.toInt(),
+      pBonus: (json['pBonus'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ProfileEntityImplToJson(_$ProfileEntityImpl instance) =>
@@ -30,6 +36,14 @@ Map<String, dynamic> _$$ProfileEntityImplToJson(_$ProfileEntityImpl instance) =>
       'languageCode': instance.languageCode,
       'isBlocked': instance.isBlocked,
       'bonus': instance.bonus,
-      'partner': instance.partner,
       'fcmToken': instance.fcmToken,
+      'pId': instance.pId,
+      'pFirstName': instance.pFirstName,
+      'pLastName': instance.pLastName,
+      'pCarModel': instance.pCarModel,
+      'pCarNumber': instance.pCarNumber,
+      'pTownId': instance.pTownId,
+      'pStatus': instance.pStatus,
+      'pBalance': instance.pBalance,
+      'pBonus': instance.pBonus,
     };

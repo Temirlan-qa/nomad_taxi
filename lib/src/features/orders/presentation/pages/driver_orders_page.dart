@@ -35,6 +35,18 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
     super.initState();
   }
 
+  void _addTime() {
+    const addSeconds = 1;
+    setState(() {
+      final seconds = duration.inSeconds + addSeconds;
+      if (seconds < 0) {
+        timer?.cancel();
+      } else {
+        duration = Duration(seconds: seconds);
+      }
+    });
+  }
+
   void startTimer() {
     timer = Timer.periodic(
       const Duration(seconds: 1),
@@ -194,18 +206,6 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
         return const CustomInfoBonusModalWidget();
       },
     );
-  }
-
-  void _addTime() {
-    const addSeconds = 1;
-    setState(() {
-      final seconds = duration.inSeconds + addSeconds;
-      if (seconds < 0) {
-        timer?.cancel();
-      } else {
-        duration = Duration(seconds: seconds);
-      }
-    });
   }
 
   _formattedTime({required int timeInSecond}) {

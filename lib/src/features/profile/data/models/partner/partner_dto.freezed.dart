@@ -20,19 +20,19 @@ PartnerDto _$PartnerDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PartnerDto {
-  int? get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
-  String? get firstName => throw _privateConstructorUsedError;
+  String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
-  String? get lastName => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
   @JsonKey(name: 'car_model')
-  String? get carModel => throw _privateConstructorUsedError;
+  String get carModel => throw _privateConstructorUsedError;
   @JsonKey(name: 'car_number')
-  String? get carNumber => throw _privateConstructorUsedError;
+  String get carNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'town_id')
-  int? get townId => throw _privateConstructorUsedError;
-  String? get status => throw _privateConstructorUsedError;
-  FinanceDto? get finance => throw _privateConstructorUsedError;
+  int get townId => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  FinanceDto get finance => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,16 +47,16 @@ abstract class $PartnerDtoCopyWith<$Res> {
       _$PartnerDtoCopyWithImpl<$Res, PartnerDto>;
   @useResult
   $Res call(
-      {int? id,
-      @JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      @JsonKey(name: 'car_model') String? carModel,
-      @JsonKey(name: 'car_number') String? carNumber,
-      @JsonKey(name: 'town_id') int? townId,
-      String? status,
-      FinanceDto? finance});
+      {int id,
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'car_model') String carModel,
+      @JsonKey(name: 'car_number') String carNumber,
+      @JsonKey(name: 'town_id') int townId,
+      String status,
+      FinanceDto finance});
 
-  $FinanceDtoCopyWith<$Res>? get finance;
+  $FinanceDtoCopyWith<$Res> get finance;
 }
 
 /// @nodoc
@@ -72,59 +72,55 @@ class _$PartnerDtoCopyWithImpl<$Res, $Val extends PartnerDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? carModel = freezed,
-    Object? carNumber = freezed,
-    Object? townId = freezed,
-    Object? status = freezed,
-    Object? finance = freezed,
+    Object? id = null,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? carModel = null,
+    Object? carNumber = null,
+    Object? townId = null,
+    Object? status = null,
+    Object? finance = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      firstName: freezed == firstName
+              as int,
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      carModel: freezed == carModel
+              as String,
+      carModel: null == carModel
           ? _value.carModel
           : carModel // ignore: cast_nullable_to_non_nullable
-              as String?,
-      carNumber: freezed == carNumber
+              as String,
+      carNumber: null == carNumber
           ? _value.carNumber
           : carNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      townId: freezed == townId
+              as String,
+      townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      status: freezed == status
+              as int,
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      finance: freezed == finance
+              as String,
+      finance: null == finance
           ? _value.finance
           : finance // ignore: cast_nullable_to_non_nullable
-              as FinanceDto?,
+              as FinanceDto,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $FinanceDtoCopyWith<$Res>? get finance {
-    if (_value.finance == null) {
-      return null;
-    }
-
-    return $FinanceDtoCopyWith<$Res>(_value.finance!, (value) {
+  $FinanceDtoCopyWith<$Res> get finance {
+    return $FinanceDtoCopyWith<$Res>(_value.finance, (value) {
       return _then(_value.copyWith(finance: value) as $Val);
     });
   }
@@ -139,17 +135,17 @@ abstract class _$$PartnerDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      @JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      @JsonKey(name: 'car_model') String? carModel,
-      @JsonKey(name: 'car_number') String? carNumber,
-      @JsonKey(name: 'town_id') int? townId,
-      String? status,
-      FinanceDto? finance});
+      {int id,
+      @JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'car_model') String carModel,
+      @JsonKey(name: 'car_number') String carNumber,
+      @JsonKey(name: 'town_id') int townId,
+      String status,
+      FinanceDto finance});
 
   @override
-  $FinanceDtoCopyWith<$Res>? get finance;
+  $FinanceDtoCopyWith<$Res> get finance;
 }
 
 /// @nodoc
@@ -163,48 +159,48 @@ class __$$PartnerDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? carModel = freezed,
-    Object? carNumber = freezed,
-    Object? townId = freezed,
-    Object? status = freezed,
-    Object? finance = freezed,
+    Object? id = null,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? carModel = null,
+    Object? carNumber = null,
+    Object? townId = null,
+    Object? status = null,
+    Object? finance = null,
   }) {
     return _then(_$PartnerDtoImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      firstName: freezed == firstName
+              as int,
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      carModel: freezed == carModel
+              as String,
+      carModel: null == carModel
           ? _value.carModel
           : carModel // ignore: cast_nullable_to_non_nullable
-              as String?,
-      carNumber: freezed == carNumber
+              as String,
+      carNumber: null == carNumber
           ? _value.carNumber
           : carNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      townId: freezed == townId
+              as String,
+      townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      status: freezed == status
+              as int,
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      finance: freezed == finance
+              as String,
+      finance: null == finance
           ? _value.finance
           : finance // ignore: cast_nullable_to_non_nullable
-              as FinanceDto?,
+              as FinanceDto,
     ));
   }
 }
@@ -213,39 +209,39 @@ class __$$PartnerDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PartnerDtoImpl implements _PartnerDto {
   const _$PartnerDtoImpl(
-      {this.id,
-      @JsonKey(name: 'first_name') this.firstName,
-      @JsonKey(name: 'last_name') this.lastName,
-      @JsonKey(name: 'car_model') this.carModel,
-      @JsonKey(name: 'car_number') this.carNumber,
-      @JsonKey(name: 'town_id') this.townId,
-      this.status,
-      this.finance});
+      {required this.id,
+      @JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'last_name') required this.lastName,
+      @JsonKey(name: 'car_model') required this.carModel,
+      @JsonKey(name: 'car_number') required this.carNumber,
+      @JsonKey(name: 'town_id') required this.townId,
+      required this.status,
+      required this.finance});
 
   factory _$PartnerDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$PartnerDtoImplFromJson(json);
 
   @override
-  final int? id;
+  final int id;
   @override
   @JsonKey(name: 'first_name')
-  final String? firstName;
+  final String firstName;
   @override
   @JsonKey(name: 'last_name')
-  final String? lastName;
+  final String lastName;
   @override
   @JsonKey(name: 'car_model')
-  final String? carModel;
+  final String carModel;
   @override
   @JsonKey(name: 'car_number')
-  final String? carNumber;
+  final String carNumber;
   @override
   @JsonKey(name: 'town_id')
-  final int? townId;
+  final int townId;
   @override
-  final String? status;
+  final String status;
   @override
-  final FinanceDto? finance;
+  final FinanceDto finance;
 
   @override
   String toString() {
@@ -292,39 +288,39 @@ class _$PartnerDtoImpl implements _PartnerDto {
 
 abstract class _PartnerDto implements PartnerDto {
   const factory _PartnerDto(
-      {final int? id,
-      @JsonKey(name: 'first_name') final String? firstName,
-      @JsonKey(name: 'last_name') final String? lastName,
-      @JsonKey(name: 'car_model') final String? carModel,
-      @JsonKey(name: 'car_number') final String? carNumber,
-      @JsonKey(name: 'town_id') final int? townId,
-      final String? status,
-      final FinanceDto? finance}) = _$PartnerDtoImpl;
+      {required final int id,
+      @JsonKey(name: 'first_name') required final String firstName,
+      @JsonKey(name: 'last_name') required final String lastName,
+      @JsonKey(name: 'car_model') required final String carModel,
+      @JsonKey(name: 'car_number') required final String carNumber,
+      @JsonKey(name: 'town_id') required final int townId,
+      required final String status,
+      required final FinanceDto finance}) = _$PartnerDtoImpl;
 
   factory _PartnerDto.fromJson(Map<String, dynamic> json) =
       _$PartnerDtoImpl.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
   @JsonKey(name: 'first_name')
-  String? get firstName;
+  String get firstName;
   @override
   @JsonKey(name: 'last_name')
-  String? get lastName;
+  String get lastName;
   @override
   @JsonKey(name: 'car_model')
-  String? get carModel;
+  String get carModel;
   @override
   @JsonKey(name: 'car_number')
-  String? get carNumber;
+  String get carNumber;
   @override
   @JsonKey(name: 'town_id')
-  int? get townId;
+  int get townId;
   @override
-  String? get status;
+  String get status;
   @override
-  FinanceDto? get finance;
+  FinanceDto get finance;
   @override
   @JsonKey(ignore: true)
   _$$PartnerDtoImplCopyWith<_$PartnerDtoImpl> get copyWith =>
