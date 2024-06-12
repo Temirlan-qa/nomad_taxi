@@ -8,8 +8,8 @@ part of 'finance_dto.dart';
 
 _$FinanceDtoImpl _$$FinanceDtoImplFromJson(Map<String, dynamic> json) =>
     _$FinanceDtoImpl(
-      balance: (json['balance'] as num?)?.toInt(),
-      bonus: (json['bonus'] as num?)?.toInt(),
+      balance: (json['balance'] as num).toInt(),
+      bonus: (json['bonus'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$FinanceDtoImplToJson(_$FinanceDtoImpl instance) =>

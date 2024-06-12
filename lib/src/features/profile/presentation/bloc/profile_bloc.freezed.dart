@@ -1296,7 +1296,20 @@ abstract class _Loaded implements ProfileState {
 mixin _$ProfileViewModel {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError; // optional
+  int get id => throw _privateConstructorUsedError;
+  int? get isBlocked => throw _privateConstructorUsedError;
+  int get bonus => throw _privateConstructorUsedError;
+  String get fcmToken => throw _privateConstructorUsedError; // partner info
+  int? get pId => throw _privateConstructorUsedError;
+  String? get pFirstName => throw _privateConstructorUsedError;
+  String? get pLastName => throw _privateConstructorUsedError;
+  String? get pCarModel => throw _privateConstructorUsedError;
+  String? get pCarNumber => throw _privateConstructorUsedError;
+  int? get pTownId => throw _privateConstructorUsedError;
+  String? get pStatus => throw _privateConstructorUsedError;
+  int? get pBalance => throw _privateConstructorUsedError;
+  int? get pBonus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileViewModelCopyWith<ProfileViewModel> get copyWith =>
@@ -1309,7 +1322,23 @@ abstract class $ProfileViewModelCopyWith<$Res> {
           ProfileViewModel value, $Res Function(ProfileViewModel) then) =
       _$ProfileViewModelCopyWithImpl<$Res, ProfileViewModel>;
   @useResult
-  $Res call({String firstName, String lastName, String phone});
+  $Res call(
+      {String firstName,
+      String lastName,
+      String phone,
+      int id,
+      int? isBlocked,
+      int bonus,
+      String fcmToken,
+      int? pId,
+      String? pFirstName,
+      String? pLastName,
+      String? pCarModel,
+      String? pCarNumber,
+      int? pTownId,
+      String? pStatus,
+      int? pBalance,
+      int? pBonus});
 }
 
 /// @nodoc
@@ -1328,6 +1357,19 @@ class _$ProfileViewModelCopyWithImpl<$Res, $Val extends ProfileViewModel>
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = null,
+    Object? id = null,
+    Object? isBlocked = freezed,
+    Object? bonus = null,
+    Object? fcmToken = null,
+    Object? pId = freezed,
+    Object? pFirstName = freezed,
+    Object? pLastName = freezed,
+    Object? pCarModel = freezed,
+    Object? pCarNumber = freezed,
+    Object? pTownId = freezed,
+    Object? pStatus = freezed,
+    Object? pBalance = freezed,
+    Object? pBonus = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -1342,6 +1384,58 @@ class _$ProfileViewModelCopyWithImpl<$Res, $Val extends ProfileViewModel>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      isBlocked: freezed == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bonus: null == bonus
+          ? _value.bonus
+          : bonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      pId: freezed == pId
+          ? _value.pId
+          : pId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pFirstName: freezed == pFirstName
+          ? _value.pFirstName
+          : pFirstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pLastName: freezed == pLastName
+          ? _value.pLastName
+          : pLastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarModel: freezed == pCarModel
+          ? _value.pCarModel
+          : pCarModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarNumber: freezed == pCarNumber
+          ? _value.pCarNumber
+          : pCarNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pTownId: freezed == pTownId
+          ? _value.pTownId
+          : pTownId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pStatus: freezed == pStatus
+          ? _value.pStatus
+          : pStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pBalance: freezed == pBalance
+          ? _value.pBalance
+          : pBalance // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pBonus: freezed == pBonus
+          ? _value.pBonus
+          : pBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -1354,7 +1448,23 @@ abstract class _$$ProfileViewModelImplCopyWith<$Res>
       __$$ProfileViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String firstName, String lastName, String phone});
+  $Res call(
+      {String firstName,
+      String lastName,
+      String phone,
+      int id,
+      int? isBlocked,
+      int bonus,
+      String fcmToken,
+      int? pId,
+      String? pFirstName,
+      String? pLastName,
+      String? pCarModel,
+      String? pCarNumber,
+      int? pTownId,
+      String? pStatus,
+      int? pBalance,
+      int? pBonus});
 }
 
 /// @nodoc
@@ -1371,6 +1481,19 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = null,
+    Object? id = null,
+    Object? isBlocked = freezed,
+    Object? bonus = null,
+    Object? fcmToken = null,
+    Object? pId = freezed,
+    Object? pFirstName = freezed,
+    Object? pLastName = freezed,
+    Object? pCarModel = freezed,
+    Object? pCarNumber = freezed,
+    Object? pTownId = freezed,
+    Object? pStatus = freezed,
+    Object? pBalance = freezed,
+    Object? pBonus = freezed,
   }) {
     return _then(_$ProfileViewModelImpl(
       firstName: null == firstName
@@ -1385,6 +1508,58 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      isBlocked: freezed == isBlocked
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as int?,
+      bonus: null == bonus
+          ? _value.bonus
+          : bonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      pId: freezed == pId
+          ? _value.pId
+          : pId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pFirstName: freezed == pFirstName
+          ? _value.pFirstName
+          : pFirstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pLastName: freezed == pLastName
+          ? _value.pLastName
+          : pLastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarModel: freezed == pCarModel
+          ? _value.pCarModel
+          : pCarModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarNumber: freezed == pCarNumber
+          ? _value.pCarNumber
+          : pCarNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pTownId: freezed == pTownId
+          ? _value.pTownId
+          : pTownId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pStatus: freezed == pStatus
+          ? _value.pStatus
+          : pStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pBalance: freezed == pBalance
+          ? _value.pBalance
+          : pBalance // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pBonus: freezed == pBonus
+          ? _value.pBonus
+          : pBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -1392,8 +1567,23 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProfileViewModelImpl implements _ProfileViewModel {
-  const _$ProfileViewModelImpl(
-      {this.firstName = '', this.lastName = '', this.phone = ''});
+  _$ProfileViewModelImpl(
+      {this.firstName = '',
+      this.lastName = '',
+      this.phone = '',
+      this.id = 0,
+      this.isBlocked,
+      this.bonus = 0,
+      this.fcmToken = '',
+      this.pId,
+      this.pFirstName,
+      this.pLastName,
+      this.pCarModel,
+      this.pCarNumber,
+      this.pTownId,
+      this.pStatus,
+      this.pBalance,
+      this.pBonus});
 
   @override
   @JsonKey()
@@ -1404,10 +1594,41 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
   @override
   @JsonKey()
   final String phone;
+// optional
+  @override
+  @JsonKey()
+  final int id;
+  @override
+  final int? isBlocked;
+  @override
+  @JsonKey()
+  final int bonus;
+  @override
+  @JsonKey()
+  final String fcmToken;
+// partner info
+  @override
+  final int? pId;
+  @override
+  final String? pFirstName;
+  @override
+  final String? pLastName;
+  @override
+  final String? pCarModel;
+  @override
+  final String? pCarNumber;
+  @override
+  final int? pTownId;
+  @override
+  final String? pStatus;
+  @override
+  final int? pBalance;
+  @override
+  final int? pBonus;
 
   @override
   String toString() {
-    return 'ProfileViewModel(firstName: $firstName, lastName: $lastName, phone: $phone)';
+    return 'ProfileViewModel(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, isBlocked: $isBlocked, bonus: $bonus, fcmToken: $fcmToken, pId: $pId, pFirstName: $pFirstName, pLastName: $pLastName, pCarModel: $pCarModel, pCarNumber: $pCarNumber, pTownId: $pTownId, pStatus: $pStatus, pBalance: $pBalance, pBonus: $pBonus)';
   }
 
   @override
@@ -1419,11 +1640,48 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isBlocked, isBlocked) ||
+                other.isBlocked == isBlocked) &&
+            (identical(other.bonus, bonus) || other.bonus == bonus) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
+            (identical(other.pId, pId) || other.pId == pId) &&
+            (identical(other.pFirstName, pFirstName) ||
+                other.pFirstName == pFirstName) &&
+            (identical(other.pLastName, pLastName) ||
+                other.pLastName == pLastName) &&
+            (identical(other.pCarModel, pCarModel) ||
+                other.pCarModel == pCarModel) &&
+            (identical(other.pCarNumber, pCarNumber) ||
+                other.pCarNumber == pCarNumber) &&
+            (identical(other.pTownId, pTownId) || other.pTownId == pTownId) &&
+            (identical(other.pStatus, pStatus) || other.pStatus == pStatus) &&
+            (identical(other.pBalance, pBalance) ||
+                other.pBalance == pBalance) &&
+            (identical(other.pBonus, pBonus) || other.pBonus == pBonus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, phone);
+  int get hashCode => Object.hash(
+      runtimeType,
+      firstName,
+      lastName,
+      phone,
+      id,
+      isBlocked,
+      bonus,
+      fcmToken,
+      pId,
+      pFirstName,
+      pLastName,
+      pCarModel,
+      pCarNumber,
+      pTownId,
+      pStatus,
+      pBalance,
+      pBonus);
 
   @JsonKey(ignore: true)
   @override
@@ -1434,10 +1692,23 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
 }
 
 abstract class _ProfileViewModel implements ProfileViewModel {
-  const factory _ProfileViewModel(
+  factory _ProfileViewModel(
       {final String firstName,
       final String lastName,
-      final String phone}) = _$ProfileViewModelImpl;
+      final String phone,
+      final int id,
+      final int? isBlocked,
+      final int bonus,
+      final String fcmToken,
+      final int? pId,
+      final String? pFirstName,
+      final String? pLastName,
+      final String? pCarModel,
+      final String? pCarNumber,
+      final int? pTownId,
+      final String? pStatus,
+      final int? pBalance,
+      final int? pBonus}) = _$ProfileViewModelImpl;
 
   @override
   String get firstName;
@@ -1445,6 +1716,32 @@ abstract class _ProfileViewModel implements ProfileViewModel {
   String get lastName;
   @override
   String get phone;
+  @override // optional
+  int get id;
+  @override
+  int? get isBlocked;
+  @override
+  int get bonus;
+  @override
+  String get fcmToken;
+  @override // partner info
+  int? get pId;
+  @override
+  String? get pFirstName;
+  @override
+  String? get pLastName;
+  @override
+  String? get pCarModel;
+  @override
+  String? get pCarNumber;
+  @override
+  int? get pTownId;
+  @override
+  String? get pStatus;
+  @override
+  int? get pBalance;
+  @override
+  int? get pBonus;
   @override
   @JsonKey(ignore: true)
   _$$ProfileViewModelImplCopyWith<_$ProfileViewModelImpl> get copyWith =>

@@ -82,7 +82,7 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverModeIntro,
         path: RoutePaths.driverModeIntro,
-        builder: (_, __) => const DriverModeIntroPage(),
+        builder: (_, __) => const DriverIntroPage(),
       ),
       GoRoute(
         name: RouteNames.enterDriverInfo,
@@ -92,7 +92,7 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverMode,
         path: RoutePaths.driverMode,
-        builder: (_, __) => const DriverModePage(),
+        builder: (_, __) => const DriverMainPage(),
       ),
       GoRoute(
         name: RouteNames.transferMoney,

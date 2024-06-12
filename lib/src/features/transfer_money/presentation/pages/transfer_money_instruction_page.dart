@@ -17,8 +17,10 @@ class TransferMoneyInstructionPage extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: HtmlContentViewer(
-            htmlContent: withdrawInfo,
+          child: Center(
+            child: HtmlContentViewer(
+              htmlContent: withdrawInfo,
+            ),
           ),
         ),
       ),
