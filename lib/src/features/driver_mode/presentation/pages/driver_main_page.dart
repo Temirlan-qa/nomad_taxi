@@ -75,7 +75,7 @@ class _DriverMainPageState extends State<DriverMainPage> {
                                     ),
                                     const Gap(UIConstants.defaultGap7),
                                     Text(
-                                      '500 ₸',
+                                      '${viewModel.pBalance}',
                                       style: context.theme.textStyles.titleMain,
                                     ),
                                     const Gap(UIConstants.defaultGap2),
@@ -98,7 +98,7 @@ class _DriverMainPageState extends State<DriverMainPage> {
                               ),
                               const Gap(UIConstants.defaultGap7),
                               Text(
-                                '500 ₸',
+                                '${viewModel.pBonus}',
                                 style: context.theme.textStyles.titleMain,
                               ),
                             ],

@@ -16,9 +16,19 @@ class ProfileViewModel with _$ProfileViewModel {
     @Default('') String phone,
     // optional
     @Default(0) int id,
-    @Default(0) int isBlocked,
+    int? isBlocked,
     @Default(0) int bonus,
-    @Default(Partner.empty()) Partner partner,
     @Default('') String fcmToken,
+
+    // partner info
+    int? pId,
+    String? pFirstName,
+    String? pLastName,
+    String? pCarModel,
+    String? pCarNumber,
+    int? pTownId,
+    String? pStatus,
+    int? pBalance,
+    int? pBonus,
   }) = _ProfileViewModel;
 }

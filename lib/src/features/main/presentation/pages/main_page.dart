@@ -13,7 +13,6 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/drawer_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_bottom_widget.dart';
-import 'package:nomad_taxi/src/features/profile/domain/entities/partner/partner.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -78,7 +77,7 @@ class _MainPageState extends State<MainPage> {
               key: _scaffoldKey,
               drawer: DrawerWidget(
                 onSwitchMode: () {
-                  viewModel.partner == const Partner.empty()
+                  viewModel.pId == null
                       ? context.pushNamed(RouteNames.driverModeIntro)
                       : context.pushNamed(RouteNames.driverMode);
                 },

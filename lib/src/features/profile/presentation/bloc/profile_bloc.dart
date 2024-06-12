@@ -69,6 +69,21 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
             firstName: data.firstName,
             lastName: data.lastName,
             phone: data.phone,
+            id: data.id,
+            isBlocked: data.isBlocked ?? 0,
+            bonus: data.bonus ?? 0,
+            fcmToken: data.fcmToken ?? '',
+
+            // Partner
+            pBalance: data.pBalance,
+            pBonus: data.pBonus,
+            pCarModel: data.pCarModel,
+            pCarNumber: data.pCarNumber,
+            pFirstName: data.pFirstName,
+            pId: data.pId,
+            pLastName: data.pLastName,
+            pStatus: data.pStatus,
+            pTownId: data.pTownId,
           ),
         ),
       );
