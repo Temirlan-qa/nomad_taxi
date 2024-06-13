@@ -14,10 +14,13 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widge
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/order_addresses_card.dart';
 
 import '../../../../core/service/injectable/injectable_service.dart';
+import '../../../orders/domain/entities/order/order_entity.dart';
 import '../../domain/entities/get_order_status_response.dart';
 
 class OrderPage extends StatelessWidget {
-  const OrderPage({super.key});
+  const OrderPage({super.key, required this.order});
+
+  final OrderEntity order;
 
   Widget _buildOrderPage({
     required BuildContext context,
@@ -36,8 +39,8 @@ class OrderPage extends StatelessWidget {
                   OrderAddressesCard(
                     labelStyle: labelStyle,
                     titleStyle: titleStyle,
-                    addressFrom: "Титова 14",
-                    addressTo: "Королева 12",
+                    addressFrom: order.startPoint,
+                    addressTo: order.endPoint,
                     description: "2 подъезд, 28 квартира",
                   ),
                   const Gap(UIConstants.defaultGap3),
@@ -51,8 +54,8 @@ class OrderPage extends StatelessWidget {
                   OrderAddressesCard(
                     labelStyle: labelStyle,
                     titleStyle: titleStyle,
-                    addressFrom: "Титова 14",
-                    addressTo: "Королева 12",
+                    addressFrom: order.startPoint,
+                    addressTo: order.endPoint,
                     description: "2 подъезд, 28 квартира",
                   ),
                   const Gap(UIConstants.defaultGap3),
@@ -94,11 +97,13 @@ class OrderPage extends StatelessWidget {
               children: [
                 Text(S.current.order_status, style: labelStyle),
                 const Gap(UIConstants.defaultGap2),
-                
-                  Text(
-                    S.current.in_progress,
-                    style: labelStyle.copyWith(color: updatedOrderStatus != null ? context.theme.green : context.theme.blue ),
-                  ),
+                Text(
+                  S.current.in_progress,
+                  style: labelStyle.copyWith(
+                      color: updatedOrderStatus != null
+                          ? context.theme.green
+                          : context.theme.blue),
+                ),
               ],
             ),
             const Divider(height: UIConstants.defaultGap3),

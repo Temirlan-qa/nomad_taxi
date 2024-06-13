@@ -20,7 +20,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._getOrderUseCase,
   ) : super(const _Initial());
-  
+
   final GetOrderUseCase _getOrderUseCase;
 
   final OrderViewModel _viewModel = const OrderViewModel();
@@ -40,7 +40,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   }
 
   Future<void> _started() async {
-    // _driverOrderBloc.add(const DriverOrderEvent.started());
+    _driverOrderBloc.add(const DriverOrderEvent.started());
     add(const _GetOrders());
   }
 
@@ -50,23 +50,21 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   ) async {
     emit(const _Initial());
 
-    try {
-      final result = await _getOrderUseCase.call();
+    final result = await _getOrderUseCase.call();
 
-      final data = result.data;
+    final data = result.data;
 
-      if (result.isSuccessful && data != null) {
-        emit(
-          _Loaded(
-            viewModel: _viewModel.copyWith(
-              ordersList: data.orders,
-            ),
+    if (result.isSuccessful && data != null) {
+      emit(
+        _Loaded(
+          viewModel: _viewModel.copyWith(
+            ordersList: data.orders,
           ),
-        );
-      }
-    } catch (_) {
-      emit(_Error(S.current.noActiveOrdersAtTheMoment));
+        ),
+      );
+      return;
     }
+    emit(_Error(S.current.noActiveOrdersAtTheMoment));
   }
 
   Future<void> _acceptOrder(

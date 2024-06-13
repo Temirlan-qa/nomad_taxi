@@ -106,22 +106,36 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                 ],
               ),
               loaded: (viewModel) {
-                List<OrderEntity> orderEntity = viewModel.ordersList;
-
+                List<OrderEntity> orderList = viewModel.ordersList;
+                if (orderList.isEmpty) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Assets.icons.brand.smile.svg(),
+                      const Gap(UIConstants.defaultPadding),
+                      Text(
+                        S.current.noActiveOrdersAtTheMoment,
+                        textAlign: TextAlign.center,
+                        style: context.theme.textStyles.titleSecondary,
+                      ),
+                    ],
+                  );
+                }
                 return CheckMarkIndicator(
                   onRefresh: () {
                     bloc.add(const OrderEvent.getOrders());
                   },
                   child: ListView.separated(
                     padding: const EdgeInsets.all(UIConstants.defaultPadding),
-                    itemCount: orderEntity.length,
+                    itemCount: orderList.length,
                     separatorBuilder: (ctx, index) {
                       return const Gap(UIConstants.defaultGap1);
                     },
                     itemBuilder: (ctx, index) {
                       return InkWell(
                         onTap: () {
-                          context.push(RoutePaths.order);
+                          context.push(RoutePaths.order,
+                              extra: orderList[index]);
                         },
                         borderRadius:
                             BorderRadius.circular(UIConstants.defaultRadius),
@@ -150,7 +164,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                               .copyWith(
                                                   color: context.theme.blue)),
                                       const Gap(UIConstants.defaultGap5),
-                                      Text('${orderEntity[index].price} 〒',
+                                      Text('${orderList[index].price} 〒',
                                           style: context
                                               .theme.textStyles.extraTitle),
                                     ],
@@ -168,7 +182,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Expanded(
-                                    child: Text(orderEntity[index].startPoint,
+                                    child: Text(orderList[index].startPoint,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style:
@@ -183,7 +197,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                           BlendMode.srcIn)),
                                   const Gap(UIConstants.defaultGap2),
                                   Expanded(
-                                    child: Text(orderEntity[index].endPoint,
+                                    child: Text(orderList[index].endPoint,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style:

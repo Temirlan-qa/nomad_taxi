@@ -67,12 +67,15 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverOrders,
         path: RoutePaths.driverOrders,
-        builder: (_, __) => const DriverOrdersPage(),
+        builder: (context, stat) => const DriverOrdersPage(),
       ),
       GoRoute(
         name: RouteNames.order,
         path: RoutePaths.order,
-        builder: (_, __) => const OrderPage(),
+        builder: (context, state) {
+          final OrderEntity order = state.extra as OrderEntity;
+          return OrderPage(order: order);
+        },
       ),
       GoRoute(
         name: RouteNames.orderFinished,
