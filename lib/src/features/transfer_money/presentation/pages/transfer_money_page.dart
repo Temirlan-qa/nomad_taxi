@@ -54,8 +54,10 @@ class TransferMoneyPage extends StatelessWidget {
               body: SafeArea(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
-                  child: HtmlContentViewer(
-                    htmlContent: viewModel.payInfo,
+                  child: Center(
+                    child: HtmlContentViewer(
+                      htmlContent: viewModel.payInfo,
+                    ),
                   ),
                 ),
               ),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
-class DrawerTileWidget extends StatelessWidget {
+class DrawerTile extends StatelessWidget {
   final String title;
   final VoidCallback? onTap;
   final bool showUnderline;
   final bool isSelected;
 
-  const DrawerTileWidget(
+  const DrawerTile(
       {super.key,
       required this.title,
       required this.onTap,

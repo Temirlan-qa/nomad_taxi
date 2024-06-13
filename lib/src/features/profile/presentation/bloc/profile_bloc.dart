@@ -6,6 +6,7 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/exports/profile_exports.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
+import 'package:nomad_taxi/src/features/profile/domain/entities/partner/partner.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
@@ -36,7 +37,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   final UpdateFcmTokenUseCase _updateFcmTokenUseCase;
   final UpdateLanguageUseCase _updateLanguageUseCase;
 
-  final ProfileViewModel _viewModel = const ProfileViewModel();
+  final ProfileViewModel _viewModel = ProfileViewModel();
 
   @override
   Future<void> onEventHandler(ProfileEvent event, Emitter emit) async {
@@ -68,6 +69,21 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
             firstName: data.firstName,
             lastName: data.lastName,
             phone: data.phone,
+            id: data.id,
+            isBlocked: data.isBlocked ?? 0,
+            bonus: data.bonus ?? 0,
+            fcmToken: data.fcmToken ?? '',
+
+            // Partner
+            pBalance: data.pBalance,
+            pBonus: data.pBonus,
+            pCarModel: data.pCarModel,
+            pCarNumber: data.pCarNumber,
+            pFirstName: data.pFirstName,
+            pId: data.pId,
+            pLastName: data.pLastName,
+            pStatus: data.pStatus,
+            pTownId: data.pTownId,
           ),
         ),
       );

@@ -21,4 +21,10 @@ class Partner extends BaseEntity with _$Partner {
 
   factory Partner.fromJson(Map<String, dynamic> json) =>
       _$PartnerFromJson(json);
+
+  const factory Partner.empty({
+    @Default(false) bool empty,
+    @Default(false) bool sorted,
+    @Default(false) bool unsorted,
+  }) = _PartnerEmpty;
 }

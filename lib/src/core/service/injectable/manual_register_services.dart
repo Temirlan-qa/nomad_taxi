@@ -1,6 +1,7 @@
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_case.dart';
-import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
+
+import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
@@ -15,6 +16,8 @@ import '../../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../../features/detailed_driver_order/data/client/order_web_socket_client.dart';
 import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
 import '../../../features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
+import '../../../features/help/domain/usecases/get_questions_use_case.dart';
+import '../../../features/orders/domain/usecases/get_orders_use_case.dart';
 import '../../../features/profile/domain/usecases/update_language_use_case.dart';
 import 'exports/all.dart';
 import 'injectable_service.dart';
@@ -54,7 +57,7 @@ void manualRegisterServices() {
 
   getIt.registerBloc<OrderBloc>(
     () => OrderBloc(
-      getIt<GetOrderUseCase>(),
+     getIt<GetOrderUseCase>(),
       // getIt<GetOrderStatusUseCase>(),
     ),
   );
@@ -66,4 +69,10 @@ void manualRegisterServices() {
   );
 
   getIt.registerSingleton<OrderWebSocketClient>(OrderWebSocketClient());
+
+  getIt.registerBloc<HelpBloc>(
+    () => HelpBloc(
+      getIt<GetQuestionsUseCase>(),
+    ),
+  );
 }

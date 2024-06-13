@@ -11,8 +11,8 @@ import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 
-class DriverModeIntroPage extends StatelessWidget {
-  const DriverModeIntroPage({super.key});
+class DriverIntroPage extends StatelessWidget {
+  const DriverIntroPage({super.key});
 
   @override
   Widget build(BuildContext context) {

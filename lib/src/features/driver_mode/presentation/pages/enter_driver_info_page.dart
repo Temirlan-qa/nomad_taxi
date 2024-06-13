@@ -22,6 +22,7 @@ class EnterDriverInfoPage extends StatefulWidget {
 class _EnterDriverInfoPageState extends State<EnterDriverInfoPage> {
   final TextEditingController carNumberController = TextEditingController();
   final TextEditingController carInfoController = TextEditingController();
+
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -44,10 +45,9 @@ class _EnterDriverInfoPageState extends State<EnterDriverInfoPage> {
               TextFieldWidget(
                 controller: carNumberController,
                 hintText: S.current.enter_car_number,
-                textFieldValidationState:
-                    carNumberController.text.contains('promo')
-                        ? TextFieldValidationState.success
-                        : TextFieldValidationState.none,
+                textFieldValidationState: carNumberController.text.isNotEmpty
+                    ? TextFieldValidationState.success
+                    : TextFieldValidationState.none,
                 onChanged: (value) {
                   setState(() {});
                 },
@@ -55,14 +55,14 @@ class _EnterDriverInfoPageState extends State<EnterDriverInfoPage> {
               TextFieldWidget(
                 controller: carInfoController,
                 hintText: S.current.enter_driver_info,
-                textFieldValidationState:
-                    carInfoController.text.contains('promo')
-                        ? TextFieldValidationState.success
-                        : TextFieldValidationState.none,
+                textFieldValidationState: carInfoController.text.isNotEmpty
+                    ? TextFieldValidationState.success
+                    : TextFieldValidationState.none,
                 onChanged: (value) {
                   setState(() {});
                 },
               ),
+              const Gap(UIConstants.defaultGap3),
               Text(
                 S.current.car_info_hint_text,
                 style: context.theme.textStyles.bodyMain
@@ -75,11 +75,12 @@ class _EnterDriverInfoPageState extends State<EnterDriverInfoPage> {
       bottomNavigationBar: CustomMainBottomWidgets(
         child: CustomMainButtonWidget(
           title: S.current.save,
-          onPressed: carNumberController.text.contains('promo')
-              ? () {
-                  context.push(RoutePaths.driverOrders);
-                }
-              : null,
+          onPressed: () {
+            if (carNumberController.text.isNotEmpty &&
+                carInfoController.text.isNotEmpty) {
+              context.push(RoutePaths.driverMode);
+            }
+          },
         ),
       ),
     );

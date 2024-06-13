@@ -1,10 +1,9 @@
 import 'package:nomad_taxi/src/features/orders/data/models/order/order_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/pay_method/pay_method_dto.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/pay_method/pay_method_entity.dart';
+import 'package:nomad_taxi/src/features/profile/domain/entities/finance/finance.dart';
 
-import '../../../profile/data/models/finance/finance_dto.dart';
 import '../../../profile/data/models/partner/partner_dto.dart';
-import '../../../profile/domain/entities/finance/finance.dart';
 import '../../../profile/domain/entities/partner/partner.dart';
 import '../../domain/entities/order/order_entity.dart';
 import '../../domain/entities/point/point_entity.dart';

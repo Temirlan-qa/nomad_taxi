@@ -81,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Жою қайтымсыз, сіздің барлық деректеріңіз жоғалады"),
         "delivery": MessageLookupByLibrary.simpleMessage("Жеткізу"),
         "details": MessageLookupByLibrary.simpleMessage("Егжей"),
+        "developerAnswer":
+            MessageLookupByLibrary.simpleMessage("Әзірлеушінің жауабы"),
         "development_by":
             MessageLookupByLibrary.simpleMessage("Компанияның дамуы"),
         "done": MessageLookupByLibrary.simpleMessage("Орындалды"),

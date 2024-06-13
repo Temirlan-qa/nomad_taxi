@@ -18,6 +18,7 @@ _$PartnerImpl _$$PartnerImplFromJson(Map<String, dynamic> json) =>
       finance: json['finance'] == null
           ? null
           : Finance.fromJson(json['finance'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$PartnerImplToJson(_$PartnerImpl instance) =>
@@ -30,4 +31,21 @@ Map<String, dynamic> _$$PartnerImplToJson(_$PartnerImpl instance) =>
       'town_id': instance.townId,
       'status': instance.status,
       'finance': instance.finance,
+      'runtimeType': instance.$type,
+    };
+
+_$PartnerEmptyImpl _$$PartnerEmptyImplFromJson(Map<String, dynamic> json) =>
+    _$PartnerEmptyImpl(
+      empty: json['empty'] as bool? ?? false,
+      sorted: json['sorted'] as bool? ?? false,
+      unsorted: json['unsorted'] as bool? ?? false,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$PartnerEmptyImplToJson(_$PartnerEmptyImpl instance) =>
+    <String, dynamic>{
+      'empty': instance.empty,
+      'sorted': instance.sorted,
+      'unsorted': instance.unsorted,
+      'runtimeType': instance.$type,
     };
