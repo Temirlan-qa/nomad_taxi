@@ -19,6 +19,7 @@ part 'order_state.dart';
 class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._getOrderUseCase,
+    
   ) : super(const _Initial());
 
   final GetOrderUseCase _getOrderUseCase;
