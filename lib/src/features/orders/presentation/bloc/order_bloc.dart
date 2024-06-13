@@ -8,7 +8,9 @@ import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.da
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/get_orders_response/get_orders_response.dart';
-import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
+
+import '../../domain/usecases/get_order_use_case.dart';
+
 
 part 'order_bloc.freezed.dart';
 part 'order_event.dart';

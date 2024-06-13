@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
-import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
 
-class DrawerProfileCard extends StatelessWidget {
-  const DrawerProfileCard({
+class ProfileCard extends StatelessWidget {
+  const ProfileCard({
     super.key,
   });
 
@@ -22,10 +22,9 @@ class DrawerProfileCard extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: UIConstants.defaultGap2),
-        child: BaseBlocWidget<ProfileBloc, ProfileEvent, ProfileState>(
+        child: BlocBuilder<ProfileBloc, ProfileState>(
           bloc: getIt<ProfileBloc>(),
-          starterEvent: const ProfileEvent.init(),
-          builder: (context, state, bloc) {
+          builder: (context, state) {
             return state.when(
               initial: () =>
                   const Center(child: CircularProgressIndicator.adaptive()),

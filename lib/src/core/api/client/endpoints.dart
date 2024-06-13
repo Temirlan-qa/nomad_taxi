@@ -34,5 +34,6 @@ class EndPoints {
       "/v1/town/by-location?lat=43.251251&lng=76.923180";
 
   // Faq
-  static const getAvailableLanguages = "/v1/language";
+  static const String getAvailableLanguages = "/v1/language";
+  static const String getFaq = "/v1/faq?town_id=2";
 }

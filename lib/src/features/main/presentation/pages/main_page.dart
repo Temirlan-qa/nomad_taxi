@@ -3,12 +3,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
+import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/api_constants.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
+import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
+import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_widget.dart';
+import 'package:nomad_taxi/src/core/widgets/drawer/drawer_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_bottom_widget.dart';
 
 class MainPage extends StatefulWidget {
@@ -61,63 +64,79 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      key: _scaffoldKey,
-      drawer: CustomDrawerWidget(
-        onSwitchMode: () {
-          context.pushNamed(RouteNames.driverMode);
-        },
-        isDriverMode: false,
-      ),
-      appBar: CustomAppBar(
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            _scaffoldKey.currentState!.openDrawer();
+    return BaseBlocWidget<ProfileBloc, ProfileEvent, ProfileState>(
+      bloc: getIt<ProfileBloc>(),
+      starterEvent: const ProfileEvent.init(),
+      builder: (context, state, bloc) {
+        return state.when(
+          initial: () =>
+              const Center(child: CircularProgressIndicator.adaptive()),
+          loaded: (viewModel) {
+            return Scaffold(
+              extendBodyBehindAppBar: true,
+              key: _scaffoldKey,
+              drawer: DrawerWidget(
+                onSwitchMode: () {
+                  viewModel.pId == null
+                      ? context.pushNamed(RouteNames.driverModeIntro)
+                      : context.pushNamed(RouteNames.driverMode);
+                },
+                isDriverMode: false,
+              ),
+              appBar: CustomAppBar(
+                backgroundColor: Colors.transparent,
+                leading: IconButton(
+                  onPressed: () {
+                    _scaffoldKey.currentState!.openDrawer();
+                  },
+                  icon: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Assets.icons.regular.barsSolid.svg(
+                        colorFilter: ColorFilter.mode(
+                          context.theme.primary,
+                          BlendMode.srcIn,
+                        ),
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              body: Stack(
+                children: [
+                  Positioned(
+                    left: UIConstants.defaultPadding,
+                    top: UIConstants.defaultPadding,
+                    child: SafeArea(
+                      child: DrawerButtonWidget(scaffoldKey: _scaffoldKey),
+                    ),
+                  ),
+                  Center(
+                    child: MapLibreMap(
+                      styleString: ApiConstants.mapStyle,
+                      myLocationEnabled: true,
+                      initialCameraPosition: CameraPosition(
+                        zoom: 10,
+                        target: _currentPosition != null
+                            ? LatLng(_currentPosition!.latitude,
+                                _currentPosition!.longitude)
+                            : const LatLng(43.238949, 76.889709),
+                      ),
+                      trackCameraPosition: true,
+                    ),
+                  ),
+                ],
+              ),
+            );
           },
-          icon: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Assets.icons.regular.barsSolid.svg(
-                colorFilter:
-                    ColorFilter.mode(context.theme.primary, BlendMode.srcIn),
-                width: 24,
-                height: 24,
-              ),
-            ),
-          ),
-        ),
-      ),
-      body: Stack(
-        children: [
-          Positioned(
-            left: UIConstants.defaultPadding,
-            top: UIConstants.defaultPadding,
-            child: SafeArea(
-              child: DrawerButtonWidget(scaffoldKey: _scaffoldKey),
-            ),
-          ),
-          Center(
-            child: MapLibreMap(
-              styleString: ApiConstants.mapStyle,
-              myLocationEnabled: true,
-              initialCameraPosition: CameraPosition(
-                zoom: 10,
-                target: _currentPosition != null
-                    ? LatLng(
-                        _currentPosition!.latitude, _currentPosition!.longitude)
-                    : const LatLng(43.238949, 76.889709),
-              ),
-              trackCameraPosition: true,
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

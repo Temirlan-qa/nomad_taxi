@@ -78,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Удаление не обратимо, все ваши данные будут потеряны"),
         "delivery": MessageLookupByLibrary.simpleMessage("Доставка"),
         "details": MessageLookupByLibrary.simpleMessage("Детали"),
+        "developerAnswer":
+            MessageLookupByLibrary.simpleMessage("Ответ разработчика"),
         "development_by":
             MessageLookupByLibrary.simpleMessage("Разработка компании"),
         "done": MessageLookupByLibrary.simpleMessage("Выполненно"),

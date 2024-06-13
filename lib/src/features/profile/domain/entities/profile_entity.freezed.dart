@@ -27,8 +27,16 @@ mixin _$ProfileEntity {
   String? get languageCode => throw _privateConstructorUsedError;
   int? get isBlocked => throw _privateConstructorUsedError;
   int? get bonus => throw _privateConstructorUsedError;
-  Partner? get partner => throw _privateConstructorUsedError;
-  String? get fcmToken => throw _privateConstructorUsedError;
+  String? get fcmToken => throw _privateConstructorUsedError; // partner info
+  int? get pId => throw _privateConstructorUsedError;
+  String? get pFirstName => throw _privateConstructorUsedError;
+  String? get pLastName => throw _privateConstructorUsedError;
+  String? get pCarModel => throw _privateConstructorUsedError;
+  String? get pCarNumber => throw _privateConstructorUsedError;
+  int? get pTownId => throw _privateConstructorUsedError;
+  String? get pStatus => throw _privateConstructorUsedError;
+  int? get pBalance => throw _privateConstructorUsedError;
+  int? get pBonus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,10 +58,16 @@ abstract class $ProfileEntityCopyWith<$Res> {
       String? languageCode,
       int? isBlocked,
       int? bonus,
-      Partner? partner,
-      String? fcmToken});
-
-  $PartnerCopyWith<$Res>? get partner;
+      String? fcmToken,
+      int? pId,
+      String? pFirstName,
+      String? pLastName,
+      String? pCarModel,
+      String? pCarNumber,
+      int? pTownId,
+      String? pStatus,
+      int? pBalance,
+      int? pBonus});
 }
 
 /// @nodoc
@@ -76,8 +90,16 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
     Object? languageCode = freezed,
     Object? isBlocked = freezed,
     Object? bonus = freezed,
-    Object? partner = freezed,
     Object? fcmToken = freezed,
+    Object? pId = freezed,
+    Object? pFirstName = freezed,
+    Object? pLastName = freezed,
+    Object? pCarModel = freezed,
+    Object? pCarNumber = freezed,
+    Object? pTownId = freezed,
+    Object? pStatus = freezed,
+    Object? pBalance = freezed,
+    Object? pBonus = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -108,27 +130,47 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
               as int?,
-      partner: freezed == partner
-          ? _value.partner
-          : partner // ignore: cast_nullable_to_non_nullable
-              as Partner?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      pId: freezed == pId
+          ? _value.pId
+          : pId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pFirstName: freezed == pFirstName
+          ? _value.pFirstName
+          : pFirstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pLastName: freezed == pLastName
+          ? _value.pLastName
+          : pLastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarModel: freezed == pCarModel
+          ? _value.pCarModel
+          : pCarModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarNumber: freezed == pCarNumber
+          ? _value.pCarNumber
+          : pCarNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pTownId: freezed == pTownId
+          ? _value.pTownId
+          : pTownId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pStatus: freezed == pStatus
+          ? _value.pStatus
+          : pStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pBalance: freezed == pBalance
+          ? _value.pBalance
+          : pBalance // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pBonus: freezed == pBonus
+          ? _value.pBonus
+          : pBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PartnerCopyWith<$Res>? get partner {
-    if (_value.partner == null) {
-      return null;
-    }
-
-    return $PartnerCopyWith<$Res>(_value.partner!, (value) {
-      return _then(_value.copyWith(partner: value) as $Val);
-    });
   }
 }
 
@@ -148,11 +190,16 @@ abstract class _$$ProfileEntityImplCopyWith<$Res>
       String? languageCode,
       int? isBlocked,
       int? bonus,
-      Partner? partner,
-      String? fcmToken});
-
-  @override
-  $PartnerCopyWith<$Res>? get partner;
+      String? fcmToken,
+      int? pId,
+      String? pFirstName,
+      String? pLastName,
+      String? pCarModel,
+      String? pCarNumber,
+      int? pTownId,
+      String? pStatus,
+      int? pBalance,
+      int? pBonus});
 }
 
 /// @nodoc
@@ -173,8 +220,16 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
     Object? languageCode = freezed,
     Object? isBlocked = freezed,
     Object? bonus = freezed,
-    Object? partner = freezed,
     Object? fcmToken = freezed,
+    Object? pId = freezed,
+    Object? pFirstName = freezed,
+    Object? pLastName = freezed,
+    Object? pCarModel = freezed,
+    Object? pCarNumber = freezed,
+    Object? pTownId = freezed,
+    Object? pStatus = freezed,
+    Object? pBalance = freezed,
+    Object? pBonus = freezed,
   }) {
     return _then(_$ProfileEntityImpl(
       firstName: null == firstName
@@ -205,14 +260,46 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
           ? _value.bonus
           : bonus // ignore: cast_nullable_to_non_nullable
               as int?,
-      partner: freezed == partner
-          ? _value.partner
-          : partner // ignore: cast_nullable_to_non_nullable
-              as Partner?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      pId: freezed == pId
+          ? _value.pId
+          : pId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pFirstName: freezed == pFirstName
+          ? _value.pFirstName
+          : pFirstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pLastName: freezed == pLastName
+          ? _value.pLastName
+          : pLastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarModel: freezed == pCarModel
+          ? _value.pCarModel
+          : pCarModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pCarNumber: freezed == pCarNumber
+          ? _value.pCarNumber
+          : pCarNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pTownId: freezed == pTownId
+          ? _value.pTownId
+          : pTownId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pStatus: freezed == pStatus
+          ? _value.pStatus
+          : pStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pBalance: freezed == pBalance
+          ? _value.pBalance
+          : pBalance // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pBonus: freezed == pBonus
+          ? _value.pBonus
+          : pBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -228,8 +315,16 @@ class _$ProfileEntityImpl implements _ProfileEntity {
       this.languageCode,
       this.isBlocked,
       this.bonus,
-      this.partner,
-      this.fcmToken});
+      this.fcmToken,
+      this.pId,
+      this.pFirstName,
+      this.pLastName,
+      this.pCarModel,
+      this.pCarNumber,
+      this.pTownId,
+      this.pStatus,
+      this.pBalance,
+      this.pBonus});
 
   factory _$ProfileEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileEntityImplFromJson(json);
@@ -249,13 +344,30 @@ class _$ProfileEntityImpl implements _ProfileEntity {
   @override
   final int? bonus;
   @override
-  final Partner? partner;
-  @override
   final String? fcmToken;
+// partner info
+  @override
+  final int? pId;
+  @override
+  final String? pFirstName;
+  @override
+  final String? pLastName;
+  @override
+  final String? pCarModel;
+  @override
+  final String? pCarNumber;
+  @override
+  final int? pTownId;
+  @override
+  final String? pStatus;
+  @override
+  final int? pBalance;
+  @override
+  final int? pBonus;
 
   @override
   String toString() {
-    return 'ProfileEntity(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, languageCode: $languageCode, isBlocked: $isBlocked, bonus: $bonus, partner: $partner, fcmToken: $fcmToken)';
+    return 'ProfileEntity(firstName: $firstName, lastName: $lastName, phone: $phone, id: $id, languageCode: $languageCode, isBlocked: $isBlocked, bonus: $bonus, fcmToken: $fcmToken, pId: $pId, pFirstName: $pFirstName, pLastName: $pLastName, pCarModel: $pCarModel, pCarNumber: $pCarNumber, pTownId: $pTownId, pStatus: $pStatus, pBalance: $pBalance, pBonus: $pBonus)';
   }
 
   @override
@@ -274,15 +386,45 @@ class _$ProfileEntityImpl implements _ProfileEntity {
             (identical(other.isBlocked, isBlocked) ||
                 other.isBlocked == isBlocked) &&
             (identical(other.bonus, bonus) || other.bonus == bonus) &&
-            (identical(other.partner, partner) || other.partner == partner) &&
             (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken));
+                other.fcmToken == fcmToken) &&
+            (identical(other.pId, pId) || other.pId == pId) &&
+            (identical(other.pFirstName, pFirstName) ||
+                other.pFirstName == pFirstName) &&
+            (identical(other.pLastName, pLastName) ||
+                other.pLastName == pLastName) &&
+            (identical(other.pCarModel, pCarModel) ||
+                other.pCarModel == pCarModel) &&
+            (identical(other.pCarNumber, pCarNumber) ||
+                other.pCarNumber == pCarNumber) &&
+            (identical(other.pTownId, pTownId) || other.pTownId == pTownId) &&
+            (identical(other.pStatus, pStatus) || other.pStatus == pStatus) &&
+            (identical(other.pBalance, pBalance) ||
+                other.pBalance == pBalance) &&
+            (identical(other.pBonus, pBonus) || other.pBonus == pBonus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, phone, id,
-      languageCode, isBlocked, bonus, partner, fcmToken);
+  int get hashCode => Object.hash(
+      runtimeType,
+      firstName,
+      lastName,
+      phone,
+      id,
+      languageCode,
+      isBlocked,
+      bonus,
+      fcmToken,
+      pId,
+      pFirstName,
+      pLastName,
+      pCarModel,
+      pCarNumber,
+      pTownId,
+      pStatus,
+      pBalance,
+      pBonus);
 
   @JsonKey(ignore: true)
   @override
@@ -307,8 +449,16 @@ abstract class _ProfileEntity implements ProfileEntity {
       final String? languageCode,
       final int? isBlocked,
       final int? bonus,
-      final Partner? partner,
-      final String? fcmToken}) = _$ProfileEntityImpl;
+      final String? fcmToken,
+      final int? pId,
+      final String? pFirstName,
+      final String? pLastName,
+      final String? pCarModel,
+      final String? pCarNumber,
+      final int? pTownId,
+      final String? pStatus,
+      final int? pBalance,
+      final int? pBonus}) = _$ProfileEntityImpl;
 
   factory _ProfileEntity.fromJson(Map<String, dynamic> json) =
       _$ProfileEntityImpl.fromJson;
@@ -328,9 +478,25 @@ abstract class _ProfileEntity implements ProfileEntity {
   @override
   int? get bonus;
   @override
-  Partner? get partner;
-  @override
   String? get fcmToken;
+  @override // partner info
+  int? get pId;
+  @override
+  String? get pFirstName;
+  @override
+  String? get pLastName;
+  @override
+  String? get pCarModel;
+  @override
+  String? get pCarNumber;
+  @override
+  int? get pTownId;
+  @override
+  String? get pStatus;
+  @override
+  int? get pBalance;
+  @override
+  int? get pBonus;
   @override
   @JsonKey(ignore: true)
   _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith =>
