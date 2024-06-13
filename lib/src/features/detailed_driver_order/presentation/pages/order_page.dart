@@ -24,7 +24,9 @@ class OrderPage extends StatelessWidget {
     required TextStyle labelStyle,
     required TextStyle titleStyle,
     required TextStyle headLine,
+    DriverOrderViewModel? viewModel,
   }) {
+    GetOrderStatusResponse? updatedOrderStatus = viewModel?.updatedOrderStatus;
     return Scaffold(
       bottomNavigationBar: CustomMainBottomWidgets(
         child: MediaQuery.orientationOf(context).index == 0
@@ -92,17 +94,16 @@ class OrderPage extends StatelessWidget {
               children: [
                 Text(S.current.order_status, style: labelStyle),
                 const Gap(UIConstants.defaultGap2),
-                // if(updatedOrderStatus != null)...[
-                //  Text(
-                //   updatedOrderStatus.status,
-                //   style:
-                //       labelStyle.copyWith(color: context.theme.green),
-                // ),
-                // ],
-                Text(
-                  S.current.in_progress,
-                  style: labelStyle.copyWith(color: context.theme.blue),
-                ),
+                if (updatedOrderStatus != null)
+                  Text(
+                    updatedOrderStatus.status,
+                    style: labelStyle.copyWith(color: context.theme.green),
+                  )
+                else
+                  Text(
+                    S.current.in_progress,
+                    style: labelStyle.copyWith(color: context.theme.blue),
+                  ),
               ],
             ),
             const Divider(height: UIConstants.defaultGap3),
@@ -190,14 +191,12 @@ class OrderPage extends StatelessWidget {
             headLine: headLine,
           );
         }, loaded: (viewModel) {
-          GetOrderStatusResponse? updatedOrderStatus =
-              viewModel.updatedOrderStatus;
           return _buildOrderPage(
-            context: context,
-            labelStyle: labelStyle,
-            titleStyle: titleStyle,
-            headLine: headLine,
-          );
+              context: context,
+              labelStyle: labelStyle,
+              titleStyle: titleStyle,
+              headLine: headLine,
+              viewModel: viewModel);
         });
       },
     );
