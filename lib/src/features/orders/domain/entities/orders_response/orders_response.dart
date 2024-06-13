@@ -8,7 +8,7 @@ part 'orders_response.g.dart';
 @freezed
 class OrdersResponse extends BaseEntity with _$OrdersResponse {
   const factory OrdersResponse({
-    required List<OrderEntity> data,
+    required List<OrderEntity> orders,
   }) = _OrdersResponse;
 
   factory OrdersResponse.fromJson(Map<String, dynamic> json) =>

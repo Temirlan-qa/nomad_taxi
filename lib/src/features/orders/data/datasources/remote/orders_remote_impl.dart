@@ -124,16 +124,18 @@ class OrdersRemoteImpl implements IOrdersRemote {
         ),
       );
 
-      // final responseData = response.data['data'];
-
-      // final Map<String, dynamic> responseData = _mockData;
-
-      // final ordersResponse = GetOrdersResponseDto.fromJson(responseData);
+      final responseData = response.data as Map<String, dynamic>;
+      final data = responseData['data'] as List<dynamic>;
+      final orders = data
+          .map((order) => OrderDto.fromJson(order as Map<String, dynamic>))
+          .toList();
 
       if (response.statusCode == 200) {
-        return Right(OrdersDto.fromJson(response.data['data']));
+        log('$orders', name: 'Orders');
+        return Right(OrdersDto(orders: orders));
+      } else {
+        return Left(UnknownException());
       }
-      return Left(UnknownException());
     } catch (e) {
       log('$e');
       return Left(

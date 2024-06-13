@@ -20,7 +20,7 @@ OrdersDto _$OrdersDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrdersDto {
-  List<OrderDto> get data => throw _privateConstructorUsedError;
+  List<OrderDto> get orders => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $OrdersDtoCopyWith<$Res> {
   factory $OrdersDtoCopyWith(OrdersDto value, $Res Function(OrdersDto) then) =
       _$OrdersDtoCopyWithImpl<$Res, OrdersDto>;
   @useResult
-  $Res call({List<OrderDto> data});
+  $Res call({List<OrderDto> orders});
 }
 
 /// @nodoc
@@ -49,12 +49,12 @@ class _$OrdersDtoCopyWithImpl<$Res, $Val extends OrdersDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? orders = null,
   }) {
     return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      orders: null == orders
+          ? _value.orders
+          : orders // ignore: cast_nullable_to_non_nullable
               as List<OrderDto>,
     ) as $Val);
   }
@@ -68,7 +68,7 @@ abstract class _$$OrdersDtoImplCopyWith<$Res>
       __$$OrdersDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<OrderDto> data});
+  $Res call({List<OrderDto> orders});
 }
 
 /// @nodoc
@@ -82,12 +82,12 @@ class __$$OrdersDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? orders = null,
   }) {
     return _then(_$OrdersDtoImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
+      orders: null == orders
+          ? _value._orders
+          : orders // ignore: cast_nullable_to_non_nullable
               as List<OrderDto>,
     ));
   }
@@ -96,22 +96,23 @@ class __$$OrdersDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OrdersDtoImpl implements _OrdersDto {
-  const _$OrdersDtoImpl({required final List<OrderDto> data}) : _data = data;
+  const _$OrdersDtoImpl({required final List<OrderDto> orders})
+      : _orders = orders;
 
   factory _$OrdersDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrdersDtoImplFromJson(json);
 
-  final List<OrderDto> _data;
+  final List<OrderDto> _orders;
   @override
-  List<OrderDto> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
+  List<OrderDto> get orders {
+    if (_orders is EqualUnmodifiableListView) return _orders;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
+    return EqualUnmodifiableListView(_orders);
   }
 
   @override
   String toString() {
-    return 'OrdersDto(data: $data)';
+    return 'OrdersDto(orders: $orders)';
   }
 
   @override
@@ -119,13 +120,13 @@ class _$OrdersDtoImpl implements _OrdersDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrdersDtoImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
 
   @JsonKey(ignore: true)
   @override
@@ -142,14 +143,14 @@ class _$OrdersDtoImpl implements _OrdersDto {
 }
 
 abstract class _OrdersDto implements OrdersDto {
-  const factory _OrdersDto({required final List<OrderDto> data}) =
+  const factory _OrdersDto({required final List<OrderDto> orders}) =
       _$OrdersDtoImpl;
 
   factory _OrdersDto.fromJson(Map<String, dynamic> json) =
       _$OrdersDtoImpl.fromJson;
 
   @override
-  List<OrderDto> get data;
+  List<OrderDto> get orders;
   @override
   @JsonKey(ignore: true)
   _$$OrdersDtoImplCopyWith<_$OrdersDtoImpl> get copyWith =>

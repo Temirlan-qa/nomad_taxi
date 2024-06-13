@@ -20,7 +20,7 @@ OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrdersResponse {
-  List<OrderEntity> get data => throw _privateConstructorUsedError;
+  List<OrderEntity> get orders => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $OrdersResponseCopyWith<$Res> {
           OrdersResponse value, $Res Function(OrdersResponse) then) =
       _$OrdersResponseCopyWithImpl<$Res, OrdersResponse>;
   @useResult
-  $Res call({List<OrderEntity> data});
+  $Res call({List<OrderEntity> orders});
 }
 
 /// @nodoc
@@ -50,12 +50,12 @@ class _$OrdersResponseCopyWithImpl<$Res, $Val extends OrdersResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? orders = null,
   }) {
     return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      orders: null == orders
+          ? _value.orders
+          : orders // ignore: cast_nullable_to_non_nullable
               as List<OrderEntity>,
     ) as $Val);
   }
@@ -69,7 +69,7 @@ abstract class _$$OrdersResponseImplCopyWith<$Res>
       __$$OrdersResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<OrderEntity> data});
+  $Res call({List<OrderEntity> orders});
 }
 
 /// @nodoc
@@ -83,12 +83,12 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? orders = null,
   }) {
     return _then(_$OrdersResponseImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
+      orders: null == orders
+          ? _value._orders
+          : orders // ignore: cast_nullable_to_non_nullable
               as List<OrderEntity>,
     ));
   }
@@ -97,23 +97,23 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OrdersResponseImpl implements _OrdersResponse {
-  const _$OrdersResponseImpl({required final List<OrderEntity> data})
-      : _data = data;
+  const _$OrdersResponseImpl({required final List<OrderEntity> orders})
+      : _orders = orders;
 
   factory _$OrdersResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrdersResponseImplFromJson(json);
 
-  final List<OrderEntity> _data;
+  final List<OrderEntity> _orders;
   @override
-  List<OrderEntity> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
+  List<OrderEntity> get orders {
+    if (_orders is EqualUnmodifiableListView) return _orders;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
+    return EqualUnmodifiableListView(_orders);
   }
 
   @override
   String toString() {
-    return 'OrdersResponse(data: $data)';
+    return 'OrdersResponse(orders: $orders)';
   }
 
   @override
@@ -121,13 +121,13 @@ class _$OrdersResponseImpl implements _OrdersResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrdersResponseImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
 
   @JsonKey(ignore: true)
   @override
@@ -145,14 +145,14 @@ class _$OrdersResponseImpl implements _OrdersResponse {
 }
 
 abstract class _OrdersResponse implements OrdersResponse {
-  const factory _OrdersResponse({required final List<OrderEntity> data}) =
+  const factory _OrdersResponse({required final List<OrderEntity> orders}) =
       _$OrdersResponseImpl;
 
   factory _OrdersResponse.fromJson(Map<String, dynamic> json) =
       _$OrdersResponseImpl.fromJson;
 
   @override
-  List<OrderEntity> get data;
+  List<OrderEntity> get orders;
   @override
   @JsonKey(ignore: true)
   _$$OrdersResponseImplCopyWith<_$OrdersResponseImpl> get copyWith =>

@@ -59,7 +59,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
         emit(
           _Loaded(
             viewModel: _viewModel.copyWith(
-              ordersList: data.data,
+              ordersList: data.orders,
             ),
           ),
         );

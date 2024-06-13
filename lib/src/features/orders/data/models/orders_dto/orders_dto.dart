@@ -8,7 +8,7 @@ part 'orders_dto.g.dart';
 @freezed
 class OrdersDto extends BaseDto with _$OrdersDto {
   const factory OrdersDto({
-    required List<OrderDto> data,
+    required List<OrderDto> orders,
   }) = _OrdersDto;
 
   factory OrdersDto.fromJson(Map<String, dynamic> json) =>

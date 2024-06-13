@@ -11,6 +11,22 @@ import '../models/point/point_dto.dart';
 
 class OrderDtoMapper {
   OrderEntity map(OrderDto dto) {
+    return OrderEntity(
+      id: dto.id,
+      startPoint: dto.startPoint,
+      endPoint: dto.endPoint,
+      price: dto.price,
+      comment: dto.comment,
+      status: dto.status,
+      hasRoute: dto.hasRoute,
+      // createdAt: dto.createdAt,
+      // waitingTime: dto.waitingTime,
+      // partner: partner,
+      // payMethod: payMethodEntity,
+      // phone: dto.phone,
+      // townId: dto.townId,
+      // points: points,
+    );
     // final PayMethodDto payMethodDto = dto.payMethod;
     // final PayMethodEntity payMethodEntity = PayMethodEntity(
     //   byCash: payMethodDto.byCash,
@@ -44,21 +60,6 @@ class OrderDtoMapper {
     //     status: partnerDto.status,
     //     finance: finance);
 
-    return OrderEntity(
-      id: dto.id,
-      startPoint: dto.startPoint,
-      endPoint: dto.endPoint,
-      price: dto.price,
-      comment: dto.comment,
-      status: dto.status,
-      hasRoute: dto.hasRoute,
-      // createdAt: dto.createdAt,
-      // waitingTime: dto.waitingTime,
-      // partner: partner,
-      // payMethod: payMethodEntity,
-      // phone: dto.phone,
-      // townId: dto.townId,
-      // points: points,
-    );
+    
   }
 }

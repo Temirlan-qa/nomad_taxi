@@ -1,8 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_models/base_dto.dart';
-import 'package:nomad_taxi/src/features/orders/data/models/pay_method/pay_method_dto.dart';
-import 'package:nomad_taxi/src/features/orders/data/models/point/point_dto.dart';
-import 'package:nomad_taxi/src/features/profile/data/models/partner/partner_dto.dart';
 
 part 'order_dto.freezed.dart';
 part 'order_dto.g.dart';
@@ -10,7 +7,7 @@ part 'order_dto.g.dart';
 @freezed
 class OrderDto extends BaseDto with _$OrderDto {
   const factory OrderDto({
-    required String id,
+    required int id,
     @JsonKey(name: 'start_point') required String startPoint,
     @JsonKey(name: 'end_point') required String endPoint,
     required int price,
@@ -26,6 +23,6 @@ class OrderDto extends BaseDto with _$OrderDto {
     // required List<PointDto> points,
   }) = _OrderDto;
 
-   factory OrderDto.fromJson(Map<String, dynamic> json) =>
+  factory OrderDto.fromJson(Map<String, dynamic> json) =>
       _$OrderDtoFromJson(json);
 }

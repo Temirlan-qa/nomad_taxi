@@ -8,12 +8,12 @@ part of 'orders_dto.dart';
 
 _$OrdersDtoImpl _$$OrdersDtoImplFromJson(Map<String, dynamic> json) =>
     _$OrdersDtoImpl(
-      data: (json['data'] as List<dynamic>)
+      orders: (json['orders'] as List<dynamic>)
           .map((e) => OrderDto.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$$OrdersDtoImplToJson(_$OrdersDtoImpl instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'orders': instance.orders,
     };

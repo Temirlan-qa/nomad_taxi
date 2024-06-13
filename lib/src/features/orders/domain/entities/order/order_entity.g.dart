@@ -8,7 +8,7 @@ part of 'order_entity.dart';
 
 _$OrderEntityImpl _$$OrderEntityImplFromJson(Map<String, dynamic> json) =>
     _$OrderEntityImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       startPoint: json['startPoint'] as String,
       endPoint: json['endPoint'] as String,
       price: (json['price'] as num).toInt(),

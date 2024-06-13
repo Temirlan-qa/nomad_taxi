@@ -20,7 +20,7 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderEntity {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get startPoint => throw _privateConstructorUsedError;
   String get endPoint => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $OrderEntityCopyWith<$Res> {
       _$OrderEntityCopyWithImpl<$Res, OrderEntity>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String startPoint,
       String endPoint,
       int price,
@@ -75,7 +75,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -113,7 +113,7 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String startPoint,
       String endPoint,
       int price,
@@ -145,7 +145,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -190,7 +190,7 @@ class _$OrderEntityImpl implements _OrderEntity {
       _$$OrderEntityImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String startPoint;
   @override
@@ -247,7 +247,7 @@ class _$OrderEntityImpl implements _OrderEntity {
 
 abstract class _OrderEntity implements OrderEntity {
   const factory _OrderEntity(
-      {required final String id,
+      {required final int id,
       required final String startPoint,
       required final String endPoint,
       required final int price,
@@ -259,7 +259,7 @@ abstract class _OrderEntity implements OrderEntity {
       _$OrderEntityImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get startPoint;
   @override

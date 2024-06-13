@@ -8,7 +8,7 @@ part of 'orders_response.dart';
 
 _$OrdersResponseImpl _$$OrdersResponseImplFromJson(Map<String, dynamic> json) =>
     _$OrdersResponseImpl(
-      data: (json['data'] as List<dynamic>)
+      orders: (json['orders'] as List<dynamic>)
           .map((e) => OrderEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -16,5 +16,5 @@ _$OrdersResponseImpl _$$OrdersResponseImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$OrdersResponseImplToJson(
         _$OrdersResponseImpl instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'orders': instance.orders,
     };

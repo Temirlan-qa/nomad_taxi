@@ -20,7 +20,7 @@ OrderDto _$OrderDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderDto {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_point')
   String get startPoint => throw _privateConstructorUsedError;
   @JsonKey(name: 'end_point')
@@ -43,7 +43,7 @@ abstract class $OrderDtoCopyWith<$Res> {
       _$OrderDtoCopyWithImpl<$Res, OrderDto>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       @JsonKey(name: 'start_point') String startPoint,
       @JsonKey(name: 'end_point') String endPoint,
       int price,
@@ -77,7 +77,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       @JsonKey(name: 'start_point') String startPoint,
       @JsonKey(name: 'end_point') String endPoint,
       int price,
@@ -147,7 +147,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class _$OrderDtoImpl implements _OrderDto {
       _$$OrderDtoImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   @JsonKey(name: 'start_point')
   final String startPoint;
@@ -252,7 +252,7 @@ class _$OrderDtoImpl implements _OrderDto {
 
 abstract class _OrderDto implements OrderDto {
   const factory _OrderDto(
-          {required final String id,
+          {required final int id,
           @JsonKey(name: 'start_point') required final String startPoint,
           @JsonKey(name: 'end_point') required final String endPoint,
           required final int price,
@@ -265,7 +265,7 @@ abstract class _OrderDto implements OrderDto {
       _$OrderDtoImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   @JsonKey(name: 'start_point')
   String get startPoint;

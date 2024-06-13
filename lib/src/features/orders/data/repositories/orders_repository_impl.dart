@@ -82,11 +82,11 @@ class OrdersRepositoryImpl implements IOrdersRepository {
       return requests.fold(
         (error) => Left(error),
         (dtos) {
-          final List<OrderEntity> entities = dtos.data
+          final List<OrderEntity> entities = dtos.orders
               .map((OrderDto dto) => OrderDtoMapper().map(dto))
               .toList();
 
-          return Right(OrdersResponse(data: entities));
+          return Right(OrdersResponse(orders: entities));
         },
       );
     } catch (e) {

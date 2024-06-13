@@ -168,7 +168,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Expanded(
-                                    child: Text('Типография Konica',
+                                    child: Text(orderEntity[index].startPoint,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style:
@@ -183,7 +183,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                           BlendMode.srcIn)),
                                   const Gap(UIConstants.defaultGap2),
                                   Expanded(
-                                    child: Text('Ниточкина 6а',
+                                    child: Text(orderEntity[index].endPoint,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style:
