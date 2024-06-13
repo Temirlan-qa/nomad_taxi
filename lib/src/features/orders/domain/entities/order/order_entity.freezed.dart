@@ -20,7 +20,7 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderEntity {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get startPoint => throw _privateConstructorUsedError;
   String get endPoint => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $OrderEntityCopyWith<$Res> {
       _$OrderEntityCopyWithImpl<$Res, OrderEntity>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String startPoint,
       String endPoint,
       int price,
@@ -75,7 +75,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -113,7 +113,7 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String startPoint,
       String endPoint,
       int price,
@@ -145,7 +145,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -178,37 +178,30 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderEntityImpl implements _OrderEntity {
   const _$OrderEntityImpl(
-      {this.id = 0,
-      this.startPoint = '',
-      this.endPoint = '',
-      this.price = 0,
-      this.comment = '',
-      this.status = '',
-      this.hasRoute = false});
+      {required this.id,
+      required this.startPoint,
+      required this.endPoint,
+      required this.price,
+      this.comment,
+      required this.status,
+      required this.hasRoute});
 
   factory _$OrderEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderEntityImplFromJson(json);
 
   @override
-  @JsonKey()
-  final int id;
+  final String id;
   @override
-  @JsonKey()
   final String startPoint;
   @override
-  @JsonKey()
   final String endPoint;
   @override
-  @JsonKey()
   final int price;
   @override
-  @JsonKey()
   final String? comment;
   @override
-  @JsonKey()
   final String status;
   @override
-  @JsonKey()
   final bool hasRoute;
 
   @override
@@ -254,19 +247,19 @@ class _$OrderEntityImpl implements _OrderEntity {
 
 abstract class _OrderEntity implements OrderEntity {
   const factory _OrderEntity(
-      {final int id,
-      final String startPoint,
-      final String endPoint,
-      final int price,
+      {required final String id,
+      required final String startPoint,
+      required final String endPoint,
+      required final int price,
       final String? comment,
-      final String status,
-      final bool hasRoute}) = _$OrderEntityImpl;
+      required final String status,
+      required final bool hasRoute}) = _$OrderEntityImpl;
 
   factory _OrderEntity.fromJson(Map<String, dynamic> json) =
       _$OrderEntityImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get startPoint;
   @override

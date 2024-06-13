@@ -8,13 +8,13 @@ part of 'order_entity.dart';
 
 _$OrderEntityImpl _$$OrderEntityImplFromJson(Map<String, dynamic> json) =>
     _$OrderEntityImpl(
-      id: (json['id'] as num?)?.toInt() ?? 0,
-      startPoint: json['startPoint'] as String? ?? '',
-      endPoint: json['endPoint'] as String? ?? '',
-      price: (json['price'] as num?)?.toInt() ?? 0,
-      comment: json['comment'] as String? ?? '',
-      status: json['status'] as String? ?? '',
-      hasRoute: json['hasRoute'] as bool? ?? false,
+      id: json['id'] as String,
+      startPoint: json['startPoint'] as String,
+      endPoint: json['endPoint'] as String,
+      price: (json['price'] as num).toInt(),
+      comment: json['comment'] as String?,
+      status: json['status'] as String,
+      hasRoute: json['hasRoute'] as bool,
     );
 
 Map<String, dynamic> _$$OrderEntityImplToJson(_$OrderEntityImpl instance) =>

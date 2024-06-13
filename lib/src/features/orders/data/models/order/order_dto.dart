@@ -10,12 +10,12 @@ part 'order_dto.g.dart';
 @freezed
 class OrderDto extends BaseDto with _$OrderDto {
   const factory OrderDto({
-    @Default(0) int id,
+    required String id,
     @JsonKey(name: 'start_point') required String startPoint,
     @JsonKey(name: 'end_point') required String endPoint,
-    @Default(0) int price,
-    @Default('')String? comment,
-    @Default('')String status,
+    required int price,
+    String? comment,
+    required String status,
     @JsonKey(name: 'has_route') required bool hasRoute,
     // @JsonKey(name: 'created_at') required String createdAt,
     // @JsonKey(name: 'pay_method') required PayMethodDto payMethod,

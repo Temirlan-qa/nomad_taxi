@@ -20,7 +20,7 @@ OrderDto _$OrderDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderDto {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_point')
   String get startPoint => throw _privateConstructorUsedError;
   @JsonKey(name: 'end_point')
@@ -43,7 +43,7 @@ abstract class $OrderDtoCopyWith<$Res> {
       _$OrderDtoCopyWithImpl<$Res, OrderDto>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'start_point') String startPoint,
       @JsonKey(name: 'end_point') String endPoint,
       int price,
@@ -77,7 +77,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'start_point') String startPoint,
       @JsonKey(name: 'end_point') String endPoint,
       int price,
@@ -147,7 +147,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -180,20 +180,19 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderDtoImpl implements _OrderDto {
   const _$OrderDtoImpl(
-      {this.id = 0,
+      {required this.id,
       @JsonKey(name: 'start_point') required this.startPoint,
       @JsonKey(name: 'end_point') required this.endPoint,
-      this.price = 0,
-      this.comment = '',
-      this.status = '',
+      required this.price,
+      this.comment,
+      required this.status,
       @JsonKey(name: 'has_route') required this.hasRoute});
 
   factory _$OrderDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderDtoImplFromJson(json);
 
   @override
-  @JsonKey()
-  final int id;
+  final String id;
   @override
   @JsonKey(name: 'start_point')
   final String startPoint;
@@ -201,13 +200,10 @@ class _$OrderDtoImpl implements _OrderDto {
   @JsonKey(name: 'end_point')
   final String endPoint;
   @override
-  @JsonKey()
   final int price;
   @override
-  @JsonKey()
   final String? comment;
   @override
-  @JsonKey()
   final String status;
   @override
   @JsonKey(name: 'has_route')
@@ -256,12 +252,12 @@ class _$OrderDtoImpl implements _OrderDto {
 
 abstract class _OrderDto implements OrderDto {
   const factory _OrderDto(
-          {final int id,
+          {required final String id,
           @JsonKey(name: 'start_point') required final String startPoint,
           @JsonKey(name: 'end_point') required final String endPoint,
-          final int price,
+          required final int price,
           final String? comment,
-          final String status,
+          required final String status,
           @JsonKey(name: 'has_route') required final bool hasRoute}) =
       _$OrderDtoImpl;
 
@@ -269,7 +265,7 @@ abstract class _OrderDto implements OrderDto {
       _$OrderDtoImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   @JsonKey(name: 'start_point')
   String get startPoint;

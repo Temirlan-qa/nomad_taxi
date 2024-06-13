@@ -6,7 +6,7 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
-import 'package:nomad_taxi/src/features/orders/domain/entities/get_orders_response/get_orders_response.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
 
 import '../../../../core/localization/generated/l10n.dart';
@@ -20,6 +20,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._getOrderUseCase,
   ) : super(const _Initial());
+  
   final GetOrderUseCase _getOrderUseCase;
 
   final OrderViewModel _viewModel = const OrderViewModel();
@@ -58,10 +59,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
         emit(
           _Loaded(
             viewModel: _viewModel.copyWith(
-              ordersList: data.data
-                  .map((item) =>
-                      OrderEntity.fromJson(item as Map<String, dynamic>))
-                  .toList(),
+              ordersList: data.data,
             ),
           ),
         );

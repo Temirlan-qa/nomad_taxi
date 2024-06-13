@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -8,7 +7,7 @@ import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/create_order_response/create_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
-import 'package:nomad_taxi/src/features/orders/data/models/get_orders_response/get_orders_response_dto.dart';
+import 'package:nomad_taxi/src/features/orders/data/models/orders_dto/orders_dto.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
@@ -111,28 +110,28 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, GetOrdersResponseDto>> getOrders() async {
+  Future<Either<DomainException, OrdersDto>> getOrders() async {
     try {
       var headers = {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      final Response<dynamic> response = await client.get(
+      var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order',
         options: Options(
-          // method: 'GET',
+          method: 'GET',
           headers: headers,
         ),
       );
-      
-      final Map<String, dynamic> responseData = response.data;
+
+      // final responseData = response.data['data'];
 
       // final Map<String, dynamic> responseData = _mockData;
-      
-      final ordersResponse = GetOrdersResponseDto.fromJson(responseData);
+
+      // final ordersResponse = GetOrdersResponseDto.fromJson(responseData);
 
       if (response.statusCode == 200) {
-        return Right(ordersResponse);
+        return Right(OrdersDto.fromJson(response.data['data']));
       }
       return Left(UnknownException());
     } catch (e) {

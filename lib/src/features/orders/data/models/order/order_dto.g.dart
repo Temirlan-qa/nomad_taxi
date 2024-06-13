@@ -8,12 +8,12 @@ part of 'order_dto.dart';
 
 _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
     _$OrderDtoImpl(
-      id: (json['id'] as num?)?.toInt() ?? 0,
+      id: json['id'] as String,
       startPoint: json['start_point'] as String,
       endPoint: json['end_point'] as String,
-      price: (json['price'] as num?)?.toInt() ?? 0,
-      comment: json['comment'] as String? ?? '',
-      status: json['status'] as String? ?? '',
+      price: (json['price'] as num).toInt(),
+      comment: json['comment'] as String?,
+      status: json['status'] as String,
       hasRoute: json['has_route'] as bool,
     );
 

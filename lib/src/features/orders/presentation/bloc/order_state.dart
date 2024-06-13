@@ -12,7 +12,7 @@ class OrderState with _$OrderState {
 @freezed
 class OrderViewModel with _$OrderViewModel {
   const factory OrderViewModel({
-    GetOrdersResponse? orders,
+    OrdersResponse? orders,
     @Default([]) List<OrderEntity> ordersList,
   }) = _OrderViewModel;
 }

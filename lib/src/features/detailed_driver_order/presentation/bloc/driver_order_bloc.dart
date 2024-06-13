@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/entities/get_order_status_response.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/service/injectable/injectable_service.dart';
 import '../../domain/usecases/get_order_status_use_case.dart';

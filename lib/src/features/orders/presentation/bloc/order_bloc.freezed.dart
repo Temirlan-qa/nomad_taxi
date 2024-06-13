@@ -1072,7 +1072,7 @@ abstract class _Error implements OrderState {
 
 /// @nodoc
 mixin _$OrderViewModel {
-  GetOrdersResponse? get orders => throw _privateConstructorUsedError;
+  OrdersResponse? get orders => throw _privateConstructorUsedError;
   List<OrderEntity> get ordersList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1086,9 +1086,9 @@ abstract class $OrderViewModelCopyWith<$Res> {
           OrderViewModel value, $Res Function(OrderViewModel) then) =
       _$OrderViewModelCopyWithImpl<$Res, OrderViewModel>;
   @useResult
-  $Res call({GetOrdersResponse? orders, List<OrderEntity> ordersList});
+  $Res call({OrdersResponse? orders, List<OrderEntity> ordersList});
 
-  $GetOrdersResponseCopyWith<$Res>? get orders;
+  $OrdersResponseCopyWith<$Res>? get orders;
 }
 
 /// @nodoc
@@ -1111,7 +1111,7 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
       orders: freezed == orders
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
-              as GetOrdersResponse?,
+              as OrdersResponse?,
       ordersList: null == ordersList
           ? _value.ordersList
           : ordersList // ignore: cast_nullable_to_non_nullable
@@ -1121,12 +1121,12 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $GetOrdersResponseCopyWith<$Res>? get orders {
+  $OrdersResponseCopyWith<$Res>? get orders {
     if (_value.orders == null) {
       return null;
     }
 
-    return $GetOrdersResponseCopyWith<$Res>(_value.orders!, (value) {
+    return $OrdersResponseCopyWith<$Res>(_value.orders!, (value) {
       return _then(_value.copyWith(orders: value) as $Val);
     });
   }
@@ -1140,10 +1140,10 @@ abstract class _$$OrderViewModelImplCopyWith<$Res>
       __$$OrderViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({GetOrdersResponse? orders, List<OrderEntity> ordersList});
+  $Res call({OrdersResponse? orders, List<OrderEntity> ordersList});
 
   @override
-  $GetOrdersResponseCopyWith<$Res>? get orders;
+  $OrdersResponseCopyWith<$Res>? get orders;
 }
 
 /// @nodoc
@@ -1164,7 +1164,7 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
       orders: freezed == orders
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
-              as GetOrdersResponse?,
+              as OrdersResponse?,
       ordersList: null == ordersList
           ? _value._ordersList
           : ordersList // ignore: cast_nullable_to_non_nullable
@@ -1181,7 +1181,7 @@ class _$OrderViewModelImpl implements _OrderViewModel {
       : _ordersList = ordersList;
 
   @override
-  final GetOrdersResponse? orders;
+  final OrdersResponse? orders;
   final List<OrderEntity> _ordersList;
   @override
   @JsonKey()
@@ -1220,11 +1220,11 @@ class _$OrderViewModelImpl implements _OrderViewModel {
 
 abstract class _OrderViewModel implements OrderViewModel {
   const factory _OrderViewModel(
-      {final GetOrdersResponse? orders,
+      {final OrdersResponse? orders,
       final List<OrderEntity> ordersList}) = _$OrderViewModelImpl;
 
   @override
-  GetOrdersResponse? get orders;
+  OrdersResponse? get orders;
   @override
   List<OrderEntity> get ordersList;
   @override
