@@ -125,7 +125,6 @@ class OrdersRemoteImpl implements IOrdersRemote {
         ),
       );
       
-      //TODO (bekzhan): uncommented this line for connection with server
       final Map<String, dynamic> responseData = response.data;
 
       // final Map<String, dynamic> responseData = _mockData;
