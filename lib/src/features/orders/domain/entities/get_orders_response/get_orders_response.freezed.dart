@@ -21,7 +21,7 @@ GetOrdersResponse _$GetOrdersResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GetOrdersResponse {
   String get status => throw _privateConstructorUsedError;
-  List<OrderEntity> get data => throw _privateConstructorUsedError;
+  List<dynamic> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $GetOrdersResponseCopyWith<$Res> {
           GetOrdersResponse value, $Res Function(GetOrdersResponse) then) =
       _$GetOrdersResponseCopyWithImpl<$Res, GetOrdersResponse>;
   @useResult
-  $Res call({String status, List<OrderEntity> data});
+  $Res call({String status, List<dynamic> data});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$GetOrdersResponseCopyWithImpl<$Res, $Val extends GetOrdersResponse>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<OrderEntity>,
+              as List<dynamic>,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$GetOrdersResponseImplCopyWith<$Res>
       __$$GetOrdersResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String status, List<OrderEntity> data});
+  $Res call({String status, List<dynamic> data});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class __$$GetOrdersResponseImplCopyWithImpl<$Res>
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<OrderEntity>,
+              as List<dynamic>,
     ));
   }
 }
@@ -109,7 +109,7 @@ class __$$GetOrdersResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetOrdersResponseImpl implements _GetOrdersResponse {
   const _$GetOrdersResponseImpl(
-      {required this.status, required final List<OrderEntity> data})
+      {required this.status, required final List<dynamic> data})
       : _data = data;
 
   factory _$GetOrdersResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -117,9 +117,9 @@ class _$GetOrdersResponseImpl implements _GetOrdersResponse {
 
   @override
   final String status;
-  final List<OrderEntity> _data;
+  final List<dynamic> _data;
   @override
-  List<OrderEntity> get data {
+  List<dynamic> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
@@ -162,7 +162,7 @@ class _$GetOrdersResponseImpl implements _GetOrdersResponse {
 abstract class _GetOrdersResponse implements GetOrdersResponse {
   const factory _GetOrdersResponse(
       {required final String status,
-      required final List<OrderEntity> data}) = _$GetOrdersResponseImpl;
+      required final List<dynamic> data}) = _$GetOrdersResponseImpl;
 
   factory _GetOrdersResponse.fromJson(Map<String, dynamic> json) =
       _$GetOrdersResponseImpl.fromJson;
@@ -170,7 +170,7 @@ abstract class _GetOrdersResponse implements GetOrdersResponse {
   @override
   String get status;
   @override
-  List<OrderEntity> get data;
+  List<dynamic> get data;
   @override
   @JsonKey(ignore: true)
   _$$GetOrdersResponseImplCopyWith<_$GetOrdersResponseImpl> get copyWith =>

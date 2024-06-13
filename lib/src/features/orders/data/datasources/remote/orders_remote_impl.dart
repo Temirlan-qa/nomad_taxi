@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -11,11 +12,12 @@ import 'package:nomad_taxi/src/features/orders/data/models/get_orders_response/g
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
-import '../../../../../core/utils/loggers/logger.dart';
 import '../../../domain/entities/create_order/create_order_entity.dart';
 import '../../models/order/order_dto.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
 import 'i_orders_remote.dart';
+
+part 'mock_orders.dart';
 
 @named
 @LazySingleton(as: IOrdersRemote)
@@ -115,22 +117,27 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      var response = await client.request(
+      final Response<dynamic> response = await client.get(
         'https://auyltaxi.kz/api/v1/partner/order',
         options: Options(
-          method: 'GET',
+          // method: 'GET',
           headers: headers,
         ),
       );
+      
+      //TODO (bekzhan): uncommented this line for connection with server
+      final Map<String, dynamic> responseData = response.data;
 
-      Log.i(response.toString());
+      // final Map<String, dynamic> responseData = _mockData;
+      
+      final ordersResponse = GetOrdersResponseDto.fromJson(responseData);
 
       if (response.statusCode == 200) {
-        return Right(GetOrdersResponseDto.fromJson(response.data));
-      } else {
-        return Left(UnknownException());
+        return Right(ordersResponse);
       }
+      return Left(UnknownException());
     } catch (e) {
+      log('$e');
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
       );

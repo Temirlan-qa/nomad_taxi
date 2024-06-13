@@ -34,9 +34,12 @@ class CheckMarkIndicator extends StatefulWidget {
   final Widget child;
   final CheckMarkStyle style;
 
+  final VoidCallback onRefresh;
+
   const CheckMarkIndicator({
     super.key,
     required this.child,
+    required this.onRefresh,
     this.style = CheckMarkStyle.defaultStyle,
   });
 
@@ -58,6 +61,9 @@ class _CheckMarkIndicatorState extends State<CheckMarkIndicator>
         completeDuration: Duration(seconds: 2),
       ),
       onStateChanged: (change) {
+        if (change.didChange(to: IndicatorState.loading)) {
+          widget.onRefresh();
+        }
         if (change.didChange(to: IndicatorState.complete)) {
           _renderCompleteState = true;
         } else if (change.didChange(to: IndicatorState.idle)) {

@@ -9,7 +9,7 @@ part 'get_orders_response.g.dart';
 class GetOrdersResponse extends BaseEntity with _$GetOrdersResponse {
   const factory GetOrdersResponse({
     required String status,
-    required List<OrderEntity> data,
+     required List<dynamic> data,
   }) = _GetOrdersResponse;
 
   factory GetOrdersResponse.fromJson(Map<String, dynamic> json) =>

@@ -10,9 +10,7 @@ _$GetOrdersResponseDtoImpl _$$GetOrdersResponseDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$GetOrdersResponseDtoImpl(
       status: json['status'] as String,
-      data: (json['data'] as List<dynamic>)
-          .map((e) => OrderDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      data: json['data'] as List<dynamic>,
     );
 
 Map<String, dynamic> _$$GetOrdersResponseDtoImplToJson(

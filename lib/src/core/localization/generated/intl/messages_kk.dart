@@ -131,6 +131,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "minutes": MessageLookupByLibrary.simpleMessage("минуттар"),
         "more_detailed": MessageLookupByLibrary.simpleMessage("Толығырақ"),
         "next": MessageLookupByLibrary.simpleMessage("Келесі"),
+        "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
+            "Қазіргі уақытта белсенді тапсырыстар жоқ"),
         "on_line": MessageLookupByLibrary.simpleMessage("Сызықта"),
         "open_kaspi_app": MessageLookupByLibrary.simpleMessage(
             "Қолданбаны ашыңыз Kaspi.kz және бөлімге өтіңіз төлемдер, іздеуде енгізіңіз Nomad Taxi"),

@@ -42,26 +42,22 @@ class DriverOrderRemoteImpl implements IDriverOrder {
     try {
       _orderStreamSubscription ??= _orderWebSocketClient.stream.listen(
         (dto) {
-          log('Received event from WebSocket stream: $dto',
-              name: 'OrdersRemoteImpl');
+         
           final response =
               GetOrderStatusResponseDto(data: dto.data, status: dto.event);
           _orderStatusController.add(Right(response));
         },
         onError: (error) {
-          log('Error in WebSocket stream: $error', name: 'OrdersRemoteImpl');
+        
           _orderStatusController
               .add(Left(UnknownException(message: error.toString())));
         },
       );
 
-      _orderStatusController.stream.listen((event) {
-        log('Controller event: $event', name: 'OrdersRemoteImplController');
-      });
+     
 
       return _orderStatusController.stream;
     } catch (e) {
-      log('Exception in getOrderStatus: $e', name: 'OrdersRemoteImplCatch');
       return Stream.value(Left(UnknownException(message: e.toString())));
     }
   }

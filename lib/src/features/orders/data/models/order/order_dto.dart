@@ -10,22 +10,22 @@ part 'order_dto.g.dart';
 @freezed
 class OrderDto extends BaseDto with _$OrderDto {
   const factory OrderDto({
-    required String id,
+    @Default(0) int id,
     @JsonKey(name: 'start_point') required String startPoint,
     @JsonKey(name: 'end_point') required String endPoint,
-    required int price,
-    String? comment,
-    required String status,
+    @Default(0) int price,
+    @Default('')String? comment,
+    @Default('')String status,
     @JsonKey(name: 'has_route') required bool hasRoute,
-    @JsonKey(name: 'created_at') required String createdAt,
-    @JsonKey(name: 'pay_method') required PayMethodDto payMethod,
-    @JsonKey(name: 'waiting_time') int? waitingTime,
-    PartnerDto? partner,
-    required String phone,
-    @JsonKey(name: 'town_id') required int townId,
-    required List<PointDto> points,
+    // @JsonKey(name: 'created_at') required String createdAt,
+    // @JsonKey(name: 'pay_method') required PayMethodDto payMethod,
+    // @JsonKey(name: 'waiting_time') int? waitingTime,
+    // PartnerDto? partner,
+    // required String phone,
+    // @JsonKey(name: 'town_id') required int townId,
+    // required List<PointDto> points,
   }) = _OrderDto;
 
-  factory OrderDto.fromJson(Map<String, dynamic> json) =>
+   factory OrderDto.fromJson(Map<String, dynamic> json) =>
       _$OrderDtoFromJson(json);
 }

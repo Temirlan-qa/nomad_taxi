@@ -1073,6 +1073,7 @@ abstract class _Error implements OrderState {
 /// @nodoc
 mixin _$OrderViewModel {
   GetOrdersResponse? get orders => throw _privateConstructorUsedError;
+  List<OrderEntity> get ordersList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderViewModelCopyWith<OrderViewModel> get copyWith =>
@@ -1085,7 +1086,7 @@ abstract class $OrderViewModelCopyWith<$Res> {
           OrderViewModel value, $Res Function(OrderViewModel) then) =
       _$OrderViewModelCopyWithImpl<$Res, OrderViewModel>;
   @useResult
-  $Res call({GetOrdersResponse? orders});
+  $Res call({GetOrdersResponse? orders, List<OrderEntity> ordersList});
 
   $GetOrdersResponseCopyWith<$Res>? get orders;
 }
@@ -1104,12 +1105,17 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
   @override
   $Res call({
     Object? orders = freezed,
+    Object? ordersList = null,
   }) {
     return _then(_value.copyWith(
       orders: freezed == orders
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
               as GetOrdersResponse?,
+      ordersList: null == ordersList
+          ? _value.ordersList
+          : ordersList // ignore: cast_nullable_to_non_nullable
+              as List<OrderEntity>,
     ) as $Val);
   }
 
@@ -1134,7 +1140,7 @@ abstract class _$$OrderViewModelImplCopyWith<$Res>
       __$$OrderViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({GetOrdersResponse? orders});
+  $Res call({GetOrdersResponse? orders, List<OrderEntity> ordersList});
 
   @override
   $GetOrdersResponseCopyWith<$Res>? get orders;
@@ -1152,12 +1158,17 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orders = freezed,
+    Object? ordersList = null,
   }) {
     return _then(_$OrderViewModelImpl(
       orders: freezed == orders
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
               as GetOrdersResponse?,
+      ordersList: null == ordersList
+          ? _value._ordersList
+          : ordersList // ignore: cast_nullable_to_non_nullable
+              as List<OrderEntity>,
     ));
   }
 }
@@ -1165,14 +1176,24 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OrderViewModelImpl implements _OrderViewModel {
-  const _$OrderViewModelImpl({this.orders});
+  const _$OrderViewModelImpl(
+      {this.orders, final List<OrderEntity> ordersList = const []})
+      : _ordersList = ordersList;
 
   @override
   final GetOrdersResponse? orders;
+  final List<OrderEntity> _ordersList;
+  @override
+  @JsonKey()
+  List<OrderEntity> get ordersList {
+    if (_ordersList is EqualUnmodifiableListView) return _ordersList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ordersList);
+  }
 
   @override
   String toString() {
-    return 'OrderViewModel(orders: $orders)';
+    return 'OrderViewModel(orders: $orders, ordersList: $ordersList)';
   }
 
   @override
@@ -1180,11 +1201,14 @@ class _$OrderViewModelImpl implements _OrderViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderViewModelImpl &&
-            (identical(other.orders, orders) || other.orders == orders));
+            (identical(other.orders, orders) || other.orders == orders) &&
+            const DeepCollectionEquality()
+                .equals(other._ordersList, _ordersList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orders);
+  int get hashCode => Object.hash(
+      runtimeType, orders, const DeepCollectionEquality().hash(_ordersList));
 
   @JsonKey(ignore: true)
   @override
@@ -1195,11 +1219,14 @@ class _$OrderViewModelImpl implements _OrderViewModel {
 }
 
 abstract class _OrderViewModel implements OrderViewModel {
-  const factory _OrderViewModel({final GetOrdersResponse? orders}) =
-      _$OrderViewModelImpl;
+  const factory _OrderViewModel(
+      {final GetOrdersResponse? orders,
+      final List<OrderEntity> ordersList}) = _$OrderViewModelImpl;
 
   @override
   GetOrdersResponse? get orders;
+  @override
+  List<OrderEntity> get ordersList;
   @override
   @JsonKey(ignore: true)
   _$$OrderViewModelImplCopyWith<_$OrderViewModelImpl> get copyWith =>

@@ -94,15 +94,10 @@ class OrderPage extends StatelessWidget {
               children: [
                 Text(S.current.order_status, style: labelStyle),
                 const Gap(UIConstants.defaultGap2),
-                if (updatedOrderStatus != null)
-                  Text(
-                    updatedOrderStatus.status,
-                    style: labelStyle.copyWith(color: context.theme.green),
-                  )
-                else
+                
                   Text(
                     S.current.in_progress,
-                    style: labelStyle.copyWith(color: context.theme.blue),
+                    style: labelStyle.copyWith(color: updatedOrderStatus != null ? context.theme.green : context.theme.blue ),
                   ),
               ],
             ),

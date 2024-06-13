@@ -9,7 +9,7 @@ part 'get_orders_response_dto.g.dart';
 class GetOrdersResponseDto extends BaseDto with _$GetOrdersResponseDto {
   const factory GetOrdersResponseDto({
     required String status,
-    required List<OrderDto> data,
+    required List<dynamic> data,
   }) = _GetOrdersResponseDto;
 
   factory GetOrdersResponseDto.fromJson(Map<String, dynamic> json) =>

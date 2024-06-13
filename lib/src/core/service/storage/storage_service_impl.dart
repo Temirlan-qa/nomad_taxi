@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'storage_service.dart';
@@ -22,6 +24,7 @@ class StorageServiceImpl implements StorageService {
 
   @override
   Future<void> setToken(String? token) async {
+    log('$token', name: 'ACCESS_TOKEN');
     await hiveBox.put(_tokenKey, token);
   }
 

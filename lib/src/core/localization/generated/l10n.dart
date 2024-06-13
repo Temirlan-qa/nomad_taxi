@@ -1319,6 +1319,16 @@ class S {
       args: [],
     );
   }
+
+  /// `На данный момент нет активных заказов`
+  String get noActiveOrdersAtTheMoment {
+    return Intl.message(
+      'На данный момент нет активных заказов',
+      name: 'noActiveOrdersAtTheMoment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

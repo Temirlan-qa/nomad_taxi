@@ -13,5 +13,6 @@ class OrderState with _$OrderState {
 class OrderViewModel with _$OrderViewModel {
   const factory OrderViewModel({
     GetOrdersResponse? orders,
+    @Default([]) List<OrderEntity> ordersList,
   }) = _OrderViewModel;
 }
