@@ -614,6 +614,7 @@ abstract class $HelpViewModelCopyWith<$Res> {
   $Res call({Questions? questions, Support? support});
 
   $QuestionsCopyWith<$Res>? get questions;
+  $SupportCopyWith<$Res>? get support;
 }
 
 /// @nodoc
@@ -655,6 +656,18 @@ class _$HelpViewModelCopyWithImpl<$Res, $Val extends HelpViewModel>
       return _then(_value.copyWith(questions: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SupportCopyWith<$Res>? get support {
+    if (_value.support == null) {
+      return null;
+    }
+
+    return $SupportCopyWith<$Res>(_value.support!, (value) {
+      return _then(_value.copyWith(support: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -669,6 +682,8 @@ abstract class _$$HelpViewModelImplCopyWith<$Res>
 
   @override
   $QuestionsCopyWith<$Res>? get questions;
+  @override
+  $SupportCopyWith<$Res>? get support;
 }
 
 /// @nodoc
@@ -720,12 +735,11 @@ class _$HelpViewModelImpl implements _HelpViewModel {
             other is _$HelpViewModelImpl &&
             (identical(other.questions, questions) ||
                 other.questions == questions) &&
-            const DeepCollectionEquality().equals(other.support, support));
+            (identical(other.support, support) || other.support == support));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, questions, const DeepCollectionEquality().hash(support));
+  int get hashCode => Object.hash(runtimeType, questions, support);
 
   @JsonKey(ignore: true)
   @override

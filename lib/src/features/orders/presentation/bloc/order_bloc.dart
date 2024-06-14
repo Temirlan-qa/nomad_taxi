@@ -86,8 +86,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   ) async {
     emit(const _Initial());
 
-    OrderRequest orderId =
-        OrderRequest(id: DateTime.now().millisecondsSinceEpoch);
+    OrderRequest orderId = OrderRequest(id: event.orderId);
 
     final Result<OrderResponse, DomainException> result =
         await _acceptOrderUseCase.call(orderId);

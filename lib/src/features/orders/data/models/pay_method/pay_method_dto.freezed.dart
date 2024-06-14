@@ -128,7 +128,7 @@ class __$$PayMethodDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PayMethodDtoImpl implements _PayMethodDto {
   const _$PayMethodDtoImpl(
-      {required this.id,
+      {this.id = '',
       @JsonKey(name: 'by_cash') required this.byCash,
       @JsonKey(name: 'by_bonus') required this.byBonus});
 
@@ -136,6 +136,7 @@ class _$PayMethodDtoImpl implements _PayMethodDto {
       _$$PayMethodDtoImplFromJson(json);
 
   @override
+  @JsonKey()
   final String id;
   @override
   @JsonKey(name: 'by_cash')
@@ -179,7 +180,7 @@ class _$PayMethodDtoImpl implements _PayMethodDto {
 
 abstract class _PayMethodDto implements PayMethodDto {
   const factory _PayMethodDto(
-          {required final String id,
+          {final String id,
           @JsonKey(name: 'by_cash') required final int byCash,
           @JsonKey(name: 'by_bonus') required final int byBonus}) =
       _$PayMethodDtoImpl;

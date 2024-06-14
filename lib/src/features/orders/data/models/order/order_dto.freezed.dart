@@ -309,14 +309,14 @@ class _$OrderDtoImpl implements _OrderDto {
       required this.price,
       this.comment,
       required this.status,
-      @JsonKey(name: 'has_route') required this.hasRoute,
+      @JsonKey(name: 'has_route') this.hasRoute = false,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'pay_method') required this.payMethod,
-      @JsonKey(name: 'waiting_time') this.waitingTime,
-      this.partner,
+      @JsonKey(name: 'waiting_time') this.waitingTime = null,
+      this.partner = null,
       required this.phone,
       @JsonKey(name: 'town_id') required this.townId,
-      required final List<PointDto> points})
+      final List<PointDto> points = const []})
       : _points = points;
 
   factory _$OrderDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -349,6 +349,7 @@ class _$OrderDtoImpl implements _OrderDto {
   @JsonKey(name: 'waiting_time')
   final int? waitingTime;
   @override
+  @JsonKey()
   final PartnerDto? partner;
   @override
   final String phone;
@@ -357,6 +358,7 @@ class _$OrderDtoImpl implements _OrderDto {
   final int townId;
   final List<PointDto> _points;
   @override
+  @JsonKey()
   List<PointDto> get points {
     if (_points is EqualUnmodifiableListView) return _points;
     // ignore: implicit_dynamic_type
@@ -436,14 +438,14 @@ abstract class _OrderDto implements OrderDto {
       required final int price,
       final String? comment,
       required final String status,
-      @JsonKey(name: 'has_route') required final bool hasRoute,
+      @JsonKey(name: 'has_route') final bool hasRoute,
       @JsonKey(name: 'created_at') required final String createdAt,
       @JsonKey(name: 'pay_method') required final PayMethodDto payMethod,
       @JsonKey(name: 'waiting_time') final int? waitingTime,
       final PartnerDto? partner,
       required final String phone,
       @JsonKey(name: 'town_id') required final int townId,
-      required final List<PointDto> points}) = _$OrderDtoImpl;
+      final List<PointDto> points}) = _$OrderDtoImpl;
 
   factory _OrderDto.fromJson(Map<String, dynamic> json) =
       _$OrderDtoImpl.fromJson;

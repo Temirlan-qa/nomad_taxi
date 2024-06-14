@@ -8,7 +8,7 @@ part of 'pay_method_dto.dart';
 
 _$PayMethodDtoImpl _$$PayMethodDtoImplFromJson(Map<String, dynamic> json) =>
     _$PayMethodDtoImpl(
-      id: json['id'] as String,
+      id: json['id'] as String? ?? '',
       byCash: (json['by_cash'] as num).toInt(),
       byBonus: (json['by_bonus'] as num).toInt(),
     );

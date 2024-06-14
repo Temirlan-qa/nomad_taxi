@@ -12,21 +12,45 @@ part 'order_entity.g.dart';
 class OrderEntity extends BaseEntity with _$OrderEntity {
   const factory OrderEntity({
     required int id,
-    required String startPoint,
-    required String endPoint,
+    @JsonKey(name: 'start_point') required String startPoint,
+    @JsonKey(name: 'end_point') required String endPoint,
     required int price,
     String? comment,
     required String status,
-    required bool hasRoute,
-    required String createdAt,
-    required PayMethodEntity payMethod,
+    @Default(false) @JsonKey(name: 'has_route') bool hasRoute,
+    @JsonKey(name: 'created_at') required String createdAt,
+    @JsonKey(name: 'pay_method') required PayMethodEntity payMethod,
     required String phone,
     Partner? partner,
     int? waitingTime,
-    required int townId,
+    @JsonKey(name: 'town_id') required int townId,
     required List<PointEntity> points,
   }) = _OrderEntity;
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) =>
       _$OrderEntityFromJson(json);
 }
+
+
+// @freezed
+// class OrderEntity extends BaseEntity with _$OrderEntity {
+//   const factory OrderEntity({
+//     required int id,
+//     required String startPoint,
+//     required String endPoint,
+//     required int price,
+//     String? comment,
+//     required String status,
+//     @Default(false) bool hasRoute,
+//     required String createdAt,
+//     required PayMethodEntity payMethod,
+//     required String phone,
+//     Partner? partner,
+//     int? waitingTime,
+//     required int townId,
+//     required List<PointEntity> points,
+//   }) = _OrderEntity;
+
+//   factory OrderEntity.fromJson(Map<String, dynamic> json) =>
+//       _$OrderEntityFromJson(json);
+// }

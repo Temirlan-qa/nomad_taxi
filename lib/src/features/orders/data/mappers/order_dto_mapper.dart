@@ -28,7 +28,7 @@ class OrderDtoMapper {
       );
     }).toList();
 
-    final FinanceDto? financeDto = dto.partner!.finance;
+    final FinanceDto? financeDto = dto.partner?.finance;
     final Finance finance = Finance(
       balance: financeDto?.balance,
       bonus: financeDto?.bonus,
@@ -36,14 +36,15 @@ class OrderDtoMapper {
 
     final PartnerDto? partnerDto = dto.partner;
     final Partner partner = Partner(
-        id: partnerDto!.id,
-        firstName: partnerDto.firstName,
-        carModel: partnerDto.carModel,
-        townId: partnerDto.townId,
-        carNumber: partnerDto.carNumber,
-        lastName: partnerDto.lastName,
-        status: partnerDto.status,
-        finance: finance);
+      id: partnerDto?.id,
+      firstName: partnerDto?.firstName,
+      carModel: partnerDto?.carModel,
+      townId: partnerDto?.townId,
+      carNumber: partnerDto?.carNumber,
+      lastName: partnerDto?.lastName,
+      status: partnerDto?.status,
+      finance: finance,
+    );
     return OrderEntity(
       id: dto.id,
       startPoint: dto.startPoint,

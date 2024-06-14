@@ -7,7 +7,7 @@ part 'pay_method_dto.g.dart';
 @freezed
 class PayMethodDto extends BaseDto with _$PayMethodDto {
   const factory PayMethodDto({
-    required String id,
+    @Default('') String id,
     @JsonKey(name: 'by_cash') required int byCash,
     @JsonKey(name: 'by_bonus') required int byBonus,
   }) = _PayMethodDto;

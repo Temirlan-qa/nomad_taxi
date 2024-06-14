@@ -21,17 +21,23 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrderEntity {
   int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'start_point')
   String get startPoint => throw _privateConstructorUsedError;
+  @JsonKey(name: 'end_point')
   String get endPoint => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  @JsonKey(name: 'has_route')
   bool get hasRoute => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'pay_method')
   PayMethodEntity get payMethod => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   Partner? get partner => throw _privateConstructorUsedError;
   int? get waitingTime => throw _privateConstructorUsedError;
+  @JsonKey(name: 'town_id')
   int get townId => throw _privateConstructorUsedError;
   List<PointEntity> get points => throw _privateConstructorUsedError;
 
@@ -49,18 +55,18 @@ abstract class $OrderEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String startPoint,
-      String endPoint,
+      @JsonKey(name: 'start_point') String startPoint,
+      @JsonKey(name: 'end_point') String endPoint,
       int price,
       String? comment,
       String status,
-      bool hasRoute,
-      String createdAt,
-      PayMethodEntity payMethod,
+      @JsonKey(name: 'has_route') bool hasRoute,
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'pay_method') PayMethodEntity payMethod,
       String phone,
       Partner? partner,
       int? waitingTime,
-      int townId,
+      @JsonKey(name: 'town_id') int townId,
       List<PointEntity> points});
 
   $PayMethodEntityCopyWith<$Res> get payMethod;
@@ -186,18 +192,18 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String startPoint,
-      String endPoint,
+      @JsonKey(name: 'start_point') String startPoint,
+      @JsonKey(name: 'end_point') String endPoint,
       int price,
       String? comment,
       String status,
-      bool hasRoute,
-      String createdAt,
-      PayMethodEntity payMethod,
+      @JsonKey(name: 'has_route') bool hasRoute,
+      @JsonKey(name: 'created_at') String createdAt,
+      @JsonKey(name: 'pay_method') PayMethodEntity payMethod,
       String phone,
       Partner? partner,
       int? waitingTime,
-      int townId,
+      @JsonKey(name: 'town_id') int townId,
       List<PointEntity> points});
 
   @override
@@ -298,18 +304,18 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
 class _$OrderEntityImpl implements _OrderEntity {
   const _$OrderEntityImpl(
       {required this.id,
-      required this.startPoint,
-      required this.endPoint,
+      @JsonKey(name: 'start_point') required this.startPoint,
+      @JsonKey(name: 'end_point') required this.endPoint,
       required this.price,
       this.comment,
       required this.status,
-      required this.hasRoute,
-      required this.createdAt,
-      required this.payMethod,
+      @JsonKey(name: 'has_route') this.hasRoute = false,
+      @JsonKey(name: 'created_at') required this.createdAt,
+      @JsonKey(name: 'pay_method') required this.payMethod,
       required this.phone,
       this.partner,
       this.waitingTime,
-      required this.townId,
+      @JsonKey(name: 'town_id') required this.townId,
       required final List<PointEntity> points})
       : _points = points;
 
@@ -319,8 +325,10 @@ class _$OrderEntityImpl implements _OrderEntity {
   @override
   final int id;
   @override
+  @JsonKey(name: 'start_point')
   final String startPoint;
   @override
+  @JsonKey(name: 'end_point')
   final String endPoint;
   @override
   final int price;
@@ -329,10 +337,13 @@ class _$OrderEntityImpl implements _OrderEntity {
   @override
   final String status;
   @override
+  @JsonKey(name: 'has_route')
   final bool hasRoute;
   @override
+  @JsonKey(name: 'created_at')
   final String createdAt;
   @override
+  @JsonKey(name: 'pay_method')
   final PayMethodEntity payMethod;
   @override
   final String phone;
@@ -341,6 +352,7 @@ class _$OrderEntityImpl implements _OrderEntity {
   @override
   final int? waitingTime;
   @override
+  @JsonKey(name: 'town_id')
   final int townId;
   final List<PointEntity> _points;
   @override
@@ -418,18 +430,18 @@ class _$OrderEntityImpl implements _OrderEntity {
 abstract class _OrderEntity implements OrderEntity {
   const factory _OrderEntity(
       {required final int id,
-      required final String startPoint,
-      required final String endPoint,
+      @JsonKey(name: 'start_point') required final String startPoint,
+      @JsonKey(name: 'end_point') required final String endPoint,
       required final int price,
       final String? comment,
       required final String status,
-      required final bool hasRoute,
-      required final String createdAt,
-      required final PayMethodEntity payMethod,
+      @JsonKey(name: 'has_route') final bool hasRoute,
+      @JsonKey(name: 'created_at') required final String createdAt,
+      @JsonKey(name: 'pay_method') required final PayMethodEntity payMethod,
       required final String phone,
       final Partner? partner,
       final int? waitingTime,
-      required final int townId,
+      @JsonKey(name: 'town_id') required final int townId,
       required final List<PointEntity> points}) = _$OrderEntityImpl;
 
   factory _OrderEntity.fromJson(Map<String, dynamic> json) =
@@ -438,8 +450,10 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   int get id;
   @override
+  @JsonKey(name: 'start_point')
   String get startPoint;
   @override
+  @JsonKey(name: 'end_point')
   String get endPoint;
   @override
   int get price;
@@ -448,10 +462,13 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   String get status;
   @override
+  @JsonKey(name: 'has_route')
   bool get hasRoute;
   @override
+  @JsonKey(name: 'created_at')
   String get createdAt;
   @override
+  @JsonKey(name: 'pay_method')
   PayMethodEntity get payMethod;
   @override
   String get phone;
@@ -460,6 +477,7 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   int? get waitingTime;
   @override
+  @JsonKey(name: 'town_id')
   int get townId;
   @override
   List<PointEntity> get points;
