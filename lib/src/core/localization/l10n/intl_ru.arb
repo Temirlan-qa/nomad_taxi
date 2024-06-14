@@ -63,7 +63,7 @@
   "unsaved_changes": "Есть не сохраненные изменения",
   "save_changes": "Сохранить изменения",
   "delivery": "Доставка",
-  "developerAnswer":"Ответ разработчика",
+  "developerAnswer": "Ответ разработчика",
   "where_from": "Откуда",
   "where": "Куда",
   "comments": "Коментарии",
@@ -134,5 +134,9 @@
   "withdraw_infinite": "Вы можете вывести не ограниченную сумму с вашего баланса",
   "copy_your_id": "Скопируйте ваш ID",
   "write_to_whatsapp_about_withdraw": "Напишите нам в ватсап запрос на вывод средств и отвте номер вашего ID и номер вашей карты Kaspi GOLD, и наши менеджеры переведут деньги вам на счет",
-  "noActiveOrdersAtTheMoment": "На данный момент нет активных заказов"
+  "noActiveOrdersAtTheMoment": "На данный момент нет активных заказов",
+  "driverRequirement1": "Пожалуйста, введите модель автомобиля",
+  "driverRequirement2": "Пожалуйста, введите номер автомобиля",
+  "enter_id": "Далее введите свой ID номер",
+  "your_id": "Ваш ID"
 }

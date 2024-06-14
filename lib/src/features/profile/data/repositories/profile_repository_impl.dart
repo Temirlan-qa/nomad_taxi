@@ -137,8 +137,8 @@ class ProfileRepositoryImpl implements IProfileRepository {
       final requests = await _profileImpl.updatePartnerData(request);
       return requests.fold(
         (error) => Left(error),
-        (signUpDto) {
-          final ProfileEntity result = ProfileDtoMapper().map(signUpDto);
+        (dto) {
+          final ProfileEntity result = ProfileDtoMapper().map(dto);
           return Right(result);
         },
       );

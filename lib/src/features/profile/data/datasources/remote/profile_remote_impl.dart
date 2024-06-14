@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nomad_taxi/src/core/api/client/rest/dio/dio_client.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/available_languages_response/available_languages_response_dto.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/profile_dto.dart';
@@ -18,6 +19,7 @@ import 'i_profile_remote.dart';
 @LazySingleton(as: IProfileRemote)
 class ProfileRemoteImpl implements IProfileRemote {
   var client = Dio();
+  var dioRestClient = DioRestClient();
   var st = StorageServiceImpl();
 
   @override
@@ -190,18 +192,20 @@ class ProfileRemoteImpl implements IProfileRemote {
       UpdatePartnerDataRequest request) async {
     try {
       var headers = {
+        'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
       var dio = Dio();
+
       var response = await dio.request(
         'https://auyltaxi.kz/api/v1/partner',
         options: Options(
           method: 'PUT',
           headers: headers,
         ),
-        data: request,
+        data: request.toJson(),
       );
 
       if (response.statusCode == 200) {

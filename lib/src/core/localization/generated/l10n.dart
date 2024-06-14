@@ -1339,6 +1339,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Пожалуйста, введите модель автомобиля`
+  String get driverRequirement1 {
+    return Intl.message(
+      'Пожалуйста, введите модель автомобиля',
+      name: 'driverRequirement1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пожалуйста, введите номер автомобиля`
+  String get driverRequirement2 {
+    return Intl.message(
+      'Пожалуйста, введите номер автомобиля',
+      name: 'driverRequirement2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Далее введите свой ID номер`
+  String get enter_id {
+    return Intl.message(
+      'Далее введите свой ID номер',
+      name: 'enter_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш ID`
+  String get your_id {
+    return Intl.message(
+      'Ваш ID',
+      name: 'your_id',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
