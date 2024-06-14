@@ -3,6 +3,7 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/data/models/respon
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/entities/get_order_status_response.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/entities/order_status_data_response.dart';
 
+
 class DriverOrderDtoMapper {
   GetOrderStatusResponse map(GetOrderStatusResponseDto from) {
     final OrderStatusDataDto fromData = from.data;

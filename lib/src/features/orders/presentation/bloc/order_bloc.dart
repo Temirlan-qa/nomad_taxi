@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
@@ -7,10 +6,11 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
-import 'package:nomad_taxi/src/features/orders/domain/entities/get_orders_response/get_orders_response.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
+import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
 
-import '../../domain/usecases/get_order_use_case.dart';
-
+import '../../../../core/localization/generated/l10n.dart';
+import '../../domain/entities/order/order_entity.dart';
 
 part 'order_bloc.freezed.dart';
 part 'order_event.dart';
@@ -19,7 +19,9 @@ part 'order_state.dart';
 class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._getOrderUseCase,
+    
   ) : super(const _Initial());
+
   final GetOrderUseCase _getOrderUseCase;
 
   final OrderViewModel _viewModel = const OrderViewModel();
@@ -48,19 +50,22 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
     Emitter emit,
   ) async {
     emit(const _Initial());
+
     final result = await _getOrderUseCase.call();
 
-    if (result.isSuccessful) {
-      log('success', name: 'GetOrders');
+    final data = result.data;
+
+    if (result.isSuccessful && data != null) {
       emit(
         _Loaded(
           viewModel: _viewModel.copyWith(
-            orders: result.data,
+            ordersList: data.orders,
           ),
         ),
       );
+      return;
     }
-    emit(const _Error('Error of get orders'));
+    emit(_Error(S.current.noActiveOrdersAtTheMoment));
   }
 
   Future<void> _acceptOrder(

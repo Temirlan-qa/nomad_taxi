@@ -1,14 +1,17 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
+import 'package:nomad_taxi/src/features/orders/data/mappers/order_dto_mapper.dart';
+import 'package:nomad_taxi/src/features/orders/data/models/order/order_dto.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/delete_order_response/delete_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/find_town_by_location_response/find_town_by_location_response.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 
 import '../../../../core/exceptions/domain_exception.dart';
-import '../../domain/entities/get_orders_response/get_orders_response.dart';
+import '../../domain/entities/orders_response/orders_response.dart';
 import '../../domain/entities/update_order/update_order_entity.dart';
 import '../../domain/entities/update_order_response.dart/update_order_response.dart';
 import '../../domain/repositories/i_orders_repository.dart';
@@ -73,13 +76,17 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, GetOrdersResponse>> getOrders() async {
+  Future<Either<DomainException, OrdersResponse>> getOrders() async {
     try {
       final requests = await _ordersImpl.getOrders();
       return requests.fold(
         (error) => Left(error),
-        (result) {
-          return Right(GetOrdersResponse.fromJson(result.toJson()));
+        (dtos) {
+          final List<OrderEntity> entities = dtos.orders
+              .map((OrderDto dto) => OrderDtoMapper().map(dto))
+              .toList();
+
+          return Right(OrdersResponse(orders: entities));
         },
       );
     } catch (e) {
