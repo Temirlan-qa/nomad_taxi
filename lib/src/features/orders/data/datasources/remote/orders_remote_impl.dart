@@ -13,6 +13,7 @@ import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/upda
 import '../../../../../core/exceptions/domain_exception.dart';
 import '../../../domain/entities/create_order/create_order_entity.dart';
 import '../../models/order/order_dto.dart';
+import '../../models/requests/accept_order_request.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
 import 'i_orders_remote.dart';
 
@@ -25,26 +26,29 @@ class OrdersRemoteImpl implements IOrdersRemote {
   var st = StorageServiceImpl();
 
   @override
-  Future<Either<DomainException, OrderDto>> acceptOrder(String orderId) async {
+  Future<Either<DomainException, OrderDto>> acceptOrder(
+      OrderRequest request) async {
     try {
-      var headers = {
-        'Accept-Language': 'ru',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${st.getToken()!}'
-      };
-      var response = await client.request(
-        'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
-        options: Options(
-          method: 'POST',
-          headers: headers,
-        ),
-      );
+      // var headers = {
+      //   'Accept-Language': 'ru',
+      //   'Accept': 'application/json',
+      //   'Authorization': 'Bearer ${st.getToken()!}'
+      // };
+      // final int orderId = request.id;
+      // var response = await client.request(
+      //   'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
+      //   options: Options(
+      //     method: 'POST',
+      //     headers: headers,
+      //   ),
+      // );
 
-      if (response.statusCode == 200) {
-        return Right(OrderDto.fromJson(response.data));
-      } else {
-        return Left(UnknownException());
-      }
+      //TODO: (bekzhan) Uncomment it line after fixing the server
+      // final data = response.data;
+
+      final mockData = _mockAcceptOrder;
+
+      return Right(OrderDto.fromJson(mockData));
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -125,7 +129,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       final responseData = response.data as Map<String, dynamic>;
-      
+
       final data = responseData['data'] as List<dynamic>;
       final orders = data
           .map((order) => OrderDto.fromJson(order as Map<String, dynamic>))

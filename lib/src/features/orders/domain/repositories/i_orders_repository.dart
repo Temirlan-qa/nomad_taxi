@@ -7,6 +7,7 @@ import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_re
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order_response.dart/update_order_response.dart';
 
 import '../../../../core/exceptions/domain_exception.dart';
+import '../../data/models/requests/accept_order_request.dart';
 import '../entities/delete_order_response/delete_order_response.dart';
 import '../entities/update_order/update_order_entity.dart';
 
@@ -14,7 +15,7 @@ abstract class IOrdersRepository {
   Future<Either<DomainException, OrdersResponse>> getOrders();
 
   Future<Either<DomainException, OrderResponse>> acceptOrder(
-    String orderId,
+    OrderRequest request,
   );
 
   Future<Either<DomainException, OrderResponse>> cancelOrder(

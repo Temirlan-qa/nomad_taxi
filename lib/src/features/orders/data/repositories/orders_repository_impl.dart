@@ -17,6 +17,7 @@ import '../../domain/entities/update_order_response.dart/update_order_response.d
 import '../../domain/repositories/i_orders_repository.dart';
 import '../datasources/remote/i_orders_remote.dart';
 import '../datasources/remote/orders_remote_impl.dart';
+import '../models/requests/accept_order_request.dart';
 
 @named
 @LazySingleton(as: IOrdersRepository)
@@ -26,13 +27,16 @@ class OrdersRepositoryImpl implements IOrdersRepository {
 
   @override
   Future<Either<DomainException, OrderResponse>> acceptOrder(
-      String orderId) async {
+      OrderRequest request) async {
     try {
-      final requests = await _ordersImpl.acceptOrder(orderId);
+      final requests = await _ordersImpl.acceptOrder(request);
+
       return requests.fold(
         (error) => Left(error),
-        (result) {
-          return Right(OrderResponse.fromJson(result.toJson()));
+        (dto) {
+          final OrderEntity entity = OrderDtoMapper().map(dto);
+
+          return Right(OrderResponse(order: entity));
         },
       );
     } catch (e) {
@@ -48,8 +52,10 @@ class OrdersRepositoryImpl implements IOrdersRepository {
       final requests = await _ordersImpl.cancelOrder(orderId);
       return requests.fold(
         (error) => Left(error),
-        (result) {
-          return Right(OrderResponse.fromJson(result.toJson()));
+        (dto) {
+          final OrderEntity entity = OrderDtoMapper().map(dto);
+
+          return Right(OrderResponse(order: entity));
         },
       );
     } catch (e) {

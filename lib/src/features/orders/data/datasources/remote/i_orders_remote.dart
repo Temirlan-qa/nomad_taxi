@@ -8,11 +8,12 @@ import 'package:nomad_taxi/src/features/orders/data/models/order/order_dto.dart'
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../domain/entities/create_order/create_order_entity.dart';
+import '../../models/requests/accept_order_request.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
 
 abstract class IOrdersRemote {
   Future<Either<DomainException, OrderDto>> acceptOrder(
-    String orderId,
+    OrderRequest request,
   );
 
   Future<Either<DomainException, OrderDto>> cancelOrder(

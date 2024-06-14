@@ -50,3 +50,41 @@ final Map<String, dynamic> _mockData = {
     },
   ]
 };
+
+final Map<String, dynamic> _mockAcceptOrder = 
+  {
+    "id": 1,
+    "start_point": "123 Main St",
+    "end_point": "456 Elm St",
+    "price": 500,
+    "comment": "Handle with care",
+    "status": "in_process",
+    "has_route": true,
+    "created_at": "2024-06-13T10:00:00Z",
+    "pay_method": {"id": "pay1", "by_cash": 300, "by_bonus": 200},
+    "waiting_time": 15,
+    "partner": {
+      "id": 101,
+      "first_name": "John",
+      "last_name": "Doe",
+      "car_model": "Toyota Prius",
+      "car_number": "XYZ 1234",
+      "town_id": 5,
+      "status": "active",
+      "finance": {"balance": 1000, "bonus": 150}
+    },
+    "phone": "+1234567890",
+    "town_id": 10,
+    "points": [
+      {
+        "lat": 37.7749,
+        "lng": -122.4194,
+        "title": "Pickup Point",
+      },
+      {
+        "lat": 37.8044,
+        "lng": -122.2711,
+        "title": "Dropoff Point",
+      }
+    ]
+};

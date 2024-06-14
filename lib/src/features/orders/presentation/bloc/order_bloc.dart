@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
@@ -9,8 +10,13 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/
 import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
 
+import '../../../../core/base/base_usecase/result.dart';
+import '../../../../core/exceptions/domain_exception.dart';
 import '../../../../core/localization/generated/l10n.dart';
+import '../../data/models/requests/accept_order_request.dart';
 import '../../domain/entities/order/order_entity.dart';
+import '../../domain/entities/response/order_response.dart';
+import '../../domain/usecases/accept_order_use_case.dart';
 
 part 'order_bloc.freezed.dart';
 part 'order_event.dart';
@@ -19,16 +25,18 @@ part 'order_state.dart';
 class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._getOrderUseCase,
-    
+    this._acceptOrderUseCase,
   ) : super(const _Initial());
 
   final GetOrderUseCase _getOrderUseCase;
 
+  final AcceptOrderUseCase _acceptOrderUseCase;
+
+  final DriverOrderBloc _driverOrderBloc = getIt<DriverOrderBloc>();
+
   final OrderViewModel _viewModel = const OrderViewModel();
 
   StreamSubscription? _orderStatusSubscription;
-
-  final DriverOrderBloc _driverOrderBloc = getIt<DriverOrderBloc>();
 
   @override
   Future<void> onEventHandler(OrderEvent event, Emitter emit) async {
@@ -73,6 +81,18 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
     Emitter emit,
   ) async {
     emit(const _Initial());
+
+    OrderRequest orderId =
+        OrderRequest(id: DateTime.now().millisecondsSinceEpoch);
+
+    final Result<OrderResponse, DomainException> result =
+        await _acceptOrderUseCase.call(orderId);
+
+    final OrderResponse? data = result.data;
+
+    if (result.isSuccessful && data != null) {
+      log('success accepted order', name: 'ACCEPT ORDER');
+    }
   }
 
   Future<void> _cancelOrder(
@@ -80,6 +100,8 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
     Emitter emit,
   ) async {
     emit(const _Initial());
+
+    
   }
 
   @override

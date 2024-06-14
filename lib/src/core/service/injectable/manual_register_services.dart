@@ -18,6 +18,7 @@ import '../../../features/detailed_driver_order/data/client/order_web_socket_cli
 import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
 import '../../../features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import '../../../features/help/domain/usecases/get_questions_use_case.dart';
+import '../../../features/orders/domain/usecases/accept_order_use_case.dart';
 import '../../../features/orders/domain/usecases/get_orders_use_case.dart';
 import '../../../features/profile/domain/usecases/update_language_use_case.dart';
 import 'exports/all.dart';
@@ -59,6 +60,7 @@ void manualRegisterServices() {
   getIt.registerBloc<OrderBloc>(
     () => OrderBloc(
      getIt<GetOrderUseCase>(),
+     getIt<AcceptOrderUseCase>(),
       // getIt<GetOrderStatusUseCase>(),
     ),
   );
