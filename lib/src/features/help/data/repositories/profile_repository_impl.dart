@@ -3,9 +3,10 @@ import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
 import 'package:nomad_taxi/src/features/help/data/datasources/help_remote_impl.dart';
 import 'package:nomad_taxi/src/features/help/data/datasources/i_help_remote.dart';
-import 'package:nomad_taxi/src/features/help/data/models/question_dto.dart';
-import 'package:nomad_taxi/src/features/help/domain/entities/question.dart';
+import 'package:nomad_taxi/src/features/help/data/models/question/question_dto.dart';
+import 'package:nomad_taxi/src/features/help/domain/entities/question/question.dart';
 import 'package:nomad_taxi/src/features/help/domain/entities/questions.dart';
+import 'package:nomad_taxi/src/features/help/domain/entities/support/support.dart';
 import 'package:nomad_taxi/src/features/help/domain/mappers/question_dto_mapper.dart';
 import 'package:nomad_taxi/src/features/help/domain/repositories/i_help_repository.dart';
 
@@ -27,8 +28,16 @@ class HelpRepositoryImpl implements IHelpRepository {
           final List<Question> entities = dtos.questions
               .map((QuestionDto dto) => QuestionDtoMapper().map(dto))
               .toList();
-
-          return Right(Questions(questions: entities));
+          final support = dtos.support;
+          return Right(
+            Questions(
+              questions: entities,
+              support: Support(
+                phone: support.phone,
+                feedback: support.feedback,
+              ),
+            ),
+          );
         },
       );
     } catch (e) {

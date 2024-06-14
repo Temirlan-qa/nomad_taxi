@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../src/core/base/base_models/base_dto.dart';
+import '../../../../../core/base/base_models/base_dto.dart';
 
 part 'question_dto.freezed.dart';
 part 'question_dto.g.dart';

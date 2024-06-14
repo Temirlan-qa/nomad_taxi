@@ -11,9 +11,11 @@ _$QuestionsImpl _$$QuestionsImplFromJson(Map<String, dynamic> json) =>
       questions: (json['questions'] as List<dynamic>)
           .map((e) => Question.fromJson(e as Map<String, dynamic>))
           .toList(),
+      support: Support.fromJson(json['support'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$QuestionsImplToJson(_$QuestionsImpl instance) =>
     <String, dynamic>{
       'questions': instance.questions,
+      'support': instance.support,
     };

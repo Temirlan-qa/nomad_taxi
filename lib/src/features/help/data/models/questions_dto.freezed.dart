@@ -21,6 +21,7 @@ QuestionsDto _$QuestionsDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$QuestionsDto {
   List<QuestionDto> get questions => throw _privateConstructorUsedError;
+  SupportDto get support => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,9 @@ abstract class $QuestionsDtoCopyWith<$Res> {
           QuestionsDto value, $Res Function(QuestionsDto) then) =
       _$QuestionsDtoCopyWithImpl<$Res, QuestionsDto>;
   @useResult
-  $Res call({List<QuestionDto> questions});
+  $Res call({List<QuestionDto> questions, SupportDto support});
+
+  $SupportDtoCopyWith<$Res> get support;
 }
 
 /// @nodoc
@@ -51,13 +54,26 @@ class _$QuestionsDtoCopyWithImpl<$Res, $Val extends QuestionsDto>
   @override
   $Res call({
     Object? questions = null,
+    Object? support = null,
   }) {
     return _then(_value.copyWith(
       questions: null == questions
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<QuestionDto>,
+      support: null == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as SupportDto,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SupportDtoCopyWith<$Res> get support {
+    return $SupportDtoCopyWith<$Res>(_value.support, (value) {
+      return _then(_value.copyWith(support: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +85,10 @@ abstract class _$$QuestionsDtoImplCopyWith<$Res>
       __$$QuestionsDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<QuestionDto> questions});
+  $Res call({List<QuestionDto> questions, SupportDto support});
+
+  @override
+  $SupportDtoCopyWith<$Res> get support;
 }
 
 /// @nodoc
@@ -84,12 +103,17 @@ class __$$QuestionsDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? questions = null,
+    Object? support = null,
   }) {
     return _then(_$QuestionsDtoImpl(
       questions: null == questions
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<QuestionDto>,
+      support: null == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as SupportDto,
     ));
   }
 }
@@ -97,7 +121,8 @@ class __$$QuestionsDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$QuestionsDtoImpl implements _QuestionsDto {
-  const _$QuestionsDtoImpl({required final List<QuestionDto> questions})
+  const _$QuestionsDtoImpl(
+      {required final List<QuestionDto> questions, required this.support})
       : _questions = questions;
 
   factory _$QuestionsDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -112,8 +137,11 @@ class _$QuestionsDtoImpl implements _QuestionsDto {
   }
 
   @override
+  final SupportDto support;
+
+  @override
   String toString() {
-    return 'QuestionsDto(questions: $questions)';
+    return 'QuestionsDto(questions: $questions, support: $support)';
   }
 
   @override
@@ -122,13 +150,14 @@ class _$QuestionsDtoImpl implements _QuestionsDto {
         (other.runtimeType == runtimeType &&
             other is _$QuestionsDtoImpl &&
             const DeepCollectionEquality()
-                .equals(other._questions, _questions));
+                .equals(other._questions, _questions) &&
+            (identical(other.support, support) || other.support == support));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_questions));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_questions), support);
 
   @JsonKey(ignore: true)
   @override
@@ -145,14 +174,17 @@ class _$QuestionsDtoImpl implements _QuestionsDto {
 }
 
 abstract class _QuestionsDto implements QuestionsDto {
-  const factory _QuestionsDto({required final List<QuestionDto> questions}) =
-      _$QuestionsDtoImpl;
+  const factory _QuestionsDto(
+      {required final List<QuestionDto> questions,
+      required final SupportDto support}) = _$QuestionsDtoImpl;
 
   factory _QuestionsDto.fromJson(Map<String, dynamic> json) =
       _$QuestionsDtoImpl.fromJson;
 
   @override
   List<QuestionDto> get questions;
+  @override
+  SupportDto get support;
   @override
   @JsonKey(ignore: true)
   _$$QuestionsDtoImplCopyWith<_$QuestionsDtoImpl> get copyWith =>

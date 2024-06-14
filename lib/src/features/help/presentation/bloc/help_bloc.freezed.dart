@@ -598,6 +598,7 @@ abstract class _Loaded implements HelpState {
 /// @nodoc
 mixin _$HelpViewModel {
   Questions? get questions => throw _privateConstructorUsedError;
+  Support? get support => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HelpViewModelCopyWith<HelpViewModel> get copyWith =>
@@ -610,7 +611,7 @@ abstract class $HelpViewModelCopyWith<$Res> {
           HelpViewModel value, $Res Function(HelpViewModel) then) =
       _$HelpViewModelCopyWithImpl<$Res, HelpViewModel>;
   @useResult
-  $Res call({Questions? questions});
+  $Res call({Questions? questions, Support? support});
 
   $QuestionsCopyWith<$Res>? get questions;
 }
@@ -629,12 +630,17 @@ class _$HelpViewModelCopyWithImpl<$Res, $Val extends HelpViewModel>
   @override
   $Res call({
     Object? questions = freezed,
+    Object? support = freezed,
   }) {
     return _then(_value.copyWith(
       questions: freezed == questions
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as Questions?,
+      support: freezed == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as Support?,
     ) as $Val);
   }
 
@@ -659,7 +665,7 @@ abstract class _$$HelpViewModelImplCopyWith<$Res>
       __$$HelpViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Questions? questions});
+  $Res call({Questions? questions, Support? support});
 
   @override
   $QuestionsCopyWith<$Res>? get questions;
@@ -677,12 +683,17 @@ class __$$HelpViewModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? questions = freezed,
+    Object? support = freezed,
   }) {
     return _then(_$HelpViewModelImpl(
       questions: freezed == questions
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as Questions?,
+      support: freezed == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as Support?,
     ));
   }
 }
@@ -690,14 +701,16 @@ class __$$HelpViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HelpViewModelImpl implements _HelpViewModel {
-  _$HelpViewModelImpl({this.questions});
+  _$HelpViewModelImpl({this.questions, this.support});
 
   @override
   final Questions? questions;
+  @override
+  final Support? support;
 
   @override
   String toString() {
-    return 'HelpViewModel(questions: $questions)';
+    return 'HelpViewModel(questions: $questions, support: $support)';
   }
 
   @override
@@ -706,11 +719,13 @@ class _$HelpViewModelImpl implements _HelpViewModel {
         (other.runtimeType == runtimeType &&
             other is _$HelpViewModelImpl &&
             (identical(other.questions, questions) ||
-                other.questions == questions));
+                other.questions == questions) &&
+            const DeepCollectionEquality().equals(other.support, support));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, questions);
+  int get hashCode => Object.hash(
+      runtimeType, questions, const DeepCollectionEquality().hash(support));
 
   @JsonKey(ignore: true)
   @override
@@ -720,10 +735,13 @@ class _$HelpViewModelImpl implements _HelpViewModel {
 }
 
 abstract class _HelpViewModel implements HelpViewModel {
-  factory _HelpViewModel({final Questions? questions}) = _$HelpViewModelImpl;
+  factory _HelpViewModel({final Questions? questions, final Support? support}) =
+      _$HelpViewModelImpl;
 
   @override
   Questions? get questions;
+  @override
+  Support? get support;
   @override
   @JsonKey(ignore: true)
   _$$HelpViewModelImplCopyWith<_$HelpViewModelImpl> get copyWith =>

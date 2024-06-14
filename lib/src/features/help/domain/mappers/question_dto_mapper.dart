@@ -1,5 +1,5 @@
-import 'package:nomad_taxi/src/features/help/data/models/question_dto.dart';
-import 'package:nomad_taxi/src/features/help/domain/entities/question.dart';
+import 'package:nomad_taxi/src/features/help/data/models/question/question_dto.dart';
+import 'package:nomad_taxi/src/features/help/domain/entities/question/question.dart';
 
 class QuestionDtoMapper {
   Question map(QuestionDto dto) {
