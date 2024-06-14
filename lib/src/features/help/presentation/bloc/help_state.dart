@@ -13,5 +13,6 @@ class HelpState with _$HelpState {
 class HelpViewModel with _$HelpViewModel {
   factory HelpViewModel({
     Questions? questions,
+    Support? support,
   }) = _HelpViewModel;
 }
