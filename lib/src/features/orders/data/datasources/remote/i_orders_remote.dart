@@ -16,7 +16,7 @@ abstract class IOrdersRemote {
     OrderRequest request,
   );
 
-  Future<Either<DomainException, OrderDto>> cancelOrder(
+  Future<Either<DomainException, void>> cancelOrder(
     String orderId,
   );
 

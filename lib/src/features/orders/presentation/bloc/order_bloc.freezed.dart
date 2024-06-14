@@ -20,24 +20,24 @@ mixin _$OrderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,8 +126,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) {
     return started();
   }
@@ -137,8 +137,8 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) {
     return started?.call();
   }
@@ -148,8 +148,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -240,8 +240,8 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) {
     return getOrders();
   }
@@ -251,8 +251,8 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) {
     return getOrders?.call();
   }
@@ -262,8 +262,8 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -320,7 +320,7 @@ abstract class _$$AcceptOrderImplCopyWith<$Res> {
           _$AcceptOrderImpl value, $Res Function(_$AcceptOrderImpl) then) =
       __$$AcceptOrderImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String orderId});
+  $Res call({int orderId});
 }
 
 /// @nodoc
@@ -340,7 +340,7 @@ class __$$AcceptOrderImplCopyWithImpl<$Res>
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -351,7 +351,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   const _$AcceptOrderImpl({required this.orderId});
 
   @override
-  final String orderId;
+  final int orderId;
 
   @override
   String toString() {
@@ -380,8 +380,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) {
     return acceptOrder(orderId);
   }
@@ -391,8 +391,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) {
     return acceptOrder?.call(orderId);
   }
@@ -402,8 +402,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) {
     if (acceptOrder != null) {
@@ -451,10 +451,9 @@ class _$AcceptOrderImpl implements _AcceptOrder {
 }
 
 abstract class _AcceptOrder implements OrderEvent {
-  const factory _AcceptOrder({required final String orderId}) =
-      _$AcceptOrderImpl;
+  const factory _AcceptOrder({required final int orderId}) = _$AcceptOrderImpl;
 
-  String get orderId;
+  int get orderId;
   @JsonKey(ignore: true)
   _$$AcceptOrderImplCopyWith<_$AcceptOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -466,7 +465,7 @@ abstract class _$$CancelOrderImplCopyWith<$Res> {
           _$CancelOrderImpl value, $Res Function(_$CancelOrderImpl) then) =
       __$$CancelOrderImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String orderId});
+  $Res call({int orderId});
 }
 
 /// @nodoc
@@ -486,7 +485,7 @@ class __$$CancelOrderImplCopyWithImpl<$Res>
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -497,7 +496,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   const _$CancelOrderImpl({required this.orderId});
 
   @override
-  final String orderId;
+  final int orderId;
 
   @override
   String toString() {
@@ -526,8 +525,8 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) {
     return cancelOrder(orderId);
   }
@@ -537,8 +536,8 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) {
     return cancelOrder?.call(orderId);
   }
@@ -548,8 +547,8 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) {
     if (cancelOrder != null) {
@@ -597,10 +596,9 @@ class _$CancelOrderImpl implements _CancelOrder {
 }
 
 abstract class _CancelOrder implements OrderEvent {
-  const factory _CancelOrder({required final String orderId}) =
-      _$CancelOrderImpl;
+  const factory _CancelOrder({required final int orderId}) = _$CancelOrderImpl;
 
-  String get orderId;
+  int get orderId;
   @JsonKey(ignore: true)
   _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;

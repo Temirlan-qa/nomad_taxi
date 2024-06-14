@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
@@ -46,18 +48,18 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, OrderResponse>> cancelOrder(
-      String orderId) async {
+  Future<Either<DomainException, void>> cancelOrder(String orderId) async {
     try {
-      final requests = await _ordersImpl.cancelOrder(orderId);
-      return requests.fold(
-        (error) => Left(error),
-        (dto) {
-          final OrderEntity entity = OrderDtoMapper().map(dto);
+      await _ordersImpl.cancelOrder(orderId);
+      return const Right(null);
+      // return requests.fold(
+      //   (error) => Left(error),
+      //   (dto) {
+      //     final OrderEntity entity = OrderDtoMapper().map(dto);
 
-          return Right(OrderResponse(order: entity));
-        },
-      );
+      //     return Right(OrderResponse(order: entity));
+      //   },
+      // );
     } catch (e) {
       Log.e(e);
       return Left(UnknownException(message: e.toString()));

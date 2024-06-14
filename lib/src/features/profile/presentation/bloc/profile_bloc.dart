@@ -13,7 +13,6 @@ import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_us
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 
 import '../../../../core/service/injectable/exports/all.dart';
-import '../../../orders/presentation/bloc/order_bloc.dart';
 import '../../domain/requests/update_partner_data_request.dart';
 import '../../domain/usecases/update_language_use_case.dart';
 import '../../domain/usecases/update_partner_data_use_case.dart';
@@ -43,8 +42,6 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
 
   final ProfileViewModel _viewModel = ProfileViewModel();
 
-  final OrderBloc orderBloc = getIt<OrderBloc>();
-
   @override
   Future<void> onEventHandler(ProfileEvent event, Emitter emit) async {
     await event.when(
@@ -69,8 +66,6 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     emit(const _Initial());
     final result = await _getUserDataUseCase.call();
     final data = result.data;
-
-    orderBloc.add(const OrderEvent.acceptOrder(orderId: ''));
 
     if (result.isSuccessful && data != null) {
       emit(

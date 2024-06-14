@@ -17,6 +17,7 @@ import '../../data/models/requests/accept_order_request.dart';
 import '../../domain/entities/order/order_entity.dart';
 import '../../domain/entities/response/order_response.dart';
 import '../../domain/usecases/accept_order_use_case.dart';
+import '../../domain/usecases/cancel_order.dart';
 
 part 'order_bloc.freezed.dart';
 part 'order_event.dart';
@@ -26,15 +27,18 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._getOrderUseCase,
     this._acceptOrderUseCase,
+    this._cancelOrderUseCase,
   ) : super(const _Initial());
 
   final GetOrderUseCase _getOrderUseCase;
 
   final AcceptOrderUseCase _acceptOrderUseCase;
 
+  final CancelOrderUseCase _cancelOrderUseCase;
+
   final DriverOrderBloc _driverOrderBloc = getIt<DriverOrderBloc>();
 
-  final OrderViewModel _viewModel = const OrderViewModel();
+  OrderViewModel _viewModel = const OrderViewModel();
 
   StreamSubscription? _orderStatusSubscription;
 
@@ -92,6 +96,11 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
     if (result.isSuccessful && data != null) {
       log('success accepted order', name: 'ACCEPT ORDER');
+
+      List<OrderEntity> updatedOrdersList = List.from(_viewModel.ordersList);
+      updatedOrdersList.add(data.order);
+
+      _viewModel = _viewModel.copyWith(ordersList: updatedOrdersList);
     }
   }
 
@@ -101,7 +110,22 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   ) async {
     emit(const _Initial());
 
-    
+    OrderRequest orderId = OrderRequest(id: event.orderId);
+
+    final result = await _cancelOrderUseCase.call(orderId);
+
+    if (result.isSuccessful) {
+      log('success canceled order', name: 'CANCEL ORDER');
+
+      List<OrderEntity> updatedOrdersList = List.from(_viewModel.ordersList)
+        ..removeWhere((order) => order.id == event.orderId);
+
+      emit(
+        _Loaded(
+          viewModel: _viewModel.copyWith(ordersList: updatedOrdersList),
+        ),
+      );
+    }
   }
 
   @override

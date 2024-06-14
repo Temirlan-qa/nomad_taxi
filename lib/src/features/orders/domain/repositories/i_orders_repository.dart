@@ -18,7 +18,7 @@ abstract class IOrdersRepository {
     OrderRequest request,
   );
 
-  Future<Either<DomainException, OrderResponse>> cancelOrder(
+  Future<Either<DomainException, void>> cancelOrder(
     String orderId,
   );
 

@@ -5,9 +5,9 @@ class OrderEvent with _$OrderEvent {
   const factory OrderEvent.started() = _Started;
   const factory OrderEvent.getOrders() = _GetOrders;
   const factory OrderEvent.acceptOrder({
-    required String orderId,
+    required int orderId,
   }) = _AcceptOrder;
   const factory OrderEvent.cancelOrder({
-    required String orderId,
+    required int orderId,
   }) = _CancelOrder;
 }
