@@ -83,6 +83,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "development_by":
             MessageLookupByLibrary.simpleMessage("Разработка компании"),
         "done": MessageLookupByLibrary.simpleMessage("Выполненно"),
+        "driverRequirement1": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, введите модель автомобиля"),
+        "driverRequirement2": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, введите номер автомобиля"),
         "driver_balance":
             MessageLookupByLibrary.simpleMessage("Баланс водителя"),
         "driver_canceled_order":
@@ -104,6 +108,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Введите номер"),
         "enter_driver_info":
             MessageLookupByLibrary.simpleMessage("Внести данные водителя"),
+        "enter_id":
+            MessageLookupByLibrary.simpleMessage("Далее введите свой ID номер"),
         "enter_info":
             MessageLookupByLibrary.simpleMessage("Введите информацию"),
         "enter_promoCode":
@@ -207,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "your_account": MessageLookupByLibrary.simpleMessage("Ваш счет"),
         "your_balance": MessageLookupByLibrary.simpleMessage("Ваш баланс"),
         "your_bonuses": MessageLookupByLibrary.simpleMessage("Ваши бонусы"),
+        "your_id": MessageLookupByLibrary.simpleMessage("Ваш ID"),
         "your_name": MessageLookupByLibrary.simpleMessage("Ваше имя"),
         "your_phone": MessageLookupByLibrary.simpleMessage("Ваш телефон"),
         "your_profile": MessageLookupByLibrary.simpleMessage("Ваш профиль"),

@@ -10,6 +10,10 @@ class ProfileEvent with _$ProfileEvent {
     required String lastName,
   }) = _UpdateUserInfo;
 
+  const factory ProfileEvent.updatePartnerData({
+    required UpdatePartnerDataRequest partnerData,
+  }) = _UpdatePartnerData;
+
   const factory ProfileEvent.updateFcmToken({
     required UpdateFcmTokenRequest fcmToken,
   }) = _UpdateFcmToken;

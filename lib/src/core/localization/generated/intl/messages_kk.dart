@@ -86,6 +86,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "development_by":
             MessageLookupByLibrary.simpleMessage("Компанияның дамуы"),
         "done": MessageLookupByLibrary.simpleMessage("Орындалды"),
+        "driverRequirement1":
+            MessageLookupByLibrary.simpleMessage("Автокөлік үлгісін енгізіңіз"),
+        "driverRequirement2":
+            MessageLookupByLibrary.simpleMessage("Автокөлік нөмірін енгізіңіз"),
         "driver_balance":
             MessageLookupByLibrary.simpleMessage("Жүргізуші балансы"),
         "driver_canceled_order": MessageLookupByLibrary.simpleMessage(
@@ -99,12 +103,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Бірақ жұмысты бастамас бұрын клиенттер сізді анықтай алатындай етіп сіздің машинаңыздың мәліметтерін енгізуіңізді сұраймыз."),
         "driver_mode_intro_header4":
             MessageLookupByLibrary.simpleMessage("Сапарыңыз сәтті өтсін =)"),
+        "enter_ID": MessageLookupByLibrary.simpleMessage(
+            "Әрі қарай ID нөміріңізді енгізіңіз"),
         "enter_amount": MessageLookupByLibrary.simpleMessage(
             "Қажетті соманы енгізіңіз және NOMAD taxi қолданбасында шотыңызға ақша түседі"),
         "enter_car_number":
             MessageLookupByLibrary.simpleMessage("Нөмірді енгізіңіз"),
         "enter_driver_info":
             MessageLookupByLibrary.simpleMessage("Жүргізуші деректерін енгізу"),
+        "enter_id": MessageLookupByLibrary.simpleMessage(
+            "Әрі қарай, ID нөміріңізді енгізіңіз"),
         "enter_info":
             MessageLookupByLibrary.simpleMessage("Ақпаратты енгізіңіз"),
         "enter_promoCode":
@@ -141,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("Телефон нөмірі"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Құпиялылық саясаты"),
+        "recharge_account":
+            MessageLookupByLibrary.simpleMessage("Шотты толтыру"),
         "recharge_kaspi": MessageLookupByLibrary.simpleMessage(
             "Қосымшада Kaspi.kz\n шотын толтыру"),
         "referral_program":
@@ -198,11 +208,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сіз шыққыңыз келе ме?"),
         "you_want_exit_desc": MessageLookupByLibrary.simpleMessage(
             "Шыққаннан кейін кез келген уақытта есептік жазбаңызға оралуға болады. Сіздің барлық деректеріңіз сақталады"),
+        "your_ID": MessageLookupByLibrary.simpleMessage("Сіздің ID"),
         "your_account": MessageLookupByLibrary.simpleMessage("Сіздің шотыңыз"),
         "your_balance":
             MessageLookupByLibrary.simpleMessage("Сіздің балансыңыз"),
         "your_bonuses":
             MessageLookupByLibrary.simpleMessage("Сіздің бонустарыңыз"),
+        "your_id":
+            MessageLookupByLibrary.simpleMessage("Сіздің идентификаторыңыз"),
         "your_name": MessageLookupByLibrary.simpleMessage("Сіздің атыңыз"),
         "your_phone":
             MessageLookupByLibrary.simpleMessage("Сіздің телефоныңыз"),
