@@ -13,6 +13,7 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/show_info_bonus_modal_widget.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/check_mark_indicator.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/show_order_modal_widget.dart';
@@ -27,7 +28,7 @@ class DriverOrdersPage extends StatefulWidget {
 class _DriverOrdersPageState extends State<DriverOrdersPage> {
   Duration duration = const Duration();
 
-  late Timer _timer;
+  Timer? _timer;
 
   final orderBloc = getIt<OrderBloc>();
 
@@ -42,7 +43,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
     setState(() {
       final seconds = duration.inSeconds + addSeconds;
       if (seconds < 0) {
-        _timer.cancel();
+        _timer?.cancel();
       } else {
         duration = Duration(seconds: seconds);
       }
@@ -58,7 +59,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
@@ -92,19 +93,49 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
             return state.when(
               initial: () =>
                   const Center(child: CircularProgressIndicator.adaptive()),
-              error: (error) => Text(error),
+              error: (error) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Assets.icons.brand.smile.svg(),
+                  const Gap(UIConstants.defaultPadding),
+                  Text(
+                    error,
+                    textAlign: TextAlign.center,
+                    style: context.theme.textStyles.titleSecondary,
+                  ),
+                ],
+              ),
               loaded: (viewModel) {
+                List<OrderEntity> orderList = viewModel.ordersList;
+                if (orderList.isEmpty) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Assets.icons.brand.smile.svg(),
+                      const Gap(UIConstants.defaultPadding),
+                      Text(
+                        S.current.noActiveOrdersAtTheMoment,
+                        textAlign: TextAlign.center,
+                        style: context.theme.textStyles.titleSecondary,
+                      ),
+                    ],
+                  );
+                }
                 return CheckMarkIndicator(
+                  onRefresh: () {
+                    bloc.add(const OrderEvent.getOrders());
+                  },
                   child: ListView.separated(
                     padding: const EdgeInsets.all(UIConstants.defaultPadding),
-                    itemCount: viewModel.orders!.data.length,
+                    itemCount: orderList.length,
                     separatorBuilder: (ctx, index) {
                       return const Gap(UIConstants.defaultGap1);
                     },
                     itemBuilder: (ctx, index) {
                       return InkWell(
                         onTap: () {
-                          context.push(RoutePaths.order);
+                          context.push(RoutePaths.order,
+                              extra: orderList[index]);
                         },
                         borderRadius:
                             BorderRadius.circular(UIConstants.defaultRadius),
@@ -133,7 +164,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                               .copyWith(
                                                   color: context.theme.blue)),
                                       const Gap(UIConstants.defaultGap5),
-                                      Text('800 〒',
+                                      Text('${orderList[index].price} 〒',
                                           style: context
                                               .theme.textStyles.extraTitle),
                                     ],
@@ -151,7 +182,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Expanded(
-                                    child: Text('Типография Konica',
+                                    child: Text(orderList[index].startPoint,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style:
@@ -166,7 +197,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                           BlendMode.srcIn)),
                                   const Gap(UIConstants.defaultGap2),
                                   Expanded(
-                                    child: Text('Ниточкина 6а',
+                                    child: Text(orderList[index].endPoint,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style:

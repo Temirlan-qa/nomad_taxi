@@ -1330,6 +1330,16 @@ class S {
     );
   }
 
+  /// `На данный момент нет активных заказов`
+  String get noActiveOrdersAtTheMoment {
+    return Intl.message(
+      'На данный момент нет активных заказов',
+      name: 'noActiveOrdersAtTheMoment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Пожалуйста, введите модель автомобиля`
   String get driverRequirement1 {
     return Intl.message(

@@ -49,7 +49,7 @@ import '../../../features/orders/data/repositories/orders_repository_impl.dart'
     as _i17;
 import '../../../features/orders/domain/repositories/i_orders_repository.dart'
     as _i16;
-import '../../../features/orders/domain/usecases/get_order_use_case.dart'
+import '../../../features/orders/domain/usecases/get_orders_use_case.dart'
     as _i24;
 import '../../../features/profile/data/datasources/remote/i_profile_remote.dart'
     as _i8;

@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/entities/get_order_status_response.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/service/injectable/injectable_service.dart';
 import '../../domain/usecases/get_order_status_use_case.dart';
@@ -23,7 +22,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
 
   DriverOrderViewModel _viewModel = const DriverOrderViewModel();
 
-    late Timer _timer;
+  Timer? _timer;
 
   @override
   Future<void> onEventHandler(DriverOrderEvent event, Emitter emit) async {
@@ -36,15 +35,11 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
   }
 
   Future<void> _started() async {
-    //TODO Later, this should be replaced with ping logic
-  //  _timer = Timer.periodic(const Duration(seconds: 3), (_) {
-  //     log('call', name: 'TimerPeriodic');
-  //     add(const _GetOrderStatus());
-  //   });
+    add(const _GetOrderStatus());
   }
 
   Future<void> _getOrderStatus() async {
-     await _orderStatusSubscription?.cancel();
+    await _orderStatusSubscription?.cancel();
     _orderStatusSubscription == null;
 
     _orderStatusSubscription = _getOrderStatusUseCase().listen((result) {
@@ -54,9 +49,6 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
         if (data != null) {
           add(_UpdateOrderStatus(updateOrderStatus: data));
         }
-      }
-      if (result.isFailure) {
-        log('$result', name: 'GetOrderStatusUseCaseFailure');
       }
     });
   }
@@ -74,7 +66,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
   Future<void> close() {
     _orderStatusSubscription?.cancel();
     _orderStatusSubscription == null;
-    _timer.cancel();
+    _timer?.cancel();
     getIt.resetBloc(this);
     return super.close();
   }

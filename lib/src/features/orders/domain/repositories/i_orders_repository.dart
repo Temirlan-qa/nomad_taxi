@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/find_town_by_location_response/find_town_by_location_response.dart';
-import 'package:nomad_taxi/src/features/orders/domain/entities/get_orders_response/get_orders_response.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order_response.dart/update_order_response.dart';
 
@@ -11,7 +11,7 @@ import '../entities/delete_order_response/delete_order_response.dart';
 import '../entities/update_order/update_order_entity.dart';
 
 abstract class IOrdersRepository {
-  Future<Either<DomainException, GetOrdersResponse>> getOrders();
+  Future<Either<DomainException, OrdersResponse>> getOrders();
 
   Future<Either<DomainException, OrderResponse>> acceptOrder(
     String orderId,
