@@ -21,6 +21,7 @@ Questions _$QuestionsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Questions {
   List<Question> get questions => throw _privateConstructorUsedError;
+  Support get support => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,9 @@ abstract class $QuestionsCopyWith<$Res> {
   factory $QuestionsCopyWith(Questions value, $Res Function(Questions) then) =
       _$QuestionsCopyWithImpl<$Res, Questions>;
   @useResult
-  $Res call({List<Question> questions});
+  $Res call({List<Question> questions, Support support});
+
+  $SupportCopyWith<$Res> get support;
 }
 
 /// @nodoc
@@ -50,13 +53,26 @@ class _$QuestionsCopyWithImpl<$Res, $Val extends Questions>
   @override
   $Res call({
     Object? questions = null,
+    Object? support = null,
   }) {
     return _then(_value.copyWith(
       questions: null == questions
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<Question>,
+      support: null == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as Support,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SupportCopyWith<$Res> get support {
+    return $SupportCopyWith<$Res>(_value.support, (value) {
+      return _then(_value.copyWith(support: value) as $Val);
+    });
   }
 }
 
@@ -68,7 +84,10 @@ abstract class _$$QuestionsImplCopyWith<$Res>
       __$$QuestionsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Question> questions});
+  $Res call({List<Question> questions, Support support});
+
+  @override
+  $SupportCopyWith<$Res> get support;
 }
 
 /// @nodoc
@@ -83,12 +102,17 @@ class __$$QuestionsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? questions = null,
+    Object? support = null,
   }) {
     return _then(_$QuestionsImpl(
       questions: null == questions
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<Question>,
+      support: null == support
+          ? _value.support
+          : support // ignore: cast_nullable_to_non_nullable
+              as Support,
     ));
   }
 }
@@ -96,7 +120,8 @@ class __$$QuestionsImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$QuestionsImpl implements _Questions {
-  const _$QuestionsImpl({required final List<Question> questions})
+  const _$QuestionsImpl(
+      {required final List<Question> questions, required this.support})
       : _questions = questions;
 
   factory _$QuestionsImpl.fromJson(Map<String, dynamic> json) =>
@@ -111,8 +136,11 @@ class _$QuestionsImpl implements _Questions {
   }
 
   @override
+  final Support support;
+
+  @override
   String toString() {
-    return 'Questions(questions: $questions)';
+    return 'Questions(questions: $questions, support: $support)';
   }
 
   @override
@@ -121,13 +149,14 @@ class _$QuestionsImpl implements _Questions {
         (other.runtimeType == runtimeType &&
             other is _$QuestionsImpl &&
             const DeepCollectionEquality()
-                .equals(other._questions, _questions));
+                .equals(other._questions, _questions) &&
+            (identical(other.support, support) || other.support == support));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_questions));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_questions), support);
 
   @JsonKey(ignore: true)
   @override
@@ -144,14 +173,17 @@ class _$QuestionsImpl implements _Questions {
 }
 
 abstract class _Questions implements Questions {
-  const factory _Questions({required final List<Question> questions}) =
-      _$QuestionsImpl;
+  const factory _Questions(
+      {required final List<Question> questions,
+      required final Support support}) = _$QuestionsImpl;
 
   factory _Questions.fromJson(Map<String, dynamic> json) =
       _$QuestionsImpl.fromJson;
 
   @override
   List<Question> get questions;
+  @override
+  Support get support;
   @override
   @JsonKey(ignore: true)
   _$$QuestionsImplCopyWith<_$QuestionsImpl> get copyWith =>

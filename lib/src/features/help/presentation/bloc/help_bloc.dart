@@ -4,6 +4,7 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/help/domain/entities/questions.dart';
+import 'package:nomad_taxi/src/features/help/domain/entities/support/support.dart';
 import 'package:nomad_taxi/src/features/help/domain/usecases/get_questions_use_case.dart';
 
 part 'help_bloc.freezed.dart';
@@ -37,7 +38,9 @@ class HelpBloc extends BaseBloc<HelpEvent, HelpState> {
     if (result.isSuccessful && data != null) {
       return emit(
         _Loaded(
-          viewModel: _viewModel.copyWith(questions: data),
+          viewModel: _viewModel.copyWith(
+            questions: data,
+          ),
         ),
       );
     }
