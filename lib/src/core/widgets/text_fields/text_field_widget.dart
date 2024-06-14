@@ -16,7 +16,8 @@ class TextFieldWidget extends StatefulWidget {
       this.inputFormatters,
       this.textFieldValidationState = TextFieldValidationState.none,
       this.onChanged,
-      this.isReadOnly});
+      this.isReadOnly,
+      this.suffix});
   final TextEditingController controller;
   final String hintText;
   final TextInputType? keyboardType;
@@ -24,6 +25,7 @@ class TextFieldWidget extends StatefulWidget {
   final TextFieldValidationState textFieldValidationState;
   final ValueChanged? onChanged;
   final bool? isReadOnly;
+  final Widget? suffix;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -76,7 +78,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             decoration: InputDecoration(
               hintText: widget.hintText,
               hintStyle: headLine.copyWith(color: context.theme.secondary),
-              contentPadding: EdgeInsets.zero,
+              contentPadding: const EdgeInsets.symmetric(vertical: 15),
+              suffixIcon: widget.suffix,
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               focusedErrorBorder: InputBorder.none,

@@ -113,5 +113,20 @@ List<RouteBase> _routes() => <RouteBase>[
         name: RouteNames.chooseTariff,
         path: RoutePaths.chooseTariff,
         builder: (_, __) => const ChooseTariffPage(),
+      ),
+      GoRoute(
+        name: RouteNames.searchAddress,
+        path: RoutePaths.searchAddress,
+        builder: (_, __) => const SearchAddressPage(),
+      ),
+      GoRoute(
+        name: RouteNames.orderSearch,
+        path: RoutePaths.orderSearch,
+        builder: (_, __) => const OrderSearchPage(),
+      ),
+      GoRoute(
+        name: RouteNames.orderPrice,
+        path: RoutePaths.orderPrice,
+        builder: (_, __) => const OrderPricePage(),
       )
     ];

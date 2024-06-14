@@ -1319,6 +1319,286 @@ class S {
       args: [],
     );
   }
+
+  /// `Куда едим`
+  String get where_are_going {
+    return Intl.message(
+      'Куда едим',
+      name: 'where_are_going',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `История`
+  String get history {
+    return Intl.message(
+      'История',
+      name: 'history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Тут будут отображатся ваши последние поездки`
+  String get recent_trips_will_displayed_here {
+    return Intl.message(
+      'Тут будут отображатся ваши последние поездки',
+      name: 'recent_trips_will_displayed_here',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваше местоположение`
+  String get your_location {
+    return Intl.message(
+      'Ваше местоположение',
+      name: 'your_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Заказать такси`
+  String get order_taxi {
+    return Intl.message(
+      'Заказать такси',
+      name: 'order_taxi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Есть активный заказ`
+  String get have_active_order {
+    return Intl.message(
+      'Есть активный заказ',
+      name: 'have_active_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Завершить заказ`
+  String get finish_order {
+    return Intl.message(
+      'Завершить заказ',
+      name: 'finish_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выбрать`
+  String get select {
+    return Intl.message(
+      'Выбрать',
+      name: 'select',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Активный заказ`
+  String get active_order {
+    return Intl.message(
+      'Активный заказ',
+      name: 'active_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Открыть`
+  String get open {
+    return Intl.message(
+      'Открыть',
+      name: 'open',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Использовать бонусы`
+  String get use_bonuses {
+    return Intl.message(
+      'Использовать бонусы',
+      name: 'use_bonuses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Начисляем бонусов за каждый заказ`
+  String get bonuses_each_order {
+    return Intl.message(
+      'Начисляем бонусов за каждый заказ',
+      name: 'bonuses_each_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Изменить стоимость`
+  String get change_price {
+    return Intl.message(
+      'Изменить стоимость',
+      name: 'change_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Машина`
+  String get car {
+    return Intl.message(
+      'Машина',
+      name: 'car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Детали заказа`
+  String get order_details {
+    return Intl.message(
+      'Детали заказа',
+      name: 'order_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш заказ приняли`
+  String get order_accepted {
+    return Intl.message(
+      'Ваш заказ приняли',
+      name: 'order_accepted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Приблизительное время\nприбытия водителя`
+  String get approximate_time_arrival {
+    return Intl.message(
+      'Приблизительное время\nприбытия водителя',
+      name: 'approximate_time_arrival',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Удачной поездки!`
+  String get successful_ride {
+    return Intl.message(
+      'Удачной поездки!',
+      name: 'successful_ride',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Можете закрыть окно, и вернуться cюда в любое время`
+  String get close_window_and_come_back {
+    return Intl.message(
+      'Можете закрыть окно, и вернуться cюда в любое время',
+      name: 'close_window_and_come_back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Идет поиск`
+  String get searching {
+    return Intl.message(
+      'Идет поиск',
+      name: 'searching',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Стоимость`
+  String get price {
+    return Intl.message(
+      'Стоимость',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш водитель`
+  String get your_driver {
+    return Intl.message(
+      'Ваш водитель',
+      name: 'your_driver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `В поиске`
+  String get on_search {
+    return Intl.message(
+      'В поиске',
+      name: 'on_search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отменён`
+  String get canceled {
+    return Intl.message(
+      'Отменён',
+      name: 'canceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Спасибо за поездку!`
+  String get thank_for_ride {
+    return Intl.message(
+      'Спасибо за поездку!',
+      name: 'thank_for_ride',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Время ожидания`
+  String get wating_time {
+    return Intl.message(
+      'Время ожидания',
+      name: 'wating_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вас ждет водитель!`
+  String get driver_waiting {
+    return Intl.message(
+      'Вас ждет водитель!',
+      name: 'driver_waiting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `секунд`
+  String get seconds {
+    return Intl.message(
+      'секунд',
+      name: 'seconds',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
