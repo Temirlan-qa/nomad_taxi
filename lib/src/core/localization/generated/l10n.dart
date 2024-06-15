@@ -1379,6 +1379,16 @@ class S {
       args: [],
     );
   }
+
+  /// `You do not have enough funds on your balance to accept orders`
+  String get youDoNotHaveEnoughBalance {
+    return Intl.message(
+      'You do not have enough funds on your balance to accept orders',
+      name: 'youDoNotHaveEnoughBalance',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -29,26 +29,25 @@ class OrdersRemoteImpl implements IOrdersRemote {
   Future<Either<DomainException, OrderDto>> acceptOrder(
       OrderRequest request) async {
     try {
-      // var headers = {
-      //   'Accept-Language': 'ru',
-      //   'Accept': 'application/json',
-      //   'Authorization': 'Bearer ${st.getToken()!}'
-      // };
-      // final int orderId = request.id;
-      // var response = await client.request(
-      //   'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
-      //   options: Options(
-      //     method: 'POST',
-      //     headers: headers,
-      //   ),
-      // );
+      var headers = {
+        'Accept-Language': 'ru',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      final int orderId = request.id;
+      var response = await client.request(
+        'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+      );
+      
+      final data = response.data;
 
-      //TODO: (bekzhan) Uncomment it line after fixing the server
-      // final data = response.data;
+      // final mockData = _mockAcceptOrder;
 
-      final mockData = _mockAcceptOrder;
-
-      return Right(OrderDto.fromJson(mockData));
+      return Right(OrderDto.fromJson(data));
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),

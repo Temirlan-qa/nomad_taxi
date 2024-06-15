@@ -205,6 +205,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "write_appeal": MessageLookupByLibrary.simpleMessage("Өтініш жазу"),
         "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
             "Бізге ватсапқа ақша алу туралы сұраныс пен жауап жіберіңіз сіздің ID нөміріңіз және сіздің Kaspi Gold картаңыздың нөмірі, және біздің менеджерлер сіздің шотыңызға ақша аударады"),
+        "youDoNotHaveEnoughBalance": MessageLookupByLibrary.simpleMessage(
+            "Тапсырыстарды қабылдау үшін сіздің балансыңызда қаражат жеткіліксіз"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Сіз шыққыңыз келе ме?"),

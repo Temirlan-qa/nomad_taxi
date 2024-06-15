@@ -138,5 +138,6 @@
   "driverRequirement1": "Пожалуйста, введите модель автомобиля",
   "driverRequirement2": "Пожалуйста, введите номер автомобиля",
   "enter_id": "Далее введите свой ID номер",
-  "your_id": "Ваш ID"
+  "your_id": "Ваш ID",
+  "youDoNotHaveEnoughBalance": "You do not have enough funds on your balance to accept orders"
 }

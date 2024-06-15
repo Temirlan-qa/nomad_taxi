@@ -100,7 +100,10 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
       updatedOrdersList.add(data.order);
 
       _viewModel = _viewModel.copyWith(ordersList: updatedOrdersList);
+      return;
     }
+
+    emit(_Error(S.current.youDoNotHaveEnoughBalance));
   }
 
   Future<void> _cancelOrder(
