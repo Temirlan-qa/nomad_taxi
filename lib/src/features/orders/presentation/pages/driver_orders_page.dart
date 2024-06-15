@@ -158,11 +158,14 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(S.current.delivery,
-                                          style: context
-                                              .theme.textStyles.bodyMain
-                                              .copyWith(
-                                                  color: context.theme.blue)),
+                                      //TODO: add type of orders
+
+                                      Text(
+                                        S.current.delivery,
+                                        style: context.theme.textStyles.bodyMain
+                                            .copyWith(
+                                                color: context.theme.blue),
+                                      ),
                                       const Gap(UIConstants.defaultGap5),
                                       Text('${orderList[index].price} 〒',
                                           style: context

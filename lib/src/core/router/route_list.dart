@@ -113,8 +113,12 @@ List<RouteBase> _routes() => <RouteBase>[
         },
       ),
       GoRoute(
-        name: RouteNames.chooseTariff,
-        path: RoutePaths.chooseTariff,
-        builder: (_, __) => const ChooseTariffPage(),
-      )
+          name: RouteNames.chooseTariff,
+          path: RoutePaths.chooseTariff,
+          builder: (_, state) {
+            final int balance = state.extra as int;
+            return ChooseTariffPage(
+              balance: balance,
+            );
+          })
     ];

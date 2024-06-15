@@ -75,7 +75,7 @@ class _DriverMainPageState extends State<DriverMainPage> {
                                     ),
                                     const Gap(UIConstants.defaultGap7),
                                     Text(
-                                      '${viewModel.pBalance}',
+                                      '${viewModel.pBalance ?? 0}',
                                       style: context.theme.textStyles.titleMain,
                                     ),
                                     const Gap(UIConstants.defaultGap2),
@@ -98,7 +98,7 @@ class _DriverMainPageState extends State<DriverMainPage> {
                               ),
                               const Gap(UIConstants.defaultGap7),
                               Text(
-                                '${viewModel.pBonus}',
+                                '${viewModel.pBonus ?? 0}',
                                 style: context.theme.textStyles.titleMain,
                               ),
                             ],
@@ -109,7 +109,10 @@ class _DriverMainPageState extends State<DriverMainPage> {
                     const Gap(UIConstants.defaultGap3),
                     CustomContainerWidget(
                         onTap: () {
-                          context.pushNamed(RouteNames.chooseTariff);
+                          context.pushNamed(
+                            RouteNames.chooseTariff,
+                            extra: viewModel.pBalance ?? 0,
+                          );
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,39 +184,41 @@ class _DriverMainPageState extends State<DriverMainPage> {
                         )),
                     const Gap(UIConstants.defaultGap3),
                     CustomContainerWidget(
-                        onTap: !switchState
-                            ? null
-                            : () {
-                                context.pushNamed(RouteNames.driverOrders);
-                              },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  S.current.orders,
-                                  style: context.theme.textStyles.titleSecondary
-                                      .copyWith(
-                                          color: switchState
-                                              ? context.theme.primary
-                                              : secondary),
-                                ),
-                                const Gap(UIConstants.defaultGap7),
-                                Text(
-                                  S.current.go_offline,
-                                  style: bodyMain.copyWith(color: secondary),
-                                ),
-                              ],
-                            ),
-                            Assets.icons.regular.chevronRightSolid.svg(
-                                width: 18,
-                                height: 18,
-                                colorFilter: ColorFilter.mode(
-                                    secondary, BlendMode.srcIn))
-                          ],
-                        )),
+                      onTap: !switchState
+                          ? null
+                          : () {
+                              context.pushNamed(RouteNames.driverOrders);
+                            },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                S.current.orders,
+                                style: context.theme.textStyles.titleSecondary
+                                    .copyWith(
+                                        color: switchState
+                                            ? context.theme.primary
+                                            : secondary),
+                              ),
+                              const Gap(UIConstants.defaultGap7),
+                              Text(
+                                S.current.go_offline,
+                                style: bodyMain.copyWith(color: secondary),
+                              ),
+                            ],
+                          ),
+                          Assets.icons.regular.chevronRightSolid.svg(
+                            width: 18,
+                            height: 18,
+                            colorFilter:
+                                ColorFilter.mode(secondary, BlendMode.srcIn),
+                          )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
