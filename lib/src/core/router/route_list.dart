@@ -130,7 +130,10 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.orderSearch,
         path: RoutePaths.orderSearch,
-        builder: (_, __) => const OrderSearchPage(),
+        builder: (_, state) {
+          final orderPrice = state.extra as int;
+          return OrderSearchPage(price: orderPrice);
+        },
       ),
       GoRoute(
         name: RouteNames.orderPrice,

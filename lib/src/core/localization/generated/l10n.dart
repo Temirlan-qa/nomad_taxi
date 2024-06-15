@@ -1660,10 +1660,10 @@ class S {
     );
   }
 
-  /// `You do not have enough funds on your balance to accept orders`
+  /// `На вашем балансе недостаточно средств для приема заказов`
   String get youDoNotHaveEnoughBalance {
     return Intl.message(
-      'You do not have enough funds on your balance to accept orders',
+      'На вашем балансе недостаточно средств для приема заказов',
       name: 'youDoNotHaveEnoughBalance',
       desc: '',
       args: [],

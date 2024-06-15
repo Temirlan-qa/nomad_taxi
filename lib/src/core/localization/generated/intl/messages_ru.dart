@@ -245,7 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
             "Напишите нам в ватсап запрос на вывод средств и отвте номер вашего ID и номер вашей карты Kaspi GOLD, и наши менеджеры переведут деньги вам на счет"),
         "youDoNotHaveEnoughBalance": MessageLookupByLibrary.simpleMessage(
-            "You do not have enough funds on your balance to accept orders"),
+            "На вашем балансе недостаточно средств для приема заказов"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Вы хотите выйти?"),

@@ -24,6 +24,8 @@ class _OrderPricePageState extends State<OrderPricePage> {
   String priceOrder = '500';
   String cashbackPercent = '+10%';
 
+  int orderPrice = 800;
+
   @override
   Widget build(BuildContext context) {
     final bodyMain = context.theme.textStyles.bodyMain;
@@ -88,7 +90,23 @@ class _OrderPricePageState extends State<OrderPricePage> {
                     ],
                   )),
               const Gap(UIConstants.defaultGap2),
-              CustomOrderPriceTextFieldWidget(controller: priceController),
+              CustomOrderPriceTextFieldWidget(
+                  controller: priceController,
+                  orderPrice: orderPrice,
+                  onDecrease: orderPrice == 800
+                      ? null
+                      : () {
+                          setState(() {
+                            orderPrice >= 800 ? orderPrice -= 100 : 0;
+                            priceController.text = '$orderPrice ₸';
+                          });
+                        },
+                  onIncrease: () {
+                    setState(() {
+                      orderPrice += 100;
+                      priceController.text = '$orderPrice ₸';
+                    });
+                  }),
               const Gap(UIConstants.defaultGap2),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +151,7 @@ class _OrderPricePageState extends State<OrderPricePage> {
                     child: CustomMainButtonWidget(
                       title: S.current.next,
                       onPressed: () {
-                        context.push(RoutePaths.orderSearch);
+                        context.push(RoutePaths.orderSearch, extra: orderPrice);
                       },
                     ),
                   )

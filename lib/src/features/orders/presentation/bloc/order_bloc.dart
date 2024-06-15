@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
@@ -23,6 +24,8 @@ part 'order_bloc.freezed.dart';
 part 'order_event.dart';
 part 'order_state.dart';
 
+@injectable
+@factoryMethod
 class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._getOrderUseCase,
@@ -100,6 +103,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
       updatedOrdersList.add(data.order);
 
       _viewModel = _viewModel.copyWith(ordersList: updatedOrdersList);
+      emit(_Loaded(viewModel: _viewModel));
       return;
     }
 

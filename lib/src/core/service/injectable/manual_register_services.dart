@@ -58,15 +58,6 @@ void manualRegisterServices() {
     ),
   );
 
-  getIt.registerBloc<OrderBloc>(
-    () => OrderBloc(
-     getIt<GetOrderUseCase>(),
-     getIt<AcceptOrderUseCase>(),
-     getIt<CancelOrderUseCase>(),
-      // getIt<GetOrderStatusUseCase>(),
-    ),
-  );
-
   getIt.registerBloc<DriverOrderBloc>(
     () => DriverOrderBloc(
       getIt<GetOrderStatusUseCase>(),

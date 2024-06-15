@@ -43,8 +43,6 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
 
   final ProfileViewModel _viewModel = ProfileViewModel();
 
-  final OrderBloc orderBloc = getIt<OrderBloc>();
-
   @override
   Future<void> onEventHandler(ProfileEvent event, Emitter emit) async {
     await event.when(
@@ -69,8 +67,6 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     emit(const _Initial());
     final result = await _getUserDataUseCase.call();
     final data = result.data;
-
-    orderBloc.add(const OrderEvent.acceptOrder(orderId: 1));
 
     if (result.isSuccessful && data != null) {
       emit(
