@@ -29,12 +29,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "activate_promoCode":
             MessageLookupByLibrary.simpleMessage("Активировать промокод"),
         "active": MessageLookupByLibrary.simpleMessage("Активен"),
+        "active_order": MessageLookupByLibrary.simpleMessage("Активный заказ"),
         "agree_wit_privacy_policy": MessageLookupByLibrary.simpleMessage(
             "Согласен с политикой конфиденцальности"),
         "answer_dev":
             MessageLookupByLibrary.simpleMessage("Ответ разработчика"),
         "answers_popular_questions": MessageLookupByLibrary.simpleMessage(
             "Ответы на популярные вопросы"),
+        "approximate_time_arrival": MessageLookupByLibrary.simpleMessage(
+            "Приблизительное время\nприбытия водителя"),
         "arrival_address":
             MessageLookupByLibrary.simpleMessage("Адрес прибытия"),
         "arrived_call_point":
@@ -45,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Бонусы тоже деньги"),
         "bonuses_desc": MessageLookupByLibrary.simpleMessage(
             "Бонусы поступают вам на счет, вы можете на них покупать пакеты времени, оплачивать комиссию такси или выводить на свою карту"),
+        "bonuses_each_order": MessageLookupByLibrary.simpleMessage(
+            "Начисляем бонусов за каждый заказ"),
         "buy_franchise":
             MessageLookupByLibrary.simpleMessage("Купить франшизу"),
         "by_cash": MessageLookupByLibrary.simpleMessage("Наличными"),
@@ -54,16 +59,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_order": MessageLookupByLibrary.simpleMessage("Отмена заказа"),
         "cancel_the_order":
             MessageLookupByLibrary.simpleMessage("Отменить заказ"),
+        "canceled": MessageLookupByLibrary.simpleMessage("Отменён"),
+        "car": MessageLookupByLibrary.simpleMessage("Машина"),
         "car_data": MessageLookupByLibrary.simpleMessage("Данные машины"),
         "car_info_hint_text": MessageLookupByLibrary.simpleMessage(
             "Введите в следующем порядке через запятую:\nЦвет, Марка, Модель (кузов)"),
         "change": MessageLookupByLibrary.simpleMessage("изменить"),
         "change_language": MessageLookupByLibrary.simpleMessage("Смена языка"),
+        "change_price":
+            MessageLookupByLibrary.simpleMessage("Изменить стоимость"),
         "city": MessageLookupByLibrary.simpleMessage("Город"),
         "client": MessageLookupByLibrary.simpleMessage("Клиент"),
         "client_not_come_out_desc": MessageLookupByLibrary.simpleMessage(
             "Если клиент не выходит, и не возможно с ним связаться, то вы можете отменить заказ"),
         "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
+        "close_window_and_come_back": MessageLookupByLibrary.simpleMessage(
+            "Можете закрыть окно, и вернуться cюда в любое время"),
         "comments": MessageLookupByLibrary.simpleMessage("Коментарии"),
         "congrats_completed_order": MessageLookupByLibrary.simpleMessage(
             "Поздравляем с выполненным заказом!"),
@@ -100,6 +111,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Но перед началом работы просим вас внесити данные вашей машины, чтобы клиенты могли определить вас."),
         "driver_mode_intro_header4":
             MessageLookupByLibrary.simpleMessage("Удачной поездки =)"),
+        "driver_waiting":
+            MessageLookupByLibrary.simpleMessage("Вас ждет водитель!"),
         "enter_ID":
             MessageLookupByLibrary.simpleMessage("Далее введите свой ID номер"),
         "enter_amount": MessageLookupByLibrary.simpleMessage(
@@ -115,13 +128,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_promoCode":
             MessageLookupByLibrary.simpleMessage("Введите промокод"),
         "exit_mode": MessageLookupByLibrary.simpleMessage("Выйти из режима"),
+        "finish_order": MessageLookupByLibrary.simpleMessage("Завершить заказ"),
         "forgot_stuff":
             MessageLookupByLibrary.simpleMessage("Забыли вещи в такси"),
         "free": MessageLookupByLibrary.simpleMessage("Бесплатный"),
         "go_back": MessageLookupByLibrary.simpleMessage("Вернутся назад"),
         "go_offline": MessageLookupByLibrary.simpleMessage("Выйдете на линию"),
         "go_online": MessageLookupByLibrary.simpleMessage("Выйти на линию"),
+        "have_active_order":
+            MessageLookupByLibrary.simpleMessage("Есть активный заказ"),
         "help": MessageLookupByLibrary.simpleMessage("Помощь"),
+        "history": MessageLookupByLibrary.simpleMessage("История"),
         "in_progress": MessageLookupByLibrary.simpleMessage("В процессе"),
         "instruction": MessageLookupByLibrary.simpleMessage("Инструкция"),
         "instruction_to_withdraw": MessageLookupByLibrary.simpleMessage(
@@ -141,13 +158,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
             "На данный момент нет активных заказов"),
         "on_line": MessageLookupByLibrary.simpleMessage("На линии"),
+        "on_search": MessageLookupByLibrary.simpleMessage("В поиске"),
+        "open": MessageLookupByLibrary.simpleMessage("Открыть"),
         "open_kaspi_app": MessageLookupByLibrary.simpleMessage(
             "Откройте приложение Kaspi.kz и перейдите в раздел платежи, в пойск введите Nomad Taxi"),
+        "order_accepted":
+            MessageLookupByLibrary.simpleMessage("Ваш заказ приняли"),
+        "order_details": MessageLookupByLibrary.simpleMessage("Детали заказа"),
         "order_status": MessageLookupByLibrary.simpleMessage("Статус заказа"),
+        "order_taxi": MessageLookupByLibrary.simpleMessage("Заказать такси"),
         "orders": MessageLookupByLibrary.simpleMessage("Заказы"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Номер телефона"),
+        "price": MessageLookupByLibrary.simpleMessage("Стоимость"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
+        "recent_trips_will_displayed_here":
+            MessageLookupByLibrary.simpleMessage(
+                "Тут будут отображатся ваши последние поездки"),
         "recharge_account":
             MessageLookupByLibrary.simpleMessage("Пополнить счет"),
         "recharge_kaspi": MessageLookupByLibrary.simpleMessage(
@@ -160,6 +187,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "save_changes":
             MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
+        "searching": MessageLookupByLibrary.simpleMessage("Идет поиск"),
+        "seconds": MessageLookupByLibrary.simpleMessage("секунд"),
+        "select": MessageLookupByLibrary.simpleMessage("Выбрать"),
         "select_language": MessageLookupByLibrary.simpleMessage("Выбор языка"),
         "select_tariff": MessageLookupByLibrary.simpleMessage(
             "Выберите тариф до начала работы"),
@@ -176,6 +206,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "start_trip": MessageLookupByLibrary.simpleMessage("Начать поездку"),
         "stay": MessageLookupByLibrary.simpleMessage("Остаться"),
         "step": MessageLookupByLibrary.simpleMessage("шаг"),
+        "successful_ride":
+            MessageLookupByLibrary.simpleMessage("Удачной поездки!"),
         "support_service":
             MessageLookupByLibrary.simpleMessage("Служба поддержки"),
         "tap_to_copy":
@@ -183,6 +215,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tariff_selection":
             MessageLookupByLibrary.simpleMessage("Выбор тарифа"),
         "taxi": MessageLookupByLibrary.simpleMessage("Такси"),
+        "thank_for_ride":
+            MessageLookupByLibrary.simpleMessage("Спасибо за поездку!"),
         "time_packages": MessageLookupByLibrary.simpleMessage("Пакеты времени"),
         "to_your_account": MessageLookupByLibrary.simpleMessage("На ваш счет"),
         "took_delivery": MessageLookupByLibrary.simpleMessage("Забрал доствку"),
@@ -191,10 +225,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "unsaved_changes": MessageLookupByLibrary.simpleMessage(
             "Есть не сохраненные изменения"),
         "update": MessageLookupByLibrary.simpleMessage("Обновить"),
+        "use_bonuses":
+            MessageLookupByLibrary.simpleMessage("Использовать бонусы"),
         "using_bonuses":
             MessageLookupByLibrary.simpleMessage("Использование бонусов"),
         "version": MessageLookupByLibrary.simpleMessage("Версия"),
+        "wating_time": MessageLookupByLibrary.simpleMessage("Время ожидания"),
         "where": MessageLookupByLibrary.simpleMessage("Куда"),
+        "where_are_going": MessageLookupByLibrary.simpleMessage("Куда едим"),
         "where_from": MessageLookupByLibrary.simpleMessage("Откуда"),
         "withdraw_funds":
             MessageLookupByLibrary.simpleMessage("Вывести деньги"),
@@ -217,7 +255,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "your_account": MessageLookupByLibrary.simpleMessage("Ваш счет"),
         "your_balance": MessageLookupByLibrary.simpleMessage("Ваш баланс"),
         "your_bonuses": MessageLookupByLibrary.simpleMessage("Ваши бонусы"),
+        "your_driver": MessageLookupByLibrary.simpleMessage("Ваш водитель"),
         "your_id": MessageLookupByLibrary.simpleMessage("Ваш ID"),
+        "your_location":
+            MessageLookupByLibrary.simpleMessage("Ваше местоположение"),
         "your_name": MessageLookupByLibrary.simpleMessage("Ваше имя"),
         "your_phone": MessageLookupByLibrary.simpleMessage("Ваш телефон"),
         "your_profile": MessageLookupByLibrary.simpleMessage("Ваш профиль"),

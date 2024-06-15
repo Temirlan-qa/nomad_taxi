@@ -85,8 +85,8 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
             fcmToken: data.fcmToken ?? '',
 
             // Partner
-            pBalance: data.pBalance,
-            pBonus: data.pBonus,
+            pBalance: data.pBalance ?? 0,
+            pBonus: data.pBonus ?? 0,
             pCarModel: data.pCarModel,
             pCarNumber: data.pCarNumber,
             pFirstName: data.pFirstName,
@@ -182,8 +182,8 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
             pCarNumber: data.pCarNumber,
             pTownId: data.pTownId,
             pId: data.pId,
-            pBalance: data.pBalance,
-            pBonus: data.pBonus,
+            pBalance: data.pBalance ?? 0,
+            pBonus: data.pBonus ?? 0,
             pStatus: data.pStatus,
           ),
         ),

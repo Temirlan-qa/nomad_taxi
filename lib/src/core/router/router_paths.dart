@@ -22,4 +22,7 @@ class RoutePaths {
   static const String transferMoney = '/transferMoney';
   static const String transferMoneyInstruction = '/transferMoneyInstruction';
   static const String chooseTariff = '/chooseTariff';
+  static const String searchAddress = '/searchAddress';
+  static const String orderSearch = '/orderSearch';
+  static const String orderPrice = '/orderPrice';
 }
