@@ -70,7 +70,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     final result = await _getUserDataUseCase.call();
     final data = result.data;
 
-    // orderBloc.add(const OrderEvent.acceptOrder(orderId: 1));
+    orderBloc.add(const OrderEvent.acceptOrder(orderId: 1));
 
     if (result.isSuccessful && data != null) {
       emit(

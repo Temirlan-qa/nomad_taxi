@@ -12,10 +12,10 @@ import '../models/point/point_dto.dart';
 
 class OrderDtoMapper {
   OrderEntity map(OrderDto dto) {
-    final PayMethodDto payMethodDto = dto.payMethod;
+    final PayMethodDto? payMethodDto = dto.payMethod;
     final PayMethodEntity payMethodEntity = PayMethodEntity(
-      byCash: payMethodDto.byCash,
-      byBonus: payMethodDto.byBonus,
+      byCash: payMethodDto == null ? 0 :  payMethodDto.byCash,
+      byBonus: payMethodDto == null ? 0 :  payMethodDto.byBonus,
     );
 
     final List<PointDto> pointsDto = dto.points;

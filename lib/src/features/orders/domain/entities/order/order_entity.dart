@@ -12,19 +12,19 @@ part 'order_entity.g.dart';
 class OrderEntity extends BaseEntity with _$OrderEntity {
   const factory OrderEntity({
     required int id,
-    @JsonKey(name: 'start_point') required String startPoint,
-    @JsonKey(name: 'end_point') required String endPoint,
+    required String startPoint,
+    required String endPoint,
     required int price,
     String? comment,
     required String status,
-    @Default(false) @JsonKey(name: 'has_route') bool hasRoute,
-    @JsonKey(name: 'created_at') required String createdAt,
-    @JsonKey(name: 'pay_method') required PayMethodEntity payMethod,
-    required String phone,
+    @Default(false)  bool hasRoute,
+    @Default('')  String createdAt,
+    @JsonKey(name: 'pay_method') PayMethodEntity? payMethod,
+    @Default('') String phone,
     Partner? partner,
     int? waitingTime,
-    @JsonKey(name: 'town_id') required int townId,
-    required List<PointEntity> points,
+    @Default(0)  int townId,
+    @Default([]) List<PointEntity> points,
   }) = _OrderEntity;
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) =>

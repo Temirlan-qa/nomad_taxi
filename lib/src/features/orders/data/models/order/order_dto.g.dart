@@ -15,15 +15,16 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
       comment: json['comment'] as String?,
       status: json['status'] as String,
       hasRoute: json['has_route'] as bool? ?? false,
-      createdAt: json['created_at'] as String,
-      payMethod:
-          PayMethodDto.fromJson(json['pay_method'] as Map<String, dynamic>),
+      createdAt: json['created_at'] as String? ?? '',
+      payMethod: json['pay_method'] == null
+          ? null
+          : PayMethodDto.fromJson(json['pay_method'] as Map<String, dynamic>),
       waitingTime: (json['waiting_time'] as num?)?.toInt() ?? null,
       partner: json['partner'] == null
           ? null
           : PartnerDto.fromJson(json['partner'] as Map<String, dynamic>),
-      phone: json['phone'] as String,
-      townId: (json['town_id'] as num).toInt(),
+      phone: json['phone'] as String? ?? '',
+      townId: (json['town_id'] as num?)?.toInt() ?? 0,
       points: (json['points'] as List<dynamic>?)
               ?.map((e) => PointDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
