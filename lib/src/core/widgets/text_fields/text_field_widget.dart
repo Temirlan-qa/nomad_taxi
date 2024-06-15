@@ -8,17 +8,18 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'text_field_border_widget.dart';
 
 class TextFieldWidget extends StatefulWidget {
-  const TextFieldWidget({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    this.keyboardType,
-    this.inputFormatters,
-    this.textFieldValidationState = TextFieldValidationState.none,
-    this.onChanged,
-    this.isReadOnly,
-    this.text,
-  });
+  const TextFieldWidget(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      this.keyboardType,
+      this.inputFormatters,
+      this.textFieldValidationState = TextFieldValidationState.none,
+      this.onChanged,
+      this.isReadOnly,
+      this.text,
+      this.suffix});
+
   final TextEditingController controller;
   final String hintText;
   final TextInputType? keyboardType;
@@ -26,6 +27,7 @@ class TextFieldWidget extends StatefulWidget {
   final TextFieldValidationState textFieldValidationState;
   final ValueChanged? onChanged;
   final bool? isReadOnly;
+  final Widget? suffix;
   final String? text;
 
   @override
@@ -79,7 +81,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             decoration: InputDecoration(
               hintText: widget.hintText,
               hintStyle: headLine.copyWith(color: context.theme.secondary),
-              contentPadding: EdgeInsets.zero,
+              contentPadding: const EdgeInsets.symmetric(vertical: 15),
+              suffixIcon: widget.suffix,
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               focusedErrorBorder: InputBorder.none,

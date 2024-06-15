@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 
 part 'colors.dart';
+part 'shadows.dart';
 part 'text_styles.dart';
 part 'theme_context_extension.dart';
 
