@@ -10,7 +10,7 @@ import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/custom_order_price_text_field_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/info_about_order_state_widget.dart';
-import 'package:nomad_taxi/src/features/order_search/presentation/widgets/show_detailed_info_modal_widget.dart';
+import 'package:nomad_taxi/src/features/order_search/presentation/widgets/show_detailes_modal_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/show_thank_modal_widget.dart';
 
 class OrderSearchPage extends StatefulWidget {
@@ -23,8 +23,19 @@ class OrderSearchPage extends StatefulWidget {
 class _OrderSearchPageState extends State<OrderSearchPage> {
   final TextEditingController priceController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   bool switchState = false;
-  OrderState state = OrderState.searching;
+  OrderState state = OrderState.accepted;
+
+  final String carNumber = '987-AIB';
+  final String carModel = 'Зеленый Volswagen Polo';
+  final String carData = 'Зеленый Volswagen Polo, 987-AIB';
+  final String driverPhone = '+7 (705) 111-11-11';
+  final String driverName = "Tima";
+  final int price = 300;
+  final String addressTo = "addressTo";
+  final String addressFrom = "addressFrom";
+
   void showInfoModal(BuildContext context, OrderState state) {
     showModalBottomSheet(
       context: context,
@@ -32,17 +43,28 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
       isScrollControlled: true,
       builder: (context) {
         return DraggableScrollableSheet(
-            expand: false,
-            snap: true,
-            minChildSize: 0.5,
-            initialChildSize: 0.6,
-            maxChildSize: 1,
-            builder: (context, scrollController) {
-              return CustomDetailedInfoModalWidget(
-                state: state,
-                scrollController: scrollController,
-              );
-            });
+          expand: false,
+          snap: true,
+          minChildSize: 0.5,
+          initialChildSize: 0.6,
+          maxChildSize: 1,
+          builder: (context, scrollController) {
+            return CustomDetailedInfoModalWidget(
+              state: state,
+              scrollController: scrollController,
+              addressFrom: addressFrom,
+              addressTo: addressTo,
+              price: price,
+              carData: carData,
+              driverName: driverName,
+              driverPhone: driverPhone,
+              onTapCallToDriver: () {},
+              onTapClose: () {
+                context.pop();
+              },
+            );
+          },
+        );
       },
     );
   }
@@ -107,19 +129,26 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                         Text(S.current.car,
                             style: bodyMain.copyWith(color: secondary)),
                         const Gap(UIConstants.defaultGap1),
-                        Text('Зеленый Volswagen Polo',
-                            style: context.theme.textStyles.titleSecondary),
+                        Text(
+                          carModel,
+                          style: context.theme.textStyles.titleSecondary,
+                        ),
                         const Gap(UIConstants.defaultGap1),
                         Container(
                           padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
                           decoration: BoxDecoration(
-                              color: context.theme.primary,
-                              borderRadius: BorderRadius.circular(
-                                  UIConstants.defaultGap1)),
+                            color: context.theme.primary,
+                            borderRadius: BorderRadius.circular(
+                              UIConstants.defaultGap1,
+                            ),
+                          ),
                           child: Center(
-                            child: Text('987-AIB',
-                                style: context.theme.textStyles.headLine
-                                    .copyWith(color: context.theme.white)),
+                            child: Text(
+                              carNumber,
+                              style: context.theme.textStyles.headLine.copyWith(
+                                color: context.theme.white,
+                              ),
+                            ),
                           ),
                         )
                       ],
@@ -154,10 +183,11 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                           : CrossFadeState.showSecond,
                     ),
                   ),
-                  Gap(state == OrderState.accepted ||
-                          state == OrderState.waiting
-                      ? UIConstants.defaultGap1
-                      : 0),
+                  Gap(
+                    state == OrderState.accepted || state == OrderState.waiting
+                        ? UIConstants.defaultGap1
+                        : 0,
+                  ),
                   Expanded(
                     child: CustomMainButtonWidget(
                       title: S.current.order_details,

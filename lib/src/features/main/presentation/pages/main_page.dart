@@ -6,9 +6,8 @@ import 'package:nomad_taxi/src/core/constants/api_constants.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_widget.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_main_page_bottom_modal_widget.dart';
-import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_main_page_upper_modal_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_bottom_widget.dart';
+import 'package:nomad_taxi/src/features/main/presentation/widgets/modal_widgets/create_order_modal_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -92,19 +91,33 @@ class _MainPageState extends State<MainPage> {
               child: DrawerButtonWidget(scaffoldKey: _scaffoldKey),
             ),
           ),
-          const Positioned(
-              left: UIConstants.defaultPadding,
-              right: UIConstants.defaultPadding,
-              bottom: 0,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomMainPageUpperModalWidget(),
-                  CustomMainPageBottomModalWidget(),
-                  // CustomMainPageLocationModalWidget(),
-                ],
-              )),
+          Positioned(
+            left: UIConstants.defaultPadding,
+            right: UIConstants.defaultPadding,
+            bottom: 0,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // ActiveOrderModalWidget(
+                //   onTap: () {},
+                //   addressFrom: 'addressFrom',
+                //   addressTo: 'addressTo',
+                // ),
+                CreateOrderModalWidget(
+                  currentLocation: 'Титова 14',
+                  onTapEditLocation: () {},
+                  onTapCreateOrder: () {
+                    context.pushNamed(RouteNames.searchAddress);
+                  },
+                ),
+                // CurrentLocationModalWidget(
+                //   onTapSelect: () {},
+                //   currentLocation: '',
+                // ),
+              ],
+            ),
+          ),
         ],
       ),
     );

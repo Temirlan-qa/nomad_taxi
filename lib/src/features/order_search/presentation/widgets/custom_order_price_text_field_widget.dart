@@ -123,7 +123,7 @@ class _CustomOrderPriceTextFieldWidgetState
             InkWell(
               onTap: () {
                 setState(() {
-                  minPrice *= 100;
+                  minPrice += 100;
                   widget.controller.text = '$minPrice ₸';
                 });
               },

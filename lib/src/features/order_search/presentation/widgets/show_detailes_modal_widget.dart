@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/enums/enums.dart';
@@ -11,10 +10,29 @@ import 'package:nomad_taxi/src/core/widgets/modal_drag_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/custom_details_title_sub_widget.dart';
 
 class CustomDetailedInfoModalWidget extends StatelessWidget {
-  const CustomDetailedInfoModalWidget(
-      {super.key, required this.state, required this.scrollController});
+  const CustomDetailedInfoModalWidget({
+    super.key,
+    required this.state,
+    required this.scrollController,
+    required this.addressFrom,
+    required this.addressTo,
+    required this.price,
+    required this.carData, //'Зеленный Volswagen Polo, 987-AIB'
+    required this.driverName,
+    required this.driverPhone, // '+7 (705) 111-11-11'
+    required this.onTapClose,
+    required this.onTapCallToDriver,
+  });
   final OrderState state;
   final ScrollController scrollController;
+  final String addressFrom;
+  final String addressTo;
+  final int price;
+  final String driverName;
+  final String driverPhone;
+  final String carData;
+  final VoidCallback? onTapClose;
+  final VoidCallback? onTapCallToDriver;
 
   String orderStateName(OrderState orderState) {
     switch (orderState) {
@@ -54,29 +72,32 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
           children: [
             const ModalDragWidget(),
             const Gap(UIConstants.defaultGap3),
-            Text(S.current.order_details,
-                style: context.theme.textStyles.titleMain),
+            Text(
+              S.current.order_details,
+              style: context.theme.textStyles.titleMain,
+            ),
             const Gap(UIConstants.defaultPadding),
             CustomDetailsTitleSubWidget(
               title: S.current.order_status,
               subTitle: orderStateName(state),
-              subStyle: context.theme.textStyles.titleSecondary
-                  .copyWith(color: orderStateColor(context, state)),
+              subStyle: context.theme.textStyles.titleSecondary.copyWith(
+                color: orderStateColor(context, state),
+              ),
             ),
             const Divider(height: UIConstants.defaultPadding2),
             CustomDetailsTitleSubWidget(
               title: S.current.where_from,
-              subTitle: 'Мира 3',
+              subTitle: addressFrom,
             ),
             const Gap(UIConstants.defaultPadding),
             CustomDetailsTitleSubWidget(
               title: S.current.route,
-              subTitle: 'Титова 14',
+              subTitle: addressTo,
             ),
             const Gap(UIConstants.defaultPadding),
             CustomDetailsTitleSubWidget(
               title: S.current.price,
-              subTitle: '300 ₸',
+              subTitle: '$price ₸',
               subStyle: context.theme.textStyles.titleSecondary,
             ),
             AnimatedCrossFade(
@@ -86,17 +107,17 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
                   const Divider(height: UIConstants.defaultPadding2),
                   CustomDetailsTitleSubWidget(
                     title: S.current.your_driver,
-                    subTitle: 'Нурдаулет Куанышов',
+                    subTitle: driverName,
                   ),
                   const Gap(UIConstants.defaultPadding),
                   CustomDetailsTitleSubWidget(
                     title: S.current.phone_number,
-                    subTitle: '+7 (705) 111-11-11',
+                    subTitle: driverPhone,
                   ),
                   const Gap(UIConstants.defaultPadding),
                   CustomDetailsTitleSubWidget(
                     title: S.current.car_data,
-                    subTitle: 'Зеленный Volswagen Polo, 987-AIB' * 3,
+                    subTitle: carData,
                   ),
                 ],
               ),
@@ -113,9 +134,7 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: UIConstants.defaultGap1),
                 child: CustomMainButtonWidget(
                   title: S.current.call,
-                  onPressed: () {
-                    // context.pop();
-                  },
+                  onPressed: onTapCallToDriver,
                   color: context.theme.green,
                   iconColor: context.theme.green,
                   prefixIcon: Assets.icons.solid.phoneSolid,
@@ -129,9 +148,7 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
             ),
             CustomMainButtonWidget(
               title: S.current.close,
-              onPressed: () {
-                context.pop();
-              },
+              onPressed: onTapClose,
               isMain: false,
             ),
           ],

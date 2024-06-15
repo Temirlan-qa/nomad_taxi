@@ -16,8 +16,10 @@ class SearchingInfoStateWidget extends StatelessWidget {
         Assets.icons.brand.success.svg(
           width: 64,
           height: 64,
-          colorFilter:
-              ColorFilter.mode(context.theme.secondary, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(
+            context.theme.secondary,
+            BlendMode.srcIn,
+          ),
         ),
         const Gap(UIConstants.defaultGap3),
         Row(
@@ -25,8 +27,9 @@ class SearchingInfoStateWidget extends StatelessWidget {
           children: [
             Text(
               S.current.searching,
-              style: context.theme.textStyles.bodyMain
-                  .copyWith(color: context.theme.secondary),
+              style: context.theme.textStyles.bodyMain.copyWith(
+                color: context.theme.secondary,
+              ),
             ),
           ],
         ),

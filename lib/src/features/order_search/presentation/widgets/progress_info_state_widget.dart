@@ -25,8 +25,9 @@ class ProgressInfoStateWidget extends StatelessWidget {
               child: Text(
                 S.current.close_window_and_come_back,
                 textAlign: TextAlign.center,
-                style: context.theme.textStyles.bodyMain
-                    .copyWith(color: context.theme.secondary),
+                style: context.theme.textStyles.bodyMain.copyWith(
+                  color: context.theme.secondary,
+                ),
               ),
             ),
           ],

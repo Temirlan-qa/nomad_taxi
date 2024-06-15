@@ -21,6 +21,9 @@ class _OrderPricePageState extends State<OrderPricePage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool switchState = false;
 
+  String priceOrder = '500';
+  String cashbackPercent = '+10%';
+
   @override
   Widget build(BuildContext context) {
     final bodyMain = context.theme.textStyles.bodyMain;
@@ -48,8 +51,10 @@ class _OrderPricePageState extends State<OrderPricePage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(S.current.use_bonuses,
-                              style: context.theme.textStyles.titleSecondary),
+                          Text(
+                            S.current.use_bonuses,
+                            style: context.theme.textStyles.titleSecondary,
+                          ),
                           const Gap(UIConstants.defaultGap1),
                           Text(
                             S.current.your_bonuses,
@@ -58,25 +63,28 @@ class _OrderPricePageState extends State<OrderPricePage> {
                           ),
                           const Gap(2),
                           Text(
-                            '500',
+                            priceOrder,
                             style: context.theme.textStyles.titleMain
                                 .copyWith(color: context.theme.red),
                           ),
                         ],
                       ),
                       Switch(
-                          focusColor: secondary,
-                          hoverColor: secondary,
-                          activeTrackColor: secondary,
-                          activeColor: context.theme.primary,
-                          inactiveThumbColor: secondary,
-                          inactiveTrackColor: context.theme.stroke,
-                          value: switchState,
-                          onChanged: (val) {
-                            setState(() {
+                        focusColor: secondary,
+                        hoverColor: secondary,
+                        activeTrackColor: secondary,
+                        activeColor: context.theme.primary,
+                        inactiveThumbColor: secondary,
+                        inactiveTrackColor: context.theme.stroke,
+                        value: switchState,
+                        onChanged: (val) {
+                          setState(
+                            () {
                               switchState = val;
-                            });
-                          })
+                            },
+                          );
+                        },
+                      ),
                     ],
                   )),
               const Gap(UIConstants.defaultGap2),
@@ -94,13 +102,16 @@ class _OrderPricePageState extends State<OrderPricePage> {
                   Container(
                     padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
                     decoration: BoxDecoration(
-                        color: context.theme.lightGreen,
-                        borderRadius:
-                            BorderRadius.circular(UIConstants.defaultGap1)),
+                      color: context.theme.lightGreen,
+                      borderRadius:
+                          BorderRadius.circular(UIConstants.defaultGap1),
+                    ),
                     child: Center(
-                      child: Text('+10%',
-                          style: context.theme.textStyles.headLine
-                              .copyWith(color: context.theme.green)),
+                      child: Text(
+                        cashbackPercent,
+                        style: context.theme.textStyles.headLine
+                            .copyWith(color: context.theme.green),
+                      ),
                     ),
                   )
                 ],

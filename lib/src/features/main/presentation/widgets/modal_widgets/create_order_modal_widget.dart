@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_super_html_viewer/utils/shims/dart_ui_real.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
-import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_animation_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_container_widget.dart';
 
-class CustomMainPageBottomModalWidget extends StatefulWidget {
-  const CustomMainPageBottomModalWidget({
+class CreateOrderModalWidget extends StatelessWidget {
+  const CreateOrderModalWidget({
     super.key,
+    this.isBlurred = false,
+    this.onTapFinished,
+    required this.currentLocation,
+    required this.onTapEditLocation,
+    required this.onTapCreateOrder,
   });
 
-  @override
-  State<CustomMainPageBottomModalWidget> createState() =>
-      _CustomMainPageBottomModalWidgetState();
-}
+  final bool isBlurred;
+  final VoidCallback? onTapFinished;
+  final VoidCallback? onTapEditLocation;
+  final VoidCallback? onTapCreateOrder;
+  final String currentLocation;
 
-class _CustomMainPageBottomModalWidgetState
-    extends State<CustomMainPageBottomModalWidget> {
-  bool isBlured = false;
   @override
   Widget build(BuildContext context) {
     return CustomAnimationWidget(
@@ -32,10 +33,13 @@ class _CustomMainPageBottomModalWidgetState
           children: [
             ImageFiltered(
               imageFilter: ImageFilter.blur(
-                  sigmaX: 10, sigmaY: 10, tileMode: TileMode.decal),
-              enabled: isBlured,
+                sigmaX: 10,
+                sigmaY: 10,
+                tileMode: TileMode.decal,
+              ),
+              enabled: isBlurred,
               child: Container(
-                foregroundDecoration: isBlured
+                foregroundDecoration: isBlurred
                     ? BoxDecoration(
                         color: context.theme.white.withOpacity(0.7),
                         borderRadius:
@@ -54,7 +58,7 @@ class _CustomMainPageBottomModalWidgetState
                       borderRadius:
                           BorderRadius.circular(UIConstants.defaultGap2),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: onTapEditLocation,
                         child: Padding(
                           padding:
                               const EdgeInsets.all(UIConstants.defaultGap2),
@@ -64,10 +68,13 @@ class _CustomMainPageBottomModalWidgetState
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Text(S.current.your_location,
-                                      style: context.theme.textStyles.bodyMain
-                                          .copyWith(
-                                              color: context.theme.secondary)),
+                                  Text(
+                                    S.current.your_location,
+                                    style: context.theme.textStyles.bodyMain
+                                        .copyWith(
+                                      color: context.theme.secondary,
+                                    ),
+                                  ),
                                 ],
                               ),
                               const Gap(UIConstants.defaultGap1),
@@ -79,9 +86,11 @@ class _CustomMainPageBottomModalWidgetState
                                 children: [
                                   Column(
                                     children: [
-                                      Text('Байконур',
-                                          style: context
-                                              .theme.textStyles.titleSecondary),
+                                      Text(
+                                        currentLocation,
+                                        style: context
+                                            .theme.textStyles.titleSecondary,
+                                      ),
                                     ],
                                   ),
                                   Column(
@@ -90,18 +99,22 @@ class _CustomMainPageBottomModalWidgetState
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Assets.icons.solid.penSolid1.svg(
-                                              height: 16,
-                                              width: 16,
-                                              colorFilter: ColorFilter.mode(
-                                                  context.theme.blue,
-                                                  BlendMode.srcIn)),
+                                            height: 16,
+                                            width: 16,
+                                            colorFilter: ColorFilter.mode(
+                                              context.theme.blue,
+                                              BlendMode.srcIn,
+                                            ),
+                                          ),
                                           const Gap(UIConstants.defaultGap5),
-                                          Text(S.current.change,
-                                              style: context
-                                                  .theme.textStyles.headLine
-                                                  .copyWith(
-                                                      color:
-                                                          context.theme.blue)),
+                                          Text(
+                                            S.current.change,
+                                            style: context
+                                                .theme.textStyles.headLine
+                                                .copyWith(
+                                              color: context.theme.blue,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ],
@@ -116,15 +129,13 @@ class _CustomMainPageBottomModalWidgetState
                     const Gap(UIConstants.defaultGap2),
                     CustomMainButtonWidget(
                       title: S.current.order_taxi,
-                      onPressed: () {
-                        context.pushNamed(RouteNames.searchAddress);
-                      },
+                      onPressed: onTapCreateOrder,
                     ),
                   ],
                 ),
               ),
             ),
-            !isBlured
+            !isBlurred
                 ? const Offstage()
                 : Positioned.fill(
                     child: Column(
@@ -137,26 +148,26 @@ class _CustomMainPageBottomModalWidgetState
                         ),
                         const Gap(UIConstants.defaultGap5),
                         TextButton(
-                            onPressed: () {
-                              setState(() {
-                                isBlured = false;
-                              });
-                            },
-                            style: TextButton.styleFrom(
-                                foregroundColor: context.theme.red,
-                                textStyle: context.theme.textStyles.headLine
-                                    .copyWith(),
-                                padding:
-                                    const EdgeInsets.fromLTRB(10, 12, 10, 12),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        UIConstants.defaultRadius)),
-                                tapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap),
-                            child: Text(S.current.finish_order)),
+                          onPressed: onTapFinished,
+                          style: TextButton.styleFrom(
+                            foregroundColor: context.theme.red,
+                            textStyle:
+                                context.theme.textStyles.headLine.copyWith(),
+                            padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                UIConstants.defaultRadius,
+                              ),
+                            ),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          child: Text(
+                            S.current.finish_order,
+                          ),
+                        ),
                       ],
                     ),
-                  )
+                  ),
           ],
         ),
       ),

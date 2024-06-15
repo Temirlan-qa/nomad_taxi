@@ -15,11 +15,17 @@ class CustomDetailsTitleSubWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title,
-            style: context.theme.textStyles.bodyMain
-                .copyWith(color: context.theme.secondary)),
+        Text(
+          title,
+          style: context.theme.textStyles.bodyMain.copyWith(
+            color: context.theme.secondary,
+          ),
+        ),
         const Gap(UIConstants.defaultGap5),
-        Text(subTitle, style: subStyle ?? context.theme.textStyles.bodyMain),
+        Text(
+          subTitle,
+          style: subStyle ?? context.theme.textStyles.bodyMain,
+        ),
       ],
     );
   }
