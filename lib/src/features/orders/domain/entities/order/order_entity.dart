@@ -30,27 +30,3 @@ class OrderEntity extends BaseEntity with _$OrderEntity {
   factory OrderEntity.fromJson(Map<String, dynamic> json) =>
       _$OrderEntityFromJson(json);
 }
-
-
-// @freezed
-// class OrderEntity extends BaseEntity with _$OrderEntity {
-//   const factory OrderEntity({
-//     required int id,
-//     required String startPoint,
-//     required String endPoint,
-//     required int price,
-//     String? comment,
-//     required String status,
-//     @Default(false) bool hasRoute,
-//     required String createdAt,
-//     required PayMethodEntity payMethod,
-//     required String phone,
-//     Partner? partner,
-//     int? waitingTime,
-//     required int townId,
-//     required List<PointEntity> points,
-//   }) = _OrderEntity;
-
-//   factory OrderEntity.fromJson(Map<String, dynamic> json) =>
-//       _$OrderEntityFromJson(json);
-// }
