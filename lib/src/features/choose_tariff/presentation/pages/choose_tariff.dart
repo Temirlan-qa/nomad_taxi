@@ -8,14 +8,52 @@ import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/features/choose_tariff/presentation/widgets/custom_select_button_widget.dart';
 
-class ChooseTariffPage extends StatelessWidget {
-  const ChooseTariffPage({super.key});
+class ChooseTariffPage extends StatefulWidget {
+  const ChooseTariffPage({required this.balance, super.key});
+  final int balance;
 
+  @override
+  State<ChooseTariffPage> createState() => _ChooseTariffPageState();
+}
+
+class _ChooseTariffPageState extends State<ChooseTariffPage> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     final bodyMain = context.theme.textStyles.bodyMain;
     final headLine = context.theme.textStyles.headLine;
     final titleSecondary = context.theme.textStyles.titleSecondary;
+
+    final List<Map<String, String>> basicTariff = [
+      {
+        "title": S.current.basic,
+      },
+      {
+        "title": "Бесплатный",
+        "description":
+            "Принимайте заказы бесплатно, без комиссии и ограничений.",
+      },
+      {
+        "title": "Базовый",
+        "description": "Коммиссия 4% с каждого заказа",
+      },
+      {
+        "title": S.current.time_packages,
+      },
+      {
+        "title": "2 часа",
+        "description": "600 ₸",
+      },
+      {
+        "title": "4 часа",
+        "description": "800 ₸",
+      },
+      {
+        "title": "8 часа",
+        "description": "1200 ₸",
+      }
+    ];
+
     return Scaffold(
       appBar: CustomAppBar(
           leading: BackButtonWrapper(onPressed: () => context.pop())),
@@ -24,9 +62,16 @@ class ChooseTariffPage extends StatelessWidget {
           padding: const EdgeInsets.all(UIConstants.defaultPadding),
           physics: const BouncingScrollPhysics(),
           children: [
-            Text(
-              S.current.tariff_selection,
-              style: context.theme.textStyles.titleMain,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                  UIConstants.defaultPadding,
+                  UIConstants.defaultGap3,
+                  UIConstants.defaultPadding,
+                  UIConstants.defaultGap2),
+              child: Text(
+                S.current.tariff_selection,
+                style: context.theme.textStyles.titleMain,
+              ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,84 +82,64 @@ class ChooseTariffPage extends StatelessWidget {
                   style: headLine.copyWith(color: context.theme.secondary),
                 ),
                 const Gap(UIConstants.defaultGap7),
-                Text('500 ₸', style: context.theme.textStyles.titleMain)
+                Text('${widget.balance} ₸',
+                    style: context.theme.textStyles.titleMain)
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  UIConstants.defaultPadding,
-                  UIConstants.defaultGap3,
-                  UIConstants.defaultPadding,
-                  UIConstants.defaultGap2),
-              child: Text(
-                S.current.basic,
-                style: headLine.copyWith(color: context.theme.secondary),
-              ),
+            const SizedBox(
+              height: UIConstants.defaultPadding,
             ),
-            CustomSelectButtonWidget(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Бесплатный', style: titleSecondary),
-                  const Gap(UIConstants.defaultGap7),
-                  Text(
-                      'Принимайте заказы бесплатно, без комиссии и ограничений.',
-                      style: bodyMain),
-                ],
-              ),
-            ),
-            const Gap(UIConstants.defaultGap7),
-            CustomSelectButtonWidget(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Базовый', style: titleSecondary),
-                  const Gap(UIConstants.defaultGap7),
-                  Text('Коммиссия 4% с каждого заказа', style: bodyMain),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  UIConstants.defaultPadding,
-                  UIConstants.defaultGap3,
-                  UIConstants.defaultPadding,
-                  UIConstants.defaultGap2),
-              child: Text(
-                S.current.time_packages,
-                style: headLine.copyWith(color: context.theme.secondary),
-              ),
-            ),
-            CustomSelectButtonWidget(
-              child: Row(
-                children: [
-                  Text('2 часа', style: titleSecondary),
-                  const Gap(UIConstants.defaultGap2),
-                  Text('600 ₸',
-                      style: headLine.copyWith(color: context.theme.red)),
-                ],
-              ),
-            ),
-            const Gap(UIConstants.defaultGap7),
-            CustomSelectButtonWidget(
-              child: Row(
-                children: [
-                  Text('4 часа', style: titleSecondary),
-                  const Gap(UIConstants.defaultGap2),
-                  Text('800 ₸',
-                      style: headLine.copyWith(color: context.theme.red)),
-                ],
-              ),
-            ),
-            const Gap(UIConstants.defaultGap7),
-            CustomSelectButtonWidget(
-              child: Row(
-                children: [
-                  Text('8 часа', style: titleSecondary),
-                  const Gap(UIConstants.defaultGap2),
-                  Text('1200 ₸',
-                      style: headLine.copyWith(color: context.theme.red)),
-                ],
+            SizedBox(
+              height: 600,
+              child: ListView.separated(
+                itemCount: basicTariff.length,
+                physics: const NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, index) {
+                  return const Gap(UIConstants.defaultGap7);
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  if (index == 0) {
+                    return Text(
+                      basicTariff[index]['title'] ?? '',
+                      style: headLine.copyWith(color: context.theme.secondary),
+                    );
+                  }
+                  if (index == 3) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          basicTariff[index]['title'] ?? '',
+                          style:
+                              headLine.copyWith(color: context.theme.secondary),
+                        ),
+                        const SizedBox(height: UIConstants.defaultGap2)
+                      ],
+                    );
+                  }
+                  return CustomSelectButtonWidget(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                    toggleState: selectedIndex == index,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          basicTariff[index]['title'] ?? '',
+                          style: titleSecondary,
+                        ),
+                        const Gap(UIConstants.defaultGap7),
+                        Text(
+                          basicTariff[index]['description'] ?? '',
+                          style: bodyMain,
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ],

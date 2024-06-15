@@ -89,9 +89,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Удаление не обратимо, все ваши данные будут потеряны"),
         "delivery": MessageLookupByLibrary.simpleMessage("Доставка"),
         "details": MessageLookupByLibrary.simpleMessage("Детали"),
+        "developerAnswer":
+            MessageLookupByLibrary.simpleMessage("Ответ разработчика"),
         "development_by":
             MessageLookupByLibrary.simpleMessage("Разработка компании"),
         "done": MessageLookupByLibrary.simpleMessage("Выполненно"),
+        "driverRequirement1": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, введите модель автомобиля"),
+        "driverRequirement2": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, введите номер автомобиля"),
         "driver_balance":
             MessageLookupByLibrary.simpleMessage("Баланс водителя"),
         "driver_canceled_order":
@@ -115,6 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Введите номер"),
         "enter_driver_info":
             MessageLookupByLibrary.simpleMessage("Внести данные водителя"),
+        "enter_id":
+            MessageLookupByLibrary.simpleMessage("Далее введите свой ID номер"),
         "enter_info":
             MessageLookupByLibrary.simpleMessage("Введите информацию"),
         "enter_promoCode":
@@ -147,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "minutes": MessageLookupByLibrary.simpleMessage("минуты"),
         "more_detailed": MessageLookupByLibrary.simpleMessage("Подробнее"),
         "next": MessageLookupByLibrary.simpleMessage("Далее"),
+        "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
+            "На данный момент нет активных заказов"),
         "on_line": MessageLookupByLibrary.simpleMessage("На линии"),
         "on_search": MessageLookupByLibrary.simpleMessage("В поиске"),
         "open": MessageLookupByLibrary.simpleMessage("Открыть"),
@@ -244,6 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "your_balance": MessageLookupByLibrary.simpleMessage("Ваш баланс"),
         "your_bonuses": MessageLookupByLibrary.simpleMessage("Ваши бонусы"),
         "your_driver": MessageLookupByLibrary.simpleMessage("Ваш водитель"),
+        "your_id": MessageLookupByLibrary.simpleMessage("Ваш ID"),
         "your_location":
             MessageLookupByLibrary.simpleMessage("Ваше местоположение"),
         "your_name": MessageLookupByLibrary.simpleMessage("Ваше имя"),

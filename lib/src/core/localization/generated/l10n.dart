@@ -620,6 +620,16 @@ class S {
     );
   }
 
+  /// `Ответ разработчика`
+  String get developerAnswer {
+    return Intl.message(
+      'Ответ разработчика',
+      name: 'developerAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Откуда`
   String get where_from {
     return Intl.message(
@@ -1595,6 +1605,56 @@ class S {
     return Intl.message(
       'секунд',
       name: 'seconds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На данный момент нет активных заказов`
+  String get noActiveOrdersAtTheMoment {
+    return Intl.message(
+      'На данный момент нет активных заказов',
+      name: 'noActiveOrdersAtTheMoment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пожалуйста, введите модель автомобиля`
+  String get driverRequirement1 {
+    return Intl.message(
+      'Пожалуйста, введите модель автомобиля',
+      name: 'driverRequirement1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пожалуйста, введите номер автомобиля`
+  String get driverRequirement2 {
+    return Intl.message(
+      'Пожалуйста, введите номер автомобиля',
+      name: 'driverRequirement2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Далее введите свой ID номер`
+  String get enter_id {
+    return Intl.message(
+      'Далее введите свой ID номер',
+      name: 'enter_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш ID`
+  String get your_id {
+    return Intl.message(
+      'Ваш ID',
+      name: 'your_id',
       desc: '',
       args: [],
     );

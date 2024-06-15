@@ -67,12 +67,15 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverOrders,
         path: RoutePaths.driverOrders,
-        builder: (_, __) => const DriverOrdersPage(),
+        builder: (context, stat) => const DriverOrdersPage(),
       ),
       GoRoute(
         name: RouteNames.order,
         path: RoutePaths.order,
-        builder: (_, __) => const OrderPage(),
+        builder: (context, state) {
+          final OrderEntity order = state.extra as OrderEntity;
+          return OrderPage(order: order);
+        },
       ),
       GoRoute(
         name: RouteNames.orderFinished,
@@ -82,7 +85,7 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverModeIntro,
         path: RoutePaths.driverModeIntro,
-        builder: (_, __) => const DriverModeIntroPage(),
+        builder: (_, __) => const DriverIntroPage(),
       ),
       GoRoute(
         name: RouteNames.enterDriverInfo,
@@ -92,7 +95,7 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.driverMode,
         path: RoutePaths.driverMode,
-        builder: (_, __) => const DriverModePage(),
+        builder: (_, __) => const DriverMainPage(),
       ),
       GoRoute(
         name: RouteNames.transferMoney,
@@ -112,7 +115,12 @@ List<RouteBase> _routes() => <RouteBase>[
       GoRoute(
         name: RouteNames.chooseTariff,
         path: RoutePaths.chooseTariff,
-        builder: (_, __) => const ChooseTariffPage(),
+        builder: (_, state) {
+          final int balance = state.extra as int;
+          return ChooseTariffPage(
+            balance: balance,
+          );
+        },
       ),
       GoRoute(
         name: RouteNames.searchAddress,

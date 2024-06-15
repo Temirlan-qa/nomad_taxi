@@ -17,7 +17,9 @@ class TextFieldWidget extends StatefulWidget {
       this.textFieldValidationState = TextFieldValidationState.none,
       this.onChanged,
       this.isReadOnly,
+      this.text,
       this.suffix});
+
   final TextEditingController controller;
   final String hintText;
   final TextInputType? keyboardType;
@@ -26,6 +28,7 @@ class TextFieldWidget extends StatefulWidget {
   final ValueChanged? onChanged;
   final bool? isReadOnly;
   final Widget? suffix;
+  final String? text;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -98,8 +101,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             ? const Offstage()
             : Center(
                 child: Text(
-                  //TODO: temp
-                  '$textFieldFocusState',
+                  widget.text ?? '',
                   style: context.theme.textStyles.bodyMain.copyWith(
                     color: widget.textFieldValidationState ==
                             TextFieldValidationState.error

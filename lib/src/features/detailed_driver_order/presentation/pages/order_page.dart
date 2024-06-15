@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
-import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/custom_order_buttons_widget.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/order_addresses_card.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/show_info_bonus_modal_widget.dart';
 
 import '../../../../core/service/injectable/injectable_service.dart';
+import '../../../orders/domain/entities/order/order_entity.dart';
 import '../../domain/entities/get_order_status_response.dart';
 
 class OrderPage extends StatelessWidget {
-  const OrderPage({super.key});
+  const OrderPage({super.key, required this.order});
+
+  final OrderEntity order;
 
   Widget _buildOrderPage({
     required BuildContext context,
     required TextStyle labelStyle,
     required TextStyle titleStyle,
     required TextStyle headLine,
+    DriverOrderViewModel? viewModel,
   }) {
+    GetOrderStatusResponse? updatedOrderStatus = viewModel?.updatedOrderStatus;
     return Scaffold(
       bottomNavigationBar: CustomMainBottomWidgets(
         child: MediaQuery.orientationOf(context).index == 0
@@ -34,9 +38,9 @@ class OrderPage extends StatelessWidget {
                   OrderAddressesCard(
                     labelStyle: labelStyle,
                     titleStyle: titleStyle,
-                    addressFrom: "Титова 14",
-                    addressTo: "Королева 12",
-                    description: "2 подъезд, 28 квартира",
+                    addressFrom: order.startPoint,
+                    addressTo: order.endPoint,
+                    description: order.comment ?? "",
                   ),
                   const Gap(UIConstants.defaultGap3),
                   CustomOrderButtonsWidget(
@@ -49,9 +53,9 @@ class OrderPage extends StatelessWidget {
                   OrderAddressesCard(
                     labelStyle: labelStyle,
                     titleStyle: titleStyle,
-                    addressFrom: "Титова 14",
-                    addressTo: "Королева 12",
-                    description: "2 подъезд, 28 квартира",
+                    addressFrom: order.startPoint,
+                    addressTo: order.endPoint,
+                    description: order.comment ?? "",
                   ),
                   const Gap(UIConstants.defaultGap3),
                   Expanded(
@@ -75,10 +79,11 @@ class OrderPage extends StatelessWidget {
             Row(
               children: [
                 Assets.icons.solid.taxi.svg(
-                    height: 24,
-                    width: 24,
-                    colorFilter:
-                        ColorFilter.mode(context.theme.red, BlendMode.srcIn)),
+                  height: 24,
+                  width: 24,
+                  colorFilter:
+                      ColorFilter.mode(context.theme.red, BlendMode.srcIn),
+                ),
                 const Gap(UIConstants.defaultGap1),
                 Text(
                   S.current.taxi,
@@ -92,23 +97,20 @@ class OrderPage extends StatelessWidget {
               children: [
                 Text(S.current.order_status, style: labelStyle),
                 const Gap(UIConstants.defaultGap2),
-                // if(updatedOrderStatus != null)...[
-                //  Text(
-                //   updatedOrderStatus.status,
-                //   style:
-                //       labelStyle.copyWith(color: context.theme.green),
-                // ),
-                // ],
                 Text(
                   S.current.in_progress,
-                  style: labelStyle.copyWith(color: context.theme.blue),
+                  style: labelStyle.copyWith(
+                    color: updatedOrderStatus != null
+                        ? context.theme.green
+                        : context.theme.blue,
+                  ),
                 ),
               ],
             ),
             const Divider(height: UIConstants.defaultGap3),
             Text(S.current.by_cash, style: labelStyle),
             const Gap(UIConstants.defaultGap5),
-            Text('300 ₸', style: titleStyle),
+            Text('${order.price} ₸', style: titleStyle),
             const Gap(UIConstants.defaultGap2),
             Text(S.current.to_your_account, style: labelStyle),
             const Gap(UIConstants.defaultGap5),
@@ -123,28 +125,41 @@ class OrderPage extends StatelessWidget {
                         BorderRadius.circular(UIConstants.defaultRadius),
                   ),
                   child: Center(
-                    child: Text('500 ₸',
-                        style: context.theme.textStyles.titleSecondary
-                            .copyWith(color: context.theme.white)),
+                    child: Text(
+                      '${order.price} ₸',
+                      style: context.theme.textStyles.titleSecondary
+                          .copyWith(color: context.theme.white),
+                    ),
                   ),
                 ),
-                Text(S.current.more_detailed,
-                    style: headLine.copyWith(color: context.theme.red)),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return const CustomInfoBonusModalWidget();
+                      },
+                    );
+                  },
+                  child: Text(
+                    S.current.more_detailed,
+                    style: headLine.copyWith(color: context.theme.red),
+                  ),
+                ),
               ],
             ),
             const Gap(UIConstants.defaultGap1),
             Text(S.current.client, style: labelStyle),
             const Gap(UIConstants.defaultGap5),
-            Text('Елисеева Екатерина ', style: titleStyle),
+            //TODO: put data about name of client
+            Text('', style: titleStyle),
             const Gap(UIConstants.defaultGap7),
             Row(
               children: [
                 Expanded(
                   child: CustomMainButtonWidget(
                     title: S.current.route,
-                    onPressed: () {
-                      context.push(RoutePaths.orderFinished);
-                    },
+                    onPressed: () {},
                     isMain: false,
                     prefixIcon: Assets.icons.solid.routeSolid1,
                     iconColor: context.theme.red,
@@ -155,9 +170,7 @@ class OrderPage extends StatelessWidget {
                 Expanded(
                   child: CustomMainButtonWidget(
                     title: S.current.call,
-                    onPressed: () {
-                      context.push(RoutePaths.orderFinished);
-                    },
+                    onPressed: () {},
                     isMain: false,
                     prefixIcon: Assets.icons.solid.phoneSolid,
                     iconColor: context.theme.green,
@@ -190,13 +203,12 @@ class OrderPage extends StatelessWidget {
             headLine: headLine,
           );
         }, loaded: (viewModel) {
-          GetOrderStatusResponse? updatedOrderStatus =
-              viewModel.updatedOrderStatus;
           return _buildOrderPage(
             context: context,
             labelStyle: labelStyle,
             titleStyle: titleStyle,
             headLine: headLine,
+            viewModel: viewModel,
           );
         });
       },

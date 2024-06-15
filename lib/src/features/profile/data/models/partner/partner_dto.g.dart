@@ -8,16 +8,14 @@ part of 'partner_dto.dart';
 
 _$PartnerDtoImpl _$$PartnerDtoImplFromJson(Map<String, dynamic> json) =>
     _$PartnerDtoImpl(
-      id: (json['id'] as num?)?.toInt(),
-      firstName: json['first_name'] as String?,
-      lastName: json['last_name'] as String?,
-      carModel: json['car_model'] as String?,
-      carNumber: json['car_number'] as String?,
-      townId: (json['town_id'] as num?)?.toInt(),
-      status: json['status'] as String?,
-      finance: json['finance'] == null
-          ? null
-          : FinanceDto.fromJson(json['finance'] as Map<String, dynamic>),
+      id: (json['id'] as num).toInt(),
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
+      carModel: json['car_model'] as String,
+      carNumber: json['car_number'] as String,
+      townId: (json['town_id'] as num).toInt(),
+      status: json['status'] as String,
+      finance: FinanceDto.fromJson(json['finance'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PartnerDtoImplToJson(_$PartnerDtoImpl instance) =>

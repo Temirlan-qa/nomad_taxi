@@ -13,7 +13,9 @@ import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_us
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 
 import '../../../../core/service/injectable/exports/all.dart';
+import '../../domain/requests/update_partner_data_request.dart';
 import '../../domain/usecases/update_language_use_case.dart';
+import '../../domain/usecases/update_partner_data_use_case.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_event.dart';
@@ -27,6 +29,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     this._getUserDataUseCase,
     this._updateFcmTokenUseCase,
     this._updateLanguageUseCase,
+    this._updatePartnerDataUseCase,
   ) : super(const _Initial());
 
   final UpdateUserInfoUseCase _updateUserInfoUseCase;
@@ -35,8 +38,9 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   final GetUserDataUseCase _getUserDataUseCase;
   final UpdateFcmTokenUseCase _updateFcmTokenUseCase;
   final UpdateLanguageUseCase _updateLanguageUseCase;
+  final UpdatePartnerDataUseCase _updatePartnerDataUseCase;
 
-  final ProfileViewModel _viewModel = const ProfileViewModel();
+  final ProfileViewModel _viewModel = ProfileViewModel();
 
   @override
   Future<void> onEventHandler(ProfileEvent event, Emitter emit) async {
@@ -50,6 +54,8 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
           _updateFcmToken(event as _UpdateFcmToken, emit),
       updateLanguage: (language) =>
           _updateLanguage(event as _UpdateLanguage, emit),
+      updatePartnerData: (partnerData) =>
+          _updatePartnerData(event as _UpdatePartnerData, emit),
     );
   }
 
@@ -68,6 +74,21 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
             firstName: data.firstName,
             lastName: data.lastName,
             phone: data.phone,
+            id: data.id,
+            isBlocked: data.isBlocked ?? 0,
+            bonus: data.bonus ?? 0,
+            fcmToken: data.fcmToken ?? '',
+
+            // Partner
+            pBalance: data.pBalance ?? 0,
+            pBonus: data.pBonus ?? 0,
+            pCarModel: data.pCarModel,
+            pCarNumber: data.pCarNumber,
+            pFirstName: data.pFirstName,
+            pId: data.pId,
+            pLastName: data.pLastName,
+            pStatus: data.pStatus,
+            pTownId: data.pTownId,
           ),
         ),
       );
@@ -114,6 +135,51 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
             firstName: data.firstName,
             lastName: data.lastName,
             phone: data.phone,
+          ),
+        ),
+      );
+    }
+  }
+
+  Future<void> _updatePartnerData(
+    _UpdatePartnerData event,
+    Emitter emit,
+  ) async {
+    final UpdatePartnerDataRequest request = UpdatePartnerDataRequest(
+      firstName: event.partnerData.firstName,
+      lastName: event.partnerData.lastName,
+      carModel: event.partnerData.carModel,
+      carNumber: event.partnerData.carNumber,
+      townId: event.partnerData.townId,
+    );
+
+    final result = await _updatePartnerDataUseCase.call(request);
+    final data = result.data;
+
+    final user = await _getUserDataUseCase.call();
+
+    final userData = user.data;
+
+    if (result.isSuccessful && data != null && userData != null) {
+      emit(
+        _Loaded(
+          viewModel: _viewModel.copyWith(
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            phone: userData.phone,
+            id: userData.id,
+            isBlocked: userData.isBlocked ?? 0,
+            bonus: userData.bonus ?? 0,
+            fcmToken: userData.fcmToken ?? '',
+            pFirstName: data.pFirstName,
+            pLastName: data.pLastName,
+            pCarModel: data.pCarModel,
+            pCarNumber: data.pCarNumber,
+            pTownId: data.pTownId,
+            pId: data.pId,
+            pBalance: data.pBalance ?? 0,
+            pBonus: data.pBonus ?? 0,
+            pStatus: data.pStatus,
           ),
         ),
       );

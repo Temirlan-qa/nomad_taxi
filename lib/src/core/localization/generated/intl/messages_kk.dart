@@ -92,9 +92,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Жою қайтымсыз, сіздің барлық деректеріңіз жоғалады"),
         "delivery": MessageLookupByLibrary.simpleMessage("Жеткізу"),
         "details": MessageLookupByLibrary.simpleMessage("Егжей"),
+        "developerAnswer":
+            MessageLookupByLibrary.simpleMessage("Әзірлеушінің жауабы"),
         "development_by":
             MessageLookupByLibrary.simpleMessage("Компанияның дамуы"),
         "done": MessageLookupByLibrary.simpleMessage("Орындалды"),
+        "driverRequirement1":
+            MessageLookupByLibrary.simpleMessage("Автокөлік үлгісін енгізіңіз"),
+        "driverRequirement2":
+            MessageLookupByLibrary.simpleMessage("Автокөлік нөмірін енгізіңіз"),
         "driver_balance":
             MessageLookupByLibrary.simpleMessage("Жүргізуші балансы"),
         "driver_canceled_order": MessageLookupByLibrary.simpleMessage(
@@ -110,12 +116,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сапарыңыз сәтті өтсін =)"),
         "driver_waiting":
             MessageLookupByLibrary.simpleMessage("Сізді жүргізуші күтеді!"),
+        "enter_ID": MessageLookupByLibrary.simpleMessage(
+            "Әрі қарай ID нөміріңізді енгізіңіз"),
         "enter_amount": MessageLookupByLibrary.simpleMessage(
             "Қажетті соманы енгізіңіз және NOMAD taxi қолданбасында шотыңызға ақша түседі"),
         "enter_car_number":
             MessageLookupByLibrary.simpleMessage("Нөмірді енгізіңіз"),
         "enter_driver_info":
             MessageLookupByLibrary.simpleMessage("Жүргізуші деректерін енгізу"),
+        "enter_id": MessageLookupByLibrary.simpleMessage(
+            "Әрі қарай, ID нөміріңізді енгізіңіз"),
         "enter_info":
             MessageLookupByLibrary.simpleMessage("Ақпаратты енгізіңіз"),
         "enter_promoCode":
@@ -149,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "minutes": MessageLookupByLibrary.simpleMessage("минуттар"),
         "more_detailed": MessageLookupByLibrary.simpleMessage("Толығырақ"),
         "next": MessageLookupByLibrary.simpleMessage("Келесі"),
+        "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
+            "Қазіргі уақытта белсенді тапсырыстар жоқ"),
         "on_line": MessageLookupByLibrary.simpleMessage("Сызықта"),
         "on_search": MessageLookupByLibrary.simpleMessage("Іздеуде"),
         "open": MessageLookupByLibrary.simpleMessage("Ашу"),
@@ -169,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "recent_trips_will_displayed_here":
             MessageLookupByLibrary.simpleMessage(
                 "Мұнда сіздің соңғы сапарларыңыз көрсетіледі"),
+        "recharge_account":
+            MessageLookupByLibrary.simpleMessage("Шотты толтыру"),
         "recharge_kaspi": MessageLookupByLibrary.simpleMessage(
             "Қосымшада Kaspi.kz\n шотын толтыру"),
         "referral_program":
@@ -238,6 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сіз шыққыңыз келе ме?"),
         "you_want_exit_desc": MessageLookupByLibrary.simpleMessage(
             "Шыққаннан кейін кез келген уақытта есептік жазбаңызға оралуға болады. Сіздің барлық деректеріңіз сақталады"),
+        "your_ID": MessageLookupByLibrary.simpleMessage("Сіздің ID"),
         "your_account": MessageLookupByLibrary.simpleMessage("Сіздің шотыңыз"),
         "your_balance":
             MessageLookupByLibrary.simpleMessage("Сіздің балансыңыз"),
@@ -245,6 +260,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сіздің бонустарыңыз"),
         "your_driver":
             MessageLookupByLibrary.simpleMessage("Сіздің жүргізушіңіз"),
+        "your_id":
+            MessageLookupByLibrary.simpleMessage("Сіздің идентификаторыңыз"),
         "your_location":
             MessageLookupByLibrary.simpleMessage("Сіздің орналасқан жеріңіз"),
         "your_name": MessageLookupByLibrary.simpleMessage("Сіздің атыңыз"),
