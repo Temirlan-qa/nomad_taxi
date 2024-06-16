@@ -152,6 +152,12 @@ class _OrderPricePageState extends State<OrderPricePage> {
                       title: S.current.next,
                       onPressed: () {
                         context.push(RoutePaths.orderSearch, extra: orderPrice);
+
+                        // orderBloc.add(
+                        //   OrderEvent.createOrder(
+                        //     orderEntity: CreateOrderEntity.empty(),
+                        //   ),
+                        // );
                       },
                     ),
                   )

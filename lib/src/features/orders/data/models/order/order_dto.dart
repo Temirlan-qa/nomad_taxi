@@ -16,14 +16,14 @@ class OrderDto extends BaseDto with _$OrderDto {
     @JsonKey(name: 'end_point') required String endPoint,
     required int price,
     String? comment,
-    required String status,
+    String? status,
     @Default(false) @JsonKey(name: 'has_route') bool hasRoute,
     @Default('') @JsonKey(name: 'created_at') String createdAt,
     @JsonKey(name: 'pay_method') PayMethodDto? payMethod,
     @Default(null) @JsonKey(name: 'waiting_time') int? waitingTime,
     @Default(null) PartnerDto? partner,
     @Default('') String phone,
-    @Default(0) @JsonKey(name: 'town_id') int townId,
+    @Default('') @JsonKey(name: 'town_id') String townId,
     @Default([]) List<PointDto> points,
   }) = _OrderDto;
 

@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:nomad_taxi/src/features/orders/data/models/requests/create_order_request.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/find_town_by_location_response/find_town_by_location_response.dart';
@@ -34,8 +35,8 @@ abstract class IOrdersRepository {
     String orderId,
   );
 
-  Future<Either<DomainException, CreateOrderResponse>> createOrder(
-    CreateOrderEntity request,
+  Future<Either<DomainException, OrderResponse>> createOrder(
+    CreateOrderRequest request,
   );
 
   Future<Either<DomainException, CreateOrderResponse>> getOrder(

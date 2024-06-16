@@ -13,7 +13,7 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
       endPoint: json['end_point'] as String,
       price: (json['price'] as num).toInt(),
       comment: json['comment'] as String?,
-      status: json['status'] as String,
+      status: json['status'] as String?,
       hasRoute: json['has_route'] as bool? ?? false,
       createdAt: json['created_at'] as String? ?? '',
       payMethod: json['pay_method'] == null
@@ -24,7 +24,7 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
           ? null
           : PartnerDto.fromJson(json['partner'] as Map<String, dynamic>),
       phone: json['phone'] as String? ?? '',
-      townId: (json['town_id'] as num?)?.toInt() ?? 0,
+      townId: json['town_id'] as String? ?? '',
       points: (json['points'] as List<dynamic>?)
               ?.map((e) => PointDto.fromJson(e as Map<String, dynamic>))
               .toList() ??

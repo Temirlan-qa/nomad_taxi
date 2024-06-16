@@ -20,6 +20,7 @@ import '../../domain/repositories/i_orders_repository.dart';
 import '../datasources/remote/i_orders_remote.dart';
 import '../datasources/remote/orders_remote_impl.dart';
 import '../models/requests/accept_order_request.dart';
+import '../models/requests/create_order_request.dart';
 
 @named
 @LazySingleton(as: IOrdersRepository)
@@ -138,14 +139,17 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, CreateOrderResponse>> createOrder(
-      CreateOrderEntity request) async {
+  Future<Either<DomainException, OrderResponse>> createOrder(
+      CreateOrderRequest request) async {
     try {
       final requests = await _ordersImpl.createOrder(request);
       return requests.fold(
         (error) => Left(error),
-        (result) {
-          return Right(CreateOrderResponse.fromJson(result.toJson()));
+        (dto) {
+            final OrderEntity entity = OrderDtoMapper().map(dto);
+
+            return Right(OrderResponse(order: entity));
+        
         },
       );
     } catch (e) {

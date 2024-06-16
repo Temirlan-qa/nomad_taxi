@@ -20,6 +20,7 @@ mixin _$OrderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) acceptOrder,
     required TResult Function(int orderId) cancelOrder,
   }) =>
@@ -28,6 +29,7 @@ mixin _$OrderEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? acceptOrder,
     TResult? Function(int orderId)? cancelOrder,
   }) =>
@@ -36,6 +38,7 @@ mixin _$OrderEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? acceptOrder,
     TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$OrderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_CreateOrder value) createOrder,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
   }) =>
@@ -53,6 +57,7 @@ mixin _$OrderEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_CreateOrder value)? createOrder,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
   }) =>
@@ -61,6 +66,7 @@ mixin _$OrderEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_CreateOrder value)? createOrder,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
@@ -126,6 +132,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) acceptOrder,
     required TResult Function(int orderId) cancelOrder,
   }) {
@@ -137,6 +144,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? acceptOrder,
     TResult? Function(int orderId)? cancelOrder,
   }) {
@@ -148,6 +156,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? acceptOrder,
     TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
@@ -163,6 +172,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_CreateOrder value) createOrder,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
   }) {
@@ -174,6 +184,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_CreateOrder value)? createOrder,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
@@ -185,6 +196,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_CreateOrder value)? createOrder,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
@@ -240,6 +252,7 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) acceptOrder,
     required TResult Function(int orderId) cancelOrder,
   }) {
@@ -251,6 +264,7 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? acceptOrder,
     TResult? Function(int orderId)? cancelOrder,
   }) {
@@ -262,6 +276,7 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? acceptOrder,
     TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
@@ -277,6 +292,7 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_CreateOrder value) createOrder,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
   }) {
@@ -288,6 +304,7 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_CreateOrder value)? createOrder,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
@@ -299,6 +316,7 @@ class _$GetOrdersImpl implements _GetOrders {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_CreateOrder value)? createOrder,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
@@ -312,6 +330,169 @@ class _$GetOrdersImpl implements _GetOrders {
 
 abstract class _GetOrders implements OrderEvent {
   const factory _GetOrders() = _$GetOrdersImpl;
+}
+
+/// @nodoc
+abstract class _$$CreateOrderImplCopyWith<$Res> {
+  factory _$$CreateOrderImplCopyWith(
+          _$CreateOrderImpl value, $Res Function(_$CreateOrderImpl) then) =
+      __$$CreateOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CreateOrderEntity orderEntity});
+
+  $CreateOrderEntityCopyWith<$Res> get orderEntity;
+}
+
+/// @nodoc
+class __$$CreateOrderImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$CreateOrderImpl>
+    implements _$$CreateOrderImplCopyWith<$Res> {
+  __$$CreateOrderImplCopyWithImpl(
+      _$CreateOrderImpl _value, $Res Function(_$CreateOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderEntity = null,
+  }) {
+    return _then(_$CreateOrderImpl(
+      orderEntity: null == orderEntity
+          ? _value.orderEntity
+          : orderEntity // ignore: cast_nullable_to_non_nullable
+              as CreateOrderEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreateOrderEntityCopyWith<$Res> get orderEntity {
+    return $CreateOrderEntityCopyWith<$Res>(_value.orderEntity, (value) {
+      return _then(_value.copyWith(orderEntity: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateOrderImpl implements _CreateOrder {
+  const _$CreateOrderImpl({required this.orderEntity});
+
+  @override
+  final CreateOrderEntity orderEntity;
+
+  @override
+  String toString() {
+    return 'OrderEvent.createOrder(orderEntity: $orderEntity)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateOrderImpl &&
+            (identical(other.orderEntity, orderEntity) ||
+                other.orderEntity == orderEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderEntity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateOrderImplCopyWith<_$CreateOrderImpl> get copyWith =>
+      __$$CreateOrderImplCopyWithImpl<_$CreateOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOrders,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
+  }) {
+    return createOrder(orderEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOrders,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
+  }) {
+    return createOrder?.call(orderEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOrders,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (createOrder != null) {
+      return createOrder(orderEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+  }) {
+    return createOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+  }) {
+    return createOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (createOrder != null) {
+      return createOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateOrder implements OrderEvent {
+  const factory _CreateOrder({required final CreateOrderEntity orderEntity}) =
+      _$CreateOrderImpl;
+
+  CreateOrderEntity get orderEntity;
+  @JsonKey(ignore: true)
+  _$$CreateOrderImplCopyWith<_$CreateOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -380,6 +561,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) acceptOrder,
     required TResult Function(int orderId) cancelOrder,
   }) {
@@ -391,6 +573,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? acceptOrder,
     TResult? Function(int orderId)? cancelOrder,
   }) {
@@ -402,6 +585,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? acceptOrder,
     TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
@@ -417,6 +601,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_CreateOrder value) createOrder,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
   }) {
@@ -428,6 +613,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_CreateOrder value)? createOrder,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
@@ -439,6 +625,7 @@ class _$AcceptOrderImpl implements _AcceptOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_CreateOrder value)? createOrder,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
@@ -525,6 +712,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrders,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) acceptOrder,
     required TResult Function(int orderId) cancelOrder,
   }) {
@@ -536,6 +724,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrders,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? acceptOrder,
     TResult? Function(int orderId)? cancelOrder,
   }) {
@@ -547,6 +736,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrders,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? acceptOrder,
     TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
@@ -562,6 +752,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_CreateOrder value) createOrder,
     required TResult Function(_AcceptOrder value) acceptOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
   }) {
@@ -573,6 +764,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_CreateOrder value)? createOrder,
     TResult? Function(_AcceptOrder value)? acceptOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
@@ -584,6 +776,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_CreateOrder value)? createOrder,
     TResult Function(_AcceptOrder value)? acceptOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),

@@ -16,6 +16,7 @@ import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart
 
 import '../../../../core/base/base_bloc/bloc/base_bloc_widget.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
+import '../../../orders/domain/entities/create_order/create_order_entity.dart';
 
 class OrderSearchPage extends StatefulWidget {
   const OrderSearchPage({super.key, required this.price});
@@ -89,184 +90,183 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
   Widget build(BuildContext context) {
     final bodyMain = context.theme.textStyles.bodyMain;
     final secondary = context.theme.secondary;
+
     return BaseBlocWidget<OrderBloc, OrderEvent, OrderState>(
       bloc: getIt<OrderBloc>(),
-      starterEvent: const OrderEvent.acceptOrder(orderId: 1),
+      starterEvent: OrderEvent.createOrder(
+        orderEntity: CreateOrderEntity.empty(),
+      ),
       builder: (context, state, bloc) {
         return Scaffold(
             body: SafeArea(
           child: Form(
             key: formKey,
             child: Padding(
-              padding: const EdgeInsets.all(UIConstants.defaultPadding),
-              child: state.when(
-                    error: (error) {
-                      return InfoAboutOrderStateWidget(
-                        state: OrderStateEnum.error,
-                        errorMessage: error,
-                      );
-                    },
-                    initial: () {
-                      return const InfoAboutOrderStateWidget(
-                          state: OrderStateEnum.searching);
-                    },
-                    loaded: (OrderViewModel viewModel) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                             const Spacer(),
-                          const InfoAboutOrderStateWidget(
-                            state: OrderStateEnum.accepted,
-                          ),
-                          const Spacer(),
-                  AnimatedCrossFade(
-                    duration: Durations.medium1,
-                    crossFadeState: orderState == OrderStateEnum.searching
-                        ? CrossFadeState.showFirst
-                        : CrossFadeState.showSecond,
-                    firstChild: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                padding: const EdgeInsets.all(UIConstants.defaultPadding),
+                child: state.when(
+                  error: (error) {
+                    return InfoAboutOrderStateWidget(
+                      state: OrderStateEnum.error,
+                      errorMessage: error,
+                    );
+                  },
+                  initial: () {
+                    return const InfoAboutOrderStateWidget(
+                        state: OrderStateEnum.searching);
+                  },
+                  loaded: (OrderViewModel viewModel) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                              UIConstants.defaultPadding,
-                              0,
-                              0,
-                              UIConstants.defaultGap1),
-                          child: Text(
-                            S.current.change_price,
-                            style: bodyMain.copyWith(color: secondary),
-                          ),
+                        const Spacer(),
+                        const InfoAboutOrderStateWidget(
+                          state: OrderStateEnum.accepted,
                         ),
-                        CustomOrderPriceTextFieldWidget(
-                            controller: priceController),
-                      ],
-                    ),
-                    secondChild: CustomContainerWidget(
-                        child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(S.current.car,
-                                style: bodyMain.copyWith(color: secondary)),
-                            const Gap(UIConstants.defaultGap1),
-                            Text(
-                              carModel,
-                              style: context.theme.textStyles.titleSecondary,
-                            ),
-                            const Gap(UIConstants.defaultGap1),
-                            Container(
-                              padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-                              decoration: BoxDecoration(
-                                color: context.theme.primary,
-                                borderRadius: BorderRadius.circular(
-                                  UIConstants.defaultGap1,
+                        const Spacer(),
+                        AnimatedCrossFade(
+                          duration: Durations.medium1,
+                          crossFadeState: orderState == OrderStateEnum.searching
+                              ? CrossFadeState.showFirst
+                              : CrossFadeState.showSecond,
+                          firstChild: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                    UIConstants.defaultPadding,
+                                    0,
+                                    0,
+                                    UIConstants.defaultGap1),
+                                child: Text(
+                                  S.current.change_price,
+                                  style: bodyMain.copyWith(color: secondary),
                                 ),
                               ),
-                              child: Center(
-                                child: Text(
-                                  carNumber,
-                                  style: context.theme.textStyles.headLine
-                                      .copyWith(
-                                    color: context.theme.white,
+                              CustomOrderPriceTextFieldWidget(
+                                  controller: priceController),
+                            ],
+                          ),
+                          secondChild: CustomContainerWidget(
+                              child: Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(S.current.car,
+                                      style:
+                                          bodyMain.copyWith(color: secondary)),
+                                  const Gap(UIConstants.defaultGap1),
+                                  Text(
+                                    carModel,
+                                    style:
+                                        context.theme.textStyles.titleSecondary,
                                   ),
+                                  const Gap(UIConstants.defaultGap1),
+                                  Container(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                                    decoration: BoxDecoration(
+                                      color: context.theme.primary,
+                                      borderRadius: BorderRadius.circular(
+                                        UIConstants.defaultGap1,
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        carNumber,
+                                        style: context.theme.textStyles.headLine
+                                            .copyWith(
+                                          color: context.theme.white,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          )),
+                        ),
+                        const Gap(UIConstants.defaultGap1),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: orderState == OrderStateEnum.accepted ||
+                                      orderState == OrderStateEnum.waiting
+                                  ? 1
+                                  : 0,
+                              child: AnimatedCrossFade(
+                                duration: Durations.medium1,
+                                firstChild: CustomMainButtonWidget(
+                                  title: S.current.call,
+                                  onPressed: () {
+                                    // context.pop();
+                                  },
+                                  color: context.theme.green,
+                                  iconColor: context.theme.green,
+                                  prefixIcon: Assets.icons.solid.phoneSolid,
+                                  isMain: false,
                                 ),
+                                secondChild: const Offstage(),
+                                crossFadeState:
+                                    orderState == OrderStateEnum.accepted ||
+                                            orderState == OrderStateEnum.waiting
+                                        ? CrossFadeState.showFirst
+                                        : CrossFadeState.showSecond,
+                              ),
+                            ),
+                            Gap(
+                              orderState == OrderStateEnum.accepted ||
+                                      orderState == OrderStateEnum.waiting
+                                  ? UIConstants.defaultGap1
+                                  : 0,
+                            ),
+                            Expanded(
+                              child: CustomMainButtonWidget(
+                                title: S.current.order_details,
+                                isMain: false,
+                                color: context.theme.blue,
+                                onPressed: () {
+                                  showInfoModal(context, state, widget.price);
+                                  // showThankModal(context);
+                                },
                               ),
                             )
                           ],
                         ),
-                      ],
-                    )),
-                  ),
-                  const Gap(UIConstants.defaultGap1),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: orderState == OrderStateEnum.accepted ||
-                                orderState == OrderStateEnum.waiting
-                            ? 1
-                            : 0,
-                        child: AnimatedCrossFade(
-                          duration: Durations.medium1,
-                          firstChild: CustomMainButtonWidget(
-                            title: S.current.call,
-                            onPressed: () {
-                              // context.pop();
-                            },
-                            color: context.theme.green,
-                            iconColor: context.theme.green,
-                            prefixIcon: Assets.icons.solid.phoneSolid,
-                            isMain: false,
+                        AnimatedCrossFade(
+                          firstChild: Padding(
+                            padding: const EdgeInsets.only(
+                                top: UIConstants.defaultGap1),
+                            child: orderState == OrderStateEnum.progress
+                                ? CustomMainButtonWidget(
+                                    title: S.current.close,
+                                    isMain: false,
+                                    onPressed: () {
+                                      context.pop();
+                                    },
+                                  )
+                                : CustomMainButtonWidget(
+                                    title: S.current.cancel_the_order,
+                                    isMain: false,
+                                    color: context.theme.red,
+                                    onPressed: () {
+                                      context.pop();
+                                    },
+                                  ),
                           ),
                           secondChild: const Offstage(),
+                          duration: Durations.medium1,
                           crossFadeState:
                               orderState == OrderStateEnum.accepted ||
-                                      orderState == OrderStateEnum.waiting
+                                      orderState == OrderStateEnum.searching ||
+                                      orderState == OrderStateEnum.progress
                                   ? CrossFadeState.showFirst
                                   : CrossFadeState.showSecond,
                         ),
-                      ),
-                      Gap(
-                        orderState == OrderStateEnum.accepted ||
-                                orderState == OrderStateEnum.waiting
-                            ? UIConstants.defaultGap1
-                            : 0,
-                      ),
-                      Expanded(
-                        child: CustomMainButtonWidget(
-                          title: S.current.order_details,
-                          isMain: false,
-                          color: context.theme.blue,
-                          onPressed: () {
-                            showInfoModal(context, state, widget.price);
-                            // showThankModal(context);
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                  AnimatedCrossFade(
-                    firstChild: Padding(
-                      padding:
-                          const EdgeInsets.only(top: UIConstants.defaultGap1),
-                      child: orderState == OrderStateEnum.progress
-                          ? CustomMainButtonWidget(
-                              title: S.current.close,
-                              isMain: false,
-                              onPressed: () {
-                                context.pop();
-                              },
-                            )
-                          : CustomMainButtonWidget(
-                              title: S.current.cancel_the_order,
-                              isMain: false,
-                              color: context.theme.red,
-                              onPressed: () {
-                                context.pop();
-                              },
-                            ),
-                    ),
-                    secondChild: const Offstage(),
-                    duration: Durations.medium1,
-                    crossFadeState: orderState == OrderStateEnum.accepted ||
-                            orderState == OrderStateEnum.searching ||
-                            orderState == OrderStateEnum.progress
-                        ? CrossFadeState.showFirst
-                        : CrossFadeState.showSecond,
-                  ),
-                        ],
-                      );
-                    },
-                  )
-              // Column(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: [
-                  
-              //   ],
-              // ),
-            ),
+                      ],
+                    );
+                  },
+                )),
           ),
         ));
       },

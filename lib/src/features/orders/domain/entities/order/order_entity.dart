@@ -16,14 +16,14 @@ class OrderEntity extends BaseEntity with _$OrderEntity {
     required String endPoint,
     required int price,
     String? comment,
-    required String status,
+    String? status,
     @Default(false)  bool hasRoute,
     @Default('')  String createdAt,
     @JsonKey(name: 'pay_method') PayMethodEntity? payMethod,
     @Default('') String phone,
     Partner? partner,
     int? waitingTime,
-    @Default(0)  int townId,
+    @Default('') String townId,
     @Default([]) List<PointEntity> points,
   }) = _OrderEntity;
 

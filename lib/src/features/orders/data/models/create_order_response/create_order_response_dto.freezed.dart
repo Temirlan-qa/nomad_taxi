@@ -21,7 +21,6 @@ CreateOrderResponseDto _$CreateOrderResponseDtoFromJson(
 
 /// @nodoc
 mixin _$CreateOrderResponseDto {
-  String get status => throw _privateConstructorUsedError;
   OrderDto get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +35,7 @@ abstract class $CreateOrderResponseDtoCopyWith<$Res> {
           $Res Function(CreateOrderResponseDto) then) =
       _$CreateOrderResponseDtoCopyWithImpl<$Res, CreateOrderResponseDto>;
   @useResult
-  $Res call({String status, OrderDto data});
+  $Res call({OrderDto data});
 
   $OrderDtoCopyWith<$Res> get data;
 }
@@ -55,14 +54,9 @@ class _$CreateOrderResponseDtoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -88,7 +82,7 @@ abstract class _$$CreateOrderResponseDtoImplCopyWith<$Res>
       __$$CreateOrderResponseDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String status, OrderDto data});
+  $Res call({OrderDto data});
 
   @override
   $OrderDtoCopyWith<$Res> get data;
@@ -107,14 +101,9 @@ class __$$CreateOrderResponseDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? data = null,
   }) {
     return _then(_$CreateOrderResponseDtoImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -126,20 +115,17 @@ class __$$CreateOrderResponseDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CreateOrderResponseDtoImpl implements _CreateOrderResponseDto {
-  const _$CreateOrderResponseDtoImpl(
-      {required this.status, required this.data});
+  const _$CreateOrderResponseDtoImpl({required this.data});
 
   factory _$CreateOrderResponseDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$CreateOrderResponseDtoImplFromJson(json);
 
   @override
-  final String status;
-  @override
   final OrderDto data;
 
   @override
   String toString() {
-    return 'CreateOrderResponseDto(status: $status, data: $data)';
+    return 'CreateOrderResponseDto(data: $data)';
   }
 
   @override
@@ -147,13 +133,12 @@ class _$CreateOrderResponseDtoImpl implements _CreateOrderResponseDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderResponseDtoImpl &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, data);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -171,15 +156,12 @@ class _$CreateOrderResponseDtoImpl implements _CreateOrderResponseDto {
 }
 
 abstract class _CreateOrderResponseDto implements CreateOrderResponseDto {
-  const factory _CreateOrderResponseDto(
-      {required final String status,
-      required final OrderDto data}) = _$CreateOrderResponseDtoImpl;
+  const factory _CreateOrderResponseDto({required final OrderDto data}) =
+      _$CreateOrderResponseDtoImpl;
 
   factory _CreateOrderResponseDto.fromJson(Map<String, dynamic> json) =
       _$CreateOrderResponseDtoImpl.fromJson;
 
-  @override
-  String get status;
   @override
   OrderDto get data;
   @override

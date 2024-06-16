@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
+import 'package:nomad_taxi/src/features/orders/data/models/create_order/create_order_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/create_order_response/create_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
@@ -13,7 +14,9 @@ import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/upda
 import '../../../../../core/exceptions/domain_exception.dart';
 import '../../../domain/entities/create_order/create_order_entity.dart';
 import '../../models/order/order_dto.dart';
+import '../../models/point/point_dto.dart';
 import '../../models/requests/accept_order_request.dart';
+import '../../models/requests/create_order_request.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
 import 'i_orders_remote.dart';
 
@@ -29,21 +32,23 @@ class OrdersRemoteImpl implements IOrdersRemote {
   Future<Either<DomainException, OrderDto>> acceptOrder(
       OrderRequest request) async {
     try {
-      // var headers = {
-      //   'Accept-Language': 'ru',
-      //   'Accept': 'application/json',
-      //   'Authorization': 'Bearer ${st.getToken()!}'
-      // };
-      // final int orderId = request.id;
-      // var response = await client.request(
-      //   'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
-      //   options: Options(
-      //     method: 'POST',
-      //     headers: headers,
-      //   ),
-      // );
-      
-      // final data = response.data;
+      var headers = {
+        'Accept-Language': 'ru',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      final int orderId = request.id;
+      var response = await client.request(
+        'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+      );
+
+      //TODO (bekzhan): Uncomment this line, after fix backend (town_id line)
+
+      // final data = response.data['data'];
 
       final mockData = _mockAcceptOrder;
 
@@ -71,7 +76,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       //   ),
       // );
 
-      return Right(null);
+      return const Right(null);
       // if (response.statusCode == 200) {
       //   return Right(OrderDto.fromJson(response.data));
       // } else {
@@ -206,8 +211,26 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, CreateOrderResponseDto>> createOrder(
-      CreateOrderEntity request) async {
+  Future<Either<DomainException, OrderDto>> createOrder(
+      CreateOrderRequest request) async {
+    final CreateOrderEntity entity = request.entity;
+
+    // Mapping entity to dto
+    final List<PointDto> pointsDto = entity.points
+        .map((point) => PointDto(
+              lat: point.lat,
+              lng: point.lng,
+              title: point.title,
+            ))
+        .toList();
+
+    final CreateOrderDto orderDto = CreateOrderDto(
+      townId: entity.townId,
+      price: entity.price,
+      points: pointsDto,
+      useBonus: entity.useBonus,
+    );
+
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -221,14 +244,18 @@ class OrdersRemoteImpl implements IOrdersRemote {
           method: 'POST',
           headers: headers,
         ),
-        data: request,
+        data: orderDto.toJson(),
       );
 
-      if (response.statusCode == 200) {
-        return Right(CreateOrderResponseDto.fromJson(response.data));
-      } else {
-        return Left(UnknownException());
-      }
+    final responseData = response.data as Map<String, dynamic>;
+
+    final data = responseData['data'];
+
+    if (response.statusCode == 200) {
+      return Right(OrderDto.fromJson(data));
+    } else {
+      return Left(UnknownException());
+    }
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),

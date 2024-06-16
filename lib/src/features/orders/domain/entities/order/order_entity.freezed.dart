@@ -25,7 +25,7 @@ mixin _$OrderEntity {
   String get endPoint => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
   bool get hasRoute => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'pay_method')
@@ -33,7 +33,7 @@ mixin _$OrderEntity {
   String get phone => throw _privateConstructorUsedError;
   Partner? get partner => throw _privateConstructorUsedError;
   int? get waitingTime => throw _privateConstructorUsedError;
-  int get townId => throw _privateConstructorUsedError;
+  String get townId => throw _privateConstructorUsedError;
   List<PointEntity> get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,14 +54,14 @@ abstract class $OrderEntityCopyWith<$Res> {
       String endPoint,
       int price,
       String? comment,
-      String status,
+      String? status,
       bool hasRoute,
       String createdAt,
       @JsonKey(name: 'pay_method') PayMethodEntity? payMethod,
       String phone,
       Partner? partner,
       int? waitingTime,
-      int townId,
+      String townId,
       List<PointEntity> points});
 
   $PayMethodEntityCopyWith<$Res>? get payMethod;
@@ -86,7 +86,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
     Object? endPoint = null,
     Object? price = null,
     Object? comment = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? hasRoute = null,
     Object? createdAt = null,
     Object? payMethod = freezed,
@@ -117,10 +117,10 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       hasRoute: null == hasRoute
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
@@ -148,7 +148,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -195,14 +195,14 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
       String endPoint,
       int price,
       String? comment,
-      String status,
+      String? status,
       bool hasRoute,
       String createdAt,
       @JsonKey(name: 'pay_method') PayMethodEntity? payMethod,
       String phone,
       Partner? partner,
       int? waitingTime,
-      int townId,
+      String townId,
       List<PointEntity> points});
 
   @override
@@ -227,7 +227,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
     Object? endPoint = null,
     Object? price = null,
     Object? comment = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? hasRoute = null,
     Object? createdAt = null,
     Object? payMethod = freezed,
@@ -258,10 +258,10 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       hasRoute: null == hasRoute
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
@@ -289,7 +289,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       points: null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
@@ -307,14 +307,14 @@ class _$OrderEntityImpl implements _OrderEntity {
       required this.endPoint,
       required this.price,
       this.comment,
-      required this.status,
+      this.status,
       this.hasRoute = false,
       this.createdAt = '',
       @JsonKey(name: 'pay_method') this.payMethod,
       this.phone = '',
       this.partner,
       this.waitingTime,
-      this.townId = 0,
+      this.townId = '',
       final List<PointEntity> points = const []})
       : _points = points;
 
@@ -332,7 +332,7 @@ class _$OrderEntityImpl implements _OrderEntity {
   @override
   final String? comment;
   @override
-  final String status;
+  final String? status;
   @override
   @JsonKey()
   final bool hasRoute;
@@ -351,7 +351,7 @@ class _$OrderEntityImpl implements _OrderEntity {
   final int? waitingTime;
   @override
   @JsonKey()
-  final int townId;
+  final String townId;
   final List<PointEntity> _points;
   @override
   @JsonKey()
@@ -433,14 +433,14 @@ abstract class _OrderEntity implements OrderEntity {
       required final String endPoint,
       required final int price,
       final String? comment,
-      required final String status,
+      final String? status,
       final bool hasRoute,
       final String createdAt,
       @JsonKey(name: 'pay_method') final PayMethodEntity? payMethod,
       final String phone,
       final Partner? partner,
       final int? waitingTime,
-      final int townId,
+      final String townId,
       final List<PointEntity> points}) = _$OrderEntityImpl;
 
   factory _OrderEntity.fromJson(Map<String, dynamic> json) =
@@ -457,7 +457,7 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   String? get comment;
   @override
-  String get status;
+  String? get status;
   @override
   bool get hasRoute;
   @override
@@ -472,7 +472,7 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   int? get waitingTime;
   @override
-  int get townId;
+  String get townId;
   @override
   List<PointEntity> get points;
   @override
