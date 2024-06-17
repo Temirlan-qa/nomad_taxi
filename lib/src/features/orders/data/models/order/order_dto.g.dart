@@ -15,6 +15,9 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
       comment: json['comment'] as String?,
       status: json['status'] as String,
       hasRoute: json['has_route'] as bool,
+      points: (json['points'] as List<dynamic>?)
+          ?.map((e) => PointDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
@@ -26,4 +29,5 @@ Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
       'comment': instance.comment,
       'status': instance.status,
       'has_route': instance.hasRoute,
+      'points': instance.points,
     };

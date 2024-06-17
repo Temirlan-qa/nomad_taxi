@@ -26,7 +26,14 @@ mixin _$OrderEntity {
   int get price => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  bool get hasRoute => throw _privateConstructorUsedError;
+  bool get hasRoute =>
+      throw _privateConstructorUsedError; // required String createdAt,
+// required PayMethodEntity payMethod,
+// required String phone,
+// Partner? partner,
+// int? waitingTime,
+// required int townId,
+  List<PointEntity>? get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +54,8 @@ abstract class $OrderEntityCopyWith<$Res> {
       int price,
       String? comment,
       String status,
-      bool hasRoute});
+      bool hasRoute,
+      List<PointEntity>? points});
 }
 
 /// @nodoc
@@ -70,6 +78,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
     Object? comment = freezed,
     Object? status = null,
     Object? hasRoute = null,
+    Object? points = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -100,6 +109,10 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
               as bool,
+      points: freezed == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as List<PointEntity>?,
     ) as $Val);
   }
 }
@@ -119,7 +132,8 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
       int price,
       String? comment,
       String status,
-      bool hasRoute});
+      bool hasRoute,
+      List<PointEntity>? points});
 }
 
 /// @nodoc
@@ -140,6 +154,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
     Object? comment = freezed,
     Object? status = null,
     Object? hasRoute = null,
+    Object? points = freezed,
   }) {
     return _then(_$OrderEntityImpl(
       id: null == id
@@ -170,6 +185,10 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
               as bool,
+      points: freezed == points
+          ? _value._points
+          : points // ignore: cast_nullable_to_non_nullable
+              as List<PointEntity>?,
     ));
   }
 }
@@ -184,7 +203,9 @@ class _$OrderEntityImpl implements _OrderEntity {
       required this.price,
       this.comment,
       required this.status,
-      required this.hasRoute});
+      required this.hasRoute,
+      final List<PointEntity>? points})
+      : _points = points;
 
   factory _$OrderEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderEntityImplFromJson(json);
@@ -203,10 +224,31 @@ class _$OrderEntityImpl implements _OrderEntity {
   final String status;
   @override
   final bool hasRoute;
+// required String createdAt,
+// required PayMethodEntity payMethod,
+// required String phone,
+// Partner? partner,
+// int? waitingTime,
+// required int townId,
+  final List<PointEntity>? _points;
+// required String createdAt,
+// required PayMethodEntity payMethod,
+// required String phone,
+// Partner? partner,
+// int? waitingTime,
+// required int townId,
+  @override
+  List<PointEntity>? get points {
+    final value = _points;
+    if (value == null) return null;
+    if (_points is EqualUnmodifiableListView) return _points;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute)';
+    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, points: $points)';
   }
 
   @override
@@ -223,13 +265,14 @@ class _$OrderEntityImpl implements _OrderEntity {
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.hasRoute, hasRoute) ||
-                other.hasRoute == hasRoute));
+                other.hasRoute == hasRoute) &&
+            const DeepCollectionEquality().equals(other._points, _points));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, startPoint, endPoint, price, comment, status, hasRoute);
+  int get hashCode => Object.hash(runtimeType, id, startPoint, endPoint, price,
+      comment, status, hasRoute, const DeepCollectionEquality().hash(_points));
 
   @JsonKey(ignore: true)
   @override
@@ -253,7 +296,8 @@ abstract class _OrderEntity implements OrderEntity {
       required final int price,
       final String? comment,
       required final String status,
-      required final bool hasRoute}) = _$OrderEntityImpl;
+      required final bool hasRoute,
+      final List<PointEntity>? points}) = _$OrderEntityImpl;
 
   factory _OrderEntity.fromJson(Map<String, dynamic> json) =
       _$OrderEntityImpl.fromJson;
@@ -272,6 +316,13 @@ abstract class _OrderEntity implements OrderEntity {
   String get status;
   @override
   bool get hasRoute;
+  @override // required String createdAt,
+// required PayMethodEntity payMethod,
+// required String phone,
+// Partner? partner,
+// int? waitingTime,
+// required int townId,
+  List<PointEntity>? get points;
   @override
   @JsonKey(ignore: true)
   _$$OrderEntityImplCopyWith<_$OrderEntityImpl> get copyWith =>

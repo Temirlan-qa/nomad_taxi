@@ -48,7 +48,12 @@ class _DriverMainPageState extends State<DriverMainPage> {
               appBar: CustomAppBar(
                 appBarText: S.current.driver_mode,
                 isDrawer: true,
-                leading: DrawerButtonWidget(scaffoldKey: _scaffoldKey),
+                leading: DrawerButtonWidget(
+                  scaffoldKey: _scaffoldKey,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                ),
               ),
               body: SafeArea(
                 child: ListView(
@@ -131,10 +136,13 @@ class _DriverMainPageState extends State<DriverMainPage> {
                                       context.theme.textStyles.titleSecondary,
                                 ),
                                 Assets.icons.regular.chevronRightSolid.svg(
-                                    width: 18,
-                                    height: 18,
-                                    colorFilter: ColorFilter.mode(
-                                        secondary, BlendMode.srcIn))
+                                  width: 18,
+                                  height: 18,
+                                  colorFilter: ColorFilter.mode(
+                                    secondary,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
                               ],
                             ),
                             const Gap(UIConstants.defaultGap7),
@@ -168,18 +176,19 @@ class _DriverMainPageState extends State<DriverMainPage> {
                               ],
                             ),
                             Switch(
-                                focusColor: secondary,
-                                hoverColor: secondary,
-                                activeTrackColor: secondary,
-                                activeColor: context.theme.primary,
-                                inactiveThumbColor: secondary,
-                                inactiveTrackColor: context.theme.stroke,
-                                value: switchState,
-                                onChanged: (val) {
-                                  setState(() {
-                                    switchState = val;
-                                  });
-                                })
+                              focusColor: secondary,
+                              hoverColor: secondary,
+                              activeTrackColor: secondary,
+                              activeColor: context.theme.primary,
+                              inactiveThumbColor: secondary,
+                              inactiveTrackColor: context.theme.stroke,
+                              value: switchState,
+                              onChanged: (val) {
+                                setState(() {
+                                  switchState = val;
+                                });
+                              },
+                            )
                           ],
                         )),
                     const Gap(UIConstants.defaultGap3),
@@ -199,9 +208,10 @@ class _DriverMainPageState extends State<DriverMainPage> {
                                 S.current.orders,
                                 style: context.theme.textStyles.titleSecondary
                                     .copyWith(
-                                        color: switchState
-                                            ? context.theme.primary
-                                            : secondary),
+                                  color: switchState
+                                      ? context.theme.primary
+                                      : secondary,
+                                ),
                               ),
                               const Gap(UIConstants.defaultGap7),
                               Text(

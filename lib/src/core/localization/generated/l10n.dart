@@ -350,6 +350,26 @@ class S {
     );
   }
 
+  /// `Номер машины`
+  String get carNumber {
+    return Intl.message(
+      'Номер машины',
+      name: 'carNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Модель автомобиля`
+  String get carModel {
+    return Intl.message(
+      'Модель автомобиля',
+      name: 'carModel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ответ разработчика`
   String get answer_dev {
     return Intl.message(

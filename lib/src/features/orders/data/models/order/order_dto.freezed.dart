@@ -29,7 +29,14 @@ mixin _$OrderDto {
   String? get comment => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'has_route')
-  bool get hasRoute => throw _privateConstructorUsedError;
+  bool get hasRoute =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'created_at') required String createdAt,
+// @JsonKey(name: 'pay_method') required PayMethodDto payMethod,
+// @JsonKey(name: 'waiting_time') int? waitingTime,
+// PartnerDto? partner,
+// required String phone,
+// @JsonKey(name: 'town_id') required int townId,
+  List<PointDto>? get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +56,8 @@ abstract class $OrderDtoCopyWith<$Res> {
       int price,
       String? comment,
       String status,
-      @JsonKey(name: 'has_route') bool hasRoute});
+      @JsonKey(name: 'has_route') bool hasRoute,
+      List<PointDto>? points});
 }
 
 /// @nodoc
@@ -72,6 +80,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
     Object? comment = freezed,
     Object? status = null,
     Object? hasRoute = null,
+    Object? points = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -102,6 +111,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
               as bool,
+      points: freezed == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as List<PointDto>?,
     ) as $Val);
   }
 }
@@ -121,7 +134,8 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
       int price,
       String? comment,
       String status,
-      @JsonKey(name: 'has_route') bool hasRoute});
+      @JsonKey(name: 'has_route') bool hasRoute,
+      List<PointDto>? points});
 }
 
 /// @nodoc
@@ -142,6 +156,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
     Object? comment = freezed,
     Object? status = null,
     Object? hasRoute = null,
+    Object? points = freezed,
   }) {
     return _then(_$OrderDtoImpl(
       id: null == id
@@ -172,6 +187,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
               as bool,
+      points: freezed == points
+          ? _value._points
+          : points // ignore: cast_nullable_to_non_nullable
+              as List<PointDto>?,
     ));
   }
 }
@@ -186,7 +205,9 @@ class _$OrderDtoImpl implements _OrderDto {
       required this.price,
       this.comment,
       required this.status,
-      @JsonKey(name: 'has_route') required this.hasRoute});
+      @JsonKey(name: 'has_route') required this.hasRoute,
+      final List<PointDto>? points})
+      : _points = points;
 
   factory _$OrderDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderDtoImplFromJson(json);
@@ -208,10 +229,31 @@ class _$OrderDtoImpl implements _OrderDto {
   @override
   @JsonKey(name: 'has_route')
   final bool hasRoute;
+// @JsonKey(name: 'created_at') required String createdAt,
+// @JsonKey(name: 'pay_method') required PayMethodDto payMethod,
+// @JsonKey(name: 'waiting_time') int? waitingTime,
+// PartnerDto? partner,
+// required String phone,
+// @JsonKey(name: 'town_id') required int townId,
+  final List<PointDto>? _points;
+// @JsonKey(name: 'created_at') required String createdAt,
+// @JsonKey(name: 'pay_method') required PayMethodDto payMethod,
+// @JsonKey(name: 'waiting_time') int? waitingTime,
+// PartnerDto? partner,
+// required String phone,
+// @JsonKey(name: 'town_id') required int townId,
+  @override
+  List<PointDto>? get points {
+    final value = _points;
+    if (value == null) return null;
+    if (_points is EqualUnmodifiableListView) return _points;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'OrderDto(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute)';
+    return 'OrderDto(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, points: $points)';
   }
 
   @override
@@ -228,13 +270,14 @@ class _$OrderDtoImpl implements _OrderDto {
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.hasRoute, hasRoute) ||
-                other.hasRoute == hasRoute));
+                other.hasRoute == hasRoute) &&
+            const DeepCollectionEquality().equals(other._points, _points));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, startPoint, endPoint, price, comment, status, hasRoute);
+  int get hashCode => Object.hash(runtimeType, id, startPoint, endPoint, price,
+      comment, status, hasRoute, const DeepCollectionEquality().hash(_points));
 
   @JsonKey(ignore: true)
   @override
@@ -252,14 +295,14 @@ class _$OrderDtoImpl implements _OrderDto {
 
 abstract class _OrderDto implements OrderDto {
   const factory _OrderDto(
-          {required final int id,
-          @JsonKey(name: 'start_point') required final String startPoint,
-          @JsonKey(name: 'end_point') required final String endPoint,
-          required final int price,
-          final String? comment,
-          required final String status,
-          @JsonKey(name: 'has_route') required final bool hasRoute}) =
-      _$OrderDtoImpl;
+      {required final int id,
+      @JsonKey(name: 'start_point') required final String startPoint,
+      @JsonKey(name: 'end_point') required final String endPoint,
+      required final int price,
+      final String? comment,
+      required final String status,
+      @JsonKey(name: 'has_route') required final bool hasRoute,
+      final List<PointDto>? points}) = _$OrderDtoImpl;
 
   factory _OrderDto.fromJson(Map<String, dynamic> json) =
       _$OrderDtoImpl.fromJson;
@@ -281,6 +324,13 @@ abstract class _OrderDto implements OrderDto {
   @override
   @JsonKey(name: 'has_route')
   bool get hasRoute;
+  @override // @JsonKey(name: 'created_at') required String createdAt,
+// @JsonKey(name: 'pay_method') required PayMethodDto payMethod,
+// @JsonKey(name: 'waiting_time') int? waitingTime,
+// PartnerDto? partner,
+// required String phone,
+// @JsonKey(name: 'town_id') required int townId,
+  List<PointDto>? get points;
   @override
   @JsonKey(ignore: true)
   _$$OrderDtoImplCopyWith<_$OrderDtoImpl> get copyWith =>
