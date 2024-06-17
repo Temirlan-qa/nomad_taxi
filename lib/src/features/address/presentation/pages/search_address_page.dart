@@ -20,6 +20,13 @@ class SearchAddressPage extends StatefulWidget {
 class _SearchAddressPageState extends State<SearchAddressPage> {
   final TextEditingController addressController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    addressController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +134,8 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                       child: CustomMainButtonWidget(
                         title: S.current.next,
                         onPressed: () {
-                          context.push(RoutePaths.orderPrice);
+                          context.push(RoutePaths.orderPrice,
+                              extra: addressController.text,);
                         },
                       ),
                     ),

@@ -9,7 +9,7 @@ part of 'create_order_entity.dart';
 _$CreateOrderEntityImpl _$$CreateOrderEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateOrderEntityImpl(
-      townId: json['townId'] as String,
+      townId: (json['townId'] as num).toInt(),
       price: (json['price'] as num).toInt(),
       points: (json['points'] as List<dynamic>)
           .map((e) => PointEntity.fromJson(e as Map<String, dynamic>))
@@ -31,8 +31,8 @@ Map<String, dynamic> _$$CreateOrderEntityImplToJson(
 _$CreateOrderEntityEmptyImpl _$$CreateOrderEntityEmptyImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateOrderEntityEmptyImpl(
-      townId: json['townId'] as String? ?? '8',
-      price: (json['price'] as num?)?.toInt() ?? 777,
+      townId: (json['townId'] as num?)?.toInt() ?? 8,
+      price: (json['price'] as num?)?.toInt() ?? 1022,
       points: (json['points'] as List<dynamic>?)
               ?.map((e) => PointEntity.fromJson(e as Map<String, dynamic>))
               .toList() ??

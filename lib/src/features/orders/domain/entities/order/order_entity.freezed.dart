@@ -33,7 +33,7 @@ mixin _$OrderEntity {
   String get phone => throw _privateConstructorUsedError;
   Partner? get partner => throw _privateConstructorUsedError;
   int? get waitingTime => throw _privateConstructorUsedError;
-  String get townId => throw _privateConstructorUsedError;
+  int? get townId => throw _privateConstructorUsedError;
   List<PointEntity> get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ abstract class $OrderEntityCopyWith<$Res> {
       String phone,
       Partner? partner,
       int? waitingTime,
-      String townId,
+      int? townId,
       List<PointEntity> points});
 
   $PayMethodEntityCopyWith<$Res>? get payMethod;
@@ -93,7 +93,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
     Object? phone = null,
     Object? partner = freezed,
     Object? waitingTime = freezed,
-    Object? townId = null,
+    Object? townId = freezed,
     Object? points = null,
   }) {
     return _then(_value.copyWith(
@@ -145,10 +145,10 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
           ? _value.waitingTime
           : waitingTime // ignore: cast_nullable_to_non_nullable
               as int?,
-      townId: null == townId
+      townId: freezed == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int?,
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -202,7 +202,7 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
       String phone,
       Partner? partner,
       int? waitingTime,
-      String townId,
+      int? townId,
       List<PointEntity> points});
 
   @override
@@ -234,7 +234,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
     Object? phone = null,
     Object? partner = freezed,
     Object? waitingTime = freezed,
-    Object? townId = null,
+    Object? townId = freezed,
     Object? points = null,
   }) {
     return _then(_$OrderEntityImpl(
@@ -286,10 +286,10 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
           ? _value.waitingTime
           : waitingTime // ignore: cast_nullable_to_non_nullable
               as int?,
-      townId: null == townId
+      townId: freezed == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int?,
       points: null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
@@ -314,7 +314,7 @@ class _$OrderEntityImpl implements _OrderEntity {
       this.phone = '',
       this.partner,
       this.waitingTime,
-      this.townId = '',
+      this.townId,
       final List<PointEntity> points = const []})
       : _points = points;
 
@@ -350,8 +350,7 @@ class _$OrderEntityImpl implements _OrderEntity {
   @override
   final int? waitingTime;
   @override
-  @JsonKey()
-  final String townId;
+  final int? townId;
   final List<PointEntity> _points;
   @override
   @JsonKey()
@@ -440,7 +439,7 @@ abstract class _OrderEntity implements OrderEntity {
       final String phone,
       final Partner? partner,
       final int? waitingTime,
-      final String townId,
+      final int? townId,
       final List<PointEntity> points}) = _$OrderEntityImpl;
 
   factory _OrderEntity.fromJson(Map<String, dynamic> json) =
@@ -472,7 +471,7 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   int? get waitingTime;
   @override
-  String get townId;
+  int? get townId;
   @override
   List<PointEntity> get points;
   @override

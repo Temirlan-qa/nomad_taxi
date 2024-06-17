@@ -136,8 +136,10 @@ List<RouteBase> _routes() => <RouteBase>[
         },
       ),
       GoRoute(
-        name: RouteNames.orderPrice,
-        path: RoutePaths.orderPrice,
-        builder: (_, __) => const OrderPricePage(),
-      )
+          name: RouteNames.orderPrice,
+          path: RoutePaths.orderPrice,
+          builder: (_, state) {
+            final String whereTo = state.extra as String;
+            return OrderPricePage(whereTo: whereTo);
+          })
     ];

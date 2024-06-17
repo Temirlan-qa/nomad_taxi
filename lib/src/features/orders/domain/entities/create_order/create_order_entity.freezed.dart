@@ -29,37 +29,37 @@ CreateOrderEntity _$CreateOrderEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CreateOrderEntity {
-  String get townId => throw _privateConstructorUsedError;
+  int get townId => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   List<PointEntity> get points => throw _privateConstructorUsedError;
   int get useBonus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)
+            int townId, int price, List<PointEntity> points, int useBonus)
         $default, {
     required TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)
+            int townId, int price, List<PointEntity> points, int useBonus)
         empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         $default, {
     TResult? Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         $default, {
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         empty,
     required TResult orElse(),
   }) =>
@@ -95,7 +95,7 @@ abstract class $CreateOrderEntityCopyWith<$Res> {
           CreateOrderEntity value, $Res Function(CreateOrderEntity) then) =
       _$CreateOrderEntityCopyWithImpl<$Res, CreateOrderEntity>;
   @useResult
-  $Res call({String townId, int price, List<PointEntity> points, int useBonus});
+  $Res call({int townId, int price, List<PointEntity> points, int useBonus});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class _$CreateOrderEntityCopyWithImpl<$Res, $Val extends CreateOrderEntity>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ abstract class _$$CreateOrderEntityImplCopyWith<$Res>
       __$$CreateOrderEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String townId, int price, List<PointEntity> points, int useBonus});
+  $Res call({int townId, int price, List<PointEntity> points, int useBonus});
 }
 
 /// @nodoc
@@ -168,7 +168,7 @@ class __$$CreateOrderEntityImplCopyWithImpl<$Res>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -201,7 +201,7 @@ class _$CreateOrderEntityImpl implements _CreateOrderEntity {
       _$$CreateOrderEntityImplFromJson(json);
 
   @override
-  final String townId;
+  final int townId;
   @override
   final int price;
   final List<PointEntity> _points;
@@ -251,10 +251,10 @@ class _$CreateOrderEntityImpl implements _CreateOrderEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)
+            int townId, int price, List<PointEntity> points, int useBonus)
         $default, {
     required TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)
+            int townId, int price, List<PointEntity> points, int useBonus)
         empty,
   }) {
     return $default(townId, price, points, useBonus);
@@ -264,10 +264,10 @@ class _$CreateOrderEntityImpl implements _CreateOrderEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         $default, {
     TResult? Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         empty,
   }) {
     return $default?.call(townId, price, points, useBonus);
@@ -277,10 +277,10 @@ class _$CreateOrderEntityImpl implements _CreateOrderEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         $default, {
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         empty,
     required TResult orElse(),
   }) {
@@ -331,7 +331,7 @@ class _$CreateOrderEntityImpl implements _CreateOrderEntity {
 
 abstract class _CreateOrderEntity implements CreateOrderEntity {
   const factory _CreateOrderEntity(
-      {required final String townId,
+      {required final int townId,
       required final int price,
       required final List<PointEntity> points,
       required final int useBonus}) = _$CreateOrderEntityImpl;
@@ -340,7 +340,7 @@ abstract class _CreateOrderEntity implements CreateOrderEntity {
       _$CreateOrderEntityImpl.fromJson;
 
   @override
-  String get townId;
+  int get townId;
   @override
   int get price;
   @override
@@ -362,7 +362,7 @@ abstract class _$$CreateOrderEntityEmptyImplCopyWith<$Res>
       __$$CreateOrderEntityEmptyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String townId, int price, List<PointEntity> points, int useBonus});
+  $Res call({int townId, int price, List<PointEntity> points, int useBonus});
 }
 
 /// @nodoc
@@ -386,7 +386,7 @@ class __$$CreateOrderEntityEmptyImplCopyWithImpl<$Res>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -407,8 +407,8 @@ class __$$CreateOrderEntityEmptyImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CreateOrderEntityEmptyImpl implements _CreateOrderEntityEmpty {
   _$CreateOrderEntityEmptyImpl(
-      {this.townId = '8',
-      this.price = 777,
+      {this.townId = 8,
+      this.price = 1022,
       final List<PointEntity> points = const [
         PointEntity(lat: 42.2222, lng: 77.2222, title: 'Bay'),
         PointEntity(lat: 32.3333, lng: 66.3333, title: 'Abay')
@@ -423,7 +423,7 @@ class _$CreateOrderEntityEmptyImpl implements _CreateOrderEntityEmpty {
 
   @override
   @JsonKey()
-  final String townId;
+  final int townId;
   @override
   @JsonKey()
   final int price;
@@ -476,10 +476,10 @@ class _$CreateOrderEntityEmptyImpl implements _CreateOrderEntityEmpty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)
+            int townId, int price, List<PointEntity> points, int useBonus)
         $default, {
     required TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)
+            int townId, int price, List<PointEntity> points, int useBonus)
         empty,
   }) {
     return empty(townId, price, points, useBonus);
@@ -489,10 +489,10 @@ class _$CreateOrderEntityEmptyImpl implements _CreateOrderEntityEmpty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         $default, {
     TResult? Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         empty,
   }) {
     return empty?.call(townId, price, points, useBonus);
@@ -502,10 +502,10 @@ class _$CreateOrderEntityEmptyImpl implements _CreateOrderEntityEmpty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         $default, {
     TResult Function(
-            String townId, int price, List<PointEntity> points, int useBonus)?
+            int townId, int price, List<PointEntity> points, int useBonus)?
         empty,
     required TResult orElse(),
   }) {
@@ -556,7 +556,7 @@ class _$CreateOrderEntityEmptyImpl implements _CreateOrderEntityEmpty {
 
 abstract class _CreateOrderEntityEmpty implements CreateOrderEntity {
   factory _CreateOrderEntityEmpty(
-      {final String townId,
+      {final int townId,
       final int price,
       final List<PointEntity> points,
       final int useBonus}) = _$CreateOrderEntityEmptyImpl;
@@ -565,7 +565,7 @@ abstract class _CreateOrderEntityEmpty implements CreateOrderEntity {
       _$CreateOrderEntityEmptyImpl.fromJson;
 
   @override
-  String get townId;
+  int get townId;
   @override
   int get price;
   @override

@@ -25,7 +25,7 @@ _$OrderEntityImpl _$$OrderEntityImplFromJson(Map<String, dynamic> json) =>
           ? null
           : Partner.fromJson(json['partner'] as Map<String, dynamic>),
       waitingTime: (json['waitingTime'] as num?)?.toInt(),
-      townId: json['townId'] as String? ?? '',
+      townId: (json['townId'] as num?)?.toInt(),
       points: (json['points'] as List<dynamic>?)
               ?.map((e) => PointEntity.fromJson(e as Map<String, dynamic>))
               .toList() ??

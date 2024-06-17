@@ -93,9 +93,7 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
 
     return BaseBlocWidget<OrderBloc, OrderEvent, OrderState>(
       bloc: getIt<OrderBloc>(),
-      starterEvent: OrderEvent.createOrder(
-        orderEntity: CreateOrderEntity.empty(),
-      ),
+      starterEvent: const OrderEvent.started(),
       builder: (context, state, bloc) {
         return Scaffold(
             body: SafeArea(

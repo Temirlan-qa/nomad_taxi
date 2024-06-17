@@ -8,7 +8,7 @@ part of 'create_order_dto.dart';
 
 _$CreateOrderDtoImpl _$$CreateOrderDtoImplFromJson(Map<String, dynamic> json) =>
     _$CreateOrderDtoImpl(
-      townId: json['town_id'] as String,
+      townId: (json['town_id'] as num?)?.toInt() ?? 8,
       price: (json['price'] as num).toInt(),
       points: (json['points'] as List<dynamic>)
           .map((e) => PointDto.fromJson(e as Map<String, dynamic>))

@@ -64,7 +64,7 @@ final Map<String, dynamic> _mockAcceptOrder =
         "phone": "+77476133356",
         "comment": null,
         "status": "accepted",
-        "town_id": '8',
+        "town_id": 8,
         "created_at": "2021-12-04 16:59:49",
         "points": []
 };

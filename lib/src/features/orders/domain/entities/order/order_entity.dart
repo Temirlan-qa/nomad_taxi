@@ -23,7 +23,7 @@ class OrderEntity extends BaseEntity with _$OrderEntity {
     @Default('') String phone,
     Partner? partner,
     int? waitingTime,
-    @Default('') String townId,
+    int? townId,
     @Default([]) List<PointEntity> points,
   }) = _OrderEntity;
 

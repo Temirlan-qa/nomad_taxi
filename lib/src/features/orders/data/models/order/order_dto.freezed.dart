@@ -39,7 +39,7 @@ mixin _$OrderDto {
   PartnerDto? get partner => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'town_id')
-  String get townId => throw _privateConstructorUsedError;
+  int? get townId => throw _privateConstructorUsedError;
   List<PointDto> get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -66,7 +66,7 @@ abstract class $OrderDtoCopyWith<$Res> {
       @JsonKey(name: 'waiting_time') int? waitingTime,
       PartnerDto? partner,
       String phone,
-      @JsonKey(name: 'town_id') String townId,
+      @JsonKey(name: 'town_id') int? townId,
       List<PointDto> points});
 
   $PayMethodDtoCopyWith<$Res>? get payMethod;
@@ -98,7 +98,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
     Object? waitingTime = freezed,
     Object? partner = freezed,
     Object? phone = null,
-    Object? townId = null,
+    Object? townId = freezed,
     Object? points = null,
   }) {
     return _then(_value.copyWith(
@@ -150,10 +150,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      townId: null == townId
+      townId: freezed == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int?,
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -207,7 +207,7 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
       @JsonKey(name: 'waiting_time') int? waitingTime,
       PartnerDto? partner,
       String phone,
-      @JsonKey(name: 'town_id') String townId,
+      @JsonKey(name: 'town_id') int? townId,
       List<PointDto> points});
 
   @override
@@ -239,7 +239,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
     Object? waitingTime = freezed,
     Object? partner = freezed,
     Object? phone = null,
-    Object? townId = null,
+    Object? townId = freezed,
     Object? points = null,
   }) {
     return _then(_$OrderDtoImpl(
@@ -291,10 +291,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      townId: null == townId
+      townId: freezed == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int?,
       points: null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
@@ -319,7 +319,7 @@ class _$OrderDtoImpl implements _OrderDto {
       @JsonKey(name: 'waiting_time') this.waitingTime = null,
       this.partner = null,
       this.phone = '',
-      @JsonKey(name: 'town_id') this.townId = '',
+      @JsonKey(name: 'town_id') this.townId,
       final List<PointDto> points = const []})
       : _points = points;
 
@@ -360,7 +360,7 @@ class _$OrderDtoImpl implements _OrderDto {
   final String phone;
   @override
   @JsonKey(name: 'town_id')
-  final String townId;
+  final int? townId;
   final List<PointDto> _points;
   @override
   @JsonKey()
@@ -449,7 +449,7 @@ abstract class _OrderDto implements OrderDto {
       @JsonKey(name: 'waiting_time') final int? waitingTime,
       final PartnerDto? partner,
       final String phone,
-      @JsonKey(name: 'town_id') final String townId,
+      @JsonKey(name: 'town_id') final int? townId,
       final List<PointDto> points}) = _$OrderDtoImpl;
 
   factory _OrderDto.fromJson(Map<String, dynamic> json) =
@@ -487,7 +487,7 @@ abstract class _OrderDto implements OrderDto {
   String get phone;
   @override
   @JsonKey(name: 'town_id')
-  String get townId;
+  int? get townId;
   @override
   List<PointDto> get points;
   @override

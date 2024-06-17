@@ -12,9 +12,8 @@ import 'package:nomad_taxi/src/features/orders/data/models/orders_dto/orders_dto
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
-import '../../../domain/entities/create_order/create_order_entity.dart';
+import '../../mappers/create_entity_to_dto_mapper.dart';
 import '../../models/order/order_dto.dart';
-import '../../models/point/point_dto.dart';
 import '../../models/requests/accept_order_request.dart';
 import '../../models/requests/create_order_request.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
@@ -48,11 +47,11 @@ class OrdersRemoteImpl implements IOrdersRemote {
 
       //TODO (bekzhan): Uncomment this line, after fix backend (town_id line)
 
-      // final data = response.data['data'];
+      final data = response.data['data'];
 
-      final mockData = _mockAcceptOrder;
+      // final mockData = _mockAcceptOrder;
 
-      return Right(OrderDto.fromJson(mockData));
+      return Right(OrderDto.fromJson(data));
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -213,23 +212,8 @@ class OrdersRemoteImpl implements IOrdersRemote {
   @override
   Future<Either<DomainException, OrderDto>> createOrder(
       CreateOrderRequest request) async {
-    final CreateOrderEntity entity = request.entity;
-
-    // Mapping entity to dto
-    final List<PointDto> pointsDto = entity.points
-        .map((point) => PointDto(
-              lat: point.lat,
-              lng: point.lng,
-              title: point.title,
-            ))
-        .toList();
-
-    final CreateOrderDto orderDto = CreateOrderDto(
-      townId: entity.townId,
-      price: entity.price,
-      points: pointsDto,
-      useBonus: entity.useBonus,
-    );
+    final CreateOrderDto orderDto =
+        CreateEntityToDtoMapper().map(request.entity);
 
     try {
       var headers = {
@@ -247,15 +231,15 @@ class OrdersRemoteImpl implements IOrdersRemote {
         data: orderDto.toJson(),
       );
 
-    final responseData = response.data as Map<String, dynamic>;
+      final responseData = response.data as Map<String, dynamic>;
 
-    final data = responseData['data'];
+      final data = responseData['data'];
 
-    if (response.statusCode == 200) {
-      return Right(OrderDto.fromJson(data));
-    } else {
-      return Left(UnknownException());
-    }
+      if (response.statusCode == 200) {
+        return Right(OrderDto.fromJson(data));
+      } else {
+        return Left(UnknownException());
+      }
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),

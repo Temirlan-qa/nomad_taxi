@@ -21,7 +21,7 @@ CreateOrderDto _$CreateOrderDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CreateOrderDto {
   @JsonKey(name: 'town_id')
-  String get townId => throw _privateConstructorUsedError;
+  int get townId => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   List<PointDto> get points => throw _privateConstructorUsedError;
   @JsonKey(name: 'use_bonus')
@@ -40,7 +40,7 @@ abstract class $CreateOrderDtoCopyWith<$Res> {
       _$CreateOrderDtoCopyWithImpl<$Res, CreateOrderDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'town_id') String townId,
+      {@JsonKey(name: 'town_id') int townId,
       int price,
       List<PointDto> points,
       @JsonKey(name: 'use_bonus') int useBonus});
@@ -68,7 +68,7 @@ class _$CreateOrderDtoCopyWithImpl<$Res, $Val extends CreateOrderDto>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$CreateOrderDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'town_id') String townId,
+      {@JsonKey(name: 'town_id') int townId,
       int price,
       List<PointDto> points,
       @JsonKey(name: 'use_bonus') int useBonus});
@@ -120,7 +120,7 @@ class __$$CreateOrderDtoImplCopyWithImpl<$Res>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -141,7 +141,7 @@ class __$$CreateOrderDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CreateOrderDtoImpl implements _CreateOrderDto {
   const _$CreateOrderDtoImpl(
-      {@JsonKey(name: 'town_id') required this.townId,
+      {@JsonKey(name: 'town_id') this.townId = 8,
       required this.price,
       required final List<PointDto> points,
       @JsonKey(name: 'use_bonus') required this.useBonus})
@@ -152,7 +152,7 @@ class _$CreateOrderDtoImpl implements _CreateOrderDto {
 
   @override
   @JsonKey(name: 'town_id')
-  final String townId;
+  final int townId;
   @override
   final int price;
   final List<PointDto> _points;
@@ -206,7 +206,7 @@ class _$CreateOrderDtoImpl implements _CreateOrderDto {
 
 abstract class _CreateOrderDto implements CreateOrderDto {
   const factory _CreateOrderDto(
-          {@JsonKey(name: 'town_id') required final String townId,
+          {@JsonKey(name: 'town_id') final int townId,
           required final int price,
           required final List<PointDto> points,
           @JsonKey(name: 'use_bonus') required final int useBonus}) =
@@ -217,7 +217,7 @@ abstract class _CreateOrderDto implements CreateOrderDto {
 
   @override
   @JsonKey(name: 'town_id')
-  String get townId;
+  int get townId;
   @override
   int get price;
   @override

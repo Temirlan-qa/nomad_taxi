@@ -24,7 +24,7 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
           ? null
           : PartnerDto.fromJson(json['partner'] as Map<String, dynamic>),
       phone: json['phone'] as String? ?? '',
-      townId: json['town_id'] as String? ?? '',
+      townId: (json['town_id'] as num?)?.toInt(),
       points: (json['points'] as List<dynamic>?)
               ?.map((e) => PointDto.fromJson(e as Map<String, dynamic>))
               .toList() ??

@@ -23,7 +23,7 @@ class OrderDto extends BaseDto with _$OrderDto {
     @Default(null) @JsonKey(name: 'waiting_time') int? waitingTime,
     @Default(null) PartnerDto? partner,
     @Default('') String phone,
-    @Default('') @JsonKey(name: 'town_id') String townId,
+    @JsonKey(name: 'town_id') int? townId,
     @Default([]) List<PointDto> points,
   }) = _OrderDto;
 

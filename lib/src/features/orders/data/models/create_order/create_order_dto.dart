@@ -9,7 +9,7 @@ part 'create_order_dto.g.dart';
 @freezed
 class CreateOrderDto extends BaseDto with _$CreateOrderDto {
   const factory CreateOrderDto({
-     @JsonKey(name: 'town_id') required String townId,
+    @Default(8) @JsonKey(name: 'town_id') int townId,
     required int price,
     required List<PointDto> points,
     @JsonKey(name: 'use_bonus') required int useBonus,
