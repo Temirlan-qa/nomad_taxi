@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Тапсырыстан бас тарту"),
         "canceled": MessageLookupByLibrary.simpleMessage("Жойылды"),
         "car": MessageLookupByLibrary.simpleMessage("Машина"),
+        "carModel": MessageLookupByLibrary.simpleMessage("Көлік үлгісі"),
+        "carNumber": MessageLookupByLibrary.simpleMessage("Көліктің нөмірі"),
         "car_data": MessageLookupByLibrary.simpleMessage("Машина деректері"),
         "car_info_hint_text": MessageLookupByLibrary.simpleMessage(
             "Үтір арқылы келесі ретпен теріңіз:\nТүсі, маркасы, моделі (кузовы)"),

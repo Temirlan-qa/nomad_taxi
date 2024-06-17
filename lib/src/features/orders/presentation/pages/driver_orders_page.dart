@@ -158,24 +158,31 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       //TODO: add type of orders
+                                      // Text(
+                                      //   S.current.delivery,
+                                      //   style: context.theme.textStyles.bodyMain
+                                      //       .copyWith(
+                                      //           color: context.theme.blue),
+                                      // ),
+                                      // const Gap(UIConstants.defaultGap5),
 
                                       Text(
-                                        S.current.delivery,
-                                        style: context.theme.textStyles.bodyMain
-                                            .copyWith(
-                                                color: context.theme.blue),
+                                        '${orderList[index].price} 〒',
+                                        style:
+                                            context.theme.textStyles.extraTitle,
                                       ),
-                                      const Gap(UIConstants.defaultGap5),
-                                      Text('${orderList[index].price} 〒',
-                                          style: context
-                                              .theme.textStyles.extraTitle),
                                     ],
                                   ),
-                                  Assets.icons.solid.routeSolid1.svg(
-                                      height: 24,
-                                      width: 24,
-                                      colorFilter: ColorFilter.mode(
-                                          context.theme.red, BlendMode.srcIn)),
+                                  orderList[index].points != null
+                                      ? Assets.icons.solid.routeSolid1.svg(
+                                          height: 24,
+                                          width: 24,
+                                          colorFilter: ColorFilter.mode(
+                                            context.theme.red,
+                                            BlendMode.srcIn,
+                                          ),
+                                        )
+                                      : const Offstage(),
                                 ],
                               ),
                               const Gap(UIConstants.defaultGap2),
@@ -184,26 +191,30 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Expanded(
-                                    child: Text(orderList[index].startPoint,
-                                        maxLines: 3,
-                                        overflow: TextOverflow.ellipsis,
-                                        style:
-                                            context.theme.textStyles.headLine),
+                                    child: Text(
+                                      orderList[index].startPoint,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: context.theme.textStyles.headLine,
+                                    ),
                                   ),
                                   const Gap(UIConstants.defaultGap2),
                                   Assets.icons.brand.arrow1.svg(
-                                      height: 18,
-                                      width: 18,
-                                      colorFilter: ColorFilter.mode(
-                                          context.theme.secondary,
-                                          BlendMode.srcIn)),
+                                    height: 18,
+                                    width: 18,
+                                    colorFilter: ColorFilter.mode(
+                                      context.theme.secondary,
+                                      BlendMode.srcIn,
+                                    ),
+                                  ),
                                   const Gap(UIConstants.defaultGap2),
                                   Expanded(
-                                    child: Text(orderList[index].endPoint,
-                                        maxLines: 3,
-                                        overflow: TextOverflow.ellipsis,
-                                        style:
-                                            context.theme.textStyles.headLine),
+                                    child: Text(
+                                      orderList[index].endPoint,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: context.theme.textStyles.headLine,
+                                    ),
                                   ),
                                 ],
                               ),

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/point/point_entity.dart';
 
 import '../../../../../../src/core/base/base_models/base_entity.dart';
 import '../../../../profile/domain/entities/partner/partner.dart';

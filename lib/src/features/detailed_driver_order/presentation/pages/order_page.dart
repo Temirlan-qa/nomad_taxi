@@ -156,17 +156,23 @@ class OrderPage extends StatelessWidget {
             const Gap(UIConstants.defaultGap7),
             Row(
               children: [
-                Expanded(
-                  child: CustomMainButtonWidget(
-                    title: S.current.route,
-                    onPressed: () {},
-                    isMain: false,
-                    prefixIcon: Assets.icons.solid.routeSolid1,
-                    iconColor: context.theme.red,
-                    color: context.theme.red,
-                  ),
-                ),
-                const Gap(UIConstants.defaultGap1),
+                order.points != null
+                    ? Row(
+                        children: [
+                          Expanded(
+                            child: CustomMainButtonWidget(
+                              title: S.current.route,
+                              onPressed: () {},
+                              isMain: false,
+                              prefixIcon: Assets.icons.solid.routeSolid1,
+                              iconColor: context.theme.red,
+                              color: context.theme.red,
+                            ),
+                          ),
+                          const Gap(UIConstants.defaultGap1),
+                        ],
+                      )
+                    : const Offstage(),
                 Expanded(
                   child: CustomMainButtonWidget(
                     title: S.current.call,

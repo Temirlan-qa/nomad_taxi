@@ -166,10 +166,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         viewModel.pId != null
                             ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Gap(6),
                                   Text(
-                                    viewModel.pCarNumber!,
+                                    S.current.carNumber,
                                     style: context.theme.textStyles.bodyMain
                                         .copyWith(
                                             color: context.theme.secondary),
@@ -183,7 +184,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                   const Gap(6),
                                   Text(
-                                    viewModel.pCarModel!,
+                                    S.current.carModel,
                                     style: context.theme.textStyles.bodyMain
                                         .copyWith(
                                             color: context.theme.secondary),

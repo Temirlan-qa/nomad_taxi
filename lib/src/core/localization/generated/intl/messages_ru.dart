@@ -61,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Отменить заказ"),
         "canceled": MessageLookupByLibrary.simpleMessage("Отменён"),
         "car": MessageLookupByLibrary.simpleMessage("Машина"),
+        "carModel": MessageLookupByLibrary.simpleMessage("Модель автомобиля"),
+        "carNumber": MessageLookupByLibrary.simpleMessage("Номер машины"),
         "car_data": MessageLookupByLibrary.simpleMessage("Данные машины"),
         "car_info_hint_text": MessageLookupByLibrary.simpleMessage(
             "Введите в следующем порядке через запятую:\nЦвет, Марка, Модель (кузов)"),

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_models/base_dto.dart';
+import 'package:nomad_taxi/src/features/orders/data/models/point/point_dto.dart';
 
 import '../../../../profile/data/models/partner/partner_dto.dart';
 import '../pay_method/pay_method_dto.dart';

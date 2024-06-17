@@ -29,6 +29,8 @@
   "help": "Помощь",
   "congratulate": "Поздравляем!",
   "you_get_bonus": "Вы получили {amount} тенге бонусов",
+  "carNumber":"Номер машины",
+  "carModel":"Модель автомобиля",
   "@you_get_bonus": {
     "placeholders": {
       "amount": {
