@@ -30,8 +30,6 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
 
   Timer? _timer;
 
-  final orderBloc = getIt<OrderBloc>();
-
   @override
   void initState() {
     startTimer();
@@ -66,6 +64,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
   @override
   Widget build(BuildContext context) {
     String time = _formattedTime(timeInSecond: duration.inSeconds);
+    final orderBloc = getIt<OrderBloc>();
     return Scaffold(
       appBar: CustomAppBar(
         leading: BackButtonWrapper(onPressed: () => context.pop()),

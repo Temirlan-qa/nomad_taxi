@@ -8,9 +8,15 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/custom_order_price_text_field_widget.dart';
+import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart';
+
+import '../../../../core/service/injectable/injectable_service.dart';
+import '../../../orders/domain/entities/create_order/create_order_entity.dart';
 
 class OrderPricePage extends StatefulWidget {
-  const OrderPricePage({super.key});
+  const OrderPricePage({super.key, required this.whereTo});
+
+  final String whereTo;
 
   @override
   State<OrderPricePage> createState() => _OrderPricePageState();
@@ -24,10 +30,13 @@ class _OrderPricePageState extends State<OrderPricePage> {
   String priceOrder = '500';
   String cashbackPercent = '+10%';
 
+  int orderPrice = 800;
+
   @override
   Widget build(BuildContext context) {
     final bodyMain = context.theme.textStyles.bodyMain;
     final secondary = context.theme.secondary;
+    final OrderBloc orderBloc = getIt<OrderBloc>();
     return Scaffold(
         body: SafeArea(
       child: Form(
@@ -88,7 +97,23 @@ class _OrderPricePageState extends State<OrderPricePage> {
                     ],
                   )),
               const Gap(UIConstants.defaultGap2),
-              CustomOrderPriceTextFieldWidget(controller: priceController),
+              CustomOrderPriceTextFieldWidget(
+                  controller: priceController,
+                  orderPrice: orderPrice,
+                  onDecrease: orderPrice == 800
+                      ? null
+                      : () {
+                          setState(() {
+                            orderPrice >= 800 ? orderPrice -= 100 : 0;
+                            priceController.text = '$orderPrice ₸';
+                          });
+                        },
+                  onIncrease: () {
+                    setState(() {
+                      orderPrice += 100;
+                      priceController.text = '$orderPrice ₸';
+                    });
+                  }),
               const Gap(UIConstants.defaultGap2),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +158,22 @@ class _OrderPricePageState extends State<OrderPricePage> {
                     child: CustomMainButtonWidget(
                       title: S.current.next,
                       onPressed: () {
-                        context.push(RoutePaths.orderSearch);
+                        context.push(RoutePaths.orderSearch, extra: orderPrice);
+
+                        orderBloc.add(
+                          OrderEvent.createOrder(
+                            orderEntity: CreateOrderEntity.empty(
+                              price: orderPrice,
+                              // points: [
+                              //   PointEntity(
+                              //     lat: 45.21111,
+                              //     lng: 76.21111,
+                              //     title: widget.whereTo,
+                              //   ),
+                              // ],
+                            ),
+                          ),
+                        );
                       },
                     ),
                   )

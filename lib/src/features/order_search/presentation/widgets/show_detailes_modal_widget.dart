@@ -23,7 +23,7 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
     required this.onTapClose,
     required this.onTapCallToDriver,
   });
-  final OrderState state;
+  final OrderStateEnum state;
   final ScrollController scrollController;
   final String addressFrom;
   final String addressTo;
@@ -34,26 +34,26 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
   final VoidCallback? onTapClose;
   final VoidCallback? onTapCallToDriver;
 
-  String orderStateName(OrderState orderState) {
+  String orderStateName(OrderStateEnum orderState) {
     switch (orderState) {
-      case OrderState.completed:
+      case OrderStateEnum.completed:
         return S.current.done;
-      case OrderState.progress:
+      case OrderStateEnum.progress:
         return S.current.in_progress;
-      case OrderState.searching:
+      case OrderStateEnum.searching:
         return S.current.on_search;
-      case OrderState.canceled:
+      case OrderStateEnum.canceled:
         return S.current.canceled;
       default:
         return S.current.in_progress;
     }
   }
 
-  Color orderStateColor(BuildContext context, OrderState orderState) {
+  Color orderStateColor(BuildContext context, OrderStateEnum orderState) {
     switch (orderState) {
-      case OrderState.completed:
+      case OrderStateEnum.completed:
         return context.theme.green;
-      case OrderState.canceled:
+      case OrderStateEnum.canceled:
         return context.theme.red;
       default:
         return context.theme.blue;
@@ -123,7 +123,7 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
               ),
               firstChild: const Offstage(),
               duration: Durations.medium1,
-              crossFadeState: state == OrderState.searching
+              crossFadeState: state == OrderStateEnum.searching
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
             ),
@@ -142,7 +142,7 @@ class CustomDetailedInfoModalWidget extends StatelessWidget {
                 ),
               ),
               secondChild: const Offstage(),
-              crossFadeState: state != OrderState.searching
+              crossFadeState: state != OrderStateEnum.searching
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
             ),

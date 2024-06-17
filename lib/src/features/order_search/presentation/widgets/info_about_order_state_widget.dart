@@ -5,27 +5,28 @@ import 'package:nomad_taxi/src/features/order_search/presentation/widgets/progre
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/searching_info_state_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/waiting_info_state_widget.dart';
 
-class InfoAboutOrderStateWidget extends StatefulWidget {
-  const InfoAboutOrderStateWidget({super.key, required this.state});
-  final OrderState state;
+import 'error_info_state_widget.dart';
 
-  @override
-  State<InfoAboutOrderStateWidget> createState() =>
-      _InfoAboutOrderStateWidgetState();
-}
+class InfoAboutOrderStateWidget extends StatelessWidget {
+  const InfoAboutOrderStateWidget(
+      {super.key, required this.state, this.errorMessage});
+  final OrderStateEnum state;
 
-class _InfoAboutOrderStateWidgetState extends State<InfoAboutOrderStateWidget> {
+  final String? errorMessage;
+
   @override
   Widget build(BuildContext context) {
-    switch (widget.state) {
-      case OrderState.searching:
+    switch (state) {
+      case OrderStateEnum.searching:
         return const SearchingInfoStateWidget();
-      case OrderState.accepted:
+      case OrderStateEnum.accepted:
         return const AcceptedInfoStateWidget();
-      case OrderState.waiting:
+      case OrderStateEnum.waiting:
         return const WaitingInfoStateWidget();
-      case OrderState.progress:
+      case OrderStateEnum.progress:
         return const ProgressInfoStateWidget();
+      case OrderStateEnum.error:
+        return ErrorInfoStateWidget(errorMessage: errorMessage);
       default:
         return const Offstage();
     }

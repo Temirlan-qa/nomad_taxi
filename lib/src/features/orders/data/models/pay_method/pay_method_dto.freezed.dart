@@ -20,7 +20,6 @@ PayMethodDto _$PayMethodDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PayMethodDto {
-  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'by_cash')
   int get byCash => throw _privateConstructorUsedError;
   @JsonKey(name: 'by_bonus')
@@ -39,8 +38,7 @@ abstract class $PayMethodDtoCopyWith<$Res> {
       _$PayMethodDtoCopyWithImpl<$Res, PayMethodDto>;
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'by_cash') int byCash,
+      {@JsonKey(name: 'by_cash') int byCash,
       @JsonKey(name: 'by_bonus') int byBonus});
 }
 
@@ -57,15 +55,10 @@ class _$PayMethodDtoCopyWithImpl<$Res, $Val extends PayMethodDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? byCash = null,
     Object? byBonus = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       byCash: null == byCash
           ? _value.byCash
           : byCash // ignore: cast_nullable_to_non_nullable
@@ -87,8 +80,7 @@ abstract class _$$PayMethodDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'by_cash') int byCash,
+      {@JsonKey(name: 'by_cash') int byCash,
       @JsonKey(name: 'by_bonus') int byBonus});
 }
 
@@ -103,15 +95,10 @@ class __$$PayMethodDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? byCash = null,
     Object? byBonus = null,
   }) {
     return _then(_$PayMethodDtoImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       byCash: null == byCash
           ? _value.byCash
           : byCash // ignore: cast_nullable_to_non_nullable
@@ -128,15 +115,12 @@ class __$$PayMethodDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PayMethodDtoImpl implements _PayMethodDto {
   const _$PayMethodDtoImpl(
-      {required this.id,
-      @JsonKey(name: 'by_cash') required this.byCash,
+      {@JsonKey(name: 'by_cash') required this.byCash,
       @JsonKey(name: 'by_bonus') required this.byBonus});
 
   factory _$PayMethodDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$PayMethodDtoImplFromJson(json);
 
-  @override
-  final String id;
   @override
   @JsonKey(name: 'by_cash')
   final int byCash;
@@ -146,7 +130,7 @@ class _$PayMethodDtoImpl implements _PayMethodDto {
 
   @override
   String toString() {
-    return 'PayMethodDto(id: $id, byCash: $byCash, byBonus: $byBonus)';
+    return 'PayMethodDto(byCash: $byCash, byBonus: $byBonus)';
   }
 
   @override
@@ -154,14 +138,13 @@ class _$PayMethodDtoImpl implements _PayMethodDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PayMethodDtoImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.byCash, byCash) || other.byCash == byCash) &&
             (identical(other.byBonus, byBonus) || other.byBonus == byBonus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, byCash, byBonus);
+  int get hashCode => Object.hash(runtimeType, byCash, byBonus);
 
   @JsonKey(ignore: true)
   @override
@@ -179,16 +162,13 @@ class _$PayMethodDtoImpl implements _PayMethodDto {
 
 abstract class _PayMethodDto implements PayMethodDto {
   const factory _PayMethodDto(
-          {required final String id,
-          @JsonKey(name: 'by_cash') required final int byCash,
+          {@JsonKey(name: 'by_cash') required final int byCash,
           @JsonKey(name: 'by_bonus') required final int byBonus}) =
       _$PayMethodDtoImpl;
 
   factory _PayMethodDto.fromJson(Map<String, dynamic> json) =
       _$PayMethodDtoImpl.fromJson;
 
-  @override
-  String get id;
   @override
   @JsonKey(name: 'by_cash')
   int get byCash;

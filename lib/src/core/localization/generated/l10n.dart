@@ -1679,6 +1679,16 @@ class S {
       args: [],
     );
   }
+
+  /// `На вашем балансе недостаточно средств для приема заказов`
+  String get youDoNotHaveEnoughBalance {
+    return Intl.message(
+      'На вашем балансе недостаточно средств для приема заказов',
+      name: 'youDoNotHaveEnoughBalance',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
