@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/point/point_entity.dart';
 
 import '../../../../../../src/core/base/base_models/base_entity.dart';
 
@@ -21,7 +22,7 @@ class OrderEntity extends BaseEntity with _$OrderEntity {
     // Partner? partner,
     // int? waitingTime,
     // required int townId,
-    // required List<PointEntity> points,
+    List<PointEntity>? points,
   }) = _OrderEntity;
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) =>

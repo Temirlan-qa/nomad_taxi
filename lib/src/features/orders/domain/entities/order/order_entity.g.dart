@@ -15,6 +15,9 @@ _$OrderEntityImpl _$$OrderEntityImplFromJson(Map<String, dynamic> json) =>
       comment: json['comment'] as String?,
       status: json['status'] as String,
       hasRoute: json['hasRoute'] as bool,
+      points: (json['points'] as List<dynamic>?)
+          ?.map((e) => PointEntity.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$OrderEntityImplToJson(_$OrderEntityImpl instance) =>
@@ -26,4 +29,5 @@ Map<String, dynamic> _$$OrderEntityImplToJson(_$OrderEntityImpl instance) =>
       'comment': instance.comment,
       'status': instance.status,
       'hasRoute': instance.hasRoute,
+      'points': instance.points,
     };
