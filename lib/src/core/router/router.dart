@@ -19,6 +19,7 @@ import 'package:nomad_taxi/src/features/order_search/presentation/pages/order_se
 import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/pages/driver_orders_page.dart';
 import 'package:nomad_taxi/src/features/profile/presentation/pages/profile_page.dart';
+import 'package:nomad_taxi/src/features/promo_code/presentation/bloc/activate_promocode_bloc.dart';
 import 'package:nomad_taxi/src/features/promo_code/presentation/pages/promo_code_added_page.dart';
 import 'package:nomad_taxi/src/features/promo_code/presentation/pages/promo_code_page.dart';
 import 'package:nomad_taxi/src/features/settings/presentation/pages/settings_page.dart';

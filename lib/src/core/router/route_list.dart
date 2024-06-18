@@ -50,10 +50,14 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, __) => const PromoCodePage(),
       ),
       GoRoute(
-        name: RouteNames.promoCodeAdded,
-        path: RoutePaths.promoCodeAdded,
-        builder: (_, __) => const PromoCodeAddedPage(),
-      ),
+          name: RouteNames.promoCodeAdded,
+          path: RoutePaths.promoCodeAdded,
+          builder: (context, state) {
+            final map = state.extra as ActivatePromocodeViewModel;
+            return PromoCodeAddedPage(
+              activatePromocodeViewModel: map,
+            );
+          }),
       GoRoute(
         name: RouteNames.help,
         path: RoutePaths.help,

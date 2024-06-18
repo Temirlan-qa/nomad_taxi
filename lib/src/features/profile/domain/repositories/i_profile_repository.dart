@@ -1,6 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:nomad_taxi/src/features/profile/domain/entities/available_languages_response/available_languages_response.dart';
 import 'package:nomad_taxi/src/features/profile/domain/entities/profile_entity.dart';
+import 'package:nomad_taxi/src/features/profile/domain/entities/promocode_response/promocode_response.dart';
+import 'package:nomad_taxi/src/features/profile/domain/requests/activate_promocode_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
@@ -39,4 +41,7 @@ abstract class IProfileRepository {
 
   Future<Either<DomainException, AvailableLanguagesResponse>>
       getAvailableLanguages();
+
+  Future<Either<DomainException, PromocodeResponse>> activatePromocode(
+      ActivatePromocodeRequest request);
 }
