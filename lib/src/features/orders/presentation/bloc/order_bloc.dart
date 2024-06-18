@@ -10,7 +10,6 @@ import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/requests/create_order_request.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
-import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
 
@@ -73,15 +72,20 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
     final result = await _createOrderUseCase.call(createOrderRequest);
 
-    final OrderResponse? data = result.data;
+    OrderResponse? data = result.data;
 
-    if (result.isSuccessful && data != null) {
-      int orderId = data.order.id;
+    OrderEntity? order = data?.order;
+
+    if (result.isSuccessful && order != null) {
+      int orderId = order.id;
 
       log('order created success', name: 'CreateOrder');
 
       add(_AcceptOrder(orderId: orderId));
+      return;
     }
+
+    emit(const _Error('Failed to create order'));
   }
 
   Future<void> _getOrders(
@@ -120,11 +124,13 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
     final OrderResponse? data = result.data;
 
-    if (result.isSuccessful && data != null) {
+    final OrderEntity? order = data?.order;
+
+    if (result.isSuccessful && order != null) {
       log('success accepted order', name: 'ACCEPT ORDER');
 
       List<OrderEntity> updatedOrdersList = List.from(_viewModel.ordersList);
-      updatedOrdersList.add(data.order);
+      updatedOrdersList.add(order);
 
       _viewModel = _viewModel.copyWith(ordersList: updatedOrdersList);
 

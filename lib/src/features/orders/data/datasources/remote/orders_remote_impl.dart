@@ -9,9 +9,11 @@ import 'package:nomad_taxi/src/features/orders/data/models/create_order_response
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/orders_dto/orders_dto.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
+import '../../../../../core/utils/loggers/logger.dart';
 import '../../mappers/create_entity_to_dto_mapper.dart';
 import '../../models/order/order_dto.dart';
 import '../../models/requests/accept_order_request.dart';
@@ -45,11 +47,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         ),
       );
 
-      //TODO (bekzhan): Uncomment this line, after fix backend (town_id line)
-
       final data = response.data['data'];
-
-      // final mockData = _mockAcceptOrder;
 
       return Right(OrderDto.fromJson(data));
     } catch (e) {
@@ -210,17 +208,26 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderDto>> createOrder(
+  Future<Either<DomainException, OrderResponse>> createOrder(
       CreateOrderRequest request) async {
     final CreateOrderDto orderDto =
         CreateEntityToDtoMapper().map(request.entity);
 
     try {
       var headers = {
-        'Accept-Language': 'ru',
         'Accept': 'application/json',
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
+      // var mockData = json.encode({
+      //   "town_id": 8,
+      //   "price": 1287,
+      //   "points": [
+      //     {"lat": 31.11111, "lng": 22.11111, "title": "Байтурсынова 86"},
+      //     {"lat": 45.21111, "lng": 76.21111, "title": "Абая 157"}
+      //   ],
+      //   "use_bonus": 1
+      // });
       var dio = Dio();
       var response = await dio.request(
         'https://auyltaxi.kz/api/v1/order',
@@ -231,19 +238,17 @@ class OrdersRemoteImpl implements IOrdersRemote {
         data: orderDto.toJson(),
       );
 
-      final responseData = response.data as Map<String, dynamic>;
-
-      final data = responseData['data'];
-
       if (response.statusCode == 200) {
-        return Right(OrderDto.fromJson(data));
-      } else {
-        return Left(UnknownException());
+        log('${response.data}', name: 'TestOrderResponse');
+        return Right(OrderResponse.fromJson(response.data['data']));
       }
-    } catch (e) {
-      return Left(
-        e is DomainException ? e : UnknownException(message: e.toString()),
+      return Left(UnknownException());
+    } catch (error, stackTrace) {
+      Log.e(
+        'OrderRemoteImpl.createOrder: $error',
+        stackTrace: stackTrace,
       );
+      return Left(UnknownException(message: 'Failed to create order: $error'));
     }
   }
 
