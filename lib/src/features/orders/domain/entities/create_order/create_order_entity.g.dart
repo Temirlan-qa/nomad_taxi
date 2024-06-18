@@ -9,15 +9,13 @@ part of 'create_order_entity.dart';
 _$CreateOrderEntityImpl _$$CreateOrderEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateOrderEntityImpl(
-      townId: json['townId'] as String,
+      townId: (json['townId'] as num).toInt(),
       price: (json['price'] as num).toInt(),
+      points: (json['points'] as List<dynamic>)
+          .map((e) => PointEntity.fromJson(e as Map<String, dynamic>))
+          .toList(),
       useBonus: (json['useBonus'] as num).toInt(),
-      startPointLat: (json['startPointLat'] as num).toDouble(),
-      startPointLng: (json['startPointLng'] as num).toDouble(),
-      startPointTitle: json['startPointTitle'] as String,
-      endPointLat: (json['endPointLat'] as num).toDouble(),
-      endPointLng: (json['endPointLng'] as num).toDouble(),
-      endPointTitle: json['endPointTitle'] as String,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$CreateOrderEntityImplToJson(
@@ -25,11 +23,33 @@ Map<String, dynamic> _$$CreateOrderEntityImplToJson(
     <String, dynamic>{
       'townId': instance.townId,
       'price': instance.price,
+      'points': instance.points,
       'useBonus': instance.useBonus,
-      'startPointLat': instance.startPointLat,
-      'startPointLng': instance.startPointLng,
-      'startPointTitle': instance.startPointTitle,
-      'endPointLat': instance.endPointLat,
-      'endPointLng': instance.endPointLng,
-      'endPointTitle': instance.endPointTitle,
+      'runtimeType': instance.$type,
+    };
+
+_$CreateOrderEntityEmptyImpl _$$CreateOrderEntityEmptyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CreateOrderEntityEmptyImpl(
+      townId: (json['townId'] as num?)?.toInt() ?? 8,
+      price: (json['price'] as num?)?.toInt() ?? 1022,
+      points: (json['points'] as List<dynamic>?)
+              ?.map((e) => PointEntity.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [
+            PointEntity(lat: 42.2222, lng: 77.2222, title: 'Bay'),
+            PointEntity(lat: 32.3333, lng: 66.3333, title: 'Abay')
+          ],
+      useBonus: (json['useBonus'] as num?)?.toInt() ?? 1,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$CreateOrderEntityEmptyImplToJson(
+        _$CreateOrderEntityEmptyImpl instance) =>
+    <String, dynamic>{
+      'townId': instance.townId,
+      'price': instance.price,
+      'points': instance.points,
+      'useBonus': instance.useBonus,
+      'runtimeType': instance.$type,
     };

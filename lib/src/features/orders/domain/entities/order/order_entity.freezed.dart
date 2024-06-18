@@ -25,15 +25,16 @@ mixin _$OrderEntity {
   String get endPoint => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  bool get hasRoute =>
-      throw _privateConstructorUsedError; // required String createdAt,
-// required PayMethodEntity payMethod,
-// required String phone,
-// Partner? partner,
-// int? waitingTime,
-// required int townId,
-  List<PointEntity>? get points => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+  bool get hasRoute => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'pay_method')
+  PayMethodEntity? get payMethod => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+  Partner? get partner => throw _privateConstructorUsedError;
+  int? get waitingTime => throw _privateConstructorUsedError;
+  int? get townId => throw _privateConstructorUsedError;
+  List<PointEntity> get points => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,9 +54,18 @@ abstract class $OrderEntityCopyWith<$Res> {
       String endPoint,
       int price,
       String? comment,
-      String status,
+      String? status,
       bool hasRoute,
-      List<PointEntity>? points});
+      String createdAt,
+      @JsonKey(name: 'pay_method') PayMethodEntity? payMethod,
+      String phone,
+      Partner? partner,
+      int? waitingTime,
+      int? townId,
+      List<PointEntity> points});
+
+  $PayMethodEntityCopyWith<$Res>? get payMethod;
+  $PartnerCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -76,9 +86,15 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
     Object? endPoint = null,
     Object? price = null,
     Object? comment = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? hasRoute = null,
-    Object? points = freezed,
+    Object? createdAt = null,
+    Object? payMethod = freezed,
+    Object? phone = null,
+    Object? partner = freezed,
+    Object? waitingTime = freezed,
+    Object? townId = freezed,
+    Object? points = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,19 +117,67 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       hasRoute: null == hasRoute
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
               as bool,
-      points: freezed == points
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      payMethod: freezed == payMethod
+          ? _value.payMethod
+          : payMethod // ignore: cast_nullable_to_non_nullable
+              as PayMethodEntity?,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      partner: freezed == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as Partner?,
+      waitingTime: freezed == waitingTime
+          ? _value.waitingTime
+          : waitingTime // ignore: cast_nullable_to_non_nullable
+              as int?,
+      townId: freezed == townId
+          ? _value.townId
+          : townId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
-              as List<PointEntity>?,
+              as List<PointEntity>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PayMethodEntityCopyWith<$Res>? get payMethod {
+    if (_value.payMethod == null) {
+      return null;
+    }
+
+    return $PayMethodEntityCopyWith<$Res>(_value.payMethod!, (value) {
+      return _then(_value.copyWith(payMethod: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartnerCopyWith<$Res>? get partner {
+    if (_value.partner == null) {
+      return null;
+    }
+
+    return $PartnerCopyWith<$Res>(_value.partner!, (value) {
+      return _then(_value.copyWith(partner: value) as $Val);
+    });
   }
 }
 
@@ -131,9 +195,20 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
       String endPoint,
       int price,
       String? comment,
-      String status,
+      String? status,
       bool hasRoute,
-      List<PointEntity>? points});
+      String createdAt,
+      @JsonKey(name: 'pay_method') PayMethodEntity? payMethod,
+      String phone,
+      Partner? partner,
+      int? waitingTime,
+      int? townId,
+      List<PointEntity> points});
+
+  @override
+  $PayMethodEntityCopyWith<$Res>? get payMethod;
+  @override
+  $PartnerCopyWith<$Res>? get partner;
 }
 
 /// @nodoc
@@ -152,9 +227,15 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
     Object? endPoint = null,
     Object? price = null,
     Object? comment = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? hasRoute = null,
-    Object? points = freezed,
+    Object? createdAt = null,
+    Object? payMethod = freezed,
+    Object? phone = null,
+    Object? partner = freezed,
+    Object? waitingTime = freezed,
+    Object? townId = freezed,
+    Object? points = null,
   }) {
     return _then(_$OrderEntityImpl(
       id: null == id
@@ -177,18 +258,42 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       hasRoute: null == hasRoute
           ? _value.hasRoute
           : hasRoute // ignore: cast_nullable_to_non_nullable
               as bool,
-      points: freezed == points
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      payMethod: freezed == payMethod
+          ? _value.payMethod
+          : payMethod // ignore: cast_nullable_to_non_nullable
+              as PayMethodEntity?,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      partner: freezed == partner
+          ? _value.partner
+          : partner // ignore: cast_nullable_to_non_nullable
+              as Partner?,
+      waitingTime: freezed == waitingTime
+          ? _value.waitingTime
+          : waitingTime // ignore: cast_nullable_to_non_nullable
+              as int?,
+      townId: freezed == townId
+          ? _value.townId
+          : townId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      points: null == points
           ? _value._points
           : points // ignore: cast_nullable_to_non_nullable
-              as List<PointEntity>?,
+              as List<PointEntity>,
     ));
   }
 }
@@ -202,9 +307,15 @@ class _$OrderEntityImpl implements _OrderEntity {
       required this.endPoint,
       required this.price,
       this.comment,
-      required this.status,
-      required this.hasRoute,
-      final List<PointEntity>? points})
+      this.status,
+      this.hasRoute = false,
+      this.createdAt = '',
+      @JsonKey(name: 'pay_method') this.payMethod,
+      this.phone = '',
+      this.partner,
+      this.waitingTime,
+      this.townId,
+      final List<PointEntity> points = const []})
       : _points = points;
 
   factory _$OrderEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -221,34 +332,37 @@ class _$OrderEntityImpl implements _OrderEntity {
   @override
   final String? comment;
   @override
-  final String status;
+  final String? status;
   @override
+  @JsonKey()
   final bool hasRoute;
-// required String createdAt,
-// required PayMethodEntity payMethod,
-// required String phone,
-// Partner? partner,
-// int? waitingTime,
-// required int townId,
-  final List<PointEntity>? _points;
-// required String createdAt,
-// required PayMethodEntity payMethod,
-// required String phone,
-// Partner? partner,
-// int? waitingTime,
-// required int townId,
   @override
-  List<PointEntity>? get points {
-    final value = _points;
-    if (value == null) return null;
+  @JsonKey()
+  final String createdAt;
+  @override
+  @JsonKey(name: 'pay_method')
+  final PayMethodEntity? payMethod;
+  @override
+  @JsonKey()
+  final String phone;
+  @override
+  final Partner? partner;
+  @override
+  final int? waitingTime;
+  @override
+  final int? townId;
+  final List<PointEntity> _points;
+  @override
+  @JsonKey()
+  List<PointEntity> get points {
     if (_points is EqualUnmodifiableListView) return _points;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_points);
   }
 
   @override
   String toString() {
-    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, points: $points)';
+    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, createdAt: $createdAt, payMethod: $payMethod, phone: $phone, partner: $partner, waitingTime: $waitingTime, townId: $townId, points: $points)';
   }
 
   @override
@@ -266,13 +380,36 @@ class _$OrderEntityImpl implements _OrderEntity {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.hasRoute, hasRoute) ||
                 other.hasRoute == hasRoute) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.payMethod, payMethod) ||
+                other.payMethod == payMethod) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.partner, partner) || other.partner == partner) &&
+            (identical(other.waitingTime, waitingTime) ||
+                other.waitingTime == waitingTime) &&
+            (identical(other.townId, townId) || other.townId == townId) &&
             const DeepCollectionEquality().equals(other._points, _points));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, startPoint, endPoint, price,
-      comment, status, hasRoute, const DeepCollectionEquality().hash(_points));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      startPoint,
+      endPoint,
+      price,
+      comment,
+      status,
+      hasRoute,
+      createdAt,
+      payMethod,
+      phone,
+      partner,
+      waitingTime,
+      townId,
+      const DeepCollectionEquality().hash(_points));
 
   @JsonKey(ignore: true)
   @override
@@ -295,9 +432,15 @@ abstract class _OrderEntity implements OrderEntity {
       required final String endPoint,
       required final int price,
       final String? comment,
-      required final String status,
-      required final bool hasRoute,
-      final List<PointEntity>? points}) = _$OrderEntityImpl;
+      final String? status,
+      final bool hasRoute,
+      final String createdAt,
+      @JsonKey(name: 'pay_method') final PayMethodEntity? payMethod,
+      final String phone,
+      final Partner? partner,
+      final int? waitingTime,
+      final int? townId,
+      final List<PointEntity> points}) = _$OrderEntityImpl;
 
   factory _OrderEntity.fromJson(Map<String, dynamic> json) =
       _$OrderEntityImpl.fromJson;
@@ -313,16 +456,24 @@ abstract class _OrderEntity implements OrderEntity {
   @override
   String? get comment;
   @override
-  String get status;
+  String? get status;
   @override
   bool get hasRoute;
-  @override // required String createdAt,
-// required PayMethodEntity payMethod,
-// required String phone,
-// Partner? partner,
-// int? waitingTime,
-// required int townId,
-  List<PointEntity>? get points;
+  @override
+  String get createdAt;
+  @override
+  @JsonKey(name: 'pay_method')
+  PayMethodEntity? get payMethod;
+  @override
+  String get phone;
+  @override
+  Partner? get partner;
+  @override
+  int? get waitingTime;
+  @override
+  int? get townId;
+  @override
+  List<PointEntity> get points;
   @override
   @JsonKey(ignore: true)
   _$$OrderEntityImplCopyWith<_$OrderEntityImpl> get copyWith =>

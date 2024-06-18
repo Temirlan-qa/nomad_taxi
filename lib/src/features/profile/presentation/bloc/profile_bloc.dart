@@ -13,6 +13,7 @@ import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_us
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 
 import '../../../../core/service/injectable/exports/all.dart';
+import '../../../orders/presentation/bloc/order_bloc.dart';
 import '../../domain/requests/update_partner_data_request.dart';
 import '../../domain/usecases/update_language_use_case.dart';
 import '../../domain/usecases/update_partner_data_use_case.dart';

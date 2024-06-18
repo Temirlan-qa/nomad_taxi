@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
+import 'package:nomad_taxi/src/features/orders/data/models/create_order/create_order_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/create_order_response/create_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
@@ -11,8 +12,10 @@ import 'package:nomad_taxi/src/features/orders/data/models/orders_dto/orders_dto
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../../../../core/exceptions/domain_exception.dart';
-import '../../../domain/entities/create_order/create_order_entity.dart';
+import '../../mappers/create_entity_to_dto_mapper.dart';
 import '../../models/order/order_dto.dart';
+import '../../models/requests/accept_order_request.dart';
+import '../../models/requests/create_order_request.dart';
 import '../../models/update_order_response/update_order_response_dto.dart';
 import 'i_orders_remote.dart';
 
@@ -25,13 +28,15 @@ class OrdersRemoteImpl implements IOrdersRemote {
   var st = StorageServiceImpl();
 
   @override
-  Future<Either<DomainException, OrderDto>> acceptOrder(String orderId) async {
+  Future<Either<DomainException, OrderDto>> acceptOrder(
+      OrderRequest request) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
         'Accept': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
+      final int orderId = request.id;
       var response = await client.request(
         'https://auyltaxi.kz/api/v1/partner/order/$orderId/accept',
         options: Options(
@@ -40,11 +45,13 @@ class OrdersRemoteImpl implements IOrdersRemote {
         ),
       );
 
-      if (response.statusCode == 200) {
-        return Right(OrderDto.fromJson(response.data));
-      } else {
-        return Left(UnknownException());
-      }
+      //TODO (bekzhan): Uncomment this line, after fix backend (town_id line)
+
+      final data = response.data['data'];
+
+      // final mockData = _mockAcceptOrder;
+
+      return Right(OrderDto.fromJson(data));
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -53,26 +60,27 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderDto>> cancelOrder(String orderId) async {
+  Future<Either<DomainException, void>> cancelOrder(String orderId) async {
     try {
-      var headers = {
-        'Accept-Language': 'ru',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${st.getToken()!}'
-      };
-      var response = await client.request(
-        'https://auyltaxi.kz/api/v1/partner/order/$orderId/cancel',
-        options: Options(
-          method: 'POST',
-          headers: headers,
-        ),
-      );
+      // var headers = {
+      //   'Accept-Language': 'ru',
+      //   'Accept': 'application/json',
+      //   'Authorization': 'Bearer ${st.getToken()!}'
+      // };
+      // var response = await client.request(
+      //   'https://auyltaxi.kz/api/v1/partner/order/$orderId/cancel',
+      //   options: Options(
+      //     method: 'POST',
+      //     headers: headers,
+      //   ),
+      // );
 
-      if (response.statusCode == 200) {
-        return Right(OrderDto.fromJson(response.data));
-      } else {
-        return Left(UnknownException());
-      }
+      return const Right(null);
+      // if (response.statusCode == 200) {
+      //   return Right(OrderDto.fromJson(response.data));
+      // } else {
+      //   return Left(UnknownException());
+      // }
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -125,7 +133,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       final responseData = response.data as Map<String, dynamic>;
-      
+
       final data = responseData['data'] as List<dynamic>;
       final orders = data
           .map((order) => OrderDto.fromJson(order as Map<String, dynamic>))
@@ -202,8 +210,11 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, CreateOrderResponseDto>> createOrder(
-      CreateOrderEntity request) async {
+  Future<Either<DomainException, OrderDto>> createOrder(
+      CreateOrderRequest request) async {
+    final CreateOrderDto orderDto =
+        CreateEntityToDtoMapper().map(request.entity);
+
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -217,11 +228,15 @@ class OrdersRemoteImpl implements IOrdersRemote {
           method: 'POST',
           headers: headers,
         ),
-        data: request,
+        data: orderDto.toJson(),
       );
 
+      final responseData = response.data as Map<String, dynamic>;
+
+      final data = responseData['data'];
+
       if (response.statusCode == 200) {
-        return Right(CreateOrderResponseDto.fromJson(response.data));
+        return Right(OrderDto.fromJson(data));
       } else {
         return Left(UnknownException());
       }

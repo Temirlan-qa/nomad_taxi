@@ -50,3 +50,21 @@ final Map<String, dynamic> _mockData = {
     },
   ]
 };
+
+final Map<String, dynamic> _mockAcceptOrder = 
+  {
+   "id": 2,
+        "start_point": "Тест",
+        "end_point": "Тестқой",
+        "price": 300,
+        "pay_method": {
+            "by_cash": 300,
+            "by_bonus": 0
+        },
+        "phone": "+77476133356",
+        "comment": null,
+        "status": "accepted",
+        "town_id": 8,
+        "created_at": "2021-12-04 16:59:49",
+        "points": []
+};

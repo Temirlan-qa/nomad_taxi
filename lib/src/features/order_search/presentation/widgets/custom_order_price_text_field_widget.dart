@@ -5,8 +5,15 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/utils/formatters/price_input_formatter.dart';
 
 class CustomOrderPriceTextFieldWidget extends StatefulWidget {
-  const CustomOrderPriceTextFieldWidget({super.key, required this.controller});
+  const CustomOrderPriceTextFieldWidget(
+      {super.key, required this.controller, this.orderPrice, this.onDecrease, this.onIncrease});
   final TextEditingController controller;
+
+  final int? orderPrice;
+
+  final Function()? onDecrease;
+  final Function()? onIncrease;
+
 
   @override
   State<CustomOrderPriceTextFieldWidget> createState() =>
@@ -15,7 +22,7 @@ class CustomOrderPriceTextFieldWidget extends StatefulWidget {
 
 class _CustomOrderPriceTextFieldWidgetState
     extends State<CustomOrderPriceTextFieldWidget> {
-  int minPrice = 800;
+  int orderPrice = 800;
   final FocusNode _focusNode = FocusNode();
 
   @override
@@ -24,7 +31,8 @@ class _CustomOrderPriceTextFieldWidgetState
     _focusNode.addListener(() {
       setState(() {});
     });
-    widget.controller.text = '$minPrice ₸';
+    orderPrice = widget.orderPrice ?? 800;
+    widget.controller.text = '$orderPrice ₸';
   }
 
   @override
@@ -33,13 +41,13 @@ class _CustomOrderPriceTextFieldWidgetState
     super.dispose();
   }
 
-  formatPrice() {
+  void formatPrice() {
     setState(() {
-      minPrice = 800;
+      orderPrice = 800;
       if (!widget.controller.text.contains('₸')) {
         widget.controller.text = '${widget.controller.text} ₸';
       } else if (widget.controller.text.isEmpty) {
-        widget.controller.text = '$minPrice ₸';
+        widget.controller.text = '$orderPrice ₸';
       }
     });
   }
@@ -57,14 +65,7 @@ class _CustomOrderPriceTextFieldWidgetState
               border: Border.all(color: context.theme.stroke)),
           child: Row(children: [
             InkWell(
-              onTap: minPrice == 800
-                  ? null
-                  : () {
-                      setState(() {
-                        minPrice >= 800 ? minPrice -= 100 : 0;
-                        widget.controller.text = '$minPrice ₸';
-                      });
-                    },
+              onTap: widget.onDecrease,
               borderRadius: BorderRadius.circular(12),
               child: Padding(
                 padding: const EdgeInsets.all(UIConstants.defaultPadding),
@@ -72,7 +73,7 @@ class _CustomOrderPriceTextFieldWidgetState
                   width: 24,
                   height: 24,
                   colorFilter: ColorFilter.mode(
-                      minPrice == 800
+                      orderPrice == 800
                           ? context.theme.secondary
                           : context.theme.red,
                       BlendMode.srcIn),
@@ -121,12 +122,7 @@ class _CustomOrderPriceTextFieldWidgetState
                   horizontal: UIConstants.defaultGap2),
             ),
             InkWell(
-              onTap: () {
-                setState(() {
-                  minPrice += 100;
-                  widget.controller.text = '$minPrice ₸';
-                });
-              },
+              onTap: widget.onIncrease,
               borderRadius: BorderRadius.circular(12),
               child: Padding(
                 padding: const EdgeInsets.all(UIConstants.defaultPadding),

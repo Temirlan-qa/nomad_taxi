@@ -21,20 +21,9 @@ CreateOrderDto _$CreateOrderDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CreateOrderDto {
   @JsonKey(name: 'town_id')
-  String get townId => throw _privateConstructorUsedError;
+  int get townId => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  @JsonKey(name: 'points[0][lat]')
-  double get startPointLat => throw _privateConstructorUsedError;
-  @JsonKey(name: 'points[0][lng]')
-  double get startPointLng => throw _privateConstructorUsedError;
-  @JsonKey(name: 'points[0][title]')
-  String get startPointTitle => throw _privateConstructorUsedError;
-  @JsonKey(name: 'points[1][lat]')
-  double get endPointLat => throw _privateConstructorUsedError;
-  @JsonKey(name: 'points[1][lng]')
-  double get endPointLng => throw _privateConstructorUsedError;
-  @JsonKey(name: 'points[1][title]')
-  String get endPointTitle => throw _privateConstructorUsedError;
+  List<PointDto> get points => throw _privateConstructorUsedError;
   @JsonKey(name: 'use_bonus')
   int get useBonus => throw _privateConstructorUsedError;
 
@@ -51,14 +40,9 @@ abstract class $CreateOrderDtoCopyWith<$Res> {
       _$CreateOrderDtoCopyWithImpl<$Res, CreateOrderDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'town_id') String townId,
+      {@JsonKey(name: 'town_id') int townId,
       int price,
-      @JsonKey(name: 'points[0][lat]') double startPointLat,
-      @JsonKey(name: 'points[0][lng]') double startPointLng,
-      @JsonKey(name: 'points[0][title]') String startPointTitle,
-      @JsonKey(name: 'points[1][lat]') double endPointLat,
-      @JsonKey(name: 'points[1][lng]') double endPointLng,
-      @JsonKey(name: 'points[1][title]') String endPointTitle,
+      List<PointDto> points,
       @JsonKey(name: 'use_bonus') int useBonus});
 }
 
@@ -77,47 +61,22 @@ class _$CreateOrderDtoCopyWithImpl<$Res, $Val extends CreateOrderDto>
   $Res call({
     Object? townId = null,
     Object? price = null,
-    Object? startPointLat = null,
-    Object? startPointLng = null,
-    Object? startPointTitle = null,
-    Object? endPointLat = null,
-    Object? endPointLng = null,
-    Object? endPointTitle = null,
+    Object? points = null,
     Object? useBonus = null,
   }) {
     return _then(_value.copyWith(
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      startPointLat: null == startPointLat
-          ? _value.startPointLat
-          : startPointLat // ignore: cast_nullable_to_non_nullable
-              as double,
-      startPointLng: null == startPointLng
-          ? _value.startPointLng
-          : startPointLng // ignore: cast_nullable_to_non_nullable
-              as double,
-      startPointTitle: null == startPointTitle
-          ? _value.startPointTitle
-          : startPointTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      endPointLat: null == endPointLat
-          ? _value.endPointLat
-          : endPointLat // ignore: cast_nullable_to_non_nullable
-              as double,
-      endPointLng: null == endPointLng
-          ? _value.endPointLng
-          : endPointLng // ignore: cast_nullable_to_non_nullable
-              as double,
-      endPointTitle: null == endPointTitle
-          ? _value.endPointTitle
-          : endPointTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as List<PointDto>,
       useBonus: null == useBonus
           ? _value.useBonus
           : useBonus // ignore: cast_nullable_to_non_nullable
@@ -135,14 +94,9 @@ abstract class _$$CreateOrderDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'town_id') String townId,
+      {@JsonKey(name: 'town_id') int townId,
       int price,
-      @JsonKey(name: 'points[0][lat]') double startPointLat,
-      @JsonKey(name: 'points[0][lng]') double startPointLng,
-      @JsonKey(name: 'points[0][title]') String startPointTitle,
-      @JsonKey(name: 'points[1][lat]') double endPointLat,
-      @JsonKey(name: 'points[1][lng]') double endPointLng,
-      @JsonKey(name: 'points[1][title]') String endPointTitle,
+      List<PointDto> points,
       @JsonKey(name: 'use_bonus') int useBonus});
 }
 
@@ -159,47 +113,22 @@ class __$$CreateOrderDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? townId = null,
     Object? price = null,
-    Object? startPointLat = null,
-    Object? startPointLng = null,
-    Object? startPointTitle = null,
-    Object? endPointLat = null,
-    Object? endPointLng = null,
-    Object? endPointTitle = null,
+    Object? points = null,
     Object? useBonus = null,
   }) {
     return _then(_$CreateOrderDtoImpl(
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      startPointLat: null == startPointLat
-          ? _value.startPointLat
-          : startPointLat // ignore: cast_nullable_to_non_nullable
-              as double,
-      startPointLng: null == startPointLng
-          ? _value.startPointLng
-          : startPointLng // ignore: cast_nullable_to_non_nullable
-              as double,
-      startPointTitle: null == startPointTitle
-          ? _value.startPointTitle
-          : startPointTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      endPointLat: null == endPointLat
-          ? _value.endPointLat
-          : endPointLat // ignore: cast_nullable_to_non_nullable
-              as double,
-      endPointLng: null == endPointLng
-          ? _value.endPointLng
-          : endPointLng // ignore: cast_nullable_to_non_nullable
-              as double,
-      endPointTitle: null == endPointTitle
-          ? _value.endPointTitle
-          : endPointTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      points: null == points
+          ? _value._points
+          : points // ignore: cast_nullable_to_non_nullable
+              as List<PointDto>,
       useBonus: null == useBonus
           ? _value.useBonus
           : useBonus // ignore: cast_nullable_to_non_nullable
@@ -212,49 +141,35 @@ class __$$CreateOrderDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CreateOrderDtoImpl implements _CreateOrderDto {
   const _$CreateOrderDtoImpl(
-      {@JsonKey(name: 'town_id') required this.townId,
+      {@JsonKey(name: 'town_id') this.townId = 8,
       required this.price,
-      @JsonKey(name: 'points[0][lat]') required this.startPointLat,
-      @JsonKey(name: 'points[0][lng]') required this.startPointLng,
-      @JsonKey(name: 'points[0][title]') required this.startPointTitle,
-      @JsonKey(name: 'points[1][lat]') required this.endPointLat,
-      @JsonKey(name: 'points[1][lng]') required this.endPointLng,
-      @JsonKey(name: 'points[1][title]') required this.endPointTitle,
-      @JsonKey(name: 'use_bonus') required this.useBonus});
+      required final List<PointDto> points,
+      @JsonKey(name: 'use_bonus') required this.useBonus})
+      : _points = points;
 
   factory _$CreateOrderDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$CreateOrderDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'town_id')
-  final String townId;
+  final int townId;
   @override
   final int price;
+  final List<PointDto> _points;
   @override
-  @JsonKey(name: 'points[0][lat]')
-  final double startPointLat;
-  @override
-  @JsonKey(name: 'points[0][lng]')
-  final double startPointLng;
-  @override
-  @JsonKey(name: 'points[0][title]')
-  final String startPointTitle;
-  @override
-  @JsonKey(name: 'points[1][lat]')
-  final double endPointLat;
-  @override
-  @JsonKey(name: 'points[1][lng]')
-  final double endPointLng;
-  @override
-  @JsonKey(name: 'points[1][title]')
-  final String endPointTitle;
+  List<PointDto> get points {
+    if (_points is EqualUnmodifiableListView) return _points;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_points);
+  }
+
   @override
   @JsonKey(name: 'use_bonus')
   final int useBonus;
 
   @override
   String toString() {
-    return 'CreateOrderDto(townId: $townId, price: $price, startPointLat: $startPointLat, startPointLng: $startPointLng, startPointTitle: $startPointTitle, endPointLat: $endPointLat, endPointLng: $endPointLng, endPointTitle: $endPointTitle, useBonus: $useBonus)';
+    return 'CreateOrderDto(townId: $townId, price: $price, points: $points, useBonus: $useBonus)';
   }
 
   @override
@@ -264,35 +179,15 @@ class _$CreateOrderDtoImpl implements _CreateOrderDto {
             other is _$CreateOrderDtoImpl &&
             (identical(other.townId, townId) || other.townId == townId) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.startPointLat, startPointLat) ||
-                other.startPointLat == startPointLat) &&
-            (identical(other.startPointLng, startPointLng) ||
-                other.startPointLng == startPointLng) &&
-            (identical(other.startPointTitle, startPointTitle) ||
-                other.startPointTitle == startPointTitle) &&
-            (identical(other.endPointLat, endPointLat) ||
-                other.endPointLat == endPointLat) &&
-            (identical(other.endPointLng, endPointLng) ||
-                other.endPointLng == endPointLng) &&
-            (identical(other.endPointTitle, endPointTitle) ||
-                other.endPointTitle == endPointTitle) &&
+            const DeepCollectionEquality().equals(other._points, _points) &&
             (identical(other.useBonus, useBonus) ||
                 other.useBonus == useBonus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      townId,
-      price,
-      startPointLat,
-      startPointLng,
-      startPointTitle,
-      endPointLat,
-      endPointLng,
-      endPointTitle,
-      useBonus);
+  int get hashCode => Object.hash(runtimeType, townId, price,
+      const DeepCollectionEquality().hash(_points), useBonus);
 
   @JsonKey(ignore: true)
   @override
@@ -311,43 +206,22 @@ class _$CreateOrderDtoImpl implements _CreateOrderDto {
 
 abstract class _CreateOrderDto implements CreateOrderDto {
   const factory _CreateOrderDto(
-      {@JsonKey(name: 'town_id') required final String townId,
-      required final int price,
-      @JsonKey(name: 'points[0][lat]') required final double startPointLat,
-      @JsonKey(name: 'points[0][lng]') required final double startPointLng,
-      @JsonKey(name: 'points[0][title]') required final String startPointTitle,
-      @JsonKey(name: 'points[1][lat]') required final double endPointLat,
-      @JsonKey(name: 'points[1][lng]') required final double endPointLng,
-      @JsonKey(name: 'points[1][title]') required final String endPointTitle,
-      @JsonKey(name: 'use_bonus')
-      required final int useBonus}) = _$CreateOrderDtoImpl;
+          {@JsonKey(name: 'town_id') final int townId,
+          required final int price,
+          required final List<PointDto> points,
+          @JsonKey(name: 'use_bonus') required final int useBonus}) =
+      _$CreateOrderDtoImpl;
 
   factory _CreateOrderDto.fromJson(Map<String, dynamic> json) =
       _$CreateOrderDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'town_id')
-  String get townId;
+  int get townId;
   @override
   int get price;
   @override
-  @JsonKey(name: 'points[0][lat]')
-  double get startPointLat;
-  @override
-  @JsonKey(name: 'points[0][lng]')
-  double get startPointLng;
-  @override
-  @JsonKey(name: 'points[0][title]')
-  String get startPointTitle;
-  @override
-  @JsonKey(name: 'points[1][lat]')
-  double get endPointLat;
-  @override
-  @JsonKey(name: 'points[1][lng]')
-  double get endPointLng;
-  @override
-  @JsonKey(name: 'points[1][title]')
-  String get endPointTitle;
+  List<PointDto> get points;
   @override
   @JsonKey(name: 'use_bonus')
   int get useBonus;
