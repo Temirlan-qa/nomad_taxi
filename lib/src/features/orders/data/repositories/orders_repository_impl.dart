@@ -145,11 +145,10 @@ class OrdersRepositoryImpl implements IOrdersRepository {
       final requests = await _ordersImpl.createOrder(request);
       return requests.fold(
         (error) => Left(error),
-        (dto) {
-            final OrderEntity entity = OrderDtoMapper().map(dto);
+        (response) {
+          final OrderEntity? entity = response.order;
 
-            return Right(OrderResponse(order: entity));
-        
+          return Right(OrderResponse(order: entity));
         },
       );
     } catch (e) {
