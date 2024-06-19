@@ -40,10 +40,14 @@ class ActivatePromocodeBloc
     emit(const _Loading());
     final ActivatePromocodeRequest request = event.request;
     final result = await _activatePromocodeUseCase.call(request);
-    result.fold(
-        (l) => emit(_Error(exception: l)),
-        (r) => emit(_Loaded(
-            viewModel: _viewModel.copyWith(promocodeResponse: result.data))));
+
+    if (result.isSuccessful) {
+      return emit(_Loaded(
+          viewModel: _viewModel.copyWith(promocodeResponse: result.data)));
+    } else {
+      return emit(_Error(
+          exception: UnknownException(message: result.failure?.message)));
+    }
   }
 
   @override

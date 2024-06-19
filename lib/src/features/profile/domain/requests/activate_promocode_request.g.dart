@@ -10,7 +10,7 @@ _$ActivatePromocodeRequestImpl _$$ActivatePromocodeRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$ActivatePromocodeRequestImpl(
       promocode: json['promocode'] as String,
-      townId: (json['town_id'] as num).toInt(),
+      townId: json['town_id'] as String,
     );
 
 Map<String, dynamic> _$$ActivatePromocodeRequestImplToJson(

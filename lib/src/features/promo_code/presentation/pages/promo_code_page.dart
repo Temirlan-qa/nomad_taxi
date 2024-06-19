@@ -36,7 +36,10 @@ class _PromoCodePageState extends State<PromoCodePage> {
     return BlocConsumer<ActivatePromocodeBloc, ActivatePromocodeState>(
       bloc: bloc,
       listener: (context, state) {
-        state.whenOrNull(loaded: (value) {
+        state.whenOrNull(error: (value) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(value.message)));
+        }, loaded: (value) {
           context.pushReplacementNamed(RouteNames.promoCodeAdded, extra: value);
         });
       },
@@ -84,7 +87,8 @@ class _PromoCodePageState extends State<PromoCodePage> {
                               bloc.add(ActivatePromocodeEvent.acivatePromocode(
                                   request: ActivatePromocodeRequest(
                                       promocode: promoCodeController.text,
-                                      townId: viewModel.pTownId ?? 8)));
+                                      townId: viewModel.pTownId?.toString() ??
+                                          '8')));
                             },
                           );
                         },

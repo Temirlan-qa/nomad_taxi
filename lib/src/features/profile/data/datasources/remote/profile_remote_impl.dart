@@ -317,8 +317,11 @@ class ProfileRemoteImpl implements IProfileRemote {
   Future<Either<DomainException, PromocodeResponseDto>> activatePromocode(
       ActivatePromocodeRequest request) async {
     try {
+      final languageCode = st.getLanguageCode() ?? 'ru';
       var headers = {
+        'Accept-Language': languageCode,
         'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
       var dio = Dio();
@@ -332,20 +335,15 @@ class ProfileRemoteImpl implements IProfileRemote {
       );
 
       PromocodeResponseDto asd = PromocodeResponseDto.fromJson(response.data);
-      log(asd.toString());
-
       if (response.statusCode == 200) {
         return Right(asd);
-      } else if (response.statusCode == 400) {
-        log(response.data.toString());
-
-        return Left(UnknownException(message: 'asdasdasd'));
       } else {
         return Left(UnknownException());
       }
     } on DioException catch (e) {
-      log(e.response.toString());
-
+      if (e.response?.statusCode == 400) {
+        return Left(UnknownException(message: e.response?.data['message']));
+      }
       return Left(UnknownException(message: e.toString()));
     } catch (e) {
       return Left(

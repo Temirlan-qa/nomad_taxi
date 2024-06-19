@@ -24,7 +24,7 @@ mixin _$ActivatePromocodeRequest {
   @JsonKey(name: 'promocode')
   String get promocode => throw _privateConstructorUsedError;
   @JsonKey(name: 'town_id')
-  int get townId => throw _privateConstructorUsedError;
+  String get townId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $ActivatePromocodeRequestCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'promocode') String promocode,
-      @JsonKey(name: 'town_id') int townId});
+      @JsonKey(name: 'town_id') String townId});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$ActivatePromocodeRequestCopyWithImpl<$Res,
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ) as $Val);
   }
 }
@@ -84,7 +84,7 @@ abstract class _$$ActivatePromocodeRequestImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'promocode') String promocode,
-      @JsonKey(name: 'town_id') int townId});
+      @JsonKey(name: 'town_id') String townId});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$ActivatePromocodeRequestImplCopyWithImpl<$Res>
       townId: null == townId
           ? _value.townId
           : townId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -131,7 +131,7 @@ class _$ActivatePromocodeRequestImpl implements _ActivatePromocodeRequest {
   final String promocode;
   @override
   @JsonKey(name: 'town_id')
-  final int townId;
+  final String townId;
 
   @override
   String toString() {
@@ -170,7 +170,7 @@ class _$ActivatePromocodeRequestImpl implements _ActivatePromocodeRequest {
 abstract class _ActivatePromocodeRequest implements ActivatePromocodeRequest {
   const factory _ActivatePromocodeRequest(
           {@JsonKey(name: 'promocode') required final String promocode,
-          @JsonKey(name: 'town_id') required final int townId}) =
+          @JsonKey(name: 'town_id') required final String townId}) =
       _$ActivatePromocodeRequestImpl;
 
   factory _ActivatePromocodeRequest.fromJson(Map<String, dynamic> json) =
@@ -181,7 +181,7 @@ abstract class _ActivatePromocodeRequest implements ActivatePromocodeRequest {
   String get promocode;
   @override
   @JsonKey(name: 'town_id')
-  int get townId;
+  String get townId;
   @override
   @JsonKey(ignore: true)
   _$$ActivatePromocodeRequestImplCopyWith<_$ActivatePromocodeRequestImpl>

@@ -2,8 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nomad_taxi/src/core/base/base_models/base_dto.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/promocode/promocode_dto.dart';
 
-import '../language/language_dto.dart';
-
 part 'promocode_response_dto.freezed.dart';
 part 'promocode_response_dto.g.dart';
 

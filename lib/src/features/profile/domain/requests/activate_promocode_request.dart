@@ -10,7 +10,7 @@ class ActivatePromocodeRequest extends BaseRequest
     with _$ActivatePromocodeRequest {
   const factory ActivatePromocodeRequest({
     @JsonKey(name: 'promocode') required String promocode,
-    @JsonKey(name: 'town_id') required int townId,
+    @JsonKey(name: 'town_id') required String townId,
   }) = _ActivatePromocodeRequest;
 
   factory ActivatePromocodeRequest.fromJson(Map<String, dynamic> json) =>

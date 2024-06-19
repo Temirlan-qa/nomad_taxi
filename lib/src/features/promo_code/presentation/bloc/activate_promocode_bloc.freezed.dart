@@ -559,10 +559,10 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? exception = freezed,
+    Object? exception = null,
   }) {
     return _then(_$ErrorImpl(
-      exception: freezed == exception
+      exception: null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as DomainException,
@@ -588,12 +588,12 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            const DeepCollectionEquality().equals(other.exception, exception));
+            (identical(other.exception, exception) ||
+                other.exception == exception));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(exception));
+  int get hashCode => Object.hash(runtimeType, exception);
 
   @JsonKey(ignore: true)
   @override
