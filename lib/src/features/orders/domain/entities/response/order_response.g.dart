@@ -8,7 +8,9 @@ part of 'order_response.dart';
 
 _$OrderResponseImpl _$$OrderResponseImplFromJson(Map<String, dynamic> json) =>
     _$OrderResponseImpl(
-      order: OrderEntity.fromJson(json['order'] as Map<String, dynamic>),
+      order: json['order'] == null
+          ? null
+          : OrderEntity.fromJson(json['order'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OrderResponseImplToJson(_$OrderResponseImpl instance) =>

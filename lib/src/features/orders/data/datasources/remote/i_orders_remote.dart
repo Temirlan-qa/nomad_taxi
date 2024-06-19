@@ -5,6 +5,7 @@ import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/order/order_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/orders_dto/orders_dto.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
 import '../../models/requests/accept_order_request.dart';
@@ -34,7 +35,7 @@ abstract class IOrdersRemote {
     String orderId,
   );
 
-  Future<Either<DomainException, OrderDto>> createOrder(
+  Future<Either<DomainException, OrderResponse>> createOrder(
     CreateOrderRequest request,
   );
 
