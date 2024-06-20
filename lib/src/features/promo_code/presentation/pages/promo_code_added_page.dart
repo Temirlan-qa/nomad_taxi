@@ -6,10 +6,13 @@ import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
+import 'package:nomad_taxi/src/features/promo_code/presentation/bloc/activate_promocode_bloc.dart';
 import 'package:nomad_taxi/src/features/promo_code/presentation/widgets/custom_bonus_amount_widget.dart';
 
 class PromoCodeAddedPage extends StatefulWidget {
-  const PromoCodeAddedPage({super.key});
+  const PromoCodeAddedPage(
+      {super.key, required this.activatePromocodeViewModel});
+  final ActivatePromocodeViewModel activatePromocodeViewModel;
 
   @override
   State<PromoCodeAddedPage> createState() => _PromoCodeAddedPageState();
@@ -24,10 +27,13 @@ class _PromoCodeAddedPageState extends State<PromoCodeAddedPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomBonusAmountWidget(amount: 1000),
+                  CustomBonusAmountWidget(
+                      amount: widget.activatePromocodeViewModel
+                              .promocodeResponse?.data.amount ??
+                          0),
                 ],
               ),
               const Gap(UIConstants.defaultGap3),
@@ -35,7 +41,7 @@ class _PromoCodeAddedPageState extends State<PromoCodeAddedPage> {
                   style: context.theme.textStyles.titleMain),
               const Gap(UIConstants.defaultGap1),
               Text(
-                S.current.you_get_bonus(1000),
+                '${widget.activatePromocodeViewModel.promocodeResponse?.data.description}',
                 style: context.theme.textStyles.bodyMain
                     .copyWith(color: context.theme.secondary),
               ),

@@ -16,7 +16,6 @@ import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart
 
 import '../../../../core/base/base_bloc/bloc/base_bloc_widget.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
-import '../../../orders/domain/entities/create_order/create_order_entity.dart';
 
 class OrderSearchPage extends StatefulWidget {
   const OrderSearchPage({super.key, required this.price});

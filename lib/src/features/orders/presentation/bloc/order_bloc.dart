@@ -4,25 +4,16 @@ import 'dart:developer';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
-import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
-import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/requests/create_order_request.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
-import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
 
-import '../../../../core/base/base_usecase/result.dart';
-import '../../../../core/exceptions/domain_exception.dart';
-import '../../../../core/localization/generated/l10n.dart';
 import '../../../../core/service/storage/storage_service_impl.dart';
-import '../../data/models/requests/accept_order_request.dart';
 import '../../domain/entities/order/order_entity.dart';
 import '../../domain/entities/response/order_response.dart';
-import '../../domain/usecases/accept_order_use_case.dart';
-import '../../domain/usecases/cancel_order_use_case.dart';
 import '../../domain/usecases/create_order_use_case.dart';
 
 part 'order_bloc.freezed.dart';
@@ -84,9 +75,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
     emit(const _Error('Failed to create order'));
   }
 
-  Future<void> _cancelOrder() async {
-    
-  }
+  Future<void> _cancelOrder() async {}
 
   @override
   Future<void> close() {
