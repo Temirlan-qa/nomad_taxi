@@ -118,7 +118,7 @@ class _MainPageState extends State<MainPage> {
                         //   addressTo: 'addressTo',
                         // ),
                         CreateOrderModalWidget(
-                          currentLocation: 'Титова 14',
+                          currentLocation: '',
                           onTapEditLocation: () {},
                           onTapCreateOrder: () {
                             context.pushNamed(RouteNames.searchAddress);

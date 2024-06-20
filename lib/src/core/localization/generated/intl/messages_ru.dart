@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Удачной поездки =)"),
         "driver_waiting":
             MessageLookupByLibrary.simpleMessage("Вас ждет водитель!"),
+        "enterAddress": MessageLookupByLibrary.simpleMessage("Введите адрес"),
         "enter_ID":
             MessageLookupByLibrary.simpleMessage("Далее введите свой ID номер"),
         "enter_amount": MessageLookupByLibrary.simpleMessage(
@@ -159,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Далее"),
         "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
             "На данный момент нет активных заказов"),
+        "onMap": MessageLookupByLibrary.simpleMessage("На карте"),
         "on_line": MessageLookupByLibrary.simpleMessage("На линии"),
         "on_search": MessageLookupByLibrary.simpleMessage("В поиске"),
         "open": MessageLookupByLibrary.simpleMessage("Открыть"),

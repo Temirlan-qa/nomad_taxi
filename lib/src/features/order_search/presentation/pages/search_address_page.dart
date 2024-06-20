@@ -46,26 +46,26 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                 ),
                 TextFieldWidget(
                   controller: addressController,
-                  hintText: 'Введите адрес',
+                  hintText: S.current.enterAddress,
                   textFieldValidationState:
                       addressController.text.contains('123')
                           ? TextFieldValidationState.success
                           : TextFieldValidationState.none,
                   onChanged: (value) => setState(() {}),
                   suffix: TextButton(
-                      onPressed: () {
-                        context.pop();
-                      },
-                      style: TextButton.styleFrom(
-                          foregroundColor: context.theme.blue,
-                          textStyle:
-                              context.theme.textStyles.headLine.copyWith(),
-                          padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  UIConstants.defaultRadius)),
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                      child: const Text('На карте')),
+                    onPressed: () {
+                      context.pop();
+                    },
+                    style: TextButton.styleFrom(
+                        foregroundColor: context.theme.blue,
+                        textStyle: context.theme.textStyles.headLine.copyWith(),
+                        padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                UIConstants.defaultRadius)),
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                    child: Text(S.current.onMap),
+                  ),
                 ),
                 const Gap(UIConstants.defaultGap3),
                 Padding(
@@ -134,8 +134,10 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                       child: CustomMainButtonWidget(
                         title: S.current.next,
                         onPressed: () {
-                          context.push(RoutePaths.orderPrice,
-                              extra: addressController.text,);
+                          context.push(
+                            RoutePaths.orderPrice,
+                            extra: addressController.text,
+                          );
                         },
                       ),
                     ),
