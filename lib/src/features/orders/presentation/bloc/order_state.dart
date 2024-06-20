@@ -14,5 +14,6 @@ class OrderViewModel with _$OrderViewModel {
   const factory OrderViewModel({
     OrdersResponse? orders,
     @Default([]) List<OrderEntity> ordersList,
+    OrderEntity? orderAccepted,
   }) = _OrderViewModel;
 }

@@ -49,22 +49,8 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, void>> cancelOrder(String orderId) async {
-    try {
-      await _ordersImpl.cancelOrder(orderId);
-      return const Right(null);
-      // return requests.fold(
-      //   (error) => Left(error),
-      //   (dto) {
-      //     final OrderEntity entity = OrderDtoMapper().map(dto);
-
-      //     return Right(OrderResponse(order: entity));
-      //   },
-      // );
-    } catch (e) {
-      Log.e(e);
-      return Left(UnknownException(message: e.toString()));
-    }
+  Future<Either<DomainException, void>> cancelOrder(OrderRequest order) async {
+    return _ordersImpl.cancelOrder(order);
   }
 
   @override

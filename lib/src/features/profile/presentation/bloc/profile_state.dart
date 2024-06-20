@@ -30,5 +30,6 @@ class ProfileViewModel with _$ProfileViewModel {
     String? pStatus,
     int? pBalance,
     int? pBonus,
+    OrderEntity? order,
   }) = _ProfileViewModel;
 }

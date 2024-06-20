@@ -58,27 +58,26 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, void>> cancelOrder(String orderId) async {
+  Future<Either<DomainException, void>> cancelOrder(OrderRequest order) async {
+    log('TryCancelOrder');
     try {
-      // var headers = {
-      //   'Accept-Language': 'ru',
-      //   'Accept': 'application/json',
-      //   'Authorization': 'Bearer ${st.getToken()!}'
-      // };
-      // var response = await client.request(
-      //   'https://auyltaxi.kz/api/v1/partner/order/$orderId/cancel',
-      //   options: Options(
-      //     method: 'POST',
-      //     headers: headers,
-      //   ),
-      // );
+      var headers = {
+        'Accept-Language': 'ru',
+        'Accept': '*/*',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var response = await client.request(
+        'https://auyltaxi.kz/api/v1/partner/order/${order.id}/cancel',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+      );
 
-      return const Right(null);
-      // if (response.statusCode == 200) {
-      //   return Right(OrderDto.fromJson(response.data));
-      // } else {
-      //   return Left(UnknownException());
-      // }
+      if (response.statusCode == 200) {
+        return const Right(null);
+      }
+      return Left(UnknownException());
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
