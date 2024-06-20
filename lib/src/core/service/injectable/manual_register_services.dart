@@ -1,8 +1,6 @@
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_case.dart';
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
-import 'package:nomad_taxi/src/features/orders/domain/usecases/create_order_use_case.dart';
-import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
@@ -60,12 +58,12 @@ void manualRegisterServices() {
     ),
   );
 
-  getIt.registerBloc<OrderBloc>(
-    () => OrderBloc(
-      getIt<CreateOrderUseCase>(),
-      // getIt<GetOrderStatusUseCase>(),
-    ),
-  );
+  // getIt.registerBloc<OrderBloc>(
+  //   () => OrderBloc(
+  //     getIt<CreateOrderUseCase>(),
+  //     getIt<GetOrderStatusUseCase>(),
+  //   ),
+  // );
 
   getIt.registerBloc<DriverOrderBloc>(
     () => DriverOrderBloc(
