@@ -6,7 +6,9 @@ import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 
 class AcceptedInfoStateWidget extends StatelessWidget {
-  const AcceptedInfoStateWidget({super.key});
+  const AcceptedInfoStateWidget({this.waitingTime, super.key});
+
+  final int? waitingTime;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class AcceptedInfoStateWidget extends StatelessWidget {
         ),
         const Gap(UIConstants.defaultGap1),
         Text(
-          '3 ${S.current.minutes}',
+          '${waitingTime ?? 3} ${S.current.minutes}',
           textAlign: TextAlign.center,
           style: context.theme.textStyles.titleSecondary
               .copyWith(color: context.theme.secondary),

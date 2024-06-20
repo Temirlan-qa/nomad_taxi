@@ -24,6 +24,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   Position? _currentPosition;
+  LatLng latLng = const LatLng(43.238949, 76.889709);
+  String whereFrom = 'Титова 14';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -58,9 +60,15 @@ class _MainPageState extends State<MainPage> {
     // If permissions are granted, get the current position
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    setState(() {
-      _currentPosition = position;
-    });
+    setState(
+      () {
+        _currentPosition = position;
+        if (_currentPosition != null) {
+          latLng =
+              LatLng(_currentPosition!.latitude, _currentPosition!.longitude);
+        }
+      },
+    );
   }
 
   @override
@@ -93,10 +101,7 @@ class _MainPageState extends State<MainPage> {
                       myLocationEnabled: true,
                       initialCameraPosition: CameraPosition(
                         zoom: 10,
-                        target: _currentPosition != null
-                            ? LatLng(_currentPosition!.latitude,
-                                _currentPosition!.longitude)
-                            : const LatLng(43.238949, 76.889709),
+                        target: latLng,
                       ),
                       trackCameraPosition: true,
                     ),
@@ -119,21 +124,33 @@ class _MainPageState extends State<MainPage> {
                         if (order != null) ...[
                           ActiveOrderModalWidget(
                             onTap: () {
-                              context.pushNamed(RouteNames.orderSearch,
-                                  extra: order.price);
+                              context.pushNamed(
+                                RouteNames.orderSearch,
+                                extra: {
+                                  "whereFrom": "whereFrom",
+                                  "whereTo": 'whereTo',
+                                  "price": order.price,
+                                },
+                              );
                             },
                             addressFrom: order.startPoint,
                             addressTo: order.endPoint,
                           ),
-                        ] else ...[
-                          CreateOrderModalWidget(
-                            currentLocation: 'Титова 14',
-                            onTapEditLocation: () {},
-                            onTapCreateOrder: () {
-                              context.pushNamed(RouteNames.searchAddress);
-                            },
-                          ),
                         ],
+                        CreateOrderModalWidget(
+                          currentLocation: whereFrom,
+                          onTapEditLocation: () {},
+                          onTapCreateOrder: () {
+                            context.pushNamed(
+                              RouteNames.searchAddress,
+                              extra: {
+                                "whereFrom": whereFrom,
+                                "latLng": latLng,
+                              },
+                            );
+                          },
+                        ),
+
                         // CurrentLocationModalWidget(
                         //   onTapSelect: () {},
                         //   currentLocation: '',

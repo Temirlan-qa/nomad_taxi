@@ -4,19 +4,23 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
+import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/custom_order_price_text_field_widget.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/point/point_entity.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart';
 
 import '../../../../core/service/injectable/injectable_service.dart';
 import '../../../orders/domain/entities/create_order/create_order_entity.dart';
 
 class OrderPricePage extends StatefulWidget {
-  const OrderPricePage({super.key, required this.whereTo});
+  const OrderPricePage(
+      {super.key, required this.whereTo, required this.whereFrom});
 
   final String whereTo;
+  final String whereFrom;
 
   @override
   State<OrderPricePage> createState() => _OrderPricePageState();
@@ -27,7 +31,9 @@ class _OrderPricePageState extends State<OrderPricePage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool switchState = false;
 
-  String priceOrder = '500';
+  final ProfileBloc profileBloc = getIt<ProfileBloc>();
+
+  int bonus = 0;
   String cashbackPercent = '+10%';
 
   int orderPrice = 800;
@@ -72,7 +78,15 @@ class _OrderPricePageState extends State<OrderPricePage> {
                           ),
                           const Gap(2),
                           Text(
-                            priceOrder,
+                            profileBloc.state.whenOrNull(
+                                  loaded: (viewModel) {
+                                    setState(() {
+                                      bonus = viewModel.bonus;
+                                    });
+                                    return '${viewModel.bonus}';
+                                  },
+                                ) ??
+                                '$bonus',
                             style: context.theme.textStyles.titleMain
                                 .copyWith(color: context.theme.red),
                           ),
@@ -158,19 +172,32 @@ class _OrderPricePageState extends State<OrderPricePage> {
                     child: CustomMainButtonWidget(
                       title: S.current.next,
                       onPressed: () {
-                        context.push(RoutePaths.orderSearch, extra: orderPrice);
-
+                        context.push(
+                          RoutePaths.orderSearch,
+                          extra: {
+                            "whereFrom": widget.whereFrom,
+                            "whereTo": widget.whereTo,
+                            "price": orderPrice,
+                          },
+                        );
                         orderBloc.add(
                           OrderEvent.createOrder(
                             orderEntity: CreateOrderEntity.empty(
                               price: orderPrice,
-                              // points: [
-                              //   PointEntity(
-                              //     lat: 45.21111,
-                              //     lng: 76.21111,
-                              //     title: widget.whereTo,
-                              //   ),
-                              // ],
+                              //useBonus: bonus,
+                              townId: 8,
+                              points: [
+                                PointEntity(
+                                  lat: 45.21111,
+                                  lng: 76.21111,
+                                  title: widget.whereFrom,
+                                ),
+                                PointEntity(
+                                  lat: 46.21111,
+                                  lng: 77.21111,
+                                  title: widget.whereTo,
+                                ),
+                              ],
                             ),
                           ),
                         );
