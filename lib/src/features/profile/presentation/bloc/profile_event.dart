@@ -21,4 +21,7 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.updateLanguage({
     required UpdateLanguageRequest language,
   }) = _UpdateLanguage;
+
+  const factory ProfileEvent.orderAccepted({required OrderEntity order}) =
+      _OrderAccepted;
 }

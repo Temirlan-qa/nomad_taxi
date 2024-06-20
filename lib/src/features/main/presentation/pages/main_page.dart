@@ -11,6 +11,9 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/drawer_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_bottom_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/modal_widgets/create_order_modal_widget.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
+
+import '../widgets/modal_widgets/active_order_modal_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -70,6 +73,7 @@ class _MainPageState extends State<MainPage> {
           initial: () =>
               const Center(child: CircularProgressIndicator.adaptive()),
           loaded: (viewModel) {
+            OrderEntity? order = viewModel.order;
             return Scaffold(
               extendBodyBehindAppBar: true,
               key: _scaffoldKey,
@@ -112,18 +116,24 @@ class _MainPageState extends State<MainPage> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        // ActiveOrderModalWidget(
-                        //   onTap: () {},
-                        //   addressFrom: 'addressFrom',
-                        //   addressTo: 'addressTo',
-                        // ),
-                        CreateOrderModalWidget(
-                          currentLocation: '',
-                          onTapEditLocation: () {},
-                          onTapCreateOrder: () {
-                            context.pushNamed(RouteNames.searchAddress);
-                          },
-                        ),
+                        if (order != null) ...[
+                          ActiveOrderModalWidget(
+                            onTap: () {
+                              context.pushNamed(RouteNames.orderSearch,
+                                  extra: order.price);
+                            },
+                            addressFrom: order.startPoint,
+                            addressTo: order.endPoint,
+                          ),
+                        ] else ...[
+                          CreateOrderModalWidget(
+                            currentLocation: 'Титова 14',
+                            onTapEditLocation: () {},
+                            onTapCreateOrder: () {
+                              context.pushNamed(RouteNames.searchAddress);
+                            },
+                          ),
+                        ],
                         // CurrentLocationModalWidget(
                         //   onTapSelect: () {},
                         //   currentLocation: '',

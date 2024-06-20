@@ -18,6 +18,9 @@ import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/check_mark_indicator.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/show_order_modal_widget.dart';
 
+import '../../../detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
+import '../widgets/show_address_modal_widget.dart';
+
 class DriverOrdersPage extends StatefulWidget {
   const DriverOrdersPage({super.key});
 
@@ -64,7 +67,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
   @override
   Widget build(BuildContext context) {
     String time = _formattedTime(timeInSecond: duration.inSeconds);
-    final orderBloc = getIt<OrderBloc>();
+    final driverOrderBloc = getIt<DriverOrderBloc>();
     return Scaffold(
       appBar: CustomAppBar(
         leading: BackButtonWrapper(onPressed: () => context.pop()),
@@ -85,27 +88,29 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
         ],
       ),
       body: SafeArea(
-        child: BaseBlocWidget<OrderBloc, OrderEvent, OrderState>(
-          bloc: orderBloc,
-          starterEvent: const OrderEvent.started(),
+        child:
+            BaseBlocWidget<DriverOrderBloc, DriverOrderEvent, DriverOrderState>(
+          bloc: driverOrderBloc,
+          starterEvent: const DriverOrderEvent.started(),
           builder: (context, state, bloc) {
             return state.when(
               initial: () =>
                   const Center(child: CircularProgressIndicator.adaptive()),
-              error: (error) => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Assets.icons.brand.smile.svg(),
-                  const Gap(UIConstants.defaultPadding),
-                  Text(
-                    error,
-                    textAlign: TextAlign.center,
-                    style: context.theme.textStyles.titleSecondary,
-                  ),
-                ],
-              ),
+              // error: (error) => Column(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Assets.icons.brand.smile.svg(),
+              //     const Gap(UIConstants.defaultPadding),
+              //     Text(
+              //       error,
+              //       textAlign: TextAlign.center,
+              //       style: context.theme.textStyles.titleSecondary,
+              //     ),
+              //   ],
+              // ),
               loaded: (viewModel) {
-                List<OrderEntity> orderList = viewModel.ordersList;
+                List<OrderEntity> orderList =
+                    viewModel.ordersList.reversed.toList();
                 if (orderList.isEmpty) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +127,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                 }
                 return CheckMarkIndicator(
                   onRefresh: () {
-                    bloc.add(const OrderEvent.getOrders());
+                    bloc.add(const DriverOrderEvent.getOrders());
                   },
                   child: ListView.separated(
                     padding: const EdgeInsets.all(UIConstants.defaultPadding),
@@ -133,8 +138,10 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                     itemBuilder: (ctx, index) {
                       return InkWell(
                         onTap: () {
-                          context.push(RoutePaths.order,
-                              extra: orderList[index]);
+                          showAcceptOrderModal(
+                            context: context,
+                            orderEntity: orderList[index],
+                          );
                         },
                         borderRadius:
                             BorderRadius.circular(UIConstants.defaultRadius),
@@ -247,6 +254,16 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
       context: context,
       builder: (context) {
         return const CustomOrderModalWidget();
+      },
+    );
+  }
+
+  void showAcceptOrderModal(
+      {required BuildContext context, required OrderEntity orderEntity}) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return CustomAddressModalWidget(order: orderEntity);
       },
     );
   }

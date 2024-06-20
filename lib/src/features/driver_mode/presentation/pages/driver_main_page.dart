@@ -12,6 +12,7 @@ import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/drawer_widget.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_bottom_widget.dart';
 
 class DriverMainPage extends StatefulWidget {
@@ -25,10 +26,14 @@ class _DriverMainPageState extends State<DriverMainPage> {
   bool switchState = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final DriverOrderBloc _driverOrderBloc = getIt<DriverOrderBloc>();
+
   @override
   Widget build(BuildContext context) {
     final bodyMain = context.theme.textStyles.bodyMain;
     final secondary = context.theme.secondary;
+
+    final driverState = _driverOrderBloc.state;
 
     return BlocBuilder<ProfileBloc, ProfileState>(
       bloc: getIt<ProfileBloc>(),
@@ -184,6 +189,8 @@ class _DriverMainPageState extends State<DriverMainPage> {
                               inactiveTrackColor: context.theme.stroke,
                               value: switchState,
                               onChanged: (val) {
+                                _driverOrderBloc
+                                    .add(const DriverOrderEvent.getOrders());
                                 setState(() {
                                   switchState = val;
                                 });
@@ -196,7 +203,14 @@ class _DriverMainPageState extends State<DriverMainPage> {
                       onTap: !switchState
                           ? null
                           : () {
-                              context.pushNamed(RouteNames.driverOrders);
+                              driverState.maybeWhen(
+                                loaded: (viewModel) {
+                                  context.pushNamed(RouteNames.order,
+                                      extra: viewModel.activeOrder);
+                                },
+                                orElse: () =>
+                                    context.pushNamed(RouteNames.driverOrders),
+                              );
                             },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

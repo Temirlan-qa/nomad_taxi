@@ -29,10 +29,13 @@ class OrderSearchPage extends StatefulWidget {
 
 class _OrderSearchPageState extends State<OrderSearchPage> {
   final TextEditingController priceController = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool switchState = false;
   OrderStateEnum orderState = OrderStateEnum.accepted;
+
+  late int orderPrice;
 
   final String carNumber = '987-AIB';
   final String carModel = 'Зеленый Volswagen Polo';
@@ -41,6 +44,18 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
   final String driverName = "Tima";
   final String addressTo = "addressTo";
   final String addressFrom = "addressFrom";
+
+  @override
+  void initState() {
+    super.initState();
+    orderPrice = widget.price;
+  }
+
+  @override
+  void dispose() {
+    priceController.dispose();
+    super.dispose();
+  }
 
   void showInfoModal(BuildContext context, OrderState state, int price) {
     showModalBottomSheet(
@@ -109,8 +124,49 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                     );
                   },
                   initial: () {
-                    return const InfoAboutOrderStateWidget(
-                        state: OrderStateEnum.searching);
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const InfoAboutOrderStateWidget(
+                            state: OrderStateEnum.searching),
+                        const SizedBox(height: 200),
+                        CustomOrderPriceTextFieldWidget(
+                            controller: priceController,
+                            orderPrice: orderPrice,
+                            onDecrease: orderPrice == 800
+                                ? null
+                                : () {
+                                    setState(() {
+                                      orderPrice >= 800 ? orderPrice -= 100 : 0;
+                                      priceController.text = '$orderPrice ₸';
+                                    });
+                                  },
+                            onIncrease: () {
+                              setState(() {
+                                orderPrice += 100;
+                                priceController.text = '$orderPrice ₸';
+                              });
+                            }),
+                        const SizedBox(height: 10),
+                        CustomMainButtonWidget(
+                          title: S.current.order_details,
+                          isMain: false,
+                          color: context.theme.blue,
+                          onPressed: () {
+                            showInfoModal(context, state, orderPrice);
+                            // showThankModal(context);
+                          },
+                        ),
+                        CustomMainButtonWidget(
+                          title: S.current.cancel_the_order,
+                          isMain: false,
+                          color: context.theme.red,
+                          onPressed: () {
+                            context.pop();
+                          },
+                        ),
+                      ],
+                    );
                   },
                   loaded: (OrderViewModel viewModel) {
                     return Column(

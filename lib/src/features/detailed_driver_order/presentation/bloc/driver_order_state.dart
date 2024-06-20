@@ -10,5 +10,7 @@ class DriverOrderState with _$DriverOrderState {
 class DriverOrderViewModel with _$DriverOrderViewModel {
   const factory DriverOrderViewModel({
     GetOrderStatusResponse? updatedOrderStatus,
+    @Default([]) List<OrderEntity> ordersList,
+    OrderEntity? activeOrder,
   }) = _DriverOrderViewModel;
 }

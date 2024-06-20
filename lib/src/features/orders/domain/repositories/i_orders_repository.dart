@@ -20,7 +20,7 @@ abstract class IOrdersRepository {
   );
 
   Future<Either<DomainException, void>> cancelOrder(
-    String orderId,
+    OrderRequest order,
   );
 
   Future<Either<DomainException, OrderResponse>> waitingForClient(

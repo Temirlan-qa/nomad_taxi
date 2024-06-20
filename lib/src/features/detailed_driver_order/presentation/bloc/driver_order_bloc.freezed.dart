@@ -20,24 +20,33 @@ mixin _$DriverOrderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
         updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,21 +54,30 @@ mixin _$DriverOrderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
     TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,8 +141,11 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
         updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) {
     return started();
   }
@@ -134,8 +155,11 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) {
     return started?.call();
   }
@@ -145,8 +169,11 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -160,7 +187,10 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return started(this);
   }
@@ -170,7 +200,10 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return started?.call(this);
   }
@@ -180,7 +213,10 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
     TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -234,8 +270,11 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
         updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) {
     return getOrderStatus();
   }
@@ -245,8 +284,11 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) {
     return getOrderStatus?.call();
   }
@@ -256,8 +298,11 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) {
     if (getOrderStatus != null) {
@@ -271,7 +316,10 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return getOrderStatus(this);
   }
@@ -281,7 +329,10 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return getOrderStatus?.call(this);
   }
@@ -291,7 +342,10 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
     TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (getOrderStatus != null) {
@@ -303,6 +357,135 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
 
 abstract class _GetOrderStatus implements DriverOrderEvent {
   const factory _GetOrderStatus() = _$GetOrderStatusImpl;
+}
+
+/// @nodoc
+abstract class _$$GetOrdersImplCopyWith<$Res> {
+  factory _$$GetOrdersImplCopyWith(
+          _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
+      __$$GetOrdersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetOrdersImplCopyWithImpl<$Res>
+    extends _$DriverOrderEventCopyWithImpl<$Res, _$GetOrdersImpl>
+    implements _$$GetOrdersImplCopyWith<$Res> {
+  __$$GetOrdersImplCopyWithImpl(
+      _$GetOrdersImpl _value, $Res Function(_$GetOrdersImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetOrdersImpl implements _GetOrders {
+  const _$GetOrdersImpl();
+
+  @override
+  String toString() {
+    return 'DriverOrderEvent.getOrders()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
+    required TResult Function(GetOrderStatusResponse updateOrderStatus)
+        updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
+  }) {
+    return getOrders();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
+    TResult? Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
+  }) {
+    return getOrders?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
+    TResult Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (getOrders != null) {
+      return getOrders();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+  }) {
+    return getOrders(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+  }) {
+    return getOrders?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (getOrders != null) {
+      return getOrders(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetOrders implements DriverOrderEvent {
+  const factory _GetOrders() = _$GetOrdersImpl;
 }
 
 /// @nodoc
@@ -384,8 +567,11 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
         updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
   }) {
     return updateOrderStatus(this.updateOrderStatus);
   }
@@ -395,8 +581,11 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
   }) {
     return updateOrderStatus?.call(this.updateOrderStatus);
   }
@@ -406,8 +595,11 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
     required TResult orElse(),
   }) {
     if (updateOrderStatus != null) {
@@ -421,7 +613,10 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return updateOrderStatus(this);
   }
@@ -431,7 +626,10 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return updateOrderStatus?.call(this);
   }
@@ -441,7 +639,10 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
     TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (updateOrderStatus != null) {
@@ -459,6 +660,326 @@ abstract class _UpdateOrderStatus implements DriverOrderEvent {
   GetOrderStatusResponse get updateOrderStatus;
   @JsonKey(ignore: true)
   _$$UpdateOrderStatusImplCopyWith<_$UpdateOrderStatusImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AcceptOrderImplCopyWith<$Res> {
+  factory _$$AcceptOrderImplCopyWith(
+          _$AcceptOrderImpl value, $Res Function(_$AcceptOrderImpl) then) =
+      __$$AcceptOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int orderId});
+}
+
+/// @nodoc
+class __$$AcceptOrderImplCopyWithImpl<$Res>
+    extends _$DriverOrderEventCopyWithImpl<$Res, _$AcceptOrderImpl>
+    implements _$$AcceptOrderImplCopyWith<$Res> {
+  __$$AcceptOrderImplCopyWithImpl(
+      _$AcceptOrderImpl _value, $Res Function(_$AcceptOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+  }) {
+    return _then(_$AcceptOrderImpl(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AcceptOrderImpl implements _AcceptOrder {
+  const _$AcceptOrderImpl({required this.orderId});
+
+  @override
+  final int orderId;
+
+  @override
+  String toString() {
+    return 'DriverOrderEvent.acceptOrder(orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AcceptOrderImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AcceptOrderImplCopyWith<_$AcceptOrderImpl> get copyWith =>
+      __$$AcceptOrderImplCopyWithImpl<_$AcceptOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
+    required TResult Function(GetOrderStatusResponse updateOrderStatus)
+        updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
+  }) {
+    return acceptOrder(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
+    TResult? Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
+  }) {
+    return acceptOrder?.call(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
+    TResult Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (acceptOrder != null) {
+      return acceptOrder(orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+  }) {
+    return acceptOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+  }) {
+    return acceptOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (acceptOrder != null) {
+      return acceptOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AcceptOrder implements DriverOrderEvent {
+  const factory _AcceptOrder({required final int orderId}) = _$AcceptOrderImpl;
+
+  int get orderId;
+  @JsonKey(ignore: true)
+  _$$AcceptOrderImplCopyWith<_$AcceptOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CancelOrderImplCopyWith<$Res> {
+  factory _$$CancelOrderImplCopyWith(
+          _$CancelOrderImpl value, $Res Function(_$CancelOrderImpl) then) =
+      __$$CancelOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int orderId});
+}
+
+/// @nodoc
+class __$$CancelOrderImplCopyWithImpl<$Res>
+    extends _$DriverOrderEventCopyWithImpl<$Res, _$CancelOrderImpl>
+    implements _$$CancelOrderImplCopyWith<$Res> {
+  __$$CancelOrderImplCopyWithImpl(
+      _$CancelOrderImpl _value, $Res Function(_$CancelOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+  }) {
+    return _then(_$CancelOrderImpl(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CancelOrderImpl implements _CancelOrder {
+  const _$CancelOrderImpl({required this.orderId});
+
+  @override
+  final int orderId;
+
+  @override
+  String toString() {
+    return 'DriverOrderEvent.cancelOrder(orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CancelOrderImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
+      __$$CancelOrderImplCopyWithImpl<_$CancelOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
+    required TResult Function(GetOrderStatusResponse updateOrderStatus)
+        updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) cancelOrder,
+  }) {
+    return cancelOrder(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
+    TResult? Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? cancelOrder,
+  }) {
+    return cancelOrder?.call(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
+    TResult Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (cancelOrder != null) {
+      return cancelOrder(orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+  }) {
+    return cancelOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+  }) {
+    return cancelOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (cancelOrder != null) {
+      return cancelOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CancelOrder implements DriverOrderEvent {
+  const factory _CancelOrder({required final int orderId}) = _$CancelOrderImpl;
+
+  int get orderId;
+  @JsonKey(ignore: true)
+  _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -773,6 +1294,8 @@ abstract class _Loaded implements DriverOrderState {
 mixin _$DriverOrderViewModel {
   GetOrderStatusResponse? get updatedOrderStatus =>
       throw _privateConstructorUsedError;
+  List<OrderEntity> get ordersList => throw _privateConstructorUsedError;
+  OrderEntity? get activeOrder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DriverOrderViewModelCopyWith<DriverOrderViewModel> get copyWith =>
@@ -785,9 +1308,13 @@ abstract class $DriverOrderViewModelCopyWith<$Res> {
           $Res Function(DriverOrderViewModel) then) =
       _$DriverOrderViewModelCopyWithImpl<$Res, DriverOrderViewModel>;
   @useResult
-  $Res call({GetOrderStatusResponse? updatedOrderStatus});
+  $Res call(
+      {GetOrderStatusResponse? updatedOrderStatus,
+      List<OrderEntity> ordersList,
+      OrderEntity? activeOrder});
 
   $GetOrderStatusResponseCopyWith<$Res>? get updatedOrderStatus;
+  $OrderEntityCopyWith<$Res>? get activeOrder;
 }
 
 /// @nodoc
@@ -805,12 +1332,22 @@ class _$DriverOrderViewModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? updatedOrderStatus = freezed,
+    Object? ordersList = null,
+    Object? activeOrder = freezed,
   }) {
     return _then(_value.copyWith(
       updatedOrderStatus: freezed == updatedOrderStatus
           ? _value.updatedOrderStatus
           : updatedOrderStatus // ignore: cast_nullable_to_non_nullable
               as GetOrderStatusResponse?,
+      ordersList: null == ordersList
+          ? _value.ordersList
+          : ordersList // ignore: cast_nullable_to_non_nullable
+              as List<OrderEntity>,
+      activeOrder: freezed == activeOrder
+          ? _value.activeOrder
+          : activeOrder // ignore: cast_nullable_to_non_nullable
+              as OrderEntity?,
     ) as $Val);
   }
 
@@ -826,6 +1363,18 @@ class _$DriverOrderViewModelCopyWithImpl<$Res,
       return _then(_value.copyWith(updatedOrderStatus: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderEntityCopyWith<$Res>? get activeOrder {
+    if (_value.activeOrder == null) {
+      return null;
+    }
+
+    return $OrderEntityCopyWith<$Res>(_value.activeOrder!, (value) {
+      return _then(_value.copyWith(activeOrder: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -836,10 +1385,15 @@ abstract class _$$DriverOrderViewModelImplCopyWith<$Res>
       __$$DriverOrderViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({GetOrderStatusResponse? updatedOrderStatus});
+  $Res call(
+      {GetOrderStatusResponse? updatedOrderStatus,
+      List<OrderEntity> ordersList,
+      OrderEntity? activeOrder});
 
   @override
   $GetOrderStatusResponseCopyWith<$Res>? get updatedOrderStatus;
+  @override
+  $OrderEntityCopyWith<$Res>? get activeOrder;
 }
 
 /// @nodoc
@@ -854,12 +1408,22 @@ class __$$DriverOrderViewModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? updatedOrderStatus = freezed,
+    Object? ordersList = null,
+    Object? activeOrder = freezed,
   }) {
     return _then(_$DriverOrderViewModelImpl(
       updatedOrderStatus: freezed == updatedOrderStatus
           ? _value.updatedOrderStatus
           : updatedOrderStatus // ignore: cast_nullable_to_non_nullable
               as GetOrderStatusResponse?,
+      ordersList: null == ordersList
+          ? _value._ordersList
+          : ordersList // ignore: cast_nullable_to_non_nullable
+              as List<OrderEntity>,
+      activeOrder: freezed == activeOrder
+          ? _value.activeOrder
+          : activeOrder // ignore: cast_nullable_to_non_nullable
+              as OrderEntity?,
     ));
   }
 }
@@ -867,14 +1431,29 @@ class __$$DriverOrderViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DriverOrderViewModelImpl implements _DriverOrderViewModel {
-  const _$DriverOrderViewModelImpl({this.updatedOrderStatus});
+  const _$DriverOrderViewModelImpl(
+      {this.updatedOrderStatus,
+      final List<OrderEntity> ordersList = const [],
+      this.activeOrder})
+      : _ordersList = ordersList;
 
   @override
   final GetOrderStatusResponse? updatedOrderStatus;
+  final List<OrderEntity> _ordersList;
+  @override
+  @JsonKey()
+  List<OrderEntity> get ordersList {
+    if (_ordersList is EqualUnmodifiableListView) return _ordersList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ordersList);
+  }
+
+  @override
+  final OrderEntity? activeOrder;
 
   @override
   String toString() {
-    return 'DriverOrderViewModel(updatedOrderStatus: $updatedOrderStatus)';
+    return 'DriverOrderViewModel(updatedOrderStatus: $updatedOrderStatus, ordersList: $ordersList, activeOrder: $activeOrder)';
   }
 
   @override
@@ -883,11 +1462,16 @@ class _$DriverOrderViewModelImpl implements _DriverOrderViewModel {
         (other.runtimeType == runtimeType &&
             other is _$DriverOrderViewModelImpl &&
             (identical(other.updatedOrderStatus, updatedOrderStatus) ||
-                other.updatedOrderStatus == updatedOrderStatus));
+                other.updatedOrderStatus == updatedOrderStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._ordersList, _ordersList) &&
+            (identical(other.activeOrder, activeOrder) ||
+                other.activeOrder == activeOrder));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, updatedOrderStatus);
+  int get hashCode => Object.hash(runtimeType, updatedOrderStatus,
+      const DeepCollectionEquality().hash(_ordersList), activeOrder);
 
   @JsonKey(ignore: true)
   @override
@@ -900,11 +1484,16 @@ class _$DriverOrderViewModelImpl implements _DriverOrderViewModel {
 
 abstract class _DriverOrderViewModel implements DriverOrderViewModel {
   const factory _DriverOrderViewModel(
-          {final GetOrderStatusResponse? updatedOrderStatus}) =
-      _$DriverOrderViewModelImpl;
+      {final GetOrderStatusResponse? updatedOrderStatus,
+      final List<OrderEntity> ordersList,
+      final OrderEntity? activeOrder}) = _$DriverOrderViewModelImpl;
 
   @override
   GetOrderStatusResponse? get updatedOrderStatus;
+  @override
+  List<OrderEntity> get ordersList;
+  @override
+  OrderEntity? get activeOrder;
   @override
   @JsonKey(ignore: true)
   _$$DriverOrderViewModelImplCopyWith<_$DriverOrderViewModelImpl>
