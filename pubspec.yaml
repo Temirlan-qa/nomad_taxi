@@ -39,6 +39,7 @@ dependencies:
   # Multiple Search Selection
   search_choices: ^2.2.7
   flutter_super_html_viewer: ^0.1.0
+  webview_flutter: ^4.8.0
 
   file: ^7.0.0
 

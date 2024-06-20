@@ -350,6 +350,26 @@ class S {
     );
   }
 
+  /// `Номер машины`
+  String get carNumber {
+    return Intl.message(
+      'Номер машины',
+      name: 'carNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Модель автомобиля`
+  String get carModel {
+    return Intl.message(
+      'Модель автомобиля',
+      name: 'carModel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ответ разработчика`
   String get answer_dev {
     return Intl.message(
@@ -505,6 +525,26 @@ class S {
     return Intl.message(
       'Ваше имя',
       name: 'your_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите адрес`
+  String get enterAddress {
+    return Intl.message(
+      'Введите адрес',
+      name: 'enterAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На карте`
+  String get onMap {
+    return Intl.message(
+      'На карте',
+      name: 'onMap',
       desc: '',
       args: [],
     );
@@ -1655,6 +1695,16 @@ class S {
     return Intl.message(
       'Ваш ID',
       name: 'your_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На вашем балансе недостаточно средств для приема заказов`
+  String get youDoNotHaveEnoughBalance {
+    return Intl.message(
+      'На вашем балансе недостаточно средств для приема заказов',
+      name: 'youDoNotHaveEnoughBalance',
       desc: '',
       args: [],
     );

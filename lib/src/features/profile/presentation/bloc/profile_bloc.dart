@@ -6,6 +6,7 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/exports/profile_exports.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
@@ -13,6 +14,7 @@ import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_us
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 
 import '../../../../core/service/injectable/exports/all.dart';
+import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../domain/requests/update_partner_data_request.dart';
 import '../../domain/usecases/update_language_use_case.dart';
 import '../../domain/usecases/update_partner_data_use_case.dart';
@@ -42,6 +44,8 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
 
   final ProfileViewModel _viewModel = ProfileViewModel();
 
+  final StorageServiceImpl _storage = StorageServiceImpl();
+
   @override
   Future<void> onEventHandler(ProfileEvent event, Emitter emit) async {
     await event.when(
@@ -56,6 +60,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
           _updateLanguage(event as _UpdateLanguage, emit),
       updatePartnerData: (partnerData) =>
           _updatePartnerData(event as _UpdatePartnerData, emit),
+      orderAccepted: (_) => _orderAccepted(event as _OrderAccepted, emit),
     );
   }
 
@@ -63,6 +68,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     _Init event,
     Emitter emit,
   ) async {
+    // await _storage.deleteOrder();
     emit(const _Initial());
     final result = await _getUserDataUseCase.call();
     final data = result.data;
@@ -89,10 +95,19 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
             pLastName: data.pLastName,
             pStatus: data.pStatus,
             pTownId: data.pTownId,
+
+            order: _storage.loadOrder(),
           ),
         ),
       );
     }
+  }
+
+  Future<void> _orderAccepted(_OrderAccepted event, emit) async {
+
+    final OrderEntity activeOrder = event.order;
+
+    emit(_Loaded(viewModel: _viewModel.copyWith(order: activeOrder)));
   }
 
   Future<void> _logOut(
@@ -114,7 +129,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     _DeleteAccount event,
     Emitter emit,
   ) async {
-    final result = await _deleteAccountUseCase.call();
+    await _deleteAccountUseCase.call();
   }
 
   Future<void> _updateUserInfo(

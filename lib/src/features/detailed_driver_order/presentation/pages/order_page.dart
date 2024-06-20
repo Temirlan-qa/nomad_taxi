@@ -44,7 +44,7 @@ class OrderPage extends StatelessWidget {
                   ),
                   const Gap(UIConstants.defaultGap3),
                   CustomOrderButtonsWidget(
-                      labelStyle: labelStyle, headLine: headLine),
+                      labelStyle: labelStyle, headLine: headLine, order: order,),
                 ],
               )
             : Row(
@@ -62,6 +62,7 @@ class OrderPage extends StatelessWidget {
                     child: CustomOrderButtonsWidget(
                       labelStyle: labelStyle,
                       headLine: headLine,
+                      order: order,
                     ),
                   ),
                 ],
@@ -69,6 +70,7 @@ class OrderPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: ListView(
+          shrinkWrap: true,
           padding: const EdgeInsets.all(UIConstants.defaultPadding),
           children: [
             Text(
@@ -156,26 +158,28 @@ class OrderPage extends StatelessWidget {
             const Gap(UIConstants.defaultGap7),
             Row(
               children: [
-                Expanded(
-                  child: CustomMainButtonWidget(
-                    title: S.current.route,
-                    onPressed: () {},
-                    isMain: false,
-                    prefixIcon: Assets.icons.solid.routeSolid1,
-                    iconColor: context.theme.red,
-                    color: context.theme.red,
-                  ),
-                ),
-                const Gap(UIConstants.defaultGap1),
-                Expanded(
-                  child: CustomMainButtonWidget(
-                    title: S.current.call,
-                    onPressed: () {},
-                    isMain: false,
-                    prefixIcon: Assets.icons.solid.phoneSolid,
-                    iconColor: context.theme.green,
-                    color: context.theme.green,
-                  ),
+                order.points != null
+                    ? Row(
+                        children: [
+                          CustomMainButtonWidget(
+                            title: S.current.route,
+                            onPressed: () {},
+                            isMain: false,
+                            prefixIcon: Assets.icons.solid.routeSolid1,
+                            iconColor: context.theme.red,
+                            color: context.theme.red,
+                          ),
+                          const Gap(UIConstants.defaultGap1),
+                        ],
+                      )
+                    : const Offstage(),
+                CustomMainButtonWidget(
+                  title: S.current.call,
+                  onPressed: () {},
+                  isMain: false,
+                  prefixIcon: Assets.icons.solid.phoneSolid,
+                  iconColor: context.theme.green,
+                  color: context.theme.green,
                 ),
               ],
             ),
@@ -191,27 +195,11 @@ class OrderPage extends StatelessWidget {
         .copyWith(color: context.theme.secondary);
     final titleStyle = context.theme.textStyles.titleSecondary;
     final headLine = context.theme.textStyles.headLine;
-    return BaseBlocWidget<DriverOrderBloc, DriverOrderEvent, DriverOrderState>(
-      bloc: getIt<DriverOrderBloc>(),
-      starterEvent: const DriverOrderEvent.started(),
-      builder: (context, state, bloc) {
-        return state.when(initial: () {
           return _buildOrderPage(
             context: context,
             labelStyle: labelStyle,
             titleStyle: titleStyle,
             headLine: headLine,
-          );
-        }, loaded: (viewModel) {
-          return _buildOrderPage(
-            context: context,
-            labelStyle: labelStyle,
-            titleStyle: titleStyle,
-            headLine: headLine,
-            viewModel: viewModel,
-          );
-        });
-      },
     );
   }
 }

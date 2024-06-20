@@ -1,86 +1,81 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
-import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
+import 'package:nomad_taxi/src/features/orders/data/models/requests/create_order_request.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
-import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
 
-import '../../../../core/localization/generated/l10n.dart';
+import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../domain/entities/order/order_entity.dart';
+import '../../domain/entities/response/order_response.dart';
+import '../../domain/usecases/create_order_use_case.dart';
 
 part 'order_bloc.freezed.dart';
 part 'order_event.dart';
 part 'order_state.dart';
 
+@injectable
+@factoryMethod
 class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
-    this._getOrderUseCase,
-    
+    this._createOrderUseCase,
   ) : super(const _Initial());
 
-  final GetOrderUseCase _getOrderUseCase;
+  final CreateOrderUseCase _createOrderUseCase;
 
-  final OrderViewModel _viewModel = const OrderViewModel();
+  final StorageServiceImpl _storage = StorageServiceImpl();
 
   StreamSubscription? _orderStatusSubscription;
 
-  final DriverOrderBloc _driverOrderBloc = getIt<DriverOrderBloc>();
+  OrderViewModel _viewModel = const OrderViewModel();
 
   @override
   Future<void> onEventHandler(OrderEvent event, Emitter emit) async {
     await event.when(
       started: () => _started(),
-      getOrders: () => _getOrders(event as _GetOrders, emit),
-      acceptOrder: (_) => _acceptOrder(event as _AcceptOrder, emit),
-      cancelOrder: (_) => _cancelOrder(event as _CancelOrder, emit),
+      createOrder: (_) => _createOrder(event as _CreateOrder, emit),
+      acceptedOrder: () => _acceptedOrder(event as _AcceptedOrder, emit),
     );
   }
 
   Future<void> _started() async {
-    _driverOrderBloc.add(const DriverOrderEvent.started());
-    add(const _GetOrders());
+    add(const _AcceptedOrder());
   }
 
-  Future<void> _getOrders(
-    _GetOrders event,
-    Emitter emit,
-  ) async {
-    emit(const _Initial());
+  Future<void> _acceptedOrder(_AcceptedOrder event, Emitter emit) async {
+    final OrderEntity? orderAccepted = _storage.loadOrder();
 
-    final result = await _getOrderUseCase.call();
+    if (orderAccepted != null) {
+      _viewModel = _viewModel.copyWith(orderAccepted: orderAccepted);
 
-    final data = result.data;
+      emit(_Loaded(viewModel: _viewModel));
+    }
+  }
 
-    if (result.isSuccessful && data != null) {
-      emit(
-        _Loaded(
-          viewModel: _viewModel.copyWith(
-            ordersList: data.orders,
-          ),
-        ),
-      );
+  Future<void> _createOrder(_CreateOrder event, Emitter emit) async {
+    final createOrderRequest = CreateOrderRequest(event.orderEntity);
+
+    final result = await _createOrderUseCase.call(createOrderRequest);
+
+    OrderResponse? data = result.data;
+
+    OrderEntity? order = data?.order;
+
+    if (result.isSuccessful && order != null) {
+      log('order created success', name: 'CreateOrder');
       return;
     }
-    emit(_Error(S.current.noActiveOrdersAtTheMoment));
+
+    emit(const _Error('Failed to create order'));
   }
 
-  Future<void> _acceptOrder(
-    _AcceptOrder event,
-    Emitter emit,
-  ) async {
-    emit(const _Initial());
-  }
-
-  Future<void> _cancelOrder(
-    _CancelOrder event,
-    Emitter emit,
-  ) async {
-    emit(const _Initial());
-  }
+  Future<void> _cancelOrder() async {}
 
   @override
   Future<void> close() {

@@ -20,8 +20,7 @@ CreateOrderResponse _$CreateOrderResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CreateOrderResponse {
-  String get status => throw _privateConstructorUsedError;
-  OrderEntity get data => throw _privateConstructorUsedError;
+  OrderEntity get order => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,9 +34,9 @@ abstract class $CreateOrderResponseCopyWith<$Res> {
           CreateOrderResponse value, $Res Function(CreateOrderResponse) then) =
       _$CreateOrderResponseCopyWithImpl<$Res, CreateOrderResponse>;
   @useResult
-  $Res call({String status, OrderEntity data});
+  $Res call({OrderEntity order});
 
-  $OrderEntityCopyWith<$Res> get data;
+  $OrderEntityCopyWith<$Res> get order;
 }
 
 /// @nodoc
@@ -53,26 +52,21 @@ class _$CreateOrderResponseCopyWithImpl<$Res, $Val extends CreateOrderResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
-    Object? data = null,
+    Object? order = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
               as OrderEntity,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $OrderEntityCopyWith<$Res> get data {
-    return $OrderEntityCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
+  $OrderEntityCopyWith<$Res> get order {
+    return $OrderEntityCopyWith<$Res>(_value.order, (value) {
+      return _then(_value.copyWith(order: value) as $Val);
     });
   }
 }
@@ -85,10 +79,10 @@ abstract class _$$CreateOrderResponseImplCopyWith<$Res>
       __$$CreateOrderResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String status, OrderEntity data});
+  $Res call({OrderEntity order});
 
   @override
-  $OrderEntityCopyWith<$Res> get data;
+  $OrderEntityCopyWith<$Res> get order;
 }
 
 /// @nodoc
@@ -102,17 +96,12 @@ class __$$CreateOrderResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
-    Object? data = null,
+    Object? order = null,
   }) {
     return _then(_$CreateOrderResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
               as OrderEntity,
     ));
   }
@@ -121,19 +110,17 @@ class __$$CreateOrderResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CreateOrderResponseImpl implements _CreateOrderResponse {
-  const _$CreateOrderResponseImpl({required this.status, required this.data});
+  const _$CreateOrderResponseImpl({required this.order});
 
   factory _$CreateOrderResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CreateOrderResponseImplFromJson(json);
 
   @override
-  final String status;
-  @override
-  final OrderEntity data;
+  final OrderEntity order;
 
   @override
   String toString() {
-    return 'CreateOrderResponse(status: $status, data: $data)';
+    return 'CreateOrderResponse(order: $order)';
   }
 
   @override
@@ -141,13 +128,12 @@ class _$CreateOrderResponseImpl implements _CreateOrderResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderResponseImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.order, order) || other.order == order));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, data);
+  int get hashCode => Object.hash(runtimeType, order);
 
   @JsonKey(ignore: true)
   @override
@@ -165,17 +151,14 @@ class _$CreateOrderResponseImpl implements _CreateOrderResponse {
 }
 
 abstract class _CreateOrderResponse implements CreateOrderResponse {
-  const factory _CreateOrderResponse(
-      {required final String status,
-      required final OrderEntity data}) = _$CreateOrderResponseImpl;
+  const factory _CreateOrderResponse({required final OrderEntity order}) =
+      _$CreateOrderResponseImpl;
 
   factory _CreateOrderResponse.fromJson(Map<String, dynamic> json) =
       _$CreateOrderResponseImpl.fromJson;
 
   @override
-  String get status;
-  @override
-  OrderEntity get data;
+  OrderEntity get order;
   @override
   @JsonKey(ignore: true)
   _$$CreateOrderResponseImplCopyWith<_$CreateOrderResponseImpl> get copyWith =>

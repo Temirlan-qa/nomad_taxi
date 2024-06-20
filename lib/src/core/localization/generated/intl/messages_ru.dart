@@ -61,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Отменить заказ"),
         "canceled": MessageLookupByLibrary.simpleMessage("Отменён"),
         "car": MessageLookupByLibrary.simpleMessage("Машина"),
+        "carModel": MessageLookupByLibrary.simpleMessage("Модель автомобиля"),
+        "carNumber": MessageLookupByLibrary.simpleMessage("Номер машины"),
         "car_data": MessageLookupByLibrary.simpleMessage("Данные машины"),
         "car_info_hint_text": MessageLookupByLibrary.simpleMessage(
             "Введите в следующем порядке через запятую:\nЦвет, Марка, Модель (кузов)"),
@@ -113,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Удачной поездки =)"),
         "driver_waiting":
             MessageLookupByLibrary.simpleMessage("Вас ждет водитель!"),
+        "enterAddress": MessageLookupByLibrary.simpleMessage("Введите адрес"),
         "enter_ID":
             MessageLookupByLibrary.simpleMessage("Далее введите свой ID номер"),
         "enter_amount": MessageLookupByLibrary.simpleMessage(
@@ -157,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Далее"),
         "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
             "На данный момент нет активных заказов"),
+        "onMap": MessageLookupByLibrary.simpleMessage("На карте"),
         "on_line": MessageLookupByLibrary.simpleMessage("На линии"),
         "on_search": MessageLookupByLibrary.simpleMessage("В поиске"),
         "open": MessageLookupByLibrary.simpleMessage("Открыть"),
@@ -244,6 +248,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Написать обращение"),
         "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
             "Напишите нам в ватсап запрос на вывод средств и отвте номер вашего ID и номер вашей карты Kaspi GOLD, и наши менеджеры переведут деньги вам на счет"),
+        "youDoNotHaveEnoughBalance": MessageLookupByLibrary.simpleMessage(
+            "На вашем балансе недостаточно средств для приема заказов"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Вы хотите выйти?"),

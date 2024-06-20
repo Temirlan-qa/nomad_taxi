@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Тапсырыстан бас тарту"),
         "canceled": MessageLookupByLibrary.simpleMessage("Жойылды"),
         "car": MessageLookupByLibrary.simpleMessage("Машина"),
+        "carModel": MessageLookupByLibrary.simpleMessage("Көлік үлгісі"),
+        "carNumber": MessageLookupByLibrary.simpleMessage("Көліктің нөмірі"),
         "car_data": MessageLookupByLibrary.simpleMessage("Машина деректері"),
         "car_info_hint_text": MessageLookupByLibrary.simpleMessage(
             "Үтір арқылы келесі ретпен теріңіз:\nТүсі, маркасы, моделі (кузовы)"),
@@ -116,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сапарыңыз сәтті өтсін =)"),
         "driver_waiting":
             MessageLookupByLibrary.simpleMessage("Сізді жүргізуші күтеді!"),
+        "enterAddress":
+            MessageLookupByLibrary.simpleMessage("Мекенжайды енгізіңіз"),
         "enter_ID": MessageLookupByLibrary.simpleMessage(
             "Әрі қарай ID нөміріңізді енгізіңіз"),
         "enter_amount": MessageLookupByLibrary.simpleMessage(
@@ -161,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Келесі"),
         "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
             "Қазіргі уақытта белсенді тапсырыстар жоқ"),
+        "onMap": MessageLookupByLibrary.simpleMessage("Картада"),
         "on_line": MessageLookupByLibrary.simpleMessage("Сызықта"),
         "on_search": MessageLookupByLibrary.simpleMessage("Іздеуде"),
         "open": MessageLookupByLibrary.simpleMessage("Ашу"),
@@ -247,6 +252,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "write_appeal": MessageLookupByLibrary.simpleMessage("Өтініш жазу"),
         "write_to_whatsapp_about_withdraw": MessageLookupByLibrary.simpleMessage(
             "Бізге ватсапқа ақша алу туралы сұраныс пен жауап жіберіңіз сіздің ID нөміріңіз және сіздің Kaspi Gold картаңыздың нөмірі, және біздің менеджерлер сіздің шотыңызға ақша аударады"),
+        "youDoNotHaveEnoughBalance": MessageLookupByLibrary.simpleMessage(
+            "Тапсырыстарды қабылдау үшін сіздің балансыңызда қаражат жеткіліксіз"),
         "you_get_bonus": m0,
         "you_want_exit":
             MessageLookupByLibrary.simpleMessage("Сіз шыққыңыз келе ме?"),

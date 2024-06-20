@@ -8,7 +8,6 @@ part 'create_order_response_dto.g.dart';
 @freezed
 class CreateOrderResponseDto extends BaseDto with _$CreateOrderResponseDto {
   const factory CreateOrderResponseDto({
-    required String status,
     required OrderDto data,
   }) = _CreateOrderResponseDto;
 

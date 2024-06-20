@@ -30,6 +30,10 @@
   "congratulate": "Құттықтаймыз!",
   "you_get_bonus": "Сіз {amount} теңге бонус алдыңыз",
   "invalidInfoError": "Берілген деректер жарамсыз болды.",
+  "carNumber":"Көліктің нөмірі",
+  "carModel":"Көлік үлгісі",
+  "enterAddress":"Мекенжайды енгізіңіз",
+  "onMap":"Картада",
   "@you_get_bonus": {
     "placeholders": {
       "amount": {
@@ -164,17 +168,12 @@
   "wating_time":"Күту уақыты",
   "driver_waiting":"Сізді жүргізуші күтеді!",
   "seconds":"секунд",
-
-
-  "instruction_to_withdraw": "Ақшаны қалай алуға болатындығы туралы нұсқаулық",
-  "withdraw_infinite": "Сіз баланстан шексіз соманы ала аласыз",
-  "copy_your_id": "Идентификаторды көшіріңіз",
-  "write_to_whatsapp_about_withdraw": "Бізге ватсапқа ақша алу туралы сұраныс пен жауап жіберіңіз сіздің ID нөміріңіз және сіздің Kaspi Gold картаңыздың нөмірі, және біздің менеджерлер сіздің шотыңызға ақша аударады",
   "noActiveOrdersAtTheMoment": "Қазіргі уақытта белсенді тапсырыстар жоқ",
   "driverRequirement1": "Автокөлік үлгісін енгізіңіз",
   "driverRequirement2": "Автокөлік нөмірін енгізіңіз",
   "enter_ID": "Әрі қарай ID нөміріңізді енгізіңіз",
   "recharge_account": "Шотты толтыру",
-  "your_ID": "Сіздің ID"
+  "your_ID": "Сіздің ID",
+  "youDoNotHaveEnoughBalance": "Тапсырыстарды қабылдау үшін сіздің балансыңызда қаражат жеткіліксіз"
 }
 

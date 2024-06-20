@@ -8,9 +8,11 @@ class DrawerButtonWidget extends StatefulWidget {
   const DrawerButtonWidget({
     super.key,
     required GlobalKey<ScaffoldState> scaffoldKey,
+    this.decoration,
   }) : _scaffoldKey = scaffoldKey;
 
   final GlobalKey<ScaffoldState> _scaffoldKey;
+  final Decoration? decoration;
 
   @override
   State<DrawerButtonWidget> createState() => _DrawerButtonWidgetState();
@@ -23,8 +25,11 @@ class _DrawerButtonWidgetState extends State<DrawerButtonWidget> {
       child: Container(
         height: 48,
         width: 48,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle, boxShadow: [StaticShadows.main]),
+        decoration: widget.decoration ??
+            BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [StaticShadows.main],
+            ),
         child: IconButton(
           style: IconButton.styleFrom(
               maximumSize: const Size.fromHeight(48),

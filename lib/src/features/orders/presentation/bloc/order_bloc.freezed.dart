@@ -19,50 +19,44 @@ mixin _$OrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
+    required TResult Function() acceptedOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult? Function()? acceptedOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult Function()? acceptedOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_AcceptOrder value) acceptOrder,
-    required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_AcceptedOrder value) acceptedOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_AcceptOrder value)? acceptOrder,
-    TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_AcceptedOrder value)? acceptedOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_AcceptOrder value)? acceptOrder,
-    TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_AcceptedOrder value)? acceptedOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,9 +119,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
+    required TResult Function() acceptedOrder,
   }) {
     return started();
   }
@@ -136,9 +129,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult? Function()? acceptedOrder,
   }) {
     return started?.call();
   }
@@ -147,9 +139,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult Function()? acceptedOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,9 +153,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_AcceptOrder value) acceptOrder,
-    required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_AcceptedOrder value) acceptedOrder,
   }) {
     return started(this);
   }
@@ -173,9 +163,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_AcceptOrder value)? acceptOrder,
-    TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_AcceptedOrder value)? acceptedOrder,
   }) {
     return started?.call(this);
   }
@@ -184,9 +173,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_AcceptOrder value)? acceptOrder,
-    TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_AcceptedOrder value)? acceptedOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -201,35 +189,186 @@ abstract class _Started implements OrderEvent {
 }
 
 /// @nodoc
-abstract class _$$GetOrdersImplCopyWith<$Res> {
-  factory _$$GetOrdersImplCopyWith(
-          _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
-      __$$GetOrdersImplCopyWithImpl<$Res>;
+abstract class _$$CreateOrderImplCopyWith<$Res> {
+  factory _$$CreateOrderImplCopyWith(
+          _$CreateOrderImpl value, $Res Function(_$CreateOrderImpl) then) =
+      __$$CreateOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CreateOrderEntity orderEntity});
+
+  $CreateOrderEntityCopyWith<$Res> get orderEntity;
 }
 
 /// @nodoc
-class __$$GetOrdersImplCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$GetOrdersImpl>
-    implements _$$GetOrdersImplCopyWith<$Res> {
-  __$$GetOrdersImplCopyWithImpl(
-      _$GetOrdersImpl _value, $Res Function(_$GetOrdersImpl) _then)
+class __$$CreateOrderImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$CreateOrderImpl>
+    implements _$$CreateOrderImplCopyWith<$Res> {
+  __$$CreateOrderImplCopyWithImpl(
+      _$CreateOrderImpl _value, $Res Function(_$CreateOrderImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderEntity = null,
+  }) {
+    return _then(_$CreateOrderImpl(
+      orderEntity: null == orderEntity
+          ? _value.orderEntity
+          : orderEntity // ignore: cast_nullable_to_non_nullable
+              as CreateOrderEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreateOrderEntityCopyWith<$Res> get orderEntity {
+    return $CreateOrderEntityCopyWith<$Res>(_value.orderEntity, (value) {
+      return _then(_value.copyWith(orderEntity: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$GetOrdersImpl implements _GetOrders {
-  const _$GetOrdersImpl();
+class _$CreateOrderImpl implements _CreateOrder {
+  const _$CreateOrderImpl({required this.orderEntity});
+
+  @override
+  final CreateOrderEntity orderEntity;
 
   @override
   String toString() {
-    return 'OrderEvent.getOrders()';
+    return 'OrderEvent.createOrder(orderEntity: $orderEntity)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CreateOrderImpl &&
+            (identical(other.orderEntity, orderEntity) ||
+                other.orderEntity == orderEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderEntity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateOrderImplCopyWith<_$CreateOrderImpl> get copyWith =>
+      __$$CreateOrderImplCopyWithImpl<_$CreateOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
+    required TResult Function() acceptedOrder,
+  }) {
+    return createOrder(orderEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult? Function()? acceptedOrder,
+  }) {
+    return createOrder?.call(orderEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult Function()? acceptedOrder,
+    required TResult orElse(),
+  }) {
+    if (createOrder != null) {
+      return createOrder(orderEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_AcceptedOrder value) acceptedOrder,
+  }) {
+    return createOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_AcceptedOrder value)? acceptedOrder,
+  }) {
+    return createOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_AcceptedOrder value)? acceptedOrder,
+    required TResult orElse(),
+  }) {
+    if (createOrder != null) {
+      return createOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateOrder implements OrderEvent {
+  const factory _CreateOrder({required final CreateOrderEntity orderEntity}) =
+      _$CreateOrderImpl;
+
+  CreateOrderEntity get orderEntity;
+  @JsonKey(ignore: true)
+  _$$CreateOrderImplCopyWith<_$CreateOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AcceptedOrderImplCopyWith<$Res> {
+  factory _$$AcceptedOrderImplCopyWith(
+          _$AcceptedOrderImpl value, $Res Function(_$AcceptedOrderImpl) then) =
+      __$$AcceptedOrderImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AcceptedOrderImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$AcceptedOrderImpl>
+    implements _$$AcceptedOrderImplCopyWith<$Res> {
+  __$$AcceptedOrderImplCopyWithImpl(
+      _$AcceptedOrderImpl _value, $Res Function(_$AcceptedOrderImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AcceptedOrderImpl implements _AcceptedOrder {
+  const _$AcceptedOrderImpl();
+
+  @override
+  String toString() {
+    return 'OrderEvent.acceptedOrder()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AcceptedOrderImpl);
   }
 
   @override
@@ -239,35 +378,32 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
+    required TResult Function(CreateOrderEntity orderEntity) createOrder,
+    required TResult Function() acceptedOrder,
   }) {
-    return getOrders();
+    return acceptedOrder();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
+    TResult? Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult? Function()? acceptedOrder,
   }) {
-    return getOrders?.call();
+    return acceptedOrder?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
+    TResult Function(CreateOrderEntity orderEntity)? createOrder,
+    TResult Function()? acceptedOrder,
     required TResult orElse(),
   }) {
-    if (getOrders != null) {
-      return getOrders();
+    if (acceptedOrder != null) {
+      return acceptedOrder();
     }
     return orElse();
   }
@@ -276,334 +412,39 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_AcceptOrder value) acceptOrder,
-    required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_AcceptedOrder value) acceptedOrder,
   }) {
-    return getOrders(this);
+    return acceptedOrder(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_AcceptOrder value)? acceptOrder,
-    TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_AcceptedOrder value)? acceptedOrder,
   }) {
-    return getOrders?.call(this);
+    return acceptedOrder?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_AcceptOrder value)? acceptOrder,
-    TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_AcceptedOrder value)? acceptedOrder,
     required TResult orElse(),
   }) {
-    if (getOrders != null) {
-      return getOrders(this);
+    if (acceptedOrder != null) {
+      return acceptedOrder(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetOrders implements OrderEvent {
-  const factory _GetOrders() = _$GetOrdersImpl;
-}
-
-/// @nodoc
-abstract class _$$AcceptOrderImplCopyWith<$Res> {
-  factory _$$AcceptOrderImplCopyWith(
-          _$AcceptOrderImpl value, $Res Function(_$AcceptOrderImpl) then) =
-      __$$AcceptOrderImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String orderId});
-}
-
-/// @nodoc
-class __$$AcceptOrderImplCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$AcceptOrderImpl>
-    implements _$$AcceptOrderImplCopyWith<$Res> {
-  __$$AcceptOrderImplCopyWithImpl(
-      _$AcceptOrderImpl _value, $Res Function(_$AcceptOrderImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orderId = null,
-  }) {
-    return _then(_$AcceptOrderImpl(
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AcceptOrderImpl implements _AcceptOrder {
-  const _$AcceptOrderImpl({required this.orderId});
-
-  @override
-  final String orderId;
-
-  @override
-  String toString() {
-    return 'OrderEvent.acceptOrder(orderId: $orderId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AcceptOrderImpl &&
-            (identical(other.orderId, orderId) || other.orderId == orderId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, orderId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AcceptOrderImplCopyWith<_$AcceptOrderImpl> get copyWith =>
-      __$$AcceptOrderImplCopyWithImpl<_$AcceptOrderImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
-  }) {
-    return acceptOrder(orderId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
-  }) {
-    return acceptOrder?.call(orderId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
-    required TResult orElse(),
-  }) {
-    if (acceptOrder != null) {
-      return acceptOrder(orderId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_AcceptOrder value) acceptOrder,
-    required TResult Function(_CancelOrder value) cancelOrder,
-  }) {
-    return acceptOrder(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_AcceptOrder value)? acceptOrder,
-    TResult? Function(_CancelOrder value)? cancelOrder,
-  }) {
-    return acceptOrder?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_AcceptOrder value)? acceptOrder,
-    TResult Function(_CancelOrder value)? cancelOrder,
-    required TResult orElse(),
-  }) {
-    if (acceptOrder != null) {
-      return acceptOrder(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AcceptOrder implements OrderEvent {
-  const factory _AcceptOrder({required final String orderId}) =
-      _$AcceptOrderImpl;
-
-  String get orderId;
-  @JsonKey(ignore: true)
-  _$$AcceptOrderImplCopyWith<_$AcceptOrderImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$CancelOrderImplCopyWith<$Res> {
-  factory _$$CancelOrderImplCopyWith(
-          _$CancelOrderImpl value, $Res Function(_$CancelOrderImpl) then) =
-      __$$CancelOrderImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String orderId});
-}
-
-/// @nodoc
-class __$$CancelOrderImplCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$CancelOrderImpl>
-    implements _$$CancelOrderImplCopyWith<$Res> {
-  __$$CancelOrderImplCopyWithImpl(
-      _$CancelOrderImpl _value, $Res Function(_$CancelOrderImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orderId = null,
-  }) {
-    return _then(_$CancelOrderImpl(
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CancelOrderImpl implements _CancelOrder {
-  const _$CancelOrderImpl({required this.orderId});
-
-  @override
-  final String orderId;
-
-  @override
-  String toString() {
-    return 'OrderEvent.cancelOrder(orderId: $orderId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CancelOrderImpl &&
-            (identical(other.orderId, orderId) || other.orderId == orderId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, orderId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
-      __$$CancelOrderImplCopyWithImpl<_$CancelOrderImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getOrders,
-    required TResult Function(String orderId) acceptOrder,
-    required TResult Function(String orderId) cancelOrder,
-  }) {
-    return cancelOrder(orderId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getOrders,
-    TResult? Function(String orderId)? acceptOrder,
-    TResult? Function(String orderId)? cancelOrder,
-  }) {
-    return cancelOrder?.call(orderId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getOrders,
-    TResult Function(String orderId)? acceptOrder,
-    TResult Function(String orderId)? cancelOrder,
-    required TResult orElse(),
-  }) {
-    if (cancelOrder != null) {
-      return cancelOrder(orderId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_AcceptOrder value) acceptOrder,
-    required TResult Function(_CancelOrder value) cancelOrder,
-  }) {
-    return cancelOrder(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_AcceptOrder value)? acceptOrder,
-    TResult? Function(_CancelOrder value)? cancelOrder,
-  }) {
-    return cancelOrder?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_AcceptOrder value)? acceptOrder,
-    TResult Function(_CancelOrder value)? cancelOrder,
-    required TResult orElse(),
-  }) {
-    if (cancelOrder != null) {
-      return cancelOrder(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CancelOrder implements OrderEvent {
-  const factory _CancelOrder({required final String orderId}) =
-      _$CancelOrderImpl;
-
-  String get orderId;
-  @JsonKey(ignore: true)
-  _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _AcceptedOrder implements OrderEvent {
+  const factory _AcceptedOrder() = _$AcceptedOrderImpl;
 }
 
 /// @nodoc
@@ -1074,6 +915,7 @@ abstract class _Error implements OrderState {
 mixin _$OrderViewModel {
   OrdersResponse? get orders => throw _privateConstructorUsedError;
   List<OrderEntity> get ordersList => throw _privateConstructorUsedError;
+  OrderEntity? get orderAccepted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderViewModelCopyWith<OrderViewModel> get copyWith =>
@@ -1086,9 +928,13 @@ abstract class $OrderViewModelCopyWith<$Res> {
           OrderViewModel value, $Res Function(OrderViewModel) then) =
       _$OrderViewModelCopyWithImpl<$Res, OrderViewModel>;
   @useResult
-  $Res call({OrdersResponse? orders, List<OrderEntity> ordersList});
+  $Res call(
+      {OrdersResponse? orders,
+      List<OrderEntity> ordersList,
+      OrderEntity? orderAccepted});
 
   $OrdersResponseCopyWith<$Res>? get orders;
+  $OrderEntityCopyWith<$Res>? get orderAccepted;
 }
 
 /// @nodoc
@@ -1106,6 +952,7 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
   $Res call({
     Object? orders = freezed,
     Object? ordersList = null,
+    Object? orderAccepted = freezed,
   }) {
     return _then(_value.copyWith(
       orders: freezed == orders
@@ -1116,6 +963,10 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
           ? _value.ordersList
           : ordersList // ignore: cast_nullable_to_non_nullable
               as List<OrderEntity>,
+      orderAccepted: freezed == orderAccepted
+          ? _value.orderAccepted
+          : orderAccepted // ignore: cast_nullable_to_non_nullable
+              as OrderEntity?,
     ) as $Val);
   }
 
@@ -1130,6 +981,18 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
       return _then(_value.copyWith(orders: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderEntityCopyWith<$Res>? get orderAccepted {
+    if (_value.orderAccepted == null) {
+      return null;
+    }
+
+    return $OrderEntityCopyWith<$Res>(_value.orderAccepted!, (value) {
+      return _then(_value.copyWith(orderAccepted: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -1140,10 +1003,15 @@ abstract class _$$OrderViewModelImplCopyWith<$Res>
       __$$OrderViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({OrdersResponse? orders, List<OrderEntity> ordersList});
+  $Res call(
+      {OrdersResponse? orders,
+      List<OrderEntity> ordersList,
+      OrderEntity? orderAccepted});
 
   @override
   $OrdersResponseCopyWith<$Res>? get orders;
+  @override
+  $OrderEntityCopyWith<$Res>? get orderAccepted;
 }
 
 /// @nodoc
@@ -1159,6 +1027,7 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
   $Res call({
     Object? orders = freezed,
     Object? ordersList = null,
+    Object? orderAccepted = freezed,
   }) {
     return _then(_$OrderViewModelImpl(
       orders: freezed == orders
@@ -1169,6 +1038,10 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
           ? _value._ordersList
           : ordersList // ignore: cast_nullable_to_non_nullable
               as List<OrderEntity>,
+      orderAccepted: freezed == orderAccepted
+          ? _value.orderAccepted
+          : orderAccepted // ignore: cast_nullable_to_non_nullable
+              as OrderEntity?,
     ));
   }
 }
@@ -1177,7 +1050,9 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
 
 class _$OrderViewModelImpl implements _OrderViewModel {
   const _$OrderViewModelImpl(
-      {this.orders, final List<OrderEntity> ordersList = const []})
+      {this.orders,
+      final List<OrderEntity> ordersList = const [],
+      this.orderAccepted})
       : _ordersList = ordersList;
 
   @override
@@ -1192,8 +1067,11 @@ class _$OrderViewModelImpl implements _OrderViewModel {
   }
 
   @override
+  final OrderEntity? orderAccepted;
+
+  @override
   String toString() {
-    return 'OrderViewModel(orders: $orders, ordersList: $ordersList)';
+    return 'OrderViewModel(orders: $orders, ordersList: $ordersList, orderAccepted: $orderAccepted)';
   }
 
   @override
@@ -1203,12 +1081,14 @@ class _$OrderViewModelImpl implements _OrderViewModel {
             other is _$OrderViewModelImpl &&
             (identical(other.orders, orders) || other.orders == orders) &&
             const DeepCollectionEquality()
-                .equals(other._ordersList, _ordersList));
+                .equals(other._ordersList, _ordersList) &&
+            (identical(other.orderAccepted, orderAccepted) ||
+                other.orderAccepted == orderAccepted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, orders, const DeepCollectionEquality().hash(_ordersList));
+  int get hashCode => Object.hash(runtimeType, orders,
+      const DeepCollectionEquality().hash(_ordersList), orderAccepted);
 
   @JsonKey(ignore: true)
   @override
@@ -1221,12 +1101,15 @@ class _$OrderViewModelImpl implements _OrderViewModel {
 abstract class _OrderViewModel implements OrderViewModel {
   const factory _OrderViewModel(
       {final OrdersResponse? orders,
-      final List<OrderEntity> ordersList}) = _$OrderViewModelImpl;
+      final List<OrderEntity> ordersList,
+      final OrderEntity? orderAccepted}) = _$OrderViewModelImpl;
 
   @override
   OrdersResponse? get orders;
   @override
   List<OrderEntity> get ordersList;
+  @override
+  OrderEntity? get orderAccepted;
   @override
   @JsonKey(ignore: true)
   _$$OrderViewModelImplCopyWith<_$OrderViewModelImpl> get copyWith =>
