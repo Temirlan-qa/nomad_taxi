@@ -530,6 +530,26 @@ class S {
     );
   }
 
+  /// `Введите адрес`
+  String get enterAddress {
+    return Intl.message(
+      'Введите адрес',
+      name: 'enterAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На карте`
+  String get onMap {
+    return Intl.message(
+      'На карте',
+      name: 'onMap',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ваша фамилия`
   String get your_surname {
     return Intl.message(

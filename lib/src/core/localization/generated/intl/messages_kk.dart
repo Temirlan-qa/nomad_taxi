@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Сапарыңыз сәтті өтсін =)"),
         "driver_waiting":
             MessageLookupByLibrary.simpleMessage("Сізді жүргізуші күтеді!"),
+        "enterAddress":
+            MessageLookupByLibrary.simpleMessage("Мекенжайды енгізіңіз"),
         "enter_ID": MessageLookupByLibrary.simpleMessage(
             "Әрі қарай ID нөміріңізді енгізіңіз"),
         "enter_amount": MessageLookupByLibrary.simpleMessage(
@@ -163,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Келесі"),
         "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
             "Қазіргі уақытта белсенді тапсырыстар жоқ"),
+        "onMap": MessageLookupByLibrary.simpleMessage("Картада"),
         "on_line": MessageLookupByLibrary.simpleMessage("Сызықта"),
         "on_search": MessageLookupByLibrary.simpleMessage("Іздеуде"),
         "open": MessageLookupByLibrary.simpleMessage("Ашу"),

@@ -53,7 +53,7 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                     ),
                     TextFieldWidget(
                       controller: addressController,
-                      hintText: 'Введите адрес',
+                      hintText: S.current.enterAddress,
                       textFieldValidationState:
                           addressController.text.contains('123')
                               ? TextFieldValidationState.success
@@ -73,7 +73,7 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                                   borderRadius: BorderRadius.circular(
                                       UIConstants.defaultRadius)),
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                          child: const Text('На карте')),
+                          child: Text(S.current.onMap)),
                     ),
                     const Gap(UIConstants.defaultGap3),
                     Padding(
@@ -105,7 +105,9 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                       width: 64,
                       height: 64,
                       colorFilter: ColorFilter.mode(
-                          context.theme.background, BlendMode.srcIn),
+                        context.theme.background,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(72, 12, 72, 12),
