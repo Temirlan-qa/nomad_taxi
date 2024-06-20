@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../features/orders/domain/entities/order/order_entity.dart';
 import 'storage_service.dart';
 
 class StorageServiceImpl implements StorageService {
@@ -19,6 +21,7 @@ class StorageServiceImpl implements StorageService {
   static const String _tokenKey = 'TOKEN';
   static const String _refreshTokenKey = 'REFRESH_TOKEN';
   static const String _languageCode = 'LANGUAGE_CODE';
+  static const String _currentOrderKey = 'CURRENT_ORDER';
 
   late Box hiveBox;
 
@@ -79,4 +82,20 @@ class StorageServiceImpl implements StorageService {
 
   @override
   bool get isLoggedIn => checkLoggedIn();
+
+  Future<void> saveOrder(OrderEntity order) async {
+    await hiveBox.put(_currentOrderKey, jsonEncode(order.toJson()));
+  }
+
+  OrderEntity? loadOrder() {
+    final orderJson = hiveBox.get(_currentOrderKey);
+    if (orderJson != null) {
+      return OrderEntity.fromJson(jsonDecode(orderJson));
+    }
+    return null;
+  }
+
+  Future<void> deleteOrder() async {
+    await hiveBox.delete(_currentOrderKey);
+  }
 }
