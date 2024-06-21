@@ -28,13 +28,14 @@ import 'injectable_service.dart';
 void manualRegisterServices() {
   getIt.registerBloc<ProfileBloc>(
     () => ProfileBloc(
-        getIt<UpdateUserInfoUseCase>(),
-        getIt<LogOutUseCase>(),
-        getIt<DeleteAccountUseCase>(),
-        getIt<GetUserDataUseCase>(),
-        getIt<UpdateFcmTokenUseCase>(),
-        getIt<UpdateLanguageUseCase>(),
-        getIt<UpdatePartnerDataUseCase>()),
+      getIt<UpdateUserInfoUseCase>(),
+      getIt<LogOutUseCase>(),
+      getIt<DeleteAccountUseCase>(),
+      getIt<GetUserDataUseCase>(),
+      getIt<UpdateFcmTokenUseCase>(),
+      getIt<UpdateLanguageUseCase>(),
+      getIt<UpdatePartnerDataUseCase>(),
+    ),
   );
   getIt.registerBloc<AuthBloc>(
     () => AuthBloc(

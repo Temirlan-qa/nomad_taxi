@@ -10,7 +10,6 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/
 import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
 
 import '../../../../core/service/injectable/injectable_service.dart';
-import '../../../orders/presentation/bloc/order_bloc.dart';
 
 class CustomOrderButtonsWidget extends StatelessWidget {
   const CustomOrderButtonsWidget({
@@ -39,6 +38,7 @@ class CustomOrderButtonsWidget extends StatelessWidget {
         CustomMainButtonWidget(
           title: S.current.arrived_call_point,
           onPressed: () {
+            orderBloc.add(DriverOrderEvent.cancelOrder(orderId: order.id));
             context.push(RoutePaths.orderFinished);
           },
         ),

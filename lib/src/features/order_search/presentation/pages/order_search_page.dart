@@ -18,9 +18,16 @@ import '../../../../core/base/base_bloc/bloc/base_bloc_widget.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
 
 class OrderSearchPage extends StatefulWidget {
-  const OrderSearchPage({super.key, required this.price});
+  const OrderSearchPage({
+    super.key,
+    required this.price,
+    required this.whereFrom,
+    required this.whereTo,
+  });
 
   final int price;
+  final String whereTo;
+  final String whereFrom;
 
   @override
   State<OrderSearchPage> createState() => _OrderSearchPageState();
@@ -41,8 +48,6 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
   final String carData = 'Зеленый Volswagen Polo, 987-AIB';
   final String driverPhone = '+7 (705) 111-11-11';
   final String driverName = "Tima";
-  final String addressTo = "addressTo";
-  final String addressFrom = "addressFrom";
 
   @override
   void initState() {
@@ -56,7 +61,16 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
     super.dispose();
   }
 
-  void showInfoModal(BuildContext context, OrderState state, int price) {
+  void showInfoModal({
+    required BuildContext context,
+    required OrderStateEnum imState,
+    required int imPrice,
+    required String imAddressFrom,
+    required String imAddressTo,
+    String? imCarData,
+    String? imDriverName,
+    String? imDriverPhone,
+  }) {
     showModalBottomSheet(
       context: context,
       useSafeArea: true,
@@ -70,14 +84,14 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
           maxChildSize: 1,
           builder: (context, scrollController) {
             return CustomDetailedInfoModalWidget(
-              state: orderState,
               scrollController: scrollController,
-              addressFrom: addressFrom,
-              addressTo: addressTo,
-              price: price,
-              carData: carData,
-              driverName: driverName,
-              driverPhone: driverPhone,
+              state: imState,
+              price: imPrice,
+              addressFrom: imAddressFrom,
+              addressTo: imAddressTo,
+              carData: imCarData ?? '',
+              driverName: imDriverName ?? '',
+              driverPhone: imDriverPhone ?? '',
               onTapCallToDriver: () {},
               onTapClose: () {
                 context.pop();
@@ -110,10 +124,10 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
       starterEvent: const OrderEvent.started(),
       builder: (context, state, bloc) {
         return Scaffold(
-            body: SafeArea(
-          child: Form(
-            key: formKey,
-            child: Padding(
+          body: SafeArea(
+            child: Form(
+              key: formKey,
+              child: Padding(
                 padding: const EdgeInsets.all(UIConstants.defaultPadding),
                 child: state.when(
                   error: (error) {
@@ -127,7 +141,8 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const InfoAboutOrderStateWidget(
-                            state: OrderStateEnum.searching),
+                          state: OrderStateEnum.searching,
+                        ),
                         const SizedBox(height: 200),
                         CustomOrderPriceTextFieldWidget(
                             controller: priceController,
@@ -152,7 +167,13 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                           isMain: false,
                           color: context.theme.blue,
                           onPressed: () {
-                            showInfoModal(context, state, orderPrice);
+                            showInfoModal(
+                              context: context,
+                              imState: OrderStateEnum.searching,
+                              imPrice: orderPrice,
+                              imAddressFrom: widget.whereTo,
+                              imAddressTo: widget.whereFrom,
+                            );
                             // showThankModal(context);
                           },
                         ),
@@ -168,12 +189,14 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                     );
                   },
                   loaded: (OrderViewModel viewModel) {
+                    final orderAccepted = viewModel.orderAccepted;
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Spacer(),
-                        const InfoAboutOrderStateWidget(
+                        InfoAboutOrderStateWidget(
                           state: OrderStateEnum.accepted,
+                          waitingTime: orderAccepted?.waitingTime,
                         ),
                         const Spacer(),
                         AnimatedCrossFade(
@@ -279,7 +302,16 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                                 isMain: false,
                                 color: context.theme.blue,
                                 onPressed: () {
-                                  showInfoModal(context, state, widget.price);
+                                  showInfoModal(
+                                    context: context,
+                                    imState: orderState,
+                                    imPrice: widget.price,
+                                    imAddressFrom: widget.whereTo,
+                                    imAddressTo: widget.whereFrom,
+                                    imCarData: carData,
+                                    imDriverName: driverName,
+                                    imDriverPhone: driverPhone,
+                                  );
                                   // showThankModal(context);
                                 },
                               ),
@@ -319,9 +351,11 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                       ],
                     );
                   },
-                )),
+                ),
+              ),
+            ),
           ),
-        ));
+        );
       },
     );
   }

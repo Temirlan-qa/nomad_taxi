@@ -127,23 +127,36 @@ List<RouteBase> _routes() => <RouteBase>[
         },
       ),
       GoRoute(
-        name: RouteNames.searchAddress,
-        path: RoutePaths.searchAddress,
-        builder: (_, __) => const SearchAddressPage(),
-      ),
+          name: RouteNames.searchAddress,
+          path: RoutePaths.searchAddress,
+          builder: (_, state) {
+            final map = state.extra as Map<String, dynamic>;
+            return SearchAddressPage(
+              latLng: map["latLng"]!,
+              whereFrom: map["whereFrom"]!,
+            );
+          }),
       GoRoute(
         name: RouteNames.orderSearch,
         path: RoutePaths.orderSearch,
         builder: (_, state) {
-          final orderPrice = state.extra as int;
-          return OrderSearchPage(price: orderPrice);
+          final map = state.extra as Map<String, dynamic>;
+          return OrderSearchPage(
+            whereFrom: map["whereFrom"]!,
+            whereTo: map["whereTo"]!,
+            price: map["price"]!,
+          );
         },
       ),
       GoRoute(
-          name: RouteNames.orderPrice,
-          path: RoutePaths.orderPrice,
-          builder: (_, state) {
-            final String whereTo = state.extra as String;
-            return OrderPricePage(whereTo: whereTo);
-          })
+        name: RouteNames.orderPrice,
+        path: RoutePaths.orderPrice,
+        builder: (_, state) {
+          final map = state.extra as Map<String, dynamic>;
+          return OrderPricePage(
+            whereFrom: map["whereFrom"]!,
+            whereTo: map["whereTo"]!,
+          );
+        },
+      )
     ];
