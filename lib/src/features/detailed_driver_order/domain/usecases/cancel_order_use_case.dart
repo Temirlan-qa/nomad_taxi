@@ -1,21 +1,21 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/features/orders/data/repositories/orders_repository_impl.dart';
-import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/repositories/i_orders_repository.dart';
 
 import '../../../../core/base/base_usecase/use_case.dart';
 import '../../../../core/exceptions/domain_exception.dart';
-import '../../data/models/requests/accept_order_request.dart';
+import '../../../orders/data/models/requests/accept_order_request.dart';
 
 @lazySingleton
-class AcceptOrderUseCase extends UseCase<OrderResponse, OrderRequest> {
+class CancelOrderUseCase extends NoneOutputBoundaryUseCase<OrderRequest> {
   final IOrdersRepository _repository;
 
-  AcceptOrderUseCase(@Named.from(OrdersRepositoryImpl) this._repository);
+  CancelOrderUseCase(@Named.from(OrdersRepositoryImpl) this._repository);
 
   @override
-  Future<Either<DomainException, OrderResponse>> execute(
-          OrderRequest requestModel) async =>
-      _repository.acceptOrder(requestModel);
+  Future<Either<DomainException, void>> execute(
+      OrderRequest requestModel) async {
+    return _repository.cancelOrder(requestModel);
+  }
 }

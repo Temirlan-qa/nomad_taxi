@@ -23,16 +23,16 @@ abstract class IOrdersRepository {
     OrderRequest order,
   );
 
-  Future<Either<DomainException, OrderResponse>> waitingForClient(
-    String orderId,
+  Future<Either<DomainException, void>> waitingForClient(
+    OrderRequest order,
   );
 
-  Future<Either<DomainException, OrderResponse>> startRoute(
-    String orderId,
+  Future<Either<DomainException, void>> startRoute(
+    OrderRequest order,
   );
 
-  Future<Either<DomainException, OrderResponse>> completeOrder(
-    String orderId,
+  Future<Either<DomainException, void>> completeOrder(
+    OrderRequest order,
   );
 
   Future<Either<DomainException, OrderResponse>> createOrder(
@@ -40,16 +40,16 @@ abstract class IOrdersRepository {
   );
 
   Future<Either<DomainException, CreateOrderResponse>> getOrder(
-    String orderId,
+    OrderRequest order,
   );
 
   Future<Either<DomainException, UpdateOrderResponse>> updateOrder(
     UpdateOrderEntity request,
-    String orderId,
+    OrderRequest order,
   );
 
   Future<Either<DomainException, DeleteOrderResponse>> deleteOrder(
-    String orderId,
+    OrderRequest order,
   );
 
   Future<Either<DomainException, FindTownByLocationResponse>>

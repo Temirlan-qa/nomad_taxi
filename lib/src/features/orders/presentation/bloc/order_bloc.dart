@@ -12,7 +12,7 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/bloc/
 import 'package:nomad_taxi/src/features/orders/data/models/requests/create_order_request.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
-import 'package:nomad_taxi/src/features/orders/domain/usecases/get_orders_use_case.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/get_orders_use_case.dart';
 
 import '../../../../core/base/base_usecase/result.dart';
 import '../../../../core/exceptions/domain_exception.dart';
@@ -21,8 +21,8 @@ import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../data/models/requests/accept_order_request.dart';
 import '../../domain/entities/order/order_entity.dart';
 import '../../domain/entities/response/order_response.dart';
-import '../../domain/usecases/accept_order_use_case.dart';
-import '../../domain/usecases/cancel_order_use_case.dart';
+import '../../../detailed_driver_order/domain/usecases/accept_order_use_case.dart';
+import '../../../detailed_driver_order/domain/usecases/cancel_order_use_case.dart';
 import '../../domain/usecases/create_order_use_case.dart';
 
 part 'order_bloc.freezed.dart';

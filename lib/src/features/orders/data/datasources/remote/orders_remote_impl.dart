@@ -86,8 +86,8 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderDto>> completeOrder(
-      String orderId) async {
+  Future<Either<DomainException, void>> completeOrder(
+      OrderRequest order) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -95,7 +95,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Authorization': 'Bearer ${st.getToken()!}'
       };
       var response = await client.request(
-        'https://auyltaxi.kz/api/v1/partner/order/$orderId/complete',
+        'https://auyltaxi.kz/api/v1/partner/order/${order.id}/complete',
         options: Options(
           method: 'POST',
           headers: headers,
@@ -103,7 +103,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderDto.fromJson(response.data));
+        return const Right(null);
       } else {
         return Left(UnknownException());
       }
@@ -150,7 +150,8 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderDto>> startRoute(String orderId) async {
+  Future<Either<DomainException, void>> startRoute(
+      OrderRequest order) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -158,7 +159,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Authorization': 'Bearer ${st.getToken()!}'
       };
       var response = await client.request(
-        'https://auyltaxi.kz/api/v1/partner/order/$orderId/start-route',
+        'https://auyltaxi.kz/api/v1/partner/order/${order.id}/start-route',
         options: Options(
           method: 'POST',
           headers: headers,
@@ -166,7 +167,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderDto.fromJson(response.data));
+        return const Right(null);
       } else {
         return Left(UnknownException());
       }
@@ -178,8 +179,8 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, OrderDto>> waitingForClient(
-      String orderId) async {
+  Future<Either<DomainException, void>> waitingForClient(
+      OrderRequest order) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -187,7 +188,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Authorization': 'Bearer ${st.getToken()!}'
       };
       var response = await client.request(
-        'https://auyltaxi.kz/api/v1/partner/order/$orderId/await',
+        'https://auyltaxi.kz/api/v1/partner/order/${order.id}/await',
         options: Options(
           method: 'POST',
           headers: headers,
@@ -195,7 +196,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       );
 
       if (response.statusCode == 200) {
-        return Right(OrderDto.fromJson(response.data));
+        return const Right(null);
       } else {
         return Left(UnknownException());
       }
@@ -218,15 +219,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      // var mockData = json.encode({
-      //   "town_id": 8,
-      //   "price": 1287,
-      //   "points": [
-      //     {"lat": 31.11111, "lng": 22.11111, "title": "Байтурсынова 86"},
-      //     {"lat": 45.21111, "lng": 76.21111, "title": "Абая 157"}
-      //   ],
-      //   "use_bonus": 1
-      // });
+      
       var dio = Dio();
       var response = await dio.request(
         'https://auyltaxi.kz/api/v1/order',
@@ -253,7 +246,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
 
   @override
   Future<Either<DomainException, DeleteOrderResponseDto>> deleteOrder(
-      String orderId) async {
+      OrderRequest order) async {
     try {
       var headers = {
         'Accept': 'application/json',
@@ -261,7 +254,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       };
       var dio = Dio();
       var response = await dio.request(
-        'https://auyltaxi.kz/api/v1/order/$orderId',
+        'https://auyltaxi.kz/api/v1/order/${order.id}',
         options: Options(
           method: 'DELETE',
           headers: headers,
@@ -284,7 +277,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
 
   @override
   Future<Either<DomainException, CreateOrderResponseDto>> getOrder(
-      String orderId) async {
+      OrderRequest order) async {
     try {
       var headers = {
         'Accept': 'application/json',
@@ -292,7 +285,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       };
       var dio = Dio();
       var response = await dio.request(
-        'https://auyltaxi.kz/api/v1/order/$orderId',
+        'https://auyltaxi.kz/api/v1/order/${order.id}',
         options: Options(
           method: 'GET',
           headers: headers,
@@ -315,7 +308,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
 
   @override
   Future<Either<DomainException, UpdateOrderResponseDto>> updateOrder(
-      UpdateOrderEntity request, String orderId) async {
+      UpdateOrderEntity request, OrderRequest order) async {
     try {
       var headers = {
         'Accept': 'application/json',
@@ -324,7 +317,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       };
       var dio = Dio();
       var response = await dio.request(
-        'https://auyltaxi.kz/api/v1/order/$orderId',
+        'https://auyltaxi.kz/api/v1/order/${order.id}',
         options: Options(
           method: 'PUT',
           headers: headers,

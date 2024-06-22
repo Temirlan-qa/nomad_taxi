@@ -18,21 +18,21 @@ abstract class IOrdersRemote {
   );
 
   Future<Either<DomainException, void>> cancelOrder(
-    OrderRequest orderId,
+    OrderRequest order,
   );
 
-  Future<Either<DomainException, OrderDto>> completeOrder(
-    String orderId,
+  Future<Either<DomainException, void>> completeOrder(
+    OrderRequest order,
   );
 
-  Future<Either<DomainException, OrderDto>> startRoute(
-    String orderId,
+  Future<Either<DomainException, void>> startRoute(
+    OrderRequest order,
   );
 
   Future<Either<DomainException, OrdersDto>> getOrders();
 
-  Future<Either<DomainException, OrderDto>> waitingForClient(
-    String orderId,
+  Future<Either<DomainException, void>> waitingForClient(
+    OrderRequest order,
   );
 
   Future<Either<DomainException, OrderResponse>> createOrder(
@@ -40,16 +40,16 @@ abstract class IOrdersRemote {
   );
 
   Future<Either<DomainException, CreateOrderResponseDto>> getOrder(
-    String orderId,
+    OrderRequest order,
   );
 
   Future<Either<DomainException, UpdateOrderResponseDto>> updateOrder(
     UpdateOrderEntity request,
-    String orderId,
+    OrderRequest order,
   );
 
   Future<Either<DomainException, DeleteOrderResponseDto>> deleteOrder(
-    String orderId,
+    OrderRequest order,
   );
 
   Future<Either<DomainException, FindTownByLocationResponseDto>>

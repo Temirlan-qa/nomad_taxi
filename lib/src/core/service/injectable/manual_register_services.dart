@@ -1,5 +1,8 @@
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_case.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/complete_order_use_case.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/start_route_use_case.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/waiting_for_client_use_case.dart';
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
@@ -16,9 +19,9 @@ import '../../../features/detailed_driver_order/data/client/order_web_socket_cli
 import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
 import '../../../features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import '../../../features/help/domain/usecases/get_questions_use_case.dart';
-import '../../../features/orders/domain/usecases/accept_order_use_case.dart';
-import '../../../features/orders/domain/usecases/cancel_order_use_case.dart';
-import '../../../features/orders/domain/usecases/get_orders_use_case.dart';
+import '../../../features/detailed_driver_order/domain/usecases/accept_order_use_case.dart';
+import '../../../features/detailed_driver_order/domain/usecases/cancel_order_use_case.dart';
+import '../../../features/detailed_driver_order/domain/usecases/get_orders_use_case.dart';
 import '../../../features/profile/domain/usecases/update_language_use_case.dart';
 import 'exports/all.dart';
 import 'injectable_service.dart';
@@ -71,6 +74,9 @@ void manualRegisterServices() {
       getIt<GetOrdersUseCase>(),
       getIt<AcceptOrderUseCase>(),
       getIt<CancelOrderUseCase>(),
+      getIt<WaitingForClientUseCase>(),
+      getIt<StartRouteUseCase>(),
+      getIt<CompleteOrderUseCase>(),
     ),
   );
 
