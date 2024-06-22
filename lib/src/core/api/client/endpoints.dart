@@ -40,4 +40,7 @@ class EndPoints {
   // Faq
   static const String getAvailableLanguages = "/v1/language";
   static const String getFaq = "/v1/faq?town_id=2";
+
+  // Order search
+  static const String getOrderSearch = '/v1/user/order/address-history';
 }
