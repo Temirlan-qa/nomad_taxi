@@ -12,20 +12,20 @@ class FranchisePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseBlocWidget<FranchiseBloc, FranchiseEvent, FranchiseState>(
-      bloc: getIt<FranchiseBloc>(),
-      starterEvent: const FranchiseEvent.franchiseInfo(),
-      builder: (context, state, bloc) {
-        return state.when(
-          initial: () =>
-              const Center(child: CircularProgressIndicator.adaptive()),
-          error: (_) =>
-              const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (viewModel) {
-            return Scaffold(
-              appBar: CustomAppBar(
-                  leading: BackButtonWrapper(onPressed: () => context.pop())),
-              body: SafeArea(
+    return Scaffold(
+      appBar: CustomAppBar(
+          leading: BackButtonWrapper(onPressed: () => context.pop())),
+      body: BaseBlocWidget<FranchiseBloc, FranchiseEvent, FranchiseState>(
+        bloc: getIt<FranchiseBloc>(),
+        starterEvent: const FranchiseEvent.franchiseInfo(),
+        builder: (context, state, bloc) {
+          return state.when(
+            initial: () =>
+                const Center(child: CircularProgressIndicator.adaptive()),
+            error: (_) =>
+                const Center(child: CircularProgressIndicator.adaptive()),
+            loaded: (viewModel) {
+              return SafeArea(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: Center(
@@ -34,11 +34,11 @@ class FranchisePage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            );
-          },
-        );
-      },
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
