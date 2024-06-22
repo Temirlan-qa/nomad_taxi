@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
@@ -36,7 +37,7 @@ class OrderFinishedPage extends StatelessWidget {
           title: S.current.go_back,
           isMain: false,
           onPressed: () {
-            context.pop();
+            context.pushNamed(RouteNames.driverOrders);
           },
         ),
       ),

@@ -1689,6 +1689,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Начать поездку`
+  String get startRoute {
+    return Intl.message(
+      'Начать поездку',
+      name: 'startRoute',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поездка началась`
+  String get routeStarted {
+    return Intl.message(
+      'Поездка началась',
+      name: 'routeStarted',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -154,7 +154,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     final result = await _waitingForClientUseCase.call(request);
 
     if (result.isSuccessful) {
-      return emit(_Loaded(viewModel: _viewModel));
+      return emit(const _Waiting());
     }
   }
 
@@ -164,7 +164,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     final result = await _startRouteUseCase.call(request);
 
     if (result.isSuccessful) {
-      return emit(_Loaded(viewModel: _viewModel));
+      return emit(const _Start());
     }
   }
 
@@ -174,7 +174,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     final result = await _completeOrderUseCase.call(request);
 
     if (result.isSuccessful) {
-      return emit(_Loaded(viewModel: _viewModel));
+      await _storage.deleteOrder();
     }
   }
 

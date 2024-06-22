@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
@@ -44,7 +45,10 @@ class OrderPage extends StatelessWidget {
                   ),
                   const Gap(UIConstants.defaultGap3),
                   CustomOrderButtonsWidget(
-                      labelStyle: labelStyle, headLine: headLine, order: order,),
+                    labelStyle: labelStyle,
+                    headLine: headLine,
+                    order: order,
+                  ),
                 ],
               )
             : Row(
@@ -195,11 +199,11 @@ class OrderPage extends StatelessWidget {
         .copyWith(color: context.theme.secondary);
     final titleStyle = context.theme.textStyles.titleSecondary;
     final headLine = context.theme.textStyles.headLine;
-          return _buildOrderPage(
-            context: context,
-            labelStyle: labelStyle,
-            titleStyle: titleStyle,
-            headLine: headLine,
+        return _buildOrderPage(
+          context: context,
+          labelStyle: labelStyle,
+          titleStyle: titleStyle,
+          headLine: headLine,
     );
   }
 }

@@ -7,17 +7,16 @@ import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
-import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/widgets/show_info_bonus_modal_widget.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
-import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/check_mark_indicator.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/widgets/show_order_modal_widget.dart';
 
+import '../../../../core/router/router.dart';
 import '../../../detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
 import '../widgets/show_address_modal_widget.dart';
 
@@ -70,7 +69,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
     final driverOrderBloc = getIt<DriverOrderBloc>();
     return Scaffold(
       appBar: CustomAppBar(
-        leading: BackButtonWrapper(onPressed: () => context.pop()),
+        leading: BackButtonWrapper(onPressed: () => context.pushNamed(RouteNames.driverMode)),
         actions: [
           Assets.icons.solid.clockSolid.svg(
             height: 18,
@@ -96,18 +95,18 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
             return state.when(
               initial: () =>
                   const Center(child: CircularProgressIndicator.adaptive()),
-              // error: (error) => Column(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Assets.icons.brand.smile.svg(),
-              //     const Gap(UIConstants.defaultPadding),
-              //     Text(
-              //       error,
-              //       textAlign: TextAlign.center,
-              //       style: context.theme.textStyles.titleSecondary,
-              //     ),
-              //   ],
-              // ),
+              error: (error) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Assets.icons.brand.smile.svg(),
+                  const Gap(UIConstants.defaultPadding),
+                  Text(
+                    error,
+                    textAlign: TextAlign.center,
+                    style: context.theme.textStyles.titleSecondary,
+                  ),
+                ],
+              ),
               loaded: (viewModel) {
                 List<OrderEntity> orderList =
                     viewModel.ordersList.reversed.toList();
@@ -233,6 +232,8 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
                   ),
                 );
               },
+              waiting: () => const SizedBox.shrink(),
+              start: () => const SizedBox.shrink(),
             );
           },
         ),
