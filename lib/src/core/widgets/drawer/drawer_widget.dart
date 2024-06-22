@@ -75,7 +75,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   ),
                   DrawerTile(
                     title: S.current.buy_franchise,
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(RouteNames.franchise);
+                    },
                     isSelected: false,
                   ),
                   DrawerTile(

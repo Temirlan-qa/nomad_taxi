@@ -1,5 +1,7 @@
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_case.dart';
+import 'package:nomad_taxi/src/features/franchise/domain/usecases/franchise_use_case.dart';
+import 'package:nomad_taxi/src/features/franchise/presentation/bloc/franchise_bloc.dart';
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
@@ -72,6 +74,12 @@ void manualRegisterServices() {
       getIt<GetOrdersUseCase>(),
       getIt<AcceptOrderUseCase>(),
       getIt<CancelOrderUseCase>(),
+    ),
+  );
+
+  getIt.registerBloc<FranchiseBloc>(
+    () => FranchiseBloc(
+      getIt<FranchiseUseCase>(),
     ),
   );
 

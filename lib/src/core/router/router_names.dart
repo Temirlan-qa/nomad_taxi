@@ -25,4 +25,5 @@ class RouteNames {
   static const String searchAddress = 'searchAddress';
   static const String orderSearch = 'orderSearch';
   static const String orderPrice = 'orderPrice';
+  static const String franchise = 'franchise';
 }
