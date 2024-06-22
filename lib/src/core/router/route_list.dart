@@ -25,6 +25,11 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, __) => const PolicyPage(),
       ),
       GoRoute(
+        name: RouteNames.franchise,
+        path: RoutePaths.franchise,
+        builder: (_, __) => const FranchisePage(),
+      ),
+      GoRoute(
         name: RouteNames.error,
         path: RoutePaths.error,
         builder: (_, __) => const RouteErrorPage(),

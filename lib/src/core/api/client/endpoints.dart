@@ -30,8 +30,12 @@ class EndPoints {
   static String cancelOrder(String id) => '/v1/order/$id';
 
   // Town
-  static const findTownByLocation =
-      "/v1/town/by-location?lat=43.251251&lng=76.923180";
+  static String findTownByLocation(
+          {required double lat, required double lng}) =>
+      "/v1/town/by-location?lat=$lat&lng=$lng";
+
+  // Buy a Franchise
+  static const buyFranchise = '/v1/town/by-location';
 
   // Faq
   static const String getAvailableLanguages = "/v1/language";

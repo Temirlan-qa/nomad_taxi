@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
+import 'package:nomad_taxi/src/features/main/domain/models/find_town_id_request.dart';
 import 'package:nomad_taxi/src/features/orders/data/mappers/order_dto_mapper.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/order/order_dto.dart';
-import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/delete_order_response/delete_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/find_town_by_location_response/find_town_by_location_response.dart';
@@ -196,10 +194,9 @@ class OrdersRepositoryImpl implements IOrdersRepository {
 
   @override
   Future<Either<DomainException, FindTownByLocationResponse>>
-      findTownByLocation(double latitude, double longitude) async {
+      findTownByLocation(FindTownIdRequest requestModel) async {
     try {
-      final requests =
-          await _ordersImpl.findTownByLocation(latitude, longitude);
+      final requests = await _ordersImpl.findTownByLocation(requestModel);
       return requests.fold(
         (error) => Left(error),
         (result) {

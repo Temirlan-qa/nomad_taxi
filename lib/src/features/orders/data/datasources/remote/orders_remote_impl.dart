@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
+import 'package:nomad_taxi/src/features/main/domain/models/find_town_id_request.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/create_order/create_order_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/create_order_response/create_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
@@ -346,7 +347,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
 
   @override
   Future<Either<DomainException, FindTownByLocationResponseDto>>
-      findTownByLocation(double lat, double lng) async {
+      findTownByLocation(FindTownIdRequest requestModel) async {
     try {
       var headers = {
         'Accept': 'application/json',
@@ -354,7 +355,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
       };
       var dio = Dio();
       var response = await dio.request(
-        'https://auyltaxi.kz/api/v1/town/by-location?lat=$lat&lng=$lng',
+        'https://auyltaxi.kz/api/v1/town/by-location?lat=${requestModel.latitude}&lng=${requestModel.longitude}',
         options: Options(
           method: 'GET',
           headers: headers,
