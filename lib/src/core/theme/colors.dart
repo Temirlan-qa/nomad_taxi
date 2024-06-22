@@ -16,6 +16,7 @@ abstract class StaticColors {
   static const stroke = Color(0xFFEEF0F4);
   static const transparent = Colors.transparent;
   static const kzColor = Color(0xFF00AEBD);
+  static const gray = Colors.grey;
 }
 
 extension ColorThemeDataExtension on ThemeData {
@@ -34,4 +35,5 @@ extension ColorThemeDataExtension on ThemeData {
   Color get stroke => StaticColors.stroke;
   Color get transparent => StaticColors.transparent;
   Color get kzColor => StaticColors.kzColor;
+  Color get grey => StaticColors.gray;
 }

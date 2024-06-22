@@ -188,6 +188,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "refill_bonuses":
             MessageLookupByLibrary.simpleMessage("Пополнение бонусов"),
         "route": MessageLookupByLibrary.simpleMessage("Маршрут"),
+        "routeStarted":
+            MessageLookupByLibrary.simpleMessage("Поездка началась"),
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "save_changes":
             MessageLookupByLibrary.simpleMessage("Сохранить изменения"),
@@ -207,6 +209,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
         "sms_confirmation":
             MessageLookupByLibrary.simpleMessage("СМС подтверждение"),
+        "startRoute": MessageLookupByLibrary.simpleMessage("Начать поездку"),
         "start_trip": MessageLookupByLibrary.simpleMessage("Начать поездку"),
         "stay": MessageLookupByLibrary.simpleMessage("Остаться"),
         "step": MessageLookupByLibrary.simpleMessage("шаг"),

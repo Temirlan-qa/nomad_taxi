@@ -15,16 +15,22 @@ class CustomMainButtonWidget extends StatelessWidget {
     this.suffixIcon,
     this.isMain = true,
     this.color,
-    this.iconColor,
+    this.iconColor, this.isDisabled = false,
   });
 
   final VoidCallback? onPressed;
   final String title;
+
   final SvgGenImage? prefixIcon;
   final SvgGenImage? suffixIcon;
-  final bool isMain;
+  
   final Color? color;
+
   final Color? iconColor;
+
+  final bool isDisabled; 
+  final bool isMain;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,7 @@ class CustomMainButtonWidget extends StatelessWidget {
           : FilledButton.styleFrom(
               foregroundColor: color ?? context.theme.primary,
               backgroundColor: context.theme.background),
-      onPressed: onPressed,
+       onPressed: isDisabled ? null : onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

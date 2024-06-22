@@ -29,8 +29,8 @@
   "help": "Помощь",
   "congratulate": "Поздравляем!",
   "you_get_bonus": "Вы получили {amount} тенге бонусов",
-  "carNumber":"Номер машины",
-  "carModel":"Модель автомобиля",
+  "carNumber": "Номер машины",
+  "carModel": "Модель автомобиля",
   "@you_get_bonus": {
     "placeholders": {
       "amount": {
@@ -171,5 +171,7 @@
   "driverRequirement2": "Пожалуйста, введите номер автомобиля",
   "enter_id": "Далее введите свой ID номер",
   "your_id": "Ваш ID",
-  "youDoNotHaveEnoughBalance": "На вашем балансе недостаточно средств для приема заказов"
+  "youDoNotHaveEnoughBalance": "На вашем балансе недостаточно средств для приема заказов",
+  "startRoute": "Начать поездку",
+  "routeStarted": "Поездка началась"
 }

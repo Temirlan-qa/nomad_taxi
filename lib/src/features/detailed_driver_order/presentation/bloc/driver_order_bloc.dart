@@ -7,27 +7,34 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/entities/get_order_status_response.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/complete_order_use_case.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/start_route_use_case.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/waiting_for_client_use_case.dart';
 
 import '../../../../core/service/injectable/injectable_service.dart';
-import '../../../../core/service/storage/storage_service.dart';
 import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../../orders/data/models/requests/accept_order_request.dart';
 import '../../../orders/domain/entities/order/order_entity.dart';
 import '../../../orders/domain/entities/orders_response/orders_response.dart';
 import '../../../orders/domain/entities/response/order_response.dart';
-import '../../../orders/domain/usecases/accept_order_use_case.dart';
-import '../../../orders/domain/usecases/cancel_order_use_case.dart';
-import '../../../orders/domain/usecases/get_orders_use_case.dart';
-import '../../../orders/presentation/bloc/order_bloc.dart';
+import '../../domain/usecases/accept_order_use_case.dart';
+import '../../domain/usecases/cancel_order_use_case.dart';
 import '../../domain/usecases/get_order_status_use_case.dart';
+import '../../domain/usecases/get_orders_use_case.dart';
 
 part 'driver_order_bloc.freezed.dart';
 part 'driver_order_event.dart';
 part 'driver_order_state.dart';
 
 class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
-  DriverOrderBloc(this._getOrderStatusUseCase, this._getOrdersUseCase,
-      this._acceptOrderUseCase, this._cancelOrderUseCase)
+  DriverOrderBloc(
+      this._getOrderStatusUseCase,
+      this._getOrdersUseCase,
+      this._acceptOrderUseCase,
+      this._cancelOrderUseCase,
+      this._waitingForClientUseCase,
+      this._startRouteUseCase,
+      this._completeOrderUseCase)
       : super(const _Initial());
 
   final GetOrderStatusUseCase _getOrderStatusUseCase;
@@ -35,6 +42,12 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
   final GetOrdersUseCase _getOrdersUseCase;
 
   final AcceptOrderUseCase _acceptOrderUseCase;
+
+  final WaitingForClientUseCase _waitingForClientUseCase;
+
+  final StartRouteUseCase _startRouteUseCase;
+
+  final CompleteOrderUseCase _completeOrderUseCase;
 
   final CancelOrderUseCase _cancelOrderUseCase;
 
@@ -58,6 +71,10 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
           _updateOrderStatus(event as _UpdateOrderStatus, emit),
       acceptOrder: (_) => _acceptOrder(event as _AcceptOrder, emit),
       cancelOrder: (_) => _cancelOrder(event as _CancelOrder, emit),
+      waitingForClient: (_) =>
+          _waitingForClient(event as _WaitingForClient, emit),
+      startRoute: (_) => _startRoute(event as _StartRoute, emit),
+      completeOrder: (_) => _completeOrder(event as _CompleteOrder, emit),
     );
   }
 
@@ -101,7 +118,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
       _viewModel = _viewModel.copyWith(activeOrder: activeOrder);
       emit(_Loaded(viewModel: _viewModel));
     }
-    
+
     final result = await _getOrdersUseCase.call();
 
     final OrdersResponse? data = result.data;
@@ -127,13 +144,37 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     final OrderEntity? orderAccepted = data?.order;
 
     if (result.isSuccessful && orderAccepted != null) {
-      // _viewModel = _viewModel.copyWith(
-      //   ordersList: List.from(_viewModel.ordersList)
-      //     ..removeWhere((order) => order.id == event.orderId),
-      // );
       await _storage.saveOrder(orderAccepted);
+    }
+  }
 
-      // emit(_Loaded(viewModel: _viewModel));
+  Future<void> _waitingForClient(_WaitingForClient event, emit) async {
+    final OrderRequest request = OrderRequest(id: event.orderId);
+
+    final result = await _waitingForClientUseCase.call(request);
+
+    if (result.isSuccessful) {
+      return emit(const _Waiting());
+    }
+  }
+
+  Future<void> _startRoute(_StartRoute event, emit) async {
+    final OrderRequest request = OrderRequest(id: event.orderId);
+
+    final result = await _startRouteUseCase.call(request);
+
+    if (result.isSuccessful) {
+      return emit(const _Start());
+    }
+  }
+
+  Future<void> _completeOrder(_CompleteOrder event, emit) async {
+    final OrderRequest request = OrderRequest(id: event.orderId);
+
+    final result = await _completeOrderUseCase.call(request);
+
+    if (result.isSuccessful) {
+      await _storage.deleteOrder();
     }
   }
 
@@ -159,7 +200,8 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
 
       emit(
         _Loaded(
-          viewModel: _viewModel.copyWith(ordersList: updatedOrdersList, activeOrder: null),
+          viewModel: _viewModel.copyWith(
+              ordersList: updatedOrdersList, activeOrder: null),
         ),
       );
     }

@@ -75,8 +75,6 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
     emit(const _Error('Failed to create order'));
   }
 
-  Future<void> _cancelOrder() async {}
-
   @override
   Future<void> close() {
     _orderStatusSubscription?.cancel();

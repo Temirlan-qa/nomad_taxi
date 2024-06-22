@@ -52,14 +52,14 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, OrderResponse>> completeOrder(
-      String orderId) async {
+  Future<Either<DomainException, void>> completeOrder(
+      OrderRequest order) async {
     try {
-      final requests = await _ordersImpl.completeOrder(orderId);
+      final requests = await _ordersImpl.completeOrder(order);
       return requests.fold(
         (error) => Left(error),
         (result) {
-          return Right(OrderResponse.fromJson(result.toJson()));
+          return const Right(null);
         },
       );
     } catch (e) {
@@ -89,14 +89,14 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, OrderResponse>> startRoute(
-      String orderId) async {
+  Future<Either<DomainException, void>> startRoute(
+      OrderRequest order) async {
     try {
-      final requests = await _ordersImpl.startRoute(orderId);
+      final requests = await _ordersImpl.startRoute(order);
       return requests.fold(
         (error) => Left(error),
         (result) {
-          return Right(OrderResponse.fromJson(result.toJson()));
+          return const Right(null);
         },
       );
     } catch (e) {
@@ -106,14 +106,14 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, OrderResponse>> waitingForClient(
-      String orderId) async {
+  Future<Either<DomainException, void>> waitingForClient(
+      OrderRequest order) async {
     try {
-      final requests = await _ordersImpl.waitingForClient(orderId);
+      final requests = await _ordersImpl.waitingForClient(order);
       return requests.fold(
         (error) => Left(error),
         (result) {
-          return Right(OrderResponse.fromJson(result.toJson()));
+          return const Right(null);
         },
       );
     } catch (e) {
@@ -143,9 +143,9 @@ class OrdersRepositoryImpl implements IOrdersRepository {
 
   @override
   Future<Either<DomainException, DeleteOrderResponse>> deleteOrder(
-      String orderId) async {
+      OrderRequest order) async {
     try {
-      final requests = await _ordersImpl.deleteOrder(orderId);
+      final requests = await _ordersImpl.deleteOrder(order);
       return requests.fold(
         (error) => Left(error),
         (result) {
@@ -160,9 +160,9 @@ class OrdersRepositoryImpl implements IOrdersRepository {
 
   @override
   Future<Either<DomainException, CreateOrderResponse>> getOrder(
-      String orderId) async {
+      OrderRequest order) async {
     try {
-      final requests = await _ordersImpl.getOrder(orderId);
+      final requests = await _ordersImpl.getOrder(order);
       return requests.fold(
         (error) => Left(error),
         (result) {
@@ -177,9 +177,9 @@ class OrdersRepositoryImpl implements IOrdersRepository {
 
   @override
   Future<Either<DomainException, UpdateOrderResponse>> updateOrder(
-      UpdateOrderEntity request, String orderId) async {
+      UpdateOrderEntity request, OrderRequest order) async {
     try {
-      final requests = await _ordersImpl.updateOrder(request, orderId);
+      final requests = await _ordersImpl.updateOrder(request, order);
       return requests.fold(
         (error) => Left(error),
         (result) {

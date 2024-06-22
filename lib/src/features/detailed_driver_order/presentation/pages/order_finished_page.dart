@@ -40,7 +40,7 @@ class OrderFinishedPage extends StatelessWidget {
             while (context.canPop()) {
               context.pop();
             }
-            context.pushReplacementNamed(RouteNames.driverMode);
+            context.pushNamed(RouteNames.driverOrders);
           },
         ),
       ),
