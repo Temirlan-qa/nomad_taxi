@@ -19,7 +19,13 @@ class HelpRemoteImpl implements IHelpRemote {
   @override
   Future<Either<DomainException, QuestionsDto>> getQuestions() async {
     try {
-      var headers = {'Accept': 'application/json'};
+      final StorageServiceImpl st = StorageServiceImpl();
+      final languageCode = st.getLanguageCode();
+
+      var headers = {
+        'Accept-Language': languageCode ?? 'ru',
+        'Accept': 'application/json',
+      };
 
       var response = await client.request(
         '${EndPoints.baseUrl}${EndPoints.getFaq}',

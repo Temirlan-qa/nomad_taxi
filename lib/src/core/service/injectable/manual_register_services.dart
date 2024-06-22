@@ -3,12 +3,16 @@ import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_cas
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/complete_order_use_case.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/start_route_use_case.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/waiting_for_client_use_case.dart';
+import 'package:nomad_taxi/src/features/franchise/domain/usecases/franchise_use_case.dart';
+import 'package:nomad_taxi/src/features/franchise/presentation/bloc/franchise_bloc.dart';
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
+import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_partner_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/withdraw_info_use_case.dart';
+import 'package:nomad_taxi/src/features/promo_code/presentation/bloc/activate_promocode_bloc.dart';
 import 'package:nomad_taxi/src/features/settings/presentation/bloc/settings/settings_bloc.dart';
 import 'package:nomad_taxi/src/features/transfer_money/presentation/bloc/balance_bloc.dart';
 
@@ -29,13 +33,14 @@ import 'injectable_service.dart';
 void manualRegisterServices() {
   getIt.registerBloc<ProfileBloc>(
     () => ProfileBloc(
-        getIt<UpdateUserInfoUseCase>(),
-        getIt<LogOutUseCase>(),
-        getIt<DeleteAccountUseCase>(),
-        getIt<GetUserDataUseCase>(),
-        getIt<UpdateFcmTokenUseCase>(),
-        getIt<UpdateLanguageUseCase>(),
-        getIt<UpdatePartnerDataUseCase>()),
+      getIt<UpdateUserInfoUseCase>(),
+      getIt<LogOutUseCase>(),
+      getIt<DeleteAccountUseCase>(),
+      getIt<GetUserDataUseCase>(),
+      getIt<UpdateFcmTokenUseCase>(),
+      getIt<UpdateLanguageUseCase>(),
+      getIt<UpdatePartnerDataUseCase>(),
+    ),
   );
   getIt.registerBloc<AuthBloc>(
     () => AuthBloc(
@@ -59,15 +64,6 @@ void manualRegisterServices() {
     ),
   );
 
-  // getIt.registerBloc<OrderBloc>(
-  //   () => OrderBloc(
-  //     getIt<GetOrderUseCase>(),
-  //     getIt<AcceptOrderUseCase>(),
-  //     getIt<CancelOrderUseCase>(),
-  //     getIt<CreateOrderUseCase>(),
-  //   ),
-  // );
-
   getIt.registerBloc<DriverOrderBloc>(
     () => DriverOrderBloc(
       getIt<GetOrderStatusUseCase>(),
@@ -80,11 +76,20 @@ void manualRegisterServices() {
     ),
   );
 
+  getIt.registerBloc<FranchiseBloc>(
+    () => FranchiseBloc(
+      getIt<FranchiseUseCase>(),
+    ),
+  );
+
   getIt.registerSingleton<OrderWebSocketClient>(OrderWebSocketClient());
 
   getIt.registerBloc<HelpBloc>(
     () => HelpBloc(
       getIt<GetQuestionsUseCase>(),
     ),
+  );
+  getIt.registerBloc<ActivatePromocodeBloc>(
+    () => ActivatePromocodeBloc(getIt<ActivatePromocodeUseCase>()),
   );
 }

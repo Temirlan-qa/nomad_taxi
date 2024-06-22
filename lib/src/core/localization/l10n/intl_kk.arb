@@ -30,8 +30,10 @@
   "congratulate": "Құттықтаймыз!",
   "you_get_bonus": "Сіз {amount} теңге бонус алдыңыз",
   "invalidInfoError": "Берілген деректер жарамсыз болды.",
-  "carNumber": "Көліктің нөмірі",
-  "carModel": "Көлік үлгісі",
+  "carNumber":"Көліктің нөмірі",
+  "carModel":"Көлік үлгісі",
+  "enterAddress":"Мекенжайды енгізіңіз",
+  "onMap":"Картада",
   "@you_get_bonus": {
     "placeholders": {
       "amount": {

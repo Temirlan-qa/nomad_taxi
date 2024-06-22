@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../src/core/base/base_models/base_entity.dart';
-import 'partner/partner.dart';
 
 part 'profile_entity.freezed.dart';
 part 'profile_entity.g.dart';

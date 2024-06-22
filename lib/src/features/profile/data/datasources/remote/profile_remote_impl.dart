@@ -7,6 +7,8 @@ import 'package:nomad_taxi/src/core/api/client/rest/dio/dio_client.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/available_languages_response/available_languages_response_dto.dart';
 import 'package:nomad_taxi/src/features/profile/data/models/profile_dto.dart';
+import 'package:nomad_taxi/src/features/profile/data/models/promocode_response/promocode_response_dto.dart';
+import 'package:nomad_taxi/src/features/profile/domain/requests/activate_promocode_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
@@ -304,6 +306,45 @@ class ProfileRemoteImpl implements IProfileRemote {
       } else {
         return Left(UnknownException());
       }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, PromocodeResponseDto>> activatePromocode(
+      ActivatePromocodeRequest request) async {
+    try {
+      final languageCode = st.getLanguageCode() ?? 'ru';
+      var headers = {
+        'Accept-Language': languageCode,
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/user/promocode/activate',
+        data: request.toJson(),
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+      );
+
+      PromocodeResponseDto asd = PromocodeResponseDto.fromJson(response.data);
+      if (response.statusCode == 200) {
+        return Right(asd);
+      } else {
+        return Left(UnknownException());
+      }
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 400) {
+        return Left(UnknownException(message: e.response?.data['message']));
+      }
+      return Left(UnknownException(message: e.toString()));
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),

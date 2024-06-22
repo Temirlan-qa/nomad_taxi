@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:nomad_taxi/src/features/main/domain/models/find_town_id_request.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/requests/create_order_request.dart';
-import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/find_town_by_location_response/find_town_by_location_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
@@ -53,8 +53,5 @@ abstract class IOrdersRepository {
   );
 
   Future<Either<DomainException, FindTownByLocationResponse>>
-      findTownByLocation(
-    double latitude,
-    double longitude,
-  );
+      findTownByLocation(FindTownIdRequest requestModel);
 }

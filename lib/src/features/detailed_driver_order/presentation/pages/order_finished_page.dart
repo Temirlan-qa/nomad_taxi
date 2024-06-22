@@ -37,6 +37,9 @@ class OrderFinishedPage extends StatelessWidget {
           title: S.current.go_back,
           isMain: false,
           onPressed: () {
+            while (context.canPop()) {
+              context.pop();
+            }
             context.pushNamed(RouteNames.driverOrders);
           },
         ),

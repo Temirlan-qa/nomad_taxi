@@ -9,10 +9,11 @@ import 'error_info_state_widget.dart';
 
 class InfoAboutOrderStateWidget extends StatelessWidget {
   const InfoAboutOrderStateWidget(
-      {super.key, required this.state, this.errorMessage});
+      {super.key, required this.state, this.errorMessage, this.waitingTime});
   final OrderStateEnum state;
 
   final String? errorMessage;
+  final int? waitingTime;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class InfoAboutOrderStateWidget extends StatelessWidget {
       case OrderStateEnum.searching:
         return const SearchingInfoStateWidget();
       case OrderStateEnum.accepted:
-        return const AcceptedInfoStateWidget();
+        return AcceptedInfoStateWidget(waitingTime: waitingTime);
       case OrderStateEnum.waiting:
         return const WaitingInfoStateWidget();
       case OrderStateEnum.progress:
