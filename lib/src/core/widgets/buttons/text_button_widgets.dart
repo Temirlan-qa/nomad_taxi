@@ -13,8 +13,11 @@ class TextButtonWidget extends StatelessWidget {
       onTap: onTap,
       child: Text(
         title,
-        style: context.theme.textStyles.headLine.copyWith(color: color),
-        maxLines: 1,
+        style: context.theme.textStyles.headLine.copyWith(
+          color: color,
+          fontSize: 14,
+        ),
+        maxLines: 2,
         overflow: TextOverflow.ellipsis,
       ),
     );
