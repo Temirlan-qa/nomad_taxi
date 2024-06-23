@@ -4,6 +4,7 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
 import 'package:nomad_taxi/src/features/franchise/domain/usecases/franchise_use_case.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 part 'franchise_bloc.freezed.dart';
 part 'franchise_event.dart';
@@ -34,9 +35,12 @@ class FranchiseBloc extends BaseBloc<FranchiseEvent, FranchiseState> {
     final String? dataWithdraw = resultWithdraw.data;
 
     if (dataWithdraw != null) {
+      final controller = WebViewController()
+        ..setJavaScriptMode(JavaScriptMode.disabled)
+        ..loadHtmlString(dataWithdraw);
       return emit(
         _Loaded(
-          viewModel: _viewModel.copyWith(franchise: dataWithdraw),
+          viewModel: _viewModel.copyWith(franchise: controller),
         ),
       );
     }

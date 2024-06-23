@@ -115,9 +115,9 @@ List<RouteBase> _routes() => <RouteBase>[
         name: RouteNames.transferMoneyInstruction,
         path: RoutePaths.transferMoneyInstruction,
         builder: (_, state) {
-          final withdrawInfo = state.extra as String;
+          final withdrawInfo = state.extra as WebViewController;
           return TransferMoneyInstructionPage(
-            withdrawInfo: withdrawInfo,
+            withdrawInfoController: withdrawInfo,
           );
         },
       ),

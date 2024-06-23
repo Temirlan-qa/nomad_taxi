@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_super_html_viewer/flutter_super_html_viewer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
@@ -9,6 +8,7 @@ import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/features/transfer_money/presentation/bloc/balance_bloc.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class TransferMoneyPage extends StatelessWidget {
   const TransferMoneyPage({super.key});
@@ -51,16 +51,7 @@ class TransferMoneyPage extends StatelessWidget {
                       ),
                     )
                   ]),
-              body: SafeArea(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Center(
-                    child: HtmlContentViewer(
-                      htmlContent: viewModel.payInfo,
-                    ),
-                  ),
-                ),
-              ),
+              body: WebViewWidget(controller: viewModel.payInfo!),
             );
           },
         );

@@ -12,7 +12,7 @@ class BalanceState with _$BalanceState {
 @freezed
 class BalanceViewModel with _$BalanceViewModel {
   factory BalanceViewModel({
-    @Default('') String payInfo,
-    @Default('') String withdrawInfo,
+    WebViewController? payInfo,
+    WebViewController? withdrawInfo,
   }) = _BalanceViewModel;
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_super_html_viewer/flutter_super_html_viewer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/widgets/app_bars/custom_app_bar.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/back_button_wrapper.dart';
 import 'package:nomad_taxi/src/features/franchise/presentation/bloc/franchise_bloc.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class FranchisePage extends StatelessWidget {
   const FranchisePage({super.key});
@@ -25,16 +25,7 @@ class FranchisePage extends StatelessWidget {
             error: (_) =>
                 const Center(child: CircularProgressIndicator.adaptive()),
             loaded: (viewModel) {
-              return SafeArea(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Center(
-                    child: HtmlContentViewer(
-                      htmlContent: viewModel.franchise,
-                    ),
-                  ),
-                ),
-              );
+              return WebViewWidget(controller: viewModel.franchise!);
             },
           );
         },

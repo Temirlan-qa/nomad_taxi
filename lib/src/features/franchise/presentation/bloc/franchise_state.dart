@@ -12,6 +12,6 @@ class FranchiseState with _$FranchiseState {
 @freezed
 class FranchiseViewModel with _$FranchiseViewModel {
   factory FranchiseViewModel({
-    @Default('') String franchise,
+    WebViewController? franchise,
   }) = _FranchiseViewModel;
 }

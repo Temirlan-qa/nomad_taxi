@@ -26,6 +26,7 @@ import 'package:nomad_taxi/src/features/promo_code/presentation/pages/promo_code
 import 'package:nomad_taxi/src/features/settings/presentation/pages/settings_page.dart';
 import 'package:nomad_taxi/src/features/transfer_money/presentation/pages/transfer_money_instruction_page.dart';
 import 'package:nomad_taxi/src/features/transfer_money/presentation/pages/transfer_money_page.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../features/main/presentation/pages/about_app_page.dart';
 

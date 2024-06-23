@@ -630,7 +630,7 @@ abstract class _Error implements FranchiseState {
 
 /// @nodoc
 mixin _$FranchiseViewModel {
-  String get franchise => throw _privateConstructorUsedError;
+  WebViewController? get franchise => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FranchiseViewModelCopyWith<FranchiseViewModel> get copyWith =>
@@ -643,7 +643,7 @@ abstract class $FranchiseViewModelCopyWith<$Res> {
           FranchiseViewModel value, $Res Function(FranchiseViewModel) then) =
       _$FranchiseViewModelCopyWithImpl<$Res, FranchiseViewModel>;
   @useResult
-  $Res call({String franchise});
+  $Res call({WebViewController? franchise});
 }
 
 /// @nodoc
@@ -659,13 +659,13 @@ class _$FranchiseViewModelCopyWithImpl<$Res, $Val extends FranchiseViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? franchise = null,
+    Object? franchise = freezed,
   }) {
     return _then(_value.copyWith(
-      franchise: null == franchise
+      franchise: freezed == franchise
           ? _value.franchise
           : franchise // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WebViewController?,
     ) as $Val);
   }
 }
@@ -678,7 +678,7 @@ abstract class _$$FranchiseViewModelImplCopyWith<$Res>
       __$$FranchiseViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String franchise});
+  $Res call({WebViewController? franchise});
 }
 
 /// @nodoc
@@ -692,13 +692,13 @@ class __$$FranchiseViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? franchise = null,
+    Object? franchise = freezed,
   }) {
     return _then(_$FranchiseViewModelImpl(
-      franchise: null == franchise
+      franchise: freezed == franchise
           ? _value.franchise
           : franchise // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WebViewController?,
     ));
   }
 }
@@ -706,11 +706,10 @@ class __$$FranchiseViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FranchiseViewModelImpl implements _FranchiseViewModel {
-  _$FranchiseViewModelImpl({this.franchise = ''});
+  _$FranchiseViewModelImpl({this.franchise});
 
   @override
-  @JsonKey()
-  final String franchise;
+  final WebViewController? franchise;
 
   @override
   String toString() {
@@ -738,11 +737,11 @@ class _$FranchiseViewModelImpl implements _FranchiseViewModel {
 }
 
 abstract class _FranchiseViewModel implements FranchiseViewModel {
-  factory _FranchiseViewModel({final String franchise}) =
+  factory _FranchiseViewModel({final WebViewController? franchise}) =
       _$FranchiseViewModelImpl;
 
   @override
-  String get franchise;
+  WebViewController? get franchise;
   @override
   @JsonKey(ignore: true)
   _$$FranchiseViewModelImplCopyWith<_$FranchiseViewModelImpl> get copyWith =>

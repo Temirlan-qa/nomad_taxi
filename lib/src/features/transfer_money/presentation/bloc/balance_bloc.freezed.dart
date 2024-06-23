@@ -743,8 +743,8 @@ abstract class _Error implements BalanceState {
 
 /// @nodoc
 mixin _$BalanceViewModel {
-  String get payInfo => throw _privateConstructorUsedError;
-  String get withdrawInfo => throw _privateConstructorUsedError;
+  WebViewController? get payInfo => throw _privateConstructorUsedError;
+  WebViewController? get withdrawInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BalanceViewModelCopyWith<BalanceViewModel> get copyWith =>
@@ -757,7 +757,7 @@ abstract class $BalanceViewModelCopyWith<$Res> {
           BalanceViewModel value, $Res Function(BalanceViewModel) then) =
       _$BalanceViewModelCopyWithImpl<$Res, BalanceViewModel>;
   @useResult
-  $Res call({String payInfo, String withdrawInfo});
+  $Res call({WebViewController? payInfo, WebViewController? withdrawInfo});
 }
 
 /// @nodoc
@@ -773,18 +773,18 @@ class _$BalanceViewModelCopyWithImpl<$Res, $Val extends BalanceViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? payInfo = null,
-    Object? withdrawInfo = null,
+    Object? payInfo = freezed,
+    Object? withdrawInfo = freezed,
   }) {
     return _then(_value.copyWith(
-      payInfo: null == payInfo
+      payInfo: freezed == payInfo
           ? _value.payInfo
           : payInfo // ignore: cast_nullable_to_non_nullable
-              as String,
-      withdrawInfo: null == withdrawInfo
+              as WebViewController?,
+      withdrawInfo: freezed == withdrawInfo
           ? _value.withdrawInfo
           : withdrawInfo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WebViewController?,
     ) as $Val);
   }
 }
@@ -797,7 +797,7 @@ abstract class _$$BalanceViewModelImplCopyWith<$Res>
       __$$BalanceViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String payInfo, String withdrawInfo});
+  $Res call({WebViewController? payInfo, WebViewController? withdrawInfo});
 }
 
 /// @nodoc
@@ -811,18 +811,18 @@ class __$$BalanceViewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? payInfo = null,
-    Object? withdrawInfo = null,
+    Object? payInfo = freezed,
+    Object? withdrawInfo = freezed,
   }) {
     return _then(_$BalanceViewModelImpl(
-      payInfo: null == payInfo
+      payInfo: freezed == payInfo
           ? _value.payInfo
           : payInfo // ignore: cast_nullable_to_non_nullable
-              as String,
-      withdrawInfo: null == withdrawInfo
+              as WebViewController?,
+      withdrawInfo: freezed == withdrawInfo
           ? _value.withdrawInfo
           : withdrawInfo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WebViewController?,
     ));
   }
 }
@@ -830,14 +830,12 @@ class __$$BalanceViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BalanceViewModelImpl implements _BalanceViewModel {
-  _$BalanceViewModelImpl({this.payInfo = '', this.withdrawInfo = ''});
+  _$BalanceViewModelImpl({this.payInfo, this.withdrawInfo});
 
   @override
-  @JsonKey()
-  final String payInfo;
+  final WebViewController? payInfo;
   @override
-  @JsonKey()
-  final String withdrawInfo;
+  final WebViewController? withdrawInfo;
 
   @override
   String toString() {
@@ -866,13 +864,14 @@ class _$BalanceViewModelImpl implements _BalanceViewModel {
 }
 
 abstract class _BalanceViewModel implements BalanceViewModel {
-  factory _BalanceViewModel({final String payInfo, final String withdrawInfo}) =
-      _$BalanceViewModelImpl;
+  factory _BalanceViewModel(
+      {final WebViewController? payInfo,
+      final WebViewController? withdrawInfo}) = _$BalanceViewModelImpl;
 
   @override
-  String get payInfo;
+  WebViewController? get payInfo;
   @override
-  String get withdrawInfo;
+  WebViewController? get withdrawInfo;
   @override
   @JsonKey(ignore: true)
   _$$BalanceViewModelImplCopyWith<_$BalanceViewModelImpl> get copyWith =>
