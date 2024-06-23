@@ -19,6 +19,7 @@ import '../../../orders/domain/entities/orders_response/orders_response.dart';
 import '../../../orders/domain/entities/response/order_response.dart';
 import '../../domain/usecases/accept_order_use_case.dart';
 import '../../domain/usecases/cancel_order_use_case.dart';
+import '../../domain/usecases/get_new_order_use_case.dart';
 import '../../domain/usecases/get_order_status_use_case.dart';
 import '../../domain/usecases/get_orders_use_case.dart';
 
@@ -34,7 +35,8 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
       this._cancelOrderUseCase,
       this._waitingForClientUseCase,
       this._startRouteUseCase,
-      this._completeOrderUseCase)
+      this._completeOrderUseCase,
+      this._getNewOrderUseCase)
       : super(const _Initial());
 
   final GetOrderStatusUseCase _getOrderStatusUseCase;
@@ -51,11 +53,15 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
 
   final CancelOrderUseCase _cancelOrderUseCase;
 
+  final GetNewOrderUseCase _getNewOrderUseCase;
+
   final ProfileBloc profileBloc = getIt<ProfileBloc>();
 
   final StorageServiceImpl _storage = StorageServiceImpl();
 
   StreamSubscription? _orderStatusSubscription;
+
+  StreamSubscription? _orderSubscription;
 
   DriverOrderViewModel _viewModel = const DriverOrderViewModel();
 
@@ -75,26 +81,26 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
           _waitingForClient(event as _WaitingForClient, emit),
       startRoute: (_) => _startRoute(event as _StartRoute, emit),
       completeOrder: (_) => _completeOrder(event as _CompleteOrder, emit),
+      getNewOrder: () => getNewOrder(),
+      updateOrderList: (_) => updateOrderList(event as _UpdateOrderList, emit),
     );
   }
 
   Future<void> _started() async {
-    add(const _GetOrderStatus());
-    await Future.delayed(const Duration(seconds: 1));
+    // add(const _GetOrderStatus());
+    // await Future.delayed(const Duration(seconds: 1));
     add(const _GetOrders());
+    add(const _GetNewOrder());
   }
 
   Future<void> _getOrderStatus() async {
     await _orderStatusSubscription?.cancel();
-    _orderStatusSubscription == null;
+    _orderStatusSubscription = null;
 
     _orderStatusSubscription = _getOrderStatusUseCase().listen((result) {
-      if (result.isSuccessful) {
-        GetOrderStatusResponse? data = result.data;
-
-        if (data != null) {
-          add(_UpdateOrderStatus(updateOrderStatus: data));
-        }
+      GetOrderStatusResponse? data = result.data;
+      if (result.isSuccessful && data != null) {
+        add(_UpdateOrderStatus(updateOrderStatus: data));
       }
     });
   }
@@ -104,6 +110,31 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     GetOrderStatusResponse updatedOrderStatus = event.updateOrderStatus;
 
     _viewModel = _viewModel.copyWith(updatedOrderStatus: updatedOrderStatus);
+  }
+
+  Future<void> getNewOrder() async {
+    await _orderSubscription?.cancel();
+    _orderSubscription = null;
+
+    _orderSubscription = _getNewOrderUseCase().listen((result) {
+      OrderResponse? data = result.data;
+      OrderEntity? newOrder = data?.order;
+      if (result.isSuccessful && newOrder != null) {
+        add(_UpdateOrderList(newOrder: newOrder));
+      }
+    });
+  }
+
+  Future<void> updateOrderList(_UpdateOrderList event, Emitter emit) async {
+    final newOrder = event.newOrder;
+
+    final List<OrderEntity> currentOrders = _viewModel.ordersList;
+
+    final List<OrderEntity> updatedOrdersList = List.from(currentOrders)
+      ..add(newOrder);
+
+    _viewModel = _viewModel.copyWith(ordersList: updatedOrdersList);
+    emit(_Loaded(viewModel: _viewModel));
   }
 
   Future<void> _getOrders(
@@ -210,7 +241,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
   @override
   Future<void> close() {
     _orderStatusSubscription?.cancel();
-    _orderStatusSubscription == null;
+    _orderStatusSubscription = null;
     _timer?.cancel();
     getIt.resetBloc(this);
     return super.close();

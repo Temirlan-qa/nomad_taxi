@@ -23,6 +23,7 @@ mixin _$OrderEntity {
   int get id => throw _privateConstructorUsedError;
   String get startPoint => throw _privateConstructorUsedError;
   String get endPoint => throw _privateConstructorUsedError;
+  String get routeType => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $OrderEntityCopyWith<$Res> {
       {int id,
       String startPoint,
       String endPoint,
+      String routeType,
       int price,
       String? comment,
       String? status,
@@ -84,6 +86,7 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
     Object? id = null,
     Object? startPoint = null,
     Object? endPoint = null,
+    Object? routeType = null,
     Object? price = null,
     Object? comment = freezed,
     Object? status = freezed,
@@ -108,6 +111,10 @@ class _$OrderEntityCopyWithImpl<$Res, $Val extends OrderEntity>
       endPoint: null == endPoint
           ? _value.endPoint
           : endPoint // ignore: cast_nullable_to_non_nullable
+              as String,
+      routeType: null == routeType
+          ? _value.routeType
+          : routeType // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
@@ -193,6 +200,7 @@ abstract class _$$OrderEntityImplCopyWith<$Res>
       {int id,
       String startPoint,
       String endPoint,
+      String routeType,
       int price,
       String? comment,
       String? status,
@@ -225,6 +233,7 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
     Object? id = null,
     Object? startPoint = null,
     Object? endPoint = null,
+    Object? routeType = null,
     Object? price = null,
     Object? comment = freezed,
     Object? status = freezed,
@@ -249,6 +258,10 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
       endPoint: null == endPoint
           ? _value.endPoint
           : endPoint // ignore: cast_nullable_to_non_nullable
+              as String,
+      routeType: null == routeType
+          ? _value.routeType
+          : routeType // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
@@ -302,9 +315,10 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderEntityImpl implements _OrderEntity {
   const _$OrderEntityImpl(
-      {required this.id,
+      {this.id = 0,
       required this.startPoint,
       required this.endPoint,
+      required this.routeType,
       required this.price,
       this.comment,
       this.status,
@@ -322,11 +336,14 @@ class _$OrderEntityImpl implements _OrderEntity {
       _$$OrderEntityImplFromJson(json);
 
   @override
+  @JsonKey()
   final int id;
   @override
   final String startPoint;
   @override
   final String endPoint;
+  @override
+  final String routeType;
   @override
   final int price;
   @override
@@ -362,7 +379,7 @@ class _$OrderEntityImpl implements _OrderEntity {
 
   @override
   String toString() {
-    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, createdAt: $createdAt, payMethod: $payMethod, phone: $phone, partner: $partner, waitingTime: $waitingTime, townId: $townId, points: $points)';
+    return 'OrderEntity(id: $id, startPoint: $startPoint, endPoint: $endPoint, routeType: $routeType, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, createdAt: $createdAt, payMethod: $payMethod, phone: $phone, partner: $partner, waitingTime: $waitingTime, townId: $townId, points: $points)';
   }
 
   @override
@@ -375,6 +392,8 @@ class _$OrderEntityImpl implements _OrderEntity {
                 other.startPoint == startPoint) &&
             (identical(other.endPoint, endPoint) ||
                 other.endPoint == endPoint) &&
+            (identical(other.routeType, routeType) ||
+                other.routeType == routeType) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.status, status) || other.status == status) &&
@@ -399,6 +418,7 @@ class _$OrderEntityImpl implements _OrderEntity {
       id,
       startPoint,
       endPoint,
+      routeType,
       price,
       comment,
       status,
@@ -427,9 +447,10 @@ class _$OrderEntityImpl implements _OrderEntity {
 
 abstract class _OrderEntity implements OrderEntity {
   const factory _OrderEntity(
-      {required final int id,
+      {final int id,
       required final String startPoint,
       required final String endPoint,
+      required final String routeType,
       required final int price,
       final String? comment,
       final String? status,
@@ -451,6 +472,8 @@ abstract class _OrderEntity implements OrderEntity {
   String get startPoint;
   @override
   String get endPoint;
+  @override
+  String get routeType;
   @override
   int get price;
   @override

@@ -22,4 +22,8 @@ class DriverOrderEvent with _$DriverOrderEvent {
    const factory DriverOrderEvent.cancelOrder({
     required int orderId,
   }) = _CancelOrder;
+
+  const factory DriverOrderEvent.getNewOrder() = _GetNewOrder;
+
+  const factory DriverOrderEvent.updateOrderList({required OrderEntity newOrder}) = _UpdateOrderList;
 }

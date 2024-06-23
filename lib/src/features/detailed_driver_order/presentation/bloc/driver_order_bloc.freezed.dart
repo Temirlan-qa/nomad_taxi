@@ -28,6 +28,8 @@ mixin _$DriverOrderEvent {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,8 @@ mixin _$DriverOrderEvent {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,8 @@ mixin _$DriverOrderEvent {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +76,8 @@ mixin _$DriverOrderEvent {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +91,8 @@ mixin _$DriverOrderEvent {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +106,8 @@ mixin _$DriverOrderEvent {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +179,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return started();
   }
@@ -184,6 +198,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return started?.call();
   }
@@ -201,6 +217,8 @@ class _$StartedImpl implements _Started {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -221,6 +239,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return started(this);
   }
@@ -237,6 +257,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return started?.call(this);
   }
@@ -253,6 +275,8 @@ class _$StartedImpl implements _Started {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -314,6 +338,8 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return getOrderStatus();
   }
@@ -331,6 +357,8 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return getOrderStatus?.call();
   }
@@ -348,6 +376,8 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (getOrderStatus != null) {
@@ -368,6 +398,8 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return getOrderStatus(this);
   }
@@ -384,6 +416,8 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return getOrderStatus?.call(this);
   }
@@ -400,6 +434,8 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (getOrderStatus != null) {
@@ -461,6 +497,8 @@ class _$GetOrdersImpl implements _GetOrders {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return getOrders();
   }
@@ -478,6 +516,8 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return getOrders?.call();
   }
@@ -495,6 +535,8 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -515,6 +557,8 @@ class _$GetOrdersImpl implements _GetOrders {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return getOrders(this);
   }
@@ -531,6 +575,8 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return getOrders?.call(this);
   }
@@ -547,6 +593,8 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -647,6 +695,8 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return updateOrderStatus(this.updateOrderStatus);
   }
@@ -664,6 +714,8 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return updateOrderStatus?.call(this.updateOrderStatus);
   }
@@ -681,6 +733,8 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (updateOrderStatus != null) {
@@ -701,6 +755,8 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return updateOrderStatus(this);
   }
@@ -717,6 +773,8 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return updateOrderStatus?.call(this);
   }
@@ -733,6 +791,8 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (updateOrderStatus != null) {
@@ -827,6 +887,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return acceptOrder(orderId);
   }
@@ -844,6 +906,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return acceptOrder?.call(orderId);
   }
@@ -861,6 +925,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (acceptOrder != null) {
@@ -881,6 +947,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return acceptOrder(this);
   }
@@ -897,6 +965,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return acceptOrder?.call(this);
   }
@@ -913,6 +983,8 @@ class _$AcceptOrderImpl implements _AcceptOrder {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (acceptOrder != null) {
@@ -1006,6 +1078,8 @@ class _$WaitingForClientImpl implements _WaitingForClient {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return waitingForClient(orderId);
   }
@@ -1023,6 +1097,8 @@ class _$WaitingForClientImpl implements _WaitingForClient {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return waitingForClient?.call(orderId);
   }
@@ -1040,6 +1116,8 @@ class _$WaitingForClientImpl implements _WaitingForClient {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (waitingForClient != null) {
@@ -1060,6 +1138,8 @@ class _$WaitingForClientImpl implements _WaitingForClient {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return waitingForClient(this);
   }
@@ -1076,6 +1156,8 @@ class _$WaitingForClientImpl implements _WaitingForClient {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return waitingForClient?.call(this);
   }
@@ -1092,6 +1174,8 @@ class _$WaitingForClientImpl implements _WaitingForClient {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (waitingForClient != null) {
@@ -1185,6 +1269,8 @@ class _$StartRouteImpl implements _StartRoute {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return startRoute(orderId);
   }
@@ -1202,6 +1288,8 @@ class _$StartRouteImpl implements _StartRoute {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return startRoute?.call(orderId);
   }
@@ -1219,6 +1307,8 @@ class _$StartRouteImpl implements _StartRoute {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (startRoute != null) {
@@ -1239,6 +1329,8 @@ class _$StartRouteImpl implements _StartRoute {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return startRoute(this);
   }
@@ -1255,6 +1347,8 @@ class _$StartRouteImpl implements _StartRoute {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return startRoute?.call(this);
   }
@@ -1271,6 +1365,8 @@ class _$StartRouteImpl implements _StartRoute {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (startRoute != null) {
@@ -1363,6 +1459,8 @@ class _$CompleteOrderImpl implements _CompleteOrder {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return completeOrder(orderId);
   }
@@ -1380,6 +1478,8 @@ class _$CompleteOrderImpl implements _CompleteOrder {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return completeOrder?.call(orderId);
   }
@@ -1397,6 +1497,8 @@ class _$CompleteOrderImpl implements _CompleteOrder {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (completeOrder != null) {
@@ -1417,6 +1519,8 @@ class _$CompleteOrderImpl implements _CompleteOrder {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return completeOrder(this);
   }
@@ -1433,6 +1537,8 @@ class _$CompleteOrderImpl implements _CompleteOrder {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return completeOrder?.call(this);
   }
@@ -1449,6 +1555,8 @@ class _$CompleteOrderImpl implements _CompleteOrder {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (completeOrder != null) {
@@ -1542,6 +1650,8 @@ class _$CancelOrderImpl implements _CancelOrder {
     required TResult Function(int orderId) startRoute,
     required TResult Function(int orderId) completeOrder,
     required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
   }) {
     return cancelOrder(orderId);
   }
@@ -1559,6 +1669,8 @@ class _$CancelOrderImpl implements _CancelOrder {
     TResult? Function(int orderId)? startRoute,
     TResult? Function(int orderId)? completeOrder,
     TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
   }) {
     return cancelOrder?.call(orderId);
   }
@@ -1576,6 +1688,8 @@ class _$CancelOrderImpl implements _CancelOrder {
     TResult Function(int orderId)? startRoute,
     TResult Function(int orderId)? completeOrder,
     TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
     required TResult orElse(),
   }) {
     if (cancelOrder != null) {
@@ -1596,6 +1710,8 @@ class _$CancelOrderImpl implements _CancelOrder {
     required TResult Function(_StartRoute value) startRoute,
     required TResult Function(_CompleteOrder value) completeOrder,
     required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
   }) {
     return cancelOrder(this);
   }
@@ -1612,6 +1728,8 @@ class _$CancelOrderImpl implements _CancelOrder {
     TResult? Function(_StartRoute value)? startRoute,
     TResult? Function(_CompleteOrder value)? completeOrder,
     TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
   }) {
     return cancelOrder?.call(this);
   }
@@ -1628,6 +1746,8 @@ class _$CancelOrderImpl implements _CancelOrder {
     TResult Function(_StartRoute value)? startRoute,
     TResult Function(_CompleteOrder value)? completeOrder,
     TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
     required TResult orElse(),
   }) {
     if (cancelOrder != null) {
@@ -1643,6 +1763,368 @@ abstract class _CancelOrder implements DriverOrderEvent {
   int get orderId;
   @JsonKey(ignore: true)
   _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetNewOrderImplCopyWith<$Res> {
+  factory _$$GetNewOrderImplCopyWith(
+          _$GetNewOrderImpl value, $Res Function(_$GetNewOrderImpl) then) =
+      __$$GetNewOrderImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetNewOrderImplCopyWithImpl<$Res>
+    extends _$DriverOrderEventCopyWithImpl<$Res, _$GetNewOrderImpl>
+    implements _$$GetNewOrderImplCopyWith<$Res> {
+  __$$GetNewOrderImplCopyWithImpl(
+      _$GetNewOrderImpl _value, $Res Function(_$GetNewOrderImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetNewOrderImpl implements _GetNewOrder {
+  const _$GetNewOrderImpl();
+
+  @override
+  String toString() {
+    return 'DriverOrderEvent.getNewOrder()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetNewOrderImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
+    required TResult Function(GetOrderStatusResponse updateOrderStatus)
+        updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) waitingForClient,
+    required TResult Function(int orderId) startRoute,
+    required TResult Function(int orderId) completeOrder,
+    required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
+  }) {
+    return getNewOrder();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
+    TResult? Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? waitingForClient,
+    TResult? Function(int orderId)? startRoute,
+    TResult? Function(int orderId)? completeOrder,
+    TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
+  }) {
+    return getNewOrder?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
+    TResult Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? waitingForClient,
+    TResult Function(int orderId)? startRoute,
+    TResult Function(int orderId)? completeOrder,
+    TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
+    required TResult orElse(),
+  }) {
+    if (getNewOrder != null) {
+      return getNewOrder();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_WaitingForClient value) waitingForClient,
+    required TResult Function(_StartRoute value) startRoute,
+    required TResult Function(_CompleteOrder value) completeOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
+  }) {
+    return getNewOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_WaitingForClient value)? waitingForClient,
+    TResult? Function(_StartRoute value)? startRoute,
+    TResult? Function(_CompleteOrder value)? completeOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
+  }) {
+    return getNewOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_WaitingForClient value)? waitingForClient,
+    TResult Function(_StartRoute value)? startRoute,
+    TResult Function(_CompleteOrder value)? completeOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
+    required TResult orElse(),
+  }) {
+    if (getNewOrder != null) {
+      return getNewOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetNewOrder implements DriverOrderEvent {
+  const factory _GetNewOrder() = _$GetNewOrderImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateOrderListImplCopyWith<$Res> {
+  factory _$$UpdateOrderListImplCopyWith(_$UpdateOrderListImpl value,
+          $Res Function(_$UpdateOrderListImpl) then) =
+      __$$UpdateOrderListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({OrderEntity newOrder});
+
+  $OrderEntityCopyWith<$Res> get newOrder;
+}
+
+/// @nodoc
+class __$$UpdateOrderListImplCopyWithImpl<$Res>
+    extends _$DriverOrderEventCopyWithImpl<$Res, _$UpdateOrderListImpl>
+    implements _$$UpdateOrderListImplCopyWith<$Res> {
+  __$$UpdateOrderListImplCopyWithImpl(
+      _$UpdateOrderListImpl _value, $Res Function(_$UpdateOrderListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newOrder = null,
+  }) {
+    return _then(_$UpdateOrderListImpl(
+      newOrder: null == newOrder
+          ? _value.newOrder
+          : newOrder // ignore: cast_nullable_to_non_nullable
+              as OrderEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrderEntityCopyWith<$Res> get newOrder {
+    return $OrderEntityCopyWith<$Res>(_value.newOrder, (value) {
+      return _then(_value.copyWith(newOrder: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateOrderListImpl implements _UpdateOrderList {
+  const _$UpdateOrderListImpl({required this.newOrder});
+
+  @override
+  final OrderEntity newOrder;
+
+  @override
+  String toString() {
+    return 'DriverOrderEvent.updateOrderList(newOrder: $newOrder)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateOrderListImpl &&
+            (identical(other.newOrder, newOrder) ||
+                other.newOrder == newOrder));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newOrder);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateOrderListImplCopyWith<_$UpdateOrderListImpl> get copyWith =>
+      __$$UpdateOrderListImplCopyWithImpl<_$UpdateOrderListImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOrderStatus,
+    required TResult Function() getOrders,
+    required TResult Function(GetOrderStatusResponse updateOrderStatus)
+        updateOrderStatus,
+    required TResult Function(int orderId) acceptOrder,
+    required TResult Function(int orderId) waitingForClient,
+    required TResult Function(int orderId) startRoute,
+    required TResult Function(int orderId) completeOrder,
+    required TResult Function(int orderId) cancelOrder,
+    required TResult Function() getNewOrder,
+    required TResult Function(OrderEntity newOrder) updateOrderList,
+  }) {
+    return updateOrderList(newOrder);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOrderStatus,
+    TResult? Function()? getOrders,
+    TResult? Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult? Function(int orderId)? acceptOrder,
+    TResult? Function(int orderId)? waitingForClient,
+    TResult? Function(int orderId)? startRoute,
+    TResult? Function(int orderId)? completeOrder,
+    TResult? Function(int orderId)? cancelOrder,
+    TResult? Function()? getNewOrder,
+    TResult? Function(OrderEntity newOrder)? updateOrderList,
+  }) {
+    return updateOrderList?.call(newOrder);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOrderStatus,
+    TResult Function()? getOrders,
+    TResult Function(GetOrderStatusResponse updateOrderStatus)?
+        updateOrderStatus,
+    TResult Function(int orderId)? acceptOrder,
+    TResult Function(int orderId)? waitingForClient,
+    TResult Function(int orderId)? startRoute,
+    TResult Function(int orderId)? completeOrder,
+    TResult Function(int orderId)? cancelOrder,
+    TResult Function()? getNewOrder,
+    TResult Function(OrderEntity newOrder)? updateOrderList,
+    required TResult orElse(),
+  }) {
+    if (updateOrderList != null) {
+      return updateOrderList(newOrder);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOrderStatus value) getOrderStatus,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_UpdateOrderStatus value) updateOrderStatus,
+    required TResult Function(_AcceptOrder value) acceptOrder,
+    required TResult Function(_WaitingForClient value) waitingForClient,
+    required TResult Function(_StartRoute value) startRoute,
+    required TResult Function(_CompleteOrder value) completeOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+    required TResult Function(_GetNewOrder value) getNewOrder,
+    required TResult Function(_UpdateOrderList value) updateOrderList,
+  }) {
+    return updateOrderList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOrderStatus value)? getOrderStatus,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult? Function(_AcceptOrder value)? acceptOrder,
+    TResult? Function(_WaitingForClient value)? waitingForClient,
+    TResult? Function(_StartRoute value)? startRoute,
+    TResult? Function(_CompleteOrder value)? completeOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+    TResult? Function(_GetNewOrder value)? getNewOrder,
+    TResult? Function(_UpdateOrderList value)? updateOrderList,
+  }) {
+    return updateOrderList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOrderStatus value)? getOrderStatus,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_UpdateOrderStatus value)? updateOrderStatus,
+    TResult Function(_AcceptOrder value)? acceptOrder,
+    TResult Function(_WaitingForClient value)? waitingForClient,
+    TResult Function(_StartRoute value)? startRoute,
+    TResult Function(_CompleteOrder value)? completeOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    TResult Function(_GetNewOrder value)? getNewOrder,
+    TResult Function(_UpdateOrderList value)? updateOrderList,
+    required TResult orElse(),
+  }) {
+    if (updateOrderList != null) {
+      return updateOrderList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateOrderList implements DriverOrderEvent {
+  const factory _UpdateOrderList({required final OrderEntity newOrder}) =
+      _$UpdateOrderListImpl;
+
+  OrderEntity get newOrder;
+  @JsonKey(ignore: true)
+  _$$UpdateOrderListImplCopyWith<_$UpdateOrderListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

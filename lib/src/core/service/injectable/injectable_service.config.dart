@@ -15,12 +15,12 @@ import '../../../features/auth/data/repositories/i_auth_repository.dart'
     as _i51;
 import '../../../features/auth/domain/repositories/auth_repository_impl.dart'
     as _i52;
-import '../../../features/auth/domain/usecases/login_use_case.dart' as _i57;
+import '../../../features/auth/domain/usecases/login_use_case.dart' as _i58;
 import '../../../features/auth/domain/usecases/refresh_token_use_case.dart'
-    as _i55;
-import '../../../features/auth/domain/usecases/resend_code_use_case.dart'
     as _i56;
-import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i54;
+import '../../../features/auth/domain/usecases/resend_code_use_case.dart'
+    as _i57;
+import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i55;
 import '../../../features/detailed_driver_order/data/client/order_web_socket_client.dart'
     as _i25;
 import '../../../features/detailed_driver_order/data/datasources/remote/driver_order_remote_impl.dart'
@@ -37,6 +37,8 @@ import '../../../features/detailed_driver_order/domain/usecases/cancel_order_use
     as _i30;
 import '../../../features/detailed_driver_order/domain/usecases/complete_order_use_case.dart'
     as _i32;
+import '../../../features/detailed_driver_order/domain/usecases/get_new_order_use_case.dart'
+    as _i54;
 import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart'
     as _i53;
 import '../../../features/detailed_driver_order/domain/usecases/get_orders_use_case.dart'
@@ -241,13 +243,16 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i53.GetOrderStatusUseCase>(() =>
         _i53.GetOrderStatusUseCase(gh<_i49.IDriverOrderRepository>(
             instanceName: 'DriverOrderRepository')));
-    gh.lazySingleton<_i54.VerifyUseCase>(() => _i54.VerifyUseCase(
+    gh.lazySingleton<_i54.GetNewOrderUseCase>(() => _i54.GetNewOrderUseCase(
+        gh<_i49.IDriverOrderRepository>(
+            instanceName: 'DriverOrderRepository')));
+    gh.lazySingleton<_i55.VerifyUseCase>(() => _i55.VerifyUseCase(
         gh<_i51.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i55.RefreshTokenUseCase>(() => _i55.RefreshTokenUseCase(
+    gh.lazySingleton<_i56.RefreshTokenUseCase>(() => _i56.RefreshTokenUseCase(
         gh<_i51.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i56.ResendCodeUseCase>(() => _i56.ResendCodeUseCase(
+    gh.lazySingleton<_i57.ResendCodeUseCase>(() => _i57.ResendCodeUseCase(
         gh<_i51.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i57.LoginUseCase>(() => _i57.LoginUseCase(
+    gh.lazySingleton<_i58.LoginUseCase>(() => _i58.LoginUseCase(
         gh<_i51.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
     return this;
   }

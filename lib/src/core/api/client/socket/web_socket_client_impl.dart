@@ -2,32 +2,39 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:fpdart/fpdart.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-import '../../../../features/detailed_driver_order/data/models/response/order_status_data_dto.dart';
 import '../../../dtos/web_socket_dto.dart';
 import '../../../utils/loggers/logger.dart';
 import 'i_web_socket_client.dart';
 
 abstract class WebSocketClientImpl implements IWebSocketClient {
   WebSocket? _ws;
-
   WebSocketChannel? _webSocketChannel;
 
   final StreamController<WebSocketDto> _controller =
       StreamController<WebSocketDto>.broadcast();
-
-  WebSocketChannel? get webSocketChannel => _webSocketChannel;
-
+  final StreamController<OrderResponse> _orderController =
+      StreamController<OrderResponse>.broadcast();
   StreamSubscription? _wsSubscription;
+
+  OrderEntity? _lastOrder;
 
   @override
   Stream<WebSocketDto> get stream => _controller.stream;
 
+  @override
+  Stream<OrderResponse> get orderStream =>
+      _orderController.stream.distinct((prev, current) => prev == current);
+
   Future<void> init(String url) async {
     try {
       _ws = await WebSocket.connect(url);
+      _subscribeToChannel('new-order');
       if (_ws != null) {
         _initListeners(url);
         _webSocketChannel = IOWebSocketChannel(_ws!);
@@ -45,10 +52,12 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
       },
       onDone: () async {
         _controller.close();
+        _orderController.close();
         await close();
       },
       onError: (error) {
         _controller.addError(error);
+        _orderController.addError(error);
       },
       cancelOnError: false,
     );
@@ -56,7 +65,7 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
 
   void _onData(event) {
     try {
-      if (_controller.isClosed) {
+      if (_controller.isClosed && _orderController.isClosed) {
         return;
       }
       if (event == null) {
@@ -66,18 +75,39 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
       final Map<String, dynamic> map =
           jsonDecode(event) as Map<String, dynamic>;
 
-      final eventDataString = map['data'] as String;
-      final Map<String, dynamic> eventDataMap = jsonDecode(eventDataString);
+      final eventDataString = map['data'];
 
-      final WebSocketDto webSocketDto = WebSocketDto(
-        event: map['event'] as String,
-        data: OrderStatusDataDto.fromJson(eventDataMap),
-      );
+      if (map['channel'] == 'new-order') {
+        final Map<String, dynamic> eventDataMap = jsonDecode(eventDataString);
 
-      _controller.add(webSocketDto);
-    } catch (e) {
-      Log.e(e, name: 'WebSocketClient onData');
+        final OrderEntity order = OrderEntity.fromJson(eventDataMap);
+
+        if (_lastOrder == null || _lastOrder != order) {
+          _lastOrder = order;
+          _orderController.add(OrderResponse(order: order));
+        }
+      }
+
+      // final WebSocketDto webSocketDto = WebSocketDto(
+      //   event: map['event'] as String,
+      //   data: OrderStatusDataDto.fromJson(eventDataMap),
+      // );
+
+      // // Adding data to _controller
+      // _controller.add(webSocketDto);
+
+      // Check the event type and add to _orderController if it's a new order
+    } catch (_) {
+      return;
     }
+  }
+
+  Future<void> _subscribeToChannel(String channel) async {
+    final subscribeMessage = {
+      "event": "pusher:subscribe",
+      "data": {"channel": channel}
+    };
+    _ws?.add(jsonEncode(subscribeMessage));
   }
 
   @override
@@ -86,6 +116,7 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
       await _ws?.close();
       _webSocketChannel = null;
       _wsSubscription?.cancel();
+      _wsSubscription = null;
     } catch (e) {
       Log.e(e, name: 'WebSocketClient close');
     }
