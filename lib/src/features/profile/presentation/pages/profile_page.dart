@@ -192,15 +192,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                   TextFieldWidget(
                                     controller: carInfoController,
                                     hintText: viewModel.pCarModel!,
-                                    onChanged: (value) => setState(() {
-                                      isValChanged = true;
-                                    }),
+                                    onChanged: (value) => setState(
+                                      () {
+                                        isValChanged = true;
+                                      },
+                                    ),
                                   ),
                                 ],
                               )
                             : const SizedBox()
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -217,34 +219,36 @@ class _ProfilePageState extends State<ProfilePage> {
                           CustomMainButtonWidget(
                             title: S.current.save_changes,
                             onPressed: () {
-                              setState(() {
-                                isValChanged = false;
-                                bloc.add(
-                                  ProfileEvent.updateUserInfo(
-                                    name: nameController.text,
-                                    lastName: surnameController.text,
-                                  ),
-                                );
-                                if (viewModel.pId != null) {
-                                  if (carInfoController.text.isNotEmpty &&
-                                      carNumberController.text.isNotEmpty) {
-                                    bloc.add(
-                                      ProfileEvent.updatePartnerData(
-                                        partnerData: UpdatePartnerDataRequest(
-                                          carModel: carInfoController.text,
-                                          carNumber: carNumberController.text,
-                                          firstName: viewModel.firstName,
-                                          lastName: viewModel.lastName,
-                                          townId: viewModel.pTownId ?? 1,
+                              setState(
+                                () {
+                                  isValChanged = false;
+                                  bloc.add(
+                                    ProfileEvent.updateUserInfo(
+                                      name: nameController.text,
+                                      lastName: surnameController.text,
+                                    ),
+                                  );
+                                  if (viewModel.pId != null) {
+                                    if (carInfoController.text.isNotEmpty &&
+                                        carNumberController.text.isNotEmpty) {
+                                      bloc.add(
+                                        ProfileEvent.updatePartnerData(
+                                          partnerData: UpdatePartnerDataRequest(
+                                            carModel: carInfoController.text,
+                                            carNumber: carNumberController.text,
+                                            firstName: viewModel.firstName,
+                                            lastName: viewModel.lastName,
+                                            townId: viewModel.pTownId ?? 1,
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                    bloc.add(const ProfileEvent.init());
-                                  } else {
-                                    showErrorModal(context);
+                                      );
+                                      bloc.add(const ProfileEvent.init());
+                                    } else {
+                                      showErrorModal(context);
+                                    }
                                   }
-                                }
-                              });
+                                },
+                              );
                             },
                           ),
                           const Gap(UIConstants.defaultGap1),
@@ -285,8 +289,12 @@ class _ProfilePageState extends State<ProfilePage> {
             context.pop();
           },
           accept: () {
-            context.pop();
-            //bloc.add(const ProfileEvent.deleteAccount());
+            bloc.add(const ProfileEvent.deleteAccount());
+            st.clear();
+            while (context.canPop()) {
+              context.pop();
+            }
+            context.pushReplacementNamed(RouteNames.auth);
           },
         );
       },

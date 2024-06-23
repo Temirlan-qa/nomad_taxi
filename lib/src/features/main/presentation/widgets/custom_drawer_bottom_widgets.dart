@@ -62,7 +62,7 @@ class DrawerBottomWidgets extends StatelessWidget {
                   ),
                   const Gap(UIConstants.defaultGap1),
                   Text(
-                    '${S.current.development_by}\nNomad software © 2024',
+                    '${S.current.development_by}\nТОО NOMADGO ©2024',
                     style: context.theme.textStyles.bodySecondary
                         .copyWith(color: context.theme.secondary),
                   ),
