@@ -703,15 +703,16 @@ abstract class _Error implements MainState {
 
 /// @nodoc
 mixin _$MainViewModel {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  double get lng => throw _privateConstructorUsedError;
+  String get lat => throw _privateConstructorUsedError;
+  String get lng => throw _privateConstructorUsedError;
   int get radius => throw _privateConstructorUsedError;
   String get languageCode => throw _privateConstructorUsedError;
   SupportEntity? get support => throw _privateConstructorUsedError;
   InsideCityEntity? get insideCity => throw _privateConstructorUsedError;
+  String get franchiseLink => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MainViewModelCopyWith<MainViewModel> get copyWith =>
@@ -725,15 +726,16 @@ abstract class $MainViewModelCopyWith<$Res> {
       _$MainViewModelCopyWithImpl<$Res, MainViewModel>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String status,
-      double lat,
-      double lng,
+      String lat,
+      String lng,
       int radius,
       String languageCode,
       SupportEntity? support,
-      InsideCityEntity? insideCity});
+      InsideCityEntity? insideCity,
+      String franchiseLink});
 
   $SupportEntityCopyWith<$Res>? get support;
   $InsideCityEntityCopyWith<$Res>? get insideCity;
@@ -761,12 +763,13 @@ class _$MainViewModelCopyWithImpl<$Res, $Val extends MainViewModel>
     Object? languageCode = null,
     Object? support = freezed,
     Object? insideCity = freezed,
+    Object? franchiseLink = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -778,11 +781,11 @@ class _$MainViewModelCopyWithImpl<$Res, $Val extends MainViewModel>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lng: null == lng
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       radius: null == radius
           ? _value.radius
           : radius // ignore: cast_nullable_to_non_nullable
@@ -799,6 +802,10 @@ class _$MainViewModelCopyWithImpl<$Res, $Val extends MainViewModel>
           ? _value.insideCity
           : insideCity // ignore: cast_nullable_to_non_nullable
               as InsideCityEntity?,
+      franchiseLink: null == franchiseLink
+          ? _value.franchiseLink
+          : franchiseLink // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -836,15 +843,16 @@ abstract class _$$MainViewModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String status,
-      double lat,
-      double lng,
+      String lat,
+      String lng,
       int radius,
       String languageCode,
       SupportEntity? support,
-      InsideCityEntity? insideCity});
+      InsideCityEntity? insideCity,
+      String franchiseLink});
 
   @override
   $SupportEntityCopyWith<$Res>? get support;
@@ -872,12 +880,13 @@ class __$$MainViewModelImplCopyWithImpl<$Res>
     Object? languageCode = null,
     Object? support = freezed,
     Object? insideCity = freezed,
+    Object? franchiseLink = null,
   }) {
     return _then(_$MainViewModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -889,11 +898,11 @@ class __$$MainViewModelImplCopyWithImpl<$Res>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lng: null == lng
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       radius: null == radius
           ? _value.radius
           : radius // ignore: cast_nullable_to_non_nullable
@@ -910,6 +919,10 @@ class __$$MainViewModelImplCopyWithImpl<$Res>
           ? _value.insideCity
           : insideCity // ignore: cast_nullable_to_non_nullable
               as InsideCityEntity?,
+      franchiseLink: null == franchiseLink
+          ? _value.franchiseLink
+          : franchiseLink // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -918,19 +931,20 @@ class __$$MainViewModelImplCopyWithImpl<$Res>
 
 class _$MainViewModelImpl implements _MainViewModel {
   _$MainViewModelImpl(
-      {this.id = '',
+      {this.id = 0,
       this.title = '',
       this.status = '',
-      this.lat = 0.0,
-      this.lng = 0.0,
+      this.lat = '',
+      this.lng = '',
       this.radius = 0,
       this.languageCode = 'ru',
       this.support,
-      this.insideCity});
+      this.insideCity,
+      this.franchiseLink = ''});
 
   @override
   @JsonKey()
-  final String id;
+  final int id;
   @override
   @JsonKey()
   final String title;
@@ -939,10 +953,10 @@ class _$MainViewModelImpl implements _MainViewModel {
   final String status;
   @override
   @JsonKey()
-  final double lat;
+  final String lat;
   @override
   @JsonKey()
-  final double lng;
+  final String lng;
   @override
   @JsonKey()
   final int radius;
@@ -953,10 +967,13 @@ class _$MainViewModelImpl implements _MainViewModel {
   final SupportEntity? support;
   @override
   final InsideCityEntity? insideCity;
+  @override
+  @JsonKey()
+  final String franchiseLink;
 
   @override
   String toString() {
-    return 'MainViewModel(id: $id, title: $title, status: $status, lat: $lat, lng: $lng, radius: $radius, languageCode: $languageCode, support: $support, insideCity: $insideCity)';
+    return 'MainViewModel(id: $id, title: $title, status: $status, lat: $lat, lng: $lng, radius: $radius, languageCode: $languageCode, support: $support, insideCity: $insideCity, franchiseLink: $franchiseLink)';
   }
 
   @override
@@ -974,12 +991,14 @@ class _$MainViewModelImpl implements _MainViewModel {
                 other.languageCode == languageCode) &&
             (identical(other.support, support) || other.support == support) &&
             (identical(other.insideCity, insideCity) ||
-                other.insideCity == insideCity));
+                other.insideCity == insideCity) &&
+            (identical(other.franchiseLink, franchiseLink) ||
+                other.franchiseLink == franchiseLink));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, title, status, lat, lng,
-      radius, languageCode, support, insideCity);
+      radius, languageCode, support, insideCity, franchiseLink);
 
   @JsonKey(ignore: true)
   @override
@@ -990,26 +1009,27 @@ class _$MainViewModelImpl implements _MainViewModel {
 
 abstract class _MainViewModel implements MainViewModel {
   factory _MainViewModel(
-      {final String id,
+      {final int id,
       final String title,
       final String status,
-      final double lat,
-      final double lng,
+      final String lat,
+      final String lng,
       final int radius,
       final String languageCode,
       final SupportEntity? support,
-      final InsideCityEntity? insideCity}) = _$MainViewModelImpl;
+      final InsideCityEntity? insideCity,
+      final String franchiseLink}) = _$MainViewModelImpl;
 
   @override
-  String get id;
+  int get id;
   @override
   String get title;
   @override
   String get status;
   @override
-  double get lat;
+  String get lat;
   @override
-  double get lng;
+  String get lng;
   @override
   int get radius;
   @override
@@ -1018,6 +1038,8 @@ abstract class _MainViewModel implements MainViewModel {
   SupportEntity? get support;
   @override
   InsideCityEntity? get insideCity;
+  @override
+  String get franchiseLink;
   @override
   @JsonKey(ignore: true)
   _$$MainViewModelImplCopyWith<_$MainViewModelImpl> get copyWith =>

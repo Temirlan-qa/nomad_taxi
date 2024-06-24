@@ -8,12 +8,13 @@ part of 'town_dto.dart';
 
 _$TownDtoImpl _$$TownDtoImplFromJson(Map<String, dynamic> json) =>
     _$TownDtoImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       status: json['status'] as String,
-      lat: (json['lat'] as num).toDouble(),
-      lng: (json['lng'] as num).toDouble(),
+      lat: json['lat'] as String,
+      lng: json['lng'] as String,
       radius: (json['radius'] as num).toInt(),
+      franchiseLink: json['franchise_link'] as String,
       languageCode: json['language_code'] as String?,
       support: json['support'] == null
           ? null
@@ -31,6 +32,7 @@ Map<String, dynamic> _$$TownDtoImplToJson(_$TownDtoImpl instance) =>
       'lat': instance.lat,
       'lng': instance.lng,
       'radius': instance.radius,
+      'franchise_link': instance.franchiseLink,
       'language_code': instance.languageCode,
       'support': instance.support,
       'inside_city': instance.insideCity,

@@ -15,9 +15,15 @@ import '../../../../core/utils/formatters/phone_number_formatter.dart';
 import '../bloc/auth_bloc.dart';
 
 class ConfirmCodePage extends StatefulWidget {
-  const ConfirmCodePage({super.key, required this.phone, required this.userId});
+  const ConfirmCodePage({
+    super.key,
+    required this.phone,
+    required this.userId,
+    required this.countryCode,
+  });
   final String userId;
   final String phone;
+  final String countryCode;
 
   @override
   State<ConfirmCodePage> createState() => _ConfirmCodePageState();
@@ -65,7 +71,10 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              PhoneNumberFormatter().format(widget.phone),
+                              PhoneNumberFormatter().format(
+                                oldValue: widget.phone,
+                                formattedText: widget.countryCode,
+                              ),
                               style: headLine,
                             ),
                             const Gap(UIConstants.defaultGap2),

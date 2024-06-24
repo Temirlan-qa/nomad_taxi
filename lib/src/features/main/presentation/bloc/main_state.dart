@@ -12,14 +12,15 @@ class MainState with _$MainState {
 @freezed
 class MainViewModel with _$MainViewModel {
   factory MainViewModel({
-    @Default('') String id,
+    @Default(0) int id,
     @Default('') String title,
     @Default('') String status,
-    @Default(0.0) double lat,
-    @Default(0.0) double lng,
+    @Default('') String lat,
+    @Default('') String lng,
     @Default(0) int radius,
     @Default('ru') String languageCode,
     SupportEntity? support,
     InsideCityEntity? insideCity,
+    @Default('') String franchiseLink,
   }) = _MainViewModel;
 }

@@ -20,12 +20,14 @@ TownDto _$TownDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TownDto {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  double get lng => throw _privateConstructorUsedError;
+  String get lat => throw _privateConstructorUsedError;
+  String get lng => throw _privateConstructorUsedError;
   int get radius => throw _privateConstructorUsedError;
+  @JsonKey(name: 'franchise_link')
+  String get franchiseLink => throw _privateConstructorUsedError;
   @JsonKey(name: 'language_code')
   String? get languageCode => throw _privateConstructorUsedError;
   SupportDto? get support => throw _privateConstructorUsedError;
@@ -43,12 +45,13 @@ abstract class $TownDtoCopyWith<$Res> {
       _$TownDtoCopyWithImpl<$Res, TownDto>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String status,
-      double lat,
-      double lng,
+      String lat,
+      String lng,
       int radius,
+      @JsonKey(name: 'franchise_link') String franchiseLink,
       @JsonKey(name: 'language_code') String? languageCode,
       SupportDto? support,
       @JsonKey(name: 'inside_city') InsideCityDto? insideCity});
@@ -76,6 +79,7 @@ class _$TownDtoCopyWithImpl<$Res, $Val extends TownDto>
     Object? lat = null,
     Object? lng = null,
     Object? radius = null,
+    Object? franchiseLink = null,
     Object? languageCode = freezed,
     Object? support = freezed,
     Object? insideCity = freezed,
@@ -84,7 +88,7 @@ class _$TownDtoCopyWithImpl<$Res, $Val extends TownDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -96,15 +100,19 @@ class _$TownDtoCopyWithImpl<$Res, $Val extends TownDto>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lng: null == lng
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       radius: null == radius
           ? _value.radius
           : radius // ignore: cast_nullable_to_non_nullable
               as int,
+      franchiseLink: null == franchiseLink
+          ? _value.franchiseLink
+          : franchiseLink // ignore: cast_nullable_to_non_nullable
+              as String,
       languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
@@ -153,12 +161,13 @@ abstract class _$$TownDtoImplCopyWith<$Res> implements $TownDtoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String status,
-      double lat,
-      double lng,
+      String lat,
+      String lng,
       int radius,
+      @JsonKey(name: 'franchise_link') String franchiseLink,
       @JsonKey(name: 'language_code') String? languageCode,
       SupportDto? support,
       @JsonKey(name: 'inside_city') InsideCityDto? insideCity});
@@ -186,6 +195,7 @@ class __$$TownDtoImplCopyWithImpl<$Res>
     Object? lat = null,
     Object? lng = null,
     Object? radius = null,
+    Object? franchiseLink = null,
     Object? languageCode = freezed,
     Object? support = freezed,
     Object? insideCity = freezed,
@@ -194,7 +204,7 @@ class __$$TownDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -206,15 +216,19 @@ class __$$TownDtoImplCopyWithImpl<$Res>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lng: null == lng
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       radius: null == radius
           ? _value.radius
           : radius // ignore: cast_nullable_to_non_nullable
               as int,
+      franchiseLink: null == franchiseLink
+          ? _value.franchiseLink
+          : franchiseLink // ignore: cast_nullable_to_non_nullable
+              as String,
       languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
@@ -241,6 +255,7 @@ class _$TownDtoImpl implements _TownDto {
       required this.lat,
       required this.lng,
       required this.radius,
+      @JsonKey(name: 'franchise_link') required this.franchiseLink,
       @JsonKey(name: 'language_code') this.languageCode,
       this.support,
       @JsonKey(name: 'inside_city') this.insideCity});
@@ -249,17 +264,20 @@ class _$TownDtoImpl implements _TownDto {
       _$$TownDtoImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String title;
   @override
   final String status;
   @override
-  final double lat;
+  final String lat;
   @override
-  final double lng;
+  final String lng;
   @override
   final int radius;
+  @override
+  @JsonKey(name: 'franchise_link')
+  final String franchiseLink;
   @override
   @JsonKey(name: 'language_code')
   final String? languageCode;
@@ -271,7 +289,7 @@ class _$TownDtoImpl implements _TownDto {
 
   @override
   String toString() {
-    return 'TownDto(id: $id, title: $title, status: $status, lat: $lat, lng: $lng, radius: $radius, languageCode: $languageCode, support: $support, insideCity: $insideCity)';
+    return 'TownDto(id: $id, title: $title, status: $status, lat: $lat, lng: $lng, radius: $radius, franchiseLink: $franchiseLink, languageCode: $languageCode, support: $support, insideCity: $insideCity)';
   }
 
   @override
@@ -285,6 +303,8 @@ class _$TownDtoImpl implements _TownDto {
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng) &&
             (identical(other.radius, radius) || other.radius == radius) &&
+            (identical(other.franchiseLink, franchiseLink) ||
+                other.franchiseLink == franchiseLink) &&
             (identical(other.languageCode, languageCode) ||
                 other.languageCode == languageCode) &&
             (identical(other.support, support) || other.support == support) &&
@@ -295,7 +315,7 @@ class _$TownDtoImpl implements _TownDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, status, lat, lng,
-      radius, languageCode, support, insideCity);
+      radius, franchiseLink, languageCode, support, insideCity);
 
   @JsonKey(ignore: true)
   @override
@@ -313,12 +333,13 @@ class _$TownDtoImpl implements _TownDto {
 
 abstract class _TownDto implements TownDto {
   const factory _TownDto(
-          {required final String id,
+          {required final int id,
           required final String title,
           required final String status,
-          required final double lat,
-          required final double lng,
+          required final String lat,
+          required final String lng,
           required final int radius,
+          @JsonKey(name: 'franchise_link') required final String franchiseLink,
           @JsonKey(name: 'language_code') final String? languageCode,
           final SupportDto? support,
           @JsonKey(name: 'inside_city') final InsideCityDto? insideCity}) =
@@ -327,17 +348,20 @@ abstract class _TownDto implements TownDto {
   factory _TownDto.fromJson(Map<String, dynamic> json) = _$TownDtoImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get title;
   @override
   String get status;
   @override
-  double get lat;
+  String get lat;
   @override
-  double get lng;
+  String get lng;
   @override
   int get radius;
+  @override
+  @JsonKey(name: 'franchise_link')
+  String get franchiseLink;
   @override
   @JsonKey(name: 'language_code')
   String? get languageCode;

@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/utils/loggers/logger.dart';
 import 'package:nomad_taxi/src/features/main/domain/models/find_town_id_request.dart';
+import 'package:nomad_taxi/src/features/orders/data/mappers/find_town_by_location_dto_mapper.dart';
 import 'package:nomad_taxi/src/features/orders/data/mappers/order_dto_mapper.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/order/order_dto.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order_response/create_order_response.dart';
@@ -89,8 +90,7 @@ class OrdersRepositoryImpl implements IOrdersRepository {
   }
 
   @override
-  Future<Either<DomainException, void>> startRoute(
-      OrderRequest order) async {
+  Future<Either<DomainException, void>> startRoute(OrderRequest order) async {
     try {
       final requests = await _ordersImpl.startRoute(order);
       return requests.fold(
@@ -200,7 +200,8 @@ class OrdersRepositoryImpl implements IOrdersRepository {
       return requests.fold(
         (error) => Left(error),
         (result) {
-          return Right(FindTownByLocationResponse.fromJson(result.toJson()));
+          final entity = FindTownByLocationDtoMapper().map(result);
+          return Right(entity);
         },
       );
     } catch (e) {

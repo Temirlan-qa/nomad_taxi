@@ -3,9 +3,9 @@ import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_cas
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/complete_order_use_case.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/start_route_use_case.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/waiting_for_client_use_case.dart';
-import 'package:nomad_taxi/src/features/franchise/domain/usecases/franchise_use_case.dart';
-import 'package:nomad_taxi/src/features/franchise/presentation/bloc/franchise_bloc.dart';
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
+import 'package:nomad_taxi/src/features/main/domain/usecases/find_town_id_use_case.dart';
+import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
 import 'package:nomad_taxi/src/features/order_search/domain/usecases/get_searched_addresses_use_case.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/bloc/searched_order_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
@@ -80,17 +80,16 @@ void manualRegisterServices() {
     ),
   );
 
-  getIt.registerBloc<FranchiseBloc>(
-    () => FranchiseBloc(
-      getIt<FranchiseUseCase>(),
-    ),
-  );
-
   getIt.registerSingleton<OrderWebSocketClient>(OrderWebSocketClient());
 
   getIt.registerBloc<HelpBloc>(
     () => HelpBloc(
       getIt<GetQuestionsUseCase>(),
+    ),
+  );
+  getIt.registerBloc<MainBloc>(
+    () => MainBloc(
+      getIt<FindTownIdUseCase>(),
     ),
   );
   getIt.registerBloc<ActivatePromocodeBloc>(

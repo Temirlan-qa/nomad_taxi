@@ -20,12 +20,13 @@ TownEntity _$TownEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TownEntity {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  double get lat => throw _privateConstructorUsedError;
-  double get lng => throw _privateConstructorUsedError;
+  String get lat => throw _privateConstructorUsedError;
+  String get lng => throw _privateConstructorUsedError;
   int get radius => throw _privateConstructorUsedError;
+  String get franchiseLink => throw _privateConstructorUsedError;
   String? get languageCode => throw _privateConstructorUsedError;
   SupportEntity? get support => throw _privateConstructorUsedError;
   InsideCityEntity? get insideCity => throw _privateConstructorUsedError;
@@ -43,12 +44,13 @@ abstract class $TownEntityCopyWith<$Res> {
       _$TownEntityCopyWithImpl<$Res, TownEntity>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String status,
-      double lat,
-      double lng,
+      String lat,
+      String lng,
       int radius,
+      String franchiseLink,
       String? languageCode,
       SupportEntity? support,
       InsideCityEntity? insideCity});
@@ -76,6 +78,7 @@ class _$TownEntityCopyWithImpl<$Res, $Val extends TownEntity>
     Object? lat = null,
     Object? lng = null,
     Object? radius = null,
+    Object? franchiseLink = null,
     Object? languageCode = freezed,
     Object? support = freezed,
     Object? insideCity = freezed,
@@ -84,7 +87,7 @@ class _$TownEntityCopyWithImpl<$Res, $Val extends TownEntity>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -96,15 +99,19 @@ class _$TownEntityCopyWithImpl<$Res, $Val extends TownEntity>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lng: null == lng
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       radius: null == radius
           ? _value.radius
           : radius // ignore: cast_nullable_to_non_nullable
               as int,
+      franchiseLink: null == franchiseLink
+          ? _value.franchiseLink
+          : franchiseLink // ignore: cast_nullable_to_non_nullable
+              as String,
       languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
@@ -154,12 +161,13 @@ abstract class _$$TownEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String title,
       String status,
-      double lat,
-      double lng,
+      String lat,
+      String lng,
       int radius,
+      String franchiseLink,
       String? languageCode,
       SupportEntity? support,
       InsideCityEntity? insideCity});
@@ -187,6 +195,7 @@ class __$$TownEntityImplCopyWithImpl<$Res>
     Object? lat = null,
     Object? lng = null,
     Object? radius = null,
+    Object? franchiseLink = null,
     Object? languageCode = freezed,
     Object? support = freezed,
     Object? insideCity = freezed,
@@ -195,7 +204,7 @@ class __$$TownEntityImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -207,15 +216,19 @@ class __$$TownEntityImplCopyWithImpl<$Res>
       lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       lng: null == lng
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       radius: null == radius
           ? _value.radius
           : radius // ignore: cast_nullable_to_non_nullable
               as int,
+      franchiseLink: null == franchiseLink
+          ? _value.franchiseLink
+          : franchiseLink // ignore: cast_nullable_to_non_nullable
+              as String,
       languageCode: freezed == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
@@ -242,6 +255,7 @@ class _$TownEntityImpl implements _TownEntity {
       required this.lat,
       required this.lng,
       required this.radius,
+      required this.franchiseLink,
       this.languageCode,
       this.support,
       this.insideCity});
@@ -250,17 +264,19 @@ class _$TownEntityImpl implements _TownEntity {
       _$$TownEntityImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String title;
   @override
   final String status;
   @override
-  final double lat;
+  final String lat;
   @override
-  final double lng;
+  final String lng;
   @override
   final int radius;
+  @override
+  final String franchiseLink;
   @override
   final String? languageCode;
   @override
@@ -270,7 +286,7 @@ class _$TownEntityImpl implements _TownEntity {
 
   @override
   String toString() {
-    return 'TownEntity(id: $id, title: $title, status: $status, lat: $lat, lng: $lng, radius: $radius, languageCode: $languageCode, support: $support, insideCity: $insideCity)';
+    return 'TownEntity(id: $id, title: $title, status: $status, lat: $lat, lng: $lng, radius: $radius, franchiseLink: $franchiseLink, languageCode: $languageCode, support: $support, insideCity: $insideCity)';
   }
 
   @override
@@ -284,6 +300,8 @@ class _$TownEntityImpl implements _TownEntity {
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng) &&
             (identical(other.radius, radius) || other.radius == radius) &&
+            (identical(other.franchiseLink, franchiseLink) ||
+                other.franchiseLink == franchiseLink) &&
             (identical(other.languageCode, languageCode) ||
                 other.languageCode == languageCode) &&
             (identical(other.support, support) || other.support == support) &&
@@ -294,7 +312,7 @@ class _$TownEntityImpl implements _TownEntity {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, status, lat, lng,
-      radius, languageCode, support, insideCity);
+      radius, franchiseLink, languageCode, support, insideCity);
 
   @JsonKey(ignore: true)
   @override
@@ -312,12 +330,13 @@ class _$TownEntityImpl implements _TownEntity {
 
 abstract class _TownEntity implements TownEntity {
   const factory _TownEntity(
-      {required final String id,
+      {required final int id,
       required final String title,
       required final String status,
-      required final double lat,
-      required final double lng,
+      required final String lat,
+      required final String lng,
       required final int radius,
+      required final String franchiseLink,
       final String? languageCode,
       final SupportEntity? support,
       final InsideCityEntity? insideCity}) = _$TownEntityImpl;
@@ -326,17 +345,19 @@ abstract class _TownEntity implements TownEntity {
       _$TownEntityImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get title;
   @override
   String get status;
   @override
-  double get lat;
+  String get lat;
   @override
-  double get lng;
+  String get lng;
   @override
   int get radius;
+  @override
+  String get franchiseLink;
   @override
   String? get languageCode;
   @override
