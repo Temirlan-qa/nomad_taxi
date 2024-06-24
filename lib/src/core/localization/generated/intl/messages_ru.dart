@@ -211,7 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
         "sms_confirmation":
             MessageLookupByLibrary.simpleMessage("СМС подтверждение"),
-        "startRoute": MessageLookupByLibrary.simpleMessage("Начать поездку"),
+        "startRoute": MessageLookupByLibrary.simpleMessage("Поездка началась"),
         "start_trip": MessageLookupByLibrary.simpleMessage("Начать поездку"),
         "stay": MessageLookupByLibrary.simpleMessage("Остаться"),
         "step": MessageLookupByLibrary.simpleMessage("шаг"),

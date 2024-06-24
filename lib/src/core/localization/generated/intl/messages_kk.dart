@@ -215,7 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Параметрлер"),
         "share_app": MessageLookupByLibrary.simpleMessage("Қолданбаны бөлісу"),
         "sms_confirmation": MessageLookupByLibrary.simpleMessage("SMS растау"),
-        "startRoute": MessageLookupByLibrary.simpleMessage("Сапарды бастаңыз"),
+        "startRoute": MessageLookupByLibrary.simpleMessage("Сапарды басталды"),
         "start_trip": MessageLookupByLibrary.simpleMessage("Сапарды бастаңыз"),
         "stay": MessageLookupByLibrary.simpleMessage("Қалу"),
         "step": MessageLookupByLibrary.simpleMessage("қадам"),

@@ -1710,10 +1710,10 @@ class S {
     );
   }
 
-  /// `Начать поездку`
+  /// `Поездка началась`
   String get startRoute {
     return Intl.message(
-      'Начать поездку',
+      'Поездка началась',
       name: 'startRoute',
       desc: '',
       args: [],

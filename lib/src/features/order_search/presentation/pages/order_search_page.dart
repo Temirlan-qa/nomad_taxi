@@ -41,8 +41,6 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
   bool switchState = false;
   OrderStateEnum orderState = OrderStateEnum.accepted;
 
-  String? orderStatus;
-
   late int orderPrice;
 
   final String carNumber = '987-AIB';
@@ -134,7 +132,7 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                 child: state.when(
                   error: (error) {
                     return InfoAboutOrderStateWidget(
-                      orderStatus: 'error',
+                      state: OrderStateEnum.error,
                       errorMessage: error,
                     );
                   },
@@ -142,8 +140,8 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                       const InfoAboutOrderStateWidget(
-                          orderStatus: 'accepted',
+                        const InfoAboutOrderStateWidget(
+                          state: OrderStateEnum.searching,
                         ),
                         const SizedBox(height: 200),
                         CustomOrderPriceTextFieldWidget(
@@ -192,13 +190,12 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                   },
                   loaded: (OrderViewModel viewModel) {
                     final orderAccepted = viewModel.orderAccepted;
-                    orderStatus = viewModel.orderStatus;
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Spacer(),
                         InfoAboutOrderStateWidget(
-                          orderStatus: orderStatus ?? 'accepted',
+                          state: OrderStateEnum.accepted,
                           waitingTime: orderAccepted?.waitingTime,
                         ),
                         const Spacer(),
