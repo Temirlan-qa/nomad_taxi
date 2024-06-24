@@ -100,7 +100,6 @@ class _MainPageState extends State<MainPage> {
                           : context.pushNamed(RouteNames.driverMode);
                     },
                     isDriverMode: viewModel.pId == null,
-                    balance: viewModel.pBalance,
                   ),
                   body: Stack(
                     children: [
