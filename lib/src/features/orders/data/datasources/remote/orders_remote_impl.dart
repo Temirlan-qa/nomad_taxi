@@ -10,6 +10,7 @@ import 'package:nomad_taxi/src/features/orders/data/models/create_order_response
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/orders_dto/orders_dto.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/update_order/update_order_entity.dart';
 
@@ -151,8 +152,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
   }
 
   @override
-  Future<Either<DomainException, void>> startRoute(
-      OrderRequest order) async {
+  Future<Either<DomainException, void>> startRoute(OrderRequest order) async {
     try {
       var headers = {
         'Accept-Language': 'ru',
@@ -220,7 +220,7 @@ class OrdersRemoteImpl implements IOrdersRemote {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${st.getToken()!}'
       };
-      
+
       var dio = Dio();
       var response = await dio.request(
         'https://auyltaxi.kz/api/v1/order',
@@ -231,9 +231,11 @@ class OrdersRemoteImpl implements IOrdersRemote {
         data: orderDto.toJson(),
       );
 
+      final OrderEntity orderEntity = OrderEntity.fromJson(response.data['data']);
+
       if (response.statusCode == 200) {
         log('${response.data}', name: 'TestOrderResponse');
-        return Right(OrderResponse.fromJson(response.data['data']));
+        return Right(OrderResponse(order:orderEntity ));
       }
       return Left(UnknownException());
     } catch (error, stackTrace) {

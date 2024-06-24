@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "about_app": MessageLookupByLibrary.simpleMessage("Қосымша туралы"),
         "accept_order":
             MessageLookupByLibrary.simpleMessage("Тапсырысты қабылдау"),
+        "accepted": MessageLookupByLibrary.simpleMessage("Қабылданды"),
         "activate_promoCode":
             MessageLookupByLibrary.simpleMessage("Жарнамалық кодты іске қосу"),
         "active": MessageLookupByLibrary.simpleMessage("Белсенді"),
@@ -44,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Келу мекенжайы"),
         "arrived_call_point":
             MessageLookupByLibrary.simpleMessage("Шақыру нүктесіне келді"),
+        "awaiting": MessageLookupByLibrary.simpleMessage("Күтуде"),
         "back": MessageLookupByLibrary.simpleMessage("Артқа"),
         "basic": MessageLookupByLibrary.simpleMessage("Негізгі"),
         "bonuses_also_money":

@@ -144,21 +144,21 @@ class _MainPageState extends State<MainPage> {
                                 addressFrom: order.startPoint,
                                 addressTo: order.endPoint,
                               ),
+                            ] else ...[
+                              CreateOrderModalWidget(
+                                currentLocation: whereFrom,
+                                onTapEditLocation: () {},
+                                onTapCreateOrder: () {
+                                  context.pushNamed(
+                                    RouteNames.searchAddress,
+                                    extra: {
+                                      "whereFrom": whereFrom,
+                                      "latLng": latLng,
+                                    },
+                                  );
+                                },
+                              ),
                             ],
-                            CreateOrderModalWidget(
-                              currentLocation: whereFrom,
-                              onTapEditLocation: () {},
-                              onTapCreateOrder: () {
-                                context.pushNamed(
-                                  RouteNames.searchAddress,
-                                  extra: {
-                                    "whereFrom": whereFrom,
-                                    "latLng": latLng,
-                                  },
-                                );
-                              },
-                            ),
-
                             // CurrentLocationModalWidget(
                             //   onTapSelect: () {},
                             //   currentLocation: '',

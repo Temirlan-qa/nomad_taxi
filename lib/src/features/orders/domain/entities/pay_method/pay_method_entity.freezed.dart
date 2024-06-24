@@ -108,14 +108,16 @@ class __$$PayMethodEntityImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PayMethodEntityImpl implements _PayMethodEntity {
-  const _$PayMethodEntityImpl({required this.byCash, required this.byBonus});
+  const _$PayMethodEntityImpl({this.byCash = 0, this.byBonus = 0});
 
   factory _$PayMethodEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$PayMethodEntityImplFromJson(json);
 
   @override
+  @JsonKey()
   final int byCash;
   @override
+  @JsonKey()
   final int byBonus;
 
   @override
@@ -152,9 +154,8 @@ class _$PayMethodEntityImpl implements _PayMethodEntity {
 }
 
 abstract class _PayMethodEntity implements PayMethodEntity {
-  const factory _PayMethodEntity(
-      {required final int byCash,
-      required final int byBonus}) = _$PayMethodEntityImpl;
+  const factory _PayMethodEntity({final int byCash, final int byBonus}) =
+      _$PayMethodEntityImpl;
 
   factory _PayMethodEntity.fromJson(Map<String, dynamic> json) =
       _$PayMethodEntityImpl.fromJson;

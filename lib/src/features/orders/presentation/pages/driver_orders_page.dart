@@ -69,7 +69,7 @@ class _DriverOrdersPageState extends State<DriverOrdersPage> {
     final driverOrderBloc = getIt<DriverOrderBloc>();
     return Scaffold(
       appBar: CustomAppBar(
-        leading: BackButtonWrapper(onPressed: () => context.pushNamed(RouteNames.driverMode)),
+        leading: BackButtonWrapper(onPressed: () => context.pop(RouteNames.driverMode)),
         actions: [
           Assets.icons.solid.clockSolid.svg(
             height: 18,

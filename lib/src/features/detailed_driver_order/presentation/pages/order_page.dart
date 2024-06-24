@@ -22,8 +22,6 @@ class OrderPage extends StatelessWidget {
 
   final OrderEntity order;
 
-  
-
   Widget _buildOrderPage({
     required BuildContext context,
     required TextStyle labelStyle,
@@ -105,83 +103,29 @@ class OrderPage extends StatelessWidget {
             BlocBuilder<DriverOrderBloc, DriverOrderState>(
               bloc: getIt<DriverOrderBloc>(),
               builder: (context, state) {
-                return state.when(initial: () {
-                   return Row(
-                  children: [
-                    Text(S.current.order_status, style: labelStyle),
-                    const Gap(UIConstants.defaultGap2),
-                    Text(
-                      S.current.in_progress,
-                      style: labelStyle.copyWith(
-                        color: updatedOrderStatus != null
-                            ? context.theme.green
-                            : context.theme.blue,
-                      ),
-                    ),
-                  ],
+                return state.when(
+                  initial: () => const SizedBox.shrink(),
+                  loaded: (viewModel) {
+                    orderStatus = viewModel.updatedOrderStatus;
+                      return Row(
+                        children: [
+                          Text(S.current.order_status, style: labelStyle),
+                          const Gap(UIConstants.defaultGap2),
+                          Text(
+                            orderStatusTitle(orderStatus ?? S.current.accepted),
+                            style: labelStyle.copyWith(
+                              color: updatedOrderStatus != null
+                                  ? context.theme.green
+                                  : context.theme.blue,
+                            ),
+                          ),
+                        ],
+                      );
+                  },
+                  waiting: () => const SizedBox.shrink(),
+                  start: () => const SizedBox.shrink(),
+                  error: (String errorMessage) => const SizedBox.shrink(),
                 );
-                }, waiting: () { 
-                   return Row(
-                  children: [
-                    Text('Waiting', style: labelStyle),
-                    const Gap(UIConstants.defaultGap2),
-                    Text(
-                      S.current.in_progress,
-                      style: labelStyle.copyWith(
-                        color: updatedOrderStatus != null
-                            ? context.theme.green
-                            : context.theme.blue,
-                      ),
-                    ),
-                  ],
-                );
-                 }, start: () { 
-                   return Row(
-                  children: [
-                    Text('Start route', style: labelStyle),
-                    const Gap(UIConstants.defaultGap2),
-                    Text(
-                      S.current.in_progress,
-                      style: labelStyle.copyWith(
-                        color: updatedOrderStatus != null
-                            ? context.theme.green
-                            : context.theme.blue,
-                      ),
-                    ),
-                  ],
-                );
-                  }, loaded: (DriverOrderViewModel viewModel) {  
-                     return Row(
-                  children: [
-                    Text('Complete', style: labelStyle),
-                    const Gap(UIConstants.defaultGap2),
-                    Text(
-                      S.current.in_progress,
-                      style: labelStyle.copyWith(
-                        color: updatedOrderStatus != null
-                            ? context.theme.green
-                            : context.theme.blue,
-                      ),
-                    ),
-                  ],
-                );
-                  }, error: (String errorMessage) {
-                     return Row(
-                  children: [
-                    Text(S.current.order_status, style: labelStyle),
-                    const Gap(UIConstants.defaultGap2),
-                    Text(
-                      S.current.in_progress,
-                      style: labelStyle.copyWith(
-                        color: updatedOrderStatus != null
-                            ? context.theme.green
-                            : context.theme.blue,
-                      ),
-                    ),
-                  ],
-                );
-                    });
-               
               },
             ),
             const Divider(height: UIConstants.defaultGap3),
@@ -262,6 +206,19 @@ class OrderPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String orderStatusTitle(String status) {
+    switch (status) {
+      case 'awaiting':
+        return S.current.awaiting;
+      case 'on_route':
+        return S.current.startRoute;
+      case 'canceled':
+        return S.current.canceled;
+      default:
+        return S.current.accepted;
+    }
   }
 
   @override

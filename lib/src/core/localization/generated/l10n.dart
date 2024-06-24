@@ -1729,6 +1729,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Ожидание`
+  String get awaiting {
+    return Intl.message(
+      'Ожидание',
+      name: 'awaiting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Принято`
+  String get accepted {
+    return Intl.message(
+      'Принято',
+      name: 'accepted',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

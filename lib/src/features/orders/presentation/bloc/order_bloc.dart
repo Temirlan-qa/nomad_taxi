@@ -77,8 +77,9 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
     String orderStatus = response.order.status;
 
-    _viewModel = _viewModel.copyWith(
-        orderAccepted: _viewModel.orderAccepted?.copyWith(status: orderStatus));
+    _viewModel = _viewModel.copyWith(orderStatus: orderStatus);
+
+    log(orderStatus, name: '_updateOrderStatus');
 
     emit(_Loaded(viewModel: _viewModel));
   }
@@ -104,7 +105,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
     if (result.isSuccessful && order != null) {
       log('order created success', name: 'CreateOrder');
-      add(_GetOrderStatus(orderId: order.id));
+      // add(_GetOrderStatus(orderId: order.id));
     }
 
     emit(const _Error('Failed to create order'));

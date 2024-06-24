@@ -316,10 +316,10 @@ class __$$OrderEntityImplCopyWithImpl<$Res>
 class _$OrderEntityImpl implements _OrderEntity {
   const _$OrderEntityImpl(
       {this.id = 0,
-      required this.startPoint,
-      required this.endPoint,
-      required this.routeType,
-      required this.price,
+      this.startPoint = '',
+      this.endPoint = '',
+      this.routeType = '',
+      this.price = 0,
       this.comment,
       this.status,
       this.hasRoute = false,
@@ -339,12 +339,16 @@ class _$OrderEntityImpl implements _OrderEntity {
   @JsonKey()
   final int id;
   @override
+  @JsonKey()
   final String startPoint;
   @override
+  @JsonKey()
   final String endPoint;
   @override
+  @JsonKey()
   final String routeType;
   @override
+  @JsonKey()
   final int price;
   @override
   final String? comment;
@@ -448,10 +452,10 @@ class _$OrderEntityImpl implements _OrderEntity {
 abstract class _OrderEntity implements OrderEntity {
   const factory _OrderEntity(
       {final int id,
-      required final String startPoint,
-      required final String endPoint,
-      required final String routeType,
-      required final int price,
+      final String startPoint,
+      final String endPoint,
+      final String routeType,
+      final int price,
       final String? comment,
       final String? status,
       final bool hasRoute,

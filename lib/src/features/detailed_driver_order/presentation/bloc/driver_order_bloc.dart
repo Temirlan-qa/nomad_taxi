@@ -12,6 +12,7 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/st
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/waiting_for_client_use_case.dart';
 
 import '../../../../core/enums/order_status.dart';
+import '../../../../core/localization/generated/l10n.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
 import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../../orders/data/models/requests/accept_order_request.dart';
@@ -114,10 +115,9 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
 
     String orderStatus = response.order.status;
 
-    _viewModel = _viewModel.copyWith(
-        activeOrder: _viewModel.activeOrder?.copyWith(status: orderStatus));
+    _viewModel = _viewModel.copyWith(updatedOrderStatus: orderStatus);
 
-    // emit(_Loaded(viewModel: _viewModel));
+    emit(_Loaded(viewModel: _viewModel));
   }
 
   Future<void> getNewOrder() async {
@@ -150,7 +150,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     Emitter emit,
   ) async {
     emit(const _Initial());
-    // //* Show active order for driver
+    //* Show active order for driver
     final OrderEntity? activeOrder = _storage.loadOrder();
 
     if (activeOrder != null) {
@@ -169,7 +169,6 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
       Future.delayed(const Duration(seconds: 1));
       emit(_Loaded(viewModel: _viewModel));
     }
-    // emit(_Error(S.current.noActiveOrdersAtTheMoment));
   }
 
   Future<void> _acceptOrder(_AcceptOrder event, Emitter emit) async {
@@ -193,23 +192,13 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
   Future<void> _waitingForClient(_WaitingForClient event, emit) async {
     final OrderRequest request = OrderRequest(id: event.orderId);
 
-    final result = await _waitingForClientUseCase.call(request);
-
-    if (result.isSuccessful) {
-      emit(_Loaded(viewModel: _viewModel));
-      return emit(const _Waiting());
-    }
+    await _waitingForClientUseCase.call(request);
   }
 
   Future<void> _startRoute(_StartRoute event, emit) async {
     final OrderRequest request = OrderRequest(id: event.orderId);
 
-    final result = await _startRouteUseCase.call(request);
-
-    if (result.isSuccessful) {
-       emit(_Loaded(viewModel: _viewModel));
-      return emit(const _Start());
-    }
+    await _startRouteUseCase.call(request);
   }
 
   Future<void> _completeOrder(_CompleteOrder event, emit) async {

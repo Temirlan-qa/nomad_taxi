@@ -54,8 +54,8 @@
   "share_app": "Поделиться приложением",
   "your_profile": "Ваш профиль",
   "your_name": "Ваше имя",
-  "enterAddress":"Введите адрес",
-  "onMap":"На карте",
+  "enterAddress": "Введите адрес",
+  "onMap": "На карте",
   "your_surname": "Ваша фамилия",
   "phone_number": "Номер телефона",
   "delete_account": "Удалить аккаунт",
@@ -173,5 +173,7 @@
   "your_id": "Ваш ID",
   "youDoNotHaveEnoughBalance": "На вашем балансе недостаточно средств для приема заказов",
   "startRoute": "Начать поездку",
-  "routeStarted": "Поездка началась"
+  "routeStarted": "Поездка началась",
+  "awaiting": "Ожидание",
+  "accepted": "Принято"
 }

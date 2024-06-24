@@ -12,10 +12,10 @@ part 'order_entity.g.dart';
 class OrderEntity extends BaseEntity with _$OrderEntity {
   const factory OrderEntity({
     @Default(0) int id,
-    required String startPoint,
-    required String endPoint,
-    required String routeType,
-    required int price,
+    @Default('') String startPoint,
+    @Default('') String endPoint,
+    @Default('') String routeType,
+    @Default(0) int price,
     String? comment,
     String? status,
     @Default(false) bool hasRoute,

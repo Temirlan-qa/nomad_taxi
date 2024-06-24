@@ -104,16 +104,6 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
 
         _orderStatusController.add(orderStatusResponse);
       }
-
-      // final WebSocketDto webSocketDto = WebSocketDto(
-      //   event: map['event'] as String,
-      //   data: OrderStatusDataDto.fromJson(eventDataMap),
-      // );
-
-      // // Adding data to _controller
-      // _controller.add(webSocketDto);
-
-      // Check the event type and add to _orderController if it's a new order
     } catch (_) {
       return;
     }

@@ -109,6 +109,59 @@ class _CustomOrderButtonsWidgetState extends State<CustomOrderButtonsWidget> {
           },
           error: (errorMessage) => const SizedBox.shrink(),
           loaded: (viewModel) {
+            orderStatus = viewModel.updatedOrderStatus;
+            if (orderStatus == 'awaiting') {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(S.current.can_cancel_via, style: widget.labelStyle),
+                  const Gap(UIConstants.defaultGap5),
+                  Text(_formattedTime(),
+                      style:
+                          widget.headLine.copyWith(color: context.theme.red)),
+                  const Gap(UIConstants.defaultGap2),
+                  CustomMainButtonWidget(
+                    title: S.current.cancel_the_order,
+                    isDisabled: isDisabled,
+                    onPressed: () {
+                      context.pop();
+                      driverOrderBloc.add(DriverOrderEvent.cancelOrder(
+                          orderId: widget.order.id));
+                    },
+                    isMain: false,
+                    color: isDisabled ? context.theme.grey : context.theme.red,
+                  ),
+                  const Gap(UIConstants.defaultGap1),
+                  CustomMainButtonWidget(
+                    title: S.of(context).startRoute,
+                    onPressed: () {
+                      driverOrderBloc.add(DriverOrderEvent.startRoute(
+                          orderId: widget.order.id));
+                    },
+                  ),
+                ],
+              );
+            }
+            if (orderStatus == 'on_route') {
+             return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(S.of(context).routeStarted,
+                    style: widget.headLine.copyWith(color: context.theme.red)),
+                const Gap(UIConstants.defaultGap2),
+                CustomMainButtonWidget(
+                  prefixIcon: Assets.icons.regular.circleCheckRegular,
+                  iconColor: context.theme.white,
+                  title: S.of(context).done,
+                  onPressed: () {
+                    driverOrderBloc.add(DriverOrderEvent.completeOrder(
+                        orderId: widget.order.id));
+                    context.push(RoutePaths.orderFinished);
+                  },
+                ),
+              ],
+            );
+            }
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -133,57 +186,8 @@ class _CustomOrderButtonsWidgetState extends State<CustomOrderButtonsWidget> {
               ],
             );
           },
-          waiting: () {
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(S.current.can_cancel_via, style: widget.labelStyle),
-                const Gap(UIConstants.defaultGap5),
-                Text(_formattedTime(),
-                    style: widget.headLine.copyWith(color: context.theme.red)),
-                const Gap(UIConstants.defaultGap2),
-                CustomMainButtonWidget(
-                  title: S.current.cancel_the_order,
-                  isDisabled: isDisabled,
-                  onPressed: () {
-                    context.pop();
-                    driverOrderBloc.add(
-                        DriverOrderEvent.cancelOrder(orderId: widget.order.id));
-                  },
-                  isMain: false,
-                  color: isDisabled ? context.theme.grey : context.theme.red,
-                ),
-                const Gap(UIConstants.defaultGap1),
-                CustomMainButtonWidget(
-                  title: S.of(context).startRoute,
-                  onPressed: () {
-                    driverOrderBloc.add(
-                        DriverOrderEvent.startRoute(orderId: widget.order.id));
-                  },
-                ),
-              ],
-            );
-          },
-          start: () {
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(S.of(context).routeStarted,
-                    style: widget.headLine.copyWith(color: context.theme.red)),
-                const Gap(UIConstants.defaultGap2),
-                CustomMainButtonWidget(
-                  prefixIcon: Assets.icons.regular.circleCheckRegular,
-                  iconColor: context.theme.white,
-                  title: S.of(context).done,
-                  onPressed: () {
-                    driverOrderBloc.add(DriverOrderEvent.completeOrder(
-                        orderId: widget.order.id));
-                    context.push(RoutePaths.orderFinished);
-                  },
-                ),
-              ],
-            );
-          },
+          waiting: () => const SizedBox.shrink(),
+          start: () => const SizedBox.shrink(),
         );
       },
     );

@@ -8,8 +8,8 @@ part 'pay_method_entity.g.dart';
 @freezed
 class PayMethodEntity extends BaseEntity with _$PayMethodEntity {
   const factory PayMethodEntity({
-    required int byCash,
-    required int byBonus,
+    @Default(0) int byCash,
+    @Default(0) int byBonus,
   }) = _PayMethodEntity;
 
   factory PayMethodEntity.fromJson(Map<String, dynamic> json) =>

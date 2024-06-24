@@ -1301,6 +1301,7 @@ mixin _$OrderViewModel {
   OrdersResponse? get orders => throw _privateConstructorUsedError;
   List<OrderEntity> get ordersList => throw _privateConstructorUsedError;
   OrderEntity? get orderAccepted => throw _privateConstructorUsedError;
+  String? get orderStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderViewModelCopyWith<OrderViewModel> get copyWith =>
@@ -1316,7 +1317,8 @@ abstract class $OrderViewModelCopyWith<$Res> {
   $Res call(
       {OrdersResponse? orders,
       List<OrderEntity> ordersList,
-      OrderEntity? orderAccepted});
+      OrderEntity? orderAccepted,
+      String? orderStatus});
 
   $OrdersResponseCopyWith<$Res>? get orders;
   $OrderEntityCopyWith<$Res>? get orderAccepted;
@@ -1338,6 +1340,7 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
     Object? orders = freezed,
     Object? ordersList = null,
     Object? orderAccepted = freezed,
+    Object? orderStatus = freezed,
   }) {
     return _then(_value.copyWith(
       orders: freezed == orders
@@ -1352,6 +1355,10 @@ class _$OrderViewModelCopyWithImpl<$Res, $Val extends OrderViewModel>
           ? _value.orderAccepted
           : orderAccepted // ignore: cast_nullable_to_non_nullable
               as OrderEntity?,
+      orderStatus: freezed == orderStatus
+          ? _value.orderStatus
+          : orderStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -1391,7 +1398,8 @@ abstract class _$$OrderViewModelImplCopyWith<$Res>
   $Res call(
       {OrdersResponse? orders,
       List<OrderEntity> ordersList,
-      OrderEntity? orderAccepted});
+      OrderEntity? orderAccepted,
+      String? orderStatus});
 
   @override
   $OrdersResponseCopyWith<$Res>? get orders;
@@ -1413,6 +1421,7 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
     Object? orders = freezed,
     Object? ordersList = null,
     Object? orderAccepted = freezed,
+    Object? orderStatus = freezed,
   }) {
     return _then(_$OrderViewModelImpl(
       orders: freezed == orders
@@ -1427,6 +1436,10 @@ class __$$OrderViewModelImplCopyWithImpl<$Res>
           ? _value.orderAccepted
           : orderAccepted // ignore: cast_nullable_to_non_nullable
               as OrderEntity?,
+      orderStatus: freezed == orderStatus
+          ? _value.orderStatus
+          : orderStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1437,7 +1450,8 @@ class _$OrderViewModelImpl implements _OrderViewModel {
   const _$OrderViewModelImpl(
       {this.orders,
       final List<OrderEntity> ordersList = const [],
-      this.orderAccepted})
+      this.orderAccepted,
+      this.orderStatus})
       : _ordersList = ordersList;
 
   @override
@@ -1453,10 +1467,12 @@ class _$OrderViewModelImpl implements _OrderViewModel {
 
   @override
   final OrderEntity? orderAccepted;
+  @override
+  final String? orderStatus;
 
   @override
   String toString() {
-    return 'OrderViewModel(orders: $orders, ordersList: $ordersList, orderAccepted: $orderAccepted)';
+    return 'OrderViewModel(orders: $orders, ordersList: $ordersList, orderAccepted: $orderAccepted, orderStatus: $orderStatus)';
   }
 
   @override
@@ -1468,12 +1484,18 @@ class _$OrderViewModelImpl implements _OrderViewModel {
             const DeepCollectionEquality()
                 .equals(other._ordersList, _ordersList) &&
             (identical(other.orderAccepted, orderAccepted) ||
-                other.orderAccepted == orderAccepted));
+                other.orderAccepted == orderAccepted) &&
+            (identical(other.orderStatus, orderStatus) ||
+                other.orderStatus == orderStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orders,
-      const DeepCollectionEquality().hash(_ordersList), orderAccepted);
+  int get hashCode => Object.hash(
+      runtimeType,
+      orders,
+      const DeepCollectionEquality().hash(_ordersList),
+      orderAccepted,
+      orderStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -1487,7 +1509,8 @@ abstract class _OrderViewModel implements OrderViewModel {
   const factory _OrderViewModel(
       {final OrdersResponse? orders,
       final List<OrderEntity> ordersList,
-      final OrderEntity? orderAccepted}) = _$OrderViewModelImpl;
+      final OrderEntity? orderAccepted,
+      final String? orderStatus}) = _$OrderViewModelImpl;
 
   @override
   OrdersResponse? get orders;
@@ -1495,6 +1518,8 @@ abstract class _OrderViewModel implements OrderViewModel {
   List<OrderEntity> get ordersList;
   @override
   OrderEntity? get orderAccepted;
+  @override
+  String? get orderStatus;
   @override
   @JsonKey(ignore: true)
   _$$OrderViewModelImplCopyWith<_$OrderViewModelImpl> get copyWith =>
