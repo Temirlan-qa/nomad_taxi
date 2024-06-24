@@ -9,8 +9,8 @@ part of 'pay_method_entity.dart';
 _$PayMethodEntityImpl _$$PayMethodEntityImplFromJson(
         Map<String, dynamic> json) =>
     _$PayMethodEntityImpl(
-      byCash: (json['byCash'] as num).toInt(),
-      byBonus: (json['byBonus'] as num).toInt(),
+      byCash: (json['byCash'] as num?)?.toInt() ?? 0,
+      byBonus: (json['byBonus'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$PayMethodEntityImplToJson(

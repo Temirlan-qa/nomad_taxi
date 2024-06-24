@@ -1710,10 +1710,10 @@ class S {
     );
   }
 
-  /// `Начать поездку`
+  /// `Поездка началась`
   String get startRoute {
     return Intl.message(
-      'Начать поездку',
+      'Поездка началась',
       name: 'startRoute',
       desc: '',
       args: [],
@@ -1725,6 +1725,26 @@ class S {
     return Intl.message(
       'Поездка началась',
       name: 'routeStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ожидание`
+  String get awaiting {
+    return Intl.message(
+      'Ожидание',
+      name: 'awaiting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Принято`
+  String get accepted {
+    return Intl.message(
+      'Принято',
+      name: 'accepted',
       desc: '',
       args: [],
     );

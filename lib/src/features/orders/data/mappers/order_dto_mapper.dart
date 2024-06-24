@@ -49,6 +49,7 @@ class OrderDtoMapper {
       id: dto.id,
       startPoint: dto.startPoint,
       endPoint: dto.endPoint,
+      routeType: '',
       price: dto.price,
       comment: dto.comment,
       status: dto.status,

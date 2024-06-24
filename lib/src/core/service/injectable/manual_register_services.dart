@@ -24,6 +24,7 @@ import '../../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../../features/detailed_driver_order/data/client/order_web_socket_client.dart';
 import '../../../features/detailed_driver_order/domain/usecases/accept_order_use_case.dart';
 import '../../../features/detailed_driver_order/domain/usecases/cancel_order_use_case.dart';
+import '../../../features/detailed_driver_order/domain/usecases/get_new_order_use_case.dart';
 import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
 import '../../../features/detailed_driver_order/domain/usecases/get_orders_use_case.dart';
 import '../../../features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
@@ -75,6 +76,7 @@ void manualRegisterServices() {
       getIt<WaitingForClientUseCase>(),
       getIt<StartRouteUseCase>(),
       getIt<CompleteOrderUseCase>(),
+      getIt<GetNewOrderUseCase>(),
     ),
   );
 

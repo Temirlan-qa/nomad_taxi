@@ -15,5 +15,6 @@ class OrderViewModel with _$OrderViewModel {
     OrdersResponse? orders,
     @Default([]) List<OrderEntity> ordersList,
     OrderEntity? orderAccepted,
+    String? orderStatus,
   }) = _OrderViewModel;
 }

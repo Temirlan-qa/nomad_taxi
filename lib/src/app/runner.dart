@@ -22,8 +22,11 @@ class Runner {
     await StorageServiceImpl().init();
     await DioRestClient().init();
     final orderWebSocketClient = getIt<OrderWebSocketClient>();
+
     await orderWebSocketClient.setBaseUrl(
-        host: 'auyltaxi.kz', apiKey: 'ILX4RM4prL');
+      host: 'auyltaxi.kz',
+      apiKey: 'ILX4RM4prL',
+    );
 
     MainApp(flavor: flavor).run();
   }

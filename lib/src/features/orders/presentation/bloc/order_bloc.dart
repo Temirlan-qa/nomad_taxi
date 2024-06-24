@@ -7,11 +7,14 @@ import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/core/utils/bloc_transformers/transformer_imports.dart';
+import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/requests/create_order_request.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/create_order/create_order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/orders_response/orders_response.dart';
 
 import '../../../../core/service/storage/storage_service_impl.dart';
+import '../../../detailed_driver_order/domain/entities/get_order_status_response.dart';
+import '../../data/models/requests/accept_order_request.dart';
 import '../../domain/entities/order/order_entity.dart';
 import '../../domain/entities/response/order_response.dart';
 import '../../domain/usecases/create_order_use_case.dart';
@@ -25,9 +28,12 @@ part 'order_state.dart';
 class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   OrderBloc(
     this._createOrderUseCase,
+    this._getOrderStatusUseCase,
   ) : super(const _Initial());
 
   final CreateOrderUseCase _createOrderUseCase;
+
+  final GetOrderStatusUseCase _getOrderStatusUseCase;
 
   final StorageServiceImpl _storage = StorageServiceImpl();
 
@@ -41,11 +47,41 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
       started: () => _started(),
       createOrder: (_) => _createOrder(event as _CreateOrder, emit),
       acceptedOrder: () => _acceptedOrder(event as _AcceptedOrder, emit),
+      getOrderStatus: (_) => _getOrderStatus(event as _GetOrderStatus),
+      updateOrderStatus: (_) =>
+          _updateOrderStatus(event as _UpdateOrderStatus, emit),
     );
   }
 
   Future<void> _started() async {
     add(const _AcceptedOrder());
+  }
+
+  Future<void> _getOrderStatus(_GetOrderStatus event) async {
+    await _orderStatusSubscription?.cancel();
+    _orderStatusSubscription = null;
+
+    OrderRequest orderId = OrderRequest(id: event.orderId);
+
+    _orderStatusSubscription = _getOrderStatusUseCase(orderId).listen((result) {
+      GetOrderStatusResponse? data = result.data;
+      if (result.isSuccessful && data != null) {
+        add(_UpdateOrderStatus(updateOrderStatus: data));
+      }
+    });
+  }
+
+  Future<void> _updateOrderStatus(
+      _UpdateOrderStatus event, Emitter emit) async {
+    GetOrderStatusResponse response = event.updateOrderStatus;
+
+    String orderStatus = response.order.status;
+
+    _viewModel = _viewModel.copyWith(orderStatus: orderStatus);
+
+    log(orderStatus, name: '_updateOrderStatus');
+
+    emit(_Loaded(viewModel: _viewModel));
   }
 
   Future<void> _acceptedOrder(_AcceptedOrder event, Emitter emit) async {
@@ -69,7 +105,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
 
     if (result.isSuccessful && order != null) {
       log('order created success', name: 'CreateOrder');
-      return;
+      // add(_GetOrderStatus(orderId: order.id));
     }
 
     emit(const _Error('Failed to create order'));
@@ -78,7 +114,7 @@ class OrderBloc extends BaseBloc<OrderEvent, OrderState> {
   @override
   Future<void> close() {
     _orderStatusSubscription?.cancel();
-    _orderStatusSubscription == null;
+    _orderStatusSubscription = null;
     getIt.resetBloc(this);
     return super.close();
   }

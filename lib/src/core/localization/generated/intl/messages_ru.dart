@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_app": MessageLookupByLibrary.simpleMessage("О приложении"),
         "accept_order": MessageLookupByLibrary.simpleMessage("Принять заказ"),
+        "accepted": MessageLookupByLibrary.simpleMessage("Принято"),
         "activate_promoCode":
             MessageLookupByLibrary.simpleMessage("Активировать промокод"),
         "active": MessageLookupByLibrary.simpleMessage("Активен"),
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Адрес прибытия"),
         "arrived_call_point":
             MessageLookupByLibrary.simpleMessage("Приехал на точку вызова"),
+        "awaiting": MessageLookupByLibrary.simpleMessage("Ожидание"),
         "back": MessageLookupByLibrary.simpleMessage("Назад"),
         "basic": MessageLookupByLibrary.simpleMessage("Основные"),
         "bonuses_also_money":
@@ -209,7 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
         "sms_confirmation":
             MessageLookupByLibrary.simpleMessage("СМС подтверждение"),
-        "startRoute": MessageLookupByLibrary.simpleMessage("Начать поездку"),
+        "startRoute": MessageLookupByLibrary.simpleMessage("Поездка началась"),
         "start_trip": MessageLookupByLibrary.simpleMessage("Начать поездку"),
         "stay": MessageLookupByLibrary.simpleMessage("Остаться"),
         "step": MessageLookupByLibrary.simpleMessage("шаг"),

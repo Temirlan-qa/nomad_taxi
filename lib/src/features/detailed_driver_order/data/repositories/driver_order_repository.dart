@@ -5,7 +5,9 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/data/datasources/r
 import 'package:nomad_taxi/src/features/detailed_driver_order/data/models/response/get_order_status_dto.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/entities/get_order_status_response.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/repositories/i_driver_order_repository.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 
+import '../../../orders/data/models/requests/accept_order_request.dart';
 import '../datasources/remote/driver_order_remote_impl.dart';
 import '../mappers/driver_order_dto_mapper.dart';
 
@@ -18,20 +20,30 @@ class DriverOrderRepository implements IDriverOrderRepository {
 
   @override
   Stream<Either<DomainException, GetOrderStatusResponse>>
-      getOrderStatus() async* {
-    final Stream<Either<DomainException, GetOrderStatusResponseDto>> stream =
-        _driverRemoteImpl.getOrderStatus();
+      getOrderStatus(OrderRequest requestModel) async* {
+    final Stream<Either<DomainException, GetOrderStatusResponse>> stream =
+        _driverRemoteImpl.getOrderStatus(requestModel);
 
     yield* stream.map((result) {
       return result.fold((error) => Left(error), (dto) {
         try {
-          final GetOrderStatusResponse orderStatusResponse =
-              DriverOrderDtoMapper().map(dto);
-          return Right(orderStatusResponse);
+          return Right(dto);
         } catch (e) {
           return Left(UnknownException(message: e.toString()));
         }
       });
+    });
+  }
+
+  @override
+  Stream<Either<DomainException, OrderResponse>> getNewOrder()async* {
+    final stream = _driverRemoteImpl.getNewOrder();
+
+    yield *
+        stream.distinct().map((result) {
+          return result.fold((error) => Left(error), (response) {
+            return Right(response);
+      });   
     });
   }
 }

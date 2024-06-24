@@ -9,13 +9,22 @@ part of 'get_order_status_dto.dart';
 _$GetOrderStatusResponseDtoImpl _$$GetOrderStatusResponseDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$GetOrderStatusResponseDtoImpl(
-      status: json['status'] as String,
-      data: OrderStatusDataDto.fromJson(json['data'] as Map<String, dynamic>),
+      orderId: (json['orderId'] as num).toInt(),
+      status: $enumDecode(_$OrderStatusEnumMap, json['status']),
     );
 
 Map<String, dynamic> _$$GetOrderStatusResponseDtoImplToJson(
         _$GetOrderStatusResponseDtoImpl instance) =>
     <String, dynamic>{
-      'status': instance.status,
-      'data': instance.data,
+      'orderId': instance.orderId,
+      'status': _$OrderStatusEnumMap[instance.status]!,
     };
+
+const _$OrderStatusEnumMap = {
+  OrderStatus.created: 'created',
+  OrderStatus.accepted: 'accepted',
+  OrderStatus.waiting: 'waiting',
+  OrderStatus.startRoute: 'startRoute',
+  OrderStatus.complete: 'complete',
+  OrderStatus.cancel: 'cancel',
+};

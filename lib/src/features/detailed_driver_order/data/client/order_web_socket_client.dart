@@ -3,6 +3,10 @@ import 'dart:async';
 import '../../../../core/api/client/socket/web_socket_client_impl.dart';
 
 class OrderWebSocketClient extends WebSocketClientImpl {
+  @override
+  Future<void> getOrderStatus({required int orderId}) async {
+    await sendOrderRequest(orderId);
+  }
 
   @override
   Future<void> setBaseUrl({
