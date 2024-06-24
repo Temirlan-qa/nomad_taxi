@@ -32,7 +32,14 @@ class ProfileCard extends StatelessWidget {
                 return Row(
                   children: [
                     const Gap(UIConstants.defaultPadding),
-                    const CircleAvatar(radius: 28),
+                    CircleAvatar(
+                      radius: 28,
+                      backgroundColor: context.theme.stroke,
+                      child: Text(
+                        '${viewModel.lastName.characters.first.toUpperCase()}${viewModel.firstName.characters.first.toUpperCase()}',
+                        style: context.theme.textStyles.titleSecondary,
+                      ),
+                    ),
                     const Gap(UIConstants.defaultGap2),
                     Expanded(
                       child: Column(
