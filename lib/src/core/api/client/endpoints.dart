@@ -43,4 +43,7 @@ class EndPoints {
 
   // Order search
   static const String getOrderSearch = '/v1/user/order/address-history';
+
+  // Privacy
+  static const String privacy = 'https://auyltaxi.kz/privacy';
 }

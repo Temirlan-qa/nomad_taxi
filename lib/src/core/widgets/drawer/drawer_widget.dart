@@ -6,6 +6,7 @@ import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/drawer_tile.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/profile_card.dart';
 import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
@@ -14,10 +15,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget(
-      {super.key, required this.onSwitchMode, required this.isDriverMode});
+      {super.key,
+      required this.onSwitchMode,
+      required this.isDriverMode,
+      this.balance});
 
   final VoidCallback? onSwitchMode;
   final bool isDriverMode;
+  final int? balance;
   @override
   State<DrawerWidget> createState() => _DrawerWidgetState();
 }
@@ -45,6 +50,42 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   const ProfileCard(),
                   const Gap(UIConstants.defaultGap2),
                   //
+                  widget.isDriverMode
+                      ? Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                              UIConstants.defaultPadding,
+                              0,
+                              UIConstants.defaultPadding,
+                              UIConstants.defaultGap3),
+                          child: CustomContainerWidget(
+                              onTap: () {
+                                context.pushNamed(RouteNames.transferMoney);
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    S.current.your_account,
+                                    style: context.theme.textStyles.bodyMain
+                                        .copyWith(
+                                            color: context.theme.secondary),
+                                  ),
+                                  const Gap(UIConstants.defaultGap7),
+                                  Text(
+                                    '${widget.balance}',
+                                    style: context.theme.textStyles.titleMain,
+                                  ),
+                                  const Gap(UIConstants.defaultGap2),
+                                  Text(
+                                    S.current.recharge_account,
+                                    style: context.theme.textStyles.headLine
+                                        .copyWith(color: context.theme.red),
+                                  ),
+                                ],
+                              )),
+                        )
+                      : const Offstage(),
                   DrawerTile(
                     title: S.current.main,
                     onTap: () {

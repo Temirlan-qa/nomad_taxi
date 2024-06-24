@@ -99,7 +99,8 @@ class _MainPageState extends State<MainPage> {
                           ? context.pushNamed(RouteNames.driverModeIntro)
                           : context.pushNamed(RouteNames.driverMode);
                     },
-                    isDriverMode: false,
+                    isDriverMode: viewModel.pId == null,
+                    balance: viewModel.pBalance,
                   ),
                   body: Stack(
                     children: [
