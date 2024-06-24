@@ -11,7 +11,6 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/presentation/pages
 import 'package:nomad_taxi/src/features/driver_mode/presentation/pages/driver_intro_page.dart';
 import 'package:nomad_taxi/src/features/driver_mode/presentation/pages/driver_main_page.dart';
 import 'package:nomad_taxi/src/features/driver_mode/presentation/pages/enter_driver_info_page.dart';
-import 'package:nomad_taxi/src/features/franchise/presentation/pages/franchise_page.dart';
 import 'package:nomad_taxi/src/features/help/presentation/pages/help_page.dart';
 import 'package:nomad_taxi/src/features/main/presentation/pages/main_page.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/pages/order_price_page.dart';

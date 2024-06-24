@@ -9,6 +9,7 @@ import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/drawer_widget.dart';
+import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/drawer_bottom_widget.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/modal_widgets/create_order_modal_widget.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
@@ -73,93 +74,102 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BaseBlocWidget<ProfileBloc, ProfileEvent, ProfileState>(
-      bloc: getIt<ProfileBloc>(),
-      starterEvent: const ProfileEvent.init(),
+    return BaseBlocWidget<MainBloc, MainEvent, MainState>(
+      bloc: getIt<MainBloc>(),
+      starterEvent: MainEvent.findTown(
+        latitude: _currentPosition?.latitude ?? 43.238949,
+        longitude: _currentPosition?.longitude ?? 76.889709,
+      ),
       builder: (context, state, bloc) {
-        return state.when(
-          initial: () =>
-              const Center(child: CircularProgressIndicator.adaptive()),
-          loaded: (viewModel) {
-            OrderEntity? order = viewModel.order;
-            return Scaffold(
-              extendBodyBehindAppBar: true,
-              key: _scaffoldKey,
-              drawer: DrawerWidget(
-                onSwitchMode: () {
-                  viewModel.pId == null
-                      ? context.pushNamed(RouteNames.driverModeIntro)
-                      : context.pushNamed(RouteNames.driverMode);
-                },
-                isDriverMode: false,
-              ),
-              body: Stack(
-                children: [
-                  Center(
-                    child: MapLibreMap(
-                      styleString: ApiConstants.mapStyle,
-                      myLocationEnabled: true,
-                      initialCameraPosition: CameraPosition(
-                        zoom: 10,
-                        target: latLng,
-                      ),
-                      trackCameraPosition: true,
-                    ),
+        return BaseBlocWidget<ProfileBloc, ProfileEvent, ProfileState>(
+          bloc: getIt<ProfileBloc>(),
+          starterEvent: const ProfileEvent.init(),
+          builder: (context, state, bloc) {
+            return state.when(
+              initial: () =>
+                  const Center(child: CircularProgressIndicator.adaptive()),
+              loaded: (viewModel) {
+                OrderEntity? order = viewModel.order;
+                return Scaffold(
+                  extendBodyBehindAppBar: true,
+                  key: _scaffoldKey,
+                  drawer: DrawerWidget(
+                    onSwitchMode: () {
+                      viewModel.pId == null
+                          ? context.pushNamed(RouteNames.driverModeIntro)
+                          : context.pushNamed(RouteNames.driverMode);
+                    },
+                    isDriverMode: false,
                   ),
-                  Positioned(
-                    left: UIConstants.defaultPadding,
-                    top: UIConstants.defaultPadding,
-                    child: SafeArea(
-                      child: DrawerButtonWidget(scaffoldKey: _scaffoldKey),
-                    ),
-                  ),
-                  Positioned(
-                    left: UIConstants.defaultPadding,
-                    right: UIConstants.defaultPadding,
-                    bottom: 0,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        if (order != null) ...[
-                          ActiveOrderModalWidget(
-                            onTap: () {
-                              context.pushNamed(
-                                RouteNames.orderSearch,
-                                extra: {
-                                  "whereFrom": "whereFrom",
-                                  "whereTo": 'whereTo',
-                                  "price": order.price,
-                                },
-                              );
-                            },
-                            addressFrom: order.startPoint,
-                            addressTo: order.endPoint,
+                  body: Stack(
+                    children: [
+                      Center(
+                        child: MapLibreMap(
+                          styleString: ApiConstants.mapStyle,
+                          myLocationEnabled: true,
+                          initialCameraPosition: CameraPosition(
+                            zoom: 10,
+                            target: latLng,
                           ),
-                        ],
-                        CreateOrderModalWidget(
-                          currentLocation: whereFrom,
-                          onTapEditLocation: () {},
-                          onTapCreateOrder: () {
-                            context.pushNamed(
-                              RouteNames.searchAddress,
-                              extra: {
-                                "whereFrom": whereFrom,
-                                "latLng": latLng,
-                              },
-                            );
-                          },
+                          trackCameraPosition: true,
                         ),
+                      ),
+                      Positioned(
+                        left: UIConstants.defaultPadding,
+                        top: UIConstants.defaultPadding,
+                        child: SafeArea(
+                          child: DrawerButtonWidget(scaffoldKey: _scaffoldKey),
+                        ),
+                      ),
+                      Positioned(
+                        left: UIConstants.defaultPadding,
+                        right: UIConstants.defaultPadding,
+                        bottom: 0,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            if (order != null) ...[
+                              ActiveOrderModalWidget(
+                                onTap: () {
+                                  context.pushNamed(
+                                    RouteNames.orderSearch,
+                                    extra: {
+                                      "whereFrom": "whereFrom",
+                                      "whereTo": 'whereTo',
+                                      "price": order.price,
+                                    },
+                                  );
+                                },
+                                addressFrom: order.startPoint,
+                                addressTo: order.endPoint,
+                              ),
+                            ],
+                            CreateOrderModalWidget(
+                              currentLocation: whereFrom,
+                              onTapEditLocation: () {},
+                              onTapCreateOrder: () {
+                                context.pushNamed(
+                                  RouteNames.searchAddress,
+                                  extra: {
+                                    "whereFrom": whereFrom,
+                                    "latLng": latLng,
+                                  },
+                                );
+                              },
+                            ),
 
-                        // CurrentLocationModalWidget(
-                        //   onTapSelect: () {},
-                        //   currentLocation: '',
-                        // ),
-                      ],
-                    ),
+                            // CurrentLocationModalWidget(
+                            //   onTapSelect: () {},
+                            //   currentLocation: '',
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             );
           },
         );

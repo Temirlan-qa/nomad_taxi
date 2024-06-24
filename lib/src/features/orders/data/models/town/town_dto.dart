@@ -10,12 +10,13 @@ part 'town_dto.g.dart';
 @freezed
 class TownDto extends BaseDto with _$TownDto {
   const factory TownDto({
-    required String id,
+    required int id,
     required String title,
     required String status,
-    required double lat,
-    required double lng,
+    required String lat,
+    required String lng,
     required int radius,
+    @JsonKey(name: 'franchise_link') required String franchiseLink,
     @JsonKey(name: 'language_code') String? languageCode,
     SupportDto? support,
     @JsonKey(name: 'inside_city') InsideCityDto? insideCity,
