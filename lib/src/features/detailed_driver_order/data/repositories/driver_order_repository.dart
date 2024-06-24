@@ -7,6 +7,7 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/domain/entities/ge
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/repositories/i_driver_order_repository.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 
+import '../../../orders/data/models/requests/accept_order_request.dart';
 import '../datasources/remote/driver_order_remote_impl.dart';
 import '../mappers/driver_order_dto_mapper.dart';
 
@@ -19,16 +20,14 @@ class DriverOrderRepository implements IDriverOrderRepository {
 
   @override
   Stream<Either<DomainException, GetOrderStatusResponse>>
-      getOrderStatus() async* {
-    final Stream<Either<DomainException, GetOrderStatusResponseDto>> stream =
-        _driverRemoteImpl.getOrderStatus();
+      getOrderStatus(OrderRequest requestModel) async* {
+    final Stream<Either<DomainException, GetOrderStatusResponse>> stream =
+        _driverRemoteImpl.getOrderStatus(requestModel);
 
     yield* stream.map((result) {
       return result.fold((error) => Left(error), (dto) {
         try {
-          final GetOrderStatusResponse orderStatusResponse =
-              DriverOrderDtoMapper().map(dto);
-          return Right(orderStatusResponse);
+          return Right(dto);
         } catch (e) {
           return Left(UnknownException(message: e.toString()));
         }

@@ -22,6 +22,8 @@ class OrderPage extends StatelessWidget {
 
   final OrderEntity order;
 
+  
+
   Widget _buildOrderPage({
     required BuildContext context,
     required TextStyle labelStyle,
@@ -29,7 +31,8 @@ class OrderPage extends StatelessWidget {
     required TextStyle headLine,
     DriverOrderViewModel? viewModel,
   }) {
-    GetOrderStatusResponse? updatedOrderStatus = viewModel?.updatedOrderStatus;
+    String? updatedOrderStatus = viewModel?.updatedOrderStatus;
+    String? orderStatus;
     return Scaffold(
       bottomNavigationBar: CustomMainBottomWidgets(
         child: MediaQuery.orientationOf(context).index == 0
@@ -99,19 +102,87 @@ class OrderPage extends StatelessWidget {
               ],
             ),
             const Gap(UIConstants.defaultGap7),
-            Row(
-              children: [
-                Text(S.current.order_status, style: labelStyle),
-                const Gap(UIConstants.defaultGap2),
-                Text(
-                  S.current.in_progress,
-                  style: labelStyle.copyWith(
-                    color: updatedOrderStatus != null
-                        ? context.theme.green
-                        : context.theme.blue,
-                  ),
-                ),
-              ],
+            BlocBuilder<DriverOrderBloc, DriverOrderState>(
+              bloc: getIt<DriverOrderBloc>(),
+              builder: (context, state) {
+                return state.when(initial: () {
+                   return Row(
+                  children: [
+                    Text(S.current.order_status, style: labelStyle),
+                    const Gap(UIConstants.defaultGap2),
+                    Text(
+                      S.current.in_progress,
+                      style: labelStyle.copyWith(
+                        color: updatedOrderStatus != null
+                            ? context.theme.green
+                            : context.theme.blue,
+                      ),
+                    ),
+                  ],
+                );
+                }, waiting: () { 
+                   return Row(
+                  children: [
+                    Text('Waiting', style: labelStyle),
+                    const Gap(UIConstants.defaultGap2),
+                    Text(
+                      S.current.in_progress,
+                      style: labelStyle.copyWith(
+                        color: updatedOrderStatus != null
+                            ? context.theme.green
+                            : context.theme.blue,
+                      ),
+                    ),
+                  ],
+                );
+                 }, start: () { 
+                   return Row(
+                  children: [
+                    Text('Start route', style: labelStyle),
+                    const Gap(UIConstants.defaultGap2),
+                    Text(
+                      S.current.in_progress,
+                      style: labelStyle.copyWith(
+                        color: updatedOrderStatus != null
+                            ? context.theme.green
+                            : context.theme.blue,
+                      ),
+                    ),
+                  ],
+                );
+                  }, loaded: (DriverOrderViewModel viewModel) {  
+                     return Row(
+                  children: [
+                    Text('Complete', style: labelStyle),
+                    const Gap(UIConstants.defaultGap2),
+                    Text(
+                      S.current.in_progress,
+                      style: labelStyle.copyWith(
+                        color: updatedOrderStatus != null
+                            ? context.theme.green
+                            : context.theme.blue,
+                      ),
+                    ),
+                  ],
+                );
+                  }, error: (String errorMessage) {
+                     return Row(
+                  children: [
+                    Text(S.current.order_status, style: labelStyle),
+                    const Gap(UIConstants.defaultGap2),
+                    Text(
+                      S.current.in_progress,
+                      style: labelStyle.copyWith(
+                        color: updatedOrderStatus != null
+                            ? context.theme.green
+                            : context.theme.blue,
+                      ),
+                    ),
+                  ],
+                );
+                    });
+               
+              },
             ),
             const Divider(height: UIConstants.defaultGap3),
             Text(S.current.by_cash, style: labelStyle),
@@ -199,11 +270,11 @@ class OrderPage extends StatelessWidget {
         .copyWith(color: context.theme.secondary);
     final titleStyle = context.theme.textStyles.titleSecondary;
     final headLine = context.theme.textStyles.headLine;
-        return _buildOrderPage(
-          context: context,
-          labelStyle: labelStyle,
-          titleStyle: titleStyle,
-          headLine: headLine,
+    return _buildOrderPage(
+      context: context,
+      labelStyle: labelStyle,
+      titleStyle: titleStyle,
+      headLine: headLine,
     );
   }
 }

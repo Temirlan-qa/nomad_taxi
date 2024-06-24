@@ -39,6 +39,8 @@ class AuthServiceImpl implements IAuthService {
       ),
     );
 
+    log('${response}', name:'LoginResponse');
+
     return response.fold(
       (error) => Left(error),
       (result) async {

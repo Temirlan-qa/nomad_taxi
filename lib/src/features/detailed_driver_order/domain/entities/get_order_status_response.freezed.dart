@@ -21,8 +21,7 @@ GetOrderStatusResponse _$GetOrderStatusResponseFromJson(
 
 /// @nodoc
 mixin _$GetOrderStatusResponse {
-  String get status => throw _privateConstructorUsedError;
-  OrderStatusDataResponse get data => throw _privateConstructorUsedError;
+  GetOrderStatusEntity get order => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,9 +35,9 @@ abstract class $GetOrderStatusResponseCopyWith<$Res> {
           $Res Function(GetOrderStatusResponse) then) =
       _$GetOrderStatusResponseCopyWithImpl<$Res, GetOrderStatusResponse>;
   @useResult
-  $Res call({String status, OrderStatusDataResponse data});
+  $Res call({GetOrderStatusEntity order});
 
-  $OrderStatusDataResponseCopyWith<$Res> get data;
+  $GetOrderStatusEntityCopyWith<$Res> get order;
 }
 
 /// @nodoc
@@ -55,26 +54,21 @@ class _$GetOrderStatusResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
-    Object? data = null,
+    Object? order = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as OrderStatusDataResponse,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as GetOrderStatusEntity,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $OrderStatusDataResponseCopyWith<$Res> get data {
-    return $OrderStatusDataResponseCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
+  $GetOrderStatusEntityCopyWith<$Res> get order {
+    return $GetOrderStatusEntityCopyWith<$Res>(_value.order, (value) {
+      return _then(_value.copyWith(order: value) as $Val);
     });
   }
 }
@@ -88,10 +82,10 @@ abstract class _$$GetOrderStatusResponseImplCopyWith<$Res>
       __$$GetOrderStatusResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String status, OrderStatusDataResponse data});
+  $Res call({GetOrderStatusEntity order});
 
   @override
-  $OrderStatusDataResponseCopyWith<$Res> get data;
+  $GetOrderStatusEntityCopyWith<$Res> get order;
 }
 
 /// @nodoc
@@ -107,18 +101,13 @@ class __$$GetOrderStatusResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
-    Object? data = null,
+    Object? order = null,
   }) {
     return _then(_$GetOrderStatusResponseImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as OrderStatusDataResponse,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as GetOrderStatusEntity,
     ));
   }
 }
@@ -126,20 +115,17 @@ class __$$GetOrderStatusResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GetOrderStatusResponseImpl implements _GetOrderStatusResponse {
-  const _$GetOrderStatusResponseImpl(
-      {required this.status, required this.data});
+  const _$GetOrderStatusResponseImpl({required this.order});
 
   factory _$GetOrderStatusResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$GetOrderStatusResponseImplFromJson(json);
 
   @override
-  final String status;
-  @override
-  final OrderStatusDataResponse data;
+  final GetOrderStatusEntity order;
 
   @override
   String toString() {
-    return 'GetOrderStatusResponse(status: $status, data: $data)';
+    return 'GetOrderStatusResponse(order: $order)';
   }
 
   @override
@@ -147,13 +133,12 @@ class _$GetOrderStatusResponseImpl implements _GetOrderStatusResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOrderStatusResponseImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.order, order) || other.order == order));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, data);
+  int get hashCode => Object.hash(runtimeType, order);
 
   @JsonKey(ignore: true)
   @override
@@ -172,17 +157,14 @@ class _$GetOrderStatusResponseImpl implements _GetOrderStatusResponse {
 
 abstract class _GetOrderStatusResponse implements GetOrderStatusResponse {
   const factory _GetOrderStatusResponse(
-          {required final String status,
-          required final OrderStatusDataResponse data}) =
+          {required final GetOrderStatusEntity order}) =
       _$GetOrderStatusResponseImpl;
 
   factory _GetOrderStatusResponse.fromJson(Map<String, dynamic> json) =
       _$GetOrderStatusResponseImpl.fromJson;
 
   @override
-  String get status;
-  @override
-  OrderStatusDataResponse get data;
+  GetOrderStatusEntity get order;
   @override
   @JsonKey(ignore: true)
   _$$GetOrderStatusResponseImplCopyWith<_$GetOrderStatusResponseImpl>

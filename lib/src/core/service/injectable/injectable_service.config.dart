@@ -12,15 +12,15 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../../features/auth/data/repositories/i_auth_repository.dart'
-    as _i56;
+    as _i55;
 import '../../../features/auth/domain/repositories/auth_repository_impl.dart'
-    as _i57;
-import '../../../features/auth/domain/usecases/login_use_case.dart' as _i63;
+    as _i56;
+import '../../../features/auth/domain/usecases/login_use_case.dart' as _i62;
 import '../../../features/auth/domain/usecases/refresh_token_use_case.dart'
-    as _i61;
+    as _i60;
 import '../../../features/auth/domain/usecases/resend_code_use_case.dart'
-    as _i62;
-import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i60;
+    as _i61;
+import '../../../features/auth/domain/usecases/verify_user_case.dart' as _i59;
 import '../../../features/detailed_driver_order/data/client/order_web_socket_client.dart'
     as _i30;
 import '../../../features/detailed_driver_order/data/datasources/remote/driver_order_remote_impl.dart'
@@ -28,9 +28,9 @@ import '../../../features/detailed_driver_order/data/datasources/remote/driver_o
 import '../../../features/detailed_driver_order/data/datasources/remote/i_driver_order.dart'
     as _i28;
 import '../../../features/detailed_driver_order/data/repositories/driver_order_repository.dart'
-    as _i55;
-import '../../../features/detailed_driver_order/domain/repositories/i_driver_order_repository.dart'
     as _i54;
+import '../../../features/detailed_driver_order/domain/repositories/i_driver_order_repository.dart'
+    as _i53;
 import '../../../features/detailed_driver_order/domain/usecases/accept_order_use_case.dart'
     as _i39;
 import '../../../features/detailed_driver_order/domain/usecases/cancel_order_use_case.dart'
@@ -38,9 +38,9 @@ import '../../../features/detailed_driver_order/domain/usecases/cancel_order_use
 import '../../../features/detailed_driver_order/domain/usecases/complete_order_use_case.dart'
     as _i37;
 import '../../../features/detailed_driver_order/domain/usecases/get_new_order_use_case.dart'
-    as _i59;
-import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart'
     as _i58;
+import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart'
+    as _i57;
 import '../../../features/detailed_driver_order/domain/usecases/get_orders_use_case.dart'
     as _i38;
 import '../../../features/detailed_driver_order/domain/usecases/start_route_use_case.dart'
@@ -87,7 +87,7 @@ import '../../../features/orders/domain/repositories/i_orders_repository.dart'
     as _i22;
 import '../../../features/orders/domain/usecases/create_order_use_case.dart'
     as _i34;
-import '../../../features/orders/presentation/bloc/order_bloc.dart' as _i42;
+import '../../../features/orders/presentation/bloc/order_bloc.dart' as _i63;
 import '../../../features/profile/data/datasources/remote/i_profile_remote.dart'
     as _i8;
 import '../../../features/profile/data/datasources/remote/profile_remote_impl.dart'
@@ -97,27 +97,27 @@ import '../../../features/profile/data/repositories/profile_repository_impl.dart
 import '../../../features/profile/domain/repositories/i_profile_repository.dart'
     as _i32;
 import '../../../features/profile/domain/usecases/activate_promocode_use_case.dart'
-    as _i53;
-import '../../../features/profile/domain/usecases/delete_account_use_case.dart'
-    as _i50;
-import '../../../features/profile/domain/usecases/get_user_data_use_case.dart'
-    as _i44;
-import '../../../features/profile/domain/usecases/log_out_use_case.dart'
-    as _i47;
-import '../../../features/profile/domain/usecases/pay_info_use_case.dart'
-    as _i51;
-import '../../../features/profile/domain/usecases/toggle_partner_status_use_case.dart'
-    as _i45;
-import '../../../features/profile/domain/usecases/update_fcm_token_use_case.dart'
-    as _i48;
-import '../../../features/profile/domain/usecases/update_language_use_case.dart'
     as _i52;
-import '../../../features/profile/domain/usecases/update_partner_data_use_case.dart'
-    as _i43;
-import '../../../features/profile/domain/usecases/update_user_info_use_case.dart'
+import '../../../features/profile/domain/usecases/delete_account_use_case.dart'
     as _i49;
-import '../../../features/profile/domain/usecases/withdraw_info_use_case.dart'
+import '../../../features/profile/domain/usecases/get_user_data_use_case.dart'
+    as _i43;
+import '../../../features/profile/domain/usecases/log_out_use_case.dart'
     as _i46;
+import '../../../features/profile/domain/usecases/pay_info_use_case.dart'
+    as _i50;
+import '../../../features/profile/domain/usecases/toggle_partner_status_use_case.dart'
+    as _i44;
+import '../../../features/profile/domain/usecases/update_fcm_token_use_case.dart'
+    as _i47;
+import '../../../features/profile/domain/usecases/update_language_use_case.dart'
+    as _i51;
+import '../../../features/profile/domain/usecases/update_partner_data_use_case.dart'
+    as _i42;
+import '../../../features/profile/domain/usecases/update_user_info_use_case.dart'
+    as _i48;
+import '../../../features/profile/domain/usecases/withdraw_info_use_case.dart'
+    as _i45;
 import '../../api/client/rest/dio/dio_client.dart' as _i5;
 import '../../utils/helpers/connectivity_helper.dart' as _i3;
 import '../../utils/helpers/isolate_manager.dart' as _i4;
@@ -222,60 +222,62 @@ extension GetItInjectableX on _i1.GetIt {
             gh<_i22.IOrdersRepository>(instanceName: 'OrdersRepositoryImpl')));
     gh.lazySingleton<_i41.FindTownIdUseCase>(() => _i41.FindTownIdUseCase(
         gh<_i22.IOrdersRepository>(instanceName: 'OrdersRepositoryImpl')));
-    gh.factory<_i42.OrderBloc>(
-        () => _i42.OrderBloc(gh<_i34.CreateOrderUseCase>()));
-    gh.lazySingleton<_i43.UpdatePartnerDataUseCase>(() =>
-        _i43.UpdatePartnerDataUseCase(gh<_i32.IProfileRepository>(
+    gh.lazySingleton<_i42.UpdatePartnerDataUseCase>(() =>
+        _i42.UpdatePartnerDataUseCase(gh<_i32.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i44.GetUserDataUseCase>(() => _i44.GetUserDataUseCase(
+    gh.lazySingleton<_i43.GetUserDataUseCase>(() => _i43.GetUserDataUseCase(
         gh<_i32.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i45.TogglePartnerStatusUseCase>(() =>
-        _i45.TogglePartnerStatusUseCase(gh<_i32.IProfileRepository>(
+    gh.lazySingleton<_i44.TogglePartnerStatusUseCase>(() =>
+        _i44.TogglePartnerStatusUseCase(gh<_i32.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i46.WithdrawInfoUseCase>(() => _i46.WithdrawInfoUseCase(
+    gh.lazySingleton<_i45.WithdrawInfoUseCase>(() => _i45.WithdrawInfoUseCase(
         gh<_i32.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i47.LogOutUseCase>(() => _i47.LogOutUseCase(
+    gh.lazySingleton<_i46.LogOutUseCase>(() => _i46.LogOutUseCase(
         gh<_i32.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i48.UpdateFcmTokenUseCase>(() =>
-        _i48.UpdateFcmTokenUseCase(gh<_i32.IProfileRepository>(
+    gh.lazySingleton<_i47.UpdateFcmTokenUseCase>(() =>
+        _i47.UpdateFcmTokenUseCase(gh<_i32.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i49.UpdateUserInfoUseCase>(() =>
-        _i49.UpdateUserInfoUseCase(gh<_i32.IProfileRepository>(
+    gh.lazySingleton<_i48.UpdateUserInfoUseCase>(() =>
+        _i48.UpdateUserInfoUseCase(gh<_i32.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i50.DeleteAccountUseCase>(() => _i50.DeleteAccountUseCase(
+    gh.lazySingleton<_i49.DeleteAccountUseCase>(() => _i49.DeleteAccountUseCase(
         gh<_i32.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i51.PayInfoUseCase>(() => _i51.PayInfoUseCase(
+    gh.lazySingleton<_i50.PayInfoUseCase>(() => _i50.PayInfoUseCase(
         gh<_i32.IProfileRepository>(instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i52.UpdateLanguageUseCase>(() =>
-        _i52.UpdateLanguageUseCase(gh<_i32.IProfileRepository>(
+    gh.lazySingleton<_i51.UpdateLanguageUseCase>(() =>
+        _i51.UpdateLanguageUseCase(gh<_i32.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i53.ActivatePromocodeUseCase>(() =>
-        _i53.ActivatePromocodeUseCase(gh<_i32.IProfileRepository>(
+    gh.lazySingleton<_i52.ActivatePromocodeUseCase>(() =>
+        _i52.ActivatePromocodeUseCase(gh<_i32.IProfileRepository>(
             instanceName: 'ProfileRepositoryImpl')));
-    gh.lazySingleton<_i54.IDriverOrderRepository>(
-      () => _i55.DriverOrderRepository(
+    gh.lazySingleton<_i53.IDriverOrderRepository>(
+      () => _i54.DriverOrderRepository(
           gh<_i28.IDriverOrder>(instanceName: 'DriverOrderRemoteImpl')),
       instanceName: 'DriverOrderRepository',
     );
-    gh.lazySingleton<_i56.IAuthRepository>(
-      () => _i57.AuthRepositoryImpl(
+    gh.lazySingleton<_i55.IAuthRepository>(
+      () => _i56.AuthRepositoryImpl(
           gh<_i20.IAuthService>(instanceName: 'AuthServiceImpl')),
       instanceName: 'AuthRepositoryImpl',
     );
-    gh.lazySingleton<_i58.GetOrderStatusUseCase>(() =>
-        _i58.GetOrderStatusUseCase(gh<_i54.IDriverOrderRepository>(
+    gh.lazySingleton<_i57.GetOrderStatusUseCase>(() =>
+        _i57.GetOrderStatusUseCase(gh<_i53.IDriverOrderRepository>(
             instanceName: 'DriverOrderRepository')));
-    gh.lazySingleton<_i59.GetNewOrderUseCase>(() => _i59.GetNewOrderUseCase(
-        gh<_i54.IDriverOrderRepository>(
+    gh.lazySingleton<_i58.GetNewOrderUseCase>(() => _i58.GetNewOrderUseCase(
+        gh<_i53.IDriverOrderRepository>(
             instanceName: 'DriverOrderRepository')));
-    gh.lazySingleton<_i60.VerifyUseCase>(() => _i60.VerifyUseCase(
-        gh<_i56.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i61.RefreshTokenUseCase>(() => _i61.RefreshTokenUseCase(
-        gh<_i56.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i62.ResendCodeUseCase>(() => _i62.ResendCodeUseCase(
-        gh<_i56.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
-    gh.lazySingleton<_i63.LoginUseCase>(() => _i63.LoginUseCase(
-        gh<_i56.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
+    gh.lazySingleton<_i59.VerifyUseCase>(() => _i59.VerifyUseCase(
+        gh<_i55.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
+    gh.lazySingleton<_i60.RefreshTokenUseCase>(() => _i60.RefreshTokenUseCase(
+        gh<_i55.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
+    gh.lazySingleton<_i61.ResendCodeUseCase>(() => _i61.ResendCodeUseCase(
+        gh<_i55.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
+    gh.lazySingleton<_i62.LoginUseCase>(() => _i62.LoginUseCase(
+        gh<_i55.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
+    gh.factory<_i63.OrderBloc>(() => _i63.OrderBloc(
+          gh<_i34.CreateOrderUseCase>(),
+          gh<_i57.GetOrderStatusUseCase>(),
+        ));
     return this;
   }
 }

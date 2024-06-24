@@ -23,12 +23,7 @@ class Runner {
     await DioRestClient().init();
     final orderWebSocketClient = getIt<OrderWebSocketClient>();
 
-    await orderWebSocketClient.getOrderStatus(
-      host: 'auyltaxi.kz',
-      apiKey: 'ILX4RM4prL',
-    );
-
-    await orderWebSocketClient.getNewOrder(
+    await orderWebSocketClient.setBaseUrl(
       host: 'auyltaxi.kz',
       apiKey: 'ILX4RM4prL',
     );

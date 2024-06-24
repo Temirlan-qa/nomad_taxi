@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
-import 'package:fpdart/fpdart.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/response/order_response.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-import '../../../dtos/web_socket_dto.dart';
+import '../../../../features/detailed_driver_order/domain/entities/get_order_status_entity.dart';
+import '../../../../features/detailed_driver_order/domain/entities/get_order_status_response.dart';
 import '../../../utils/loggers/logger.dart';
 import 'i_web_socket_client.dart';
 
@@ -16,8 +17,9 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
   WebSocket? _ws;
   WebSocketChannel? _webSocketChannel;
 
-  final StreamController<WebSocketDto> _controller =
-      StreamController<WebSocketDto>.broadcast();
+  final StreamController<GetOrderStatusResponse> _orderStatusController =
+      StreamController<GetOrderStatusResponse>.broadcast();
+
   final StreamController<OrderResponse> _orderController =
       StreamController<OrderResponse>.broadcast();
   StreamSubscription? _wsSubscription;
@@ -25,7 +27,8 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
   OrderEntity? _lastOrder;
 
   @override
-  Stream<WebSocketDto> get stream => _controller.stream;
+  Stream<GetOrderStatusResponse> get orderStatusStream =>
+      _orderStatusController.stream;
 
   @override
   Stream<OrderResponse> get orderStream =>
@@ -34,7 +37,7 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
   Future<void> init(String url) async {
     try {
       _ws = await WebSocket.connect(url);
-      _subscribeToChannel('new-order');
+      _subscribeToNewOrderChannel('new-order');
       if (_ws != null) {
         _initListeners(url);
         _webSocketChannel = IOWebSocketChannel(_ws!);
@@ -51,12 +54,12 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
         _onData(event);
       },
       onDone: () async {
-        _controller.close();
+        _orderStatusController.close();
         _orderController.close();
         await close();
       },
       onError: (error) {
-        _controller.addError(error);
+        _orderStatusController.addError(error);
         _orderController.addError(error);
       },
       cancelOnError: false,
@@ -65,7 +68,7 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
 
   void _onData(event) {
     try {
-      if (_controller.isClosed && _orderController.isClosed) {
+      if (_orderStatusController.isClosed && _orderController.isClosed) {
         return;
       }
       if (event == null) {
@@ -88,6 +91,20 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
         }
       }
 
+      if (map['event'] == 'App\\Events\\Websocket\\Order\\OrderStatusChanged') {
+        final Map<String, dynamic> eventDataMap = jsonDecode(eventDataString);
+        final some = eventDataMap;
+        log('$some', name: 'ResponseOrderStatus');
+
+        final GetOrderStatusEntity orderStatus =
+            GetOrderStatusEntity.fromJson(eventDataMap);
+
+        final GetOrderStatusResponse orderStatusResponse =
+            GetOrderStatusResponse(order: orderStatus);
+
+        _orderStatusController.add(orderStatusResponse);
+      }
+
       // final WebSocketDto webSocketDto = WebSocketDto(
       //   event: map['event'] as String,
       //   data: OrderStatusDataDto.fromJson(eventDataMap),
@@ -102,10 +119,22 @@ abstract class WebSocketClientImpl implements IWebSocketClient {
     }
   }
 
-  Future<void> _subscribeToChannel(String channel) async {
+  Future<void> _subscribeToNewOrderChannel(String channel) async {
     final subscribeMessage = {
       "event": "pusher:subscribe",
       "data": {"channel": channel}
+    };
+    _ws?.add(jsonEncode(subscribeMessage));
+  }
+
+  Future<void> sendOrderRequest(int orderId) async {
+    _subscribeToOrderStatus(orderId);
+  }
+
+  Future<void> _subscribeToOrderStatus(int orderId) async {
+    final subscribeMessage = {
+      "event": "pusher:subscribe",
+      "data": {"channel": "orders.$orderId"}
     };
     _ws?.add(jsonEncode(subscribeMessage));
   }

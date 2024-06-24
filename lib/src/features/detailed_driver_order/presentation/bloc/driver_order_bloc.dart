@@ -11,6 +11,7 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/co
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/start_route_use_case.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/waiting_for_client_use_case.dart';
 
+import '../../../../core/enums/order_status.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
 import '../../../../core/service/storage/storage_service_impl.dart';
 import '../../../orders/data/models/requests/accept_order_request.dart';
@@ -71,7 +72,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
   Future<void> onEventHandler(DriverOrderEvent event, Emitter emit) async {
     await event.when(
       started: () => _started(),
-      getOrderStatus: () => _getOrderStatus(),
+      getOrderStatus: (_) => _getOrderStatus(event as _GetOrderStatus),
       getOrders: () => _getOrders(event as _GetOrders, emit),
       updateOrderStatus: (_) =>
           _updateOrderStatus(event as _UpdateOrderStatus, emit),
@@ -93,11 +94,13 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     add(const _GetNewOrder());
   }
 
-  Future<void> _getOrderStatus() async {
+  Future<void> _getOrderStatus(_GetOrderStatus event) async {
     await _orderStatusSubscription?.cancel();
     _orderStatusSubscription = null;
 
-    _orderStatusSubscription = _getOrderStatusUseCase().listen((result) {
+    OrderRequest orderId = OrderRequest(id: event.orderId);
+
+    _orderStatusSubscription = _getOrderStatusUseCase(orderId).listen((result) {
       GetOrderStatusResponse? data = result.data;
       if (result.isSuccessful && data != null) {
         add(_UpdateOrderStatus(updateOrderStatus: data));
@@ -107,9 +110,14 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
 
   Future<void> _updateOrderStatus(
       _UpdateOrderStatus event, Emitter emit) async {
-    GetOrderStatusResponse updatedOrderStatus = event.updateOrderStatus;
+    GetOrderStatusResponse response = event.updateOrderStatus;
 
-    _viewModel = _viewModel.copyWith(updatedOrderStatus: updatedOrderStatus);
+    String orderStatus = response.order.status;
+
+    _viewModel = _viewModel.copyWith(
+        activeOrder: _viewModel.activeOrder?.copyWith(status: orderStatus));
+
+    // emit(_Loaded(viewModel: _viewModel));
   }
 
   Future<void> getNewOrder() async {
@@ -166,7 +174,10 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
 
   Future<void> _acceptOrder(_AcceptOrder event, Emitter emit) async {
     emit(const _Initial());
+
     final OrderRequest request = OrderRequest(id: event.orderId);
+
+    add(_GetOrderStatus(orderId: event.orderId));
 
     final result = await _acceptOrderUseCase.call(request);
 
@@ -185,6 +196,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     final result = await _waitingForClientUseCase.call(request);
 
     if (result.isSuccessful) {
+      emit(_Loaded(viewModel: _viewModel));
       return emit(const _Waiting());
     }
   }
@@ -195,6 +207,7 @@ class DriverOrderBloc extends BaseBloc<DriverOrderEvent, DriverOrderState> {
     final result = await _startRouteUseCase.call(request);
 
     if (result.isSuccessful) {
+       emit(_Loaded(viewModel: _viewModel));
       return emit(const _Start());
     }
   }

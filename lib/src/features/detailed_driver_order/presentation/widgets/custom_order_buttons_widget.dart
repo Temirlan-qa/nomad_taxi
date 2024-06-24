@@ -38,6 +38,8 @@ class _CustomOrderButtonsWidgetState extends State<CustomOrderButtonsWidget> {
 
   late Timer _timer;
 
+  String? orderStatus;
+
   int remainingSeconds = 300;
 
   bool isDisabled = true;
