@@ -1,7 +1,8 @@
 class PhoneNumberFormatter {
-  String format(
-    String oldValue,
-  ) {
+  String format({
+    required String oldValue,
+    required String formattedText,
+  }) {
     // Remove any character that is not a digit
     String newText = oldValue.replaceAll(RegExp(r'[^0-9]'), '');
 
@@ -9,9 +10,7 @@ class PhoneNumberFormatter {
       newText = newText.substring(0, 10);
     }
 
-    String formattedText = '';
     if (newText.isNotEmpty) {
-      formattedText = '+7 ';
       if (newText.isNotEmpty) {
         formattedText += '(${newText.substring(0, 3)}';
       }

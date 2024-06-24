@@ -55,6 +55,7 @@ class MainBloc extends BaseBloc<MainEvent, MainState> {
             languageCode: data.languageCode ?? 'ru',
             support: data.support,
             insideCity: data.insideCity,
+            franchiseLink: data.franchiseLink,
           ),
         ),
       );

@@ -8,12 +8,13 @@ part of 'town_entity.dart';
 
 _$TownEntityImpl _$$TownEntityImplFromJson(Map<String, dynamic> json) =>
     _$TownEntityImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       status: json['status'] as String,
-      lat: (json['lat'] as num).toDouble(),
-      lng: (json['lng'] as num).toDouble(),
+      lat: json['lat'] as String,
+      lng: json['lng'] as String,
       radius: (json['radius'] as num).toInt(),
+      franchiseLink: json['franchiseLink'] as String,
       languageCode: json['languageCode'] as String?,
       support: json['support'] == null
           ? null
@@ -32,6 +33,7 @@ Map<String, dynamic> _$$TownEntityImplToJson(_$TownEntityImpl instance) =>
       'lat': instance.lat,
       'lng': instance.lng,
       'radius': instance.radius,
+      'franchiseLink': instance.franchiseLink,
       'languageCode': instance.languageCode,
       'support': instance.support,
       'insideCity': instance.insideCity,

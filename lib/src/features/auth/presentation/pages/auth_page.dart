@@ -25,10 +25,15 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AuthBloc authBloc = getIt<AuthBloc>();
   String selectedRegionCode = '+7';
 
-  AuthBloc authBloc = getIt<AuthBloc>();
-
+  static final List<Map<String, String>> countries = [
+    {
+      "country": S.current.kz_with_flag,
+      "code": "+7",
+    },
+  ];
   @override
   void dispose() {
     phoneController.dispose();
@@ -46,6 +51,7 @@ class _AuthPageState extends State<AuthPage> {
             extra: {
               "phone": phoneController.text,
               "userId": '${viewModel.userId}',
+              "countryCode": selectedRegionCode,
             },
           ),
         );
@@ -79,9 +85,10 @@ class _AuthPageState extends State<AuthPage> {
                                   Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(0, 15, 10, 0),
-                                    child: Text(selectedRegionCode,
-                                        style:
-                                            context.theme.textStyles.headLine),
+                                    child: Text(
+                                      selectedRegionCode,
+                                      style: context.theme.textStyles.headLine,
+                                    ),
                                   ),
                                   Expanded(
                                     child: TextFieldWidget(
@@ -135,7 +142,19 @@ class _AuthPageState extends State<AuthPage> {
                 CustomMainButtonWidget(
                   title: S.current.kz_with_flag,
                   onPressed: () {
-                    showRegionModal(context);
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomSelectCountryModalWidget(
+                          countries: countries,
+                          onTap: (String code) {
+                            setState(() {
+                              selectedRegionCode = code;
+                            });
+                          },
+                        );
+                      },
+                    );
                   },
                   isMain: false,
                 ),
@@ -145,7 +164,8 @@ class _AuthPageState extends State<AuthPage> {
                   onPressed: () async {
                     authBloc.add(
                       AuthEvent.login(
-                          phone: phoneController.text.replaceAll('-', '')),
+                        phone: phoneController.text.replaceAll('-', ''),
+                      ),
                     );
                     state.whenOrNull(
                       loaded: (viewModel) => context.push(
@@ -153,6 +173,7 @@ class _AuthPageState extends State<AuthPage> {
                         extra: {
                           "phone": phoneController.text,
                           "userId": '${viewModel.userId}',
+                          "countryCode": selectedRegionCode,
                         },
                       ),
                     );
@@ -162,15 +183,6 @@ class _AuthPageState extends State<AuthPage> {
             ),
           ),
         );
-      },
-    );
-  }
-
-  void showRegionModal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return const CustomSelectCountryModalWidget();
       },
     );
   }

@@ -17,17 +17,13 @@ List<RouteBase> _routes() => <RouteBase>[
             return ConfirmCodePage(
               phone: map["phone"]!,
               userId: map["userId"]!,
+              countryCode: map["countryCode"]!,
             );
           }),
       GoRoute(
         name: RouteNames.policy,
         path: RoutePaths.policy,
         builder: (_, __) => const PolicyPage(),
-      ),
-      GoRoute(
-        name: RouteNames.franchise,
-        path: RoutePaths.franchise,
-        builder: (_, __) => const FranchisePage(),
       ),
       GoRoute(
         name: RouteNames.error,

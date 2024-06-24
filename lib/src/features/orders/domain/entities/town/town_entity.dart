@@ -10,12 +10,13 @@ part 'town_entity.g.dart';
 @freezed
 class TownEntity extends BaseEntity with _$TownEntity {
   const factory TownEntity({
-    required String id,
+    required int id,
     required String title,
     required String status,
-    required double lat,
-    required double lng,
+    required String lat,
+    required String lng,
     required int radius,
+    required String franchiseLink,
     String? languageCode,
     SupportEntity? support,
     InsideCityEntity? insideCity,

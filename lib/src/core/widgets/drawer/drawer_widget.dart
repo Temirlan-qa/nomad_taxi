@@ -4,10 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
+import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/drawer_tile.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/profile_card.dart';
+import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_bottom_widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget(
@@ -20,6 +23,8 @@ class DrawerWidget extends StatefulWidget {
 }
 
 class _DrawerWidgetState extends State<DrawerWidget> {
+  final mainBloc = getIt<MainBloc>();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -76,7 +81,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   DrawerTile(
                     title: S.current.buy_franchise,
                     onTap: () {
-                      context.pushNamed(RouteNames.franchise);
+                      mainBloc.state.whenOrNull(
+                        loaded: (viewModel) {
+                          final String url = viewModel.franchiseLink;
+                          return launchWhatsApp(url);
+                        },
+                      );
                     },
                     isSelected: false,
                   ),
@@ -112,5 +122,15 @@ class _DrawerWidgetState extends State<DrawerWidget> {
         ),
       ),
     );
+  }
+
+  launchWhatsApp(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("WhatsApp not installed")),
+      );
+    }
   }
 }
