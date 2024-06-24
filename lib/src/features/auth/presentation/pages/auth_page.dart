@@ -162,9 +162,12 @@ class _AuthPageState extends State<AuthPage> {
                 CustomMainButtonWidget(
                   title: S.current.next,
                   onPressed: () async {
+                    final step1 = phoneController.text.replaceAll('-', '');
+                    final step2 = selectedRegionCode.replaceAll("+", "");
+                    final phoneNumber = step2 + step1;
                     authBloc.add(
                       AuthEvent.login(
-                        phone: phoneController.text.replaceAll('-', ''),
+                        phone: phoneNumber,
                       ),
                     );
                     state.whenOrNull(

@@ -14,6 +14,7 @@ _$TownDtoImpl _$$TownDtoImplFromJson(Map<String, dynamic> json) =>
       lat: json['lat'] as String,
       lng: json['lng'] as String,
       radius: (json['radius'] as num).toInt(),
+      franchiseLink: json['franchise_link'] as String,
       languageCode: json['language_code'] as String?,
       support: json['support'] == null
           ? null
@@ -21,7 +22,6 @@ _$TownDtoImpl _$$TownDtoImplFromJson(Map<String, dynamic> json) =>
       insideCity: json['inside_city'] == null
           ? null
           : InsideCityDto.fromJson(json['inside_city'] as Map<String, dynamic>),
-      franchiseLink: json['franchise_link'] as String,
     );
 
 Map<String, dynamic> _$$TownDtoImplToJson(_$TownDtoImpl instance) =>
@@ -32,8 +32,8 @@ Map<String, dynamic> _$$TownDtoImplToJson(_$TownDtoImpl instance) =>
       'lat': instance.lat,
       'lng': instance.lng,
       'radius': instance.radius,
+      'franchise_link': instance.franchiseLink,
       'language_code': instance.languageCode,
       'support': instance.support,
       'inside_city': instance.insideCity,
-      'franchise_link': instance.franchiseLink,
     };
