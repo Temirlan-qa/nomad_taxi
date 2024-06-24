@@ -7,6 +7,7 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/withdraw_info_use_case.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 part 'balance_bloc.freezed.dart';
 part 'balance_event.dart';
@@ -44,14 +45,24 @@ class BalanceBloc extends BaseBloc<BalanceEvent, BalanceState> {
     final resultPay = await payInfoUseCase.call();
     final resultWithdraw = await withdrawInfoUseCase.call();
 
-    final String? dataPay = resultPay.data;
+    final String? payInfo = resultPay.data;
     final String? dataWithdraw = resultWithdraw.data;
 
-    if (dataPay != null && dataWithdraw != null) {
+    if (payInfo != null && dataWithdraw != null) {
+      final withdrawInfoController = WebViewController()
+        ..setJavaScriptMode(JavaScriptMode.disabled)
+        ..loadHtmlString(dataWithdraw);
+
+      final payInfoController = WebViewController()
+        ..setJavaScriptMode(JavaScriptMode.disabled)
+        ..loadHtmlString(payInfo);
+
       return emit(
         _Loaded(
-          viewModel:
-              _viewModel.copyWith(payInfo: dataPay, withdrawInfo: dataWithdraw),
+          viewModel: _viewModel.copyWith(
+            payInfo: payInfoController,
+            withdrawInfo: withdrawInfoController,
+          ),
         ),
       );
     }

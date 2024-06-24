@@ -6,6 +6,8 @@ import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/wa
 import 'package:nomad_taxi/src/features/franchise/domain/usecases/franchise_use_case.dart';
 import 'package:nomad_taxi/src/features/franchise/presentation/bloc/franchise_bloc.dart';
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
+import 'package:nomad_taxi/src/features/order_search/domain/usecases/get_searched_addresses_use_case.dart';
+import 'package:nomad_taxi/src/features/order_search/presentation/bloc/searched_order_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
@@ -20,13 +22,13 @@ import '../../../features/auth/domain/usecases/login_use_case.dart';
 import '../../../features/auth/domain/usecases/verify_user_case.dart';
 import '../../../features/auth/presentation/bloc/auth_bloc.dart';
 import '../../../features/detailed_driver_order/data/client/order_web_socket_client.dart';
-import '../../../features/detailed_driver_order/domain/usecases/get_new_order_use_case.dart';
-import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
-import '../../../features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
-import '../../../features/help/domain/usecases/get_questions_use_case.dart';
 import '../../../features/detailed_driver_order/domain/usecases/accept_order_use_case.dart';
 import '../../../features/detailed_driver_order/domain/usecases/cancel_order_use_case.dart';
+import '../../../features/detailed_driver_order/domain/usecases/get_new_order_use_case.dart';
+import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart';
 import '../../../features/detailed_driver_order/domain/usecases/get_orders_use_case.dart';
+import '../../../features/detailed_driver_order/presentation/bloc/driver_order_bloc.dart';
+import '../../../features/help/domain/usecases/get_questions_use_case.dart';
 import '../../../features/profile/domain/usecases/update_language_use_case.dart';
 import 'exports/all.dart';
 import 'injectable_service.dart';
@@ -93,5 +95,9 @@ void manualRegisterServices() {
   );
   getIt.registerBloc<ActivatePromocodeBloc>(
     () => ActivatePromocodeBloc(getIt<ActivatePromocodeUseCase>()),
+  );
+
+  getIt.registerBloc<SearchedOrderBloc>(
+    () => SearchedOrderBloc(getIt<GetSearchedAddressesUseCase>()),
   );
 }

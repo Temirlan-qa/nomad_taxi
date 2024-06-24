@@ -35,6 +35,7 @@ class CountryTileWidget extends StatelessWidget {
         child: Row(
           children: [
             ToggleWidget(value: isSelected),
+            const SizedBox(width: 12),
             Text(title, style: context.theme.textStyles.headLine)
           ],
         ),

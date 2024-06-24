@@ -25,9 +25,32 @@ class ProfileRemoteImpl implements IProfileRemote {
   var st = StorageServiceImpl();
 
   @override
-  Future<Either<DomainException, ProfileDto>> deleteAccount() {
-    // TODO: implement deleteAccount
-    throw UnimplementedError();
+  Future<Either<DomainException, bool>> deleteAccount() async {
+    try {
+      var headers = {
+        'Accept-Language': 'ru',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/user',
+        options: Options(
+          method: 'DELETE',
+          headers: headers,
+        ),
+      );
+      if (response.statusCode == 200) {
+        await st.deleteToken();
+        return Right(response.data['status']);
+      } else {
+        return Left(UnknownException());
+      }
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
   }
 
   @override

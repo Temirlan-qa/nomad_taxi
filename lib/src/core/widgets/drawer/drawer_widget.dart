@@ -61,11 +61,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     },
                     isSelected: false,
                   ),
-                  DrawerTile(
-                    title: S.current.referral_program,
-                    onTap: () {},
-                    isSelected: false,
-                  ),
+                  // DrawerTile(
+                  //   title: S.current.referral_program,
+                  //   onTap: () {},
+                  //   isSelected: false,
+                  // ),
                   DrawerTile(
                     title: S.current.activate_promoCode,
                     onTap: () {

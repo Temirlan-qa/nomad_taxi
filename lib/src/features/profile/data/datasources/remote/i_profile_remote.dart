@@ -15,7 +15,7 @@ abstract class IProfileRemote {
 
   Future<Either<DomainException, ProfileDto>> getUserData();
 
-  Future<Either<DomainException, void>> deleteAccount();
+  Future<Either<DomainException, bool>> deleteAccount();
 
   Future<Either<DomainException, ProfileDto>> updateUserInfo(
     UpdateUserInfoRequest request,
