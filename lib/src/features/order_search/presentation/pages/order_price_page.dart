@@ -37,7 +37,6 @@ class _OrderPricePageState extends State<OrderPricePage> {
   final OrderBloc orderBloc = getIt<OrderBloc>();
   final SearchedOrderBloc searchedOrderBloc = getIt<SearchedOrderBloc>();
 
-  int bonus = 0;
   int orderPrice = 800;
 
   @override
@@ -101,13 +100,10 @@ class _OrderPricePageState extends State<OrderPricePage> {
                                 Text(
                                   profileBloc.state.whenOrNull(
                                         loaded: (viewModel) {
-                                          setState(() {
-                                            bonus = viewModel.bonus;
-                                          });
                                           return '${viewModel.bonus}';
                                         },
                                       ) ??
-                                      '$bonus',
+                                      '0',
                                   style: context.theme.textStyles.titleMain
                                       .copyWith(color: context.theme.red),
                                 ),
@@ -153,17 +149,17 @@ class _OrderPricePageState extends State<OrderPricePage> {
                       },
                     ),
                     const Gap(UIConstants.defaultGap2),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          S.current.bonuses_each_order,
-                          textAlign: TextAlign.center,
-                          style: bodyMain.copyWith(color: secondary),
-                        ),
-                        const Gap(UIConstants.defaultGap2),
-                        cashback != null
-                            ? Row(
+                    cashback != null
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                S.current.bonuses_each_order,
+                                textAlign: TextAlign.center,
+                                style: bodyMain.copyWith(color: secondary),
+                              ),
+                              const Gap(UIConstants.defaultGap2),
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
@@ -185,9 +181,9 @@ class _OrderPricePageState extends State<OrderPricePage> {
                                   )
                                 ],
                               )
-                            : const Offstage(),
-                      ],
-                    ),
+                            ],
+                          )
+                        : const Offstage(),
                     const Gap(UIConstants.defaultGap2),
                     Row(
                       children: [
