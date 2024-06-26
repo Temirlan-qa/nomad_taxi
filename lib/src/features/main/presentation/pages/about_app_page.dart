@@ -14,7 +14,8 @@ class AboutAppPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          leading: BackButtonWrapper(onPressed: () => context.pop())),
+        leading: BackButtonWrapper(onPressed: () => context.pop()),
+      ),
       body: Center(
         child: Image.asset(
           Assets.images.card.path,
