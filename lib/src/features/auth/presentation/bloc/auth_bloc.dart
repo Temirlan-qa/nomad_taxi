@@ -90,7 +90,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
     final data = result.data;
 
     if (data == null) {
-      return emit(const _Error("Login failed"));
+      return emit(const _ErrorVerify("Вы ввели не правильный код"));
     }
 
     if (result.isSuccessful) {
@@ -101,8 +101,7 @@ class AuthBloc extends BaseBloc<AuthEvent, AuthState> {
           ),
         ),
       );
-    } else {
-      return emit(const AuthState.error("Login failed"));
     }
+    return emit(const _ErrorVerify("Вы ввели не правильный код"));
   }
 }

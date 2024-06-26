@@ -14,11 +14,11 @@ class OrderDtoMapper {
   OrderEntity map(OrderDto dto) {
     final PayMethodDto? payMethodDto = dto.payMethod;
     final PayMethodEntity payMethodEntity = PayMethodEntity(
-      byCash: payMethodDto == null ? 0 :  payMethodDto.byCash,
-      byBonus: payMethodDto == null ? 0 :  payMethodDto.byBonus,
+      byCash: payMethodDto == null ? 0 : payMethodDto.byCash,
+      byBonus: payMethodDto == null ? 0 : payMethodDto.byBonus,
     );
 
-    final List<PointDto> pointsDto = dto.points ?? [] ;
+    final List<PointDto> pointsDto = dto.points;
 
     final List<PointEntity> points = pointsDto.map((pointDto) {
       return PointEntity(

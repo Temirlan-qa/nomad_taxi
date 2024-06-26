@@ -11,7 +11,7 @@ _$InsideCityEntityImpl _$$InsideCityEntityImplFromJson(
     _$InsideCityEntityImpl(
       minPrice: (json['minPrice'] as num).toInt(),
       maxPrice: (json['maxPrice'] as num).toInt(),
-      commission: (json['commission'] as num).toInt(),
+      tariff: TariffEntity.fromJson(json['tariff'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$InsideCityEntityImplToJson(
@@ -19,5 +19,5 @@ Map<String, dynamic> _$$InsideCityEntityImplToJson(
     <String, dynamic>{
       'minPrice': instance.minPrice,
       'maxPrice': instance.maxPrice,
-      'commission': instance.commission,
+      'tariff': instance.tariff,
     };
