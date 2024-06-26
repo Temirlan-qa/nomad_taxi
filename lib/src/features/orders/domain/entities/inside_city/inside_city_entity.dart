@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../../src/core/base/base_models/base_entity.dart';
+import 'tariff_entity.dart';
 
 part 'inside_city_entity.freezed.dart';
 part 'inside_city_entity.g.dart';
@@ -10,7 +11,7 @@ class InsideCityEntity extends BaseEntity with _$InsideCityEntity {
   const factory InsideCityEntity({
     required int minPrice,
     required int maxPrice,
-    required int commission,
+    required TariffEntity tariff,
   }) = _InsideCityEntity;
 
   factory InsideCityEntity.fromJson(Map<String, dynamic> json) =>

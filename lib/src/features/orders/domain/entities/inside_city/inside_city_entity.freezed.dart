@@ -22,7 +22,7 @@ InsideCityEntity _$InsideCityEntityFromJson(Map<String, dynamic> json) {
 mixin _$InsideCityEntity {
   int get minPrice => throw _privateConstructorUsedError;
   int get maxPrice => throw _privateConstructorUsedError;
-  int get commission => throw _privateConstructorUsedError;
+  TariffEntity get tariff => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,9 @@ abstract class $InsideCityEntityCopyWith<$Res> {
           InsideCityEntity value, $Res Function(InsideCityEntity) then) =
       _$InsideCityEntityCopyWithImpl<$Res, InsideCityEntity>;
   @useResult
-  $Res call({int minPrice, int maxPrice, int commission});
+  $Res call({int minPrice, int maxPrice, TariffEntity tariff});
+
+  $TariffEntityCopyWith<$Res> get tariff;
 }
 
 /// @nodoc
@@ -54,7 +56,7 @@ class _$InsideCityEntityCopyWithImpl<$Res, $Val extends InsideCityEntity>
   $Res call({
     Object? minPrice = null,
     Object? maxPrice = null,
-    Object? commission = null,
+    Object? tariff = null,
   }) {
     return _then(_value.copyWith(
       minPrice: null == minPrice
@@ -65,11 +67,19 @@ class _$InsideCityEntityCopyWithImpl<$Res, $Val extends InsideCityEntity>
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      commission: null == commission
-          ? _value.commission
-          : commission // ignore: cast_nullable_to_non_nullable
-              as int,
+      tariff: null == tariff
+          ? _value.tariff
+          : tariff // ignore: cast_nullable_to_non_nullable
+              as TariffEntity,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TariffEntityCopyWith<$Res> get tariff {
+    return $TariffEntityCopyWith<$Res>(_value.tariff, (value) {
+      return _then(_value.copyWith(tariff: value) as $Val);
+    });
   }
 }
 
@@ -81,7 +91,10 @@ abstract class _$$InsideCityEntityImplCopyWith<$Res>
       __$$InsideCityEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int minPrice, int maxPrice, int commission});
+  $Res call({int minPrice, int maxPrice, TariffEntity tariff});
+
+  @override
+  $TariffEntityCopyWith<$Res> get tariff;
 }
 
 /// @nodoc
@@ -97,7 +110,7 @@ class __$$InsideCityEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? minPrice = null,
     Object? maxPrice = null,
-    Object? commission = null,
+    Object? tariff = null,
   }) {
     return _then(_$InsideCityEntityImpl(
       minPrice: null == minPrice
@@ -108,10 +121,10 @@ class __$$InsideCityEntityImplCopyWithImpl<$Res>
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      commission: null == commission
-          ? _value.commission
-          : commission // ignore: cast_nullable_to_non_nullable
-              as int,
+      tariff: null == tariff
+          ? _value.tariff
+          : tariff // ignore: cast_nullable_to_non_nullable
+              as TariffEntity,
     ));
   }
 }
@@ -120,9 +133,7 @@ class __$$InsideCityEntityImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InsideCityEntityImpl implements _InsideCityEntity {
   const _$InsideCityEntityImpl(
-      {required this.minPrice,
-      required this.maxPrice,
-      required this.commission});
+      {required this.minPrice, required this.maxPrice, required this.tariff});
 
   factory _$InsideCityEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$InsideCityEntityImplFromJson(json);
@@ -132,11 +143,11 @@ class _$InsideCityEntityImpl implements _InsideCityEntity {
   @override
   final int maxPrice;
   @override
-  final int commission;
+  final TariffEntity tariff;
 
   @override
   String toString() {
-    return 'InsideCityEntity(minPrice: $minPrice, maxPrice: $maxPrice, commission: $commission)';
+    return 'InsideCityEntity(minPrice: $minPrice, maxPrice: $maxPrice, tariff: $tariff)';
   }
 
   @override
@@ -148,13 +159,12 @@ class _$InsideCityEntityImpl implements _InsideCityEntity {
                 other.minPrice == minPrice) &&
             (identical(other.maxPrice, maxPrice) ||
                 other.maxPrice == maxPrice) &&
-            (identical(other.commission, commission) ||
-                other.commission == commission));
+            (identical(other.tariff, tariff) || other.tariff == tariff));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, minPrice, maxPrice, commission);
+  int get hashCode => Object.hash(runtimeType, minPrice, maxPrice, tariff);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +185,7 @@ abstract class _InsideCityEntity implements InsideCityEntity {
   const factory _InsideCityEntity(
       {required final int minPrice,
       required final int maxPrice,
-      required final int commission}) = _$InsideCityEntityImpl;
+      required final TariffEntity tariff}) = _$InsideCityEntityImpl;
 
   factory _InsideCityEntity.fromJson(Map<String, dynamic> json) =
       _$InsideCityEntityImpl.fromJson;
@@ -185,7 +195,7 @@ abstract class _InsideCityEntity implements InsideCityEntity {
   @override
   int get maxPrice;
   @override
-  int get commission;
+  TariffEntity get tariff;
   @override
   @JsonKey(ignore: true)
   _$$InsideCityEntityImplCopyWith<_$InsideCityEntityImpl> get copyWith =>
