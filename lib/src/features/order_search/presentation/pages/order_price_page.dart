@@ -29,15 +29,17 @@ class OrderPricePage extends StatefulWidget {
 
 class _OrderPricePageState extends State<OrderPricePage> {
   final TextEditingController priceController = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   bool switchState = false;
 
   final ProfileBloc profileBloc = getIt<ProfileBloc>();
 
   int bonus = 0;
-  String cashbackPercent = '+10%';
-
   int orderPrice = 800;
+
+  String cashbackPercent = '+10%';
 
   @override
   Widget build(BuildContext context) {
