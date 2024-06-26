@@ -24,7 +24,7 @@ mixin _$InsideCityDto {
   int get minPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'max_price')
   int get maxPrice => throw _privateConstructorUsedError;
-  int get commission => throw _privateConstructorUsedError;
+  TariffDto get tariff => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +41,9 @@ abstract class $InsideCityDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'min_price') int minPrice,
       @JsonKey(name: 'max_price') int maxPrice,
-      int commission});
+      TariffDto tariff});
+
+  $TariffDtoCopyWith<$Res> get tariff;
 }
 
 /// @nodoc
@@ -59,7 +61,7 @@ class _$InsideCityDtoCopyWithImpl<$Res, $Val extends InsideCityDto>
   $Res call({
     Object? minPrice = null,
     Object? maxPrice = null,
-    Object? commission = null,
+    Object? tariff = null,
   }) {
     return _then(_value.copyWith(
       minPrice: null == minPrice
@@ -70,11 +72,19 @@ class _$InsideCityDtoCopyWithImpl<$Res, $Val extends InsideCityDto>
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      commission: null == commission
-          ? _value.commission
-          : commission // ignore: cast_nullable_to_non_nullable
-              as int,
+      tariff: null == tariff
+          ? _value.tariff
+          : tariff // ignore: cast_nullable_to_non_nullable
+              as TariffDto,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TariffDtoCopyWith<$Res> get tariff {
+    return $TariffDtoCopyWith<$Res>(_value.tariff, (value) {
+      return _then(_value.copyWith(tariff: value) as $Val);
+    });
   }
 }
 
@@ -89,7 +99,10 @@ abstract class _$$InsideCityDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'min_price') int minPrice,
       @JsonKey(name: 'max_price') int maxPrice,
-      int commission});
+      TariffDto tariff});
+
+  @override
+  $TariffDtoCopyWith<$Res> get tariff;
 }
 
 /// @nodoc
@@ -105,7 +118,7 @@ class __$$InsideCityDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? minPrice = null,
     Object? maxPrice = null,
-    Object? commission = null,
+    Object? tariff = null,
   }) {
     return _then(_$InsideCityDtoImpl(
       minPrice: null == minPrice
@@ -116,10 +129,10 @@ class __$$InsideCityDtoImplCopyWithImpl<$Res>
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      commission: null == commission
-          ? _value.commission
-          : commission // ignore: cast_nullable_to_non_nullable
-              as int,
+      tariff: null == tariff
+          ? _value.tariff
+          : tariff // ignore: cast_nullable_to_non_nullable
+              as TariffDto,
     ));
   }
 }
@@ -130,7 +143,7 @@ class _$InsideCityDtoImpl implements _InsideCityDto {
   const _$InsideCityDtoImpl(
       {@JsonKey(name: 'min_price') required this.minPrice,
       @JsonKey(name: 'max_price') required this.maxPrice,
-      required this.commission});
+      required this.tariff});
 
   factory _$InsideCityDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$InsideCityDtoImplFromJson(json);
@@ -142,11 +155,11 @@ class _$InsideCityDtoImpl implements _InsideCityDto {
   @JsonKey(name: 'max_price')
   final int maxPrice;
   @override
-  final int commission;
+  final TariffDto tariff;
 
   @override
   String toString() {
-    return 'InsideCityDto(minPrice: $minPrice, maxPrice: $maxPrice, commission: $commission)';
+    return 'InsideCityDto(minPrice: $minPrice, maxPrice: $maxPrice, tariff: $tariff)';
   }
 
   @override
@@ -158,13 +171,12 @@ class _$InsideCityDtoImpl implements _InsideCityDto {
                 other.minPrice == minPrice) &&
             (identical(other.maxPrice, maxPrice) ||
                 other.maxPrice == maxPrice) &&
-            (identical(other.commission, commission) ||
-                other.commission == commission));
+            (identical(other.tariff, tariff) || other.tariff == tariff));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, minPrice, maxPrice, commission);
+  int get hashCode => Object.hash(runtimeType, minPrice, maxPrice, tariff);
 
   @JsonKey(ignore: true)
   @override
@@ -184,7 +196,7 @@ abstract class _InsideCityDto implements InsideCityDto {
   const factory _InsideCityDto(
       {@JsonKey(name: 'min_price') required final int minPrice,
       @JsonKey(name: 'max_price') required final int maxPrice,
-      required final int commission}) = _$InsideCityDtoImpl;
+      required final TariffDto tariff}) = _$InsideCityDtoImpl;
 
   factory _InsideCityDto.fromJson(Map<String, dynamic> json) =
       _$InsideCityDtoImpl.fromJson;
@@ -196,7 +208,7 @@ abstract class _InsideCityDto implements InsideCityDto {
   @JsonKey(name: 'max_price')
   int get maxPrice;
   @override
-  int get commission;
+  TariffDto get tariff;
   @override
   @JsonKey(ignore: true)
   _$$InsideCityDtoImplCopyWith<_$InsideCityDtoImpl> get copyWith =>

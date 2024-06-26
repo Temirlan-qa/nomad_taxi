@@ -34,9 +34,6 @@ class EndPoints {
           {required double lat, required double lng}) =>
       "/v1/town/by-location?lat=$lat&lng=$lng";
 
-  // Buy a Franchise
-  static const buyFranchise = '/v1/town/by-location';
-
   // Faq
   static const String getAvailableLanguages = "/v1/language";
   static const String getFaq = "/v1/faq?town_id=2";

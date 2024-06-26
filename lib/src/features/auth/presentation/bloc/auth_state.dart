@@ -11,6 +11,7 @@ class AuthState with _$AuthState {
     required AuthStateViewModel viewModel,
   }) = _Verified;
   const factory AuthState.error(String error) = _Error;
+  const factory AuthState.errorVerify(String error) = _ErrorVerify;
 }
 
 @freezed

@@ -4,6 +4,7 @@ import 'package:nomad_taxi/src/features/orders/data/models/support/support_dto.d
 import 'package:nomad_taxi/src/features/orders/data/models/town/town_dto.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/find_town_by_location_response/find_town_by_location_response.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/inside_city/inside_city_entity.dart';
+import 'package:nomad_taxi/src/features/orders/domain/entities/inside_city/tariff_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/support/support_entity.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/town/town_entity.dart';
 
@@ -17,12 +18,20 @@ class FindTownByLocationDtoMapper {
         ? InsideCityEntity(
             maxPrice: townDto.insideCity!.maxPrice,
             minPrice: townDto.insideCity!.minPrice,
-            commission: townDto.insideCity!.commission,
+            tariff: TariffEntity(
+              title: townDto.insideCity!.tariff.title,
+              description: townDto.insideCity!.tariff.description,
+              commission: townDto.insideCity!.tariff.commission,
+            ),
           )
         : const InsideCityEntity(
             maxPrice: 0,
             minPrice: 0,
-            commission: 0,
+            tariff: TariffEntity(
+              title: '',
+              description: '',
+              commission: 0,
+            ),
           );
 
     final support = supportDto != null
