@@ -8,6 +8,7 @@ import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
+import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/custom_order_price_text_field_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/info_about_order_state_widget.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/show_detailes_modal_widget.dart';
@@ -43,16 +44,29 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
 
   late int orderPrice;
 
+  int? orderMaxPrice;
+  int? orderMinPrice;
+
   final String carNumber = '987-AIB';
   final String carModel = 'Зеленый Volswagen Polo';
   final String carData = 'Зеленый Volswagen Polo, 987-AIB';
   final String driverPhone = '+7 (705) 111-11-11';
   final String driverName = "Tima";
+  final MainBloc mainBloc = getIt<MainBloc>();
 
   @override
   void initState() {
     super.initState();
     orderPrice = widget.price;
+    initPrices();
+  }
+
+  initPrices() {
+    mainBloc.state.whenOrNull(loaded: (viewModel) {
+      orderPrice = viewModel.insideCity?.minPrice ?? 800;
+      orderMinPrice = orderMinPrice ?? (viewModel.insideCity?.minPrice ?? 800);
+      orderMaxPrice = orderMaxPrice ?? viewModel.insideCity?.maxPrice;
+    });
   }
 
   @override
@@ -147,20 +161,26 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                         CustomOrderPriceTextFieldWidget(
                             controller: priceController,
                             orderPrice: orderPrice,
-                            onDecrease: orderPrice == 800
+                            onDecrease: (orderPrice <= (orderMinPrice ?? 800))
                                 ? null
                                 : () {
                                     setState(() {
-                                      orderPrice >= 800 ? orderPrice -= 100 : 0;
+                                      orderPrice >= (orderMinPrice ?? 800)
+                                          ? orderPrice -= 100
+                                          : 0;
                                       priceController.text = '$orderPrice ₸';
                                     });
                                   },
-                            onIncrease: () {
-                              setState(() {
-                                orderPrice += 100;
-                                priceController.text = '$orderPrice ₸';
-                              });
-                            }),
+                            onIncrease: orderMaxPrice != null &&
+                                    ((orderMaxPrice! - 100) < orderPrice &&
+                                        orderPrice <= orderMaxPrice!)
+                                ? null
+                                : () {
+                                    setState(() {
+                                      orderPrice += 100;
+                                      priceController.text = '$orderPrice ₸';
+                                    });
+                                  }),
                         const SizedBox(height: 10),
                         CustomMainButtonWidget(
                           title: S.current.order_details,

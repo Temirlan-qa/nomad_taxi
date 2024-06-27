@@ -8,6 +8,7 @@ import 'package:nomad_taxi/src/core/service/injectable/exports/all.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
+import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/widgets/custom_order_price_text_field_widget.dart';
 import 'package:nomad_taxi/src/features/orders/domain/entities/point/point_entity.dart';
 import 'package:nomad_taxi/src/features/orders/presentation/bloc/order_bloc.dart';
@@ -32,11 +33,27 @@ class _OrderPricePageState extends State<OrderPricePage> {
   bool switchState = false;
 
   final ProfileBloc profileBloc = getIt<ProfileBloc>();
+  final MainBloc mainBloc = getIt<MainBloc>();
 
   int bonus = 0;
   String cashbackPercent = '+10%';
 
   int orderPrice = 800;
+  int? orderMaxPrice;
+  int? orderMinPrice;
+  @override
+  void initState() {
+    super.initState();
+    initPrices();
+  }
+
+  initPrices() {
+    mainBloc.state.whenOrNull(loaded: (viewModel) {
+      orderPrice = viewModel.insideCity?.minPrice ?? 800;
+      orderMinPrice = orderMinPrice ?? (viewModel.insideCity?.minPrice ?? 800);
+      orderMaxPrice = orderMaxPrice ?? viewModel.insideCity?.maxPrice;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +72,13 @@ class _OrderPricePageState extends State<OrderPricePage> {
             children: [
               const Spacer(),
               CustomContainerWidget(
-                  onTap: () {
-                    setState(() {
-                      switchState = !switchState;
-                    });
-                  },
+                  onTap: bonus == 0
+                      ? null
+                      : () {
+                          setState(() {
+                            switchState = !switchState;
+                          });
+                        },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -80,9 +99,8 @@ class _OrderPricePageState extends State<OrderPricePage> {
                           Text(
                             profileBloc.state.whenOrNull(
                                   loaded: (viewModel) {
-                                    setState(() {
-                                      bonus = viewModel.bonus;
-                                    });
+                                    bonus = viewModel.bonus;
+
                                     return '${viewModel.bonus}';
                                   },
                                 ) ??
@@ -100,13 +118,15 @@ class _OrderPricePageState extends State<OrderPricePage> {
                         inactiveThumbColor: secondary,
                         inactiveTrackColor: context.theme.stroke,
                         value: switchState,
-                        onChanged: (val) {
-                          setState(
-                            () {
-                              switchState = val;
-                            },
-                          );
-                        },
+                        onChanged: bonus == 0
+                            ? null
+                            : (val) {
+                                setState(
+                                  () {
+                                    switchState = val;
+                                  },
+                                );
+                              },
                       ),
                     ],
                   )),
@@ -114,20 +134,26 @@ class _OrderPricePageState extends State<OrderPricePage> {
               CustomOrderPriceTextFieldWidget(
                   controller: priceController,
                   orderPrice: orderPrice,
-                  onDecrease: orderPrice == 800
+                  onDecrease: (orderPrice <= (orderMinPrice ?? 800))
                       ? null
                       : () {
                           setState(() {
-                            orderPrice >= 800 ? orderPrice -= 100 : 0;
+                            orderPrice >= (orderMinPrice ?? 800)
+                                ? orderPrice -= 100
+                                : 0;
                             priceController.text = '$orderPrice ₸';
                           });
                         },
-                  onIncrease: () {
-                    setState(() {
-                      orderPrice += 100;
-                      priceController.text = '$orderPrice ₸';
-                    });
-                  }),
+                  onIncrease: orderMaxPrice != null &&
+                          ((orderMaxPrice! - 100) < orderPrice &&
+                              orderPrice <= orderMaxPrice!)
+                      ? null
+                      : () {
+                          setState(() {
+                            orderPrice += 100;
+                            priceController.text = '$orderPrice ₸';
+                          });
+                        }),
               const Gap(UIConstants.defaultGap2),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

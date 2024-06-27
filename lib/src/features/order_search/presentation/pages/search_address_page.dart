@@ -108,8 +108,9 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                             builder: (context, searchedOrderState) {
                               return searchedOrderState.map(
                                 initial: (a) => const NoSearchedAddress(),
-                                loading: (a) =>
-                                    const CircularProgressIndicator.adaptive(),
+                                loading: (a) => const Center(
+                                    child:
+                                        CircularProgressIndicator.adaptive()),
                                 loaded: (a) {
                                   return a.viewModel.searchedOrderEntity?.data
                                               ?.length !=
