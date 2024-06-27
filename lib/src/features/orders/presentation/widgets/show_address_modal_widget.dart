@@ -12,7 +12,6 @@ import 'package:nomad_taxi/src/features/orders/domain/entities/order/order_entit
 
 import '../../../../core/router/router.dart';
 import '../../../../core/service/injectable/injectable_service.dart';
-import '../bloc/order_bloc.dart';
 
 class CustomAddressModalWidget extends StatelessWidget {
   const CustomAddressModalWidget({super.key, required this.order});
@@ -41,10 +40,15 @@ class CustomAddressModalWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(S.current.delivery, style: lableStyle),
+                    // Text(
+                    //   S.current.delivery,
+                    //   style: lableStyle,
+                    // ),
                     const Gap(UIConstants.defaultGap5),
-                    Text('${order.price} 〒',
-                        style: context.theme.textStyles.extraTitle),
+                    Text(
+                      '${order.price} 〒',
+                      style: context.theme.textStyles.extraTitle,
+                    ),
                   ],
                 ),
                 Assets.icons.solid.routeSolid1.svg(
@@ -55,8 +59,10 @@ class CustomAddressModalWidget extends StatelessWidget {
               ],
             ),
             const Divider(),
-            Text(S.current.delivery,
-                style: titleStyle.copyWith(color: context.theme.blue)),
+            // Text(
+            //   S.current.delivery,
+            //   style: titleStyle.copyWith(color: context.theme.blue),
+            // ),
             const Gap(UIConstants.defaultPadding),
             Text(S.current.where_from, style: lableStyle),
             const Gap(UIConstants.defaultGap5),
@@ -75,7 +81,8 @@ class CustomAddressModalWidget extends StatelessWidget {
             CustomMainButtonWidget(
               title: S.current.accept_order,
               onPressed: () {
-                driverOrderBloc.add(DriverOrderEvent.acceptOrder(orderId: order.id));
+                driverOrderBloc
+                    .add(DriverOrderEvent.acceptOrder(orderId: order.id));
                 context.push(
                   RoutePaths.order,
                   extra: order,

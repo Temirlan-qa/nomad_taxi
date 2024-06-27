@@ -43,6 +43,7 @@ class MainBloc extends BaseBloc<MainEvent, MainState> {
 
     if (resultData != null) {
       final data = resultData.data;
+
       return emit(
         _Loaded(
           viewModel: _viewModel.copyWith(

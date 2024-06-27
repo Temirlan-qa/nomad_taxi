@@ -11,7 +11,7 @@ class EndPoints {
   // User
   static const updateUserData = "/v1/user";
   static const getLastAddresses = "/v1/user/order/address-history";
-  static const getCashbackInfo = "/v1/user/cashback?town_id=1";
+  static String getCashbackInfo(String id) => "/v1/user/cashback?town_id=$id";
   static const updateFirebaseToken = "/v1/user/fcm-token";
   static const updateLanguage = "/v1/user/language";
 
