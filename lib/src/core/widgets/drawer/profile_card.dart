@@ -29,6 +29,12 @@ class ProfileCard extends StatelessWidget {
               initial: () =>
                   const Center(child: CircularProgressIndicator.adaptive()),
               loaded: (viewModel) {
+                final lastName = viewModel.lastName.isEmpty
+                    ? viewModel.lastName
+                    : viewModel.lastName.characters.first.toUpperCase();
+                final firstName = viewModel.firstName.isEmpty
+                    ? viewModel.firstName
+                    : viewModel.firstName.characters.first.toUpperCase();
                 return Row(
                   children: [
                     const Gap(UIConstants.defaultPadding),
@@ -36,7 +42,7 @@ class ProfileCard extends StatelessWidget {
                       radius: 28,
                       backgroundColor: context.theme.stroke,
                       child: Text(
-                        '${viewModel.lastName.characters.first.toUpperCase()}${viewModel.firstName.characters.first.toUpperCase()}',
+                        '$lastName $firstName',
                         style: context.theme.textStyles.titleSecondary,
                       ),
                     ),
