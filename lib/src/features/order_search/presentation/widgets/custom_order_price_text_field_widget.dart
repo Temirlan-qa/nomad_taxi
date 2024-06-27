@@ -6,14 +6,17 @@ import 'package:nomad_taxi/src/core/utils/formatters/price_input_formatter.dart'
 
 class CustomOrderPriceTextFieldWidget extends StatefulWidget {
   const CustomOrderPriceTextFieldWidget(
-      {super.key, required this.controller, this.orderPrice, this.onDecrease, this.onIncrease});
+      {super.key,
+      required this.controller,
+      this.orderPrice,
+      this.onDecrease,
+      this.onIncrease});
   final TextEditingController controller;
 
   final int? orderPrice;
 
   final Function()? onDecrease;
   final Function()? onIncrease;
-
 
   @override
   State<CustomOrderPriceTextFieldWidget> createState() =>
@@ -43,7 +46,6 @@ class _CustomOrderPriceTextFieldWidgetState
 
   void formatPrice() {
     setState(() {
-      orderPrice = 800;
       if (!widget.controller.text.contains('₸')) {
         widget.controller.text = '${widget.controller.text} ₸';
       } else if (widget.controller.text.isEmpty) {
@@ -73,7 +75,7 @@ class _CustomOrderPriceTextFieldWidgetState
                   width: 24,
                   height: 24,
                   colorFilter: ColorFilter.mode(
-                      orderPrice == 800
+                      widget.onDecrease == null
                           ? context.theme.secondary
                           : context.theme.red,
                       BlendMode.srcIn),
@@ -129,8 +131,11 @@ class _CustomOrderPriceTextFieldWidgetState
                 child: Assets.icons.solid.plusSolid.svg(
                   width: 24,
                   height: 24,
-                  colorFilter:
-                      ColorFilter.mode(context.theme.red, BlendMode.srcIn),
+                  colorFilter: ColorFilter.mode(
+                      widget.onIncrease == null
+                          ? context.theme.secondary
+                          : context.theme.red,
+                      BlendMode.srcIn),
                 ),
               ),
             ),

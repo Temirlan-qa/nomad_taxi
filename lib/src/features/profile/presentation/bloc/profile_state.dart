@@ -27,7 +27,7 @@ class ProfileViewModel with _$ProfileViewModel {
     String? pCarModel,
     String? pCarNumber,
     int? pTownId,
-    String? pStatus,
+    @Default('offline') String pStatus,
     int? pBalance,
     int? pBonus,
     OrderEntity? order,

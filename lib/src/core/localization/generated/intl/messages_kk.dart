@@ -167,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Келесі"),
         "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
             "Қазіргі уақытта белсенді тапсырыстар жоқ"),
+        "offline": MessageLookupByLibrary.simpleMessage("Офлайн"),
         "onMap": MessageLookupByLibrary.simpleMessage("Картада"),
         "on_line": MessageLookupByLibrary.simpleMessage("Сызықта"),
         "on_search": MessageLookupByLibrary.simpleMessage("Іздеуде"),
