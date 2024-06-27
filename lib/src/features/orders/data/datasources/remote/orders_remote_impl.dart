@@ -231,11 +231,12 @@ class OrdersRemoteImpl implements IOrdersRemote {
         data: orderDto.toJson(),
       );
 
-      final OrderEntity orderEntity = OrderEntity.fromJson(response.data['data']);
+      final OrderEntity orderEntity =
+          OrderEntity.fromJson(response.data['data']);
 
       if (response.statusCode == 200) {
         log('${response.data}', name: 'TestOrderResponse');
-        return Right(OrderResponse(order:orderEntity ));
+        return Right(OrderResponse(order: orderEntity));
       }
       return Left(UnknownException());
     } catch (error, stackTrace) {
@@ -360,7 +361,10 @@ class OrdersRemoteImpl implements IOrdersRemote {
       log(response.toString());
 
       if (response.statusCode == 200) {
-        return Right(FindTownByLocationResponseDto.fromJson(response.data));
+        final FindTownByLocationResponseDto result =
+            FindTownByLocationResponseDto.fromJson(response.data);
+        st.setTownId(result.data.id);
+        return Right(result);
       } else {
         return Left(UnknownException());
       }

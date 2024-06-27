@@ -7,6 +7,7 @@ import 'package:nomad_taxi/src/features/driver_mode/presentation/bloc/toggle_sta
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
 import 'package:nomad_taxi/src/features/main/domain/usecases/find_town_id_use_case.dart';
 import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
+import 'package:nomad_taxi/src/features/order_search/domain/usecases/get_cashback_info_use_case.dart';
 import 'package:nomad_taxi/src/features/order_search/domain/usecases/get_searched_addresses_use_case.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/bloc/searched_order_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
@@ -99,7 +100,10 @@ void manualRegisterServices() {
   );
 
   getIt.registerBloc<SearchedOrderBloc>(
-    () => SearchedOrderBloc(getIt<GetSearchedAddressesUseCase>()),
+    () => SearchedOrderBloc(
+      getIt<GetSearchedAddressesUseCase>(),
+      getIt<GetCashbackInfoUseCase>(),
+    ),
   );
   getIt.registerBloc<ToggleStatusBloc>(
     () => ToggleStatusBloc(

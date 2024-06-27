@@ -19,32 +19,38 @@ mixin _$SearchedOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getSearchedOrder,
+    required TResult Function() getCashbackInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getSearchedOrder,
+    TResult? Function()? getCashbackInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getSearchedOrder,
+    TResult Function()? getCashbackInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetSearchedOrder value) getSearchedOrder,
+    required TResult Function(_GetCashbackInfo value) getCashbackInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetSearchedOrder value)? getSearchedOrder,
+    TResult? Function(_GetCashbackInfo value)? getCashbackInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetSearchedOrder value)? getSearchedOrder,
+    TResult Function(_GetCashbackInfo value)? getCashbackInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$GetSearchedOrderImpl implements _GetSearchedOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getSearchedOrder,
+    required TResult Function() getCashbackInfo,
   }) {
     return getSearchedOrder();
   }
@@ -115,6 +122,7 @@ class _$GetSearchedOrderImpl implements _GetSearchedOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getSearchedOrder,
+    TResult? Function()? getCashbackInfo,
   }) {
     return getSearchedOrder?.call();
   }
@@ -123,6 +131,7 @@ class _$GetSearchedOrderImpl implements _GetSearchedOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getSearchedOrder,
+    TResult Function()? getCashbackInfo,
     required TResult orElse(),
   }) {
     if (getSearchedOrder != null) {
@@ -135,6 +144,7 @@ class _$GetSearchedOrderImpl implements _GetSearchedOrder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetSearchedOrder value) getSearchedOrder,
+    required TResult Function(_GetCashbackInfo value) getCashbackInfo,
   }) {
     return getSearchedOrder(this);
   }
@@ -143,6 +153,7 @@ class _$GetSearchedOrderImpl implements _GetSearchedOrder {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetSearchedOrder value)? getSearchedOrder,
+    TResult? Function(_GetCashbackInfo value)? getCashbackInfo,
   }) {
     return getSearchedOrder?.call(this);
   }
@@ -151,6 +162,7 @@ class _$GetSearchedOrderImpl implements _GetSearchedOrder {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetSearchedOrder value)? getSearchedOrder,
+    TResult Function(_GetCashbackInfo value)? getCashbackInfo,
     required TResult orElse(),
   }) {
     if (getSearchedOrder != null) {
@@ -162,6 +174,108 @@ class _$GetSearchedOrderImpl implements _GetSearchedOrder {
 
 abstract class _GetSearchedOrder implements SearchedOrderEvent {
   const factory _GetSearchedOrder() = _$GetSearchedOrderImpl;
+}
+
+/// @nodoc
+abstract class _$$GetCashbackInfoImplCopyWith<$Res> {
+  factory _$$GetCashbackInfoImplCopyWith(_$GetCashbackInfoImpl value,
+          $Res Function(_$GetCashbackInfoImpl) then) =
+      __$$GetCashbackInfoImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetCashbackInfoImplCopyWithImpl<$Res>
+    extends _$SearchedOrderEventCopyWithImpl<$Res, _$GetCashbackInfoImpl>
+    implements _$$GetCashbackInfoImplCopyWith<$Res> {
+  __$$GetCashbackInfoImplCopyWithImpl(
+      _$GetCashbackInfoImpl _value, $Res Function(_$GetCashbackInfoImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetCashbackInfoImpl implements _GetCashbackInfo {
+  const _$GetCashbackInfoImpl();
+
+  @override
+  String toString() {
+    return 'SearchedOrderEvent.getCashbackInfo()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetCashbackInfoImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getSearchedOrder,
+    required TResult Function() getCashbackInfo,
+  }) {
+    return getCashbackInfo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getSearchedOrder,
+    TResult? Function()? getCashbackInfo,
+  }) {
+    return getCashbackInfo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getSearchedOrder,
+    TResult Function()? getCashbackInfo,
+    required TResult orElse(),
+  }) {
+    if (getCashbackInfo != null) {
+      return getCashbackInfo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetSearchedOrder value) getSearchedOrder,
+    required TResult Function(_GetCashbackInfo value) getCashbackInfo,
+  }) {
+    return getCashbackInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetSearchedOrder value)? getSearchedOrder,
+    TResult? Function(_GetCashbackInfo value)? getCashbackInfo,
+  }) {
+    return getCashbackInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetSearchedOrder value)? getSearchedOrder,
+    TResult Function(_GetCashbackInfo value)? getCashbackInfo,
+    required TResult orElse(),
+  }) {
+    if (getCashbackInfo != null) {
+      return getCashbackInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetCashbackInfo implements SearchedOrderEvent {
+  const factory _GetCashbackInfo() = _$GetCashbackInfoImpl;
 }
 
 /// @nodoc
@@ -601,6 +715,7 @@ abstract class _Loaded implements SearchedOrderState {
 mixin _$SearchedOrderViewModel {
   SearchedOrderEntity? get searchedOrderEntity =>
       throw _privateConstructorUsedError;
+  CashbackInfo? get cashbackInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchedOrderViewModelCopyWith<SearchedOrderViewModel> get copyWith =>
@@ -613,9 +728,11 @@ abstract class $SearchedOrderViewModelCopyWith<$Res> {
           $Res Function(SearchedOrderViewModel) then) =
       _$SearchedOrderViewModelCopyWithImpl<$Res, SearchedOrderViewModel>;
   @useResult
-  $Res call({SearchedOrderEntity? searchedOrderEntity});
+  $Res call(
+      {SearchedOrderEntity? searchedOrderEntity, CashbackInfo? cashbackInfo});
 
   $SearchedOrderEntityCopyWith<$Res>? get searchedOrderEntity;
+  $CashbackInfoCopyWith<$Res>? get cashbackInfo;
 }
 
 /// @nodoc
@@ -633,12 +750,17 @@ class _$SearchedOrderViewModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? searchedOrderEntity = freezed,
+    Object? cashbackInfo = freezed,
   }) {
     return _then(_value.copyWith(
       searchedOrderEntity: freezed == searchedOrderEntity
           ? _value.searchedOrderEntity
           : searchedOrderEntity // ignore: cast_nullable_to_non_nullable
               as SearchedOrderEntity?,
+      cashbackInfo: freezed == cashbackInfo
+          ? _value.cashbackInfo
+          : cashbackInfo // ignore: cast_nullable_to_non_nullable
+              as CashbackInfo?,
     ) as $Val);
   }
 
@@ -654,6 +776,18 @@ class _$SearchedOrderViewModelCopyWithImpl<$Res,
       return _then(_value.copyWith(searchedOrderEntity: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CashbackInfoCopyWith<$Res>? get cashbackInfo {
+    if (_value.cashbackInfo == null) {
+      return null;
+    }
+
+    return $CashbackInfoCopyWith<$Res>(_value.cashbackInfo!, (value) {
+      return _then(_value.copyWith(cashbackInfo: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -665,10 +799,13 @@ abstract class _$$SearchedOrderViewModelImplCopyWith<$Res>
       __$$SearchedOrderViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SearchedOrderEntity? searchedOrderEntity});
+  $Res call(
+      {SearchedOrderEntity? searchedOrderEntity, CashbackInfo? cashbackInfo});
 
   @override
   $SearchedOrderEntityCopyWith<$Res>? get searchedOrderEntity;
+  @override
+  $CashbackInfoCopyWith<$Res>? get cashbackInfo;
 }
 
 /// @nodoc
@@ -685,12 +822,17 @@ class __$$SearchedOrderViewModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchedOrderEntity = freezed,
+    Object? cashbackInfo = freezed,
   }) {
     return _then(_$SearchedOrderViewModelImpl(
       searchedOrderEntity: freezed == searchedOrderEntity
           ? _value.searchedOrderEntity
           : searchedOrderEntity // ignore: cast_nullable_to_non_nullable
               as SearchedOrderEntity?,
+      cashbackInfo: freezed == cashbackInfo
+          ? _value.cashbackInfo
+          : cashbackInfo // ignore: cast_nullable_to_non_nullable
+              as CashbackInfo?,
     ));
   }
 }
@@ -698,14 +840,16 @@ class __$$SearchedOrderViewModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SearchedOrderViewModelImpl implements _SearchedOrderViewModel {
-  _$SearchedOrderViewModelImpl({this.searchedOrderEntity});
+  _$SearchedOrderViewModelImpl({this.searchedOrderEntity, this.cashbackInfo});
 
   @override
   final SearchedOrderEntity? searchedOrderEntity;
+  @override
+  final CashbackInfo? cashbackInfo;
 
   @override
   String toString() {
-    return 'SearchedOrderViewModel(searchedOrderEntity: $searchedOrderEntity)';
+    return 'SearchedOrderViewModel(searchedOrderEntity: $searchedOrderEntity, cashbackInfo: $cashbackInfo)';
   }
 
   @override
@@ -714,11 +858,14 @@ class _$SearchedOrderViewModelImpl implements _SearchedOrderViewModel {
         (other.runtimeType == runtimeType &&
             other is _$SearchedOrderViewModelImpl &&
             (identical(other.searchedOrderEntity, searchedOrderEntity) ||
-                other.searchedOrderEntity == searchedOrderEntity));
+                other.searchedOrderEntity == searchedOrderEntity) &&
+            (identical(other.cashbackInfo, cashbackInfo) ||
+                other.cashbackInfo == cashbackInfo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, searchedOrderEntity);
+  int get hashCode =>
+      Object.hash(runtimeType, searchedOrderEntity, cashbackInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -730,11 +877,13 @@ class _$SearchedOrderViewModelImpl implements _SearchedOrderViewModel {
 
 abstract class _SearchedOrderViewModel implements SearchedOrderViewModel {
   factory _SearchedOrderViewModel(
-          {final SearchedOrderEntity? searchedOrderEntity}) =
-      _$SearchedOrderViewModelImpl;
+      {final SearchedOrderEntity? searchedOrderEntity,
+      final CashbackInfo? cashbackInfo}) = _$SearchedOrderViewModelImpl;
 
   @override
   SearchedOrderEntity? get searchedOrderEntity;
+  @override
+  CashbackInfo? get cashbackInfo;
   @override
   @JsonKey(ignore: true)
   _$$SearchedOrderViewModelImplCopyWith<_$SearchedOrderViewModelImpl>

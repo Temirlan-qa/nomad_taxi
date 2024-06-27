@@ -176,51 +176,46 @@ class _DriverMainPageState extends State<DriverMainPage> {
                           )),
                       const Gap(UIConstants.defaultGap1),
                       CustomContainerWidget(
-                          onTap: () {
-                            _toggleStatusBloc.add(
-                                const ToggleStatusEvent.togglePartnerStatus());
-                            // setState(() {
-                            //   switchState = !switchState;
-                            // });
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(S.current.on_line,
-                                      style: context.theme.textStyles.headLine),
-                                  const Gap(UIConstants.defaultGap5),
-                                  Text(
-                                    S.current.active,
-                                    style: bodyMain.copyWith(
-                                        color: context.theme.green),
-                                  ),
-                                ],
-                              ),
-                              Switch(
-                                focusColor: secondary,
-                                hoverColor: secondary,
-                                activeTrackColor: secondary,
-                                activeColor: context.theme.primary,
-                                inactiveThumbColor: secondary,
-                                inactiveTrackColor: context.theme.stroke,
-                                value: switchState,
-                                onChanged: (val) {
-                                  _driverOrderBloc
-                                      .add(const DriverOrderEvent.getOrders());
+                        onTap: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  S.current.on_line,
+                                  style: context.theme.textStyles.headLine,
+                                ),
+                                const Gap(UIConstants.defaultGap5),
+                                Text(
+                                  switchState
+                                      ? S.current.offline
+                                      : S.current.active,
+                                  style: bodyMain.copyWith(
+                                      color: context.theme.green),
+                                ),
+                              ],
+                            ),
+                            Switch(
+                              focusColor: secondary,
+                              hoverColor: secondary,
+                              activeTrackColor: secondary,
+                              activeColor: context.theme.primary,
+                              inactiveThumbColor: secondary,
+                              inactiveTrackColor: context.theme.stroke,
+                              value: switchState,
+                              onChanged: (val) {
+                                _driverOrderBloc
+                                    .add(const DriverOrderEvent.getOrders());
 
-                                  _toggleStatusBloc.add(const ToggleStatusEvent
-                                      .togglePartnerStatus());
-
-                                  // setState(() {
-                                  //   switchState = val;
-                                  // });
-                                },
-                              )
-                            ],
-                          )),
+                                _toggleStatusBloc.add(const ToggleStatusEvent
+                                    .togglePartnerStatus());
+                              },
+                            )
+                          ],
+                        ),
+                      ),
                       const Gap(UIConstants.defaultGap3),
                       CustomContainerWidget(
                         onTap: !switchState
