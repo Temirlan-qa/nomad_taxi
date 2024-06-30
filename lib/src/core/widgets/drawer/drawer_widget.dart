@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nomad_taxi/src/core/base/base_bloc/bloc/base_bloc_widget.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
+import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/drawer_tile.dart';
 import 'package:nomad_taxi/src/core/widgets/drawer/profile_card.dart';
 import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
 import 'package:nomad_taxi/src/features/main/presentation/widgets/custom_drawer_bottom_widgets.dart';
+import 'package:nomad_taxi/src/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -45,6 +48,59 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   const ProfileCard(),
                   const Gap(UIConstants.defaultGap2),
                   //
+                  widget.isDriverMode
+                      ? BaseBlocWidget<ProfileBloc, ProfileEvent, ProfileState>(
+                          bloc: getIt<ProfileBloc>(),
+                          builder: (context, state, bloc) {
+                            return state.when(
+                                initial: () => const Offstage(),
+                                loaded: (viewModel) => Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          UIConstants.defaultPadding,
+                                          0,
+                                          UIConstants.defaultPadding,
+                                          UIConstants.defaultGap3),
+                                      child: CustomContainerWidget(
+                                          onTap: () {
+                                            context.pushNamed(
+                                                RouteNames.transferMoney);
+                                          },
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                S.current.your_account,
+                                                style: context
+                                                    .theme.textStyles.bodyMain
+                                                    .copyWith(
+                                                        color: context
+                                                            .theme.secondary),
+                                              ),
+                                              const Gap(
+                                                  UIConstants.defaultGap7),
+                                              Text(
+                                                '${viewModel.pBalance ?? 0}',
+                                                style: context
+                                                    .theme.textStyles.titleMain,
+                                              ),
+                                              const Gap(
+                                                  UIConstants.defaultGap2),
+                                              Text(
+                                                S.current.recharge_account,
+                                                style: context
+                                                    .theme.textStyles.headLine
+                                                    .copyWith(
+                                                        color:
+                                                            context.theme.red),
+                                              ),
+                                            ],
+                                          )),
+                                    ));
+                          },
+                        )
+                      : const Offstage(),
                   DrawerTile(
                     title: S.current.main,
                     onTap: () {

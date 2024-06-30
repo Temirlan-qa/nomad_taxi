@@ -1,7 +1,4 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
@@ -20,6 +17,13 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "Flutter (iPhone 15 Pro Max)",
+            "program": "lib/main.dart",
+            "deviceId": "B0F809AC-EA37-4451-826B-3D6A1A9C2572",
+            "request": "launch",
+            "type": "dart"
         }
     ]
 }

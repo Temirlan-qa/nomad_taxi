@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nomad_taxi/src/core/api/client/endpoints.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
 import 'package:nomad_taxi/src/core/router/router.dart';
@@ -9,6 +10,7 @@ import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/toggle_widget.dart';
 import 'package:nomad_taxi/src/features/auth/presentation/widgets/custom_main_bottom_widgets.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class PolicyPage extends StatefulWidget {
   const PolicyPage({super.key});
@@ -19,28 +21,33 @@ class PolicyPage extends StatefulWidget {
 
 class _PolicyPageState extends State<PolicyPage> {
   bool isAgreeWithPolicy = false;
+  bool isLoading = true;
+  bool isPageFinished = false;
+  late final WebViewController _controller;
 
-// TODO: temp text
-  String temp =
-      '''Тут будет текст политики конфиденциальности. А так же различные под пункты и условия с которым должны ознакомиться пользователи перед пользованием сервиса
+  @override
+  void initState() {
+    super.initState();
+    initializeWebView();
+  }
 
-Пункт один. Изгаляется что это важно и нужно к прочтению
-Пункт два. Изгаляется что это важно и нужно к прочтению
-''';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: ListView(
-        padding: const EdgeInsets.all(UIConstants.defaultPadding2),
-        physics: const BouncingScrollPhysics(),
+          child: Stack(
         children: [
-          Text(
-            S.current.privacy_policy,
-            style: context.theme.textStyles.extraTitle,
-          ),
-          const Gap(UIConstants.defaultGap3),
-          Text(temp * 20, style: context.theme.textStyles.bodyMain),
+          WebViewWidget(controller: _controller),
+          Positioned.fill(
+              child: Center(
+            child: AnimatedCrossFade(
+                firstChild: const CircularProgressIndicator.adaptive(),
+                secondChild: const Offstage(),
+                crossFadeState: isLoading
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
+                duration: Durations.medium1),
+          ))
         ],
       )),
       bottomNavigationBar: CustomMainBottomWidgets(
@@ -48,11 +55,13 @@ class _PolicyPageState extends State<PolicyPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomContainerWidget(
-              onTap: () {
-                setState(() {
-                  isAgreeWithPolicy = !isAgreeWithPolicy;
-                });
-              },
+              onTap: !isPageFinished
+                  ? null
+                  : () {
+                      setState(() {
+                        isAgreeWithPolicy = !isAgreeWithPolicy;
+                      });
+                    },
               child: Row(
                 children: [
                   Expanded(
@@ -68,7 +77,6 @@ class _PolicyPageState extends State<PolicyPage> {
               title: S.current.next,
               onPressed: isAgreeWithPolicy
                   ? () {
-                      //TODO: refactor auth route logic
                       while (context.canPop()) {
                         context.pop();
                       }
@@ -80,5 +88,47 @@ class _PolicyPageState extends State<PolicyPage> {
         ),
       ),
     );
+  }
+
+  void initializeWebView() async {
+    final WebViewController controller = WebViewController();
+    controller
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            setState(() {
+              progress == 100 ? isLoading = false : isLoading = true;
+            });
+          },
+          onPageStarted: (String url) {
+            isPageFinished = false;
+            _controller.enableZoom(false);
+            _controller.runJavaScript("""
+            document.documentElement.style['userSelect'] = 'none';
+            document.documentElement.style['-webkit-user-select'] = 'none';
+            document.documentElement.style['-moz-user-select'] = 'none';
+            document.documentElement.style['-ms-user-select'] = 'none';
+            document.documentElement.style['user-select'] = 'none';
+          """);
+          },
+          onPageFinished: (String url) {
+            isPageFinished = true;
+            _controller.enableZoom(false);
+            _controller.runJavaScript("""
+            document.documentElement.style['userSelect'] = 'none';
+            document.documentElement.style['-webkit-user-select'] = 'none';
+            document.documentElement.style['-moz-user-select'] = 'none';
+            document.documentElement.style['-ms-user-select'] = 'none';
+            document.documentElement.style['user-select'] = 'none';
+          """);
+          },
+          onNavigationRequest: (NavigationRequest request) async {
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(EndPoints.privacy));
+    _controller = controller;
   }
 }
