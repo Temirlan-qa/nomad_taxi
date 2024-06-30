@@ -39,7 +39,7 @@ abstract class IOrdersRepository {
     CreateOrderRequest request,
   );
 
-  Future<Either<DomainException, CreateOrderResponse>> getOrder(
+  Future<Either<DomainException, OrderResponse>> getOrder(
     OrderRequest order,
   );
 

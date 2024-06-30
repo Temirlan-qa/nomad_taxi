@@ -36,21 +36,19 @@ class OrderDtoMapper {
 
     final PartnerDto? partnerDto = dto.partner;
     final Partner partner = Partner(
-      id: partnerDto?.id,
-      firstName: partnerDto?.firstName,
-      carModel: partnerDto?.carModel,
-      townId: partnerDto?.townId,
-      carNumber: partnerDto?.carNumber,
-      lastName: partnerDto?.lastName,
-      status: partnerDto?.status,
-      finance: finance,
+
+      firstName: 'partnerDto?.firstName',
+      carModel: 'partnerDto?.carModel',
+      carNumber: 'partnerDto?.carNumber',
+      lastName:' partnerDto?.lastName', phone: '',
+  
     );
     return OrderEntity(
-      id: dto.id,
+      id: dto.id?? 0,
       startPoint: dto.startPoint,
       endPoint: dto.endPoint,
       routeType: '',
-      price: dto.price,
+      price: dto.price ?? 0,
       comment: dto.comment,
       status: dto.status,
       hasRoute: dto.hasRoute,

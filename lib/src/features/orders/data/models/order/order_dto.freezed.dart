@@ -20,14 +20,15 @@ OrderDto _$OrderDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderDto {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_point')
   String get startPoint => throw _privateConstructorUsedError;
   @JsonKey(name: 'end_point')
   String get endPoint => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'has_route')
   bool get hasRoute => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
@@ -54,12 +55,13 @@ abstract class $OrderDtoCopyWith<$Res> {
       _$OrderDtoCopyWithImpl<$Res, OrderDto>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       @JsonKey(name: 'start_point') String startPoint,
       @JsonKey(name: 'end_point') String endPoint,
-      int price,
+      int? price,
       String? comment,
       String? status,
+      String? type,
       @JsonKey(name: 'has_route') bool hasRoute,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'pay_method') PayMethodDto? payMethod,
@@ -86,12 +88,13 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? startPoint = null,
     Object? endPoint = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? comment = freezed,
     Object? status = freezed,
+    Object? type = freezed,
     Object? hasRoute = null,
     Object? createdAt = null,
     Object? payMethod = freezed,
@@ -102,10 +105,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
     Object? points = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -114,10 +117,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
           ? _value.endPoint
           : endPoint // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       comment: freezed == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -125,6 +128,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       hasRoute: null == hasRoute
           ? _value.hasRoute
@@ -195,12 +202,13 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       @JsonKey(name: 'start_point') String startPoint,
       @JsonKey(name: 'end_point') String endPoint,
-      int price,
+      int? price,
       String? comment,
       String? status,
+      String? type,
       @JsonKey(name: 'has_route') bool hasRoute,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'pay_method') PayMethodDto? payMethod,
@@ -227,12 +235,13 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? startPoint = null,
     Object? endPoint = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? comment = freezed,
     Object? status = freezed,
+    Object? type = freezed,
     Object? hasRoute = null,
     Object? createdAt = null,
     Object? payMethod = freezed,
@@ -243,10 +252,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
     Object? points = null,
   }) {
     return _then(_$OrderDtoImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       startPoint: null == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
@@ -255,10 +264,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
           ? _value.endPoint
           : endPoint // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       comment: freezed == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -266,6 +275,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       hasRoute: null == hasRoute
           ? _value.hasRoute
@@ -307,12 +320,13 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderDtoImpl implements _OrderDto {
   const _$OrderDtoImpl(
-      {required this.id,
+      {this.id,
       @JsonKey(name: 'start_point') required this.startPoint,
       @JsonKey(name: 'end_point') required this.endPoint,
-      required this.price,
+      this.price,
       this.comment,
       this.status,
+      this.type,
       @JsonKey(name: 'has_route') this.hasRoute = false,
       @JsonKey(name: 'created_at') this.createdAt = '',
       @JsonKey(name: 'pay_method') this.payMethod,
@@ -327,7 +341,7 @@ class _$OrderDtoImpl implements _OrderDto {
       _$$OrderDtoImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   @JsonKey(name: 'start_point')
   final String startPoint;
@@ -335,11 +349,13 @@ class _$OrderDtoImpl implements _OrderDto {
   @JsonKey(name: 'end_point')
   final String endPoint;
   @override
-  final int price;
+  final int? price;
   @override
   final String? comment;
   @override
   final String? status;
+  @override
+  final String? type;
   @override
   @JsonKey(name: 'has_route')
   final bool hasRoute;
@@ -372,7 +388,7 @@ class _$OrderDtoImpl implements _OrderDto {
 
   @override
   String toString() {
-    return 'OrderDto(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, hasRoute: $hasRoute, createdAt: $createdAt, payMethod: $payMethod, waitingTime: $waitingTime, partner: $partner, phone: $phone, townId: $townId, points: $points)';
+    return 'OrderDto(id: $id, startPoint: $startPoint, endPoint: $endPoint, price: $price, comment: $comment, status: $status, type: $type, hasRoute: $hasRoute, createdAt: $createdAt, payMethod: $payMethod, waitingTime: $waitingTime, partner: $partner, phone: $phone, townId: $townId, points: $points)';
   }
 
   @override
@@ -388,6 +404,7 @@ class _$OrderDtoImpl implements _OrderDto {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.hasRoute, hasRoute) ||
                 other.hasRoute == hasRoute) &&
             (identical(other.createdAt, createdAt) ||
@@ -412,6 +429,7 @@ class _$OrderDtoImpl implements _OrderDto {
       price,
       comment,
       status,
+      type,
       hasRoute,
       createdAt,
       payMethod,
@@ -437,12 +455,13 @@ class _$OrderDtoImpl implements _OrderDto {
 
 abstract class _OrderDto implements OrderDto {
   const factory _OrderDto(
-      {required final int id,
+      {final int? id,
       @JsonKey(name: 'start_point') required final String startPoint,
       @JsonKey(name: 'end_point') required final String endPoint,
-      required final int price,
+      final int? price,
       final String? comment,
       final String? status,
+      final String? type,
       @JsonKey(name: 'has_route') final bool hasRoute,
       @JsonKey(name: 'created_at') final String createdAt,
       @JsonKey(name: 'pay_method') final PayMethodDto? payMethod,
@@ -456,7 +475,7 @@ abstract class _OrderDto implements OrderDto {
       _$OrderDtoImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   @JsonKey(name: 'start_point')
   String get startPoint;
@@ -464,11 +483,13 @@ abstract class _OrderDto implements OrderDto {
   @JsonKey(name: 'end_point')
   String get endPoint;
   @override
-  int get price;
+  int? get price;
   @override
   String? get comment;
   @override
   String? get status;
+  @override
+  String? get type;
   @override
   @JsonKey(name: 'has_route')
   bool get hasRoute;

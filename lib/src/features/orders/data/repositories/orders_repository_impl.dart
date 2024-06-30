@@ -47,6 +47,27 @@ class OrdersRepositoryImpl implements IOrdersRepository {
     }
   }
 
+    @override
+  Future<Either<DomainException, OrderResponse>> getOrder(
+      OrderRequest order) async {
+    try {
+      final requests = await _ordersImpl.getOrder(order);
+
+      return requests.fold(
+        (error) => Left(error),
+        (response) {
+          final OrderEntity? entity = response.order;
+
+          return Right(response);
+        },
+      );
+    } catch (e) {
+      Log.e(e);
+      return Left(UnknownException(message: e.toString()));
+    }
+  }
+
+
   @override
   Future<Either<DomainException, void>> cancelOrder(OrderRequest order) async {
     return _ordersImpl.cancelOrder(order);
@@ -150,23 +171,6 @@ class OrdersRepositoryImpl implements IOrdersRepository {
         (error) => Left(error),
         (result) {
           return Right(DeleteOrderResponse.fromJson(result.toJson()));
-        },
-      );
-    } catch (e) {
-      Log.e(e);
-      return Left(UnknownException(message: e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<DomainException, CreateOrderResponse>> getOrder(
-      OrderRequest order) async {
-    try {
-      final requests = await _ordersImpl.getOrder(order);
-      return requests.fold(
-        (error) => Left(error),
-        (result) {
-          return Right(CreateOrderResponse.fromJson(result.toJson()));
         },
       );
     } catch (e) {

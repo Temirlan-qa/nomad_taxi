@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +7,7 @@ import 'package:nomad_taxi/gen/assets.gen.dart';
 import 'package:nomad_taxi/src/core/constants/ui_constants.dart';
 import 'package:nomad_taxi/src/core/enums/enums.dart';
 import 'package:nomad_taxi/src/core/localization/generated/l10n.dart';
+import 'package:nomad_taxi/src/core/router/router.dart';
 import 'package:nomad_taxi/src/core/theme/theme.dart';
 import 'package:nomad_taxi/src/core/widgets/buttons/main_button_widget.dart';
 import 'package:nomad_taxi/src/core/widgets/custom_container_widget.dart';
@@ -23,8 +26,10 @@ class OrderSearchPage extends StatefulWidget {
     required this.price,
     required this.whereFrom,
     required this.whereTo,
+    required this.id,
   });
 
+  final int id;
   final int price;
   final String whereTo;
   final String whereFrom;
@@ -121,7 +126,7 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
 
     return BaseBlocWidget<OrderBloc, OrderEvent, OrderState>(
       bloc: getIt<OrderBloc>(),
-      starterEvent: const OrderEvent.started(),
+      starterEvent: OrderEvent.started(id: widget.id),
       builder: (context, state, bloc) {
         return Scaffold(
           body: SafeArea(
@@ -190,12 +195,15 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                   },
                   loaded: (OrderViewModel viewModel) {
                     final orderAccepted = viewModel.orderAccepted;
+                    OrderStateEnum orderStatus =
+                        OrderStateEnum.fromString(viewModel.orderStatus ?? '');
+
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Spacer(),
                         InfoAboutOrderStateWidget(
-                          state: OrderStateEnum.accepted,
+                          state: orderStatus,
                           waitingTime: orderAccepted?.waitingTime,
                         ),
                         const Spacer(),
@@ -327,7 +335,12 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                                     title: S.current.close,
                                     isMain: false,
                                     onPressed: () {
-                                      context.pop();
+                                      if (orderAccepted != null) {
+                                        context.pop(RouteNames.main);
+                                      } else{
+                                       context.pop();
+                                      }
+                                     
                                     },
                                   )
                                 : CustomMainButtonWidget(
@@ -335,7 +348,11 @@ class _OrderSearchPageState extends State<OrderSearchPage> {
                                     isMain: false,
                                     color: context.theme.red,
                                     onPressed: () {
-                                      context.pop();
+                                       if (orderAccepted != null) {
+                                        context.pop(RouteNames.main);
+                                      } else{
+                                       context.pop();
+                                      }
                                     },
                                   ),
                           ),

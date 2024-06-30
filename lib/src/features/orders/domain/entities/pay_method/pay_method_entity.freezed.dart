@@ -20,7 +20,9 @@ PayMethodEntity _$PayMethodEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PayMethodEntity {
+  @JsonKey(name: 'by_cash')
   int get byCash => throw _privateConstructorUsedError;
+  @JsonKey(name: 'by_bonus')
   int get byBonus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +37,9 @@ abstract class $PayMethodEntityCopyWith<$Res> {
           PayMethodEntity value, $Res Function(PayMethodEntity) then) =
       _$PayMethodEntityCopyWithImpl<$Res, PayMethodEntity>;
   @useResult
-  $Res call({int byCash, int byBonus});
+  $Res call(
+      {@JsonKey(name: 'by_cash') int byCash,
+      @JsonKey(name: 'by_bonus') int byBonus});
 }
 
 /// @nodoc
@@ -75,7 +79,9 @@ abstract class _$$PayMethodEntityImplCopyWith<$Res>
       __$$PayMethodEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int byCash, int byBonus});
+  $Res call(
+      {@JsonKey(name: 'by_cash') int byCash,
+      @JsonKey(name: 'by_bonus') int byBonus});
 }
 
 /// @nodoc
@@ -108,16 +114,18 @@ class __$$PayMethodEntityImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PayMethodEntityImpl implements _PayMethodEntity {
-  const _$PayMethodEntityImpl({this.byCash = 0, this.byBonus = 0});
+  const _$PayMethodEntityImpl(
+      {@JsonKey(name: 'by_cash') required this.byCash,
+      @JsonKey(name: 'by_bonus') required this.byBonus});
 
   factory _$PayMethodEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$PayMethodEntityImplFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: 'by_cash')
   final int byCash;
   @override
-  @JsonKey()
+  @JsonKey(name: 'by_bonus')
   final int byBonus;
 
   @override
@@ -154,15 +162,19 @@ class _$PayMethodEntityImpl implements _PayMethodEntity {
 }
 
 abstract class _PayMethodEntity implements PayMethodEntity {
-  const factory _PayMethodEntity({final int byCash, final int byBonus}) =
+  const factory _PayMethodEntity(
+          {@JsonKey(name: 'by_cash') required final int byCash,
+          @JsonKey(name: 'by_bonus') required final int byBonus}) =
       _$PayMethodEntityImpl;
 
   factory _PayMethodEntity.fromJson(Map<String, dynamic> json) =
       _$PayMethodEntityImpl.fromJson;
 
   @override
+  @JsonKey(name: 'by_cash')
   int get byCash;
   @override
+  @JsonKey(name: 'by_bonus')
   int get byBonus;
   @override
   @JsonKey(ignore: true)

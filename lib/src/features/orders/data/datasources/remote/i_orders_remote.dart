@@ -40,7 +40,7 @@ abstract class IOrdersRemote {
     CreateOrderRequest request,
   );
 
-  Future<Either<DomainException, CreateOrderResponseDto>> getOrder(
+  Future<Either<DomainException, OrderResponse>> getOrder(
     OrderRequest order,
   );
 

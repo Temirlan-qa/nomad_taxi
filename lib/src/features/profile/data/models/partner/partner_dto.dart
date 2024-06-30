@@ -9,7 +9,7 @@ part 'partner_dto.g.dart';
 @freezed
 class PartnerDto extends BaseDto with _$PartnerDto {
   const factory PartnerDto({
-    required int id,
+    int? id,
     @JsonKey(name: 'first_name') required String firstName,
     @JsonKey(name: 'last_name') required String lastName,
     @JsonKey(name: 'car_model') required String carModel,

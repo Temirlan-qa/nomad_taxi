@@ -104,7 +104,6 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   }
 
   Future<void> _orderAccepted(_OrderAccepted event, emit) async {
-
     final OrderEntity activeOrder = event.order;
 
     emit(_Loaded(viewModel: _viewModel.copyWith(order: activeOrder)));
