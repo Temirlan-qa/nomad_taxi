@@ -11,6 +11,8 @@ class SearchedOrderState with _$SearchedOrderState {
 
 @freezed
 class SearchedOrderViewModel with _$SearchedOrderViewModel {
-  factory SearchedOrderViewModel({SearchedOrderEntity? searchedOrderEntity}) =
-      _SearchedOrderViewModel;
+  factory SearchedOrderViewModel({
+    SearchedOrderEntity? searchedOrderEntity,
+    CashbackInfo? cashbackInfo,
+  }) = _SearchedOrderViewModel;
 }

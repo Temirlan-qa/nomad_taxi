@@ -5,6 +5,8 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.init() = _Init;
   const factory ProfileEvent.logOut() = _LogOut;
   const factory ProfileEvent.deleteAccount() = _DeleteAccount;
+  const factory ProfileEvent.refresh(
+      {required ToggleStatusViewModel viewModel}) = _RefreshProfile;
   const factory ProfileEvent.updateUserInfo({
     required String name,
     required String lastName,

@@ -22,6 +22,7 @@ class StorageServiceImpl implements StorageService {
   static const String _refreshTokenKey = 'REFRESH_TOKEN';
   static const String _languageCode = 'LANGUAGE_CODE';
   static const String _currentOrderKey = 'CURRENT_ORDER';
+  static const String _townIdKey = 'TOWN_ID';
 
   late Box hiveBox;
 
@@ -29,6 +30,16 @@ class StorageServiceImpl implements StorageService {
   Future<void> setToken(String? token) async {
     log('$token', name: 'ACCESS_TOKEN');
     await hiveBox.put(_tokenKey, token);
+  }
+
+  @override
+  Future<void> setTownId(int id) async {
+    await hiveBox.put(_townIdKey, id);
+  }
+
+  @override
+  int? getTownId() {
+    return hiveBox.get(_townIdKey);
   }
 
   @override

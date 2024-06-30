@@ -21,6 +21,7 @@ mixin _$ProfileEvent {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -34,6 +35,7 @@ mixin _$ProfileEvent {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -46,6 +48,7 @@ mixin _$ProfileEvent {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -59,6 +62,7 @@ mixin _$ProfileEvent {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -71,6 +75,7 @@ mixin _$ProfileEvent {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -83,6 +88,7 @@ mixin _$ProfileEvent {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -151,6 +157,7 @@ class _$InitImpl implements _Init {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -167,6 +174,7 @@ class _$InitImpl implements _Init {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -182,6 +190,7 @@ class _$InitImpl implements _Init {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -201,6 +210,7 @@ class _$InitImpl implements _Init {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -216,6 +226,7 @@ class _$InitImpl implements _Init {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -231,6 +242,7 @@ class _$InitImpl implements _Init {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -290,6 +302,7 @@ class _$LogOutImpl implements _LogOut {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -306,6 +319,7 @@ class _$LogOutImpl implements _LogOut {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -321,6 +335,7 @@ class _$LogOutImpl implements _LogOut {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -340,6 +355,7 @@ class _$LogOutImpl implements _LogOut {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -355,6 +371,7 @@ class _$LogOutImpl implements _LogOut {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -370,6 +387,7 @@ class _$LogOutImpl implements _LogOut {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -429,6 +447,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -445,6 +464,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -460,6 +480,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -479,6 +500,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -494,6 +516,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -509,6 +532,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -525,6 +549,195 @@ class _$DeleteAccountImpl implements _DeleteAccount {
 
 abstract class _DeleteAccount implements ProfileEvent {
   const factory _DeleteAccount() = _$DeleteAccountImpl;
+}
+
+/// @nodoc
+abstract class _$$RefreshProfileImplCopyWith<$Res> {
+  factory _$$RefreshProfileImplCopyWith(_$RefreshProfileImpl value,
+          $Res Function(_$RefreshProfileImpl) then) =
+      __$$RefreshProfileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ToggleStatusViewModel viewModel});
+
+  $ToggleStatusViewModelCopyWith<$Res> get viewModel;
+}
+
+/// @nodoc
+class __$$RefreshProfileImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$RefreshProfileImpl>
+    implements _$$RefreshProfileImplCopyWith<$Res> {
+  __$$RefreshProfileImplCopyWithImpl(
+      _$RefreshProfileImpl _value, $Res Function(_$RefreshProfileImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? viewModel = null,
+  }) {
+    return _then(_$RefreshProfileImpl(
+      viewModel: null == viewModel
+          ? _value.viewModel
+          : viewModel // ignore: cast_nullable_to_non_nullable
+              as ToggleStatusViewModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ToggleStatusViewModelCopyWith<$Res> get viewModel {
+    return $ToggleStatusViewModelCopyWith<$Res>(_value.viewModel, (value) {
+      return _then(_value.copyWith(viewModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$RefreshProfileImpl implements _RefreshProfile {
+  const _$RefreshProfileImpl({required this.viewModel});
+
+  @override
+  final ToggleStatusViewModel viewModel;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.refresh(viewModel: $viewModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RefreshProfileImpl &&
+            (identical(other.viewModel, viewModel) ||
+                other.viewModel == viewModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, viewModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RefreshProfileImplCopyWith<_$RefreshProfileImpl> get copyWith =>
+      __$$RefreshProfileImplCopyWithImpl<_$RefreshProfileImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() logOut,
+    required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
+    required TResult Function(String name, String lastName) updateUserInfo,
+    required TResult Function(UpdatePartnerDataRequest partnerData)
+        updatePartnerData,
+    required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
+    required TResult Function(UpdateLanguageRequest language) updateLanguage,
+    required TResult Function(OrderEntity order) orderAccepted,
+  }) {
+    return refresh(viewModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? logOut,
+    TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
+    TResult? Function(String name, String lastName)? updateUserInfo,
+    TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
+    TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
+    TResult? Function(UpdateLanguageRequest language)? updateLanguage,
+    TResult? Function(OrderEntity order)? orderAccepted,
+  }) {
+    return refresh?.call(viewModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? logOut,
+    TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
+    TResult Function(String name, String lastName)? updateUserInfo,
+    TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
+    TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
+    TResult Function(UpdateLanguageRequest language)? updateLanguage,
+    TResult Function(OrderEntity order)? orderAccepted,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(viewModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_LogOut value) logOut,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
+    required TResult Function(_UpdateUserInfo value) updateUserInfo,
+    required TResult Function(_UpdatePartnerData value) updatePartnerData,
+    required TResult Function(_UpdateFcmToken value) updateFcmToken,
+    required TResult Function(_UpdateLanguage value) updateLanguage,
+    required TResult Function(_OrderAccepted value) orderAccepted,
+  }) {
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
+    TResult? Function(_UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(_UpdatePartnerData value)? updatePartnerData,
+    TResult? Function(_UpdateFcmToken value)? updateFcmToken,
+    TResult? Function(_UpdateLanguage value)? updateLanguage,
+    TResult? Function(_OrderAccepted value)? orderAccepted,
+  }) {
+    return refresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
+    TResult Function(_UpdateUserInfo value)? updateUserInfo,
+    TResult Function(_UpdatePartnerData value)? updatePartnerData,
+    TResult Function(_UpdateFcmToken value)? updateFcmToken,
+    TResult Function(_UpdateLanguage value)? updateLanguage,
+    TResult Function(_OrderAccepted value)? orderAccepted,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshProfile implements ProfileEvent {
+  const factory _RefreshProfile(
+      {required final ToggleStatusViewModel viewModel}) = _$RefreshProfileImpl;
+
+  ToggleStatusViewModel get viewModel;
+  @JsonKey(ignore: true)
+  _$$RefreshProfileImplCopyWith<_$RefreshProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -604,6 +817,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -620,6 +834,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -635,6 +850,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -654,6 +870,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -669,6 +886,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -684,6 +902,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -789,6 +1008,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -805,6 +1025,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -820,6 +1041,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -839,6 +1061,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -854,6 +1077,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -869,6 +1093,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -973,6 +1198,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -989,6 +1215,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -1004,6 +1231,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -1023,6 +1251,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -1038,6 +1267,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -1053,6 +1283,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -1156,6 +1387,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -1172,6 +1404,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -1187,6 +1420,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -1206,6 +1440,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -1221,6 +1456,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -1236,6 +1472,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -1337,6 +1574,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     required TResult Function() init,
     required TResult Function() logOut,
     required TResult Function() deleteAccount,
+    required TResult Function(ToggleStatusViewModel viewModel) refresh,
     required TResult Function(String name, String lastName) updateUserInfo,
     required TResult Function(UpdatePartnerDataRequest partnerData)
         updatePartnerData,
@@ -1353,6 +1591,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult? Function()? init,
     TResult? Function()? logOut,
     TResult? Function()? deleteAccount,
+    TResult? Function(ToggleStatusViewModel viewModel)? refresh,
     TResult? Function(String name, String lastName)? updateUserInfo,
     TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -1368,6 +1607,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult Function()? init,
     TResult Function()? logOut,
     TResult Function()? deleteAccount,
+    TResult Function(ToggleStatusViewModel viewModel)? refresh,
     TResult Function(String name, String lastName)? updateUserInfo,
     TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
@@ -1387,6 +1627,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     required TResult Function(_Init value) init,
     required TResult Function(_LogOut value) logOut,
     required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_RefreshProfile value) refresh,
     required TResult Function(_UpdateUserInfo value) updateUserInfo,
     required TResult Function(_UpdatePartnerData value) updatePartnerData,
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
@@ -1402,6 +1643,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult? Function(_Init value)? init,
     TResult? Function(_LogOut value)? logOut,
     TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_RefreshProfile value)? refresh,
     TResult? Function(_UpdateUserInfo value)? updateUserInfo,
     TResult? Function(_UpdatePartnerData value)? updatePartnerData,
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
@@ -1417,6 +1659,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult Function(_Init value)? init,
     TResult Function(_LogOut value)? logOut,
     TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_RefreshProfile value)? refresh,
     TResult Function(_UpdateUserInfo value)? updateUserInfo,
     TResult Function(_UpdatePartnerData value)? updatePartnerData,
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
@@ -1763,7 +2006,7 @@ mixin _$ProfileViewModel {
   String? get pCarModel => throw _privateConstructorUsedError;
   String? get pCarNumber => throw _privateConstructorUsedError;
   int? get pTownId => throw _privateConstructorUsedError;
-  String? get pStatus => throw _privateConstructorUsedError;
+  String get pStatus => throw _privateConstructorUsedError;
   int? get pBalance => throw _privateConstructorUsedError;
   int? get pBonus => throw _privateConstructorUsedError;
   OrderEntity? get order => throw _privateConstructorUsedError;
@@ -1793,7 +2036,7 @@ abstract class $ProfileViewModelCopyWith<$Res> {
       String? pCarModel,
       String? pCarNumber,
       int? pTownId,
-      String? pStatus,
+      String pStatus,
       int? pBalance,
       int? pBonus,
       OrderEntity? order});
@@ -1827,7 +2070,7 @@ class _$ProfileViewModelCopyWithImpl<$Res, $Val extends ProfileViewModel>
     Object? pCarModel = freezed,
     Object? pCarNumber = freezed,
     Object? pTownId = freezed,
-    Object? pStatus = freezed,
+    Object? pStatus = null,
     Object? pBalance = freezed,
     Object? pBonus = freezed,
     Object? order = freezed,
@@ -1885,10 +2128,10 @@ class _$ProfileViewModelCopyWithImpl<$Res, $Val extends ProfileViewModel>
           ? _value.pTownId
           : pTownId // ignore: cast_nullable_to_non_nullable
               as int?,
-      pStatus: freezed == pStatus
+      pStatus: null == pStatus
           ? _value.pStatus
           : pStatus // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       pBalance: freezed == pBalance
           ? _value.pBalance
           : pBalance // ignore: cast_nullable_to_non_nullable
@@ -1939,7 +2182,7 @@ abstract class _$$ProfileViewModelImplCopyWith<$Res>
       String? pCarModel,
       String? pCarNumber,
       int? pTownId,
-      String? pStatus,
+      String pStatus,
       int? pBalance,
       int? pBonus,
       OrderEntity? order});
@@ -1972,7 +2215,7 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
     Object? pCarModel = freezed,
     Object? pCarNumber = freezed,
     Object? pTownId = freezed,
-    Object? pStatus = freezed,
+    Object? pStatus = null,
     Object? pBalance = freezed,
     Object? pBonus = freezed,
     Object? order = freezed,
@@ -2030,10 +2273,10 @@ class __$$ProfileViewModelImplCopyWithImpl<$Res>
           ? _value.pTownId
           : pTownId // ignore: cast_nullable_to_non_nullable
               as int?,
-      pStatus: freezed == pStatus
+      pStatus: null == pStatus
           ? _value.pStatus
           : pStatus // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       pBalance: freezed == pBalance
           ? _value.pBalance
           : pBalance // ignore: cast_nullable_to_non_nullable
@@ -2067,7 +2310,7 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
       this.pCarModel,
       this.pCarNumber,
       this.pTownId,
-      this.pStatus,
+      this.pStatus = 'offline',
       this.pBalance,
       this.pBonus,
       this.order});
@@ -2107,7 +2350,8 @@ class _$ProfileViewModelImpl implements _ProfileViewModel {
   @override
   final int? pTownId;
   @override
-  final String? pStatus;
+  @JsonKey()
+  final String pStatus;
   @override
   final int? pBalance;
   @override
@@ -2197,7 +2441,7 @@ abstract class _ProfileViewModel implements ProfileViewModel {
       final String? pCarModel,
       final String? pCarNumber,
       final int? pTownId,
-      final String? pStatus,
+      final String pStatus,
       final int? pBalance,
       final int? pBonus,
       final OrderEntity? order}) = _$ProfileViewModelImpl;
@@ -2229,7 +2473,7 @@ abstract class _ProfileViewModel implements ProfileViewModel {
   @override
   int? get pTownId;
   @override
-  String? get pStatus;
+  String get pStatus;
   @override
   int? get pBalance;
   @override

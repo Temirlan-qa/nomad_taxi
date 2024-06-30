@@ -10,4 +10,8 @@ abstract class StorageService {
   Future<void> openBox();
   bool checkLoggedIn();
   bool get isLoggedIn;
+
+  //Town id
+  int? getTownId();
+  Future<void> setTownId(int id);
 }

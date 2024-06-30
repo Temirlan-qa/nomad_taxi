@@ -3,14 +3,17 @@ import 'package:nomad_taxi/src/features/auth/domain/usecases/resend_code_use_cas
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/complete_order_use_case.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/start_route_use_case.dart';
 import 'package:nomad_taxi/src/features/detailed_driver_order/domain/usecases/waiting_for_client_use_case.dart';
+import 'package:nomad_taxi/src/features/driver_mode/presentation/bloc/toggle_status_bloc.dart';
 import 'package:nomad_taxi/src/features/help/presentation/bloc/help_bloc.dart';
 import 'package:nomad_taxi/src/features/main/domain/usecases/find_town_id_use_case.dart';
 import 'package:nomad_taxi/src/features/main/presentation/bloc/main_bloc.dart';
+import 'package:nomad_taxi/src/features/order_search/domain/usecases/get_cashback_info_use_case.dart';
 import 'package:nomad_taxi/src/features/order_search/domain/usecases/get_searched_addresses_use_case.dart';
 import 'package:nomad_taxi/src/features/order_search/presentation/bloc/searched_order_bloc.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
+import 'package:nomad_taxi/src/features/profile/domain/usecases/toggle_partner_status_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_partner_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/withdraw_info_use_case.dart';
@@ -97,6 +100,14 @@ void manualRegisterServices() {
   );
 
   getIt.registerBloc<SearchedOrderBloc>(
-    () => SearchedOrderBloc(getIt<GetSearchedAddressesUseCase>()),
+    () => SearchedOrderBloc(
+      getIt<GetSearchedAddressesUseCase>(),
+      getIt<GetCashbackInfoUseCase>(),
+    ),
+  );
+  getIt.registerBloc<ToggleStatusBloc>(
+    () => ToggleStatusBloc(
+      getIt<TogglePartnerStatusUseCase>(),
+    ),
   );
 }

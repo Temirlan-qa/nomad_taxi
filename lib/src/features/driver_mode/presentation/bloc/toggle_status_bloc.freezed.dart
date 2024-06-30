@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'example_bloc.dart';
+part of 'toggle_status_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,52 +15,52 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ExampleEvent {
+mixin _$ToggleStatusEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ExampleEventCopyWith<$Res> {
-  factory $ExampleEventCopyWith(
-          ExampleEvent value, $Res Function(ExampleEvent) then) =
-      _$ExampleEventCopyWithImpl<$Res, ExampleEvent>;
+abstract class $ToggleStatusEventCopyWith<$Res> {
+  factory $ToggleStatusEventCopyWith(
+          ToggleStatusEvent value, $Res Function(ToggleStatusEvent) then) =
+      _$ToggleStatusEventCopyWithImpl<$Res, ToggleStatusEvent>;
 }
 
 /// @nodoc
-class _$ExampleEventCopyWithImpl<$Res, $Val extends ExampleEvent>
-    implements $ExampleEventCopyWith<$Res> {
-  _$ExampleEventCopyWithImpl(this._value, this._then);
+class _$ToggleStatusEventCopyWithImpl<$Res, $Val extends ToggleStatusEvent>
+    implements $ToggleStatusEventCopyWith<$Res> {
+  _$ToggleStatusEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -69,35 +69,36 @@ class _$ExampleEventCopyWithImpl<$Res, $Val extends ExampleEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$TogglePartnerStatusImplCopyWith<$Res> {
+  factory _$$TogglePartnerStatusImplCopyWith(_$TogglePartnerStatusImpl value,
+          $Res Function(_$TogglePartnerStatusImpl) then) =
+      __$$TogglePartnerStatusImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ExampleEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$TogglePartnerStatusImplCopyWithImpl<$Res>
+    extends _$ToggleStatusEventCopyWithImpl<$Res, _$TogglePartnerStatusImpl>
+    implements _$$TogglePartnerStatusImplCopyWith<$Res> {
+  __$$TogglePartnerStatusImplCopyWithImpl(_$TogglePartnerStatusImpl _value,
+      $Res Function(_$TogglePartnerStatusImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$TogglePartnerStatusImpl implements _TogglePartnerStatus {
+  const _$TogglePartnerStatusImpl();
 
   @override
   String toString() {
-    return 'ExampleEvent.started()';
+    return 'ToggleStatusEvent.togglePartnerStatus()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$TogglePartnerStatusImpl);
   }
 
   @override
@@ -106,27 +107,27 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() togglePartnerStatus,
   }) {
-    return started();
+    return togglePartnerStatus();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? togglePartnerStatus,
   }) {
-    return started?.call();
+    return togglePartnerStatus?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (togglePartnerStatus != null) {
+      return togglePartnerStatus();
     }
     return orElse();
   }
@@ -134,78 +135,72 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
-    return started(this);
+    return togglePartnerStatus(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
-    return started?.call(this);
+    return togglePartnerStatus?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (togglePartnerStatus != null) {
+      return togglePartnerStatus(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ExampleEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _TogglePartnerStatus implements ToggleStatusEvent {
+  const factory _TogglePartnerStatus() = _$TogglePartnerStatusImpl;
 }
 
 /// @nodoc
-mixin _$ExampleState {
+mixin _$ToggleStatusState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ExampleStateViewModel viewModel) loaded,
+    required TResult Function(ToggleStatusViewModel viewModel) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ExampleStateViewModel viewModel)? loaded,
+    TResult? Function(ToggleStatusViewModel viewModel)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ExampleStateViewModel viewModel)? loaded,
+    TResult Function(ToggleStatusViewModel viewModel)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
@@ -213,16 +208,16 @@ mixin _$ExampleState {
 }
 
 /// @nodoc
-abstract class $ExampleStateCopyWith<$Res> {
-  factory $ExampleStateCopyWith(
-          ExampleState value, $Res Function(ExampleState) then) =
-      _$ExampleStateCopyWithImpl<$Res, ExampleState>;
+abstract class $ToggleStatusStateCopyWith<$Res> {
+  factory $ToggleStatusStateCopyWith(
+          ToggleStatusState value, $Res Function(ToggleStatusState) then) =
+      _$ToggleStatusStateCopyWithImpl<$Res, ToggleStatusState>;
 }
 
 /// @nodoc
-class _$ExampleStateCopyWithImpl<$Res, $Val extends ExampleState>
-    implements $ExampleStateCopyWith<$Res> {
-  _$ExampleStateCopyWithImpl(this._value, this._then);
+class _$ToggleStatusStateCopyWithImpl<$Res, $Val extends ToggleStatusState>
+    implements $ToggleStatusStateCopyWith<$Res> {
+  _$ToggleStatusStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -239,7 +234,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ExampleStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ToggleStatusStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -253,7 +248,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ExampleState.initial()';
+    return 'ToggleStatusState.initial()';
   }
 
   @override
@@ -269,8 +264,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ExampleStateViewModel viewModel) loaded,
+    required TResult Function(ToggleStatusViewModel viewModel) loaded,
   }) {
     return initial();
   }
@@ -279,8 +273,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ExampleStateViewModel viewModel)? loaded,
+    TResult? Function(ToggleStatusViewModel viewModel)? loaded,
   }) {
     return initial?.call();
   }
@@ -289,8 +282,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ExampleStateViewModel viewModel)? loaded,
+    TResult Function(ToggleStatusViewModel viewModel)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -303,7 +295,6 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) {
     return initial(this);
@@ -313,7 +304,6 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
   }) {
     return initial?.call(this);
@@ -323,7 +313,6 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -334,116 +323,8 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ExampleState {
+abstract class _Initial implements ToggleStatusState {
   const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ExampleStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'ExampleState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ExampleStateViewModel viewModel) loaded,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ExampleStateViewModel viewModel)? loaded,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ExampleStateViewModel viewModel)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements ExampleState {
-  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -452,14 +333,14 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ExampleStateViewModel viewModel});
+  $Res call({ToggleStatusViewModel viewModel});
 
-  $ExampleStateViewModelCopyWith<$Res> get viewModel;
+  $ToggleStatusViewModelCopyWith<$Res> get viewModel;
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$ExampleStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ToggleStatusStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -474,14 +355,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
       viewModel: null == viewModel
           ? _value.viewModel
           : viewModel // ignore: cast_nullable_to_non_nullable
-              as ExampleStateViewModel,
+              as ToggleStatusViewModel,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ExampleStateViewModelCopyWith<$Res> get viewModel {
-    return $ExampleStateViewModelCopyWith<$Res>(_value.viewModel, (value) {
+  $ToggleStatusViewModelCopyWith<$Res> get viewModel {
+    return $ToggleStatusViewModelCopyWith<$Res>(_value.viewModel, (value) {
       return _then(_value.copyWith(viewModel: value));
     });
   }
@@ -493,11 +374,11 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl({required this.viewModel});
 
   @override
-  final ExampleStateViewModel viewModel;
+  final ToggleStatusViewModel viewModel;
 
   @override
   String toString() {
-    return 'ExampleState.loaded(viewModel: $viewModel)';
+    return 'ToggleStatusState.loaded(viewModel: $viewModel)';
   }
 
   @override
@@ -522,8 +403,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ExampleStateViewModel viewModel) loaded,
+    required TResult Function(ToggleStatusViewModel viewModel) loaded,
   }) {
     return loaded(viewModel);
   }
@@ -532,8 +412,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ExampleStateViewModel viewModel)? loaded,
+    TResult? Function(ToggleStatusViewModel viewModel)? loaded,
   }) {
     return loaded?.call(viewModel);
   }
@@ -542,8 +421,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ExampleStateViewModel viewModel)? loaded,
+    TResult Function(ToggleStatusViewModel viewModel)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -556,7 +434,6 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) {
     return loaded(this);
@@ -566,7 +443,6 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
   }) {
     return loaded?.call(this);
@@ -576,7 +452,6 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -587,39 +462,39 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements ExampleState {
-  const factory _Loaded({required final ExampleStateViewModel viewModel}) =
+abstract class _Loaded implements ToggleStatusState {
+  const factory _Loaded({required final ToggleStatusViewModel viewModel}) =
       _$LoadedImpl;
 
-  ExampleStateViewModel get viewModel;
+  ToggleStatusViewModel get viewModel;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ExampleStateViewModel {
-  List<dynamic> get selecteds => throw _privateConstructorUsedError;
+mixin _$ToggleStatusViewModel {
+  String get pStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ExampleStateViewModelCopyWith<ExampleStateViewModel> get copyWith =>
+  $ToggleStatusViewModelCopyWith<ToggleStatusViewModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ExampleStateViewModelCopyWith<$Res> {
-  factory $ExampleStateViewModelCopyWith(ExampleStateViewModel value,
-          $Res Function(ExampleStateViewModel) then) =
-      _$ExampleStateViewModelCopyWithImpl<$Res, ExampleStateViewModel>;
+abstract class $ToggleStatusViewModelCopyWith<$Res> {
+  factory $ToggleStatusViewModelCopyWith(ToggleStatusViewModel value,
+          $Res Function(ToggleStatusViewModel) then) =
+      _$ToggleStatusViewModelCopyWithImpl<$Res, ToggleStatusViewModel>;
   @useResult
-  $Res call({List<dynamic> selecteds});
+  $Res call({String pStatus});
 }
 
 /// @nodoc
-class _$ExampleStateViewModelCopyWithImpl<$Res,
-        $Val extends ExampleStateViewModel>
-    implements $ExampleStateViewModelCopyWith<$Res> {
-  _$ExampleStateViewModelCopyWithImpl(this._value, this._then);
+class _$ToggleStatusViewModelCopyWithImpl<$Res,
+        $Val extends ToggleStatusViewModel>
+    implements $ToggleStatusViewModelCopyWith<$Res> {
+  _$ToggleStatusViewModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -629,101 +504,93 @@ class _$ExampleStateViewModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selecteds = null,
+    Object? pStatus = null,
   }) {
     return _then(_value.copyWith(
-      selecteds: null == selecteds
-          ? _value.selecteds
-          : selecteds // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+      pStatus: null == pStatus
+          ? _value.pStatus
+          : pStatus // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ExampleStateViewModelImplCopyWith<$Res>
-    implements $ExampleStateViewModelCopyWith<$Res> {
-  factory _$$ExampleStateViewModelImplCopyWith(
-          _$ExampleStateViewModelImpl value,
-          $Res Function(_$ExampleStateViewModelImpl) then) =
-      __$$ExampleStateViewModelImplCopyWithImpl<$Res>;
+abstract class _$$ToggleStatusViewModelImplCopyWith<$Res>
+    implements $ToggleStatusViewModelCopyWith<$Res> {
+  factory _$$ToggleStatusViewModelImplCopyWith(
+          _$ToggleStatusViewModelImpl value,
+          $Res Function(_$ToggleStatusViewModelImpl) then) =
+      __$$ToggleStatusViewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<dynamic> selecteds});
+  $Res call({String pStatus});
 }
 
 /// @nodoc
-class __$$ExampleStateViewModelImplCopyWithImpl<$Res>
-    extends _$ExampleStateViewModelCopyWithImpl<$Res,
-        _$ExampleStateViewModelImpl>
-    implements _$$ExampleStateViewModelImplCopyWith<$Res> {
-  __$$ExampleStateViewModelImplCopyWithImpl(_$ExampleStateViewModelImpl _value,
-      $Res Function(_$ExampleStateViewModelImpl) _then)
+class __$$ToggleStatusViewModelImplCopyWithImpl<$Res>
+    extends _$ToggleStatusViewModelCopyWithImpl<$Res,
+        _$ToggleStatusViewModelImpl>
+    implements _$$ToggleStatusViewModelImplCopyWith<$Res> {
+  __$$ToggleStatusViewModelImplCopyWithImpl(_$ToggleStatusViewModelImpl _value,
+      $Res Function(_$ToggleStatusViewModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selecteds = null,
+    Object? pStatus = null,
   }) {
-    return _then(_$ExampleStateViewModelImpl(
-      selecteds: null == selecteds
-          ? _value._selecteds
-          : selecteds // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+    return _then(_$ToggleStatusViewModelImpl(
+      pStatus: null == pStatus
+          ? _value.pStatus
+          : pStatus // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ExampleStateViewModelImpl implements _ExampleStateViewModel {
-  _$ExampleStateViewModelImpl({final List<dynamic> selecteds = const []})
-      : _selecteds = selecteds;
+class _$ToggleStatusViewModelImpl implements _ToggleStatusViewModel {
+  _$ToggleStatusViewModelImpl({this.pStatus = 'offline'});
 
-  final List<dynamic> _selecteds;
   @override
   @JsonKey()
-  List<dynamic> get selecteds {
-    if (_selecteds is EqualUnmodifiableListView) return _selecteds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_selecteds);
-  }
+  final String pStatus;
 
   @override
   String toString() {
-    return 'ExampleStateViewModel(selecteds: $selecteds)';
+    return 'ToggleStatusViewModel(pStatus: $pStatus)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExampleStateViewModelImpl &&
-            const DeepCollectionEquality()
-                .equals(other._selecteds, _selecteds));
+            other is _$ToggleStatusViewModelImpl &&
+            (identical(other.pStatus, pStatus) || other.pStatus == pStatus));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_selecteds));
+  int get hashCode => Object.hash(runtimeType, pStatus);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ExampleStateViewModelImplCopyWith<_$ExampleStateViewModelImpl>
-      get copyWith => __$$ExampleStateViewModelImplCopyWithImpl<
-          _$ExampleStateViewModelImpl>(this, _$identity);
+  _$$ToggleStatusViewModelImplCopyWith<_$ToggleStatusViewModelImpl>
+      get copyWith => __$$ToggleStatusViewModelImplCopyWithImpl<
+          _$ToggleStatusViewModelImpl>(this, _$identity);
 }
 
-abstract class _ExampleStateViewModel implements ExampleStateViewModel {
-  factory _ExampleStateViewModel({final List<dynamic> selecteds}) =
-      _$ExampleStateViewModelImpl;
+abstract class _ToggleStatusViewModel implements ToggleStatusViewModel {
+  factory _ToggleStatusViewModel({final String pStatus}) =
+      _$ToggleStatusViewModelImpl;
 
   @override
-  List<dynamic> get selecteds;
+  String get pStatus;
   @override
   @JsonKey(ignore: true)
-  _$$ExampleStateViewModelImplCopyWith<_$ExampleStateViewModelImpl>
+  _$$ToggleStatusViewModelImplCopyWith<_$ToggleStatusViewModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

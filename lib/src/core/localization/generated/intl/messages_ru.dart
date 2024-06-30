@@ -162,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Далее"),
         "noActiveOrdersAtTheMoment": MessageLookupByLibrary.simpleMessage(
             "На данный момент нет активных заказов"),
+        "offline": MessageLookupByLibrary.simpleMessage("Офлайн"),
         "onMap": MessageLookupByLibrary.simpleMessage("На карте"),
         "on_line": MessageLookupByLibrary.simpleMessage("На линии"),
         "on_search": MessageLookupByLibrary.simpleMessage("В поиске"),

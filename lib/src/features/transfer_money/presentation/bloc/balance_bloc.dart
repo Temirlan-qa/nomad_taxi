@@ -7,6 +7,7 @@ import 'package:nomad_taxi/src/core/service/injectable/injectable_service.dart';
 import 'package:nomad_taxi/src/core/service/injectable/service_register_proxy.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/withdraw_info_use_case.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 part 'balance_bloc.freezed.dart';
@@ -50,11 +51,31 @@ class BalanceBloc extends BaseBloc<BalanceEvent, BalanceState> {
 
     if (payInfo != null && dataWithdraw != null) {
       final withdrawInfoController = WebViewController()
-        ..setJavaScriptMode(JavaScriptMode.disabled)
+        ..setJavaScriptMode(JavaScriptMode.unrestricted)
+        ..setNavigationDelegate(NavigationDelegate(
+          onNavigationRequest: (request) {
+            if (request.url.startsWith('http') ||
+                request.url.startsWith('https')) {
+              launchURL(request.url);
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ))
         ..loadHtmlString(dataWithdraw);
 
       final payInfoController = WebViewController()
-        ..setJavaScriptMode(JavaScriptMode.disabled)
+        ..setJavaScriptMode(JavaScriptMode.unrestricted)
+        ..setNavigationDelegate(NavigationDelegate(
+          onNavigationRequest: (request) {
+            if (request.url.startsWith('http') ||
+                request.url.startsWith('https')) {
+              launchURL(request.url);
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ))
         ..loadHtmlString(payInfo);
 
       return emit(
@@ -67,6 +88,14 @@ class BalanceBloc extends BaseBloc<BalanceEvent, BalanceState> {
       );
     }
     emit(const _Error('Error'));
+  }
+
+  void launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
