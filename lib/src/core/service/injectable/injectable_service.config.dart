@@ -38,9 +38,9 @@ import '../../../features/detailed_driver_order/domain/usecases/cancel_order_use
 import '../../../features/detailed_driver_order/domain/usecases/complete_order_use_case.dart'
     as _i31;
 import '../../../features/detailed_driver_order/domain/usecases/get_new_order_use_case.dart'
-    as _i53;
-import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart'
     as _i52;
+import '../../../features/detailed_driver_order/domain/usecases/get_order_status_use_case.dart'
+    as _i53;
 import '../../../features/detailed_driver_order/domain/usecases/get_orders_use_case.dart'
     as _i32;
 import '../../../features/detailed_driver_order/domain/usecases/start_route_use_case.dart'
@@ -238,11 +238,11 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i18.IAuthService>(instanceName: 'AuthServiceImpl')),
       instanceName: 'AuthRepositoryImpl',
     );
-    gh.lazySingleton<_i52.GetOrderStatusUseCase>(() =>
-        _i52.GetOrderStatusUseCase(gh<_i48.IDriverOrderRepository>(
-            instanceName: 'DriverOrderRepository')));
-    gh.lazySingleton<_i53.GetNewOrderUseCase>(() => _i53.GetNewOrderUseCase(
+    gh.lazySingleton<_i52.GetNewOrderUseCase>(() => _i52.GetNewOrderUseCase(
         gh<_i48.IDriverOrderRepository>(
+            instanceName: 'DriverOrderRepository')));
+    gh.lazySingleton<_i53.GetOrderStatusUseCase>(() =>
+        _i53.GetOrderStatusUseCase(gh<_i48.IDriverOrderRepository>(
             instanceName: 'DriverOrderRepository')));
     gh.lazySingleton<_i54.VerifyUseCase>(() => _i54.VerifyUseCase(
         gh<_i50.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
@@ -254,7 +254,7 @@ extension GetItInjectableX on _i1.GetIt {
         gh<_i50.IAuthRepository>(instanceName: 'AuthRepositoryImpl')));
     gh.factory<_i58.OrderBloc>(() => _i58.OrderBloc(
           gh<_i35.CreateOrderUseCase>(),
-          gh<_i52.GetOrderStatusUseCase>(),
+          gh<_i53.GetOrderStatusUseCase>(),
         ));
     return this;
   }
