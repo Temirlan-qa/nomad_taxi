@@ -11,6 +11,7 @@ import 'package:nomad_taxi/src/features/order_search/presentation/bloc/searched_
 import 'package:nomad_taxi/src/features/profile/domain/usecases/activate_promocode_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/pay_info_use_case.dart';
+import 'package:nomad_taxi/src/features/profile/domain/usecases/toggle_partner_status_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_partner_data_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/withdraw_info_use_case.dart';
@@ -43,6 +44,7 @@ void manualRegisterServices() {
       getIt<UpdateFcmTokenUseCase>(),
       getIt<UpdateLanguageUseCase>(),
       getIt<UpdatePartnerDataUseCase>(),
+      getIt<TogglePartnerStatusUseCase>(),
     ),
   );
   getIt.registerBloc<AuthBloc>(

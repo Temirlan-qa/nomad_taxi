@@ -900,6 +900,16 @@ class S {
     );
   }
 
+  /// `Офлайн`
+  String get offline {
+    return Intl.message(
+      'Офлайн',
+      name: 'offline',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Выполненно`
   String get done {
     return Intl.message(

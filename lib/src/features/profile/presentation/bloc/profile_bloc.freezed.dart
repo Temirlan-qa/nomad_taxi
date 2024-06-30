@@ -27,6 +27,7 @@ mixin _$ProfileEvent {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +40,7 @@ mixin _$ProfileEvent {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +53,7 @@ mixin _$ProfileEvent {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +67,7 @@ mixin _$ProfileEvent {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +80,7 @@ mixin _$ProfileEvent {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,6 +93,7 @@ mixin _$ProfileEvent {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +163,7 @@ class _$InitImpl implements _Init {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return init();
   }
@@ -172,6 +179,7 @@ class _$InitImpl implements _Init {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return init?.call();
   }
@@ -187,6 +195,7 @@ class _$InitImpl implements _Init {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -206,6 +215,7 @@ class _$InitImpl implements _Init {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return init(this);
   }
@@ -221,6 +231,7 @@ class _$InitImpl implements _Init {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return init?.call(this);
   }
@@ -236,6 +247,7 @@ class _$InitImpl implements _Init {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -296,6 +308,7 @@ class _$LogOutImpl implements _LogOut {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return logOut();
   }
@@ -311,6 +324,7 @@ class _$LogOutImpl implements _LogOut {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return logOut?.call();
   }
@@ -326,6 +340,7 @@ class _$LogOutImpl implements _LogOut {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -345,6 +360,7 @@ class _$LogOutImpl implements _LogOut {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return logOut(this);
   }
@@ -360,6 +376,7 @@ class _$LogOutImpl implements _LogOut {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return logOut?.call(this);
   }
@@ -375,6 +392,7 @@ class _$LogOutImpl implements _LogOut {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -435,6 +453,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return deleteAccount();
   }
@@ -450,6 +469,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return deleteAccount?.call();
   }
@@ -465,6 +485,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -484,6 +505,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return deleteAccount(this);
   }
@@ -499,6 +521,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return deleteAccount?.call(this);
   }
@@ -514,6 +537,7 @@ class _$DeleteAccountImpl implements _DeleteAccount {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (deleteAccount != null) {
@@ -610,6 +634,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return updateUserInfo(name, lastName);
   }
@@ -625,6 +650,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return updateUserInfo?.call(name, lastName);
   }
@@ -640,6 +666,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updateUserInfo != null) {
@@ -659,6 +686,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return updateUserInfo(this);
   }
@@ -674,6 +702,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return updateUserInfo?.call(this);
   }
@@ -689,6 +718,7 @@ class _$UpdateUserInfoImpl implements _UpdateUserInfo {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updateUserInfo != null) {
@@ -795,6 +825,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return updatePartnerData(partnerData);
   }
@@ -810,6 +841,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return updatePartnerData?.call(partnerData);
   }
@@ -825,6 +857,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updatePartnerData != null) {
@@ -844,6 +877,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return updatePartnerData(this);
   }
@@ -859,6 +893,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return updatePartnerData?.call(this);
   }
@@ -874,6 +909,7 @@ class _$UpdatePartnerDataImpl implements _UpdatePartnerData {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updatePartnerData != null) {
@@ -979,6 +1015,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return updateFcmToken(fcmToken);
   }
@@ -994,6 +1031,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return updateFcmToken?.call(fcmToken);
   }
@@ -1009,6 +1047,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updateFcmToken != null) {
@@ -1028,6 +1067,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return updateFcmToken(this);
   }
@@ -1043,6 +1083,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return updateFcmToken?.call(this);
   }
@@ -1058,6 +1099,7 @@ class _$UpdateFcmTokenImpl implements _UpdateFcmToken {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updateFcmToken != null) {
@@ -1162,6 +1204,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return updateLanguage(language);
   }
@@ -1177,6 +1220,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return updateLanguage?.call(language);
   }
@@ -1192,6 +1236,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updateLanguage != null) {
@@ -1211,6 +1256,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return updateLanguage(this);
   }
@@ -1226,6 +1272,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return updateLanguage?.call(this);
   }
@@ -1241,6 +1288,7 @@ class _$UpdateLanguageImpl implements _UpdateLanguage {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (updateLanguage != null) {
@@ -1343,6 +1391,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
     required TResult Function(UpdateLanguageRequest language) updateLanguage,
     required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
   }) {
     return orderAccepted(order);
   }
@@ -1358,6 +1407,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult? Function(UpdateLanguageRequest language)? updateLanguage,
     TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
   }) {
     return orderAccepted?.call(order);
   }
@@ -1373,6 +1423,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
     TResult Function(UpdateLanguageRequest language)? updateLanguage,
     TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (orderAccepted != null) {
@@ -1392,6 +1443,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     required TResult Function(_UpdateFcmToken value) updateFcmToken,
     required TResult Function(_UpdateLanguage value) updateLanguage,
     required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
   }) {
     return orderAccepted(this);
   }
@@ -1407,6 +1459,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult? Function(_UpdateFcmToken value)? updateFcmToken,
     TResult? Function(_UpdateLanguage value)? updateLanguage,
     TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
   }) {
     return orderAccepted?.call(this);
   }
@@ -1422,6 +1475,7 @@ class _$OrderAcceptedImpl implements _OrderAccepted {
     TResult Function(_UpdateFcmToken value)? updateFcmToken,
     TResult Function(_UpdateLanguage value)? updateLanguage,
     TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
     required TResult orElse(),
   }) {
     if (orderAccepted != null) {
@@ -1439,6 +1493,152 @@ abstract class _OrderAccepted implements ProfileEvent {
   @JsonKey(ignore: true)
   _$$OrderAcceptedImplCopyWith<_$OrderAcceptedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TogglePartnerStatusImplCopyWith<$Res> {
+  factory _$$TogglePartnerStatusImplCopyWith(_$TogglePartnerStatusImpl value,
+          $Res Function(_$TogglePartnerStatusImpl) then) =
+      __$$TogglePartnerStatusImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TogglePartnerStatusImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$TogglePartnerStatusImpl>
+    implements _$$TogglePartnerStatusImplCopyWith<$Res> {
+  __$$TogglePartnerStatusImplCopyWithImpl(_$TogglePartnerStatusImpl _value,
+      $Res Function(_$TogglePartnerStatusImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$TogglePartnerStatusImpl implements _TogglePartnerStatus {
+  const _$TogglePartnerStatusImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.togglePartnerStatus()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TogglePartnerStatusImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() logOut,
+    required TResult Function() deleteAccount,
+    required TResult Function(String name, String lastName) updateUserInfo,
+    required TResult Function(UpdatePartnerDataRequest partnerData)
+        updatePartnerData,
+    required TResult Function(UpdateFcmTokenRequest fcmToken) updateFcmToken,
+    required TResult Function(UpdateLanguageRequest language) updateLanguage,
+    required TResult Function(OrderEntity order) orderAccepted,
+    required TResult Function() togglePartnerStatus,
+  }) {
+    return togglePartnerStatus();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? logOut,
+    TResult? Function()? deleteAccount,
+    TResult? Function(String name, String lastName)? updateUserInfo,
+    TResult? Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
+    TResult? Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
+    TResult? Function(UpdateLanguageRequest language)? updateLanguage,
+    TResult? Function(OrderEntity order)? orderAccepted,
+    TResult? Function()? togglePartnerStatus,
+  }) {
+    return togglePartnerStatus?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? logOut,
+    TResult Function()? deleteAccount,
+    TResult Function(String name, String lastName)? updateUserInfo,
+    TResult Function(UpdatePartnerDataRequest partnerData)? updatePartnerData,
+    TResult Function(UpdateFcmTokenRequest fcmToken)? updateFcmToken,
+    TResult Function(UpdateLanguageRequest language)? updateLanguage,
+    TResult Function(OrderEntity order)? orderAccepted,
+    TResult Function()? togglePartnerStatus,
+    required TResult orElse(),
+  }) {
+    if (togglePartnerStatus != null) {
+      return togglePartnerStatus();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_LogOut value) logOut,
+    required TResult Function(_DeleteAccount value) deleteAccount,
+    required TResult Function(_UpdateUserInfo value) updateUserInfo,
+    required TResult Function(_UpdatePartnerData value) updatePartnerData,
+    required TResult Function(_UpdateFcmToken value) updateFcmToken,
+    required TResult Function(_UpdateLanguage value) updateLanguage,
+    required TResult Function(_OrderAccepted value) orderAccepted,
+    required TResult Function(_TogglePartnerStatus value) togglePartnerStatus,
+  }) {
+    return togglePartnerStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_DeleteAccount value)? deleteAccount,
+    TResult? Function(_UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(_UpdatePartnerData value)? updatePartnerData,
+    TResult? Function(_UpdateFcmToken value)? updateFcmToken,
+    TResult? Function(_UpdateLanguage value)? updateLanguage,
+    TResult? Function(_OrderAccepted value)? orderAccepted,
+    TResult? Function(_TogglePartnerStatus value)? togglePartnerStatus,
+  }) {
+    return togglePartnerStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_DeleteAccount value)? deleteAccount,
+    TResult Function(_UpdateUserInfo value)? updateUserInfo,
+    TResult Function(_UpdatePartnerData value)? updatePartnerData,
+    TResult Function(_UpdateFcmToken value)? updateFcmToken,
+    TResult Function(_UpdateLanguage value)? updateLanguage,
+    TResult Function(_OrderAccepted value)? orderAccepted,
+    TResult Function(_TogglePartnerStatus value)? togglePartnerStatus,
+    required TResult orElse(),
+  }) {
+    if (togglePartnerStatus != null) {
+      return togglePartnerStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TogglePartnerStatus implements ProfileEvent {
+  const factory _TogglePartnerStatus() = _$TogglePartnerStatusImpl;
 }
 
 /// @nodoc

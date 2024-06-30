@@ -25,14 +25,12 @@ class DriverMainPage extends StatefulWidget {
 class _DriverMainPageState extends State<DriverMainPage> {
   bool switchState = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   final DriverOrderBloc _driverOrderBloc = getIt<DriverOrderBloc>();
 
   @override
   Widget build(BuildContext context) {
     final bodyMain = context.theme.textStyles.bodyMain;
     final secondary = context.theme.secondary;
-
     final driverState = _driverOrderBloc.state;
 
     return BlocBuilder<ProfileBloc, ProfileState>(
@@ -170,13 +168,20 @@ class _DriverMainPageState extends State<DriverMainPage> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(S.current.on_line,
-                                    style: context.theme.textStyles.headLine),
+                                Text(
+                                  S.current.on_line,
+                                  style: context.theme.textStyles.headLine,
+                                ),
                                 const Gap(UIConstants.defaultGap5),
                                 Text(
-                                  S.current.active,
+                                  switchState
+                                      ? S.current.offline
+                                      : S.current.active,
                                   style: bodyMain.copyWith(
-                                      color: context.theme.green),
+                                    color: switchState
+                                        ? context.theme.red
+                                        : context.theme.green,
+                                  ),
                                 ),
                               ],
                             ),
@@ -191,6 +196,8 @@ class _DriverMainPageState extends State<DriverMainPage> {
                               onChanged: (val) {
                                 _driverOrderBloc
                                     .add(const DriverOrderEvent.getOrders());
+                                getIt<ProfileBloc>().add(
+                                    const ProfileEvent.togglePartnerStatus());
                                 setState(() {
                                   switchState = val;
                                 });

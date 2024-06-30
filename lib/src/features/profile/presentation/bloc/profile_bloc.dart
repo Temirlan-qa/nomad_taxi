@@ -11,6 +11,7 @@ import 'package:nomad_taxi/src/features/profile/domain/requests/update_fcm_token
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_language_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/requests/update_user_info_request.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/get_user_data_use_case.dart';
+import 'package:nomad_taxi/src/features/profile/domain/usecases/toggle_partner_status_use_case.dart';
 import 'package:nomad_taxi/src/features/profile/domain/usecases/update_fcm_token_use_case.dart';
 
 import '../../../../core/service/injectable/exports/all.dart';
@@ -32,6 +33,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
     this._updateFcmTokenUseCase,
     this._updateLanguageUseCase,
     this._updatePartnerDataUseCase,
+    this._togglePartnerStatusUseCase,
   ) : super(const _Initial());
 
   final UpdateUserInfoUseCase _updateUserInfoUseCase;
@@ -41,6 +43,7 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   final UpdateFcmTokenUseCase _updateFcmTokenUseCase;
   final UpdateLanguageUseCase _updateLanguageUseCase;
   final UpdatePartnerDataUseCase _updatePartnerDataUseCase;
+  final TogglePartnerStatusUseCase _togglePartnerStatusUseCase;
 
   final ProfileViewModel _viewModel = ProfileViewModel();
 
@@ -61,6 +64,8 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
       updatePartnerData: (partnerData) =>
           _updatePartnerData(event as _UpdatePartnerData, emit),
       orderAccepted: (_) => _orderAccepted(event as _OrderAccepted, emit),
+      togglePartnerStatus: () =>
+          _togglePartnerStatus(event as _TogglePartnerStatus, emit),
     );
   }
 
@@ -104,7 +109,6 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   }
 
   Future<void> _orderAccepted(_OrderAccepted event, emit) async {
-
     final OrderEntity activeOrder = event.order;
 
     emit(_Loaded(viewModel: _viewModel.copyWith(order: activeOrder)));
@@ -215,6 +219,13 @@ class ProfileBloc extends BaseBloc<ProfileEvent, ProfileState> {
   ) async {
     final UpdateLanguageRequest request = event.language;
     final result = await _updateLanguageUseCase.call(request);
+  }
+
+  Future<void> _togglePartnerStatus(
+    _TogglePartnerStatus event,
+    Emitter emit,
+  ) async {
+    await _togglePartnerStatusUseCase.call();
   }
 
   @override

@@ -24,4 +24,6 @@ class ProfileEvent with _$ProfileEvent {
 
   const factory ProfileEvent.orderAccepted({required OrderEntity order}) =
       _OrderAccepted;
+
+  const factory ProfileEvent.togglePartnerStatus() = _TogglePartnerStatus;
 }
