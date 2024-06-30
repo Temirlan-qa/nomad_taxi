@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int id) started,
     required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) getOrderStatus,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
@@ -28,7 +28,7 @@ mixin _$OrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int id)? started,
     TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? getOrderStatus,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
@@ -38,7 +38,7 @@ mixin _$OrderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int id)? started,
     TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? getOrderStatus,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
@@ -100,6 +100,8 @@ abstract class _$$StartedImplCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
 }
 
 /// @nodoc
@@ -109,57 +111,81 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$StartedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+  const _$StartedImpl({required this.id});
+
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'OrderEvent.started()';
+    return 'OrderEvent.started(id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StartedImpl &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int id) started,
     required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) getOrderStatus,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
         updateOrderStatus,
     required TResult Function() acceptedOrder,
   }) {
-    return started();
+    return started(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int id)? started,
     TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? getOrderStatus,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
         updateOrderStatus,
     TResult? Function()? acceptedOrder,
   }) {
-    return started?.call();
+    return started?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int id)? started,
     TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? getOrderStatus,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
@@ -168,7 +194,7 @@ class _$StartedImpl implements _Started {
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started();
+      return started(id);
     }
     return orElse();
   }
@@ -215,7 +241,12 @@ class _$StartedImpl implements _Started {
 }
 
 abstract class _Started implements OrderEvent {
-  const factory _Started() = _$StartedImpl;
+  const factory _Started({required final int id}) = _$StartedImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -293,7 +324,7 @@ class _$CreateOrderImpl implements _CreateOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int id) started,
     required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) getOrderStatus,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
@@ -306,7 +337,7 @@ class _$CreateOrderImpl implements _CreateOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int id)? started,
     TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? getOrderStatus,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
@@ -319,7 +350,7 @@ class _$CreateOrderImpl implements _CreateOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int id)? started,
     TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? getOrderStatus,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
@@ -449,7 +480,7 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int id) started,
     required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) getOrderStatus,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
@@ -462,7 +493,7 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int id)? started,
     TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? getOrderStatus,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
@@ -475,7 +506,7 @@ class _$GetOrderStatusImpl implements _GetOrderStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int id)? started,
     TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? getOrderStatus,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
@@ -617,7 +648,7 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int id) started,
     required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) getOrderStatus,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
@@ -630,7 +661,7 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int id)? started,
     TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? getOrderStatus,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
@@ -643,7 +674,7 @@ class _$UpdateOrderStatusImpl implements _UpdateOrderStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int id)? started,
     TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? getOrderStatus,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?
@@ -747,7 +778,7 @@ class _$AcceptedOrderImpl implements _AcceptedOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(int id) started,
     required TResult Function(CreateOrderEntity orderEntity) createOrder,
     required TResult Function(int orderId) getOrderStatus,
     required TResult Function(GetOrderStatusResponse updateOrderStatus)
@@ -760,7 +791,7 @@ class _$AcceptedOrderImpl implements _AcceptedOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(int id)? started,
     TResult? Function(CreateOrderEntity orderEntity)? createOrder,
     TResult? Function(int orderId)? getOrderStatus,
     TResult? Function(GetOrderStatusResponse updateOrderStatus)?
@@ -773,7 +804,7 @@ class _$AcceptedOrderImpl implements _AcceptedOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(int id)? started,
     TResult Function(CreateOrderEntity orderEntity)? createOrder,
     TResult Function(int orderId)? getOrderStatus,
     TResult Function(GetOrderStatusResponse updateOrderStatus)?

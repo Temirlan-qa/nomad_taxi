@@ -32,14 +32,12 @@ mixin _$Partner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)
         $default, {
     required TResult Function(bool empty, bool sorted, bool unsorted) empty,
   }) =>
@@ -47,14 +45,12 @@ mixin _$Partner {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)?
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)?
         $default, {
     TResult? Function(bool empty, bool sorted, bool unsorted)? empty,
   }) =>
@@ -62,14 +58,12 @@ mixin _$Partner {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)?
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)?
         $default, {
     TResult Function(bool empty, bool sorted, bool unsorted)? empty,
     required TResult orElse(),
@@ -121,16 +115,12 @@ abstract class _$$PartnerImplCopyWith<$Res> {
       __$$PartnerImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {int? id,
-      @JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      @JsonKey(name: 'car_model') String? carModel,
-      @JsonKey(name: 'car_number') String? carNumber,
-      @JsonKey(name: 'town_id') int? townId,
-      String? status,
-      Finance? finance});
-
-  $FinanceCopyWith<$Res>? get finance;
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      String phone,
+      @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+      @JsonKey(name: 'car_model') String carModel,
+      @JsonKey(name: 'car_number') String carNumber});
 }
 
 /// @nodoc
@@ -144,61 +134,39 @@ class __$$PartnerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? carModel = freezed,
-    Object? carNumber = freezed,
-    Object? townId = freezed,
-    Object? status = freezed,
-    Object? finance = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? phone = null,
+    Object? bankCardNumber = freezed,
+    Object? carModel = null,
+    Object? carNumber = null,
   }) {
     return _then(_$PartnerImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      bankCardNumber: freezed == bankCardNumber
+          ? _value.bankCardNumber
+          : bankCardNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      carModel: freezed == carModel
+      carModel: null == carModel
           ? _value.carModel
           : carModel // ignore: cast_nullable_to_non_nullable
-              as String?,
-      carNumber: freezed == carNumber
+              as String,
+      carNumber: null == carNumber
           ? _value.carNumber
           : carNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      townId: freezed == townId
-          ? _value.townId
-          : townId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      finance: freezed == finance
-          ? _value.finance
-          : finance // ignore: cast_nullable_to_non_nullable
-              as Finance?,
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FinanceCopyWith<$Res>? get finance {
-    if (_value.finance == null) {
-      return null;
-    }
-
-    return $FinanceCopyWith<$Res>(_value.finance!, (value) {
-      return _then(_value.copyWith(finance: value));
-    });
   }
 }
 
@@ -206,14 +174,12 @@ class __$$PartnerImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PartnerImpl implements _Partner {
   const _$PartnerImpl(
-      {this.id,
-      @JsonKey(name: 'first_name') this.firstName,
-      @JsonKey(name: 'last_name') this.lastName,
-      @JsonKey(name: 'car_model') this.carModel,
-      @JsonKey(name: 'car_number') this.carNumber,
-      @JsonKey(name: 'town_id') this.townId,
-      this.status,
-      this.finance,
+      {@JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'last_name') required this.lastName,
+      required this.phone,
+      @JsonKey(name: 'bank_card_number') this.bankCardNumber,
+      @JsonKey(name: 'car_model') required this.carModel,
+      @JsonKey(name: 'car_number') required this.carNumber,
       final String? $type})
       : $type = $type ?? 'default';
 
@@ -221,33 +187,29 @@ class _$PartnerImpl implements _Partner {
       _$$PartnerImplFromJson(json);
 
   @override
-  final int? id;
-  @override
   @JsonKey(name: 'first_name')
-  final String? firstName;
+  final String firstName;
   @override
   @JsonKey(name: 'last_name')
-  final String? lastName;
+  final String lastName;
+  @override
+  final String phone;
+  @override
+  @JsonKey(name: 'bank_card_number')
+  final String? bankCardNumber;
   @override
   @JsonKey(name: 'car_model')
-  final String? carModel;
+  final String carModel;
   @override
   @JsonKey(name: 'car_number')
-  final String? carNumber;
-  @override
-  @JsonKey(name: 'town_id')
-  final int? townId;
-  @override
-  final String? status;
-  @override
-  final Finance? finance;
+  final String carNumber;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'Partner(id: $id, firstName: $firstName, lastName: $lastName, carModel: $carModel, carNumber: $carNumber, townId: $townId, status: $status, finance: $finance)';
+    return 'Partner(firstName: $firstName, lastName: $lastName, phone: $phone, bankCardNumber: $bankCardNumber, carModel: $carModel, carNumber: $carNumber)';
   }
 
   @override
@@ -255,24 +217,23 @@ class _$PartnerImpl implements _Partner {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PartnerImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.bankCardNumber, bankCardNumber) ||
+                other.bankCardNumber == bankCardNumber) &&
             (identical(other.carModel, carModel) ||
                 other.carModel == carModel) &&
             (identical(other.carNumber, carNumber) ||
-                other.carNumber == carNumber) &&
-            (identical(other.townId, townId) || other.townId == townId) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.finance, finance) || other.finance == finance));
+                other.carNumber == carNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstName, lastName,
-      carModel, carNumber, townId, status, finance);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, phone,
+      bankCardNumber, carModel, carNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -284,59 +245,53 @@ class _$PartnerImpl implements _Partner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)
         $default, {
     required TResult Function(bool empty, bool sorted, bool unsorted) empty,
   }) {
     return $default(
-        id, firstName, lastName, carModel, carNumber, townId, status, finance);
+        firstName, lastName, phone, bankCardNumber, carModel, carNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)?
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)?
         $default, {
     TResult? Function(bool empty, bool sorted, bool unsorted)? empty,
   }) {
     return $default?.call(
-        id, firstName, lastName, carModel, carNumber, townId, status, finance);
+        firstName, lastName, phone, bankCardNumber, carModel, carNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)?
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)?
         $default, {
     TResult Function(bool empty, bool sorted, bool unsorted)? empty,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(id, firstName, lastName, carModel, carNumber, townId,
-          status, finance);
+      return $default(
+          firstName, lastName, phone, bankCardNumber, carModel, carNumber);
     }
     return orElse();
   }
@@ -382,30 +337,27 @@ class _$PartnerImpl implements _Partner {
 
 abstract class _Partner implements Partner {
   const factory _Partner(
-      {final int? id,
-      @JsonKey(name: 'first_name') final String? firstName,
-      @JsonKey(name: 'last_name') final String? lastName,
-      @JsonKey(name: 'car_model') final String? carModel,
-      @JsonKey(name: 'car_number') final String? carNumber,
-      @JsonKey(name: 'town_id') final int? townId,
-      final String? status,
-      final Finance? finance}) = _$PartnerImpl;
+          {@JsonKey(name: 'first_name') required final String firstName,
+          @JsonKey(name: 'last_name') required final String lastName,
+          required final String phone,
+          @JsonKey(name: 'bank_card_number') final String? bankCardNumber,
+          @JsonKey(name: 'car_model') required final String carModel,
+          @JsonKey(name: 'car_number') required final String carNumber}) =
+      _$PartnerImpl;
 
   factory _Partner.fromJson(Map<String, dynamic> json) = _$PartnerImpl.fromJson;
 
-  int? get id;
   @JsonKey(name: 'first_name')
-  String? get firstName;
+  String get firstName;
   @JsonKey(name: 'last_name')
-  String? get lastName;
+  String get lastName;
+  String get phone;
+  @JsonKey(name: 'bank_card_number')
+  String? get bankCardNumber;
   @JsonKey(name: 'car_model')
-  String? get carModel;
+  String get carModel;
   @JsonKey(name: 'car_number')
-  String? get carNumber;
-  @JsonKey(name: 'town_id')
-  int? get townId;
-  String? get status;
-  Finance? get finance;
+  String get carNumber;
   @JsonKey(ignore: true)
   _$$PartnerImplCopyWith<_$PartnerImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -508,14 +460,12 @@ class _$PartnerEmptyImpl implements _PartnerEmpty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)
         $default, {
     required TResult Function(bool empty, bool sorted, bool unsorted) empty,
   }) {
@@ -526,14 +476,12 @@ class _$PartnerEmptyImpl implements _PartnerEmpty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)?
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)?
         $default, {
     TResult? Function(bool empty, bool sorted, bool unsorted)? empty,
   }) {
@@ -544,14 +492,12 @@ class _$PartnerEmptyImpl implements _PartnerEmpty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            int? id,
-            @JsonKey(name: 'first_name') String? firstName,
-            @JsonKey(name: 'last_name') String? lastName,
-            @JsonKey(name: 'car_model') String? carModel,
-            @JsonKey(name: 'car_number') String? carNumber,
-            @JsonKey(name: 'town_id') int? townId,
-            String? status,
-            Finance? finance)?
+            @JsonKey(name: 'first_name') String firstName,
+            @JsonKey(name: 'last_name') String lastName,
+            String phone,
+            @JsonKey(name: 'bank_card_number') String? bankCardNumber,
+            @JsonKey(name: 'car_model') String carModel,
+            @JsonKey(name: 'car_number') String carNumber)?
         $default, {
     TResult Function(bool empty, bool sorted, bool unsorted)? empty,
     required TResult orElse(),

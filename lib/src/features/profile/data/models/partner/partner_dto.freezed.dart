@@ -20,7 +20,7 @@ PartnerDto _$PartnerDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PartnerDto {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
@@ -47,7 +47,7 @@ abstract class $PartnerDtoCopyWith<$Res> {
       _$PartnerDtoCopyWithImpl<$Res, PartnerDto>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'car_model') String carModel,
@@ -72,7 +72,7 @@ class _$PartnerDtoCopyWithImpl<$Res, $Val extends PartnerDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? firstName = null,
     Object? lastName = null,
     Object? carModel = null,
@@ -82,10 +82,10 @@ class _$PartnerDtoCopyWithImpl<$Res, $Val extends PartnerDto>
     Object? finance = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ abstract class _$$PartnerDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       @JsonKey(name: 'first_name') String firstName,
       @JsonKey(name: 'last_name') String lastName,
       @JsonKey(name: 'car_model') String carModel,
@@ -159,7 +159,7 @@ class __$$PartnerDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? firstName = null,
     Object? lastName = null,
     Object? carModel = null,
@@ -169,10 +169,10 @@ class __$$PartnerDtoImplCopyWithImpl<$Res>
     Object? finance = null,
   }) {
     return _then(_$PartnerDtoImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -209,7 +209,7 @@ class __$$PartnerDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PartnerDtoImpl implements _PartnerDto {
   const _$PartnerDtoImpl(
-      {required this.id,
+      {this.id,
       @JsonKey(name: 'first_name') required this.firstName,
       @JsonKey(name: 'last_name') required this.lastName,
       @JsonKey(name: 'car_model') required this.carModel,
@@ -222,7 +222,7 @@ class _$PartnerDtoImpl implements _PartnerDto {
       _$$PartnerDtoImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   @JsonKey(name: 'first_name')
   final String firstName;
@@ -288,7 +288,7 @@ class _$PartnerDtoImpl implements _PartnerDto {
 
 abstract class _PartnerDto implements PartnerDto {
   const factory _PartnerDto(
-      {required final int id,
+      {final int? id,
       @JsonKey(name: 'first_name') required final String firstName,
       @JsonKey(name: 'last_name') required final String lastName,
       @JsonKey(name: 'car_model') required final String carModel,
@@ -301,7 +301,7 @@ abstract class _PartnerDto implements PartnerDto {
       _$PartnerDtoImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   @JsonKey(name: 'first_name')
   String get firstName;

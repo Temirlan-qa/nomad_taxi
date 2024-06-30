@@ -8,7 +8,7 @@ part of 'partner_dto.dart';
 
 _$PartnerDtoImpl _$$PartnerDtoImplFromJson(Map<String, dynamic> json) =>
     _$PartnerDtoImpl(
-      id: (json['id'] as num).toInt(),
+      id: (json['id'] as num?)?.toInt(),
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
       carModel: json['car_model'] as String,

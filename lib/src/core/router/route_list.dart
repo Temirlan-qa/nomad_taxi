@@ -143,6 +143,7 @@ List<RouteBase> _routes() => <RouteBase>[
         builder: (_, state) {
           final map = state.extra as Map<String, dynamic>;
           return OrderSearchPage(
+            id: map["id"]!,
             whereFrom: map["whereFrom"]!,
             whereTo: map["whereTo"]!,
             price: map["price"]!,

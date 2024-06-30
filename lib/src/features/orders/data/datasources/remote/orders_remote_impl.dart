@@ -6,7 +6,6 @@ import 'package:injectable/injectable.dart';
 import 'package:nomad_taxi/src/core/service/storage/storage_service_impl.dart';
 import 'package:nomad_taxi/src/features/main/domain/models/find_town_id_request.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/create_order/create_order_dto.dart';
-import 'package:nomad_taxi/src/features/orders/data/models/create_order_response/create_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/delete_order_response/delete_order_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/find_town_by_location_response/find_town_by_location_response_dto.dart';
 import 'package:nomad_taxi/src/features/orders/data/models/orders_dto/orders_dto.dart';
@@ -52,6 +51,37 @@ class OrdersRemoteImpl implements IOrdersRemote {
       final data = response.data['data'];
 
       return Right(OrderDto.fromJson(data));
+    } catch (e) {
+      return Left(
+        e is DomainException ? e : UnknownException(message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<DomainException, OrderResponse>> getOrder(OrderRequest order) async {
+    try {
+      var headers = {
+        'Accept': '*/*',
+        'Authorization': 'Bearer ${st.getToken()!}'
+      };
+      var dio = Dio();
+      var response = await dio.request(
+        'https://auyltaxi.kz/api/v1/order/${order.id}',
+        options: Options(
+          method: 'GET',
+          headers: headers,
+        ),
+      );
+
+      // final OrderEntity orderEntity =
+      //     OrderEntity.fromJson(response.data['data']);
+
+      if (response.statusCode == 200) {
+        return Right(OrderResponse.fromJson(response.data['data']));
+      } else {
+        return Left(UnknownException());
+      }
     } catch (e) {
       return Left(
         e is DomainException ? e : UnknownException(message: e.toString()),
@@ -231,11 +261,11 @@ class OrdersRemoteImpl implements IOrdersRemote {
         data: orderDto.toJson(),
       );
 
-      final OrderEntity orderEntity = OrderEntity.fromJson(response.data['data']);
+      final OrderEntity orderEntity =
+          OrderEntity.fromJson(response.data['data']);
 
       if (response.statusCode == 200) {
-        log('${response.data}', name: 'TestOrderResponse');
-        return Right(OrderResponse(order:orderEntity ));
+        return Right(OrderResponse(order: orderEntity));
       }
       return Left(UnknownException());
     } catch (error, stackTrace) {
@@ -268,37 +298,6 @@ class OrdersRemoteImpl implements IOrdersRemote {
 
       if (response.statusCode == 200) {
         return Right(DeleteOrderResponseDto.fromJson(response.data));
-      } else {
-        return Left(UnknownException());
-      }
-    } catch (e) {
-      return Left(
-        e is DomainException ? e : UnknownException(message: e.toString()),
-      );
-    }
-  }
-
-  @override
-  Future<Either<DomainException, CreateOrderResponseDto>> getOrder(
-      OrderRequest order) async {
-    try {
-      var headers = {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${st.getToken()!}'
-      };
-      var dio = Dio();
-      var response = await dio.request(
-        'https://auyltaxi.kz/api/v1/order/${order.id}',
-        options: Options(
-          method: 'GET',
-          headers: headers,
-        ),
-      );
-
-      log(response.toString());
-
-      if (response.statusCode == 200) {
-        return Right(CreateOrderResponseDto.fromJson(response.data));
       } else {
         return Left(UnknownException());
       }

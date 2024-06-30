@@ -8,12 +8,13 @@ part of 'order_dto.dart';
 
 _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
     _$OrderDtoImpl(
-      id: (json['id'] as num).toInt(),
+      id: (json['id'] as num?)?.toInt(),
       startPoint: json['start_point'] as String,
       endPoint: json['end_point'] as String,
-      price: (json['price'] as num).toInt(),
+      price: (json['price'] as num?)?.toInt(),
       comment: json['comment'] as String?,
       status: json['status'] as String?,
+      type: json['type'] as String?,
       hasRoute: json['has_route'] as bool? ?? false,
       createdAt: json['created_at'] as String? ?? '',
       payMethod: json['pay_method'] == null
@@ -39,6 +40,7 @@ Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
       'price': instance.price,
       'comment': instance.comment,
       'status': instance.status,
+      'type': instance.type,
       'has_route': instance.hasRoute,
       'created_at': instance.createdAt,
       'pay_method': instance.payMethod,
